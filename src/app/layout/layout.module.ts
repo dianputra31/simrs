@@ -8,9 +8,10 @@ import { AuthService } from '../core/auth/service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
-  declarations: [LoginLayoutComponent, LoginCardComponent, MainLayoutComponent],
+  declarations: [LoginLayoutComponent, LoginCardComponent, MainLayoutComponent, HeaderComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,
