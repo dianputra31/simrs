@@ -1,0 +1,22 @@
+@import '../../../../../styles/variables/colors';
+
+.white-rounded-rectangle {
+	background: $putih-gelap-dikit;
+	box-shadow: $box-shadow;
+	border-radius: 10px;
+	padding-left: 18px;
+	padding-right: 18px;
+	padding-top: 28px;
+	padding-bottom: 12px;
+
+	width: 202.24px;
+	margin-bottom: 20px;
+}
+
+.catalog-card-label {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12.738px;
+
+	color: $font-color-light-bg;
+}
