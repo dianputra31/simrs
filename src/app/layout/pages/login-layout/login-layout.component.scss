@@ -1,7 +1,8 @@
+@import '../../../../styles/variables/colors';
 
 .main-container {
 	height: 100vh;
-	background-color: #acd000;
+	background-color: $kresek-merah;
 
 	.container {
 		height: 90%;

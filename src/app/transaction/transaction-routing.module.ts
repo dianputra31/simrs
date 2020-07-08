@@ -12,15 +12,14 @@ const routes: Routes = [
 				path: '',
 				redirectTo: 'prepaid',
 				pathMatch: 'full',
-            },
-            {
+			},
+			{
 				path: 'prepaid',
 				component: PrepaidComponent,
 			},
 		],
 	},
 ];
-
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
