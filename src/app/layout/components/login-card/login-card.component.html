@@ -1,0 +1,33 @@
+<div>
+	<mat-card class="login-card">
+
+		<form [formGroup]="loginForm">
+            <div class="d-flex">
+                <div class="logo mx-auto mt-5">
+                    <div class="input-group mb-3">
+                        <input type="text" 
+                        class="form-control" 
+                        placeholder="Username" 
+                        aria-label="Username" 
+                        aria-describedby="basic-addon1"
+                        formControlName="username">
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                        formControlName="password"/>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </mat-card>
+    
+    <div class="d-flex btn-margin">
+        <button
+            (click)="submit()"
+            class="login-button mx-auto">
+            Login
+        </button>
+    </div>
+</div>
