@@ -7,6 +7,7 @@ import { CatalogCardComponent } from './components/catalog-card/catalog-card.com
 import { CatalogSectionComponent } from './components/catalog-section/catalog-section.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
+import { LocationSectionComponent } from './components/location-section/location-section.component';
 
 @NgModule({
 	declarations: [
@@ -14,6 +15,7 @@ import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 		CatalogSectionComponent,
 		CatalogCardComponent,
 		CatalogCardButtonComponent,
+		LocationSectionComponent,
 	],
 	imports: [CommonModule, RouterModule, HomeRoutingModule, FormsModule],
 })
