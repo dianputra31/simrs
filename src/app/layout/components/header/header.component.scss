@@ -1,88 +1,125 @@
 @import '../../../../styles/variables/colors';
 
-#headers{
-	color:$putih-gelap-dikit;
+#headers {
+	color: $putih-gelap-dikit;
 	z-index: 9999;
 	position: relative;
 	width: 100%;
 	height: 80px;
 	left: 0px;
 	top: 0px;
-	margin:auto;
+	margin: auto;
 	background: $color-primary;
-	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+	box-shadow: $box-shadow-2;
 }
 
-#headers-logo{
+#headers-logo {
 	position: relative;
-	float:left;
-	width:17%;
+	float: left;
+	width: 17%;
 	background: url('../../../../assets/image/logo/logo-nest.png');
 	background-repeat: no-repeat;
 	background-size: 100px 50px;
-	height:80px;
-	padding-top:0px;
+	height: 80px;
+	padding-top: 0px;
 	background-position: center;
-	border:solid yellow 0px;
+	border: solid yellow 0px;
 }
 
-#headers-menubar{
-	float:left;
+#headers-menubar {
+	float: left;
 	position: relative;
-	width:4%;background: url('../../../../assets/image/icons/categories-icon.png') 5px no-repeat;
+	width: 4%;
+	background: url('../../../../assets/image/icons/categories-icon.png') 5px
+		no-repeat;
 	background-size: 28px 28px;
-	border:solid yellow 0px;
-	height:80px;
+	border: solid yellow 0px;
+	height: 80px;
 }
 
-#headers-kategori{
-	float:left;width:7%;padding-top:30px;border:solid yellowgreen 0px;height:80px;
+#headers-kategori {
+	float: left;
+	width: 7%;
+	padding-top: 30px;
+	border: solid yellowgreen 0px;
+	height: 80px;
 }
 
-#headers-search{
-	float:left;width:33%;padding-top:20px;border:solid yellow 0px;height:80px;
+#headers-search {
+	float: left;
+	width: 33%;
+	padding-top: 20px;
+	border: solid yellow 0px;
+	height: 80px;
 }
 
-#headers-cart{
-	float:left;width:12%;padding-top:20px;border:solid yellow 0px;height:80px;text-align: right;
-	background: url('../../../../assets/image/icons/cart-logo.png') 5px no-repeat;
+#headers-cart {
+	float: left;
+	width: 12%;
+	padding-top: 20px;
+	border: solid yellow 0px;
+	height: 80px;
+	text-align: right;
+	background: url('../../../../assets/image/icons/cart-logo.png') 5px
+		no-repeat;
 	background-position: right;
 	background-size: 33px;
 }
 
-#headers-username{
-	float:left;width:15%;padding-top:30px;border:solid yellow 0px;height:80px;text-align: left;padding-left: 20px;
+#headers-username {
+	float: left;
+	width: 15%;
+	padding-top: 30px;
+	border: solid yellow 0px;
+	height: 80px;
+	text-align: left;
+	padding-left: 20px;
 }
 
-#headers-user-menu{
-	float:left;width:12%;padding-top:10px;border:solid yellow 0px;height:80px;text-align: left;padding-left: 0px;
+#headers-user-menu {
+	float: left;
+	width: 12%;
+	padding-top: 10px;
+	border: solid yellow 0px;
+	height: 80px;
+	text-align: left;
+	padding-left: 0px;
 }
 
-#headers-user-photo{
-			border:solid white 3px;
-			border-radius: 50%;background: url('../../../../assets/image/icons/pp.jpg') 0px no-repeat;
-			height: 55px;width:55px;
-			background-size: 55px 55px;
+#headers-user-photo {
+	border: solid $putih-tok 3px;
+	border-radius: 50%;
+	background: url('../../../../assets/image/icons/pp.jpg') 0px no-repeat;
+	height: 55px;
+	width: 55px;
+	background-size: 55px 55px;
 }
 
-.textbox-header-search{
-	height:40px;width:100%;border:solid white 1px;border-radius:5px;color:#8a8a8a;font-size:14px;
-	padding-left:30px;padding-right: 40px;
-	background: url('../../../../assets/image/icons/searchbutton.png') 5px no-repeat;
-	background-color: white;
+.textbox-header-search {
+	height: 40px;
+	width: 100%;
+	border: solid $putih-tok 1px;
+	border-radius: 5px;
+	color: $abu-abu-aspal;
+	font-size: 14px;
+	padding-left: 30px;
+	padding-right: 40px;
+	background: url('../../../../assets/image/icons/searchbutton.png') 5px
+		no-repeat;
+	background-color: $putih-tok;
 	background-position: right 25px center;
 	background-size: 22px;
 }
 
-.header-logo{
+.header-logo {
 	position: relative;
-	float:left;
-	width:15%;
+	float: left;
+	width: 15%;
 	background: url('../../../../assets/image/logo/logonest.png');
 	background-repeat: no-repeat;
 	background-size: 80px 40px;
-	height:80px;
-	padding-top:0px;
+	height: 80px;
+	padding-top: 0px;
 	background-position: center;
-	border:solid yellow 2px;
+	border: solid yellow 2px;
 }
