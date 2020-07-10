@@ -15,7 +15,9 @@
 		<img id="remove_cart_logo"
 			src="../../../../../assets/image/icons/remove_card_ic.png"
 			(click)="removeFromCart()">
-		<input id="qty_input"
+		<input #qty_input
+			id="qty_input"
+			class="p-2"
 			[(ngModel)]="qty"
 			type="number"
 			(focusout)="focusOutFunction()">
