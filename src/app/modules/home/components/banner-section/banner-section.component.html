@@ -1,1 +1,27 @@
-<p>banner-section works!</p>
+<div class="carousel-wrap">
+	<owl-carousel-o #owlCar
+		[options]="customOptions"
+		id="carousel_container">
+
+		<ng-container *ngFor="let slide of apiData">
+			<ng-template class="slide"
+				carouselSlide
+				[width]="number"
+				[id]="slide.id">
+				<img src="https://picsum.photos/300/600"
+					[alt]="slide.id"
+					class="slide_item"
+					[title]="slide.id">
+			</ng-template>
+
+		</ng-container>
+
+	</owl-carousel-o>
+	<img src="../../../../../assets/image/logo/arrow_prev.png"
+		id="arrow_prev"
+		(click)="owlCar.next()">
+	<img src="../../../../../assets/image/logo/arrow_next.png"
+		id="arrow_next"
+		(click)="owlCar.prev()">
+
+</div>
