@@ -1,103 +1,21 @@
 @import '../../../../styles/variables/colors';
 
 #headers {
-	font-family: sans-serif;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 16px;
-	line-height: 21px;
 	color: $putih-gelap-dikit;
 	z-index: 9999;
-	position: relative;
 	width: 100%;
 	height: 80px;
-	left: 0px;
-	top: 0px;
-	margin: auto;
 	background: $color-primary;
 	box-shadow: $box-shadow-2;
 }
 
 #headers-logo {
-	position: relative;
-	float: left;
-	width: 20%;
-	background: url('../../../../assets/image/logo/logo-nest.png');
-	background-repeat: no-repeat;
-	background-size: 82px;
-	height: 80px;
-	padding-top: 0px;
-	background-position: center;
-	border: solid yellow 0px;
-}
-
-#headers-menubar {
-	float: left;
-	position: relative;
-	width: 4%;
-	background: url('../../../../assets/image/icons/categories-icon.png') 5px
-		no-repeat;
-	background-size: 28px 28px;
-	border: solid yellow 0px;
-	height: 80px;
-}
-
-#headers-kategori {
-	float: left;
-	width: 7%;
-	padding-top: 30px;
-	border: solid yellowgreen 0px;
-	height: 80px;
+	height: 39px;
 }
 
 #headers-search {
-	float: left;
 	width: 38%;
-	padding-top: 20px;
-	border: solid yellow 0px;
 	height: 80px;
-}
-
-#headers-cart {
-	float: left;
-	width: 10%;
-	padding-top: 20px;
-	border: solid yellow 0px;
-	height: 80px;
-	text-align: right;
-	background: url('../../../../assets/image/icons/cart-logo.png') 5px
-		no-repeat;
-	background-position: right;
-	background-size: 33px;
-}
-
-#headers-username {
-	float: left;
-	width: 14%;
-	padding-top: 30px;
-	border: solid yellow 0px;
-	height: 80px;
-	text-align: left;
-	padding-left: 20px;
-}
-
-#headers-user-menu {
-	float: left;
-	width: 6%;
-	padding-top: 10px;
-	border: solid yellow 0px;
-	height: 80px;
-	text-align: left;
-	padding-left: 0px;
-}
-
-#headers-user-photo {
-	border: solid $putih-tok 3px;
-	border-radius: 50%;
-	background: url('../../../../assets/image/icons/pp.jpg') 0px no-repeat;
-	height: 55px;
-	width: 55px;
-	background-size: 55px 55px;
 }
 
 .textbox-header-search {
@@ -116,15 +34,18 @@
 	background-size: 22px;
 }
 
-.header-logo {
-	position: relative;
-	float: left;
-	width: 15%;
-	background: url('../../../../assets/image/logo/logonest.png');
-	background-repeat: no-repeat;
-	background-size: 80px 40px;
-	height: 80px;
-	padding-top: 0px;
-	background-position: center;
-	border: solid yellow 2px;
+#headers-cart {
+	width: 30px;
+	height: 30px;
+}
+
+#headers-username {
+	font-size: 18px;
+}
+
+#headers-user-photo {
+	border: solid $putih-tok 3px;
+	border-radius: 50%;
+	height: 55px;
+	width: 55px;
 }

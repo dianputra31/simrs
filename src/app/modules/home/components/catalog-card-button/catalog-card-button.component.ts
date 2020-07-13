@@ -9,7 +9,7 @@ export class CatalogCardButtonComponent implements OnInit {
 	qty: any = 0;
 	show: boolean = true;
 
-	@ViewChild('qty_input', { static: false }) qtyInput;
+	@ViewChild('qty_input') qtyInput;
 
 	constructor() {}
 
