@@ -7,6 +7,9 @@
 	height: 80px;
 	background: $color-primary;
 	box-shadow: $box-shadow-2;
+	position: fixed;
+	top: 0;
+	overflow: hidden;
 }
 
 #headers-logo {

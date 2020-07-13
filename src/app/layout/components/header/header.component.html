@@ -2,16 +2,15 @@
 
 	<div class="container d-flex justify-content-between align-items-center">
 
-		<a routerLink="/">
-			<div id="headers-logo">
-			</div>
-		</a>
+		<div id="headers-logo">
+		</div>
 
 		<div id="headers-menubar">
 		</div>
 
 
 		<img id="headers-logo"
+			(click)="backToHome()"
 			src="../../../../assets/image/logo/logo-nest.png">
 
 		<header-category-button></header-category-button>

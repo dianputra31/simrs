@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-header',
@@ -6,11 +7,18 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-	constructor() {}
+	constructor(
+		private route: ActivatedRoute,
+		private router: Router
+	) { }
 
-	ngOnInit() {}
+	ngOnInit() { }
 
 	showKategoriPopup() {
 		console.log('hello');
+	}
+
+	backToHome() {
+		this.router.navigate(['./']);
 	}
 }
