@@ -1,0 +1,55 @@
+@import '../../../../../styles/variables/colors';
+
+#mbel{
+	width:90%;
+	height:auto;
+	background-color: white;
+	z-index: 9999;
+	border-radius: 30px;
+}
+
+#loc-header{
+	position:relative;width:100%;padding-left:20px;font-weight: bold;margin-top:10px;height:25px;
+	font-family:sans-serif;font-weight: bold;line-height: 19px;font-size:16px;color:#606060;
+}
+
+#loc-hr-top{
+	position:relative;width:100%;margin-left:20px;padding:10px;border-bottom: 1px solid #A9A9A9;
+}
+
+#loc-body{
+	position:relative;width:100%;padding:25px 10px 20px 20px;;font-weight: bold;margin-top:20px;height:120px;
+}
+
+#loc-body-address{
+	position:relative;float: left;width:60%;color:#606060;
+	font-family:sans-serif;line-height: 15px;font-size:14px;
+}
+
+#loc-body-manuver{
+	position:relative;float: left;width:40%;
+}
+
+#loc-body-button{
+	position:relative;float:left;margin:10px;padding-left:30px;
+}
+
+.button-location{
+	background-color: #FBB829;width: 89px;height: 28px;border-radius: 10px;
+	color:#ffffff;border:solid black 0px;
+	font-size:14px;
+}
+
+#loc-body-checkbox{
+	position:relative;float:left;margin:10px;padding-left:20px;
+}
+
+#loc-hr-bottom{
+	position:relative;width:100%;margin-left:20px;padding:10px;border-bottom: 1px solid #A9A9A9;
+}
+
+#loc-bottom{
+	position:relative;width:100%;margin-left:20px;text-align: center;
+	padding-top:20px;color:#F12627;
+	font-family:sans-serif;font-weight: bold;line-height: 19px;font-size:16px;
+}
