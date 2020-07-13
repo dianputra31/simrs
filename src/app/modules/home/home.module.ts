@@ -10,6 +10,7 @@ import { DialogLocationSectionComponent } from './components/dialog-location-sec
 import { LocationSectionComponent } from './components/location-section/location-section.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
+import { BannerSectionComponent } from './components/banner-section/banner-section.component';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 		CatalogCardButtonComponent,
 		LocationSectionComponent,
 		DialogLocationSectionComponent,
+		BannerSectionComponent,
 	],
 	imports: [CommonModule, RouterModule, HomeRoutingModule, FormsModule, MatDialogModule],
 	exports: [DialogLocationSectionComponent],
