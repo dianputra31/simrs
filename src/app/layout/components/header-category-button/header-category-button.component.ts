@@ -22,10 +22,6 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		'Jogger Pants',
 	];
 
-	btnClick() {
-		this.router.navigateByUrl('/user');
-	}
-
 	constructor(private router: Router) {}
 
 	ngOnInit() {}
