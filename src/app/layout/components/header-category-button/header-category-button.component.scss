@@ -31,7 +31,6 @@
 .container-round {
 	position: absolute;
 	width: 1210px;
-	height: 517.09px;
 	left: -200px;
 	background: $putih-tok;
 	border-radius: 9.45312px;
@@ -43,4 +42,56 @@
 
 #categori-column {
 	width: 100px;
+}
+
+#catalog-kategori-container-1 {
+	flex: 0 0 275px;
+	padding-top: 35px;
+	padding-left: 35px;
+}
+
+#catalog-kategori-container-2 {
+	padding-left: 60px;
+	padding-top: 60px;
+	padding-right: 20px;
+	padding-bottom: 60px;
+}
+
+#label-kategori {
+	font-size: 18px;
+	font-weight: bold;
+	color: $abu-abu-gelap;
+}
+
+.label-kategori-name {
+	font-size: 18px;
+	color: $abu-abu-gelap-muda;
+	margin-top: 26px;
+	cursor: pointer;
+}
+
+.label-kategori-name-red {
+	font-size: 18px;
+	color: $color-primary;
+	font-weight: bold;
+	margin-top: 26px;
+	cursor: pointer;
+}
+
+#vertical-line {
+	width: 1px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	background: $abu-abu-charcoal;
+}
+
+.label-subkategori-name {
+	font-size: 18px;
+	color: $abu-abu-gelap-muda;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.list-sub-kategori {
+	margin-right: 90px;
 }

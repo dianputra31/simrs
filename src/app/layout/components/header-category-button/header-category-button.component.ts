@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'header-category-button',
@@ -6,7 +7,26 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./header-category-button.component.scss'],
 })
 export class HeaderCategoryButtonComponent implements OnInit {
-	constructor() {}
+	categories = ['Baju Pria', 'Baju Wanita', 'Baju Bayi'];
+	clickedCategory = 'Baju Pria';
+
+	subcategories = [
+		'Kemeja',
+		'Kaos',
+		'Celana',
+		'Celana Pendek',
+		'Jas',
+		'Topi',
+		'Dasi',
+		'Kacamata',
+		'Jogger Pants',
+	];
+
+	btnClick() {
+		this.router.navigateByUrl('/user');
+	}
+
+	constructor(private router: Router) {}
 
 	ngOnInit() {}
 }

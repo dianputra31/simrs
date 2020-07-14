@@ -1,4 +1,5 @@
 <div ngbDropdown
+	#myDrop="ngbDropdown"
 	class="d-inline-block">
 	<div class="d-flex justify-content-center align-items-center"
 		ngbDropdownToggle>
@@ -10,9 +11,45 @@
 		id="transparent-box">
 		<div class="white-space-top-10px"></div>
 		<div class="arrow-up"></div>
-		<div class="d-flex justify-content-start container-round">
-			<div id="categori-column">Kategori</div>
-			<div>Orci vulputate</div>
+
+		<div class="d-flex container-round">
+			<div id="catalog-kategori-container-1">
+				<div id="label-kategori">Kategori</div>
+				<div *ngFor="let category of categories">
+					<div [ngClass]="(clickedCategory==category)?'label-kategori-name-red':'label-kategori-name'"
+						(click)='clickedCategory = category'>
+						{{category}}</div>
+				</div>
+			</div>
+			<div id="vertical-line"></div>
+			<div id="catalog-kategori-container-2"
+				class="flex-grow-1">
+				<div class="d-flex">
+					<div class="list-sub-kategori">
+						<div *ngFor="let subcategory of subcategories">
+							<div class="label-subkategori-name"
+								[routerLink]="'/pilih-produk'"
+								(click)="$event.stopPropagation(); myDrop.close()">{{subcategory}}</div>
+						</div>
+					</div>
+					<div class="list-sub-kategori">
+						<div class="label-subkategori-name">Lorem</div>
+						<div class="label-subkategori-name">Ipsum</div>
+						<div class="label-subkategori-name">Lorem</div>
+						<div class="label-subkategori-name">Ipsum</div>
+						<div class="label-subkategori-name">Lorem</div>
+						<div class="label-subkategori-name">Ipsum</div>
+						<div class="label-subkategori-name">Lorem</div>
+						<div class="label-subkategori-name">Ipsum</div>
+						<div class="label-subkategori-name">Lorem</div>
+						<div class="label-subkategori-name">Ipsum</div>
+					</div>
+					<div class="list-sub-kategori">
+						<div class="label-subkategori-name">Lorem</div>
+						<div class="label-subkategori-name">Ipsum</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</div>
