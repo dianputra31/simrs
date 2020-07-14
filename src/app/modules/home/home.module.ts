@@ -11,6 +11,7 @@ import { LocationSectionComponent } from './components/location-section/location
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 
+
 @NgModule({
 	declarations: [
 		HomeLayoutComponent,
