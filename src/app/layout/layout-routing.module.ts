@@ -16,31 +16,30 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'home',
-				loadChildren: () => import('../modules/home/home.module').then(m => m.HomeModule),
+				loadChildren: () =>
+					import('../modules/home/home.module').then(
+						(m) => m.HomeModule
+					),
 			},
-
-		],
-	},
-
-
-	{
-		path: '',
-		component: MainLayoutComponent,
-		canActivate: [AuthGuard],
-		children: [
 			{
 				path: 'profile',
-				loadChildren: () => import('../modules/profile/profile.module').then(m => m.ProfileModule),
+				loadChildren: () =>
+					import('../modules/profile/profile.module').then(
+						(m) => m.ProfileModule
+					),
 			},
-
+			{
+				path: 'detail-product',
+				loadChildren: () =>
+					import(
+						'../modules/detail-product/detail-product.module'
+					).then((m) => m.DetailProductModule),
+			},
 		],
 	},
-
-
-
 ];
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {}
