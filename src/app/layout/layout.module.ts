@@ -15,6 +15,7 @@ import { LoginCardComponent } from './components/login-card/login-card.component
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LoginLayoutComponent } from './pages/login-layout/login-layout.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import { EmailButtonComponent } from './components/email-button/email-button.component';
 
 @NgModule({
 	declarations: [
@@ -27,6 +28,7 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 		FooterFeatureComponent,
 		FooterCustomerSupportComponent,
 		HeaderCategoryButtonComponent,
+		EmailButtonComponent,
 	],
 	imports: [
 		CommonModule,
