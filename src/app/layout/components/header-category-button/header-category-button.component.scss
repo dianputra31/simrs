@@ -1,5 +1,9 @@
 @import '../../../../styles/variables/colors';
 
+#dropdown-wrapper {
+	z-index: 9999;
+}
+
 #headers-kategori {
 	padding-left: 10px;
 	font-size: 18px;
