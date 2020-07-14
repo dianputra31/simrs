@@ -5,22 +5,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { OwlModule } from 'ngx-owl-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SharedModule } from '../../shared/shared.module';
 import { BannerSectionComponent } from './components/banner-section/banner-section.component';
-import { CatalogCardButtonComponent } from './components/catalog-card-button/catalog-card-button.component';
-import { CatalogCardComponent } from './components/catalog-card/catalog-card.component';
 import { CatalogSectionComponent } from './components/catalog-section/catalog-section.component';
 import { DialogLocationSectionComponent } from './components/dialog-location-section/dialog-location-section.component';
 import { LocationSectionComponent } from './components/location-section/location-section.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 
-
 @NgModule({
 	declarations: [
 		HomeLayoutComponent,
 		CatalogSectionComponent,
-		CatalogCardComponent,
-		CatalogCardButtonComponent,
 		LocationSectionComponent,
 		DialogLocationSectionComponent,
 		BannerSectionComponent,
@@ -33,6 +29,7 @@ import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 		MatDialogModule,
 		CarouselModule,
 		OwlModule,
+		SharedModule,
 	],
 	exports: [DialogLocationSectionComponent],
 	entryComponents: [DialogLocationSectionComponent],
