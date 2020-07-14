@@ -1,0 +1,8 @@
+@import '../../../../../styles/variables/colors';
+
+.rounded-container {
+	background: $putih-tok;
+	box-shadow: $box-shadow-3;
+	border-radius: 20px;
+	padding: 30px;
+}
