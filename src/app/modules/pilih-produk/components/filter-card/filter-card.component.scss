@@ -1,0 +1,76 @@
+@import '../../../../../styles/variables/colors';
+
+#filter-card-container {
+	padding-top: 100px;
+	padding-left: 34px;
+	padding-right: 46px;
+	padding-bottom: 40px;
+}
+
+#filter-label {
+	font-weight: bold;
+	font-size: 28px;
+	color: $abu-abu-gelap;
+}
+
+#filter-label-2 {
+	margin-top: 40px;
+	font-size: 20px;
+	color: $abu-abu-gelap;
+}
+
+.textbox-search-with-logo {
+	height: 40px;
+	width: 100%;
+	border: solid $putih-tok 1px;
+	border-radius: 5px;
+	color: $abu-abu-aspal;
+	font-size: 14px;
+	padding-left: 0px;
+	padding-right: 40px;
+	background: url('../../../../../assets/image/icons/searchbutton.png') 5px
+		no-repeat;
+	background-color: $putih-tok;
+	background-position: right 0px center;
+	background-size: 20px;
+}
+
+.textbox-search {
+	height: 40px;
+	width: 100%;
+	border: solid $putih-tok 1px;
+	border-radius: 5px;
+	color: $abu-abu-aspal;
+	font-size: 14px;
+	padding-left: 0px;
+	padding-right: 40px;
+}
+
+.filter-card-underline {
+	background: $abu-abu-aspal;
+	width: 100%;
+	height: 1px;
+}
+
+#minimum-input {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+#maximum-input {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.red-button {
+	background: $color-primary;
+	color: $putih-tok;
+	padding-top: 4px;
+	height: 32px;
+	border-radius: 7.96127px;
+	text-align: center;
+}
+
+.white-space {
+	height: 70px;
+}
