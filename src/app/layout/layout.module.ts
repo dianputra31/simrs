@@ -9,12 +9,12 @@ import { FooterBarComponent } from './components/footer-bar/footer-bar.component
 import { FooterCustomerSupportComponent } from './components/footer-customer-support/footer-customer-support.component';
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderCategoryButtonComponent } from './components/header-category-button/header-category-button.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginCardComponent } from './components/login-card/login-card.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LoginLayoutComponent } from './pages/login-layout/login-layout.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
-import { HeaderCategoryButtonComponent } from './components/header-category-button/header-category-button.component';
 
 @NgModule({
 	declarations: [
@@ -39,4 +39,4 @@ import { HeaderCategoryButtonComponent } from './components/header-category-butt
 	],
 	providers: [AuthService],
 })
-export class LayoutModule {}
+export class LayoutModule { }

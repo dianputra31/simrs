@@ -18,11 +18,29 @@ const routes: Routes = [
 				path: 'home',
 				loadChildren: () => import('../modules/home/home.module').then(m => m.HomeModule),
 			},
+
 		],
 	},
+
+
+	{
+		path: '',
+		component: MainLayoutComponent,
+		canActivate: [AuthGuard],
+		children: [
+			{
+				path: 'profile',
+				loadChildren: () => import('../modules/profile/profile.module').then(m => m.ProfileModule),
+			},
+
+		],
+	},
+
+
+
 ];
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class LayoutRoutingModule {}
+export class LayoutRoutingModule { }
