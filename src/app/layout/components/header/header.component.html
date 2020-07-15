@@ -16,9 +16,32 @@
 		<header-category-button></header-category-button>
 		<div id="headers-search"
 			class="d-flex justify-content-center align-items-center">
-			<input type="text"
-				class="textbox-header-search"
-				placeholder="Search">
+			<form class="container"
+				[formGroup]="myControl">
+				<mat-form-field id="mat-form-field">
+
+
+
+					<input type="text"
+						class="textbox-header-search"
+						matInput
+						[formControl]="myControl"
+						[matAutocomplete]="auto"
+						(click)="checkPlaceHolder()"
+						(blur)="isiPlaceHolder()">
+
+					<mat-autocomplete autoActiveFirstOption
+						id="mat-autocomplete"
+						#auto="matAutocomplete">
+						<mat-option *ngFor="let option of filteredOptions | async"
+							[value]="option">
+							{{option}}
+						</mat-option>
+					</mat-autocomplete>
+
+				</mat-form-field>
+			</form>
+
 		</div>
 
 		<img id="headers-cart"

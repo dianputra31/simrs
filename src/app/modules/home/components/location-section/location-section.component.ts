@@ -4,7 +4,7 @@ import { DialogLocationSectionComponent } from '../dialog-location-section/dialo
 
 
 @Component({
-	selector: 'app-location-section',
+	selector: 'location-section',
 	templateUrl: './location-section.component.html',
 	styleUrls: ['./location-section.component.scss']
 })
@@ -22,7 +22,7 @@ export class LocationSectionComponent implements OnInit {
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
 		dialogConfig.id = "modal-component";
-		dialogConfig.height = "313px";
+		dialogConfig.height = "auto";
 		dialogConfig.width = "680px";
 		dialogConfig.panelClass = "border-radius:20px";
 		dialogConfig.data = {
