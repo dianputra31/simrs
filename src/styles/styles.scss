@@ -28,3 +28,17 @@ input[type='number']::-webkit-outer-spin-button {
 .dropdown-toggle::after {
 	display: none;
 }
+
+@media (min-width: 1280px) {
+	.container {
+		max-width: 1280px;
+		padding-left: 78px;
+		padding-right: 78px;
+	}
+}
+
+@media (min-width: 600px) {
+	.container {
+		max-width: 1280px;
+	}
+}

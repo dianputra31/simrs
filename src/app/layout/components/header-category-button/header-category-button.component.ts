@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { BaseService } from '../../../core/base-service/service/base.service';
+import { CatalogRespModel } from '../../_model/catalog-response.model';
+import { CategoryRespModel } from '../../_model/category-response.model';
 
 @Component({
 	selector: 'header-category-button',
@@ -7,8 +11,9 @@ import { Router } from '@angular/router';
 	styleUrls: ['./header-category-button.component.scss'],
 })
 export class HeaderCategoryButtonComponent implements OnInit {
-	categories = ['Baju Pria', 'Baju Wanita', 'Baju Bayi'];
-	clickedCategory = 'Baju Pria';
+	categories = [];
+	clickedCategory: CategoryRespModel;
+	subsribers: Subscription[];
 
 	subcategories = [
 		'Kemeja',
@@ -22,7 +27,28 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		'Jogger Pants',
 	];
 
-	constructor(private router: Router) {}
+	constructor(private router: Router, private service: BaseService) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.subsribers = [];
+		this.getCatalog();
+	}
+
+	ngOnDestroy() {
+		this.subsribers.forEach((each) => each.unsubscribe);
+	}
+
+	getCatalog() {
+		const url =
+			'http://ec2-18-136-210-171.ap-southeast-1.compute.amazonaws.com:20002/product/category/list';
+
+		const sub = this.service
+			.getData(url, CatalogRespModel)
+			.subscribe((resp) => {
+				this.categories = resp.category;
+				this.clickedCategory = this.categories[0];
+			});
+
+		this.subsribers.push(sub);
+	}
 }
