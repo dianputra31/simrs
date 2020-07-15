@@ -12,11 +12,22 @@
 }
 
 #headers-logo {
-	height: 39px;
+	height: 39.02px;
+	width: 80.12px;
 }
 
+.white-space-78px {
+	width: 78px;
+}
+
+.white-space-26px {
+	width: 26px;
+}
+.white-space-110px {
+	width: 110px;
+}
 #headers-search {
-	width: 38%;
+	width: 500px;
 	height: 80px;
 }
 
@@ -39,10 +50,12 @@
 #headers-cart {
 	width: 30px;
 	height: 30px;
+	margin-right: 11px;
 }
 
 #headers-username {
 	font-size: 18px;
+	margin-right: 11px;
 }
 
 #headers-user-photo {
