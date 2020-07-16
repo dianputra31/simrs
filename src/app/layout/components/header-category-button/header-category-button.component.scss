@@ -13,11 +13,13 @@
 	font-weight: normal;
 	font-size: 18px;
 	line-height: 25px;
+	cursor: pointer;
 }
 
 #headers-menubar {
 	height: 28px 28px;
 	margin-top:5px;
+	cursor: pointer;
 }
 
 .arrow-up {
@@ -45,6 +47,10 @@
 
 .white-space-top-10px {
 	height: 10px;
+}
+
+#menubar-box{
+	box-shadow: 7px 24px 35px -12px rgba(184,182,184,1);
 }
 
 #categori-column {

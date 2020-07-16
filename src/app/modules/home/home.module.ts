@@ -8,17 +8,14 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SharedModule } from '../../shared/shared.module';
 import { BannerSectionComponent } from './components/banner-section/banner-section.component';
 import { CatalogSectionComponent } from './components/catalog-section/catalog-section.component';
-import { DialogLocationSectionComponent } from './components/dialog-location-section/dialog-location-section.component';
-import { LocationSectionComponent } from './components/location-section/location-section.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
+
 
 @NgModule({
 	declarations: [
 		HomeLayoutComponent,
 		CatalogSectionComponent,
-		LocationSectionComponent,
-		DialogLocationSectionComponent,
 		BannerSectionComponent,
 	],
 	imports: [
@@ -31,7 +28,7 @@ import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 		OwlModule,
 		SharedModule,
 	],
-	exports: [DialogLocationSectionComponent],
-	entryComponents: [DialogLocationSectionComponent],
+	exports: [SharedModule],
+	entryComponents: [SharedModule],
 })
-export class HomeModule {}
+export class HomeModule { }
