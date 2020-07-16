@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotifierService } from 'angular-notifier';
+import { ToastService } from '../../toast/toast-service';
 
 @Component({
 	selector: 'catalog-card-button',
@@ -7,23 +7,28 @@ import { NotifierService } from 'angular-notifier';
 	styleUrls: ['./catalog-card-button.component.scss'],
 })
 export class CatalogCardButtonComponent implements OnInit {
-	private readonly notifier: NotifierService;
 	qty: any = 0;
 	show: boolean = true;
-
-	constructor(notifierService: NotifierService) {
-		this.notifier = notifierService;
-	}
+	constructor(public toastService: ToastService) {}
 
 	ngOnInit() {}
 
-	removeFromCart() {
-		if (this.qty != 0) this.qty--;
+	removeFromCart(dangerTpl) {
+		if (this.qty != 0) {
+			this.qty--;
+			this.showDanger(dangerTpl);
+		}
 	}
 
-	addToCart() {
+	addToCart(dangerTpl) {
 		this.qty++;
-		this.notifier.notify('success', 'You are awesome! I mean it!');
+		this.showDanger(dangerTpl);
+	}
+
+	showDanger(dangerTpl) {
+		this.toastService.show(dangerTpl, {
+			delay: 15000,
+		});
 	}
 
 	qtyChange() {

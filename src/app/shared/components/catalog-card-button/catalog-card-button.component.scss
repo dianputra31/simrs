@@ -51,3 +51,74 @@
 	padding-left: 10px;
 	padding-right: 10px;
 }
+
+.notif-container {
+	width: 350px;
+}
+
+#keranjang-label {
+	font-family: Raleway;
+	font-weight: bolder;
+	font-size: 16px;
+}
+
+#lihat-keranjang-label {
+	font-family: Raleway;
+	font-weight: bold;
+	font-size: 16px;
+	width: 130px;
+	height: 32px;
+	background: #f12627;
+	color: #dedede;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	padding-top: 5px;
+}
+
+#notif-inner-container {
+	margin-top: 13px;
+	padding-left: 4px;
+	padding-top: 7px;
+	padding-bottom: 10px;
+	padding-right: 12px;
+	width: 350px;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	background-color: #ffffff;
+}
+
+#notif-img {
+	width: 56px;
+	height: 56px;
+	overflow: hidden;
+}
+
+#item-name {
+	font-family: Raleway;
+	font-style: bold;
+	font-weight: 800;
+	font-size: 16px;
+	line-height: 19px;
+	/* identical to box height */
+
+	color: #606060;
+}
+
+#item-info {
+	font-family: OpenSans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+
+	color: #a9a9a9;
+}
+
+#item-price {
+	font-family: OpenSans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 14px;
+
+	color: #f12627;
+}

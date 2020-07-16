@@ -3,16 +3,18 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { NotifierModule } from 'angular-notifier';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
 import { AuthService } from './core/auth/service/auth.service';
 import { LayoutModule } from './layout/layout.module';
 import { MaterialModule } from './material.module';
+import { NgbdToastGlobal } from './shared/toast/toast-global.component';
+import { ToastsContainer } from './shared/toast/toasts-container.component';
 
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent, NgbdToastGlobal, ToastsContainer],
 	imports: [
 		AuthModule,
 		BrowserModule,
@@ -22,7 +24,7 @@ import { MaterialModule } from './material.module';
 		}),
 		BrowserAnimationsModule,
 		MaterialModule,
-		NotifierModule,
+		NgbModule,
 	],
 	providers: [
 		/* Configuration about localization */
@@ -38,6 +40,6 @@ import { MaterialModule } from './material.module';
 			useClass: AuthInterceptor,
 		},
 	],
-	bootstrap: [AppComponent],
+	bootstrap: [AppComponent, NgbdToastGlobal],
 })
 export class AppModule {}
