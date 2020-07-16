@@ -1,4 +1,4 @@
-@import '../../../../../styles/variables/colors';
+@import '../../../../styles/variables/colors';
 
 #location-user {
 	width: 50%;
@@ -7,7 +7,7 @@
 	height: 50px;
 	position: relative;
 	border-radius: 20px;
-	background: url('../../../../../assets/image/icons/location-icon.png')
+	background: url('../../../../assets/image/icons/location-icon.png')
 		#333132 no-repeat;
 	background-position: left 20px center;
 	background-size: 16px 25px;
@@ -33,7 +33,7 @@
 #location-arrow {
 	width: 7%;
 	float: left;
-	background: url('../../../../../assets/image/icons/arrow-down.png')
+	background: url('../../../../assets/image/icons/arrow-down.png')
 		transparent no-repeat;
 	background-position: right 10px center;
 	background-size: 22px 10px;
