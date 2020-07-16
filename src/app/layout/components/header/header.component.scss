@@ -31,44 +31,58 @@
 .white-space-110px {
 	width: 110px;
 }
+.white-space-60px {
+	width: 60px;
+}
 #headers-search {
 	width: 500px;
 	height: 80px;
+	border: solid yellow 0px;
+}
+
+#container ng-untouched ng-pristine ng-valid{
+	border: solid greenyellow 0px;
 }
 
 #mat-form-field{
-	width:100%;border:0px
+	width:100%;border:2px
 }
-
+ 
 #mat-autocomplete{
 	border:0px;
 }
 
 .textbox-header-search {
 	height: 40px;
-	width: 100%;
+	width: 500px;
 	border: solid $putih-tok 1px;
 	border-radius: 5px;
 	color: $abu-abu-aspal;
 	font-size: 14px;
-	padding-left: 30px;
-	padding-right: 40px;
+	padding-left: 20px;
+	padding-right: 0px;
 	background: url('../../../../assets/image/icons/searchbutton.png') 5px
 		no-repeat;
 	background-color: $putih-tok;
 	background-position: right 25px center;
 	background-size: 22px;
+	border: solid yellow 0px;
 }
 
 #headers-cart {
 	width: 30px;
 	height: 30px;
-	margin-right: 11px;
+	margin-right: 10px;
 }
 
 #headers-username {
 	font-size: 18px;
-	margin-right: 11px;
+	margin-right: 10px;
+	font-family: OpenSans;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 20px;
+	text-align: right;
 }
 
 #headers-user-photo {

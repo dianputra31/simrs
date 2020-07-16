@@ -34,7 +34,7 @@
 }
 
 #loc-hr-top{
-	position:relative;width:100%;margin-left:20px;margin-top:20px;padding:10px;border-bottom: 1px solid #A9A9A9;
+	position:relative;width:100%;margin-left:20px;margin-top:25px;padding:10px;border-bottom: 1px solid #A9A9A9;
 }
 
 #loc-body{
@@ -63,6 +63,24 @@
 
 .button-location{
 	background-color: #F12627;
+	border:0px;
+	width: 89px;height: 28px;
+	padding:5px 15px 5px 15px;
+	border-radius: 10px;
+	color:#ffffff;
+	font-size:14px;
+	border-radius: 10px;
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 19px;
+	/* identical to box height */
+	text-align: center;
+}
+
+.button-location-kosong{
+	background-color: transparent;
 	border:0px;
 	width: 89px;height: 28px;
 	padding:5px 15px 5px 15px;
