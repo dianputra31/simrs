@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-header',
@@ -12,7 +15,25 @@ export class HeaderComponent implements OnInit {
 		private router: Router
 	) { }
 
-	ngOnInit() { }
+	myControl = new FormControl();
+	options: string[] = ['Ampelas Halus', 'Ampelas Kasar', 'Amplifier Jumbo',
+		'Bawang Merah', 'Bawang Putih', 'Bolpoint',
+		'Centong Super',
+		'Sweater Merah Pria'];
+	filteredOptions: Observable<string[]>;
+
+	ngOnInit() {
+		this.filteredOptions = this.myControl.valueChanges.pipe(
+			startWith(''),
+			//minimal 1 karakter
+			map(value => value.length >= 1 ? this._filter(value) : [])
+		);
+	}
+
+	private _filter(value: string): string[] {
+		const filterValue = value.toLowerCase();
+		return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+	}
 
 	showKategoriPopup() {
 		console.log('hello');
@@ -20,5 +41,25 @@ export class HeaderComponent implements OnInit {
 
 	backToHome() {
 		this.router.navigate(['./']);
+	}
+
+	myplaceHolder: string = 'Search'
+	checkPlaceHolder() {
+		if (this.myplaceHolder) {
+			this.myplaceHolder = null
+			return;
+		} else {
+			this.myplaceHolder = ''
+		}
+	}
+
+
+	isiPlaceHolder() {
+		if (this.myplaceHolder) {
+			this.myplaceHolder = null
+			return;
+		} else {
+			this.myplaceHolder = 'Search'
+		}
 	}
 }
