@@ -34,6 +34,7 @@
 	left: -200px;
 	background: $putih-tok;
 	border-radius: 9.45312px;
+	padding-bottom: 30px;
 }
 
 .white-space-top-10px {
@@ -45,18 +46,20 @@
 }
 
 #catalog-kategori-container-1 {
-	flex: 0 0 275px;
+	flex: 0 0 215px;
 	padding-top: 35px;
-	padding-left: 35px;
+	padding-left: 45px;
 }
 
 #catalog-kategori-container-2 {
-	padding-left: 60px;
-	padding-top: 60px;
-	padding-right: 20px;
-	padding-bottom: 60px;
+	padding-left: 66px;
+	padding-top: 79px;
+	width: 905px;
 }
 
+#categlog-subkategory-wrapper {
+	width: 400px;
+}
 #label-kategori {
 	font-size: 18px;
 	font-weight: bold;
@@ -93,5 +96,7 @@
 }
 
 .list-sub-kategori {
-	margin-right: 90px;
+	width: 193px;
+	font-size: 12px;
+	margin-top: 20px;
 }

@@ -21,17 +21,19 @@
 				</div>
 			</div>
 			<div id="vertical-line"></div>
-			<div id="catalog-kategori-container-2"
-				class="flex-grow-1">
-				<div class="d-flex">
-					<div class="list-sub-kategori">
-						<div *ngFor="let subcategory of clickedCategory.subcategory">
-							<div class="label-subkategori-name"
-								[routerLink]="'/pilih-produk'"
-								(click)="$event.stopPropagation(); myDrop.close()">{{subcategory.name}}</div>
-						</div>
+			<div id="catalog-kategori-container-2">
+				<div class="card-deck">
+					<div *ngFor="let subcategory of clickedCategory.subcategory">
+						<div class="list-sub-kategori"
+							[routerLink]="'/pilih-produk'"
+							(click)="$event.stopPropagation(); myDrop.close()">{{subcategory.name}}</div>
 					</div>
 				</div>
+				<!-- <div class="d-flex">
+					<div class="list-sub-kategori">
+
+					</div>
+				</div> -->
 			</div>
 		</div>
 

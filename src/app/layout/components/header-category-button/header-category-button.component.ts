@@ -47,6 +47,13 @@ export class HeaderCategoryButtonComponent implements OnInit {
 			.subscribe((resp) => {
 				this.categories = resp.category;
 				this.clickedCategory = this.categories[0];
+				const x: number = this.clickedCategory.subcategory.length / 4;
+				const row = +x.toFixed();
+				for (var col = 0; col < 4; col++) {
+					for (var i = col * row; i < col * row + 4; i++) {
+						console.log(this.clickedCategory.subcategory[i]);
+					}
+				}
 			});
 
 		this.subsribers.push(sub);
