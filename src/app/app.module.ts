@@ -3,7 +3,6 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
@@ -22,7 +21,6 @@ import { MaterialModule } from './material.module';
 		}),
 		BrowserAnimationsModule,
 		MaterialModule,
-		ToastrModule.forRoot(),
 	],
 	providers: [
 		/* Configuration about localization */
