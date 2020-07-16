@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DialogAddressSectionComponent } from '../dialog-address-section/dialog-address-section.component';
+
 
 
 @Component({
@@ -9,8 +11,11 @@ import { DialogAddressSectionComponent } from '../dialog-address-section/dialog-
 	styleUrls: ['./address-section.component.scss']
 })
 export class AddressSectionComponent implements OnInit {
+	hlmn_ini;
+	divnya;
 
-	constructor(public dialog: MatDialog) { }
+	constructor(public dialog: MatDialog,
+		private router: Router) { }
 
 	openDialogLocation() {
 
@@ -28,7 +33,14 @@ export class AddressSectionComponent implements OnInit {
 
 	}
 
+
+
 	ngOnInit(): void {
+		if (this.router.url == '/pilih-produk') {
+			this.divnya = 'location-user-pendek';
+		} else {
+			this.divnya = 'location-user-panjang';
+		}
 	}
 
 }
