@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'catalog-card-button',
@@ -9,7 +10,7 @@ export class CatalogCardButtonComponent implements OnInit {
 	qty: any = 0;
 	show: boolean = true;
 
-	constructor() {}
+	constructor(private toastr: ToastrService) {}
 
 	ngOnInit() {}
 
@@ -19,6 +20,7 @@ export class CatalogCardButtonComponent implements OnInit {
 
 	addToCart() {
 		this.qty++;
+		this.toastr.success("Hello, I'm the toastr message.");
 	}
 
 	qtyChange() {
