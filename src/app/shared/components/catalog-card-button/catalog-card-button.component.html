@@ -1,6 +1,6 @@
-<div *ngIf="show; else elseBlock">
+<div *ngIf="qty==0; else elseBlock">
 	<div class="rounded_red_button"
-		(click)="show = !show">
+		(click)="addToCart()">
 		<div class="d-flex justify-content-center">
 			<img id="add_to_cart_logo"
 				src="../../../../../assets/image/icons/add_to_cart_logo.png">
@@ -11,7 +11,7 @@
 	</div>
 </div>
 <ng-template #elseBlock>
-	<div class="d-flex justify-content-between align-items-center">
+	<div class="d-flex justify-content-between align-items-center control-wrapper">
 		<img id="remove_cart_logo"
 			src="../../../../../assets/image/icons/remove_card_ic.png"
 			(click)="removeFromCart()">
@@ -20,7 +20,7 @@
 			class="p-2"
 			[(ngModel)]="qty"
 			type="number"
-			(focusout)="focusOutFunction()">
+			(change)="qtyChange()">
 		<img id="add_to_cart_logo"
 			src="../../../../../assets/image/icons/add_to_cart_ic.png"
 			(click)="addToCart()">
