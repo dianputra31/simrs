@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'footer-bar',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./footer-bar.component.scss'],
 })
 export class FooterBarComponent implements OnInit {
-	constructor() {}
+	divemail;
 
-	ngOnInit() {}
+	constructor(private router: Router) { }
+
+	ngOnInit(): void {
+		if (this.router.url == '/home') {
+			this.divemail = 'kotakemail';
+		} else {
+			this.divemail = 'kotakemail-hide';
+		}
+	}
 }
