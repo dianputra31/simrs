@@ -26,6 +26,7 @@ export class CatalogCardButtonComponent implements OnInit {
 	}
 
 	showDanger(dangerTpl) {
+		this.toastService.removeAll();
 		this.toastService.show(dangerTpl, {
 			delay: 15000,
 		});

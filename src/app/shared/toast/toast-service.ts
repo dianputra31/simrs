@@ -8,6 +8,9 @@ export class ToastService {
 		this.toasts.push({ textOrTpl, ...options });
 	}
 
+	removeAll() {
+		this.toasts = [];
+	}
 	remove(toast) {
 		this.toasts = this.toasts.filter((t) => t !== toast);
 	}

@@ -24,7 +24,7 @@
 	width: 100%;
 	border: solid $putih-tok 1px;
 	border-radius: 5px;
-	color: $abu-abu-aspal;
+	color: $abu-abu-sesuatu;
 	font-size: 14px;
 	padding-left: 0px;
 	padding-right: 40px;
@@ -35,6 +35,20 @@
 	background-size: 20px;
 }
 
+::placeholder {
+	color: $abu-abu-sesuatu-2;
+	opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: $abu-abu-sesuatu-2;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: $abu-abu-sesuatu-2;
+}
 .textbox-search {
 	height: 40px;
 	width: 100%;
@@ -47,7 +61,7 @@
 }
 
 .filter-card-underline {
-	background: $abu-abu-aspal;
+	background: $abu-abu-sesuatu-2;
 	width: 100%;
 	height: 1px;
 }
