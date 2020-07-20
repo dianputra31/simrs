@@ -43,23 +43,5 @@ export class HeaderComponent implements OnInit {
 		this.router.navigate(['./']);
 	}
 
-	myplaceHolder: string = 'Search'
-	checkPlaceHolder() {
-		if (this.myplaceHolder) {
-			this.myplaceHolder = null
-			return;
-		} else {
-			this.myplaceHolder = ''
-		}
-	}
 
-
-	isiPlaceHolder() {
-		if (this.myplaceHolder) {
-			this.myplaceHolder = null
-			return;
-		} else {
-			this.myplaceHolder = 'Search'
-		}
-	}
 }

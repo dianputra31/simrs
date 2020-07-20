@@ -20,28 +20,35 @@
 			<form class="container"
 				style="padding:0px;"
 				[formGroup]="myControl">
-				<mat-form-field id="mat-form-field">
+				<!-- <mat-form-field id="mat-form-field"> -->
 
 
 
-					<input type="text"
-						class="textbox-header-search"
-						matInput
-						[formControl]="myControl"
-						[matAutocomplete]="auto"
-						(click)="checkPlaceHolder()"
-						(blur)="isiPlaceHolder()">
+				<input type="text"
+					class="textbox-header-search"
+					aria-label="Number"
+					matInput
+					[formControl]="myControl"
+					[matAutocomplete]="auto"
+					placeholder="Search">
 
-					<mat-autocomplete autoActiveFirstOption
-						id="mat-autocomplete"
-						#auto="matAutocomplete">
-						<mat-option *ngFor="let option of filteredOptions | async"
-							[value]="option">
-							{{option}}
-						</mat-option>
-					</mat-autocomplete>
+				<!-- <mat-placeholder class="placeholder">Search</mat-placeholder> -->
 
-				</mat-form-field>
+				<mat-autocomplete autoActiveFirstOption
+					id="mat-autocomplete"
+					#auto="matAutocomplete">
+					<mat-option *ngFor="let option of filteredOptions | async"
+						[value]="option">
+						{{option}}
+					</mat-option>
+				</mat-autocomplete>
+
+				<button type="submit"
+					id="searchbutton">
+					<!-- <i class="fa fa-search"></i> -->
+				</button>
+
+				<!-- </mat-form-field> -->
 			</form>
 
 		</div>
