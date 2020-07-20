@@ -25,7 +25,7 @@
 			<div id="vertical-line"></div>
 			<div id="catalog-kategori-container-2">
 				<div class="card-deck">
-					<div *ngFor="let subcategory of clickedCategory.subcategory">
+					<div *ngFor="let subcategory of clickedCategory?.subcategory">
 						<div class="list-sub-kategori"
 							[routerLink]="'/pilih-produk'"
 							(click)="$event.stopPropagation(); myDrop.close()">{{subcategory.name}}</div>

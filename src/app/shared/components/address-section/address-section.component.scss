@@ -7,8 +7,8 @@
 	height: 50px;
 	position: relative;
 	border-radius: 8px;
-	background: url('../../../../assets/image/icons/location-icon.png')
-		#333132 no-repeat;
+	background: url('../../../../assets/image/icons/location-icon.png') #333132
+		no-repeat;
 	background-position: left 20px center;
 	background-size: 16px 25px;
 	cursor: pointer;
@@ -21,8 +21,8 @@
 	height: 50px;
 	position: relative;
 	border-radius: 20px;
-	background: url('../../../../assets/image/icons/location-icon.png')
-		#333132 no-repeat;
+	background: url('../../../../assets/image/icons/location-icon.png') #333132
+		no-repeat;
 	background-position: left 20px center;
 	background-size: 16px 25px;
 	cursor: pointer;
@@ -42,14 +42,14 @@
 	align-items: center;
 	text-align: center;
 	padding-left: 50px;
-	padding-top: 15px;
+	padding-top: 17px;
 }
 
 #location-arrow {
 	width: 7%;
 	float: left;
-	background: url('../../../../assets/image/icons/arrow-down.png')
-		transparent no-repeat;
+	background: url('../../../../assets/image/icons/arrow-down.png') transparent
+		no-repeat;
 	background-position: right 10px center;
 	background-size: 22px 10px;
 	border: solid yellow 0px;
