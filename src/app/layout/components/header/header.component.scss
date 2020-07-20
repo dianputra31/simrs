@@ -66,12 +66,48 @@
 	font-size: 14px;
 	padding-left: 20px;
 	padding-right: 0px;
-	background: url('../../../../assets/image/icons/searchbutton.png') 5px
-		no-repeat;
+	// background: url('../../../../assets/image/icons/searchbutton.png') 5px no-repeat;
 	background-color: $putih-tok;
 	background-position: right 25px center;
 	background-size: 22px;
 	border: solid yellow 0px;
+}
+
+#searchbutton{
+	margin-left:-50px;
+	margin-top:5px;
+	background: url('../../../../assets/image/icons/searchbutton.png') 15px no-repeat;
+	background-position: right 5px center;
+	background-position: top 10px bottom;
+	background-size: 22px;
+	position: absolute;
+	width: 45px;
+	padding-top:20px;
+	height: 30px;
+	padding: 0px;
+	border:0px;
+}
+
+.mat-focused .placeholder {
+	color: transparent;
+}
+
+.placeholder{
+	z-index: 9999;
+	position: relative;
+	background-color: transparent;
+	color: $abu-abu-aspal;
+	padding-left: 30px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
 }
 
 #headers-cart {
