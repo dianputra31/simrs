@@ -11,6 +11,7 @@ import { WarnaComponent } from './components/warna/warna.component';
 import { DetailProductRoutingModule } from './detail-product-routing.module';
 import { DetailProductLayoutComponent } from './pages/detail-product-layout/detail-product-layout.component';
 import { DeskripsiSpesifikasiSectionComponent } from './components/deskripsi-spesifikasi-section/deskripsi-spesifikasi-section.component';
+import { ImageGridComponent } from './components/image-grid/image-grid.component';
 
 @NgModule({
 	declarations: [
@@ -22,6 +23,7 @@ import { DeskripsiSpesifikasiSectionComponent } from './components/deskripsi-spe
 		WarnaComponent,
 		InfoRowComponent,
 		DeskripsiSpesifikasiSectionComponent,
+		ImageGridComponent,
 	],
 	imports: [
 		CommonModule,
