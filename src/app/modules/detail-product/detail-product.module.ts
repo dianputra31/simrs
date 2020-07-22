@@ -9,6 +9,7 @@ import { PriceComponent } from './components/price/price.component';
 import { WarnaComponent } from './components/warna/warna.component';
 import { DetailProductRoutingModule } from './detail-product-routing.module';
 import { DetailProductLayoutComponent } from './pages/detail-product-layout/detail-product-layout.component';
+import { DeskripsiSpesifikasiSectionComponent } from './components/deskripsi-spesifikasi-section/deskripsi-spesifikasi-section.component';
 
 @NgModule({
 	declarations: [
@@ -18,6 +19,7 @@ import { DetailProductLayoutComponent } from './pages/detail-product-layout/deta
 		PriceComponent,
 		WarnaComponent,
 		InfoRowComponent,
+		DeskripsiSpesifikasiSectionComponent,
 	],
 	imports: [
 		CommonModule,
