@@ -1,0 +1,36 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#float-foot{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 88px;	
+	background: #FFFEFE;
+	box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.1);
+}
+
+#review-foot{
+	position: relative;
+	float: left;
+	left: 8%;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 25px;
+	font-family: $secondary-font;
+	color: $abu-abu-gelap;
+	width: 45%;
+}
+
+#amount-foot{
+	position: relative;
+	float: right;
+	padding-right: 10%;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 25px;
+	font-family: $secondary-font;
+	color: $abu-abu-gelap;
+	text-align: right;
+	font-weight: bold;
+}
