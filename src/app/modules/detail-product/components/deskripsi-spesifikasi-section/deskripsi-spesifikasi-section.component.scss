@@ -1,0 +1,46 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#deskripsi-spesifikasi-wrapper {
+	background: $putih-tok;
+	border-radius: 16px;
+	padding-left: 27px;
+	padding-right: 27px;
+	padding-bottom: 39px;
+	padding-top: 29px;
+}
+
+.deskrip-spesi-label-selected {
+	font-family: $secondary-font;
+	font-weight: 500;
+	font-size: 16px;
+	cursor: pointer;
+	color: $color-primary;
+}
+
+.deskrip-spesi-label {
+	font-family: $primary-font;
+	font-size: 16px;
+	cursor: pointer;
+
+	color: $abu-abu-sesuatu-2;
+}
+
+#des-label-prod-name {
+	font-family: $secondary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+
+	color: $abu-abu-gelap;
+}
+
+#des-content {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 24px;
+
+	color: $abu-abu-gelap;
+}

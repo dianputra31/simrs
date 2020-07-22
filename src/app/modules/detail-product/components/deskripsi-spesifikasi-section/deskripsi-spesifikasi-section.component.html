@@ -1,1 +1,40 @@
-<p>deskripsi-spesifikasi-section works!</p>
+<div id="deskripsi-spesifikasi-wrapper">
+	<div class="d-flex">
+		<div [ngClass]="(selectedTab=='Deskripsi')?'deskrip-spesi-label-selected':'deskrip-spesi-label'"
+			(click)="selectedTab = 'Deskripsi'">Deskripsi</div>
+		<wsh wide="90px"></wsh>
+		<div [ngClass]="(selectedTab=='Spesifikasi')?'deskrip-spesi-label-selected':'deskrip-spesi-label'"
+			(click)="selectedTab = 'Spesifikasi'">Spesifikasi</div>
+	</div>
+	<wsv wide="30px"></wsv>
+	<div *ngIf="selectedTab=='Deskripsi'; else elseBlock">
+		<div id="des-label-prod-name">Sweater Merah Pria</div>
+		<wsv wide="26px"></wsv>
+		<div id="des-content">
+			Viverra quam nullam faucibus nulla urna lorem eget. Placerat lorem rutrum malesuada mauris est facilisi
+			morbi
+			ullamcorper mattis. Enim malesuada nullam magna quam tincidunt. Condimentum suscipit mauris at senectus
+			egestas
+			congue proin odio pellentesque. Porttitor id risus augue mi. Posuere senectus mauris rhoncus, at duis.
+			Bibendum
+			sollicitudin arcu ac interdum varius venenatis faucibus. Aliquam vel netus nisl, eu enim nulla nisi,
+			maecenas.
+			Semper et volutpat dui mollis sed. Ut volutpat et mus risus eget sed tristique. Nam porta rhoncus cras sit
+			at
+			amet vestibulum. Tellus ut a at pellentesque lacus, ullamcorper eget in. At eu posuere tempor ultrices dis
+			in
+			congue. Pharetra quam pulvinar malesuada nunc aliquet sed sem. Mi ipsum sit aliquam risus lorem nunc amet.
+			At
+			dui sed nam a.
+		</div>
+
+	</div>
+	<ng-template #elseBlock>
+		<div id="des-label-prod-name">Sweater Merah Pria</div>
+		<wsv wide="26px"></wsv>
+		<div id="des-content">
+			Spesifikasi disini
+		</div>
+	</ng-template>
+
+</div>

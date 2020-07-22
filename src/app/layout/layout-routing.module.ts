@@ -42,6 +42,13 @@ const routes: Routes = [
 						(m) => m.PilihProdukModule
 					),
 			},
+			{
+				path: 'cart',
+				loadChildren: () =>
+					import('../modules/cart/cart.module').then(
+						(m) => m.CartModule
+					),
+			},
 		],
 	},
 ];
