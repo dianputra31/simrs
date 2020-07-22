@@ -1,0 +1,10 @@
+<div class="d-flex align-items-center">
+	<div *ngFor="let color of colors">
+		<div class="d-flex align-items-center">
+			<div [ngClass]="(selectedColor==color)?'rounded-option-product-selected':'rounded-option-product'"
+				[style.background]="color"
+				(click)="selectedColor = color"></div>
+			<wsh wide="10px"></wsh>
+		</div>
+	</div>
+</div>
