@@ -1,8 +1,9 @@
 @import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
 
 #catalog-section-label {
-	color: $abu-abu-gelap; 
-	font-family: Raleway;
+	color: $abu-abu-gelap;
+	font-family: $secondary-font;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
@@ -10,8 +11,8 @@
 }
 
 #catalog-section-lihat-semua {
-	color: $merah-terang;
-	font-family: Raleway;
+	color: $color-primary;
+	font-family: $secondary-font;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 16px;
@@ -21,4 +22,8 @@
 
 .white-space-18px-horizontal {
 	width: 18px;
+}
+
+.white-space {
+	height: 13px;
 }

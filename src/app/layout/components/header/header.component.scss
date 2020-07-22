@@ -1,11 +1,8 @@
 @import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
 
-
-	
-
-	
 #headers {
-	font-family: Raleway;
+	font-family: $secondary-font;
 	color: $putih-gelap-dikit;
 	z-index: 1000;
 	width: 100%;
@@ -41,20 +38,21 @@
 	border: solid yellow 0px;
 }
 
-#container ng-untouched ng-pristine ng-valid{
+#container ng-untouched ng-pristine ng-valid {
 	border: solid greenyellow 0px;
 }
 
-#mat-form-field{
-	width:100%;
-}
- 
-#mat-autocomplete{
-	border:solid green 0px;height:0;
+#mat-form-field {
+	width: 100%;
 }
 
-.mat-form-field-infix{
-	height:0px;
+#mat-autocomplete {
+	border: solid green 0px;
+	height: 0;
+}
+
+.mat-form-field-infix {
+	height: 0px;
 }
 
 .textbox-header-search {
@@ -73,26 +71,27 @@
 	border: solid yellow 0px;
 }
 
-#searchbutton{
-	margin-left:-50px;
-	margin-top:5px;
-	background: url('../../../../assets/image/icons/searchbutton.png') 15px no-repeat;
+#searchbutton {
+	margin-left: -50px;
+	margin-top: 5px;
+	background: url('../../../../assets/image/icons/searchbutton.png') 15px
+		no-repeat;
 	background-position: right 5px center;
 	background-position: top 10px bottom;
 	background-size: 22px;
 	position: absolute;
 	width: 45px;
-	padding-top:20px;
+	padding-top: 20px;
 	height: 30px;
 	padding: 0px;
-	border:0px;
+	border: 0px;
 }
 
 .mat-focused .placeholder {
 	color: transparent;
 }
 
-.placeholder{
+.placeholder {
 	z-index: 9999;
 	position: relative;
 	background-color: transparent;
@@ -101,13 +100,13 @@
 }
 
 .example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+	min-width: 150px;
+	max-width: 500px;
+	width: 100%;
 }
 
 .example-full-width {
-  width: 100%;
+	width: 100%;
 }
 
 #headers-cart {
@@ -120,7 +119,7 @@
 #headers-username {
 	font-size: 18px;
 	margin-right: 10px;
-	font-family: OpenSans;
+	font-family: $primary-font;
 	font-style: normal;
 	font-weight: normal;
 	line-height: 20px;
@@ -136,6 +135,6 @@
 	cursor: pointer;
 }
 
-.mat-form-field-appearance-legacy .mat-form-field-underline{
+.mat-form-field-appearance-legacy .mat-form-field-underline {
 	height: 0px;
 }

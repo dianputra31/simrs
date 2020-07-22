@@ -1,4 +1,5 @@
 @import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
 
 #location-user-panjang {
 	width: 50%;
@@ -32,7 +33,7 @@
 	position: relative;
 	float: left;
 	width: 90%;
-	font-family: Raleway;
+	font-family: $secondary-font;
 	color: $putih-tok;
 	font-style: normal;
 	font-weight: normal;

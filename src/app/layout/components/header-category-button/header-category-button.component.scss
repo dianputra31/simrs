@@ -1,4 +1,5 @@
 @import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
 
 #dropdown-wrapper {
 	z-index: 9999;
@@ -8,7 +9,7 @@
 	padding-top: 5px;
 	padding-left: 10px;
 	border: 0px;
-	font-family: OpenSans;
+	font-family: $primary-font;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 18px;

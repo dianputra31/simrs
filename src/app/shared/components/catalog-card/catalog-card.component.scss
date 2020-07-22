@@ -1,12 +1,14 @@
 @import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
 
 .white-rounded-rectangle {
 	background: $putih-gelap-dikit;
 	border-radius: 4px;
-	height: 290px;
+	// height: 290px;
+	height: 250px;
 	width: 172px;
 	margin: 0px;
-	background: #FFFFFF;
+	background: #ffffff;
 	mix-blend-mode: normal;
 	border-radius: 4px;
 	box-shadow: $box-shadow-card;
@@ -16,7 +18,7 @@
 	padding-left: 12px;
 	padding-right: 12px;
 	padding-top: 19px;
-	font-family:Raleway;
+	font-family: $secondary-font;
 }
 
 .card-img-top {
@@ -36,12 +38,12 @@
 
 .catalog-card-price {
 	font-style: normal;
-	font-family: OpenSans;
+	font-family: $primary-font;
 	font-size: 16px;
 	margin-top: 4.6px;
 	line-height: 22px;
 	font-weight: 600;
-	color: $merah-terang;
+	color: $color-primary;
 }
 
 .catalog-card-button {

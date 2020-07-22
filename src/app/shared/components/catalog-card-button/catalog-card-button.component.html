@@ -1,7 +1,8 @@
 <div *ngIf="qty==0; else elseBlock">
 	<div class="rounded_red_button"
 		(click)="addToCart(dangerTpl)">
-		<div class="d-flex justify-content-center">
+		<div *ngIf="qty==0; else elseBlock"
+			class="d-flex justify-content-center">
 			<img id="add_to_cart_logo"
 				src="../../../../../assets/image/icons/add_to_cart_logo.png">
 			<div class="white_space_10px"></div>

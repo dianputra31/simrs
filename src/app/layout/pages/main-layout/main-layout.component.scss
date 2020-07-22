@@ -1,14 +1,15 @@
+@import '../../../../styles/variables/fonts';
 #main-layout-container {
 	padding-top: 80px;
 }
 
 @font-face {
-	font-family: Raleway;
+	font-family: $secondary-font;
 	src: url(/../../../../assets/font/raleway-v16-latin-regular.woff);
 }
 
 @font-face {
-	font-family: OpenSans;
+	font-family: $primary-font;
 	src: url(/../../../../assets/font/open-sans-v17-latin-regular.woff);
 }
 #email-container {
