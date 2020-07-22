@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'catalog-card',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./catalog-card.component.scss'],
 })
 export class CatalogCardComponent implements OnInit {
-	constructor() {}
+	constructor(private router: Router) {}
 
 	ngOnInit() {}
+
+	backToHome() {
+		this.router.navigate(['./detail-product']);
+	}
 }
