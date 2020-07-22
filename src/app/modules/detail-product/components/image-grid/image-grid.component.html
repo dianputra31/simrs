@@ -1,9 +1,10 @@
 <div class="d-flex align-items-center">
-	<div *ngFor="let images of imageSelections">
+	<div *ngFor="let image of imageSelections">
 		<div class="d-flex align-items-center">
-			<div class="div-grid-selection">
+			<div [ngClass]="(selectedImage==image)?'div-grid-selected':'div-grid-selection'"
+				(click)="selectedImage = image">
 				<img id="detail-main-image"
-					src="{{images}}"
+					src="{{image}}"
 					class='image-grid'>
 			</div>
 			<wsh wide="10px"></wsh>
