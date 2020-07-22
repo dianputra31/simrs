@@ -1,0 +1,32 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+#percent-label {
+	color: $color-primary;
+	font-family: $secondary-font;
+	font-size: 14px;
+	background: rgba(241, 38, 39, 0.2);
+	border-radius: 4px;
+	padding-top: 4px;
+	padding-left: 4.5px;
+	padding-right: 4.5px;
+	padding-bottom: 2px;
+}
+
+#harga-coret {
+	font-family: $secondary-font;
+	font-size: 12px;
+
+	text-decoration-line: line-through;
+	font-feature-settings: 'kern' off;
+
+	color: $abu-abu-sesuatu;
+}
+
+#harga-sesudah-diskon {
+	font-family: $secondary-font;
+	font-weight: bold;
+	font-size: 24px;
+
+	color: $abu-abu-gelap;
+}
