@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class WhiteSpaceVerticalComponent implements OnInit {
 	@Input() wide: number;
-	constructor() {}
+	constructor() { }
 	stylesObj = {};
 
 	ngOnInit(): void {

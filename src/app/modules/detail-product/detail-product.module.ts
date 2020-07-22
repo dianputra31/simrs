@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { ImageMainComponent } from './components/image-main/image-main.component';
 import { ImagePriceSectionComponent } from './components/image-price-section/image-price-section.component';
 import { InfoRowComponent } from './components/info-row/info-row.component';
@@ -17,6 +18,7 @@ import { DeskripsiSpesifikasiSectionComponent } from './components/deskripsi-spe
 		ImagePriceSectionComponent,
 		ImageMainComponent,
 		PriceComponent,
+		BreadcrumbComponent,
 		WarnaComponent,
 		InfoRowComponent,
 		DeskripsiSpesifikasiSectionComponent,
@@ -28,4 +30,4 @@ import { DeskripsiSpesifikasiSectionComponent } from './components/deskripsi-spe
 		FormsModule,
 	],
 })
-export class DetailProductModule {}
+export class DetailProductModule { }
