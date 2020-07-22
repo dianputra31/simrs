@@ -11,6 +11,6 @@ export class WhiteSpaceHorizontalComponent implements OnInit {
 	stylesObj = {};
 
 	ngOnInit(): void {
-		this.stylesObj = { height: this.wide };
+		this.stylesObj = { width: this.wide };
 	}
 }

@@ -11,6 +11,6 @@ export class WhiteSpaceVerticalComponent implements OnInit {
 	stylesObj = {};
 
 	ngOnInit(): void {
-		this.stylesObj = { width: this.wide };
+		this.stylesObj = { height: this.wide };
 	}
 }
