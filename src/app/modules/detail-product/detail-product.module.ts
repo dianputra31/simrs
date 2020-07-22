@@ -6,6 +6,7 @@ import { ImagePriceSectionComponent } from './components/image-price-section/ima
 import { PriceComponent } from './components/price/price.component';
 import { DetailProductRoutingModule } from './detail-product-routing.module';
 import { DetailProductLayoutComponent } from './pages/detail-product-layout/detail-product-layout.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
 	declarations: [
@@ -13,6 +14,7 @@ import { DetailProductLayoutComponent } from './pages/detail-product-layout/deta
 		ImagePriceSectionComponent,
 		ImageMainComponent,
 		PriceComponent,
+		BreadcrumbComponent,
 	],
 	imports: [CommonModule, DetailProductRoutingModule, SharedModule],
 })
