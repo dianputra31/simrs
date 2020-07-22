@@ -5,11 +5,26 @@ import { AddressSectionComponent } from './components/address-section/address-se
 import { CatalogCardButtonComponent } from './components/catalog-card-button/catalog-card-button.component';
 import { CatalogCardComponent } from './components/catalog-card/catalog-card.component';
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
-
+import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
+import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
 
 @NgModule({
-	declarations: [CatalogCardComponent, CatalogCardButtonComponent, AddressSectionComponent, DialogAddressSectionComponent],
+	declarations: [
+		CatalogCardComponent,
+		CatalogCardButtonComponent,
+		AddressSectionComponent,
+		DialogAddressSectionComponent,
+		WhiteSpaceVerticalComponent,
+		WhiteSpaceHorizontalComponent,
+	],
 	imports: [CommonModule, FormsModule],
-	exports: [CatalogCardComponent, CatalogCardButtonComponent, AddressSectionComponent, DialogAddressSectionComponent],
+	exports: [
+		CatalogCardComponent,
+		CatalogCardButtonComponent,
+		AddressSectionComponent,
+		DialogAddressSectionComponent,
+		WhiteSpaceVerticalComponent,
+		WhiteSpaceHorizontalComponent,
+	],
 })
-export class SharedModule { }
+export class SharedModule {}
