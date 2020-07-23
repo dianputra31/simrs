@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemListComponent implements OnInit {
 	allowChanges = false;
-	items = ['test', 'test'];
+	items = [{ outOfStock: true }, { outOfStock: false }];
 	constructor() {}
 
 	ngOnInit(): void {}

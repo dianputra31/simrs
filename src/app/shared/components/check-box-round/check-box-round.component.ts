@@ -7,10 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CheckBoxRoundComponent implements OnInit {
 	@Input() checked: boolean;
-	@Input() allowChanges: string;
+	@Input() allowChanges: boolean;
 
 	clicked() {
-		if (this.allowChanges == 'true') {
+		console.log(this.allowChanges);
+		if (this.allowChanges) {
 			this.checked = !this.checked;
 		}
 	}

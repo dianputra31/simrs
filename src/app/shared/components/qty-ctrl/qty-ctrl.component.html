@@ -11,7 +11,7 @@
 		class="p-2"
 		[(ngModel)]="qty"
 		type="number"
-		[attr.disabled]="allowChanges == 'false'?'' : null"
+		[attr.disabled]="allowChanges? null : ''"
 		(change)="qtyChange()">
 	<div id="remove_cart_logo_wrapper"
 		class="d-flex align-items-center"

@@ -8,7 +8,7 @@ import { ToastService } from '../../toast/toast-service';
 })
 export class QtyCtrlComponent implements OnInit {
 	@Input() notif: string;
-	@Input() allowChanges: string;
+	@Input() allowChanges: boolean;
 
 	qty = 0;
 	constructor(public toastService: ToastService) {}
@@ -16,7 +16,7 @@ export class QtyCtrlComponent implements OnInit {
 	ngOnInit(): void {}
 
 	removeFromCart(dangerTpl) {
-		if (this.allowChanges == 'true') {
+		if (this.allowChanges) {
 			if (this.qty != 0) {
 				this.qty--;
 				this.showDanger(dangerTpl);
@@ -40,7 +40,7 @@ export class QtyCtrlComponent implements OnInit {
 	}
 
 	addToCart(dangerTpl) {
-		if (this.allowChanges == 'true') {
+		if (this.allowChanges) {
 			this.qty++;
 			this.showDanger(dangerTpl);
 		}
