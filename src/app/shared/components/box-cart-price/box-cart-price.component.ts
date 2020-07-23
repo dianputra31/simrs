@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
 	selector: 'box-cart-price',
 	templateUrl: './box-cart-price.component.html',
@@ -7,7 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BoxCartPriceComponent implements OnInit {
 	@Input() buttonLabel: string;
-	constructor() {}
+	constructor(private router: Router) {}
 
 	ngOnInit(): void {}
+
+	clickButtonLabel() {
+		if (this.buttonLabel == 'Selanjutnya') {
+			this.router.navigate(['./request-approval']);
+		} else if (this.buttonLabel == 'Request Approval') {
+		}
+	}
 }
