@@ -15,46 +15,6 @@
 		<span class="info-row-content">25</span>
 	</info-row>
 	<wsv wide="61px"></wsv>
-	<div class="d-flex justify-content-between align-items-center control-wrapper">
-		<div id="remove_cart_logo_wrapper"
-			class="d-flex align-items-center"
-			(click)="removeFromCart(dangerTpl)">
-			<img id="remove_cart_logo"
-				src="../../../../../assets/image/icons/remove_card_ic.png">
-		</div>
-
-		<input #qty_input
-			id="qty_input"
-			class="p-2"
-			[(ngModel)]="qty"
-			type="number"
-			(change)="qtyChange()">
-
-		<div id="remove_cart_logo_wrapper"
-			class="d-flex align-items-center"
-			(click)="addToCart(dangerTpl)">
-			<img id="add_to_cart_logo"
-				src="../../../../../assets/image/icons/add_to_cart_ic.png"></div>
-	</div>
+	<qty-ctrl notif="true"
+		allowChanges="true"></qty-ctrl>
 </div>
-
-<ng-template #dangerTpl>
-	<div class="d-flex notif-container justify-content-between align-self-center">
-		<div id="keranjang-label">Keranjang</div>
-		<div id="lihat-keranjang-label"
-			class="text-center">Lihat Keranjang</div>
-	</div>
-	<div id="notif-inner-container">
-		<div class="d-flex justify-content-between align-items-center">
-			<div class="d-flex align-items-center">
-				<img src="https://id.360buyimg.com/Indonesia/s880x0_/nHBfsgAAJAAAAB0AD6waZQACy0M.jpg.dpg.webp"
-					id="notif-img">
-				<div>
-					<div id="item-name">Sweater Merah Pria</div>
-					<div>2 Barang (300gr)</div>
-				</div>
-			</div>
-			<div id="item-price">Rp359.000</div>
-		</div>
-	</div>
-</ng-template>

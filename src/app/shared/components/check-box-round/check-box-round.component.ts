@@ -6,10 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./check-box-round.component.scss'],
 })
 export class CheckBoxRoundComponent implements OnInit {
-	@Input() checked: boolean = true;
+	@Input() checked: boolean;
+	@Input() allowChanges: string;
 
 	clicked() {
-		this.checked = !this.checked;
+		if (this.allowChanges == 'true') {
+			this.checked = !this.checked;
+		}
 	}
 	constructor() {}
 

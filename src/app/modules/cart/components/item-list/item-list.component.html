@@ -1,1 +1,23 @@
-<check-box-round></check-box-round>
+<div class="d-flex">
+	<wsh wide="15px"></wsh>
+	<pilih-semua></pilih-semua>
+</div>
+
+<wsv wide="16px"></wsv>
+<div *ngFor="let item of items">
+	<div
+		[className]="allowChanges? 'white-rounded-corner-item-list-cart out-of-stock' : 'white-rounded-corner-item-list-cart'">
+		<div class="d-flex">
+			<check-box-round checked="false"
+				allowChanges="false"></check-box-round>
+		</div>
+		<div class="d-flex align-items-center">
+			<qty-ctrl notif="false"
+				allowChanges="false"></qty-ctrl>
+			<wsh wide="180px"></wsh>
+			<img id="trash-can"
+				src="../../../../../assets/image/icons/trash_can.png" />
+		</div>
+	</div>
+	<wsv wide="24px"></wsv>
+</div>

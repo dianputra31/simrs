@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageGridComponent } from './image-grid.component';
+import { CartEmptyComponent } from './cart-empty.component';
 
-describe('ImageGridComponent', () => {
-  let component: ImageGridComponent;
-  let fixture: ComponentFixture<ImageGridComponent>;
+describe('CartEmptyComponent', () => {
+  let component: CartEmptyComponent;
+  let fixture: ComponentFixture<CartEmptyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageGridComponent ]
+      declarations: [ CartEmptyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageGridComponent);
+    fixture = TestBed.createComponent(CartEmptyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
