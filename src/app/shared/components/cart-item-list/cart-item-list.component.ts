@@ -28,6 +28,14 @@ export class CartItemListComponent implements OnInit {
 				'itemWeight': '1 kg',
 				'itemQty': '1',
 			},
+			{
+				'itemImage': 'https://cdn.shopify.com/s/files/1/0318/2649/products/51QJusT3LrL_large.jpg?v=1571442497',
+				'itemName': 'Batmobile Tumbler - Revoltech - Revoltech SFX 043 (Kaiyodo)',
+				'itemPrice': 'Rp 1.250.000',
+				'itemColor': '#2E2E2E',
+				'itemWeight': '1 kg',
+				'itemQty': '1',
+			}
 		]
 	}
 
