@@ -1,0 +1,131 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+#item-list-left {
+	position: relative;
+	float: left;
+	width: 30%;
+	height: 173px;
+}
+
+#item-list-right {
+	position: relative;
+	float: left;
+	width: 70%;
+	height: 173px;
+}
+
+#item-list-image {
+	width: 95%;
+	height: 95%;
+	position: relative;
+	padding: 10px 0px 0px 10px;
+}
+
+#item-image {
+	height: 95%;
+	object-fit: cover;
+}
+
+#item-list-name {
+	padding: 15px 0px 0px 5px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	font-feature-settings: 'kern' off;
+	width: 100%;
+	height: auto;
+	color: $abu-abu-gelap;
+}
+
+#item-list-price {
+	padding-left: 5px;
+	margin-top: 5px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+	font-feature-settings: 'kern' off;
+	color: $merah-terang;
+	width: 100%;
+	min-height: 20px;
+}
+
+#item-list-color {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 16px;
+	color: $abu-abu-gelap;
+	padding-left: 5px;
+	margin-top: 10px;
+	width: 100%;
+	min-height: 20px;
+}
+
+#rounded-item-wording {
+	position: relative;
+	float: left;
+	width: 20px;
+	height: 20px;
+	width: 15%;
+	padding-top: 5px;
+}
+
+#rounded-item-color {
+	position: relative;
+	float: left;
+	width: 20px;
+	height: 20px;
+	width: 85%;
+	padding-top: 0px;
+}
+
+.rounded-item-color {
+	position: relative;
+	float: left;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	border: 0.5px solid #f7f7f7;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+#item-list-weight {
+	margin-top: 8px;
+	position: relative;
+	float: left;
+	height: 20px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 16px;
+	color: $abu-abu-gelap;
+	padding-left: 5px;
+	width: 100%;
+}
+
+#item-list-weight-left {
+	width: 15%;
+	position: relative;
+	float: left;
+}
+
+#item-list-weight-right {
+	width: 85%;
+	position: relative;
+	float: left;
+}
+
+#item-list-weight-all {
+	width: 100%;
+	position: relative;
+	float: left;
+}

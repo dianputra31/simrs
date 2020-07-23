@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
-	allowChanges = true;
+	allowChanges = false;
 	items = ['test', 'test'];
 	constructor() {}
 
