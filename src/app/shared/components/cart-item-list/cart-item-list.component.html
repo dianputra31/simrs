@@ -1,0 +1,26 @@
+<div *ngFor="let items of datacart; let i = index">
+	<div id="item-list">
+		<div id="item-list-left">
+			<div id="item-list-image"><img src="{{items.itemImage}}"
+					id="item-image"></div>
+		</div>
+		<div id="item-list-right">
+			<div id="item-list-name">{{items.itemName}}</div>
+			<div id="item-list-price">{{items.itemPrice}}</div>
+			<div id="item-list-color">
+				<div id="rounded-item-wording">Warna</div>
+				<div id="rounded-item-color">
+					<div class="rounded-item-color"
+						style="background-color: {{items.itemColor}}"></div>
+				</div>
+			</div>
+			<div id="item-list-weight">
+				<div id="item-list-weight-left">Berat</div>
+				<div id="item-list-weight-right">{{items.itemWeight}}</div>
+			</div>
+			<div id="item-list-weight">
+				<div id="item-list-weight-all">{{items.itemQty}} Barang</div>
+			</div>
+		</div>
+	</div>
+</div>
