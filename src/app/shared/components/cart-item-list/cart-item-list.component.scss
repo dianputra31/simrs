@@ -27,6 +27,11 @@
 	object-fit: cover;
 }
 
+
+#item-image :hover{
+	cursor: pointer;
+}
+
 #item-list-name {
 	padding: 15px 0px 0px 5px;
 	font-family: $primary-font;
@@ -38,6 +43,18 @@
 	width: 100%;
 	height: auto;
 	color: $abu-abu-gelap;
+}
+
+.redirectdetail{
+	cursor: pointer;
+}
+
+.redirectdetail :hover{
+	text-decoration: underline;
+}
+
+#item-list-name :hover{
+	text-decoration: underline;
 }
 
 #item-list-price {

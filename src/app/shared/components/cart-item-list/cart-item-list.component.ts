@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'cart-item-list',
@@ -9,7 +10,9 @@ export class CartItemListComponent implements OnInit {
 	datacart;
 	items;
 
-	constructor() {}
+	constructor(
+		private router: Router,
+	) { }
 
 	ngOnInit(): void {
 		this.items = {
@@ -23,4 +26,9 @@ export class CartItemListComponent implements OnInit {
 			itemQty: '2',
 		};
 	}
+
+	goToDetail() {
+		this.router.navigate(['./detail-product']);
+	}
+
 }
