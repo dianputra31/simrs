@@ -1,18 +1,16 @@
 @import '../../../../styles/variables/colors';
 @import '../../../../styles/variables/fonts';
 
-#item-list-left {
-	position: relative;
-	float: left;
-	width: 30%;
-	height: 173px;
+#item-image {
+	height: 117px;
+	width: 180px;
+	object-fit: cover;
 }
 
 #item-list-right {
 	position: relative;
 	float: left;
-	width: 70%;
-	height: 173px;
+	height: 140px;
 }
 
 #item-list-image {
@@ -20,16 +18,6 @@
 	height: 95%;
 	position: relative;
 	padding: 10px 0px 0px 10px;
-}
-
-#item-image {
-	height: 95%;
-	object-fit: cover;
-}
-
-
-#item-image :hover{
-	cursor: pointer;
 }
 
 #item-list-name {
@@ -45,15 +33,15 @@
 	color: $abu-abu-gelap;
 }
 
-.redirectdetail{
+.redirectdetail {
 	cursor: pointer;
 }
 
-.redirectdetail :hover{
+.redirectdetail :hover {
 	text-decoration: underline;
 }
 
-#item-list-name :hover{
+#item-list-name :hover {
 	text-decoration: underline;
 }
 

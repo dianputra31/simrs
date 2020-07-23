@@ -1,53 +1,44 @@
 @import '../../../../styles/variables/colors';
 @import '../../../../styles/variables/fonts';
 
-
-#div-price-top{
-	background: $kresek-merah;
+#div-price-top {
+	background: $color-primary;
 	height: 54px;
+	width: 357px;
 	padding-left: 25px;
+	padding-right: 25px;
 	border-radius: 8px 8px 0px 0px;
 	font-family: $primary-font;
-	font-style: normal;
 	font-weight: bold;
 	font-size: 14px;
-	display: flex;
-	font-feature-settings: 'kern' off;
-	color: #FFFFFF;
-	line-height: 20px;
+	color: $putih-tok;
 }
 
-#label-atas-wrapper{
-	width: 100%;
-	padding-left: 10px;
-	line-height: 50px;
-}
-
-#div-price-below{
+#div-price-below {
 	background: $putih-tok;
 	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 16px;
+	padding-bottom: 20px;
 	box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
-	border-radius: 0px 0px 0px 0px;;
+	border-radius: 0px 0px 8px 8px;
 }
 
-#label-ringkasan{
+#label-ringkasan {
 	font-family: $primary-font;
-	padding-left: 15px;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 18px;
-	line-height: 21px;
-	font-feature-settings: 'kern' off;
 	color: $abu-abu-gelap;
 }
 
-#label-below2{
+#label-below2 {
 	margin-top: -10px;
 	padding-left: 7px;
 	padding-bottom: 10px;
 }
 
-#label-belowlr{
+#label-belowlr {
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: normal;
@@ -57,32 +48,7 @@
 	color: $abu-abu-gelap;
 }
 
-#label-below-wrapper{
-	width: 100%;
-	padding-left: 10px;
-}
-
-#label-below-left{
-	position: relative;
-	float: left;
-	width: 50%;
-}
-
-#label-below-midle{
-	position: relative;
-	float: left;
-	width: 20%;
-}
-
-#label-below-right{
-	position: relative;
-	float: left;
-	width: 30%;
-	padding-right: 40px;
-	text-align: right;
-}
-
-.font1{
+.font1 {
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: normal;
@@ -92,7 +58,7 @@
 	color: $abu-abu-gelap;
 }
 
-.font2{
+.font2 {
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: bold;
@@ -102,7 +68,7 @@
 	color: $abu-abu-gelap;
 }
 
-.btn-price-next{
+.btn-price-next {
 	width: 100%;
 	height: 36px;
 	background-color: $kresek-merah;
@@ -113,24 +79,23 @@
 	line-height: 16px;
 	align-items: center;
 	text-align: center;
-	color:$putih-tok;
+	color: $putih-tok;
 }
 
-.div-btn-next{
+.div-btn-next {
 	width: 100%;
 }
 
-#cr-hr1{
+#cr-hr1 {
 	width: 100%;
 	border-top: 0.2px solid $abu-abu-gelap;
 }
 
-#div-hr-cr1{
+.div-btn-cr-1 {
 	padding-left: 12px;
 	padding-right: 35px;
 }
 
-.div-btn-cr-1{
-	padding-left: 12px;
-	padding-right: 35px;
+.harga-per-item {
+	width: 120px;
 }

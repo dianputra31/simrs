@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
-	allowChanges = false;
-	items = [{ outOfStock: true }, { outOfStock: false }];
+	items = ['test', 'test'];
 	constructor() {}
 
 	ngOnInit(): void {}

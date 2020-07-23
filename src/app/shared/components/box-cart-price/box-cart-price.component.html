@@ -1,89 +1,60 @@
-<div id="cart-price-wrapper">
-	<div id="cart-price-wrapper2">
-		<div id="div-price-top"
-			class="d-flex">
-			<div id="label-atas-wrapper">
-				<div id="label-below-left">Total Tagihan</div>
-				<div id="label-below-midle">Rp.</div>
-				<div id="label-below-right">75.000.000</div>
-			</div>
-		</div>
-		<div id="div-price-below">
-			<wsv wide="20px"></wsv>
-			<div id="label-ringkasan">Ringkasan belanja
-			</div>
-			<wsv wide="15px"></wsv>
-			<div id="div-hr-cr1">
-				<div id="cr-hr1"></div>
-			</div>
-			<wsv wide="25px"></wsv>
-
-			<div id="label-below2"
-				class="d-flex">
-				<div id="label-below-wrapper">
-					<div id="label-below-left"
-						class="font1">Total Harga Produk</div>
-					<div id="label-below-midle"
-						class="font1">Rp.</div>
-					<div id="label-below-right"
-						class="font1">73.500.000</div>
-				</div>
-			</div>
-			<wsv wide="15px"></wsv>
-			<div id="label-below2"
-				class="d-flex">
-				<div id="label-below-wrapper">
-					<div id="label-below-left"
-						class="font1">Total Ongkos Kirim</div>
-					<div id="label-below-midle"
-						class="font1">Rp.</div>
-					<div id="label-below-right"
-						class="font1">500.000</div>
-				</div>
-			</div>
-			<wsv wide="15px"></wsv>
-			<div id="label-below2"
-				class="d-flex">
-				<div id="label-below-wrapper">
-					<div id="label-below-left"
-						class="font1">Fee</div>
-					<div id="label-below-midle"
-						class="font1">Rp.</div>
-					<div id="label-below-right"
-						class="font1">1.000.000</div>
-				</div>
-			</div>
-
-			<wsv wide="15px"></wsv>
-			<div id="label-below2"
-				class="d-flex">
-				<div id="label-below-wrapper">
-					<div id="label-below-left"
-						class="font2">Total Tagihan</div>
-					<div id="label-below-midle"
-						class="font2">Rp.</div>
-					<div id="label-below-right"
-						class="font2">75.000.000</div>
-				</div>
-			</div>
-
-
-
-			<wsv wide="10px"></wsv>
-			<div id="div-hr-cr1">
-				<div id="cr-hr1"></div>
-			</div>
-			<wsv wide="10px"></wsv>
-			<div class="div-btn-cr-1">
-				<div class="div-btn-next">
-					<button type="button"
-						class="btn btn-price-next">Selanjutnya</button>
-				</div>
-			</div>
-			<wsv wide="15px"></wsv>
-
+<div id="div-price-top"
+	class="d-flex align-items-center justify-content-between">
+	<div>Kredit Tersedia</div>
+	<div>Rp. 75.000.000</div>
+</div>
+<div id="div-price-below">
+	<wsv wide="16px"></wsv>
+	<div id="label-ringkasan">Ringkasan belanja</div>
+	<wsv wide="15px"></wsv>
+	<div id="cr-hr1"></div>
+	<wsv wide="17px"></wsv>
+	<div class="d-flex justify-content-between">
+		<div class="font1">Total Harga Produk</div>
+		<div class="d-flex justify-content-between harga-per-item">
+			<div class="font1">Rp.</div>
+			<div class="font1">73.500.000</div>
 		</div>
 
 	</div>
 
+	<wsv wide="15px"></wsv>
+
+	<div class="d-flex justify-content-between">
+		<div class="font1">Total Ongkos Kirim</div>
+
+		<div class="d-flex justify-content-between harga-per-item">
+			<div class="font1">Rp.</div>
+			<div class="font1">500.000</div>
+		</div>
+	</div>
+
+	<wsv wide="15px"></wsv>
+
+	<div class="d-flex justify-content-between">
+		<div class="font1">Fee</div>
+
+		<div class="d-flex justify-content-between harga-per-item">
+			<div class="font1">Rp.</div>
+			<div class="font1">1.000.000</div>
+		</div>
+	</div>
+
+	<wsv wide="15px"></wsv>
+
+	<div class="d-flex justify-content-between">
+		<div class="font2">Total Tagihan</div>
+		<div class="d-flex justify-content-between harga-per-item">
+			<div class="font2">Rp.</div>
+			<div class="font2">75.000.000</div>
+		</div>
+	</div>
+
+	<wsv wide="29px"></wsv>
+	<div id="cr-hr1"></div>
+	<wsv wide="19px"></wsv>
+
+	<button type="button"
+		class="btn btn-price-next"
+		(click)="clickButtonLabel()">{{buttonLabel}}</button>
 </div>
