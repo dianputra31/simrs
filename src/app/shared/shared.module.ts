@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AddressSectionComponent } from './components/address-section/address-section.component';
 import { CatalogCardButtonComponent } from './components/catalog-card-button/catalog-card-button.component';
 import { CatalogCardComponent } from './components/catalog-card/catalog-card.component';
+import { CheckBoxRoundComponent } from './components/check-box-round/check-box-round.component';
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
 import { EmailButtonComponent } from './components/email-button/email-button.component';
@@ -13,7 +14,6 @@ import { FooterFeatureComponent } from './components/footer-feature/footer-featu
 import { FooterComponent } from './components/footer/footer.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
-
 
 @NgModule({
 	declarations: [
@@ -29,6 +29,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		FooterFeatureComponent,
 		FooterComponent,
 		EmailButtonComponent,
+		CheckBoxRoundComponent,
 	],
 	imports: [CommonModule, FormsModule],
 	exports: [
@@ -44,6 +45,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		FooterFeatureComponent,
 		FooterComponent,
 		EmailButtonComponent,
+		CheckBoxRoundComponent,
 	],
 })
-export class SharedModule { }
+export class SharedModule {}
