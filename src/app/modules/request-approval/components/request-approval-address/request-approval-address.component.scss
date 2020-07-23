@@ -1,0 +1,19 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+
+#request-approval{
+	width: 100%;
+	position: relative;
+	min-height: 100px;
+	font-family: $primary-font;
+}
+
+.rap-row{
+	width:30%;
+	text-align: left;
+	word-wrap: normal;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 22px;
+}
