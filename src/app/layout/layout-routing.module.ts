@@ -49,6 +49,13 @@ const routes: Routes = [
 						(m) => m.CartModule
 					),
 			},
+			{
+				path: 'request-approval',
+				loadChildren: () =>
+					import(
+						'../modules/request-approval/request-approval.module'
+					).then((m) => m.RequestApprovalModule),
+			},
 		],
 	},
 ];
