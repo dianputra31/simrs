@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AddressSectionComponent } from './components/address-section/address-section.component';
+import { BoxCartPriceComponent } from './components/box-cart-price/box-cart-price.component';
 import { CartItemListComponent } from './components/cart-item-list/cart-item-list.component';
 import { CatalogCardButtonComponent } from './components/catalog-card-button/catalog-card-button.component';
 import { CatalogCardComponent } from './components/catalog-card/catalog-card.component';
@@ -31,11 +32,11 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		FooterFeatureComponent,
 		FooterComponent,
 		EmailButtonComponent,
-
+		BoxCartPriceComponent,
 		CheckBoxRoundComponent,
 		QtyCtrlComponent,
-
 		CartItemListComponent,
+
 	],
 	imports: [CommonModule, FormsModule],
 	exports: [
@@ -51,9 +52,11 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		FooterFeatureComponent,
 		FooterComponent,
 		EmailButtonComponent,
+		BoxCartPriceComponent,
 		CheckBoxRoundComponent,
 		QtyCtrlComponent,
 		CartItemListComponent,
+
 	],
 })
-export class SharedModule {}
+export class SharedModule { }
