@@ -1,6 +1,23 @@
 @import '../../../../styles/variables/colors';
 @import '../../../../styles/variables/fonts';
 
+
+
+#location-user {
+	width: 50%;
+	margin: auto;
+	color: white;
+	height: 50px;
+	position: relative;
+	border-radius: 8px;
+	background: url('../../../../assets/image/icons/location-icon.png') #333132
+		no-repeat;
+	background-position: left 20px center;
+	background-size: 16px 25px;
+	cursor: pointer;
+}
+
+
 #location-user-panjang {
 	width: 50%;
 	margin: auto;

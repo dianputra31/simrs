@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogAddressSectionComponent } from '../dialog-address-section/dialog-address-section.component';
@@ -11,11 +11,19 @@ import { DialogAddressSectionComponent } from '../dialog-address-section/dialog-
 	styleUrls: ['./address-section.component.scss']
 })
 export class AddressSectionComponent implements OnInit {
+	@Input() wide: number;
+	@Input() margin: number;
+	@Input() pl: number;
+	@Input() borderRadius: number;
+
 	hlmn_ini;
 	divnya;
+	location;
 
 	constructor(public dialog: MatDialog,
 		private router: Router) { }
+
+	stylesObj = {};
 
 	openDialogLocation() {
 
@@ -36,11 +44,15 @@ export class AddressSectionComponent implements OnInit {
 
 
 	ngOnInit(): void {
-		if (this.router.url == '/pilih-produk') {
-			this.divnya = 'location-user-pendek';
-		} else {
-			this.divnya = 'location-user-panjang';
-		}
+		// if (this.router.url == '/pilih-produk') {
+		// 	this.divnya = 'location-user-pendek';
+		// } else {
+		// 	this.divnya = 'location-user-panjang';
+		// }
+		this.divnya = 'location-user';
+		this.location = 'Graha Boulevard, Jl. Boulevard Raya, RW.1, Kelapa Gading Timur...';
+
+		this.stylesObj = { width: this.wide, margin: this.margin, paddingLeft: this.pl, borderRadius: this.borderRadius };
 	}
 
 }
