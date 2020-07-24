@@ -29,6 +29,7 @@ export class QtyCtrlComponent implements OnInit {
 			this.toastService.removeAll();
 			this.toastService.show(dangerTpl, {
 				delay: 15000,
+				classname: 'pojok-kanan-atas',
 			});
 		}
 	}

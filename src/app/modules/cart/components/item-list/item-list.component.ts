@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from '../../../../shared/toast/toast-service';
 
 @Component({
 	selector: 'item-list',
@@ -8,7 +9,22 @@ import { Component, OnInit } from '@angular/core';
 export class ItemListComponent implements OnInit {
 	allowChanges = false;
 	items = [{ outOfStock: true }, { outOfStock: false }];
-	constructor() {}
 
-	ngOnInit(): void {}
+	constructor(public toastService: ToastService) {}
+
+	ngOnInit(): void {
+		throw new Error('Method not implemented.');
+	}
+
+	deleteItem(dangerTpl) {
+		this.showDanger(dangerTpl);
+	}
+
+	showDanger(dangerTpl) {
+		this.toastService.removeAll();
+		this.toastService.show(dangerTpl, {
+			delay: 15000,
+			classname: 'bawah-tengah',
+		});
+	}
 }

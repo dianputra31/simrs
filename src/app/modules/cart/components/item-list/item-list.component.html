@@ -19,8 +19,15 @@
 				[allowChanges]="!item.outOfStock"></qty-ctrl>
 			<wsh wide="250px"></wsh>
 			<img id="trash-can"
-				src="../../../../../assets/image/icons/trash_can.png" />
+				src="../../../../../assets/image/icons/trash_can.png"
+				(click)="deleteItem(dangerTpl)" />
 		</div>
 	</div>
 	<wsv wide="24px"></wsv>
 </div>
+
+<ng-template #dangerTpl>
+	<div class="d-flex align-self-center justify-content-center">
+		<div id="item-telah-dihapus">Item telah dihapus</div>
+	</div>
+</ng-template>

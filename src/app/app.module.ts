@@ -40,6 +40,6 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 			useClass: AuthInterceptor,
 		},
 	],
-	bootstrap: [AppComponent, NgbdToastGlobal],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}
