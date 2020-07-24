@@ -6,13 +6,20 @@
 			src="../../../../../assets/image/icons/remove_card_ic.png">
 	</div>
 
-	<input #qty_input
-		id="qty_input"
-		class="p-2"
-		[(ngModel)]="qty"
-		type="number"
-		[attr.disabled]="allowChanges? null : ''"
-		(change)="qtyChange()">
+	<div>
+		<input #qty_input
+			id="qty_input"
+			class="p-2"
+			[(ngModel)]="qty"
+			pattern="\d*"
+			maxlength="6"
+			[attr.disabled]="allowChanges? null : ''"
+			(change)="qtyChange()">
+		<div id="horizontal-underline">
+
+		</div>
+	</div>
+
 	<div id="remove_cart_logo_wrapper"
 		class="d-flex align-items-center"
 		(click)="addToCart(dangerTpl)">

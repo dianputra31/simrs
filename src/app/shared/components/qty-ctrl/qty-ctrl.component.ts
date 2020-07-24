@@ -42,8 +42,10 @@ export class QtyCtrlComponent implements OnInit {
 
 	addToCart(dangerTpl) {
 		if (this.allowChanges) {
-			this.qty++;
-			this.showDanger(dangerTpl);
+			if (this.qty != 999999) {
+				this.qty++;
+				this.showDanger(dangerTpl);
+			}
 		}
 	}
 }
