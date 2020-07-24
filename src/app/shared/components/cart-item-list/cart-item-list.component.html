@@ -1,18 +1,19 @@
-<div id="item-list"
-	class="d-flex align-items-center">
+<div class="d-flex align-items-center">
 
 	<div id="item-image">
-		<a (click)="goToDetail()"
+		<img src="{{items.itemImage}}"
+			id="item-image"
+			(click)="goToDetail()"
 			class="redirectdetail">
-			<img src="{{items.itemImage}}"
-				id="item-image">
-		</a></div>
+	</div>
 
 	<div class="flex-grow-1">
 		<div id="item-list-name">
 			<a (click)="goToDetail()"
 				class="redirectdetail">{{items.itemName}}</a></div>
+		<wsv wide="6px"></wsv>
 		<div id="item-list-price">{{items.itemPrice}}</div>
+		<wsv wide="12px"></wsv>
 		<div id="item-list-color">
 			<div id="rounded-item-wording">Warna</div>
 			<div id="rounded-item-color">
@@ -20,6 +21,7 @@
 					style="background-color: {{items.itemColor}}"></div>
 			</div>
 		</div>
+		<wsv wide="14px"></wsv>
 		<div id="item-list-weight">
 			<div id="item-list-weight-left">Berat</div>
 			<div id="item-list-weight-right">{{items.itemWeight}}</div>

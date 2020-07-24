@@ -7,12 +7,6 @@
 	object-fit: cover;
 }
 
-#item-list-right {
-	position: relative;
-	float: left;
-	height: 140px;
-}
-
 #item-list-image {
 	width: 95%;
 	height: 95%;
@@ -21,7 +15,6 @@
 }
 
 #item-list-name {
-	padding: 15px 0px 0px 5px;
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: bold;
@@ -37,17 +30,11 @@
 	cursor: pointer;
 }
 
-.redirectdetail :hover {
-	text-decoration: underline;
-}
-
 #item-list-name :hover {
 	text-decoration: underline;
 }
 
 #item-list-price {
-	padding-left: 5px;
-	margin-top: 5px;
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: bold;
@@ -67,8 +54,6 @@
 	font-size: 12px;
 	line-height: 16px;
 	color: $abu-abu-gelap;
-	padding-left: 5px;
-	margin-top: 10px;
 	width: 100%;
 	min-height: 20px;
 }
@@ -103,9 +88,6 @@
 }
 
 #item-list-weight {
-	margin-top: 8px;
-	position: relative;
-	float: left;
 	height: 20px;
 	font-family: $primary-font;
 	font-style: normal;
@@ -113,7 +95,6 @@
 	font-size: 12px;
 	line-height: 16px;
 	color: $abu-abu-gelap;
-	padding-left: 5px;
 	width: 100%;
 }
 
