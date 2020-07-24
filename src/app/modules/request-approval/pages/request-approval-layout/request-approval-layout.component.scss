@@ -7,3 +7,32 @@
 	font-size: 24px;
 	color: $abu-abu-gelap;
 }
+
+
+#scrollable-div{
+	position: relative;
+	width:62%;
+	margin-top: 200px;
+	border:solid yellowgreen 0px;
+	overflow-y: scroll;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#scrollable-div::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#scrollable-div {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#div-cart-price{
+	position: fixed;border:solid blueviolet 0px;top:300px;right:10%;height:800px;padding-bottom: 300px;
+}
+
+#div-top-address{
+	position: fixed;width: 100%;z-index: 9999;top:80px;z-index: 1000;background-color: #e5e5e5;
+}

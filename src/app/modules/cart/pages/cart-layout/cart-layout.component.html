@@ -1,21 +1,26 @@
 <div class="container">
-	<wsv wide="53px"></wsv>
-	<div id="keranjang-label">KERANJANG</div>
-	<wsv wide="53px"></wsv>
-	<!--<cart-empty></cart-empty>-->
-	<wsv wide="25px"></wsv>
-	<address-section wide="50%"
-		borderRadius='20px'
-		margin="0px">
-	</address-section>
-	<wsv wide="35px"></wsv>
-	<div class="d-flex justify-content-between">
+	<div id="div-top-address">
+		<wsv wide="53px"></wsv>
+		<div id="keranjang-label">KERANJANG</div>
+		<!--<cart-empty></cart-empty>-->
+		<wsv wide="25px"></wsv>
+		<address-section wide="50%"
+			borderRadius='20px'
+			margin="0px">
+		</address-section>
+		<wsv wide="30px"></wsv>
+	</div>
+
+	<div class="d-flex justify-content-between"
+		id="scrollable-div">
 		<item-list></item-list>
 		<div>
-			<wsv wide="40px"></wsv>
-			<box-cart-price buttonLabel="Selanjutnya"></box-cart-price>
+
+			<div id="div-cart-price">
+				<box-cart-price buttonLabel="Selanjutnya"></box-cart-price>
+				<wsv wide="280px"></wsv>
+			</div>
+
 		</div>
 
 	</div>
-
-</div>
