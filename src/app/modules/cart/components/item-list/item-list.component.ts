@@ -8,7 +8,11 @@ import { ToastService } from '../../../../shared/toast/toast-service';
 })
 export class ItemListComponent implements OnInit {
 	allowChanges = false;
-	items = [{ outOfStock: true }, { outOfStock: false }];
+	items = [
+		{ outOfStock: false },
+		{ outOfStock: false },
+		{ outOfStock: false },
+	];
 
 	constructor(public toastService: ToastService) {}
 
