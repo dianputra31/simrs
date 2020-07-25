@@ -1,14 +1,16 @@
 <div class="d-flex">
 	<wsh wide="15px"></wsh>
-	<pilih-semua></pilih-semua>
+	<pilih-semua (onPilihSemua)="pilihSemuaEventHandler()"
+		[semuaTerpilih]="apakahSemuaItemTerpilih()"></pilih-semua>
 </div>
 
 <wsv wide="16px"></wsv>
 <div *ngFor="let item of items">
 	<div
-		[className]="item.outOfStock? 'white-rounded-corner-item-list-cart out-of-stock' : 'white-rounded-corner-item-list-cart'">
+		[className]="item.outOfStock? 'out-of-stock white-rounded-corner-item-list-cart' : 'white-rounded-corner-item-list-cart'">
 		<div class="d-flex align-items-center">
-			<check-box-round [checked]="!item.outOfStock"
+			<check-box-round [checked]="shouldSelectItem(item.outOfStock, item.selected)"
+				(click)="item.selected = !item.selected"
 				[allowChanges]="!item.outOfStock"></check-box-round>
 			<wsh wide="10px"></wsh>
 			<cart-item-list></cart-item-list>
