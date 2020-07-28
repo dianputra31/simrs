@@ -30,9 +30,22 @@
 	cursor: pointer;
 }
 
-#item-list-name :hover {
+.redirectdetailnot{
+	cursor: default;
+}
+
+.redirectdetail :hover{
 	text-decoration: underline;
 }
+
+.redirectdetailnot :hover{
+	text-decoration: none;
+}
+
+
+// #item-list-name :hover {
+// 	text-decoration: underline;
+// }
 
 #item-list-price {
 	font-family: $primary-font;

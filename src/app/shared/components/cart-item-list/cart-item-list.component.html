@@ -3,14 +3,16 @@
 	<div id="item-image">
 		<img src="{{items.itemImage}}"
 			id="item-image"
+			[ngClass]="classObj"
 			(click)="goToDetail()"
-			class="redirectdetail">
+			class="{{styles}}">
 	</div>
 
 	<div class="flex-grow-1">
-		<div id="item-list-name">
+		<div id="item-list-name"
+			class="{{styles}}">
 			<a (click)="goToDetail()"
-				class="redirectdetail">{{items.itemName}}</a></div>
+				class="{{styles}}">{{items.itemName}}</a></div>
 		<wsv wide="6px"></wsv>
 		<div id="item-list-price">{{items.itemPrice}}</div>
 		<wsv wide="12px"></wsv>
