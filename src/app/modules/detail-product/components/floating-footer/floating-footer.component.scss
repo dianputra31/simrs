@@ -1,49 +1,105 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
-#float-foot{
+#float-foot {
 	position: fixed;
 	bottom: 0%;
-	float: left;
 	width: 100%;
-	height: 88px;	
 	background: $color-primary;
 	box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.1);
-	clear: both;
-    margin-top: 0px;
 }
 
-#review-foot{
-	position: relative;
-	float: left;
-	left: 8%;
-	font-style: normal;
-	font-weight: 500;
-	font-size: 18px;
+#float-foot-wrapper {
+	height: 71px;
+}
+
+#review-foot {
 	font-family: $primary-font;
-	color: $putih-tok;
-	width: 45%;
-	padding-top:5px;
-}
-
-#amount-foot{
-	position: relative;
-	float: right;
-	padding-right: 10%;
-	font-style: normal;
 	font-weight: bold;
-	font-family: $primary-font;
+	font-size: 18px;
+
 	color: $putih-tok;
+}
+
+#total-foot-label {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 14px;
 	text-align: right;
+	color: $putih-tok;
+}
+
+#total-foot {
+	font-family: $primary-font;
 	font-weight: bold;
 	font-size: 20px;
-	line-height: 27px;padding-top:5px;
+
+	color: $putih-tok;
 }
 
-.right-top-footer{
-	margin-top:-10px;position:relative;font-size: 14px;line-height: 19px;padding-top:5px;
+#tambahkan-button {
+	background: $putih-tok;
+	border: 0.796127px solid rgba(96, 96, 96, 0.3);
+	box-sizing: border-box;
+	border-radius: 7.96127px;
+	width: 165.33px;
+	height: 32.1px;
 }
 
-.right-bottom-footer{
-	margin-top:-5px;position:relative;
+#cart-logo {
+	height: 22px;
+	width: 24.8px;
+}
+
+#tambahkan-label {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 12.738px;
+	line-height: 17px;
+	color: $color-primary;
+}
+
+#tambahkan-button {
+	cursor: pointer;
+}
+
+#keranjang-label {
+	font-family: $secondary-font;
+	font-weight: bolder;
+	font-size: 16px;
+}
+
+#lihat-keranjang-label {
+	font-family: $secondary-font;
+	font-weight: bold;
+	font-size: 16px;
+	width: 130px;
+	height: 32px;
+	background: $color-primary;
+	color: #dedede;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	padding-top: 5px;
+}
+
+.notif-container {
+	width: 350px;
+}
+
+#notif-inner-container {
+	margin-top: 13px;
+	padding-left: 4px;
+	padding-top: 7px;
+	padding-bottom: 10px;
+	padding-right: 12px;
+	width: 350px;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	background-color: #ffffff;
+}
+
+#notif-img {
+	width: 56px;
+	height: 56px;
+	overflow: hidden;
 }
