@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
 })
 export class BoxCartPriceComponent implements OnInit {
 	@Input() buttonLabel: string;
-	constructor(private router: Router) { }
+	constructor(private router: Router) {}
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
 
 	clickButtonLabel() {
+		console.log('Selanjutnya');
 		if (this.buttonLabel == 'Selanjutnya') {
 			this.router.navigate(['./request-approval']);
 		} else if (this.buttonLabel == 'Request Approval') {
