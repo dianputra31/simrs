@@ -79,6 +79,8 @@
 	color: $putih-tok;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 	border-radius: 8px;
+	cursor: pointer;
+	pointer-events: all;
 }
 
 #notif-inner-container {
