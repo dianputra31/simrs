@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
+import { PopUpRequestApprovalComponent } from './components/pop-up-request-approval/pop-up-request-approval.component';
 
 @NgModule({
 	declarations: [
@@ -36,6 +37,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CheckBoxRoundComponent,
 		QtyCtrlComponent,
 		CartItemListComponent,
+		PopUpRequestApprovalComponent,
 
 	],
 	imports: [CommonModule, FormsModule],

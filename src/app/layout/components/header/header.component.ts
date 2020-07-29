@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
+
+
 
 @Component({
 	selector: 'app-header',
@@ -11,6 +15,7 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 	constructor(
+		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router
 	) { }
@@ -39,12 +44,42 @@ export class HeaderComponent implements OnInit {
 		console.log('hello');
 	}
 
+	openDialogLocation(des) {
+
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = "modal-component";
+		dialogConfig.height = "auto";
+		dialogConfig.width = "477px";
+		dialogConfig.height = "155px";
+		dialogConfig.panelClass = "border-radius:20px";
+		dialogConfig.data = {
+			'pageBefore': this.router.url,
+			'pageDestination': des,
+			'modePopUp': '0'
+		}
+		const modalDialog = this.dialog.open(PopUpRequestApprovalComponent, dialogConfig);
+		return false;
+
+	}
+
 	backToHome() {
-		this.router.navigate(['./']);
+		if (this.router.url == '/request-approval') {
+			this.openDialogLocation('./');
+		} else {
+			this.router.navigate(['./']);
+		}
+
 	}
 
 	goToCart() {
-		this.router.navigate(['./cart']);
+
+		if (this.router.url == '/request-approval') {
+			this.openDialogLocation('./cart');
+		} else {
+			this.router.navigate(['./cart']);
+		}
+
 	}
 
 

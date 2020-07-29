@@ -16,10 +16,10 @@ export class RequestApprovalLayoutComponent implements OnInit {
 	constructor(private router: Router) {
 		this.subscription = router.events.subscribe((event) => {
 			if (event instanceof NavigationStart) {
-				console.log("here");
+				// console.log("here");
 				// browserRefresh = !router.navigated;
 			} else {
-				console.log("horas");
+				// console.log("horas");
 			}
 		});
 	}
