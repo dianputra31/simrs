@@ -1,9 +1,16 @@
-<div id="breadcrumb-nest">Home
-	<img src="../../../../../assets/image/icons/arrow.svg"
-		class="arrow-breadcrumb"> Fashion Pria
-	<img src="../../../../../assets/image/icons/arrow.svg"
-		class="arrow-breadcrumb"> Outer Pria
+<div id="breadcrumb-nest">
+	<a class="breadcrumb-link"
+		[routerLink]="['../']">Home</a>
 	<img src="../../../../../assets/image/icons/arrow.svg"
 		class="arrow-breadcrumb">
-	<font class="th-produk">Sweater Pria</font>
+	<a class="breadcrumb-link"
+		[routerLink]="['../pilih-produk']">Fashion Pria</a>
+	<img src="../../../../../assets/image/icons/arrow.svg"
+		class="arrow-breadcrumb">
+	<a class="breadcrumb-link"
+		[routerLink]="['../pilih-produk']">Outer Pria</a>
+	<img src="../../../../../assets/image/icons/arrow.svg"
+		class="arrow-breadcrumb">
+	<font class="th-produk">
+		<a class="breadcrumb-link">Sweater Pria</a></font>
 </div>

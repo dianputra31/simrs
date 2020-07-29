@@ -10,6 +10,17 @@
 	color: $abu-abu-sesuatu;
 }
 
+.breadcrumb-link {
+	cursor: pointer;
+}
+
+a[ng-reflect-router-link] {
+	color: $abu-abu-sesuatu;
+	font-weight: normal;
+}
+
+
+
 .arrow-breadcrumb {
 	margin-left: 12px;
 	margin-right: 12px;
