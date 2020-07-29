@@ -72,3 +72,18 @@ input[type='number']::-webkit-outer-spin-button {
 	z-index: 1200;
 	color: #ffffff;
 }
+
+.kanan-atas {
+	top: 72px !important;
+	width: 100%;
+	max-width: 2000px;
+	height: 180px;
+	left: 0;
+	right: 0;
+	background: transparent;
+	position: fixed;
+	border: none;
+	box-shadow: none;
+	pointer-events: none;
+	backdrop-filter: blur(0px);
+}

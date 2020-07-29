@@ -8,7 +8,7 @@ import { ToastService } from './toast-service';
 			*ngFor="let toast of toastService.toasts"
 			[class]="toast.classname"
 			[autohide]="true"
-			[delay]="6000"
+			[delay]="50000"
 			(hide)="toastService.remove(toast)"
 		>
 			<ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
