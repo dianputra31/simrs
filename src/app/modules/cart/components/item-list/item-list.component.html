@@ -13,19 +13,19 @@
 				(click)="item.selected = !item.selected"
 				[allowChanges]="!item.outOfStock"></check-box-round>
 			<wsh wide="10px"></wsh>
-			<cart-item-list redirLink="1"></cart-item-list>
+			<cart-item-list redirLink="1">
+				<div class="d-flex align-items-center">
+					<qty-ctrl notif="false"
+						[allowChanges]="!item.outOfStock"></qty-ctrl>
+					<wsh wide="250px"></wsh>
+					<img id="trash-can"
+						src="../../../../../assets/image/icons/trash_can.png"
+						(click)="deleteItem(dangerTpl)" />
+				</div>
+			</cart-item-list>
 		</div>
 		<wsv wide="16px"></wsv>
-		<div class="d-flex align-items-center">
-			<wsh wide="220px"></wsh>
 
-			<qty-ctrl notif="false"
-				[allowChanges]="!item.outOfStock"></qty-ctrl>
-			<wsh wide="250px"></wsh>
-			<img id="trash-can"
-				src="../../../../../assets/image/icons/trash_can.png"
-				(click)="deleteItem(dangerTpl)" />
-		</div>
 	</div>
 	<wsv wide="24px"></wsv>
 </div>
