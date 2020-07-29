@@ -8,7 +8,7 @@
 	font-size: 14px;
 	line-height: 16px;
 	text-align: center;
-	color: #5F5F5F;
+	color: $abu-abu-gelap-terang;
 }
 
 #popup-option{
@@ -21,27 +21,40 @@
 
 .divbutton-left{
 	float:center;position: relative;width: 85%;
-			background-color: #A9A9A9;
+			background-color: $abu-abu-sesuatu;
 			border-radius: 8px;font-style: normal;
 			font-weight: bold;
 			font-size: 14px;
 			line-height: 16px;
 			display: flex;
 			align-items: center;padding-left:40px;
-			text-align: center;cursor: pointer;color: #FFFFFF;height:32px;
+			text-align: center;cursor: pointer;color: $putih-tok;height:32px;
 			font-family: $secondary-font;
 }
 
 .divbutton-right{
 	float:center;position: relative;width: 85%;
-			background-color: #DB0A2A;
+			background-color: $color-primary;
 			border-radius: 8px;font-style: normal;
 			font-weight: bold;
 			font-size: 14px;
 			line-height: 16px;
 			display: flex;
 			align-items: center;padding-left:40px;
-			text-align: center;cursor: pointer;color: #FFFFFF;height:32px;
+			text-align: center;cursor: pointer;color: $putih-tok;height:32px;
+			font-family: $secondary-font;
+}
+
+.divbutton-center{
+	float:center;position: relative;width: 25%;
+			background-color: $color-primary;
+			border-radius: 8px;font-style: normal;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 16px;
+			display: flex;
+			align-items: center;padding-left:40px;
+			text-align: center;cursor: pointer;color: $putih-tok;height:32px;
 			font-family: $secondary-font;
 }
 
