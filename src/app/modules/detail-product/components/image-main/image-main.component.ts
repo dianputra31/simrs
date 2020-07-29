@@ -43,7 +43,7 @@ export class ImageMainComponent implements OnInit {
 	}
 
 	changeImageMain($event) {
-		console.log($event)
+		//console.log($event)
 		this.imageMainSelected = $event;
 	}
 }
