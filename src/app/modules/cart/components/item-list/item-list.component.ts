@@ -19,6 +19,9 @@ export class ItemListComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.apakahSemuaItemTerpilih();
+
+		this.pilihSemuaStatus = false;
+		this.pilihSemuaEventHandler();
 		console.log(this.pilihSemuaStatus);
 	}
 
