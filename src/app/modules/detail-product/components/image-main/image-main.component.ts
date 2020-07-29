@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-//import { DialogAddressSectionComponent } from '../dialog-address-section/dialog-address-section.component';
+import { DialogPopupImageComponent } from '../../../../shared/components/dialog-popup-image/dialog-popup-image.component';
 
 @Component({
 	selector: 'image-main',
@@ -21,18 +21,20 @@ export class ImageMainComponent implements OnInit {
 
 	stylesObj = {};
 
-	openDialogLocation() {
-
+	openDialogImage(imageMainSelected) {
+		this.imageMainSelected = imageMainSelected
+		console.log(this.imageMainSelected);
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
 		dialogConfig.id = "modal-component";
 		dialogConfig.height = "auto";
-		dialogConfig.width = "680px";
-		dialogConfig.panelClass = "border-radius:20px";
+		dialogConfig.width = "330px";
+		//dialogConfig.panelClass = "border-radius:0px";
 		dialogConfig.data = {
-			'searchId': 'hello'
+			//'images': { 'https://s2.bukalapak.com/img/24267287201/large/Cottonology_Wells_Black.jpg', 'https://s4.bukalapak.com/img/42609287201/large/Cottonology_Wells_Black.jpg', 'https://s3.bukalapak.com/img/81978287201/large/Cottonology_Wells_Black.jpg', 'https://s1.bukalapak.com/img/63918119411/large/Cottonology_Wells_Black.jpg'},
+			'imageMainSelected': this.imageMainSelected,
 		}
-		//const modalDialog = this.dialog.open(DialogAddressSectionComponent, dialogConfig);
+		const modalDialog = this.dialog.open(DialogPopupImageComponent, dialogConfig);
 
 
 	}
