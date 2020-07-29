@@ -40,7 +40,7 @@ export class CartItemListComponent implements OnInit {
 	goToDetail() {
 
 
-		if (this.redirlink = true) {
+		if (this.redirlink) {
 			this.router.navigate([]).then(result => { window.open('./detail-product', '_blank') });
 		} else {
 			console.log('unclickable');
