@@ -13,7 +13,7 @@ export class CartItemListComponent implements OnInit {
 	styles;
 	classObj = {};
 
-	@Input() redirLink: string;
+	@Input() redirlink: boolean = false;
 
 	constructor(
 		private router: Router,
@@ -22,7 +22,7 @@ export class CartItemListComponent implements OnInit {
 
 
 	ngOnInit(): void {
-		if (this.redirLink == '1') this.styles = "redirectdetail"; else this.styles = "redirectdetailnot";
+		if (this.redirlink) this.styles = "redirectdetail"; else this.styles = "redirectdetailnot";
 
 		this.items = {
 			itemImage:
@@ -40,7 +40,7 @@ export class CartItemListComponent implements OnInit {
 	goToDetail() {
 
 
-		if (this.redirLink == '1') {
+		if (this.redirlink = true) {
 			this.router.navigate([]).then(result => { window.open('./detail-product', '_blank') });
 		} else {
 			console.log('unclickable');

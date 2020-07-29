@@ -13,7 +13,8 @@
 				(click)="item.selected = !item.selected"
 				[allowChanges]="!item.outOfStock"></check-box-round>
 			<wsh wide="10px"></wsh>
-			<cart-item-list redirLink="1">
+
+			<cart-item-list [redirlink]="true">
 				<div class="d-flex align-items-center">
 					<qty-ctrl notif="false"
 						[allowChanges]="!item.outOfStock"></qty-ctrl>

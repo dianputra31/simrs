@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+//import { DialogAddressSectionComponent } from '../dialog-address-section/dialog-address-section.component';
 
 @Component({
 	selector: 'image-main',
@@ -6,7 +8,33 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./image-main.component.scss'],
 })
 export class ImageMainComponent implements OnInit {
-	constructor() {}
+	@Input() wide: number;
+	@Input() margin: number;
+	@Input() pl: number;
+	@Input() borderRadius: number;
 
-	ngOnInit(): void {}
+	constructor(public dialog: MatDialog) { }
+
+	stylesObj = {};
+
+	openDialogLocation() {
+
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = "modal-component";
+		dialogConfig.height = "auto";
+		dialogConfig.width = "680px";
+		dialogConfig.panelClass = "border-radius:20px";
+		dialogConfig.data = {
+			'searchId': 'hello'
+		}
+		//const modalDialog = this.dialog.open(DialogAddressSectionComponent, dialogConfig);
+
+
+	}
+
+	ngOnInit(): void {
+
+		this.stylesObj = { width: this.wide, margin: this.margin, paddingLeft: this.pl, borderRadius: this.borderRadius };
+	}
 }
