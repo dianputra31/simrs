@@ -1,20 +1,34 @@
-<div class="container">
-	<wsv wide="53px"></wsv>
-	<div id="keranjang-label">KERANJANG</div>
-	<!--<cart-empty></cart-empty>-->
-	<wsv wide="10px"></wsv>
-	<address-section wide="50%"
-		borderRadius='20px'
-		margin="0px">
-	</address-section>
-	<wsv wide="35px"></wsv>
-	<div class="d-flex justify-content-between">
-		<item-list></item-list>
-		<div>
-			<wsv wide="40px"></wsv>
-			<box-cart-price buttonLabel="Selanjutnya"></box-cart-price>
+<div class="container d-flex">
+	<div id="left-container">
+		<div id="top-fixed"
+			class="bg-10">
+			<div id="keranjang-label">KERANJANG</div>
+			<wsv wide="10px"></wsv>
+			<address-section wide="596px"
+				borderRadius='20px'
+				margin="0px">
+			</address-section>
+			<wsv wide="30px"></wsv>
+		</div>
+		<wsv wide="200px"></wsv>
+		<div id="poi">
+			<div id="asd">
+				<item-list></item-list>
+			</div>
 		</div>
 
 	</div>
+
+	<div id="right-container">
+		<wsv wide="200px"></wsv>
+		<div id="right-fixed">
+			<div class="d-flex">
+				<wsh wide="57px"></wsh>
+				<box-cart-price buttonLabel="Selanjutnya"></box-cart-price>
+			</div>
+
+		</div>
+	</div>
+
 
 </div>

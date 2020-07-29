@@ -1,26 +1,37 @@
 <div class="d-flex">
 	<wsh wide="15px"></wsh>
-	<pilih-semua></pilih-semua>
+	<pilih-semua (onPilihSemua)="pilihSemuaEventHandler()"
+		[semuaTerpilih]="apakahSemuaItemTerpilih()"></pilih-semua>
 </div>
 
 <wsv wide="16px"></wsv>
 <div *ngFor="let item of items">
 	<div
-		[className]="item.outOfStock? 'white-rounded-corner-item-list-cart out-of-stock' : 'white-rounded-corner-item-list-cart'">
+		[className]="item.outOfStock? 'out-of-stock white-rounded-corner-item-list-cart' : 'white-rounded-corner-item-list-cart'">
 		<div class="d-flex align-items-center">
-			<check-box-round [checked]="!item.outOfStock"
+			<check-box-round [checked]="shouldSelectItem(item.outOfStock, item.selected)"
+				(click)="item.selected = !item.selected"
 				[allowChanges]="!item.outOfStock"></check-box-round>
-			<wsh wide="16px"></wsh>
-			<cart-item-list></cart-item-list>
+			<wsh wide="10px"></wsh>
+			<cart-item-list redirLink="1"></cart-item-list>
 		</div>
+		<wsv wide="16px"></wsv>
 		<div class="d-flex align-items-center">
-			<wsh wide="235px"></wsh>
+			<wsh wide="220px"></wsh>
+
 			<qty-ctrl notif="false"
 				[allowChanges]="!item.outOfStock"></qty-ctrl>
 			<wsh wide="250px"></wsh>
 			<img id="trash-can"
-				src="../../../../../assets/image/icons/trash_can.png" />
+				src="../../../../../assets/image/icons/trash_can.png"
+				(click)="deleteItem(dangerTpl)" />
 		</div>
 	</div>
 	<wsv wide="24px"></wsv>
 </div>
+
+<ng-template #dangerTpl>
+	<div class="d-flex align-self-center justify-content-center">
+		<div id="item-telah-dihapus">Item telah dihapus</div>
+	</div>
+</ng-template>

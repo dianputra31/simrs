@@ -1,6 +1,7 @@
 <div class="d-flex align-items-center">
-	<check-box-round checked="true"
-		allowChanges="true"></check-box-round>
+	<check-box-round [checked]="semuaTerpilih"
+		allowChanges="true"
+		(click)="pilihSemua()"></check-box-round>
 	<wsh wide="12px"></wsh>
 	<div id="pilih-semua-label">Pilih Semua</div>
 

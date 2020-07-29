@@ -10,7 +10,6 @@ export class CheckBoxRoundComponent implements OnInit {
 	@Input() allowChanges: boolean;
 
 	clicked() {
-		console.log(this.allowChanges);
 		if (this.allowChanges) {
 			this.checked = !this.checked;
 		}

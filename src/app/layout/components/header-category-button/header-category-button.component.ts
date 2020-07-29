@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BaseService } from '../../../core/base-service/service/base.service';
+import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 import { CatalogRespModel } from '../../_model/catalog-response.model';
 import { CategoryRespModel } from '../../_model/category-response.model';
 
@@ -27,7 +29,28 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		'Jogger Pants',
 	];
 
-	constructor(private router: Router, private service: BaseService) {}
+	constructor(private router: Router, private service: BaseService,
+		public dialog: MatDialog,
+		private route: ActivatedRoute,) { }
+
+	openDialogLocation(des) {
+
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = "modal-component";
+		dialogConfig.height = "auto";
+		dialogConfig.width = "477px";
+		dialogConfig.height = "155px";
+		dialogConfig.panelClass = "border-radius:20px";
+		dialogConfig.data = {
+			'pageBefore': this.router.url,
+			'pageDestination': des,
+			'modePopUp': '0'
+		}
+		const modalDialog = this.dialog.open(PopUpRequestApprovalComponent, dialogConfig);
+		return false;
+
+	}
 
 	ngOnInit() {
 		this.subsribers = [];
@@ -36,6 +59,15 @@ export class HeaderCategoryButtonComponent implements OnInit {
 
 	ngOnDestroy() {
 		this.subsribers.forEach((each) => each.unsubscribe);
+	}
+
+	goesToSub(sub) {
+		if (this.router.url == '/request-approval') {
+			this.openDialogLocation('/pilih-produk');
+		} else {
+			this.router.navigate(['/pilih-produk']);
+		}
+
 	}
 
 	getCatalog() {

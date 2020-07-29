@@ -10,6 +10,7 @@
 
 .out-of-stock {
 	background: rgba(255, 255, 255, 0.6);
+	background-blend-mode: soft-light;
 	mix-blend-mode: screen;
 }
 
@@ -24,4 +25,13 @@
 #trash-can {
 	width: 21px;
 	height: 20.76px;
+}
+
+#item-telah-dihapus {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+
+	color: #ffffff;
 }

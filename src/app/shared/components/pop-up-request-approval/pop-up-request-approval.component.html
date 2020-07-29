@@ -1,0 +1,36 @@
+<div *ngIf="modalData.modePopUp=='0'; then pindah else sukses"></div>
+
+<ng-template #pindah>
+	<div id="popup-wording">
+		<p>Yakin ingin keluar dari Halaman ini?</p>
+	</div>
+	<div id="popup-option">
+		<div id="popup-option-button">
+			<div align="center">
+
+				<div class="divbutton-left"
+					(click)="goesToPage(modalData.pageDestination)">Keluar Halaman</div>
+			</div>
+		</div>
+		<div id="popup-option-button">
+			<div align="center">
+				<div class="divbutton-right"
+					(click)="goesToPage(modalData.pageOrigin)">Request Approval</div>
+			</div>
+		</div>
+	</div>
+</ng-template>
+
+<ng-template #sukses>
+	<div id="popup-wording">
+		<p>Request Approval Berhasil</p>
+	</div>
+	<div id="popup-option">
+		<div id="popup-option-button-all">
+			<div align="center">
+				<div class="divbutton-center"
+					(click)="goesToPage(modalData.pageDestination)">Ok</div>
+			</div>
+		</div>
+	</div>
+</ng-template>

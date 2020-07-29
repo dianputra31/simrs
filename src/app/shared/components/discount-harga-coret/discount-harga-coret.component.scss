@@ -2,15 +2,20 @@
 @import '../../../../styles/variables/fonts';
 
 #percent-label {
-	color: $color-primary;
-	font-family: $secondary-font;
-	font-size: 14px;
 	background: rgba(241, 38, 39, 0.2);
 	border-radius: 4px;
-	padding-top: 4px;
-	padding-left: 4.5px;
-	padding-right: 4.5px;
-	padding-bottom: 2px;
+
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	text-align: center;
+	font-feature-settings: 'kern' off;
+
+	color: $color-primary;
+
+	padding: 3.3px;
 }
 
 #harga-coret {
@@ -25,8 +30,8 @@
 
 #harga-sesudah-diskon {
 	font-family: $secondary-font;
-	font-weight: bold;
-	font-size: 24px;
+	font-weight: bolder;
+	font-size: 16px;
 
 	color: $abu-abu-gelap;
 }
