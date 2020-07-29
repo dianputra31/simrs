@@ -72,18 +72,15 @@
 #lihat-keranjang-label {
 	font-family: $secondary-font;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 12px;
 	width: 130px;
 	height: 32px;
 	background: $color-primary;
-	color: #dedede;
+	color: $putih-tok;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 	border-radius: 8px;
-	padding-top: 5px;
-}
-
-.notif-container {
-	width: 350px;
+	cursor: pointer;
+	pointer-events: all;
 }
 
 #notif-inner-container {
@@ -102,4 +99,31 @@
 	width: 56px;
 	height: 56px;
 	overflow: hidden;
+}
+
+#wrapper-notification {
+	height: 100px;
+	pointer-events: none;
+}
+
+#wrapper-inner-notification {
+	width: 400px;
+	max-height: 345px;
+	background: #fdfdfd;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+	border-radius: 0px 0px 8px 8px;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#rounded-inner-notif {
+	background: #ffffff;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	padding-left: 4px;
+	padding-right: 12px;
+	padding-top: 10px;
+	padding-bottom: 5px;
 }

@@ -16,7 +16,7 @@
 					src="../../../../../assets/image/icons/add_to_cart_red.png">
 				<wsh wide="4px"></wsh>
 				<div id="tambahkan-label"
-					(click)="tambahkanKeKeranjang()">Tambahkan</div>
+					(click)="tambahkanKeKeranjang(dangerTpl)">Tambahkan</div>
 			</div>
 		</div>
 
@@ -26,22 +26,37 @@
 </div>
 
 <ng-template #dangerTpl>
-	<div class="d-flex notif-container justify-content-between align-self-center">
-		<div id="keranjang-label">Keranjang</div>
-		<div id="lihat-keranjang-label"
-			class="text-center">Lihat Keranjang</div>
-	</div>
-	<div id="notif-inner-container">
-		<div class="d-flex justify-content-between align-items-center">
-			<div class="d-flex align-items-center">
-				<img src="https://id.360buyimg.com/Indonesia/s880x0_/nHBfsgAAJAAAAB0AD6waZQACy0M.jpg.dpg.webp"
-					id="notif-img">
-				<div>
-					<div id="item-name">Sweater Merah Pria</div>
-					<div>2 Barang (300gr)</div>
+	<div id="wrapper-notification"
+		class="d-flex container justify-content-end">
+		<div>
+			<wsv wide="9px"></wsv>
+			<div id="wrapper-inner-notification">
+				<div class="d-flex justify-content-between align-self-center">
+					<div id="keranjang-label">Keranjang</div>
+					<div id="lihat-keranjang-label"
+						class="d-flex justify-content-center align-items-center"
+						(click)="pergiKeKeranjang()">Lihat Keranjang</div>
 				</div>
+				<wsv wide="13px"></wsv>
+
+				<div id="rounded-inner-notif"
+					class="d-flex justify-content-between align-items-center">
+					<div class="d-flex align-items-center">
+						<img src="https://id.360buyimg.com/Indonesia/s880x0_/nHBfsgAAJAAAAB0AD6waZQACy0M.jpg.dpg.webp"
+							id="notif-img">
+						<div>
+							<div id="item-name">Sweater Merah Pria</div>
+							<div>2 Barang (300gr)</div>
+						</div>
+					</div>
+					<div id="item-price">Rp359.000</div>
+				</div>
+
 			</div>
-			<div id="item-price">Rp359.000</div>
+
 		</div>
+
 	</div>
+
+
 </ng-template>

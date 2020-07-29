@@ -12,7 +12,23 @@ export class FloatingFooterComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	tambahkanKeKeranjang() {
+	ngOnDestroy() {
+		this.toastService.removeAll();
+	}
+
+	tambahkanKeKeranjang(dangerTpl) {
+		this.showDanger(dangerTpl);
+	}
+
+	showDanger(dangerTpl) {
+		this.toastService.removeAll();
+		this.toastService.show(dangerTpl, {
+			delay: 5000,
+			classname: 'kanan-atas',
+		});
+	}
+
+	pergiKeKeranjang() {
 		this.router.navigate(['./cart']);
 	}
 }
