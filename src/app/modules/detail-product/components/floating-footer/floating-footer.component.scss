@@ -72,14 +72,13 @@
 #lihat-keranjang-label {
 	font-family: $secondary-font;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 12px;
 	width: 130px;
 	height: 32px;
 	background: $color-primary;
-	color: #dedede;
+	color: $putih-tok;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 	border-radius: 8px;
-	padding-top: 5px;
 }
 
 #notif-inner-container {
