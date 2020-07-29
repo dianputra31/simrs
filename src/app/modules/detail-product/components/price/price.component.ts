@@ -8,7 +8,7 @@ import { ToastService } from '../../../../shared/toast/toast-service';
 })
 export class PriceComponent implements OnInit {
 	qty = 0;
-	constructor(public toastService: ToastService) {}
+	constructor(public toastService: ToastService) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 }

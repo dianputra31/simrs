@@ -3,10 +3,10 @@
 		[ngStyle]="stylesObj"
 		(click)="openDialogLocation()">
 		<img id="detail-main-image"
-			src="https://s2.bukalapak.com/img/24267287201/large/Cottonology_Wells_Black.jpg">
+			src={{imageMainSelected}}>
 	</div>
 	<wsv wide="10px"></wsv>
 	<div id="image-grid">
-		<image-grid></image-grid>
+		<image-grid (changeImageEvent)="changeImageMain($event)"></image-grid>
 	</div>
 </div>

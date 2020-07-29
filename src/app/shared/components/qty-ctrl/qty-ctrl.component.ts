@@ -11,9 +11,9 @@ export class QtyCtrlComponent implements OnInit {
 	@Input() allowChanges: boolean;
 
 	qty = 0;
-	constructor(public toastService: ToastService) {}
+	constructor(public toastService: ToastService) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	removeFromCart(dangerTpl) {
 		if (this.allowChanges) {

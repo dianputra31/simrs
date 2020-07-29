@@ -13,6 +13,10 @@ export class ImageMainComponent implements OnInit {
 	@Input() pl: number;
 	@Input() borderRadius: number;
 
+
+
+	imageMainSelected = 'https://s2.bukalapak.com/img/24267287201/large/Cottonology_Wells_Black.jpg';
+
 	constructor(public dialog: MatDialog) { }
 
 	stylesObj = {};
@@ -36,5 +40,10 @@ export class ImageMainComponent implements OnInit {
 	ngOnInit(): void {
 
 		this.stylesObj = { width: this.wide, margin: this.margin, paddingLeft: this.pl, borderRadius: this.borderRadius };
+	}
+
+	changeImageMain($event) {
+		//console.log($event)
+		this.imageMainSelected = $event;
 	}
 }

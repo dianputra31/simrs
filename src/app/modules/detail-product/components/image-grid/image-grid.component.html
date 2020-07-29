@@ -2,7 +2,7 @@
 	<div *ngFor="let image of imageSelections">
 		<div class="d-flex align-items-center">
 			<div [ngClass]="(selectedImage==image)?'div-grid-selected':'div-grid-selection'"
-				(click)="selectedImage = image">
+				(click)="changeImage(image)">
 				<img id="detail-main-image"
 					src="{{image}}"
 					class='image-grid'>
