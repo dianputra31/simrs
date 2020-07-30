@@ -13,9 +13,14 @@
 		</div>
 		<wsv wide="190px"></wsv>
 
-		<pilih-semua [items]="items"
-			(onPilihSemua)="pilihSemuaEventHandler($event)"></pilih-semua>
+		<div class="d-flex">
+			<wsh wide="13px"></wsh>
+			<pilih-semua [items]="items"
+				(onPilihSemua)="pilihSemuaEventHandler($event)"></pilih-semua>
+		</div>
 		<item-list [items]="items"></item-list>
+
+
 	</div>
 
 	<div id="right-container">
