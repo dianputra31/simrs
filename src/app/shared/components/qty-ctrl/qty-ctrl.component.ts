@@ -10,42 +10,39 @@ export class QtyCtrlComponent implements OnInit {
 	@Input() notif: string;
 	@Input() allowChanges: boolean;
 
-	qty = 0;
-	constructor(public toastService: ToastService) { }
+	qty = 1;
+	constructor(public toastService: ToastService) {}
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
 
-	removeFromCart(dangerTpl) {
+	removeFromCart() {
 		if (this.allowChanges) {
-			if (this.qty != 0) {
+			if (this.qty != 1) {
 				this.qty--;
-				this.showDanger(dangerTpl);
 			}
-		}
-	}
-
-	showDanger(dangerTpl) {
-		if (this.notif === 'true') {
-			this.toastService.removeAll();
-			this.toastService.show(dangerTpl, {
-				delay: 15000,
-				classname: 'pojok-kanan-atas',
-			});
 		}
 	}
 
 	qtyChange() {
-		if (this.qty == null) {
-			this.qty = 0;
+		if (this.qty == null || this.qty < 1) {
+			this.qty = 1;
 		}
 	}
 
-	addToCart(dangerTpl) {
+	addToCart() {
 		if (this.allowChanges) {
 			if (this.qty != 999999) {
 				this.qty++;
-				this.showDanger(dangerTpl);
 			}
+		}
+	}
+
+	preventAlphabet(event: KeyboardEvent) {
+		const pattern = /[0-9]/;
+		const inputChar = String.fromCharCode(event.keyCode);
+
+		if (!pattern.test(inputChar)) {
+			event.preventDefault();
 		}
 	}
 }
