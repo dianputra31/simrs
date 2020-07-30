@@ -14,5 +14,6 @@ import { CartLayoutComponent } from './pages/cart-layout/cart-layout.component';
 		ItemListComponent,
 	],
 	imports: [CommonModule, CartRoutingModule, SharedModule],
+	providers: [{ provide: 'A', useValue: 'abcde' }],
 })
 export class CartModule {}

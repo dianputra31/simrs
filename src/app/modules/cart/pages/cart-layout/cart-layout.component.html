@@ -13,10 +13,9 @@
 		</div>
 		<wsv wide="190px"></wsv>
 
-		<item-list></item-list>
-
-
-
+		<pilih-semua [items]="items"
+			(onPilihSemua)="pilihSemuaEventHandler($event)"></pilih-semua>
+		<item-list [items]="items"></item-list>
 	</div>
 
 	<div id="right-container">
@@ -24,7 +23,8 @@
 		<div id="right-fixed">
 			<div class="d-flex">
 				<wsh wide="57px"></wsh>
-				<box-cart-price buttonLabel="Selanjutnya"></box-cart-price>
+				<box-cart-price buttonLabel="Selanjutnya"
+					[buttonDisable]="adaItemDipilih()"></box-cart-price>
 			</div>
 
 		</div>

@@ -6,14 +6,28 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 	styleUrls: ['./pilih-semua.component.scss'],
 })
 export class PilihSemuaComponent implements OnInit {
-	@Input() semuaTerpilih: boolean;
-	@Output() onPilihSemua = new EventEmitter();
+	@Output() onPilihSemua = new EventEmitter<boolean>();
+	@Input() items;
+	pilihSemuaStatus;
 
 	constructor() {}
 
 	ngOnInit(): void {}
 
 	pilihSemua() {
-		this.onPilihSemua.emit();
+		this.onPilihSemua.emit(this.pilihSemuaStatus);
+	}
+
+	apakahSemuaItemTerpilih() {
+		this.pilihSemuaStatus = true;
+		for (var index in this.items) {
+			var item = this.items[index];
+			if (!item.outOfStock) {
+				if (!item.selected) {
+					this.pilihSemuaStatus = false;
+				}
+			}
+		}
+		return this.pilihSemuaStatus;
 	}
 }

@@ -54,6 +54,6 @@
 	<wsv wide="19px"></wsv>
 
 	<button type="button"
-		class="btn btn-price-next"
+		[className]="buttonDisable ? 'btn btn-price-next' : 'btn btn-price-abu2'"
 		(click)="clickButtonLabel()">{{buttonLabel}}</button>
 </div>
