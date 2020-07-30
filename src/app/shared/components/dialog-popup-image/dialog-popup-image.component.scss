@@ -6,23 +6,10 @@
 	object-fit: scale-down;
 }
 
-   .konten-slider{
-	width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 9;
-   }
-  
-
-	.konten-btn-nav{
-	position: absolute;
-	z-index: 100;
-	top : 50%;
-	z-index: 11;
-	}
-
    .btn-nav{
 	width: 320px;
+	position: absolute;
+	top : 45%;
    }
    .btn-nav span {
       cursor: pointer;
