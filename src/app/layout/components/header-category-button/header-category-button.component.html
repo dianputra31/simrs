@@ -1,7 +1,8 @@
 <div ngbDropdown
 	#myDrop="ngbDropdown"
 	class="d-inline-block"
-	(mouseover)="myDrop.open();">
+	(mouseover)="myDrop.open();"
+	(mouseout)="myDrop.close();">
 	<div class="d-flex justify-content-center align-items-center"
 		ngbDropdownToggle>
 		<img id="headers-menubar"
