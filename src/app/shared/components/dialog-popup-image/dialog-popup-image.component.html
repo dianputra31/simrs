@@ -1,4 +1,16 @@
-<div class="d-flex justify-content-center">
+<div class="konten-btn-nav">
+	<div class="btn-nav d-flex justify-content-between">
+		<span class="btn_prev"><img (click)="eventNav('prev',imageMainSelected)"
+				class="buttonnp"
+				src="../../../../assets/image/icons/Ellipse 4.svg"></span>
+		<span class="btn_next"><img (click)="eventNav('next',imageMainSelected)"
+				class="buttonnp"
+				src="../../../../assets/image/icons/Ellipse 5.svg"></span>
+	</div>
+</div>
+
+
+<div class="konten-slider d-flex justify-content-center">
 	<img id="detail-main-image"
 		src={{imageMainSelected}}>
 </div>
