@@ -87,3 +87,7 @@ input[type='number']::-webkit-outer-spin-button {
 	pointer-events: none;
 	backdrop-filter: blur(0px);
 }
+
+.cdk-global-scrollblock {
+	position: static;
+}
