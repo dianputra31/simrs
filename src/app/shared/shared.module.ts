@@ -14,6 +14,7 @@ import { FooterBarComponent } from './components/footer-bar/footer-bar.component
 import { FooterCustomerSupportComponent } from './components/footer-customer-support/footer-customer-support.component';
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.component';
 import { PopUpRequestApprovalComponent } from './components/pop-up-request-approval/pop-up-request-approval.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
@@ -38,7 +39,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		QtyCtrlComponent,
 		CartItemListComponent,
 		PopUpRequestApprovalComponent,
-
+		PopUpDialogComponent,
 	],
 	imports: [CommonModule, FormsModule],
 	exports: [
@@ -58,7 +59,6 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CheckBoxRoundComponent,
 		QtyCtrlComponent,
 		CartItemListComponent,
-
 	],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -24,6 +24,10 @@ input[type='number']::-webkit-outer-spin-button {
 	margin: 0;
 }
 
+button:focus {
+	outline: 0;
+}
+
 .dropdown-toggle::after {
 	display: none;
 }
