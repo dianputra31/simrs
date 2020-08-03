@@ -14,6 +14,7 @@ export let browserRefresh = false;
 	styleUrls: ['./request-approval-layout.component.scss']
 })
 export class RequestApprovalLayoutComponent implements OnInit {
+
 	subscription: Subscription;
 
 
@@ -25,30 +26,14 @@ export class RequestApprovalLayoutComponent implements OnInit {
 
 		location.onPopState(() => {
 
-
+			history.pushState(null, null, window.location.pathname);
 			this.openDialogLocation('./cart');
 
-
-			// var r = confirm("You pressed a Back button! Are you sure?!");
-
-			// if (r == true) {
-			// 	history.back();
-			// 	console.log("Hiya hiya hiya hiya");
-			// } else {
-			// 	console.log("ora ora ora ora");
-			// }
 		})
 
-		/*
-		this.subscription = router.events.subscribe((event) => {
-			if (event instanceof NavigationStart) {
-				// console.log("here");
-				// browserRefresh = !router.navigated;
-			} 
-		});
-		*/
 
 	}
+
 
 
 	openDialogLocation(des) {
@@ -61,7 +46,7 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		dialogConfig.height = "155px";
 		dialogConfig.panelClass = "border-radius:20px";
 		dialogConfig.data = {
-			'pageBefore': this.router.url,
+			'pageBefore': './request-approval',
 			'pageDestination': des,
 			'modePopUp': '0'
 		}
@@ -71,6 +56,8 @@ export class RequestApprovalLayoutComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		console.log(window.location.pathname);
+		history.pushState(null, null, window.location.pathname);
 	}
 
 }
