@@ -1,6 +1,14 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
+#keranjang-label {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 24px;
+	color: $abu-abu-gelap;
+	margin-top: 25px;
+}
+
 #left-container {
 	position: relative;
 }
@@ -23,14 +31,6 @@
 #asd {
 	overflow: hidden;
 	/*overflow-y: scroll;*/
-}
-
-#keranjang-label {
-	font-family: $primary-font;
-	font-weight: bold;
-	font-size: 24px;
-	color: $abu-abu-gelap;
-	margin-top: 25px;
 }
 
 #scrollable-div {
