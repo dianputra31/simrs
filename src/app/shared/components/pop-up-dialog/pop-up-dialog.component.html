@@ -1,22 +1,15 @@
-<div *ngIf="modalData.modePopUp=='0'; then pindah else sukses"></div>
+<wsv wide="10px"></wsv>
 
-<ng-template #pindah>
-	<div id="popup-wording">
-		<p>Yakin ingin keluar dari Halaman ini?</p>
-	</div>
-	<div id="popup-option">
-		<div id="popup-option-button">
-			<div align="center">
 
-				<div class="divbutton-left"
-					(click)="ok()">Keluar Halaman</div>
-			</div>
-		</div>
-		<div id="popup-option-button">
-			<div align="center">
-				<div class="divbutton-right"
-					(click)="cancel()">Request Approval</div>
-			</div>
-		</div>
-	</div>
-</ng-template>
+<div id="popup-wording">
+	<p>Yakin ingin keluar dari Halaman ini?</p>
+</div>
+<wsv wide="30px"></wsv>
+<div id="popup-option"
+	class="d-flex justify-content-between">
+	<div id="ok-button"
+		(click)="ok()">Keluar Halaman</div>
+	<div id="cancel-button"
+		(click)="cancel()">Tetap Di Halaman Ini</div>
+
+</div>

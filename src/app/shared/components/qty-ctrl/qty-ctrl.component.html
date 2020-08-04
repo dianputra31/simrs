@@ -6,8 +6,15 @@
 		<object id="remove_cart_logo"
 			type="image/svg+xml"
 			data="../../../../../assets/image/icons/remove-logo.svg"
-			[className]="qty==1?'remove_cart_logo_disable':''"
+			[className]="sanitizedNumber(qty)==1?'remove_cart_logo_disable':''"
 			class="pointereventnone">
+			<style>
+				svg {
+					cursor: pointer;
+					pointer-events: none;
+				}
+
+			</style>
 		</object>
 	</a>
 
@@ -18,11 +25,11 @@
 			type="text"
 			[(ngModel)]="qty"
 			maxlength="6"
+			(input)="formatNumbersss()"
 			[attr.disabled]="allowChanges? null : ''"
 			(keypress)="preventAlphabet($event)"
 			(change)="qtyChange()">
 		<div id="horizontal-underline">
-
 		</div>
 	</div>
 

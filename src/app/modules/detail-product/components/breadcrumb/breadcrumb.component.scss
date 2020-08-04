@@ -19,7 +19,9 @@ a[ng-reflect-router-link] {
 	font-weight: normal;
 }
 
-
+.breadcrumb-link:focus {
+	outline: 0;
+}
 
 .arrow-breadcrumb {
 	margin-left: 12px;
