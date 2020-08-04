@@ -16,11 +16,17 @@
 	<wsv wide="30px"></wsv>
 	<div class="d-flex align-items-center">
 		<div class="flex-grow-1 d-flex ">
-			<filter-dropdown class="flex-fill"></filter-dropdown>
+			<filter-dropdown class="flex-even"></filter-dropdown>
 			<wsh wide="24px"></wsh>
-			<filter-dropdown class="flex-fill"></filter-dropdown>
+			<filter-input class="flex-even"
+				hint="Cari Pesanan"
+				logo="../../../../assets/image/icons/searchbutton.png"
+				[disabled]="false"></filter-input>
 			<wsh wide="24px"></wsh>
-			<filter-dropdown class="flex-fill"></filter-dropdown>
+			<filter-input class="flex-even"
+				hint="Tanggal"
+				[disabled]="true"
+				logo="../../../../assets/image/icons/calendar_icon.png"></filter-input>
 		</div>
 		<wsh wide="24px"></wsh>
 

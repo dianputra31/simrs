@@ -10,6 +10,7 @@ import { CheckBoxRoundComponent } from './components/check-box-round/check-box-r
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
 import { EmailButtonComponent } from './components/email-button/email-button.component';
+import { FilterInputComponent } from './components/filter-input/filter-input.component';
 import { FooterBarComponent } from './components/footer-bar/footer-bar.component';
 import { FooterCustomerSupportComponent } from './components/footer-customer-support/footer-customer-support.component';
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
@@ -40,6 +41,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CartItemListComponent,
 		PopUpRequestApprovalComponent,
 		PopUpDialogComponent,
+		FilterInputComponent,
 	],
 	imports: [CommonModule, FormsModule],
 	exports: [
@@ -59,6 +61,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CheckBoxRoundComponent,
 		QtyCtrlComponent,
 		CartItemListComponent,
+		FilterInputComponent,
 	],
 })
 export class SharedModule {}
