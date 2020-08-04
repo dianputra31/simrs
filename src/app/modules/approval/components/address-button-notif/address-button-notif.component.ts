@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'address-button-notif',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./address-button-notif.component.scss']
 })
 export class AddressButtonNotifComponent implements OnInit {
-	qty = 111;
+	@Input() selected: string;
+	selectedopt;
+
 	listApprovals = [
 		{
 			name: 'Kantor Pusat',
@@ -34,16 +36,21 @@ export class AddressButtonNotifComponent implements OnInit {
 		},
 		{
 			name: 'Kantor Cabang 6',
-			qty: 0,
+			qty: 2,
 		},
 	];
 
-	selected = this.listApprovals[0];
+
 
 
 	constructor() { }
 
 	ngOnInit(): void {
+		/* seharusnya akan mendapat inputan "selected" */
+		this.selectedopt = this.selected;
+
+		/* sementara ditempel ke sini: */
+		this.selectedopt = this.listApprovals[0];
 	}
 
 
