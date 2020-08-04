@@ -1,0 +1,45 @@
+<div #myDrop="ngbDropdown"
+	ngbDropdown>
+	<div ngbDropdownToggle
+		autoClose="outside"
+		id="wrapper-approval-item-summary-dropdown"
+		class="d-flex">
+		<div class="flex-grow-1 d-flex justify-content-center align-items-center"
+			id="item-belum-diapprove">
+			<span>{{qty}}&nbsp;</span>Barang belum diapprove
+		</div>
+		<div id="arrow-approval-wrapper"
+			class="d-flex justify-content-center align-items-center">
+			<img src="../../../../../assets/image/icons/arrow-down.png"
+				id="drop-down-item-summary-arrow">
+		</div>
+
+		<div ngbDropdownMenu>
+			<div id="padding-right-for-scroll">
+				<wsv wide="15px"></wsv>
+				<div class="scrollbar"
+					id="style-2">
+					<div>
+						<div *ngFor="let waitingApproval of waitingApprovals">
+							<div id="item-row"
+								class="d-flex justify-content-between"
+								[ngClass]="selected == waitingApproval ? 'selected' : '' "
+								(click)="selected=waitingApproval;myDrop.close()">
+								<div class="item-dropdown-class">
+									{{waitingApproval.name}}
+								</div>
+								<div class="item-dropdown-class">
+									{{waitingApproval.qty}} Barang
+								</div>
+							</div>
+							<wsv wide="15px"></wsv>
+						</div>
+					</div>
+				</div>
+
+				<wsv wide="15px"></wsv>
+			</div>
+
+		</div>
+	</div>
+</div>
