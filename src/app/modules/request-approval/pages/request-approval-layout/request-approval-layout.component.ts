@@ -13,6 +13,7 @@ export let browserRefresh = false;
 	styleUrls: ['./request-approval-layout.component.scss'],
 })
 export class RequestApprovalLayoutComponent implements OnInit {
+
 	subscription: Subscription;
 
 	constructor(
@@ -24,10 +25,24 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		history.pushState(null, null, window.location.href);
 
 		location.onPopState(() => {
+<<<<<<< HEAD
 			this.openDialogLocation('./cart');
 		});
 	}
 
+=======
+
+			history.pushState(null, null, window.location.pathname);
+			this.openDialogLocation('./cart');
+
+		})
+
+
+	}
+
+
+
+>>>>>>> e02abf19ec47d3ebbae980f93d2b08cfd3415543
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
@@ -37,6 +52,7 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		dialogConfig.height = '155px';
 		dialogConfig.panelClass = 'border-radius:20px';
 		dialogConfig.data = {
+<<<<<<< HEAD
 			pageBefore: this.router.url,
 			pageDestination: des,
 		};
@@ -54,6 +70,20 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		});
 
 		return false;
+=======
+			'pageBefore': './request-approval',
+			'pageDestination': des,
+			'modePopUp': '0'
+		}
+		const modalDialog = this.dialog.open(PopUpRequestApprovalComponent, dialogConfig);
+		return false;
+
+	}
+
+	ngOnInit(): void {
+		console.log(window.location.pathname);
+		history.pushState(null, null, window.location.pathname);
+>>>>>>> e02abf19ec47d3ebbae980f93d2b08cfd3415543
 	}
 
 	ngOnInit(): void {}
