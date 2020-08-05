@@ -1,0 +1,30 @@
+@import '../../../../../src/styles/variables/colors';
+@import '../../../../../src/styles/variables/fonts';
+
+#filter-input-wrapper {
+	background: $putih-tok;
+	border: 0.5px solid $abu-abu-sesuatu;
+	box-sizing: border-box;
+	border-radius: 45px;
+	padding-left: 12px;
+	padding-right: 15px;
+	height: 32px;
+}
+
+input {
+	background: transparent;
+}
+
+#input-box {
+	font-family: $primary-font;
+	font-size: 14px;
+
+	::placeholder {
+		color: $abu-abu-sesuatu;
+	}
+}
+
+#search-logo {
+	width: 15px;
+	height: 15px;
+}
