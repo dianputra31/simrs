@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressSectionComponent } from './components/address-section/address-section.component';
 import { BoxCartPriceComponent } from './components/box-cart-price/box-cart-price.component';
 import { CartItemListComponent } from './components/cart-item-list/cart-item-list.component';
@@ -14,6 +15,7 @@ import { FooterBarComponent } from './components/footer-bar/footer-bar.component
 import { FooterCustomerSupportComponent } from './components/footer-customer-support/footer-customer-support.component';
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NestDatepickerAComponent } from './components/nest-datepicker-a/nest-datepicker-a.component';
 import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.component';
 import { PopUpRequestApprovalComponent } from './components/pop-up-request-approval/pop-up-request-approval.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
@@ -40,8 +42,9 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CartItemListComponent,
 		PopUpRequestApprovalComponent,
 		PopUpDialogComponent,
+		NestDatepickerAComponent,
 	],
-	imports: [CommonModule, FormsModule],
+	imports: [CommonModule, FormsModule, NgbModule],
 	exports: [
 		CatalogCardComponent,
 		CatalogCardButtonComponent,
@@ -59,6 +62,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CheckBoxRoundComponent,
 		QtyCtrlComponent,
 		CartItemListComponent,
+		NestDatepickerAComponent,
 	],
 })
 export class SharedModule {}

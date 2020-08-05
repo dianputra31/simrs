@@ -1,5 +1,5 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -27,11 +27,6 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 		NgbModule,
 	],
 	providers: [
-		/* Configuration about localization */
-		{
-			provide: LOCALE_ID,
-			useValue: 'id',
-		},
 		/* Declare service for this module */
 		{
 			deps: [AuthService],
