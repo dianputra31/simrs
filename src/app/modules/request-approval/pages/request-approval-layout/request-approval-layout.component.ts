@@ -57,5 +57,5 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		return false;
 	}
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 }
