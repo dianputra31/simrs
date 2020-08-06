@@ -1,6 +1,13 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
+#top-fixed {
+	position: fixed;
+	width: 1100px;
+	background-color: #e5e5e5;
+	z-index: 1;
+}
+
 #keranjang-label {
 	font-family: $primary-font;
 	font-weight: bold;
@@ -13,9 +20,6 @@
 	position: relative;
 }
 
-#top-fixed {
-	position: fixed;
-}
 #right-fixed {
 	position: fixed;
 }
@@ -72,4 +76,89 @@
 
 .flex-even {
 	flex: 1;
+}
+.info-widget {
+	width: 31.75%;
+	border: 1px solid black;
+	display: inline-block;
+}
+
+.middle {
+	float: left;
+	width: 90%;
+	overflow: auto;
+	/*will change this to hidden later to deny scolling to user*/
+	white-space: nowrap;
+}
+
+.info-widget {
+	width: 100%;
+	border: 1px solid black;
+	display: inline-block;
+}
+
+.middle {
+	float: left;
+	width: 90%;
+	overflow: auto;
+	/*will change this to hidden later to deny scolling to user*/
+	white-space: nowrap;
+}
+
+.cahgne-list-btn {
+	margin: 15px;
+	padding: 8px 16px;
+}
+
+.list-with-scroll {
+	display: flex;
+}
+
+.list {
+	flex-grow: 1;
+	display: flex;
+	overflow-x: scroll;
+}
+
+.list::-webkit-scrollbar {
+	display: none;
+}
+
+.item {
+	min-width: 180px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	margin-top: 3px;
+}
+
+.scroll-button,
+.scroll-button:hover {
+	min-width: 40px;
+	font-size: 28px;
+	box-shadow: none;
+	border: none;
+	border-radius: 0px;
+	background-color: transparent;
+	// background-color: #3f51b5;
+	// color: #fff;
+}
+
+.disable,
+.disable:hover {
+	// background-color: rgba(0,0,0,.12);
+	// color: rgba(0,0,0,.26);
+	border: none;
+}
+
+#scroll-left {
+	order: -1; /* To pevent ExpressionChangedAfterItHasBeenCheckedError */
+}
+
+#horizontal-line {
+	height: 1px;
+	width: 100%;
+	background-color: #a9a9a9;
 }

@@ -1,62 +1,142 @@
 <div class="container">
-	<wsv wide="24px"></wsv>
-	<div id="keranjang-label">APPROVAL</div>
-	<wsv wide="7px"></wsv>
-	<div class="d-flex justify-content-center">
-
-		<item-summary-dropdown></item-summary-dropdown>
-
-	</div>
-	<wsv wide="30px"></wsv>
-	<div>
-
-		Horizontal Scroll Disiniahsdkjahsdkjhaskjhdkajsaskdhkajshdkjhkajshkjdhakjhsdkjashdkjashkjahsdkajhkjdh
-
-	</div>
-	<wsv wide="30px"></wsv>
-
-	<div class="d-flex align-items-center">
-		<div class="flex-grow-1 d-flex ">
-			<filter-dropdown class="flex-even"></filter-dropdown>
-			<wsh wide="24px"></wsh>
-			<filter-input class="flex-even"
-				hint="Cari Pesanan"
-				logo="../../../../assets/image/icons/searchbutton.png"
-				[disabled]="false"></filter-input>
-			<wsh wide="24px"></wsh>
-			<filter-date class="flex-even"></filter-date>
+	<div id="top-fixed">
+		<wsv wide="24px"></wsv>
+		<div id="keranjang-label">APPROVAL</div>
+		<wsv wide="7px"></wsv>
+		<div class="d-flex justify-content-center">
+			<item-summary-dropdown></item-summary-dropdown>
 		</div>
-		<wsh wide="24px"></wsh>
+		<wsv wide="19px"></wsv>
+		<section class="d-flex justify-content-around list-with-scroll">
 
-		<reset-filter-button class="d-flex align-items-center"></reset-filter-button>
+			<div class="list"
+				appScrollable
+				#list="appScrollable"
+				[scrollUnit]="150">
+
+				<div *ngFor="let listApproval of listApprovals"
+					class="item">
+					<address-notif [label]='listApproval'
+						[selected]='selected'
+						(diklik)='diklikEvent($event)'></address-notif>
+				</div>
+			</div>
+
+			<!-- Previous Button -->
+			<button class="scroll-button"
+				*ngIf="list.isOverflow"
+				[class.disable]="!list.canScrollStart"
+				(click)="list.scroll(-1)"
+				id="scroll-left"><img src="../../../../../assets/image/icons/address-button-notify-prev.svg"></button>
+
+			<!-- Next Button -->
+			<button class="scroll-button"
+				*ngIf="list.isOverflow"
+				[class.disable]="!list.canScrollEnd"
+				(click)="list.scroll(1)"><img
+					src="../../../../../assets/image/icons/address-button-notify-next.svg"></button>
+
+		</section>
+
+		<wsv wide="28px"></wsv>
+		<div class="d-flex align-items-center">
+			<div class="flex-grow-1 d-flex ">
+				<filter-dropdown class="flex-even"></filter-dropdown>
+				<wsh wide="24px"></wsh>
+				<filter-input class="flex-even"
+					hint="Cari Pesanan"
+					logo="../../../../assets/image/icons/searchbutton.png"
+					[disabled]="false"></filter-input>
+				<wsh wide="24px"></wsh>
+				<filter-date class="flex-even"></filter-date>
+			</div>
+			<wsh wide="24px"></wsh>
+
+			<reset-filter-button class="d-flex align-items-center"></reset-filter-button>
+
+		</div>
+		<wsv wide="30px"></wsv>
+
+		<div id="horizontal-line"></div>
+
+		<wsv wide="30px"></wsv>
+		<div>
+
+		</div>
+
+		<wsv wide="29px"></wsv>
 
 
+		<div class="d-flex">
+			<wsh wide="13px"></wsh>
+			<check-box-round [checked]="true"
+				allowChanges="true"></check-box-round>
+		</div>
+		<wsv wide="15px"></wsv>
 	</div>
 
-	<wsv wide="29px"></wsv>
-
-
-	<div class="d-flex">
-		<wsh wide="13px"></wsh>
-		<check-box-round [checked]="true"
-			allowChanges="true"></check-box-round>
-	</div>
 </div>
 
 
-
-<wsv wide="150px"></wsv>
+<wsv wide="327px"></wsv>
 <div class="container d-flex">
 
 	<div id="left-container">
+		<div> Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
+		<div>Testing Testing</div>
 
-		Item List Disiniahsdkjahsdkjhaskjhdkajsaskdhkajshdkjhkajshkjdhakjhsdkjashdkjashkjahsdkajhkjdh
-
-
+		<wsv wide="60px"></wsv>
 	</div>
 
 	<div id="right-container">
-		<wsv wide="20px"></wsv>
 		<div id="right-fixed">
 			<div class="d-flex">
 				<wsh wide="57px"></wsh>
