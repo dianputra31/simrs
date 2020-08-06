@@ -14,9 +14,23 @@
 
 	</div>
 	<wsv wide="30px"></wsv>
-	<div>
 
-		Filter DISINIASJDKAJSDKAJDKAJDASDJAKDJAJSDKSJK
+	<div class="d-flex align-items-center">
+		<div class="flex-grow-1 d-flex ">
+			<filter-dropdown class="flex-even"></filter-dropdown>
+			<wsh wide="24px"></wsh>
+			<filter-input class="flex-even"
+				hint="Cari Pesanan"
+				logo="../../../../assets/image/icons/searchbutton.png"
+				[disabled]="false"></filter-input>
+			<wsh wide="24px"></wsh>
+			<filter-date class="flex-even"></filter-date>
+		</div>
+		<wsh wide="24px"></wsh>
+
+		<reset-filter-button class="d-flex align-items-center"></reset-filter-button>
+
+
 	</div>
 
 	<wsv wide="29px"></wsv>
