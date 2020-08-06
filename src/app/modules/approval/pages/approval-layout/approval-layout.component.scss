@@ -1,6 +1,13 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
+#top-fixed {
+	position: fixed;
+	width: 1100px;
+	background-color: #e5e5e5;
+	z-index: 1;
+}
+
 #keranjang-label {
 	font-family: $primary-font;
 	font-weight: bold;
@@ -13,9 +20,6 @@
 	position: relative;
 }
 
-#top-fixed {
-	position: fixed;
-}
 #right-fixed {
 	position: fixed;
 }
