@@ -11,6 +11,7 @@
 				<div class="d-flex align-items-center">
 					<img id="arrow_left"
 						class="arrow_size"
+						(click)="navigate(-1);"
 						src="../../../../assets/image/icons/arrow_left.png">
 					<wsh wide="65px"></wsh>
 					<div class="month-name">
@@ -22,9 +23,11 @@
 						{{ i18n.getMonthShortName(dp.state.months[1].month) }}
 						{{ dp.state.months[1].year }}</div>
 					<wsh wide="65px"></wsh>
+
 					<img id="arrow_right"
 						class="arrow_size"
-						src="../../../../assets/image/icons/arrow_right.png">
+						src="../../../../assets/image/icons/arrow_right.png"
+						(click)="navigate(1);">
 				</div>
 
 

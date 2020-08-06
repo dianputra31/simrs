@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
 	NgbCalendar,
 	NgbDate,
+	NgbDatepicker,
 	NgbDatepickerI18n,
 } from '@ng-bootstrap/ng-bootstrap';
 
@@ -15,6 +16,7 @@ export class NestDatepickerAComponent {
 
 	fromDate: NgbDate;
 	toDate: NgbDate | null = null;
+	@ViewChild(NgbDatepicker, { static: true }) datepicker: NgbDatepicker;
 
 	constructor(calendar: NgbCalendar, public i18n: NgbDatepickerI18n) {
 		this.fromDate = calendar.getToday();
@@ -61,6 +63,13 @@ export class NestDatepickerAComponent {
 		return (
 			date.equals(this.fromDate) ||
 			(this.toDate && date.equals(this.toDate))
+		);
+	}
+
+	navigate(number: number) {
+		const { state, calendar } = this.datepicker;
+		this.datepicker.navigateTo(
+			calendar.getNext(state.firstDate, 'm', number)
 		);
 	}
 }

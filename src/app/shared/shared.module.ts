@@ -43,11 +43,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CartItemListComponent,
 		PopUpRequestApprovalComponent,
 		PopUpDialogComponent,
-<<<<<<< HEAD
 		NestDatepickerAComponent,
-=======
 		FilterInputComponent,
->>>>>>> filter-dropdown
 	],
 	imports: [CommonModule, FormsModule, NgbModule],
 	exports: [
@@ -67,11 +64,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CheckBoxRoundComponent,
 		QtyCtrlComponent,
 		CartItemListComponent,
-<<<<<<< HEAD
 		NestDatepickerAComponent,
-=======
 		FilterInputComponent,
->>>>>>> filter-dropdown
 	],
 })
 export class SharedModule {}
