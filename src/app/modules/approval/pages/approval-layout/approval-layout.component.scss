@@ -69,3 +69,103 @@
 	z-index: 1000;
 	background-color: #e5e5e5;
 }
+
+.info-widget {
+	width: 31.75%;
+	border: 1px solid black;
+	display: inline-block;
+  }
+
+  .middle {
+	float: left;
+	width: 90%;
+	overflow: auto;
+	/*will change this to hidden later to deny scolling to user*/
+	white-space: nowrap;
+  }
+
+
+
+  .info-widget {
+	width: 100%;
+	border: 1px solid black;
+	display: inline-block;
+  }
+
+  .middle {
+	float: left;
+	width: 90%;
+	overflow: auto;
+	/*will change this to hidden later to deny scolling to user*/
+	white-space: nowrap;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cahgne-list-btn{
+	margin: 15px;
+	padding: 8px 16px;
+  }
+  
+  .list-with-scroll {
+	display: flex;
+	margin: 5px;
+  }
+  
+  .list{
+	flex-grow: 1;
+	display: flex;
+	overflow-x: scroll;
+  }
+  
+  .list::-webkit-scrollbar{
+	display: none;
+  }
+  
+  .item{
+	min-width: 180px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+	border-radius: 5px;
+  }
+  
+  .scroll-button,
+  .scroll-button:hover {
+	min-width: 40px;
+	font-size: 28px;
+	box-shadow: none;
+	border: none;
+	border-radius: 0px;
+	background-color: transparent;
+	// background-color: #3f51b5;
+	// color: #fff;
+  }
+  
+  .disable,
+  .disable:hover {
+	// background-color: rgba(0,0,0,.12);
+	// color: rgba(0,0,0,.26);
+	border: none;
+  }
+  
+  #scroll-left{
+	order: -1; /* To pevent ExpressionChangedAfterItHasBeenCheckedError */
+  }
+  

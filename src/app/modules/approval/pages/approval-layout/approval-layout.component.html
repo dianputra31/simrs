@@ -8,11 +8,52 @@
 
 	</div>
 	<wsv wide="30px"></wsv>
-	<div>
 
-		<address-button-notif></address-button-notif>
 
-	</div>
+
+	<!-- <div class="d-flex justify-content-around">
+
+		<div *ngFor="let listApproval of listApprovals">
+			<address-notif [label]='listApproval'
+				[selected]='selected'
+				(diklik)='diklikEvent($event)'></address-notif>
+		</div>
+
+	</div> -->
+
+
+	<section class="d-flex justify-content-around list-with-scroll">
+
+		<div class="list"
+			appScrollable
+			#list="appScrollable"
+			[scrollUnit]="150">
+
+			<div *ngFor="let listApproval of listApprovals"
+				class="item">
+				<address-notif [label]='listApproval'
+					[selected]='selected'
+					(diklik)='diklikEvent($event)'></address-notif>
+			</div>
+		</div>
+
+		<!-- Previous Button -->
+		<button class="scroll-button"
+			*ngIf="list.isOverflow"
+			[class.disable]="!list.canScrollStart"
+			(click)="list.scroll(-1)"
+			id="scroll-left"><img src="../../../../../assets/image/icons/address-button-notify-prev.svg"></button>
+
+		<!-- Next Button -->
+		<button class="scroll-button"
+			*ngIf="list.isOverflow"
+			[class.disable]="!list.canScrollEnd"
+			(click)="list.scroll(1)"><img
+				src="../../../../../assets/image/icons/address-button-notify-next.svg"></button>
+
+	</section>
+
+
 	<wsv wide="30px"></wsv>
 	<div>
 
