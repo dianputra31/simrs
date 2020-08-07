@@ -1,0 +1,50 @@
+@import '../../../../../src/styles/variables/colors';
+@import '../../../../../src/styles/variables/fonts';
+
+#item-name {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	font-feature-settings: 'kern' off;
+	color: #606060;
+}
+
+#item-price {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+
+	font-feature-settings: 'kern' off;
+
+	color: #f12627;
+}
+
+.item-spec-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 16px;
+
+	color: #a9a9a9;
+}
+
+#item-warna-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 16px;
+	color: #a9a9a9;
+}
+
+#rounded-item-color {
+	width: 12px;
+	height: 12px;
+	border: 0.5px solid #606060;
+	border-radius: 6px;
+}
