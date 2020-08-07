@@ -6,11 +6,11 @@ import { ApprovalRoutingModule } from './approval-routing.module';
 import { AddressNotifComponent } from './components/address-notif/address-notif.component';
 import { FilterDateComponent } from './components/filter-date/filter-date.component';
 import { FilterDropdownComponent } from './components/filter-dropdown/filter-dropdown.component';
+import { ItemApprovalComponent } from './components/item-approval/item-approval.component';
 import { ItemSummaryDropdownComponent } from './components/item-summary-dropdown/item-summary-dropdown.component';
 import { ResetFilterButtonComponent } from './components/reset-filter-button/reset-filter-button.component';
 import { ApprovalLayoutComponent } from './pages/approval-layout/approval-layout.component';
 import { ScrollableDirective } from './scrollable.directive';
-
 @NgModule({
 	declarations: [
 		ApprovalLayoutComponent,
@@ -20,6 +20,7 @@ import { ScrollableDirective } from './scrollable.directive';
 		FilterDateComponent,
 		AddressNotifComponent,
 		ScrollableDirective,
+		ItemApprovalComponent,
 	],
 
 	imports: [
