@@ -11,6 +11,7 @@ import { ItemSummaryDropdownComponent } from './components/item-summary-dropdown
 import { ResetFilterButtonComponent } from './components/reset-filter-button/reset-filter-button.component';
 import { ApprovalLayoutComponent } from './pages/approval-layout/approval-layout.component';
 import { ScrollableDirective } from './scrollable.directive';
+import { ItemListSectionComponent } from './components/item-list-section/item-list-section.component';
 @NgModule({
 	declarations: [
 		ApprovalLayoutComponent,
@@ -21,6 +22,7 @@ import { ScrollableDirective } from './scrollable.directive';
 		AddressNotifComponent,
 		ScrollableDirective,
 		ItemApprovalComponent,
+		ItemListSectionComponent,
 	],
 
 	imports: [
