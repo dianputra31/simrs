@@ -24,7 +24,10 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		history.pushState(null, null, window.location.href);
 
 		location.onPopState(() => {
+<<<<<<< HEAD
 			history.pushState(null, null, window.location.pathname);
+=======
+>>>>>>> 99794b8602e4b68dc378f0a76c1d64754e62ee5a
 			this.openDialogLocation('./cart');
 		});
 	}

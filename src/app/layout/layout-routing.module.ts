@@ -63,6 +63,13 @@ const routes: Routes = [
 						(m) => m.ApprovalModule
 					),
 			},
+			{
+				path: 'transaction',
+				loadChildren: () =>
+					import('../modules/approval/approval.module').then(
+						(m) => m.ApprovalModule
+					),
+			},
 		],
 	},
 ];
