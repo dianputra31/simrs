@@ -66,8 +66,8 @@ const routes: Routes = [
 			{
 				path: 'transaction',
 				loadChildren: () =>
-					import('../modules/approval/approval.module').then(
-						(m) => m.ApprovalModule
+					import('../modules/transaction/transaction.module').then(
+						(m) => m.TransactionModule
 					),
 			},
 		],

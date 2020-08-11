@@ -1,0 +1,18 @@
+<div #myDrop="ngbDropdown"
+	ngbDropdown>
+	<div ngbDropdownToggle
+		id="filter-dropdown-wrapper"
+		class="d-flex">
+		<div class="flex-grow-1 d-flex align-items-center">
+			<div id="filter-dropdown-label">{{selected}}</div>
+		</div>
+		<div id="arrow-down-gray-wrapper"
+			class="d-flex justify-content-center align-items-center">
+			<img id="arrow-down-gray"
+				src="../../../../../assets/image/icons/arrow_down_gray.png">
+		</div>
+	</div>
+	<div ngbDropdownMenu>
+		<nest-datepicker-a></nest-datepicker-a>
+	</div>
+</div>

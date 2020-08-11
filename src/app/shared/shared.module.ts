@@ -11,6 +11,7 @@ import { CheckBoxRoundComponent } from './components/check-box-round/check-box-r
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
 import { EmailButtonComponent } from './components/email-button/email-button.component';
+import { FilterDropdownListComponent } from './components/filter-dropdown-list/filter-dropdown-list.component';
 import { FilterInputComponent } from './components/filter-input/filter-input.component';
 import { FooterBarComponent } from './components/footer-bar/footer-bar.component';
 import { FooterCustomerSupportComponent } from './components/footer-customer-support/footer-customer-support.component';
@@ -46,6 +47,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		NestDatepickerAComponent,
 		FilterInputComponent,
 		ItemDescComponent,
+		FilterDropdownListComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule],
 	exports: [
@@ -68,6 +70,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		NestDatepickerAComponent,
 		FilterInputComponent,
 		ItemDescComponent,
+		FilterDropdownListComponent,
 	],
 })
 export class SharedModule {}
