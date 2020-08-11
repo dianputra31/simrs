@@ -12,21 +12,27 @@
 	align-items: center;
 	text-align: center;
 	color: $abu-abu-gelap;
-	text-decoration: none;
 	cursor: pointer;
 	font-weight: 600;
 	display: flex;
 }
 
 .address-button-label :hover{
+	color: $merah-root-beat;
 	text-decoration: underline;
 }
 
 
 .selected{
 	color: $merah-root-beat;
+	// text-decoration: underline;
+}
+
+
+.asoy :hover{
 	text-decoration: underline;
 }
+
 
 
 .warn-notif{
