@@ -10,6 +10,7 @@ import { ItemSummaryDropdownComponent } from './components/item-summary-dropdown
 import { ResetFilterButtonComponent } from './components/reset-filter-button/reset-filter-button.component';
 import { ApprovalLayoutComponent } from './pages/approval-layout/approval-layout.component';
 import { ScrollableDirective } from './scrollable.directive';
+import { ApprovalConfirmationDialogComponent } from './components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -20,6 +21,7 @@ import { ScrollableDirective } from './scrollable.directive';
 		FilterDateComponent,
 		AddressNotifComponent,
 		ScrollableDirective,
+		ApprovalConfirmationDialogComponent,
 	],
 
 	imports: [
