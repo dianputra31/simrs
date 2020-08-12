@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApprovalConfirmationDialogComponent } from '../../../modules/approval/components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
+
+
 
 @Component({
 	selector: 'box-cart-price',
@@ -16,9 +19,9 @@ export class BoxCartPriceComponent implements OnInit {
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router
-	) {}
+	) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
@@ -40,6 +43,27 @@ export class BoxCartPriceComponent implements OnInit {
 		return false;
 	}
 
+
+	openConfirmDialog(des) {
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = 'modal-component';
+		dialogConfig.height = 'auto';
+		dialogConfig.width = '480px';
+		dialogConfig.height = '170px';
+		dialogConfig.panelClass = 'border-radius:10px';
+		dialogConfig.data = {
+			pageBefore: this.router.url,
+			pageDestination: des,
+			modePopUp: '1',
+		};
+		const modalDialog = this.dialog.open(
+			ApprovalConfirmationDialogComponent,
+			dialogConfig
+		);
+		return false;
+	}
+
 	clickButtonLabel() {
 		// console.log('Selanjutnya');
 		if (this.buttonDisable) {
@@ -47,6 +71,8 @@ export class BoxCartPriceComponent implements OnInit {
 				this.router.navigate(['./request-approval']);
 			} else if (this.buttonLabel == 'Request Approval') {
 				this.openDialogLocation('./cart');
+			} else if (this.buttonLabel == 'Proses') {
+				this.openConfirmDialog('./approval');
 			}
 		}
 	}
