@@ -1,0 +1,33 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+.status-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+
+	font-feature-settings: 'kern' off;
+
+	/* #606060 */
+
+	color: $abu-abu-gelap;
+}
+
+.status-label-selected {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+
+	text-decoration-line: underline;
+	font-feature-settings: 'kern' off;
+
+	/* Primary Color */
+
+	color: #db0a2a;
+}

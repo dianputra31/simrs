@@ -11,18 +11,19 @@ import { CheckBoxRoundComponent } from './components/check-box-round/check-box-r
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
 import { EmailButtonComponent } from './components/email-button/email-button.component';
+import { FilterDropdownListComponent } from './components/filter-dropdown-list/filter-dropdown-list.component';
 import { FilterInputComponent } from './components/filter-input/filter-input.component';
 import { FooterBarComponent } from './components/footer-bar/footer-bar.component';
 import { FooterCustomerSupportComponent } from './components/footer-customer-support/footer-customer-support.component';
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ItemDescComponent } from './components/item-desc/item-desc.component';
 import { NestDatepickerAComponent } from './components/nest-datepicker-a/nest-datepicker-a.component';
 import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.component';
 import { PopUpRequestApprovalComponent } from './components/pop-up-request-approval/pop-up-request-approval.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
-
 @NgModule({
 	declarations: [
 		CatalogCardComponent,
@@ -45,6 +46,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		PopUpDialogComponent,
 		NestDatepickerAComponent,
 		FilterInputComponent,
+		ItemDescComponent,
+		FilterDropdownListComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule],
 	exports: [
@@ -66,6 +69,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CartItemListComponent,
 		NestDatepickerAComponent,
 		FilterInputComponent,
+		ItemDescComponent,
+		FilterDropdownListComponent,
 	],
 })
 export class SharedModule {}

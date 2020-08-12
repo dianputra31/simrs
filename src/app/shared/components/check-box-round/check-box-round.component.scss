@@ -2,8 +2,8 @@
 @import '../../../../styles/variables/fonts';
 
 .custom-checkbox {
-	width: 24px;
-	height: 24px;
+	width: 18px;
+	height: 19px;
 
 	background: #ffffff;
 	border: 1px solid $color-primary;
@@ -12,8 +12,8 @@
 }
 
 .custom-checkbox-checked {
-	width: 24px;
-	height: 24px;
+	width: 18px;
+	height: 18px;
 
 	border: 1px solid $merah-root-beat;
 	border-radius: 50%;
@@ -22,8 +22,8 @@
 }
 
 .custom-checkbox-mark {
-	width: 24.98px;
-	height: 18.03px;
+	width: 17.23px;
+	height: 12.02px;
 	margin-left: 1px;
-	margin-bottom: 10px;
+	margin-bottom: 13px;
 }

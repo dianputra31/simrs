@@ -1,0 +1,9 @@
+<div class="d-flex">
+	<div class="d-flex"
+		*ngFor="let status of statuses">
+		<status-button [label]="status"
+			[selected]="selected"
+			(click)="selected=status"></status-button>
+		<wsh wide="20px"></wsh>
+	</div>
+</div>
