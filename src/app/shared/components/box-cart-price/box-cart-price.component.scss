@@ -4,7 +4,7 @@
 #div-price-top {
 	background: $abu-abu-terang-summary;
 	height: 45px;
-	width: 357px;
+	width: 365px;
 	padding-left: 25px;
 	padding-right: 25px;
 	border-radius: 8px 8px 0px 0px;
@@ -29,8 +29,8 @@
 	color: $abu-abu-gelap;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 18px;
-	line-height: 21px;
+	font-size: 15px;
+	line-height: 100%;
 	font-feature-settings: 'kern' off;
 }
 
@@ -117,5 +117,5 @@
 }
 
 .harga-per-item {
-	width: 120px;
+	width: 155px;
 }

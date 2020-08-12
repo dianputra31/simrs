@@ -4,38 +4,44 @@
 #headers {
 	font-family: $secondary-font;
 	color: $putih-gelap-dikit;
-	z-index: 2000;
+	z-index: 1000;
 	width: 100%;
-	height: 80px;
+	height: 100px;
 	background: $color-primary;
 	box-shadow: $box-shadow-2;
 	position: fixed;
 	top: 0;
 }
 
+#div-logo{
+	margin-left: -30px;
+	position: relative;width:90px;float:left;height:100px;padding-top:5px;
+}
+
 #headers-logo {
-	height: 39.02px;
-	width: 80.12px;
+	height: 74px;
+	width: 81px;
 	cursor: pointer;
 }
 
-.white-space-78px {
-	width: 78px;
+.white-space-60px {
+	width: 60px;
 }
 
 .white-space-26px {
 	width: 26px;
 }
-.white-space-110px {
-	width: 110px;
+.white-space-100px {
+	width: 100px;
 }
 .white-space-60px {
 	width: 60px;
 }
 #headers-search {
-	width: 500px;
-	height: 80px;
-	border: solid yellow 0px;
+	position: relative;
+	float:left;
+	width: 557px;
+	height: 38px;
 }
 
 #container ng-untouched ng-pristine ng-valid {
@@ -57,34 +63,34 @@
 
 .textbox-header-search {
 	height: 40px;
-	width: 500px;
+	width: 557px;
 	border: solid $putih-tok 1px;
-	border-radius: 5px;
 	color: $abu-abu-aspal;
 	font-size: 14px;
 	padding-left: 20px;
 	padding-right: 0px;
-	// background: url('../../../../assets/image/icons/searchbutton.png') 5px no-repeat;
+	background: url('../../../../assets/image/icons/searchbutton.png') 5px no-repeat;
 	background-color: $putih-tok;
 	background-position: right 25px center;
 	background-size: 22px;
-	border: solid yellow 0px;
+	border-radius: 25px;
 }
 
 #searchbutton {
 	margin-left: -50px;
-	margin-top: 5px;
-	background: url('../../../../assets/image/icons/searchbutton.png') 15px
+	background: url('../../../../assets/image/icons/button-cari.png') 10px
 		no-repeat;
-	background-position: right 5px center;
+	background-position: right 15px center;
 	background-position: top 10px bottom;
 	background-size: 22px;
 	position: absolute;
-	width: 45px;
-	padding-top: 20px;
-	height: 30px;
+	width: 50px;
+	padding-top: 10px;
+	height: 40px;
 	padding: 0px;
 	border: 0px;
+	background-color: $kuning-emas;
+	border-radius: 1px 31px 31px 1px;
 }
 
 .mat-focused .placeholder {
@@ -110,9 +116,6 @@
 }
 
 #headers-cart {
-	width: 30px;
-	height: 30px;
-	margin-right: 10px;
 	cursor: pointer;
 }
 
@@ -131,11 +134,166 @@
 #headers-user-photo {
 	border: solid $putih-tok 3px;
 	border-radius: 50%;
-	height: 55px;
-	width: 55px;
+	height: 65px;
+	width: 65px;
 	cursor: pointer;
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-underline {
 	height: 0px;
+}
+
+
+
+#header-center{
+	position:relative;float: left;width:880px;height:100px;margin:0px;
+}
+
+.header-center-top{
+	position: relative;float:left;
+	width:100%;height: 38px;
+	border:solid yellowgreen 0px;
+
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 14px;
+	display: flex;
+	// align-items: center;
+	// text-align: right;
+	color: $putih-tok;
+}
+
+.header-center-middle{
+	position: relative;
+	float:left;width:100%;
+	height: 1px;
+	background-color: $putih-tok;
+	// border:solid rgb(35, 117, 240) 1px;
+}
+
+.header-center-bottom{
+	position: relative;float:left;width:100%;height: 60px;
+	border:solid rgb(138, 230, 253) 0px;
+	padding-top:8px;
+}
+
+#header-kategori{
+	border:solid whitesmoke 0px;
+	width:145px;position: relative;float: left;
+}
+
+#header-pencarian{
+	border:solid rgb(227, 245, 123) 0px;
+	width:560px;position: relative;float: left;
+}
+
+
+.mat-autocomplete-panel.mat-autocomplete-visible {
+    visibility: visible;
+    width: 97%;
+    margin: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+#hct-left{
+	position: relative;
+	float: left;
+	width: 300px;
+	height: 30px;
+	margin-top:5px;
+	padding-top:7px;
+}
+
+
+#hct-center{
+	position: relative;
+	float: left;
+	width: 350px;
+	height: 25px;
+	margin-top:7px;
+	border-left: solid white 1px;
+	padding-left: 40px;
+}
+
+
+#hct-right{
+	position: relative;
+	float: left;
+	width: 250px;
+	height: 30px;
+	margin-top:5px;
+	text-align: right;
+}
+
+#div-saldo{
+	position: relative;
+	float: left;
+	width: 170px;
+	border:solid yellow 0px;
+	padding-left:5px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	padding-top:5px;
+	height: 35px;
+	text-align: center;
+}
+
+.div-saldo-right{
+	margin-left: 10px;
+}
+
+.div-saldo-left{
+	padding-top:0px;
+}
+
+#right-shortcut{
+	width:100%;
+	border: solid orange 0px;
+	padding-top:0px;
+	height: 35px;
+	position: relative;
+	float: left;
+}
+
+#div-approval{
+	float:left;
+	position: relative;
+	width: 35%;
+	margin-top:5px;
+	cursor: pointer;
+
+}
+
+#div-transaksi{
+	float:left;
+	position: relative;
+	width: 45%;
+	margin-top:5px;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+#div-cart{
+	float:right;
+	position: relative;
+	width: 20%;
+	text-align: right;
+	margin-top:0px;
+	cursor: pointer;
+
+}
+
+#headers-user-menu{
+	border: solid olivedrab 0px;
+	height: 100px;
+	position: relative;
+	margin:0px;
+	padding-top:10px;
 }
