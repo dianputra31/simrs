@@ -1,0 +1,28 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+#button-wrapper {
+	/* white */
+
+	background: #ffffff;
+	/* Primary Color */
+
+	border: 0.5px solid $color-primary;
+	box-sizing: border-box;
+	border-radius: 57px;
+	width: 129px;
+	height: 28px;
+
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+
+	/* Primary Color */
+
+	color: #db0a2a;
+}

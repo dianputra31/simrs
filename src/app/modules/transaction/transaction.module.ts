@@ -8,6 +8,8 @@ import { ListStatusSectionComponent } from './components/list-status-section/lis
 import { StatusButtonComponent } from './components/status-button/status-button.component';
 import { TransactionLayoutComponent } from './pages/transaction-layout/transaction-layout.component';
 import { TransactionRoutingModule } from './transaction-routing.module';
+import { ItemTransactionComponent } from './components/item-transaction/item-transaction.component';
+import { BadgeComponent } from './components/badge/badge.component';
 
 @NgModule({
 	declarations: [
@@ -16,6 +18,8 @@ import { TransactionRoutingModule } from './transaction-routing.module';
 		StatusButtonComponent,
 		FilterButtonsSectionComponent,
 		FilterDateComponent,
+		ItemTransactionComponent,
+		BadgeComponent,
 	],
 	imports: [
 		CommonModule,
