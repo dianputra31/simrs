@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
 	selector: 'item-summary-dropdown',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./item-summary-dropdown.component.scss'],
 })
 export class ItemSummaryDropdownComponent implements OnInit {
+	@ViewChild('scrollMe') private myScrollContainer: ElementRef;
+
+	open = false;
 	qty = 111;
 	waitingApprovals = [
 		{
@@ -36,10 +39,42 @@ export class ItemSummaryDropdownComponent implements OnInit {
 			name: 'Kantor Cabang 6',
 			qty: 2,
 		},
+		{
+			name: 'Kantor Cabang 7',
+			qty: 2,
+		},
+		{
+			name: 'Kantor Cabang 8',
+			qty: 2,
+		},
+		{
+			name: 'Kantor Cabang 9',
+			qty: 2,
+		},
+		{
+			name: 'Kantor Cabang 10',
+			qty: 2,
+		},
 	];
 
 	selected = this.waitingApprovals[0];
+	selectedIndex = 0;
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	checkDropDown(open: boolean) {
+		this.open = open;
+		if (open) {
+			var topPos = document.getElementsByClassName('item-row');
+			this.myScrollContainer.nativeElement.scrollTop =
+				topPos[this.selectedIndex].offsetTop - 20;
+		} else {
+		}
+	}
+
+	clickWaiting(selected, index) {
+		this.selected = selected;
+		this.selectedIndex = index;
+	}
 }
