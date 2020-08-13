@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ApprovalRoutingModule } from './approval-routing.module';
 import { AddressNotifComponent } from './components/address-notif/address-notif.component';
 import { ApprovalConfirmationDialogComponent } from './components/approval-confirmation-dialog/approval-confirmation-dialog.component';
+import { ApprovalResultConfirmationDialogComponent } from './components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
 import { FilterDateComponent } from './components/filter-date/filter-date.component';
 import { FilterDropdownComponent } from './components/filter-dropdown/filter-dropdown.component';
 import { ItemApprovalComponent } from './components/item-approval/item-approval.component';
@@ -26,6 +27,7 @@ import { ScrollableDirective } from './scrollable.directive';
 		ItemApprovalComponent,
 		ItemListSectionComponent,
 		ApprovalConfirmationDialogComponent,
+		ApprovalResultConfirmationDialogComponent,
 	],
 
 	imports: [
@@ -36,4 +38,4 @@ import { ScrollableDirective } from './scrollable.directive';
 		NgbModule,
 	],
 })
-export class ApprovalModule {}
+export class ApprovalModule { }

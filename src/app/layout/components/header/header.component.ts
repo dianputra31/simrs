@@ -72,6 +72,10 @@ export class HeaderComponent implements OnInit {
 
 	}
 
+	goToPage(a) {
+		this.router.navigate([a]);
+	}
+
 	goToCart() {
 
 		if (this.router.url == '/request-approval') {

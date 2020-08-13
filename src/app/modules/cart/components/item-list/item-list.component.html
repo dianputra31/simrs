@@ -9,7 +9,8 @@
 				<wsh wide="10px"></wsh>
 
 				<cart-item-list [redirlink]="true">
-					<div class="d-flex align-items-center">
+					<div class="d-flex align-items-center"
+						id="qty-div">
 						<qty-ctrl notif="false"
 							[allowChanges]="!item.outOfStock"></qty-ctrl>
 						<wsh wide="250px"></wsh>

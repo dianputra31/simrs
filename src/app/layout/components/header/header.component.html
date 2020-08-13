@@ -1,68 +1,115 @@
 <div id="headers">
 
 	<div class="container d-flex align-items-center">
-		<img id="headers-logo"
-			(click)="backToHome()"
-			src="../../../../assets/image/logo/logo-nest.svg"
-			height="39"
-			width="80">
-
-		<div class="white-space-78px">
-
+		<div id="div-logo">
+			<img id="headers-logo"
+				(click)="backToHome()"
+				src="../../../../assets/image/logo/nest-logo.svg"
+				height="74"
+				width="81">
 		</div>
 
-		<header-category-button></header-category-button>
-		<div class="white-space-26px">
-
-		</div>
-		<div id="headers-search"
-			class="d-flex justify-content-center align-items-center">
-			<form class="container"
-				style="padding:0px;"
-				[formGroup]="myControl">
-				<!-- <mat-form-field id="mat-form-field"> -->
+		<div class="white-space-60px"></div>
 
 
+		<div class="d-flex flex-column bd-highlight mb-3"
+			id="header-center">
+			<div class="header-center-top">
+				<div class="d-flex align-items-start"
+					id="hct-left">PT. NARINDO SOLUSI TELEKOMUNIKASI</div>
+				<div class="d-flex align-items-center"
+					id="hct-center">Firman Ugwemuhwem Osas</div>
+				<div class="d-flex align-items-end"
+					id="hct-right">
 
-				<input type="text"
-					class="textbox-header-search"
-					aria-label="Number"
-					matInput
-					[formControl]="myControl"
-					[matAutocomplete]="auto"
-					placeholder="Search">
+					<div class="d-flex bd-highlight"
+						id="right-shortcut">
+						<div class="p-2 flex-fill bd-highlight"
+							id="div-approval"
+							(click)="goToPage('./approval')">Approval</div>
+						<div class="p-2 flex-fill bd-highlight"
+							id="div-transaksi"
+							(click)="goToPage('./transaction')">Transaksi</div>
+						<div class="p-2 flex-fill bd-highlight"
+							id="div-cart"
+							(click)="goToCart()">
+							<img src="../../../../assets/image/icons/cart-logo.png"
+								style="width:25px;"
+								id="headers-cart">
 
-				<!-- <mat-placeholder class="placeholder">Search</mat-placeholder> -->
+						</div>
+					</div>
 
-				<mat-autocomplete autoActiveFirstOption
-					id="mat-autocomplete"
-					#auto="matAutocomplete">
-					<mat-option *ngFor="let option of filteredOptions | async"
-						[value]="option">
-						{{option}}
-					</mat-option>
-				</mat-autocomplete>
+				</div>
 
-				<button type="submit"
-					id="searchbutton">
-					<!-- <i class="fa fa-search"></i> -->
-				</button>
-
-				<!-- </mat-form-field> -->
-			</form>
-
-		</div>
-
-		<div class="white-space-110px"></div>
-		<div class="ml-auto d-flex align-items-center">
-			<img id="headers-cart"
-				src="../../../../assets/image/icons/cart-logo.png"
-				(click)="goToCart()">
-
-
-			<div id="headers-username">
-				Firman Taher
 			</div>
+			<div class="header-center-middle">
+			</div>
+			<div class="header-center-bottom">
+				<div class="d-flex justify-content-start"
+					id="header-kategori">
+					<header-category-button></header-category-button>
+				</div>
+
+
+				<div class="d-flex justify-content-between"
+					id="header-pencarian">
+					<div id="headers-search"
+						class="d-flex justify-content-center align-items-center">
+						<form class="container"
+							style="padding:0px;"
+							[formGroup]="myControl">
+
+
+
+							<input type="text"
+								class="textbox-header-search"
+								aria-label="Number"
+								matInput
+								[formControl]="myControl"
+								[matAutocomplete]="auto"
+								placeholder="Search">
+
+
+							<mat-autocomplete autoActiveFirstOption
+								id="mat-autocomplete"
+								#auto="matAutocomplete"
+								style="z-index: 9999;">
+								<mat-option *ngFor="let option of filteredOptions | async"
+									[value]="option">
+									{{option}}
+								</mat-option>
+							</mat-autocomplete>
+
+							<button type="submit"
+								id="searchbutton">
+							</button>
+
+						</form>
+
+					</div>
+
+				</div>
+
+				<div class="d-flex justify-content-end"
+					id="div-saldo">
+					<div class="div-saldo-left">
+						<img src="../../../../assets/image/icons/wallet.svg">
+					</div>
+					<div class="div-saldo-right">
+						Rp. 500.000.000
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+
+
+
+		<div class="white-space-100px"></div>
+		<div class="ml-auto d-flex align-items-center">
 
 			<div id="headers-user-menu">
 				<img id="headers-user-photo"
