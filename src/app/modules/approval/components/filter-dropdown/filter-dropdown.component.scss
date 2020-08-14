@@ -41,6 +41,8 @@
 	background: $putih-tok;
 	border: 0.5px solid $abu-abu-sesuatu;
 	box-sizing: border-box;
+
+	position: absolute;
 	border-radius: 20px;
 }
 
@@ -97,4 +99,8 @@
 	font-size: 14px;
 
 	color: $abu-abu-gelap;
+}
+
+.visibility-hidden {
+	visibility: hidden;
 }

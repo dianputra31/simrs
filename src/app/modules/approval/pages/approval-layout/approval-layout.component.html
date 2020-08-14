@@ -8,7 +8,8 @@
 			<wsv wide="7px"></wsv>
 			<div class="d-flex justify-content-center">
 				<item-summary-dropdown [list]="listApprovals"
-					(onSelect)="handleSelect($event)"></item-summary-dropdown>
+					(onSelect)="handleSelect($event)"
+					[selected]='selected'></item-summary-dropdown>
 			</div>
 			<wsv wide="19px"></wsv>
 			<section class="d-flex justify-content-around list-with-scroll">
@@ -18,11 +19,11 @@
 					#list="appScrollable"
 					[scrollUnit]="150">
 
-					<div *ngFor="let listApproval of listApprovals"
+					<div *ngFor="let listApproval of listApprovals;let i = index"
 						class="item">
 						<address-notif [label]='listApproval'
 							[selected]='selected'
-							(diklik)='diklikEvent($event)'></address-notif>
+							(diklik)='handleSelect($event,i)'></address-notif>
 					</div>
 				</div>
 

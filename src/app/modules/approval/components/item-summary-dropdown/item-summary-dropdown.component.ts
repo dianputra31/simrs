@@ -15,6 +15,7 @@ import {
 })
 export class ItemSummaryDropdownComponent implements OnInit {
 	@Input() list: any[];
+	@Input() selected: String;
 	@Output() onSelect = new EventEmitter<any>();
 
 	@ViewChild('scrollMe') private myScrollContainer: ElementRef;
@@ -22,8 +23,6 @@ export class ItemSummaryDropdownComponent implements OnInit {
 	open = false;
 	qty = 111;
 
-	selected;
-	selectedIndex = 0;
 	constructor() {}
 
 	ngOnInit(): void {
@@ -33,16 +32,14 @@ export class ItemSummaryDropdownComponent implements OnInit {
 	checkDropDown(open: boolean) {
 		this.open = open;
 		if (open) {
-			var topPos = document.getElementsByClassName('item-row');
+			var topPos = document.getElementsByClassName(this.selected.name);
 			this.myScrollContainer.nativeElement.scrollTop =
-				topPos[this.selectedIndex].offsetTop - 20;
-		} else {
+				topPos[0].offsetTop - 20;
 		}
 	}
 
-	clickWaiting(selected, index) {
+	clickWaiting(selected) {
 		this.selected = selected;
-		this.selectedIndex = index;
 		this.onSelect.emit(selected);
 	}
 }

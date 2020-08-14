@@ -10,6 +10,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	public widgetsContent: ElementRef<any>;
 
 	selected;
+	selectedIndex;
 	constructor() {}
 
 	listApprovals = [
@@ -43,13 +44,9 @@ export class ApprovalLayoutComponent implements OnInit {
 		},
 	];
 
-	handleSelect(selected) {
+	handleSelect(selected, index) {
 		this.selected = selected;
-	}
-
-	diklikEvent(test) {
-		console.log(test);
-		this.selected = test;
+		this.selectedIndex = index;
 	}
 
 	ngOnInit(): void {
