@@ -1,11 +1,11 @@
-<div [ngClass]="(show == '1')? 'showing' : 'noshowing'">
+<div [ngClass]="(show == true)? 'showing' : 'noshowing'">
 	<div id="badge-wrapper"
 		class="d-flex align-items-center justify-content-center">
 		{{label.statustrx}}
 	</div>
 </div>
 
-<div [ngClass]="(show == '0')? 'showing' : 'noshowing'">
+<div [ngClass]="(show == false)? 'showicon' : 'noshowicon'">
 	<div class="d-flex"
 		id="icon-status">
 		<div class="p-2 bd-highlight"
