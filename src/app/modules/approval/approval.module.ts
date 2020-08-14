@@ -14,6 +14,7 @@ import { ItemSummaryDropdownComponent } from './components/item-summary-dropdown
 import { ResetFilterButtonComponent } from './components/reset-filter-button/reset-filter-button.component';
 import { ApprovalLayoutComponent } from './pages/approval-layout/approval-layout.component';
 import { ScrollableDirective } from './scrollable.directive';
+import { ApprovalRejectDialogComponent } from './components/approval-reject-dialog/approval-reject-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -28,6 +29,7 @@ import { ScrollableDirective } from './scrollable.directive';
 		ItemListSectionComponent,
 		ApprovalConfirmationDialogComponent,
 		ApprovalResultConfirmationDialogComponent,
+		ApprovalRejectDialogComponent,
 	],
 
 	imports: [

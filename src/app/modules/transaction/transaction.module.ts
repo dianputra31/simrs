@@ -10,6 +10,8 @@ import { TransactionLayoutComponent } from './pages/transaction-layout/transacti
 import { TransactionRoutingModule } from './transaction-routing.module';
 import { ItemTransactionComponent } from './components/item-transaction/item-transaction.component';
 import { BadgeComponent } from './components/badge/badge.component';
+import { ReceiptConfirmationComponent } from './components/receipt-confirmation/receipt-confirmation.component';
+import { RatingReviewComponent } from './components/rating-review/rating-review.component';
 
 @NgModule({
 	declarations: [
@@ -20,6 +22,8 @@ import { BadgeComponent } from './components/badge/badge.component';
 		FilterDateComponent,
 		ItemTransactionComponent,
 		BadgeComponent,
+		ReceiptConfirmationComponent,
+		RatingReviewComponent,
 	],
 	imports: [
 		CommonModule,
