@@ -22,7 +22,7 @@ export class ApprovalResultConfirmationDialogComponent implements OnInit {
 
 	lihatTransaksi() {
 		this.dialogRef.close();
-		this.router.navigate(['./transaksi']);
+		this.router.navigate(['./transaction']);
 	}
 
 	tutupModal() {
