@@ -12,3 +12,42 @@
 	font-size: 14px;
 	color: #ffffff;
 }
+
+#icon-status{
+	width:140px;position: relative;float: left;height:50px;
+}
+
+.noshowing{
+	display:none;
+}
+.noshowicon{
+	display:none;
+}
+.label-icon{
+	width:100%;
+	position: relative;
+	float: left;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	font-feature-settings: 'kern' off;
+	color: $color-primary;
+	padding-left:10px;
+}
+
+.showing{
+	text-decoration: none;
+}
+.showicon{
+	text-decoration: none;
+}
+
+#detail-status{
+	min-width:25%;
+}
+
+#kotak-icon{
+	height:24px;width:24px;float:left;border-radius:50%;background-color: #DB0A2A;padding:2px 0px 0px 2px;
+}

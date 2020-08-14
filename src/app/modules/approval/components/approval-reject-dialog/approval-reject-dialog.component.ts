@@ -2,15 +2,16 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
-	selector: 'approval-result-confirmation-dialog',
-	templateUrl: './approval-result-confirmation-dialog.component.html',
-	styleUrls: ['./approval-result-confirmation-dialog.component.scss']
+	selector: 'approval-reject-dialog',
+	templateUrl: './approval-reject-dialog.component.html',
+	styleUrls: ['./approval-reject-dialog.component.scss']
 })
-export class ApprovalResultConfirmationDialogComponent implements OnInit {
+export class ApprovalRejectDialogComponent implements OnInit {
 
 	constructor(
-		public dialogRef: MatDialogRef<ApprovalResultConfirmationDialogComponent>,
+		public dialogRef: MatDialogRef<ApprovalRejectDialogComponent>,
 		@Inject(MAT_DIALOG_DATA) public modalData: any,
 		private route: ActivatedRoute,
 		private router: Router,
@@ -20,12 +21,12 @@ export class ApprovalResultConfirmationDialogComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	lihatTransaksi() {
-		this.dialogRef.close();
-		this.router.navigate(['./transaction']);
-	}
 
 	tutupModal() {
+		this.dialogRef.close();
+	}
+
+	actionTolak() {
 		this.dialogRef.close();
 	}
 

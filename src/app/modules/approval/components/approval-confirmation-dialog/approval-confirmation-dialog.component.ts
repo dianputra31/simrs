@@ -24,7 +24,6 @@ export class ApprovalConfirmationDialogComponent implements OnInit {
 
 
 	openDialogLocation(des) {
-		console.log(des);
 		//processing data
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
@@ -57,7 +56,7 @@ export class ApprovalConfirmationDialogComponent implements OnInit {
 
 	proses() {
 		this.dialogRef.close();
-		this.openDialogLocation('hehe');
+		this.openDialogLocation('./transaction');
 	}
 
 }

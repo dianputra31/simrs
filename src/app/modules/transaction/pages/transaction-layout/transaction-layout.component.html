@@ -1,8 +1,31 @@
-<div class="container">
-	<wsv wide="24px"></wsv>
-	<div class="page-header">Transaction</div>
-	<wsv wide="24px"></wsv>
-	<list-status-section></list-status-section>
-	<filter-buttons-section></filter-buttons-section>
-	<item-transaction></item-transaction>
+<div class="container d-flex">
+	<div id="left-container">
+
+		<div id="top-fixed"
+			class="bg-10">
+			<wsv wide="24px"></wsv>
+			<div id="keranjang-label">TRANSAKSI</div>
+			<wsv wide="20px"></wsv>
+			<div class="d-flex justify-content-left">
+				<list-status-section></list-status-section>
+			</div>
+			<wsv wide="19px"></wsv>
+
+			<filter-buttons-section></filter-buttons-section>
+
+			<wsv wide="20px"></wsv>
+			<div id="horizontal-line"></div>
+			<wsv wide="10px"></wsv>
+			<wsv wide="20px"></wsv>
+		</div>
+	</div>
+</div>
+<wsv wide="200px"></wsv>
+
+<div class="container d-flex">
+	<div id="left-container">
+		<item-transaction></item-transaction>
+		<wsv wide="60px"></wsv>
+	</div>
+
 </div>
