@@ -29,11 +29,11 @@
 		id="style-2"
 		#scrollMe>
 		<div>
-			<div *ngFor="let waitingApproval of waitingApprovals;let i = index">
+			<div *ngFor="let waitingApproval of list;let i = index">
 				<div id="item-row"
 					class="d-flex justify-content-between item-row"
 					[ngClass]="selected == waitingApproval ? 'selected' : '' "
-					(click)="clickWaiting(waitingApproval, i);myDrop.close()">
+					(click)="clickWaiting(waitingApproval, i);myDrop.close();">
 					<div class="item-dropdown-class">
 						{{waitingApproval.name}}
 					</div>

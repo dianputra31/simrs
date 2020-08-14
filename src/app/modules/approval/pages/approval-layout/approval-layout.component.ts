@@ -3,13 +3,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
 	selector: 'approval-layout',
 	templateUrl: './approval-layout.component.html',
-	styleUrls: ['./approval-layout.component.scss']
+	styleUrls: ['./approval-layout.component.scss'],
 })
 export class ApprovalLayoutComponent implements OnInit {
-	@ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
+	@ViewChild('widgetsContent', { read: ElementRef })
+	public widgetsContent: ElementRef<any>;
 
 	selected;
-	constructor() { }
+	constructor() {}
 
 	listApprovals = [
 		{
@@ -40,10 +41,11 @@ export class ApprovalLayoutComponent implements OnInit {
 			name: 'Kantor Cabang 6',
 			qty: 2,
 		},
-
-
 	];
 
+	handleSelect(selected) {
+		this.selected = selected;
+	}
 
 	diklikEvent(test) {
 		console.log(test);
@@ -55,14 +57,18 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	scrollLeft() {
-		this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' })
+		this.widgetsContent.nativeElement.scrollTo({
+			left: this.widgetsContent.nativeElement.scrollLeft - 150,
+			behavior: 'smooth',
+		});
 		console.log('to the left');
 	}
 
 	scrollRight() {
-		this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' })
+		this.widgetsContent.nativeElement.scrollTo({
+			left: this.widgetsContent.nativeElement.scrollLeft + 150,
+			behavior: 'smooth',
+		});
 		console.log('to the right');
 	}
-
-
 }
