@@ -70,6 +70,13 @@ const routes: Routes = [
 						(m) => m.TransactionModule
 					),
 			},
+			{
+				path: 'transaction-detail',
+				loadChildren: () =>
+					import('../modules/transaction-detail/transaction-detail.module').then(
+						(m) => m.TransactionDetailModule
+					),
+			},
 		],
 	},
 ];
@@ -77,4 +84,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class LayoutRoutingModule {}
+export class LayoutRoutingModule { }

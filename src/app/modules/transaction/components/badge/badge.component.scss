@@ -14,7 +14,30 @@
 }
 
 #icon-status{
-	width:70%;position: relative;float: left;height:50px;
+	width:140px;position: relative;float: left;height:50px;
+}
+
+.noshowing{
+	display:none;
+}
+
+.label-icon{
+	width:100%;
+	position: relative;
+	float: left;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	font-feature-settings: 'kern' off;
+	color: $color-primary;
+	padding-left:10px;
+}
+
+.showing{
+	// display:none;
+	text-decoration: none;
 }
 
 #detail-status{
