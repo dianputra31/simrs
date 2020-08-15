@@ -9,6 +9,7 @@ export class FilterDropdownComponent implements OnInit {
 	open = false;
 	selectedIndex;
 	purchasers = [
+		'Pilih Semua',
 		'Purchase 01',
 		'Purchase 02',
 		'Purchase 03',
