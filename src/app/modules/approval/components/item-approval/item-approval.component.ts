@@ -37,4 +37,8 @@ export class ItemApprovalComponent implements OnInit {
 
 		return false;
 	}
+
+	isItemChecked() {
+		return this.item.available && this.item.cart;
+	}
 }

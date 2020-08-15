@@ -11,7 +11,25 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	selected;
 	selectedIndex;
+	pilihSemua = false;
 	constructor() {}
+	items = [
+		{
+			item: '1',
+			available: true,
+			cart: true,
+		},
+		{
+			item: '2',
+			available: false,
+			cart: false,
+		},
+		{
+			item: '3',
+			available: true,
+			cart: true,
+		},
+	];
 
 	listApprovals = [
 		{
@@ -51,6 +69,7 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.selected = this.listApprovals[0];
+		this.handlePilihSemua();
 	}
 
 	scrollLeft() {
@@ -67,5 +86,24 @@ export class ApprovalLayoutComponent implements OnInit {
 			behavior: 'smooth',
 		});
 		console.log('to the right');
+	}
+
+	handlePilihSemua() {
+		var i,
+			n = this.items.length;
+		for (i = 0; i < n; ++i) {
+			if (this.items[i].available) {
+				this.items[i].cart = this.pilihSemua;
+			}
+		}
+		this.pilihSemua = !this.pilihSemua;
+	}
+
+	handlePilihSemuaStatus(): Boolean {
+		return false;
+	}
+
+	isAvailable(element, index, array) {
+		return element.available;
 	}
 }

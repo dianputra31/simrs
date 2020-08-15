@@ -66,24 +66,16 @@
 			</div>
 			<wsv wide="20px"></wsv>
 
-
-
-			<wsv wide="0px"></wsv>
-			<div>
-
-			</div>
-
-			<wsv wide="0px"></wsv>
-
-
 			<div class="d-flex">
 				<wsh wide="13px"></wsh>
-				<check-box-round [checked]="true"
+				<check-box-round [checked]="handlePilihSemuaStatus()"
+					(click)="handlePilihSemua()"
 					allowChanges="true"></check-box-round>
+				<wsh wide="14px"></wsh>
+				<div id="pilih-semua">Pilih Semua</div>
 			</div>
 			<wsv wide="15px"></wsv>
 		</div>
-
 	</div>
 
 </div>
@@ -91,7 +83,7 @@
 <div class="container d-flex">
 
 	<div id="left-container">
-		<item-list-section></item-list-section>
+		<item-list-section [items]="items"></item-list-section>
 		<wsv wide="60px"></wsv>
 	</div>
 

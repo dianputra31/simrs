@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'item-list-section',
@@ -6,18 +6,23 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./item-list-section.component.scss'],
 })
 export class ItemListSectionComponent implements OnInit {
-	items = [
-		{
-			available: true,
-		},
-		{
-			available: false,
-		},
-		{
-			available: true,
-		},
-	];
-	constructor() {}
+	@Input() items: [];
 
-	ngOnInit(): void {}
+	availableItems = [];
+	cart = [];
+
+	constructor() {
+		// this.availableItems = this.items.filter(this.isAvailable);
+		this.items.filter(this.isAvailable);
+	}
+
+	ngOnInit(): void {
+		console.log(this.items);
+	}
+
+	isAvailable(element, index, array) {
+		return element.available;
+	}
+
+	putTocart(item) {}
 }
