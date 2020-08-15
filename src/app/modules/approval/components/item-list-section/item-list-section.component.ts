@@ -13,7 +13,7 @@ export class ItemListSectionComponent implements OnInit {
 
 	constructor() {
 		// this.availableItems = this.items.filter(this.isAvailable);
-		this.items.filter(this.isAvailable);
+		// this.items.filter(this.isAvailable);
 	}
 
 	ngOnInit(): void {
