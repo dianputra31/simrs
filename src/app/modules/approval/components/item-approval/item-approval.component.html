@@ -48,10 +48,12 @@
 	</div>
 
 	<div id="masking"
+		*ngIf="!item.available"
 		class="rounded-gray">
 	</div>
 
 	<div id="above-masking"
+		*ngIf="!item.available"
 		class="rounded-gray">
 		<div id="header"
 			class="d-flex align-items-center">

@@ -6,7 +6,17 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./item-list-section.component.scss'],
 })
 export class ItemListSectionComponent implements OnInit {
-	items = ['', '', ''];
+	items = [
+		{
+			available: true,
+		},
+		{
+			available: false,
+		},
+		{
+			available: true,
+		},
+	];
 	constructor() {}
 
 	ngOnInit(): void {}
