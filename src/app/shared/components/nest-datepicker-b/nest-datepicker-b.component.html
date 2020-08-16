@@ -20,19 +20,44 @@
 			[displayMonths]="1"
 			outsideDays="hidden"
 			[showWeekdays]="true"
+			[dayTemplate]="t"
 			[(ngModel)]="model"
 			navigation="none">
 			<ng-template ngbDatepickerContent>
 				<div *ngFor="let month of dp.state.months">
-					<div class="text-primary p-1 font-weight-bold">{{ i18n.getMonthShortName(month.month) }}
-						{{ month.year }}</div>
-					<ngb-datepicker-month class="border rounded"
-						[month]="month"></ngb-datepicker-month>
+					<div class="d-flex  justify-content-between align-items-center">
+						<img id="arrow_left"
+							class="arrow_size"
+							(click)="navigate(-1);"
+							src="../../../../assets/image/icons/arrow_left.png">
+
+						<div class="month-name">{{ i18n.getMonthShortName(month.month) }}
+							{{ month.year }}</div>
+						<img id="arrow_right"
+							class="arrow_size"
+							src="../../../../assets/image/icons/arrow_right.png"
+							(click)="navigate(1);">
+					</div>
+
+					<wsv wide="10px"></wsv>
+					<ngb-datepicker-month [month]="month"></ngb-datepicker-month>
+
 				</div>
 			</ng-template>
 		</ngb-datepicker>
 
 		{{model|json}}
 	</div>
+
+	<ng-template #t
+		let-date
+		let-focused="focused">
+		<!-- [class.faded]="isHovered(date) || isInside(date)" -->
+		<span class="custom-day"
+			[class.focused]="focused">
+			<span>{{ date.day }}</span>
+		</span>
+
+	</ng-template>
 
 </div>
