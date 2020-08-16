@@ -1,63 +1,41 @@
-<div id="date-picker-wrapper">
+<ngb-datepicker class="custom-datepicker px-3 pt-1 pb-3"
+	#dp
+	[displayMonths]="1"
+	outsideDays="hidden"
+	[showWeekdays]="true"
+	(dateSelect)="onDateSelection($event)"
+	[dayTemplate]="t"
+	navigation="none">
+	<ng-template ngbDatepickerContent>
+		<div *ngFor="let month of dp.state.months">
+			<div class="d-flex  justify-content-between align-items-center">
+				<img id="arrow_left"
+					class="arrow_size"
+					(click)="navigate(-1);"
+					src="../../../../assets/image/icons/arrow_left.png">
 
-	<div class="d-inline-block">
+				<div class="month-name">{{ i18n.getMonthShortName(month.month) }}
+					{{ month.year }}</div>
+				<img id="arrow_right"
+					class="arrow_size"
+					src="../../../../assets/image/icons/arrow_right.png"
+					(click)="navigate(1);">
+			</div>
 
-		<!-- <div class="btn-group d-flex justify-content-end mb-2"
-			role="group">
-			<button type="button"
-				class="btn btn-sm btn-outline-primary"
-				(click)="navigate(-1);">Prev</button>
-			<button type="button"
-				class="btn btn-sm btn-outline-primary"
-				(click)="today()">Today</button>
-			<button type="button"
-				class="btn btn-sm btn-outline-primary"
-				(click)="navigate(1)">Next</button>
-		</div> -->
+			<wsv wide="10px"></wsv>
+			<ngb-datepicker-month [month]="month"></ngb-datepicker-month>
 
-		<ngb-datepicker class="custom-datepicker px-3 pt-1 pb-3"
-			#dp
-			[displayMonths]="1"
-			outsideDays="hidden"
-			[showWeekdays]="true"
-			[dayTemplate]="t"
-			[(ngModel)]="model"
-			navigation="none">
-			<ng-template ngbDatepickerContent>
-				<div *ngFor="let month of dp.state.months">
-					<div class="d-flex  justify-content-between align-items-center">
-						<img id="arrow_left"
-							class="arrow_size"
-							(click)="navigate(-1);"
-							src="../../../../assets/image/icons/arrow_left.png">
-
-						<div class="month-name">{{ i18n.getMonthShortName(month.month) }}
-							{{ month.year }}</div>
-						<img id="arrow_right"
-							class="arrow_size"
-							src="../../../../assets/image/icons/arrow_right.png"
-							(click)="navigate(1);">
-					</div>
-
-					<wsv wide="10px"></wsv>
-					<ngb-datepicker-month [month]="month"></ngb-datepicker-month>
-
-				</div>
-			</ng-template>
-		</ngb-datepicker>
-
-		{{model|json}}
-	</div>
-
-	<ng-template #t
-		let-date
-		let-focused="focused">
-		<!-- [class.faded]="isHovered(date) || isInside(date)" -->
-		<span class="custom-day"
-			[class.focused]="focused">
-			<span>{{ date.day }}</span>
-		</span>
-
+		</div>
 	</ng-template>
+</ngb-datepicker>
 
-</div>
+
+
+<ng-template #t
+	let-date>
+	<span class="custom-day"
+		[class.range]="isRange(date)">
+		<span>{{ date.day }}</span>
+	</span>
+
+</ng-template>

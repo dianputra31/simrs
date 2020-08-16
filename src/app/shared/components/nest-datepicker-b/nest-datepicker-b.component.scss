@@ -37,6 +37,23 @@
 	color: #a9a9a9;
 }
 
+.custom-day.range {
+	background-color: $color-primary;
+	color: $putih-tok;
+	border-radius: 20px;
+}
+
+.custom-day.faded {
+	background-color: rgba(219, 10, 42, 0.3);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	padding-right: 0px;
+	background-clip: content-box;
+	color: #606060;
+	border-radius: 0px !important;
+}
+
 .arrow_size {
 	width: 6px;
 	height: 10.35px;
