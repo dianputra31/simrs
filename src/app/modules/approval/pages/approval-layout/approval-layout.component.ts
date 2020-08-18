@@ -104,7 +104,19 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	handlePilihSemuaStatus(): Boolean {
-		return false;
+		var s = true;
+
+		var i,
+			n = this.items.length;
+		for (i = 0; i < n; ++i) {
+			if (this.items[i].available) {
+				if (!this.items[i].cart) {
+					s = false;
+					break;
+				}
+			}
+		}
+		return s;
 	}
 
 	isAvailable(element, index, array) {

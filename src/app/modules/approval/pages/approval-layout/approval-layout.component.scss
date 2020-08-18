@@ -169,3 +169,23 @@
 
 	color: $color-primary;
 }
+
+#total-barang-terpilih {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+
+	color: $color-primary;
+}
+
+#barang-terpilih-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+
+	color: #606060;
+}
