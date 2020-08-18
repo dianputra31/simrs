@@ -108,6 +108,10 @@ ngb-datepicker {
 		display: none;
 	}
 
+	.ngb-dp-month-name {
+		display: none;
+	}
+
 	.ngb-dp-weekdays {
 		border-bottom: 0;
 		background-color: transparent;
@@ -126,4 +130,11 @@ ngb-datepicker {
 
 .flex-even {
 	flex: 1;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+:focus {
+	outline: none;
 }

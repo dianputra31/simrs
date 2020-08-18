@@ -1,5 +1,5 @@
-@import '../../../../../styles/variables/colors';
-@import '../../../../../styles/variables/fonts';
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
 
 #reset-filter-button {
 	font-family: $primary-font;
@@ -14,4 +14,5 @@
 	/* Primary Color */
 
 	color: $color-primary;
+	cursor: pointer;
 }

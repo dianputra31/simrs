@@ -1,5 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgbDatepicker, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
+import {
+	Component,
+	EventEmitter,
+	OnInit,
+	Output,
+	ViewChild,
+} from '@angular/core';
+import {
+	NgbDate,
+	NgbDatepicker,
+	NgbDatepickerI18n,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'nest-datepicker-b',
@@ -7,8 +17,11 @@ import { NgbDatepicker, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 	styleUrls: ['./nest-datepicker-b.component.scss'],
 })
 export class NestDatepickerBComponent implements OnInit {
-	@ViewChild(NgbDatepicker, { static: true }) datepicker: NgbDatepicker;
+	@Output() dateSelectedEvent = new EventEmitter<NgbDate>();
+	@ViewChild(NgbDatepicker, { static: true })
+	datepicker: NgbDatepicker;
 
+	selectedDate: NgbDate;
 	constructor(public i18n: NgbDatepickerI18n) {}
 
 	navigate(number: number) {
@@ -23,5 +36,13 @@ export class NestDatepickerBComponent implements OnInit {
 		this.datepicker.navigateTo(calendar.getToday());
 	}
 
+	isRange(date: NgbDate) {
+		return date.equals(this.selectedDate);
+	}
+
+	onDateSelection(date: NgbDate) {
+		this.selectedDate = date;
+		this.dateSelectedEvent.emit(date);
+	}
 	ngOnInit() {}
 }

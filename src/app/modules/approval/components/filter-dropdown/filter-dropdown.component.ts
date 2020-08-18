@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterDropdownComponent implements OnInit {
 	open = false;
-	selectedIndex;
+	selected;
 	purchasers = [
-		'Pilih Semua',
+		'Semua',
 		'Purchase 01',
 		'Purchase 02',
 		'Purchase 03',
@@ -23,12 +23,18 @@ export class FilterDropdownComponent implements OnInit {
 		'Purchase 11',
 		'Purchase 12',
 	];
-	selected = this.purchasers[0];
+
 	constructor() {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.resetSelected();
+	}
 
 	checkDropDown(open: boolean) {
 		this.open = open;
+	}
+
+	resetSelected() {
+		this.selected = this.purchasers[0];
 	}
 }

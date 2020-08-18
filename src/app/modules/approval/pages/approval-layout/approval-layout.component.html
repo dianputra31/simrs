@@ -22,7 +22,7 @@
 						class="item">
 						<address-notif [label]='listApproval'
 							[selected]='selected'
-							(diklik)='handleSelect($event,i)'></address-notif>
+							(diklik)='handleSelect($event)'></address-notif>
 						<address-warn-notif [label]='listApproval'></address-warn-notif>
 					</div>
 				</div>
@@ -62,7 +62,8 @@
 
 				<wsh wide="24px"></wsh>
 
-				<reset-filter-button class="d-flex align-items-center"></reset-filter-button>
+				<reset-filter class="d-flex align-items-center"
+					(click)="resetButtonOnClick()"></reset-filter>
 
 			</div>
 			<wsv wide="20px"></wsv>

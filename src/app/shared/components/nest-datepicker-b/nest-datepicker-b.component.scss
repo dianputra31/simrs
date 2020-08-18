@@ -1,3 +1,6 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
 #date-picker-wrapper {
 	width: 485px;
 	background: #ffffff;
@@ -15,4 +18,52 @@
 	grid-template-columns: auto auto;
 	grid-column-gap: 1rem;
 	grid-row-gap: 0.5rem;
+}
+
+.month-name {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+
+	display: flex;
+	align-items: center;
+	text-align: center;
+
+	/* light Grey */
+
+	color: #a9a9a9;
+}
+
+.custom-day.range {
+	background-color: $color-primary;
+	color: $putih-tok;
+	border-radius: 20px;
+}
+
+.custom-day.faded {
+	background-color: rgba(219, 10, 42, 0.3);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	padding-right: 0px;
+	background-clip: content-box;
+	color: #606060;
+	border-radius: 0px !important;
+}
+
+.arrow_size {
+	width: 6px;
+	height: 10.35px;
+}
+
+.custom-day {
+	text-align: center;
+	padding: 0.3rem 0.25rem;
+	display: inline-block;
+	height: 2rem;
+	width: 2rem;
+	color: $abu-abu-gelap;
 }

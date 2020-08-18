@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FilterDateComponent } from '../../components/filter-date/filter-date.component';
+import { FilterDropdownComponent } from '../../components/filter-dropdown/filter-dropdown.component';
 
 @Component({
 	selector: 'approval-layout',
@@ -6,7 +8,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 	styleUrls: ['./approval-layout.component.scss'],
 })
 export class ApprovalLayoutComponent implements OnInit {
-	@ViewChild('widgetsContent', { read: ElementRef })
+	@ViewChild(FilterDropdownComponent)
+	filterDropdown: FilterDropdownComponent;
+	@ViewChild(FilterDateComponent)
+	filterDateDropdown: FilterDateComponent;
 	public widgetsContent: ElementRef<any>;
 
 	selected;
@@ -62,9 +67,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		},
 	];
 
-	handleSelect(selected, index) {
+	handleSelect(selected) {
 		this.selected = selected;
-		this.selectedIndex = index;
 	}
 
 	ngOnInit(): void {
@@ -105,5 +109,10 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	isAvailable(element, index, array) {
 		return element.available;
+	}
+
+	resetButtonOnClick() {
+		this.filterDropdown.resetSelected();
+		this.filterDateDropdown.resetDate();
 	}
 }

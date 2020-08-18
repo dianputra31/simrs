@@ -34,7 +34,7 @@ export class ItemSummaryDropdownComponent implements OnInit {
 		if (open) {
 			// var topPos = document.getElementsByClassName(this.selected.name);
 			// this.myScrollContainer.nativeElement.scrollTop =
-			// topPos[0].offsetTop - 20;
+			// 	topPos[0].offsetTop - 20;
 		}
 	}
 
