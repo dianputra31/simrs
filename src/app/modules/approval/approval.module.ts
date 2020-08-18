@@ -15,6 +15,7 @@ import { ResetFilterButtonComponent } from './components/reset-filter-button/res
 import { ApprovalLayoutComponent } from './pages/approval-layout/approval-layout.component';
 import { ScrollableDirective } from './scrollable.directive';
 import { ApprovalRejectDialogComponent } from './components/approval-reject-dialog/approval-reject-dialog.component';
+import { AddressWarnNotifComponent } from './components/address-warn-notif/address-warn-notif.component';
 
 @NgModule({
 	declarations: [
@@ -30,6 +31,7 @@ import { ApprovalRejectDialogComponent } from './components/approval-reject-dial
 		ApprovalConfirmationDialogComponent,
 		ApprovalResultConfirmationDialogComponent,
 		ApprovalRejectDialogComponent,
+		AddressWarnNotifComponent,
 	],
 
 	imports: [

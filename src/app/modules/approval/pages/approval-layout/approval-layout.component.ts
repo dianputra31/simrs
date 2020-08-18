@@ -17,7 +17,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			qty: 10,
 		},
 		{
-			name: 'Kantor Cabang 1',
+			name: 'Kantor Pertama Di Jalan Samudera',
 			qty: 8,
 		},
 		{
@@ -25,7 +25,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			qty: 0,
 		},
 		{
-			name: 'Kantor Cabang 3',
+			name: 'Jl Kompleks Gelora Bung Karno Baru Jaksel No 45',
 			qty: 0,
 		},
 		{
