@@ -111,4 +111,10 @@
 	border: 0.5px solid $abu-abu-sesuatu;
 	box-sizing: border-box;
 	border-radius: 20px;
+	position: absolute;
+	z-index: 2;
+}
+
+.visibility-hidden {
+	visibility: hidden;
 }

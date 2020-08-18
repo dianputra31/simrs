@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./filter-dropdown.component.scss'],
 })
 export class FilterDropdownComponent implements OnInit {
+	open = false;
+	selectedIndex;
 	purchasers = [
+		'Pilih Semua',
 		'Purchase 01',
 		'Purchase 02',
 		'Purchase 03',
@@ -24,4 +27,8 @@ export class FilterDropdownComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	checkDropDown(open: boolean) {
+		this.open = open;
+	}
 }

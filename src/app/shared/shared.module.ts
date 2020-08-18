@@ -19,6 +19,7 @@ import { FooterFeatureComponent } from './components/footer-feature/footer-featu
 import { FooterComponent } from './components/footer/footer.component';
 import { ItemDescComponent } from './components/item-desc/item-desc.component';
 import { NestDatepickerAComponent } from './components/nest-datepicker-a/nest-datepicker-a.component';
+import { NestDatepickerBComponent } from './components/nest-datepicker-b/nest-datepicker-b.component';
 import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.component';
 import { PopUpRequestApprovalComponent } from './components/pop-up-request-approval/pop-up-request-approval.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
@@ -52,6 +53,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		FilterDropdownListComponent,
 		RedBorderWhiteBgButtonComponent,
 		RedBgButtonComponent,
+		NestDatepickerBComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule],
 	exports: [
@@ -77,6 +79,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		FilterDropdownListComponent,
 		RedBorderWhiteBgButtonComponent,
 		RedBgButtonComponent,
+		NestDatepickerBComponent,
 	],
 })
 export class SharedModule {}

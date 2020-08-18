@@ -4,7 +4,7 @@
 #top-fixed {
 	position: fixed;
 	width: 1100px;
-	background-color: $abu-abu-2;
+	background-color: $main-background;
 	z-index: 1;
 }
 
@@ -158,4 +158,14 @@
 	height: 1px;
 	width: 100%;
 	background-color: #a9a9a9;
+}
+
+#pilih-semua {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+
+	color: $color-primary;
 }

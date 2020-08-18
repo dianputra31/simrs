@@ -6,7 +6,9 @@
 			<div id="keranjang-label">APPROVAL</div>
 			<wsv wide="7px"></wsv>
 			<div class="d-flex justify-content-center">
-				<item-summary-dropdown></item-summary-dropdown>
+				<item-summary-dropdown [list]="listApprovals"
+					(onSelect)="handleSelect($event)"
+					[selected]='selected'></item-summary-dropdown>
 			</div>
 			<wsv wide="19px"></wsv>
 			<section class="d-flex justify-content-around list-with-scroll">
@@ -16,11 +18,11 @@
 					#list="appScrollable"
 					[scrollUnit]="150">
 
-					<div *ngFor="let listApproval of listApprovals"
+					<div *ngFor="let listApproval of listApprovals;let i = index"
 						class="item">
 						<address-notif [label]='listApproval'
 							[selected]='selected'
-							(diklik)='diklikEvent($event)'></address-notif>
+							(diklik)='handleSelect($event,i)'></address-notif>
 						<address-warn-notif [label]='listApproval'></address-warn-notif>
 					</div>
 				</div>
@@ -65,24 +67,16 @@
 			</div>
 			<wsv wide="20px"></wsv>
 
-
-
-			<wsv wide="0px"></wsv>
-			<div>
-
-			</div>
-
-			<wsv wide="0px"></wsv>
-
-
 			<div class="d-flex">
 				<wsh wide="13px"></wsh>
-				<check-box-round [checked]="true"
+				<check-box-round [checked]="handlePilihSemuaStatus()"
+					(click)="handlePilihSemua()"
 					allowChanges="true"></check-box-round>
+				<wsh wide="14px"></wsh>
+				<div id="pilih-semua">Pilih Semua</div>
 			</div>
 			<wsv wide="15px"></wsv>
 		</div>
-
 	</div>
 
 </div>
@@ -90,7 +84,7 @@
 <div class="container d-flex">
 
 	<div id="left-container">
-		<item-list-section></item-list-section>
+		<item-list-section [items]="items"></item-list-section>
 		<wsv wide="60px"></wsv>
 	</div>
 

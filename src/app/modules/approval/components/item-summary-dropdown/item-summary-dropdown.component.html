@@ -1,5 +1,6 @@
 <div #myDrop="ngbDropdown"
-	ngbDropdown>
+	ngbDropdown
+	(openChange)="checkDropDown($event)">
 	<div ngbDropdownToggle
 		autoClose="outside"
 		id="wrapper-approval-item-summary-dropdown"
@@ -15,31 +16,35 @@
 		</div>
 
 		<div ngbDropdownMenu>
-			<div id="padding-right-for-scroll">
-				<wsv wide="15px"></wsv>
-				<div class="scrollbar"
-					id="style-2">
-					<div>
-						<div *ngFor="let waitingApproval of waitingApprovals">
-							<div id="item-row"
-								class="d-flex justify-content-between"
-								[ngClass]="selected == waitingApproval ? 'selected' : '' "
-								(click)="selected=waitingApproval;myDrop.close()">
-								<div class="item-dropdown-class">
-									{{waitingApproval.name}}
-								</div>
-								<div class="item-dropdown-class">
-									{{waitingApproval.qty}} Barang
-								</div>
-							</div>
-							<wsv wide="15px"></wsv>
-						</div>
-					</div>
-				</div>
 
-				<wsv wide="15px"></wsv>
-			</div>
 
 		</div>
 	</div>
+</div>
+
+<div id="padding-right-for-scroll"
+	[ngClass]="(open)?'':'visibility-hidden'">
+	<wsv wide="15px"></wsv>
+	<div class="scrollbar"
+		id="style-2"
+		#scrollMe>
+		<div>
+			<div *ngFor="let waitingApproval of list;let i = index">
+				<div id="item-row"
+					class="d-flex justify-content-between {{waitingApproval.name}}"
+					[ngClass]="selected == waitingApproval ? 'selected'  : '' "
+					(click)="clickWaiting(waitingApproval, i);myDrop.close();">
+					<div class="item-dropdown-class">
+						{{waitingApproval.name}}
+					</div>
+					<div class="item-dropdown-class">
+						{{waitingApproval.qty}} Barang
+					</div>
+				</div>
+				<wsv wide="15px"></wsv>
+			</div>
+		</div>
+	</div>
+
+	<wsv wide="15px"></wsv>
 </div>
