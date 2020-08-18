@@ -62,9 +62,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		},
 	];
 
-	handleSelect(selected, index) {
+	handleSelect(selected) {
 		this.selected = selected;
-		this.selectedIndex = index;
 	}
 
 	ngOnInit(): void {

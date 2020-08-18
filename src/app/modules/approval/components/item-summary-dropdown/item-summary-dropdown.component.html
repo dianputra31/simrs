@@ -33,7 +33,7 @@
 				<div id="item-row"
 					class="d-flex justify-content-between {{waitingApproval.name}}"
 					[ngClass]="selected == waitingApproval ? 'selected'  : '' "
-					(click)="clickWaiting(waitingApproval, i);myDrop.close();">
+					(click)="clickWaiting(waitingApproval);myDrop.close();">
 					<div class="item-dropdown-class">
 						{{waitingApproval.name}}
 					</div>

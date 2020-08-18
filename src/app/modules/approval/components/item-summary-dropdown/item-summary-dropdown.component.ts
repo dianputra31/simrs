@@ -32,9 +32,9 @@ export class ItemSummaryDropdownComponent implements OnInit {
 	checkDropDown(open: boolean) {
 		this.open = open;
 		if (open) {
-			var topPos = document.getElementsByClassName(this.selected.name);
-			this.myScrollContainer.nativeElement.scrollTop =
-				topPos[0].offsetTop - 20;
+			// var topPos = document.getElementsByClassName(this.selected.name);
+			// this.myScrollContainer.nativeElement.scrollTop =
+			// 	topPos[0].offsetTop - 20;
 		}
 	}
 

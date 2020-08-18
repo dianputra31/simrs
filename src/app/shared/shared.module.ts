@@ -20,11 +20,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ItemDescComponent } from './components/item-desc/item-desc.component';
 import { NestDatepickerAComponent } from './components/nest-datepicker-a/nest-datepicker-a.component';
 import { NestDatepickerBComponent } from './components/nest-datepicker-b/nest-datepicker-b.component';
+import { NestDatepickerWrapperComponent } from './components/nest-datepicker-wrapper/nest-datepicker-wrapper.component';
 import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.component';
 import { PopUpRequestApprovalComponent } from './components/pop-up-request-approval/pop-up-request-approval.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
 import { RedBgButtonComponent } from './components/red-bg-button/red-bg-button.component';
 import { RedBorderWhiteBgButtonComponent } from './components/red-border-white-bg-button/red-border-white-bg-button.component';
+import { ResetFilterComponent } from './components/reset-filter/reset-filter.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
 @NgModule({
@@ -54,6 +56,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		RedBorderWhiteBgButtonComponent,
 		RedBgButtonComponent,
 		NestDatepickerBComponent,
+		NestDatepickerWrapperComponent,
+		ResetFilterComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule],
 	exports: [
@@ -80,6 +84,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		RedBorderWhiteBgButtonComponent,
 		RedBgButtonComponent,
 		NestDatepickerBComponent,
+		ResetFilterComponent,
 	],
 })
 export class SharedModule {}

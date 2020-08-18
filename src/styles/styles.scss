@@ -131,3 +131,10 @@ ngb-datepicker {
 .flex-even {
 	flex: 1;
 }
+
+input:focus,
+textarea:focus,
+select:focus,
+:focus {
+	outline: none;
+}

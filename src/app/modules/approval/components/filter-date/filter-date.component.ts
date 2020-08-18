@@ -20,8 +20,18 @@ export class FilterDateComponent implements OnInit {
 		'Purchase 11',
 		'Purchase 12',
 	];
-	selected = this.purchasers[0];
+	selected = '';
+	startDate = '';
+	endDate = '';
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	selectedStartDate(date) {
+		this.startDate = date.day + '/' + date.month + '/' + date.year;
+	}
+
+	selectedEndDate(date) {
+		this.endDate = date.day + '/' + date.month + '/' + date.year;
+	}
 }
