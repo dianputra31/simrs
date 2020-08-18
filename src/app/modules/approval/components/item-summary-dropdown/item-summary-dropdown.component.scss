@@ -53,13 +53,17 @@
 	padding-right: 27px;
 }
 
-.item-dropdown-class {
+.item-dropdown-class { 
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: 600;
 	font-size: 14px;
-
+	text-overflow: ellipsis;
+	max-width: 290px; 
+	white-space: nowrap; 
 	color: $abu-abu-gelap;
+	overflow: hidden;
+	cursor: pointer;
 }
 
 #item-row {

@@ -17,7 +17,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	selected;
 	selectedIndex;
 	pilihSemua = false;
-	constructor() {}
+	constructor() { }
 	items = [
 		{
 			item: '1',
@@ -50,7 +50,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			qty: 0,
 		},
 		{
-			name: 'Jl Kompleks Gelora Bung Karno Baru Jaksel No 45',
+			name: 'Jl Kompleks Gelora Bung Karno Baru Jaksel No 45, Kebayoran Baru, Jakarta Selatan, DKI Jakarta',
 			qty: 0,
 		},
 		{
