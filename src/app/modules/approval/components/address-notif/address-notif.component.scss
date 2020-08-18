@@ -4,17 +4,24 @@
 
 
 .address-button-label{
+	position: relative;
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 14px;
-	line-height: 19px;
+	line-height: 16px;
 	align-items: center;
 	text-align: center;
 	color: $abu-abu-gelap;
 	cursor: pointer;
 	font-weight: 600;
 	display: flex;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	max-width: 180px; 
+	width: auto;
+	overflow: hidden;
+	
 }
 
 .address-button-label :hover{
@@ -31,21 +38,14 @@
 
 .asoy :hover{
 	text-decoration: underline;
+	white-space: nowrap; 
+	width: 60px; 
+	overflow: hidden;
+	text-overflow: ellipsis; 
 }
 
 
 
-.warn-notif{
-	width:11px;
-	height:11px;
-	border-radius: 50%;
-	background-color: transparent;
-	margin-bottom: 10px;
-}
-
-.show{
-	background-color: $kuning-emas;
-}
 
 
 

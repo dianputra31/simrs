@@ -4,6 +4,7 @@ import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../shared/shared.module';
 import { ApprovalRoutingModule } from './approval-routing.module';
 import { AddressNotifComponent } from './components/address-notif/address-notif.component';
+import { AddressWarnNotifComponent } from './components/address-warn-notif/address-warn-notif.component';
 import { ApprovalConfirmationDialogComponent } from './components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { ApprovalRejectDialogComponent } from './components/approval-reject-dialog/approval-reject-dialog.component';
 import { ApprovalResultConfirmationDialogComponent } from './components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
@@ -28,6 +29,7 @@ import { ScrollableDirective } from './scrollable.directive';
 		ApprovalConfirmationDialogComponent,
 		ApprovalResultConfirmationDialogComponent,
 		ApprovalRejectDialogComponent,
+		AddressWarnNotifComponent,
 	],
 
 	imports: [
