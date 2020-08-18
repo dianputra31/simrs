@@ -6,21 +6,6 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./filter-date.component.scss'],
 })
 export class FilterDateComponent implements OnInit {
-	purchasers = [
-		'Purchase 01',
-		'Purchase 02',
-		'Purchase 03',
-		'Purchase 04',
-		'Purchase 05',
-		'Purchase 06',
-		'Purchase 07',
-		'Purchase 08',
-		'Purchase 09',
-		'Purchase 10',
-		'Purchase 11',
-		'Purchase 12',
-	];
-	selected = '';
 	startDate = '';
 	endDate = '';
 	constructor() {}
@@ -33,5 +18,10 @@ export class FilterDateComponent implements OnInit {
 
 	selectedEndDate(date) {
 		this.endDate = date.day + '/' + date.month + '/' + date.year;
+	}
+
+	resetDate() {
+		this.startDate = '';
+		this.endDate = '';
 	}
 }
