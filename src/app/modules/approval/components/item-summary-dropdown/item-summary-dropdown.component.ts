@@ -5,7 +5,7 @@ import {
 	Input,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 
 @Component({
@@ -23,7 +23,7 @@ export class ItemSummaryDropdownComponent implements OnInit {
 	open = false;
 	qty = 111;
 
-	constructor() {}
+	constructor() { }
 
 	ngOnInit(): void {
 		this.selected = this.list[0];
@@ -32,9 +32,9 @@ export class ItemSummaryDropdownComponent implements OnInit {
 	checkDropDown(open: boolean) {
 		this.open = open;
 		if (open) {
-			var topPos = document.getElementsByClassName(this.selected.name);
-			this.myScrollContainer.nativeElement.scrollTop =
-				topPos[0].offsetTop - 20;
+			// var topPos = document.getElementsByClassName(this.selected.name);
+			// this.myScrollContainer.nativeElement.scrollTop =
+			// topPos[0].offsetTop - 20;
 		}
 	}
 
