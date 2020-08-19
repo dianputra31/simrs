@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BadgeComponent implements OnInit {
 	@Input() label;
 	@Input() show;
+	@Input() statusprocess;
+
 	constructor() { }
 
 	ngOnInit(): void {
