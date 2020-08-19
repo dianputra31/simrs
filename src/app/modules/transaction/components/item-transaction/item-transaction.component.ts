@@ -138,5 +138,9 @@ export class ItemTransactionComponent implements OnInit {
 		this.router.navigate(['./pilih-produk']);
 	}
 
+	viewDetail() {
+		this.router.navigate(['./transaction-detail']);
+	}
+
 
 }
