@@ -139,7 +139,7 @@ export class ItemTransactionComponent implements OnInit {
 	}
 
 	viewDetail() {
-		this.router.navigate(['./transaction-detail']);
+		this.router.navigate(['./transaction-detail',]);
 	}
 
 
