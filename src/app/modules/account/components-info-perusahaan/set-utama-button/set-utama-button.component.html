@@ -1,0 +1,12 @@
+<div *ngIf="utama"
+	id="alamat-utama-indicator"
+	class="d-flex">
+	Alamat Utama<wsh wide="12px"></wsh>
+	<check-box-round [checked]="true"></check-box-round>
+</div>
+
+<div *ngIf="!utama"
+	id="set-utama-button"
+	class="d-flex align-items-center justify-content-center">
+	Set Utama
+</div>

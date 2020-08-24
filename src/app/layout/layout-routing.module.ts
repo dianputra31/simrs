@@ -73,8 +73,15 @@ const routes: Routes = [
 			{
 				path: 'transaction-detail',
 				loadChildren: () =>
-					import('../modules/transaction-detail/transaction-detail.module').then(
-						(m) => m.TransactionDetailModule
+					import(
+						'../modules/transaction-detail/transaction-detail.module'
+					).then((m) => m.TransactionDetailModule),
+			},
+			{
+				path: 'account',
+				loadChildren: () =>
+					import('../modules/account/account.module').then(
+						(m) => m.AccountModule
 					),
 			},
 		],
@@ -84,4 +91,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {}

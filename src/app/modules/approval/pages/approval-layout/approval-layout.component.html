@@ -50,7 +50,7 @@
 
 			<div class="d-flex align-items-center">
 				<div class="flex-grow-1 d-flex ">
-					<filter-dropdown class="flex-even"></filter-dropdown>
+					<date-dropdown class="flex-even"></date-dropdown>
 					<wsh wide="24px"></wsh>
 					<filter-input class="flex-even"
 						hint="Cari Pesanan"
@@ -77,7 +77,8 @@
 				<div id="pilih-semua">Pilih Semua</div>
 
 				<wsh wide="340px"></wsh>
-				<div><span id="total-barang-terpilih">3 </span><span id="barang-terpilih-label"> Barang Terpilih</span>
+				<div><span id="total-barang-terpilih">{{countCartItem()}} </span><span id="barang-terpilih-label">
+						Barang Terpilih</span>
 				</div>
 			</div>
 			<wsv wide="15px"></wsv>
@@ -97,8 +98,8 @@
 		<div id="right-fixed">
 			<div class="d-flex">
 				<wsh wide="57px"></wsh>
-				<box-cart-price buttonLabel="Proses"
-					[buttonDisable]="true"></box-cart-price>
+				<box-cart-price [buttonLabel]="buttonSelanjutnyaLabel()"
+					[buttonDisable]="!cartIsEmpty()"></box-cart-price>
 			</div>
 
 		</div>

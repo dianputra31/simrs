@@ -17,7 +17,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	selected;
 	selectedIndex;
 	pilihSemua = false;
-	constructor() { }
+	constructor() {}
 	items = [
 		{
 			item: '1',
@@ -50,7 +50,8 @@ export class ApprovalLayoutComponent implements OnInit {
 			qty: 0,
 		},
 		{
-			name: 'Jl Kompleks Gelora Bung Karno Baru Jaksel No 45, Kebayoran Baru, Jakarta Selatan, DKI Jakarta',
+			name:
+				'Jl Kompleks Gelora Bung Karno Baru Jaksel No 45, Kebayoran Baru, Jakarta Selatan, DKI Jakarta',
 			qty: 0,
 		},
 		{
@@ -126,5 +127,39 @@ export class ApprovalLayoutComponent implements OnInit {
 	resetButtonOnClick() {
 		this.filterDropdown.resetSelected();
 		this.filterDateDropdown.resetDate();
+	}
+
+	handleCartItem() {
+		var s = 0;
+		var i,
+			n = this.items.length;
+		for (i = 0; i < n; ++i) {
+			if (!this.items[i].cart) {
+				s++;
+			}
+		}
+	}
+
+	cartItem(): any {
+		return this.items.filter(this.cartIsTrue);
+	}
+
+	countCartItem() {
+		return this.cartItem().length;
+	}
+
+	cartIsEmpty() {
+		return this.countCartItem() == 0;
+	}
+	cartIsTrue(element, index, array) {
+		return element.cart;
+	}
+
+	buttonSelanjutnyaLabel() {
+		if (this.cartIsEmpty()) {
+			return 'Proses';
+		} else {
+			return 'Proses';
+		}
 	}
 }

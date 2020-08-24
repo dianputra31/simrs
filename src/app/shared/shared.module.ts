@@ -8,6 +8,7 @@ import { CartItemListComponent } from './components/cart-item-list/cart-item-lis
 import { CatalogCardButtonComponent } from './components/catalog-card-button/catalog-card-button.component';
 import { CatalogCardComponent } from './components/catalog-card/catalog-card.component';
 import { CheckBoxRoundComponent } from './components/check-box-round/check-box-round.component';
+import { DateDropdownComponent } from './components/date-dropdown/date-dropdown.component';
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
 import { EmailButtonComponent } from './components/email-button/email-button.component';
@@ -17,6 +18,7 @@ import { FooterBarComponent } from './components/footer-bar/footer-bar.component
 import { FooterCustomerSupportComponent } from './components/footer-customer-support/footer-customer-support.component';
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HorizontalLineComponent } from './components/horizontal-line/horizontal-line.component';
 import { ItemDescComponent } from './components/item-desc/item-desc.component';
 import { NestDatepickerAComponent } from './components/nest-datepicker-a/nest-datepicker-a.component';
 import { NestDatepickerBComponent } from './components/nest-datepicker-b/nest-datepicker-b.component';
@@ -58,6 +60,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		NestDatepickerBComponent,
 		NestDatepickerWrapperComponent,
 		ResetFilterComponent,
+		DateDropdownComponent,
+		HorizontalLineComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule],
 	exports: [
@@ -85,6 +89,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		RedBgButtonComponent,
 		NestDatepickerBComponent,
 		ResetFilterComponent,
+		DateDropdownComponent,
+		HorizontalLineComponent,
 	],
 })
 export class SharedModule {}

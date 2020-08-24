@@ -1,0 +1,21 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+.account-item-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+
+	color: #606060;
+}
+
+.selected {
+	background: #ffffff;
+
+	border: 0.5px solid #e0e0e0;
+	box-sizing: border-box;
+	border-radius: 20px;
+
+	width: 230px;
+	color: $color-primary;
+}

@@ -1,0 +1,56 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#account-layout {
+	height: 100vh;
+}
+
+#left-wrapper {
+	width: 330px;
+	height: 100%;
+}
+
+#logo-akun {
+	width: 100px;
+	height: 100px;
+}
+
+#position-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 22px;
+	/* identical to box height */
+
+	text-align: center;
+
+	/* #606060 */
+
+	color: #606060;
+}
+
+#name-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 23px;
+	color: $color-primary;
+}
+
+.label-title {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 23px;
+
+	color: #606060;
+}
+
+#right-wrapper {
+	padding-left: 20px;
+	padding-right: 20px;
+	background: #fdfdfd;
+}

@@ -1,0 +1,9 @@
+<div class="account-item-label d-flex"
+	[ngClass]="selected == item ? 'selected' : ''">
+	<wsh wide="14px"></wsh>
+	<div (click)="navigate()">
+		<wsv wide="7px"></wsv>
+		{{item.label}}
+		<wsv wide="7px"></wsv>
+	</div>
+</div>
