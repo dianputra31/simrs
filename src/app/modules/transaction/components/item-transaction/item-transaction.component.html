@@ -30,7 +30,8 @@
 			</div>
 		</div>
 		<div class="col-4-trx-item">
-			<red-border-white-bg-button label="Lihat Detail"></red-border-white-bg-button>
+			<red-border-white-bg-button label="Lihat Detail"
+				(click)="viewDetail()"></red-border-white-bg-button>
 		</div>
 		<wsh wide="20px"></wsh>
 	</div>
@@ -55,12 +56,61 @@
 			</div>
 			<div class="title-2">
 				<badge [label]='item'
-					[show]='item.show'></badge>
+					[show]='item.show'
+					[statusprocess]='item.statusprocess'></badge>
 			</div>
 		</div>
 		<div class="d-flex col-4-trx-item align-items-end">
-			<red-bg-button label="Cari Sejenis"
-				(click)="selesai()"></red-bg-button>
+
+
+			<ng-template *ngIf="item.statustrx=='Selesai'; then first 
+			else second"></ng-template>
+
+			<ng-template #first>
+				<red-bg-button label="Beli Lagi"
+					(click)="belilagi()"></red-bg-button>
+			</ng-template>
+
+			<ng-template #second>
+				<ng-template *ngIf="item.statustrx=='Ditolak'; then third else fourth"></ng-template>
+				<ng-template #third>
+					<red-bg-button label="Ajukan Lagi"
+						(click)="ajukanlagi()"></red-bg-button>
+				</ng-template>
+
+				<ng-template #fourth>
+					<ng-template *ngIf="item.statustrx=='Diproses'; then fifth else sixth"></ng-template>
+					<ng-template #fifth>
+						<ng-template
+							*ngIf="item.statusprocess=='Diproses' || item.statusprocess=='Dikirim'; then disab else enab">
+						</ng-template>
+						<ng-template #disab>
+							<div id="button-wrapper"
+								class="d-flex align-items-center justify-content-center">
+								Selesai
+							</div>
+
+						</ng-template>
+
+						<ng-template #enab>
+							<red-bg-button label="Selesai"
+								(click)="selesai()"></red-bg-button>
+						</ng-template>
+
+					</ng-template>
+
+					<ng-template #sixth>
+						<red-bg-button label="Cari Sejenis"
+							(click)="carisejenis()"></red-bg-button>
+					</ng-template>
+
+				</ng-template>
+
+			</ng-template>
+
+
+
+
 		</div>
 		<wsh wide="20px"></wsh>
 	</div>

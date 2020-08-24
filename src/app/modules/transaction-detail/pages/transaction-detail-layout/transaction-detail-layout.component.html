@@ -1,1 +1,55 @@
-<p>transaction-detail-layout works!</p>
+<div class="container d-flex">
+	<div id="left-container">
+
+		<div id="top-fixed"
+			class="bg-10">
+			<div id="keranjang-label">DETAIL PEMESANAN</div>
+			<wsv wide="30px"></wsv>
+
+			<div id="left-container"
+				class="d-flex justify-content-start"
+				style="width:700px;background: #FFFFFF;float:left;position: relative;
+			box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+			border-radius: 10px;">
+
+				<div class="d-flex flex-column">
+					<div class="p-2">
+						<detail-pesanan></detail-pesanan>
+					</div>
+					<div class="p-2">
+						<status-pesanan></status-pesanan>
+					</div>
+				</div>
+
+				<!-- <div style="width:690px;position: relative;float: left;border:solid red 1px;height:300px;">
+					<detail-pesanan></detail-pesanan>
+				</div>
+				<div style="width:690px;position: relative;float: left;border:solid green 1px;">
+					<status-pesanan></status-pesanan>
+				</div> -->
+
+
+
+
+
+
+			</div>
+
+			<wsh wide="20px"></wsh>
+
+			<div id="right-container"
+				class="d-flex justify-content-end"
+				style="height:auto;min-height:510px;width:380px;background: #FFFFFF;float:left;
+			box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+			border-radius: 10px;position: relative;float:right;">
+				<rekap-tagihan></rekap-tagihan>
+			</div>
+
+
+
+
+
+		</div>
+	</div>
+
+</div>
