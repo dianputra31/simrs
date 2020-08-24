@@ -8,8 +8,48 @@
 				<span class="label-gray-2">Purchaser 01</span>
 			</div>
 			<div id="header-top-2">
-				<red-bg-button label="Beli Lagi"
-					(click)="belilagi()"></red-bg-button>
+
+				<ng-template *ngIf="statustrx=='Selesai'; then first 
+			else second"></ng-template>
+
+				<ng-template #first>
+					<red-bg-button label="Beli Lagi"></red-bg-button>
+				</ng-template>
+
+				<ng-template #second>
+					<ng-template *ngIf="statustrx=='Ditolak'; then third else fourth"></ng-template>
+					<ng-template #third>
+						<red-bg-button label="Ajukan Lagi"></red-bg-button>
+					</ng-template>
+
+					<ng-template #fourth>
+						<ng-template *ngIf="statustrx=='Diproses'; then fifth else sixth"></ng-template>
+						<ng-template #fifth>
+							<ng-template *ngIf="statustrx=='Diproses' || statustrx=='Dikirim'; then disab else enab">
+							</ng-template>
+							<ng-template #disab>
+								<div id="button-wrapper"
+									class="d-flex align-items-center justify-content-center">
+									Selesai
+								</div>
+
+							</ng-template>
+
+							<ng-template #enab>
+								<red-bg-button label="Selesai"></red-bg-button>
+							</ng-template>
+
+						</ng-template>
+
+						<ng-template #sixth>
+							<red-bg-button label="Cari Sejenis"></red-bg-button>
+						</ng-template>
+
+					</ng-template>
+
+				</ng-template>
+
+
 			</div>
 		</div>
 
