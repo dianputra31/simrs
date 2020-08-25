@@ -18,6 +18,13 @@ import { AccountLayoutComponent } from './pages/account-layout/account-layout.co
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { SilinderComponent } from './components-kredit-perusahaan/silinder/silinder.component';
 import { CentangImageComponent } from './components-kredit-perusahaan/centang-image/centang-image.component';
+import { KreditTableComponent } from './components-kredit-perusahaan/kredit-table/kredit-table.component';
+import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchaser/account-kelola-purchaser.component';
+import { AddButtonComponent } from './components-kelola-purchaser/add-button/add-button.component';
+import { PurchaserCardComponent } from './components-kelola-purchaser/purchaser-card/purchaser-card.component';
+import { PurchaserListComponent } from './components-kelola-purchaser/purchaser-list/purchaser-list.component';
+import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
+import { TagihanTableComponent } from './components-tagihan/tagihan-table/tagihan-table.component';
 
 @NgModule({
 	declarations: [
@@ -37,6 +44,13 @@ import { CentangImageComponent } from './components-kredit-perusahaan/centang-im
 		AccountKreditPerusahaanComponent,
 		SilinderComponent,
 		CentangImageComponent,
+		KreditTableComponent,
+		AccountKelolaPurchaserComponent,
+		AddButtonComponent,
+		PurchaserCardComponent,
+		PurchaserListComponent,
+		AccountTagihanComponent,
+		TagihanTableComponent,
 	],
 	imports: [CommonModule, AccountRoutingModule, SharedModule],
 })

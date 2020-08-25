@@ -33,9 +33,9 @@ button:focus {
 	display: none;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1366px) {
 	.container {
-		max-width: 1280px;
+		max-width: 1366px;
 		padding-left: 78px;
 		padding-right: 78px;
 	}
@@ -43,7 +43,7 @@ button:focus {
 
 @media (min-width: 600px) {
 	.container {
-		max-width: 1280px;
+		max-width: 1366px;
 	}
 }
 

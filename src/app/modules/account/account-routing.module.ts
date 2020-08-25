@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountDashboardComponent } from './pages/account-dashboard/account-dashboard.component';
 import { AccountInfoPersonalComponent } from './pages/account-info-personal/account-info-personal.component';
 import { AccountInfoPerusahaanComponent } from './pages/account-info-perusahaan/account-info-perusahaan.component';
+import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchaser/account-kelola-purchaser.component';
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
+import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
 
 const routes: Routes = [
 	{
@@ -29,11 +31,11 @@ const routes: Routes = [
 			},
 			{
 				path: 'tagihan',
-				component: AccountDashboardComponent,
+				component: AccountTagihanComponent,
 			},
 			{
 				path: 'kelola-purchaser',
-				component: AccountDashboardComponent,
+				component: AccountKelolaPurchaserComponent,
 			},
 		],
 	},

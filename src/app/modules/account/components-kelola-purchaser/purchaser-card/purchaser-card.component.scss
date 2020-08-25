@@ -1,0 +1,49 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#logo-purchaser {
+	width: 32px;
+	height: 32px;
+}
+
+.wrapper-card {
+	background: #ffffff;
+
+	border: 0.2px solid #a9a9a9;
+	box-sizing: border-box;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+	border-radius: 48px;
+	padding-left: 19px;
+	padding-right: 17px;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	margin-right: 20px;
+	margin-top: 20px;
+	width: 276px;
+}
+
+.label-1 {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+
+	text-align: right;
+
+	color: #606060;
+}
+
+.label-2 {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+
+	text-align: right;
+
+	color: #606060;
+}
