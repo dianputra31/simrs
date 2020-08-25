@@ -100,6 +100,26 @@ export class DetailPesananComponent implements OnInit {
 	}
 
 
-	belilagi() { }
+	belilagi() {
+		this.router.navigate(['./pilih-produk']);
+	}
+
+	selesai() {
+		// this.openDialogLocation(['./transaction']);
+		this.router.navigate(['./pilih-produk']);
+	}
+
+	carilagi() {
+		this.router.navigate(['./pilih-produk']);
+	}
+
+
+	ajukanlagi() {
+		this.router.navigate(['./pilih-produk']);
+	}
+
+	carisejenis() {
+		this.router.navigate(['./pilih-produk']);
+	}
 
 }

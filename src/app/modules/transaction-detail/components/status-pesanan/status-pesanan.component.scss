@@ -28,6 +28,36 @@
 }
 
 
+#eta-status{
+	width:100%;position: relative;float: left;height:50px;padding-left:15px;
+	margin-top:10px;
+	padding-top:5px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 16px;
+	font-feature-settings: 'kern' off;
+	color: $abu-abu-sesuatu;
+	border-top: 0.5px solid #E2E2E2;
+}
+
+
+#remark-status{
+	width:100%;position: relative;float: left;height:80px;padding-left:10px;
+	font-family: $primary-font;
+	margin-top:10px;
+	padding-top:5px;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 16px;
+	font-feature-settings: 'kern' off;
+	color: $abu-abu-sesuatu;
+	border-top: 0.5px solid #E2E2E2;
+}
+
+
 .noshowing{
 	display:none;
 }
@@ -186,7 +216,7 @@
 	background-color: $color-primary;
 	width: 25px;
 	background-position: center;
-	margin-top:20px;
+	margin-top:18px;
 	position: relative;
 	float:left;
 }
@@ -195,7 +225,7 @@
 	height:1px;
 	background-color: $abu-abu-sesuatu;
 	width: 25px;
-	margin-top:20px;
+	margin-top:18px;
 	position: relative;
 	float:left;
 
@@ -205,4 +235,41 @@
 	width: 135px;
 	text-align: center;
 	padding-left:10px;
+}
+
+#eta-left{
+	width:50%;position: relative;float: left;text-align:left;
+}
+
+#eta-right{
+	width:50%;position: relative;float: left;text-align:left;
+}
+
+.black{
+	font-weight: bold;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	letter-spacing: -0.02em;
+	font-feature-settings: 'kern' off;
+	color: $abu-abu-gelap;
+}
+
+.red{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	letter-spacing: -0.02em;
+	font-feature-settings: 'kern' off;
+	color: $color-primary;
+}
+
+.dekat{
+	padding-top:0px;margin-top: -5px;
+}
+
+.dekatbanget{
+	margin-top:-10px;
 }
