@@ -1,25 +1,67 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
-#logo-purchaser {
-	width: 32px;
-	height: 32px;
-}
-
-.wrapper-card {
+.wrapper-card-2 {
 	background: #ffffff;
 
 	border: 0.2px solid #a9a9a9;
 	box-sizing: border-box;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-	border-radius: 48px;
-	padding-left: 19px;
-	padding-right: 17px;
-	padding-top: 13px;
-	padding-bottom: 13px;
+	border-radius: 60px;
 	margin-right: 20px;
 	margin-top: 20px;
 	width: 276px;
+	height: 68px;
+}
+
+.opacity-background {
+	width: 62px;
+	height: 62px;
+
+	background: #606060;
+	opacity: 0;
+	border: 0.2px solid #a9a9a9;
+	box-sizing: border-box;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+	border-radius: 48px;
+}
+
+#logo-delete {
+	width: 21px;
+	height: 21px;
+}
+
+#container-inside {
+	position: relative;
+	width: 62px;
+	height: 62px;
+
+	margin-left: 3px;
+}
+
+.logo-purchaser {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	width: 32px;
+	height: 32px;
+}
+.id-trash-can {
+	transition: 0.5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+#container-inside:hover .logo-purchaser {
+	opacity: 0.1;
+}
+
+#container-inside:hover .id-trash-can {
+	opacity: 1;
 }
 
 .label-1 {
@@ -46,4 +88,14 @@
 	text-align: right;
 
 	color: #606060;
+}
+
+.container-image {
+	position: relative;
+	width: 32px;
+	height: 32px;
+}
+
+#wrapper-right {
+	margin-right: 12px;
 }

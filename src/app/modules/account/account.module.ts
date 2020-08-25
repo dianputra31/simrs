@@ -25,6 +25,7 @@ import { PurchaserCardComponent } from './components-kelola-purchaser/purchaser-
 import { PurchaserListComponent } from './components-kelola-purchaser/purchaser-list/purchaser-list.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
 import { TagihanTableComponent } from './components-tagihan/tagihan-table/tagihan-table.component';
+import { AddPurchaserEditorComponent } from './components-kelola-purchaser/add-purchaser-editor/add-purchaser-editor.component';
 
 @NgModule({
 	declarations: [
@@ -51,6 +52,7 @@ import { TagihanTableComponent } from './components-tagihan/tagihan-table/tagiha
 		PurchaserListComponent,
 		AccountTagihanComponent,
 		TagihanTableComponent,
+		AddPurchaserEditorComponent,
 	],
 	imports: [CommonModule, AccountRoutingModule, SharedModule],
 })

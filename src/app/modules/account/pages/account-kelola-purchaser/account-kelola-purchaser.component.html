@@ -3,7 +3,10 @@
 	<div class="label-title">
 		Mengelola Purchaser
 	</div>
-	<add-button></add-button>
+	<add-button (click)="addPurchaser()"></add-button>
+</div>
+<div *ngIf="showAddPurchaserEditor">
+	<add-purchaser-editor></add-purchaser-editor>
 </div>
 <wsv wide="24px"></wsv>
 <purchaser-list></purchaser-list>

@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'account-kelola-purchaser',
-  templateUrl: './account-kelola-purchaser.component.html',
-  styleUrls: ['./account-kelola-purchaser.component.scss']
+	selector: 'account-kelola-purchaser',
+	templateUrl: './account-kelola-purchaser.component.html',
+	styleUrls: ['./account-kelola-purchaser.component.scss'],
 })
 export class AccountKelolaPurchaserComponent implements OnInit {
+	showAddPurchaserEditor: Boolean;
+	constructor() {}
 
-  constructor() { }
+	ngOnInit(): void {
+		this.showAddPurchaserEditor = false;
+	}
 
-  ngOnInit(): void {
-  }
-
+	addPurchaser() {
+		this.showAddPurchaserEditor = !this.showAddPurchaserEditor;
+	}
 }
