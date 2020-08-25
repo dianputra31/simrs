@@ -13,13 +13,15 @@
 			else second"></ng-template>
 
 				<ng-template #first>
-					<red-bg-button label="Beli Lagi"></red-bg-button>
+					<red-bg-button label="Beli Lagi"
+						(click)="belilagi()"></red-bg-button>
 				</ng-template>
 
 				<ng-template #second>
 					<ng-template *ngIf="statustrx=='Ditolak'; then third else fourth"></ng-template>
 					<ng-template #third>
-						<red-bg-button label="Ajukan Lagi"></red-bg-button>
+						<red-bg-button label="Ajukan Lagi"
+							(click)="ajukanlagi()"></red-bg-button>
 					</ng-template>
 
 					<ng-template #fourth>
@@ -36,13 +38,15 @@
 							</ng-template>
 
 							<ng-template #enab>
-								<red-bg-button label="Selesai"></red-bg-button>
+								<red-bg-button label="Selesai"
+									(click)="selesai()"></red-bg-button>
 							</ng-template>
 
 						</ng-template>
 
 						<ng-template #sixth>
-							<red-bg-button label="Cari Sejenis"></red-bg-button>
+							<red-bg-button label="Cari Sejenis"
+								(click)="carisejenis()"></red-bg-button>
 						</ng-template>
 
 					</ng-template>

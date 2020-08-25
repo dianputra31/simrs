@@ -45,7 +45,7 @@
 
 
 #header-top-1 {
-	width: 80%;
+	width: 72%;
 	// border:solid greenyellow 1px;
 	height:50px;
 	position: relative;
@@ -55,7 +55,7 @@
 
 
 #header-top-2 {
-	width: 18%;
+	width: 26%;
 	// border:solid greenyellow 1px;
 	height:50px;
 	position: relative;
@@ -174,6 +174,24 @@
 	line-height: 14px;
 
 	color: #ffffff;
+}
+
+#button-wrapper {
+	background: #E0E0E0;
+	border: 0.5px solid #E0E0E0;
+	box-sizing: border-box;
+	border-radius: 57px;
+	width: 129px;
+	height: 28px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #BDBDBD;
 }
 
 #tolak-button {
