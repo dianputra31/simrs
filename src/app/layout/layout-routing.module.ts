@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/auth/guard/auth.guard';
 import { LoginLayoutComponent } from './pages/login-layout/login-layout.component';
-import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
 const routes: Routes = [
 	{
@@ -11,7 +10,8 @@ const routes: Routes = [
 	},
 	{
 		path: '',
-		component: MainLayoutComponent,
+		// component: MainLayoutComponent,
+		component: LoginLayoutComponent,
 		canActivate: [AuthGuard],
 		children: [
 			{
@@ -91,4 +91,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class LayoutRoutingModule {}
+export class LayoutRoutingModule { }

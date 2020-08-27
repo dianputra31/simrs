@@ -1,55 +1,118 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CredentialModel } from 'src/app/core/auth/model/request/credential.model';
-
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/auth/service/auth.service';
-import { RESPONSE } from 'src/app/app.constant';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CountdownComponent } from 'ngx-countdown';
+import { RESPONSE } from 'src/app/app.constant';
+import { CredentialModel } from 'src/app/core/auth/model/request/credential.model';
+import { AuthService } from 'src/app/core/auth/service/auth.service';
+
+
+
 
 @Component({
-selector: 'login-card',
-  templateUrl: './login-card.component.html',
-  styleUrls: ['./login-card.component.scss']
+	selector: 'login-card',
+	templateUrl: './login-card.component.html',
+	styleUrls: ['./login-card.component.scss']
 })
 export class LoginCardComponent implements OnInit {
-  public credential: CredentialModel;
+	isEmailFilled: boolean = false;
+	form: FormGroup;
+	secondFormGroup: FormGroup;
+
+	otp: string;
+	showOtpComponent = true;
+	@ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
+
+
+	config = {
+		allowNumbersOnly: false,
+		length: 5,
+		isPasswordInput: false,
+		disableAutoFocus: false,
+		placeholder: '',
+		inputStyles: {
+			'width': '50px',
+			'height': '50px'
+		}
+	};
+
+
+	@ViewChild('countdown', { static: false }) private counter: CountdownComponent;
+
+	naconfig = {
+		leftTime: 180, demand: true, format: 'mm:ss'
+	};
+
+	onOtpChange(otp) {
+		this.otp = otp;
+	}
+
+
+	public credential: CredentialModel;
 	public loginForm: FormGroup;
 	public loadingProgress: string;
 
 	@Output()
 	public loginStatusEmitter: EventEmitter<string> = new EventEmitter();
 
-  constructor(		private router: Router,private authService: AuthService) {}
+	constructor(private router: Router, private authService: AuthService,
+		private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
-		this.credential = new CredentialModel();
-	this.initForm();
-	this.isLogin();
-  }
+	// ngOnInit() {
+	// 	this.credential = new CredentialModel();
+	// 	this.initForm();
+	// 	this.isLogin();
+	// }
 
-  public submit() {
-		this.initLoadingBar();
-  }
-  
-  private initLoadingBar() {
-			this.onProgress();
-  }
-  
-  private initForm() {
-		this.loginForm = new FormGroup({
-			username: new FormControl('', Validators.required),
-			password: new FormControl('', Validators.required),
+	ngOnInit() {
+		this.form = this.formBuilder.group({
+			email: ['',
+				[
+					Validators.required,
+					Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
+				]
+			],
+			//   password: [null, Validators.required],
 		});
-  }
-  
-  public onProgress() {
-		this.credential.username = this.loginForm.get('username').value;
-		this.credential.password = this.loginForm.get('password').value;
+
+
+		this.secondFormGroup = this.formBuilder.group({
+			otp: ['', Validators.required],
+		});
+
+
+
+	}
+
+	public mbel() {
+		this.naconfig = {
+			leftTime: 180, demand: false, format: 'mm:ss'
+		};
+	}
+
+	public submit() {
+		this.initLoadingBar();
+	}
+
+	private initLoadingBar() {
+		this.onProgress();
+	}
+
+	private initForm() {
+		this.loginForm = new FormGroup({
+			email: new FormControl('', Validators.required),
+			// password: new FormControl('', Validators.required),
+		});
+	}
+
+	public onProgress() {
+		this.credential.username = this.loginForm.get('email').value;
+		// this.credential.password = this.loginForm.get('password').value;
 
 		this.login();
-  }
-  
-  public login() {
+	}
+
+	public login() {
 		if (this.loginForm.valid) {
 			const subs = this.authService
 				.login(this.credential)
