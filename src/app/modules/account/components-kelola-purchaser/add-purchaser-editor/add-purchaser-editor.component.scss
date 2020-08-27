@@ -1,0 +1,22 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+.label-1 {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	width: 300px;
+	/* or 350% */
+
+	color: #a9a9a9;
+}
+
+.label-2 {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+
+	color: #606060;
+}

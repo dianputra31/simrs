@@ -6,6 +6,14 @@ import { EditComponent } from './components-info-perusahaan/edit/edit.component'
 import { NameAddressComponent } from './components-info-perusahaan/name-address/name-address.component';
 import { SetUtamaButtonComponent } from './components-info-perusahaan/set-utama-button/set-utama-button.component';
 import { TrashCanComponent } from './components-info-perusahaan/trash-can/trash-can.component';
+import { AddButtonComponent } from './components-kelola-purchaser/add-button/add-button.component';
+import { AddPurchaserEditorComponent } from './components-kelola-purchaser/add-purchaser-editor/add-purchaser-editor.component';
+import { PurchaserCardComponent } from './components-kelola-purchaser/purchaser-card/purchaser-card.component';
+import { PurchaserListComponent } from './components-kelola-purchaser/purchaser-list/purchaser-list.component';
+import { CentangImageComponent } from './components-kredit-perusahaan/centang-image/centang-image.component';
+import { KreditTableComponent } from './components-kredit-perusahaan/kredit-table/kredit-table.component';
+import { SilinderComponent } from './components-kredit-perusahaan/silinder/silinder.component';
+import { TagihanTableComponent } from './components-tagihan/tagihan-table/tagihan-table.component';
 import { AccountNavItemComponent } from './components/account-nav-item/account-nav-item.component';
 import { AccountNavigationBarComponent } from './components/account-navigation-bar/account-navigation-bar.component';
 import { InfoPersonalRowComponent } from './components/info-personal-row/info-personal-row.component';
@@ -14,17 +22,11 @@ import { InfoPerusahaanAddressListComponent } from './components/info-perusahaan
 import { AccountDashboardComponent } from './pages/account-dashboard/account-dashboard.component';
 import { AccountInfoPersonalComponent } from './pages/account-info-personal/account-info-personal.component';
 import { AccountInfoPerusahaanComponent } from './pages/account-info-perusahaan/account-info-perusahaan.component';
-import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
-import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
-import { SilinderComponent } from './components-kredit-perusahaan/silinder/silinder.component';
-import { CentangImageComponent } from './components-kredit-perusahaan/centang-image/centang-image.component';
-import { KreditTableComponent } from './components-kredit-perusahaan/kredit-table/kredit-table.component';
 import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchaser/account-kelola-purchaser.component';
-import { AddButtonComponent } from './components-kelola-purchaser/add-button/add-button.component';
-import { PurchaserCardComponent } from './components-kelola-purchaser/purchaser-card/purchaser-card.component';
-import { PurchaserListComponent } from './components-kelola-purchaser/purchaser-list/purchaser-list.component';
+import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
+import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
-import { TagihanTableComponent } from './components-tagihan/tagihan-table/tagihan-table.component';
+import { DeletePurchaserConfirmationDialogComponent } from './components-kelola-purchaser/delete-purchaser-confirmation-dialog/delete-purchaser-confirmation-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -51,6 +53,8 @@ import { TagihanTableComponent } from './components-tagihan/tagihan-table/tagiha
 		PurchaserListComponent,
 		AccountTagihanComponent,
 		TagihanTableComponent,
+		AddPurchaserEditorComponent,
+		DeletePurchaserConfirmationDialogComponent,
 	],
 	imports: [CommonModule, AccountRoutingModule, SharedModule],
 })
