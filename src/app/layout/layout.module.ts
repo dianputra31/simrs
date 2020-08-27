@@ -3,6 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgOtpInputModule } from 'ng-otp-input';
+import { CountdownModule } from 'ngx-countdown';
 import { AuthService } from '../core/auth/service/auth.service';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
@@ -12,6 +14,7 @@ import { LoginCardComponent } from './components/login-card/login-card.component
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LoginLayoutComponent } from './pages/login-layout/login-layout.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+
 
 
 @NgModule({
@@ -31,6 +34,8 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 		NgbDropdownModule,
 		NgbModule,
 		SharedModule,
+		NgOtpInputModule,
+		CountdownModule,
 	],
 	providers: [AuthService],
 })
