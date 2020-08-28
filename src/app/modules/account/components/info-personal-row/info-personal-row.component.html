@@ -1,6 +1,12 @@
 <div class="d-flex">
 	<div id="label-info-personal">{{label}}</div>
-	<div id="content-info-personal">{{content}}</div>
+	<div *ngIf="!isEditting"
+		id="content-info-personal">{{content}}</div>
+	<input *ngIf="isEditting"
+		type="text"
+		id="input-text-personal-row"
+		[(ngModel)]="content"
+		class="textbox-search">
 </div>
 <wsv wide="18px"></wsv>
 <div *ngIf="isEditting"

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { AccountRoutingModule } from './account-routing.module';
 import { EditComponent } from './components-info-perusahaan/edit/edit.component';
@@ -8,6 +9,7 @@ import { SetUtamaButtonComponent } from './components-info-perusahaan/set-utama-
 import { TrashCanComponent } from './components-info-perusahaan/trash-can/trash-can.component';
 import { AddButtonComponent } from './components-kelola-purchaser/add-button/add-button.component';
 import { AddPurchaserEditorComponent } from './components-kelola-purchaser/add-purchaser-editor/add-purchaser-editor.component';
+import { DeletePurchaserConfirmationDialogComponent } from './components-kelola-purchaser/delete-purchaser-confirmation-dialog/delete-purchaser-confirmation-dialog.component';
 import { PurchaserCardComponent } from './components-kelola-purchaser/purchaser-card/purchaser-card.component';
 import { PurchaserListComponent } from './components-kelola-purchaser/purchaser-list/purchaser-list.component';
 import { CentangImageComponent } from './components-kredit-perusahaan/centang-image/centang-image.component';
@@ -26,7 +28,9 @@ import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchase
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
-import { DeletePurchaserConfirmationDialogComponent } from './components-kelola-purchaser/delete-purchaser-confirmation-dialog/delete-purchaser-confirmation-dialog.component';
+import { TambahAlamatBaruDialogComponent } from './components-info-perusahaan/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
+import { RoundedInputComponent } from './components-info-perusahaan/rounded-input/rounded-input.component';
+import { LabelInputComponent } from './components-info-perusahaan/label-input/label-input.component';
 
 @NgModule({
 	declarations: [
@@ -55,7 +59,10 @@ import { DeletePurchaserConfirmationDialogComponent } from './components-kelola-
 		TagihanTableComponent,
 		AddPurchaserEditorComponent,
 		DeletePurchaserConfirmationDialogComponent,
+		TambahAlamatBaruDialogComponent,
+		RoundedInputComponent,
+		LabelInputComponent,
 	],
-	imports: [CommonModule, AccountRoutingModule, SharedModule],
+	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule],
 })
 export class AccountModule {}
