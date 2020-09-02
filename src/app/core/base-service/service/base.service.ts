@@ -25,14 +25,15 @@ export class BaseService {
 
 		return this.http.get(url, { params }).pipe(
 			map(
-				(resp: any): HttpBodyRespModel =>
+				(resp: any): HttpBodyRespModel => {
 					// this.httpBodyRespMapper.mappingDTOToModel(resp)
-					this.httpBodyRespModel.convert(resp)
+					return this.httpBodyRespModel.convert(resp);
+				}
 			),
 			map((model: HttpBodyRespModel): any => {
 				return isArray
-					? this.mapArrayData(model.result, responseModel)
-					: this.mapObjectData(model.result, responseModel);
+					? this.mapArrayData(model.data, responseModel)
+					: this.mapObjectData(model.data, responseModel);
 			})
 		);
 	}
@@ -53,10 +54,10 @@ export class BaseService {
 			),
 			map(
 				(model: HttpBodyRespModel): HttpBodyRespModel => {
-					model.result.data = this.mapArrayData(
-						model.result.data,
-						responseModel
-					);
+					// model.result.data = this.mapArrayData(
+					// 	model.result.data,
+					// 	responseModel
+					// );
 					return model;
 				}
 			)
@@ -82,9 +83,9 @@ export class BaseService {
 			map((model: HttpBodyRespModel): any => {
 				return responseModel
 					? isArray
-						? this.mapArrayData(model.result, responseModel)
-						: responseModel.convert(model.result)
-					: this.responseData(model.result.data);
+						? this.mapArrayData(model.data, responseModel)
+						: responseModel.convert(model.data)
+					: this.responseData(model.data);
 			})
 		);
 	}
@@ -106,11 +107,11 @@ export class BaseService {
 					this.httpBodyRespModel.convert(resp)
 			),
 			map((model: HttpBodyRespModel): any => {
-				return responseModel
-					? isArray
-						? this.mapArrayData(model.result.data, responseModel)
-						: responseModel.convert()
-					: this.responseData(model.result.data);
+				// return responseModel
+				// 	? isArray
+				// 		? this.mapArrayData(model.result.data, responseModel)
+				// 		: responseModel.convert()
+				// 	: this.responseData(model.result.data);
 			})
 		);
 	}
@@ -126,7 +127,7 @@ export class BaseService {
 					this.httpBodyRespModel.convert(resp)
 			),
 			map((model: HttpBodyRespModel): any => {
-				return this.responseData(model.result.data);
+				// return this.responseData(model.result.data);
 			})
 		);
 	}
@@ -152,12 +153,9 @@ export class BaseService {
 				map((model: HttpBodyRespModel): any => {
 					return responseModel
 						? isArray
-							? this.mapArrayData(
-									model.result.data,
-									responseModel
-							  )
+							? this.mapArrayData(model.data, responseModel)
 							: responseModel.convert()
-						: this.responseData(model.result.data);
+						: this.responseData(model.data);
 				})
 			);
 	}
@@ -166,8 +164,8 @@ export class BaseService {
 		if (Object.entries(dto).length === 0) {
 			return null;
 		}
-
 		const dataModel = new responseModel().convert(dto);
+
 		return dataModel;
 	}
 

@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CatalogService } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
+import { CatalogCategoryModel } from '../../../models/catalog-category.model';
+import { CatalogRespModel } from '../../../models/catalog-response.model';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
-import { CatalogRespModel } from '../../_model/catalog-response.model';
-import { CategoryRespModel } from '../../_model/category-response.model';
 
 @Component({
 	selector: 'header-category-button',
@@ -14,7 +15,7 @@ import { CategoryRespModel } from '../../_model/category-response.model';
 })
 export class HeaderCategoryButtonComponent implements OnInit {
 	categories = [];
-	clickedCategory: CategoryRespModel;
+	clickedCategory: CatalogCategoryModel;
 	subsribers: Subscription[];
 
 	subcategories = [
@@ -29,27 +30,31 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		'Jogger Pants',
 	];
 
-	constructor(private router: Router, private service: BaseService,
+	constructor(
+		private router: Router,
+		private service: BaseService,
 		public dialog: MatDialog,
-		private route: ActivatedRoute,) { }
+		private route: ActivatedRoute
+	) {}
 
 	openDialogLocation(des) {
-
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
-		dialogConfig.id = "modal-component";
-		dialogConfig.height = "auto";
-		dialogConfig.width = "477px";
-		dialogConfig.height = "155px";
-		dialogConfig.panelClass = "border-radius:20px";
+		dialogConfig.id = 'modal-component';
+		dialogConfig.height = 'auto';
+		dialogConfig.width = '477px';
+		dialogConfig.height = '155px';
+		dialogConfig.panelClass = 'border-radius:20px';
 		dialogConfig.data = {
-			'pageBefore': this.router.url,
-			'pageDestination': des,
-			'modePopUp': '0'
-		}
-		const modalDialog = this.dialog.open(PopUpRequestApprovalComponent, dialogConfig);
+			pageBefore: this.router.url,
+			pageDestination: des,
+			modePopUp: '0',
+		};
+		const modalDialog = this.dialog.open(
+			PopUpRequestApprovalComponent,
+			dialogConfig
+		);
 		return false;
-
 	}
 
 	ngOnInit() {
@@ -67,12 +72,10 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		} else {
 			this.router.navigate(['/pilih-produk']);
 		}
-
 	}
 
 	getCatalog() {
-		const url =
-			'http://ec2-18-136-210-171.ap-southeast-1.compute.amazonaws.com:20002/product/category/list';
+		const url = CatalogService;
 
 		const sub = this.service
 			.getData(url, CatalogRespModel)
