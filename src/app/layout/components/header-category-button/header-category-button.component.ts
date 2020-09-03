@@ -6,6 +6,7 @@ import { CatalogService } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { CatalogCategoryModel } from '../../../models/catalog-category.model';
 import { CatalogRespModel } from '../../../models/catalog-response.model';
+import { CatalogSubcategoryModel } from '../../../models/catalog-subcategory.model';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 
 @Component({
@@ -66,11 +67,16 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		this.subsribers.forEach((each) => each.unsubscribe);
 	}
 
-	goesToSub(sub) {
+	goesToSub(
+		clickedCategory: CatalogCategoryModel,
+		sub: CatalogSubcategoryModel
+	) {
 		if (this.router.url == '/request-approval') {
 			this.openDialogLocation('/pilih-produk');
 		} else {
-			this.router.navigate(['/pilih-produk']);
+			this.router.navigate([
+				'/pilih-produk/' + clickedCategory.id + '/' + sub.id,
+			]);
 		}
 	}
 

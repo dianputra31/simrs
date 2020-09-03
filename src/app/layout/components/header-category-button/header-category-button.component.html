@@ -29,7 +29,7 @@
 				<div class="card-deck">
 					<div *ngFor="let subcategory of clickedCategory?.subcategories">
 						<div class="list-sub-kategori"
-							(click)="$event.stopPropagation(); myDrop.close();goesToSub(subcategory.category_name)">
+							(click)="$event.stopPropagation(); myDrop.close();goesToSub(clickedCategory,subcategory)">
 							{{subcategory.category_name}}</div>
 					</div>
 				</div>
