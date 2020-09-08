@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressSectionComponent } from './components/address-section/address-section.component';
 import { BoxCartPriceComponent } from './components/box-cart-price/box-cart-price.component';
+import { ButtonGrayComponent } from './components/button-gray/button-gray.component';
 import { CartItemListComponent } from './components/cart-item-list/cart-item-list.component';
 import { CatalogCardButtonComponent } from './components/catalog-card-button/catalog-card-button.component';
 import { CatalogCardComponent } from './components/catalog-card/catalog-card.component';
@@ -62,6 +63,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		ResetFilterComponent,
 		DateDropdownComponent,
 		HorizontalLineComponent,
+		ButtonGrayComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule],
 	exports: [
@@ -91,6 +93,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		ResetFilterComponent,
 		DateDropdownComponent,
 		HorizontalLineComponent,
+		ButtonGrayComponent,
 	],
 })
 export class SharedModule {}

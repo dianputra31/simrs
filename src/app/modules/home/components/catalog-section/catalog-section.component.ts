@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { CatalogService } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-import { CatalogRespModel } from '../../_model/catalog-response.model';
+import { CatalogRespModel } from '../../../../models/catalog-response.model';
 
 @Component({
 	selector: 'catalog-section',
@@ -23,8 +24,7 @@ export class CatalogSectionComponent implements OnInit {
 	}
 
 	getCatalog() {
-		const url =
-			'http://ec2-1-136-210-171.ap-southeast-1.compute.amazonaws.com:20002/product/catalog';
+		const url = CatalogService;
 		const sub = this.service
 			.getData(url, CatalogRespModel)
 			.subscribe((resp) => {

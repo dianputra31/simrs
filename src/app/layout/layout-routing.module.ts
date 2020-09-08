@@ -36,7 +36,7 @@ const routes: Routes = [
 					).then((m) => m.DetailProductModule),
 			},
 			{
-				path: 'pilih-produk',
+				path: 'pilih-produk/:category_id/:sub_category_id',
 				loadChildren: () =>
 					import('../modules/pilih-produk/pilih-produk.module').then(
 						(m) => m.PilihProdukModule
@@ -91,4 +91,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {}

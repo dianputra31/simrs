@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../shared/shared.module';
 import { ApprovalRoutingModule } from './approval-routing.module';
@@ -38,6 +39,7 @@ import { ScrollableDirective } from './scrollable.directive';
 		SharedModule,
 		NgbDropdownModule,
 		NgbModule,
+		FormsModule,
 	],
 })
 export class ApprovalModule {}
