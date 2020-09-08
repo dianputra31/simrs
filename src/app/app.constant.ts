@@ -1,6 +1,5 @@
-export const API_MOCK_AWS =
-    'http://ec2-18-136-210-171.ap-southeast-1.compute.amazonaws.com:20001';
-    
+export const API = 'http://172.16.204.6:8081';
+
 export const RESPONSE = {
 	SUCCESS: 1,
 	GENERAL_FAILED: 2,
@@ -12,4 +11,8 @@ export const RESPONSE = {
 	NOT_ALLOWED: 41,
 	TIMEOUT: 49,
 	SOMETHING_WRONG_BITCH: 99,
+	BAD_REQUEST_DOUCHEBAG: 40,
 };
+
+export const CatalogService = `${API}/product/category/list`;
+export const CatalogCategoryUrl = `${API}/product/catalog`;

@@ -1,4 +1,4 @@
 export class CredentialModel {
-	public username: string;
-	public password: string;
+	public email: string;
+	public otp_code: string;
 }

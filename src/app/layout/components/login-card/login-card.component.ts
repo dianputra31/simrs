@@ -1,10 +1,16 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { CountdownComponent } from 'ngx-countdown';
+import { map } from 'rxjs/operators';
 import { RESPONSE } from 'src/app/app.constant';
 import { CredentialModel } from 'src/app/core/auth/model/request/credential.model';
 import { AuthService } from 'src/app/core/auth/service/auth.service';
+import { HttpBodyRespModel } from '../../../../app/core/http-body-resp/model/http-body-resp.model';
+
 
 
 
@@ -17,12 +23,30 @@ import { AuthService } from 'src/app/core/auth/service/auth.service';
 export class LoginCardComponent implements OnInit {
 	isEmailFilled: boolean = false;
 	form: FormGroup;
+	firstFormGroup: FormGroup;
 	secondFormGroup: FormGroup;
+	isLinear = true;
+	emailnya;
+	email;
+	loginbutton;
+	datauser;
+	isCompleted = false;
+	errlogin;
+	errotp;
+	display = "inline";
+	tampil = "none";
+	public httpBodyRespModel = new HttpBodyRespModel();
+	isArray?: boolean
 
-	otp: string;
+
+
+	otpnya: string;
+	otp = new FormControl('');
+
 	showOtpComponent = true;
-	@ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
-
+	@ViewChild('ngOtpInput', { static: false }) private ngOtpInput: any;
+	@ViewChild('stepper') private myStepper: MatStepper;
+	@BlockUI() blockUI: NgBlockUI;
 
 	config = {
 		allowNumbersOnly: false,
@@ -43,8 +67,30 @@ export class LoginCardComponent implements OnInit {
 		leftTime: 180, demand: true, format: 'mm:ss'
 	};
 
-	onOtpChange(otp) {
-		this.otp = otp;
+
+
+	onOtpChange(otpnya, emailnya) {
+
+		if (otpnya.length === 6) {
+			this.secondFormGroup.controls['password'].setValue(otpnya);
+			this.secondFormGroup.controls['email'].setValue(emailnya)
+			this.secondFormGroup.valid;
+		}
+
+	}
+
+	goBack() {
+		// stepper.previous();
+		this.myStepper.previous();
+	}
+	goForward() {
+		this.myStepper.next();
+		// stepper.next();
+	}
+
+	resetNgOtpVal() {
+		// this.ngOtpInput.setValue("");
+		this.secondFormGroup.controls['password'].setValue("");
 	}
 
 
@@ -56,42 +102,138 @@ export class LoginCardComponent implements OnInit {
 	public loginStatusEmitter: EventEmitter<string> = new EventEmitter();
 
 	constructor(private router: Router, private authService: AuthService,
-		private formBuilder: FormBuilder) { }
+		private formBuilder: FormBuilder,
+		private http: HttpClient) {
 
-	// ngOnInit() {
-	// 	this.credential = new CredentialModel();
-	// 	this.initForm();
-	// 	this.isLogin();
-	// }
+	}
 
 	ngOnInit() {
-		this.form = this.formBuilder.group({
-			email: ['',
+
+
+		this.credential = new CredentialModel();
+
+		this.initForm();
+		this.isLogin();
+
+
+
+		this.firstFormGroup = new FormGroup({
+			email: new FormControl('',
 				[
 					Validators.required,
 					Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
-				]
-			],
-			//   password: [null, Validators.required],
-		});
+				]),
+
+			// password: new FormControl('', Validators.required),
+		})
 
 
-		this.secondFormGroup = this.formBuilder.group({
-			otp: ['', Validators.required],
+
+		this.loginForm = new FormGroup({
+			email: new FormControl('', Validators.required),
+			// password: new FormControl('', Validators.required),
 		});
+
+		this.secondFormGroup = new FormGroup({
+			password: new FormControl('',
+				[
+					Validators.required,
+					Validators.minLength(6)
+				]),
+			email: new FormControl('', Validators.required),
+		});
+
 
 
 
 	}
 
-	public mbel() {
-		this.naconfig = {
-			leftTime: 180, demand: false, format: 'mm:ss'
-		};
+
+	private fetchData(a) {
+		const promise = this.http.get(a).toPromise();
+		console.log(promise);
+	}
+
+
+
+	private mapArrayData(dtos: any[], responseModel: any) {
+		const dataModel = dtos.reduce((result, each) => {
+			const model = new responseModel();
+			result.push(model.convert(each));
+
+			return result;
+		}, []);
+
+		return dataModel;
+	}
+
+	private responseData(status: boolean) {
+		return { data: status };
+	}
+
+	public asemik() {
+		this.blockUI.start();
+	}
+
+	public sendotp() {
+
+		if (this.firstFormGroup.valid) {
+			this.blockUI.start(); // Start blocking
+			this.isCompleted = false;
+			this.goBack();
+			this.errlogin = "";
+
+			return this.http.get('http://172.16.204.6:8081/otp?email=' + this.firstFormGroup.value.email)
+				.pipe(map((res: Response) => res.json())).subscribe(
+					data => {
+						console.log(data);
+					},
+					(error: HttpErrorResponse) => {
+						if (error.status === 400) {
+							this.resetNgOtpVal();
+							this.errlogin = "Email Anda Belum Terdaftar!";
+							this.blockUI.stop();
+						} else {
+							this.isCompleted = true;
+							this.naconfig = {
+								leftTime: 180, demand: false, format: 'mm:ss',
+							};
+							this.display = "inline";
+							this.tampil = "none";
+							this.resetNgOtpVal();
+							this.goForward();
+							this.emailnya = this.firstFormGroup.value.email;
+							this.blockUI.stop();
+						}
+					});
+
+
+
+
+
+		} else {
+			console.log('not valid');
+		}
+
+
+
+	}
+
+	public masuk() {
+		if (this.secondFormGroup.valid) {
+			console.log("here");
+			console.log(this.secondFormGroup.value)
+		} else {
+			console.log("not yet");
+			console.log(this.secondFormGroup.value)
+		}
+
 	}
 
 	public submit() {
+		this.blockUI.start(); // Start blocking
 		this.initLoadingBar();
+
 	}
 
 	private initLoadingBar() {
@@ -106,42 +248,52 @@ export class LoginCardComponent implements OnInit {
 	}
 
 	public onProgress() {
-		this.credential.username = this.loginForm.get('email').value;
-		// this.credential.password = this.loginForm.get('password').value;
+		this.credential.email = this.secondFormGroup.get('email').value;
+		this.credential.otp_code = this.secondFormGroup.get('password').value;
 
 		this.login();
 	}
 
 	public login() {
-		if (this.loginForm.valid) {
+		if (this.secondFormGroup.valid) {
+
 			const subs = this.authService
 				.login(this.credential)
 				.subscribe((resp) => {
-					this.loadingProgress = 'start';
 					if (resp.status.rc === RESPONSE.SUCCESS) {
-						this.loadingProgress = 'success';
 						setTimeout(() => {
-							// this.progressBarValue = 100;
-							this.emitLoginStatus(this.loadingProgress);
-						}, 1000);
-					} else if (resp.status.rc === RESPONSE.USER_NOT_FOUND) {
-						// this.progressBarValue = 100;
-						// this.loadingProgress = 'failed';
+							this.router.navigate(['./']);
+						}, 15000);
 
+					} else if (resp.status.rc === RESPONSE.USER_NOT_FOUND) {
 						setTimeout(() => {
-							// this.buttonStatus = 'initial';
-							// this.progressStatus = 'initial';
 						}, 1000);
 					} else if (resp.status.rc === RESPONSE.TIMEOUT) {
-						// this.buttonStatus = 'initial';
-						// this.progressStatus = 'initial';
+					} else if (resp.status.rc === RESPONSE.BAD_REQUEST_DOUCHEBAG) {
+						this.errotp = "OTP Expired!";
+						console.log(resp.data);
 					}
-				});
+				},
+					(error: HttpErrorResponse) => {
+						if (error.status === 400) {
+							this.errotp = error.error.data;
+							if (error.error.data == 'OTP Expired!') {
+								this.display = "none";
+								this.tampil = "inline";
+							}
+							this.blockUI.stop();
+						}
+					}
+				);
 
 			// this.subscribers.push(subs);
+
 		} else {
-			this.loginForm.markAllAsTouched();
+			this.secondFormGroup.markAllAsTouched();
 		}
+		setTimeout(() => {
+			this.blockUI.stop(); // Stop blocking
+		}, 25000);
 	}
 
 	public emitLoginStatus(value: string) {

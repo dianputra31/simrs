@@ -37,4 +37,4 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

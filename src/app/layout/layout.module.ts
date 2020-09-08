@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BlockUIModule } from 'ng-block-ui';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { CountdownModule } from 'ngx-countdown';
 import { AuthService } from '../core/auth/service/auth.service';
@@ -36,6 +37,8 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 		SharedModule,
 		NgOtpInputModule,
 		CountdownModule,
+		BlockUIModule.forRoot(),
+
 	],
 	providers: [AuthService],
 })
