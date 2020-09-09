@@ -65,8 +65,8 @@ export class BaseService {
 			),
 			map((model: HttpBodyRespModel): any => {
 				return isArray
-					? this.mapArrayData(model.result, responseModel)
-					: this.mapObjectData(model.result, responseModel);
+					? this.mapArrayData(model.data, responseModel)
+					: this.mapObjectData(model.data, responseModel);
 			})
 		);
 	}
