@@ -47,7 +47,9 @@ export class AuthService {
 							(resp) => {
 								this.profiledata = resp;
 								localStorage.setItem('profile', JSON.stringify(this.profiledata.data.profile));
-								console.log(resp);
+								localStorage.setItem('address', JSON.stringify(this.profiledata.data.delivery_address));
+								localStorage.setItem('company', JSON.stringify(this.profiledata.data.company));
+								// console.log(resp);
 								window.location.reload();
 							}
 						)
