@@ -40,14 +40,6 @@ export class HeaderComponent implements OnInit {
 		this.datacompany = JSON.parse(localStorage.getItem("company"));
 		this.datauser = JSON.parse(localStorage.getItem("profile"));
 
-		console.log(this.datacompany.trade_name);
-
-
-
-
-
-		// {"trade_name":"Narindo","credit_rp":5000000}
-
 	}
 
 	private _filter(value: string): string[] {
