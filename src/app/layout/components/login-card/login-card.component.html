@@ -1,95 +1,114 @@
 <div class="d-flex flex-column bd-highlight mb-3">
 	<wsv wide="50px"></wsv>
-
-	<mat-horizontal-stepper style="width:95%;border-radius: 80px;"
-		#stepper>
-
-
-		<mat-step [stepControl]="form">
-			<form [formGroup]="form">
-				<div class="p-2 bd-highlight teks"><img src="../../../../assets/image/icons/login.svg"></div>
-				<wsv wide="10px"></wsv>
-				<div class="p-2 bd-highlight teksbesar">Log In</div>
-				<wsv wide="15px"></wsv>
-				<div class="p-2 bd-highlight teks">Kami akan mengirimkan OTP ke alamat email anda</div>
-				<wsv wide="50px"></wsv>
-				<div class="p-2 bd-highlight teks">Masukkan Alamat Email Anda</div>
-
-				<div class="p-2 bd-highlight">
-					<input type="text"
-						class="form-control"
-						placeholder="Alamat Email"
-						aria-label="Email"
-						aria-describedby="basic-addon1"
-						formControlName="email"
-						ngModel
-						required>
-				</div>
-				<div class="p-2 bd-highlight">
-					<button id="loginbutton"
-						[ngClass]="!form.valid ? 'disab' : 'enab'"
-						mat-button
-						matStepperNext
-						(click)="mbel()">
-						Get OTP
-					</button>
-					<!-- (click)="submit()" -->
-
-				</div>
-			</form>
-		</mat-step>
+	<block-ui>
+		<mat-horizontal-stepper [linear]="isLinear"
+			style="width:95%;border-radius: 80px;"
+			#stepper>
 
 
-		<mat-step [stepControl]="secondFormGroup">
-			<form [formGroup]="secondFormGroup">
+			<mat-step [stepControl]="firstFormGroup"
+				[completed]="isCompleted">
+				<form [formGroup]="firstFormGroup">
+					<div class="p-2 bd-highlight teks"><img src="../../../../assets/image/icons/login.svg"></div>
+					<wsv wide="10px"></wsv>
+					<div class="p-2 bd-highlight teksbesar">Log In</div>
+					<wsv wide="15px"></wsv>
+					<div class="p-2 bd-highlight teks">Kami akan mengirimkan OTP ke alamat email anda</div>
+					<wsv wide="50px"></wsv>
+					<div class="p-2 bd-highlight teks">Masukkan Alamat Email Anda</div>
 
-				<div class="p-2 bd-highlight teks"><img src="../../../../assets/image/icons/login-otp.svg"></div>
-				<wsv wide="10px"></wsv>
-				<div class="p-2 bd-highlight teksbesar">Verifikasi OTP</div>
-				<wsv wide="15px"></wsv>
-				<div class="p-2 bd-highlight teks">Masukkan Nomor OTP yang sudah dikirim ke <b></b></div>
-				<wsv wide="20px"></wsv>
-				<div class="p-2 bd-highlight teks">
+					<div class="p-2 bd-highlight">
+						<input type="text"
+							class="form-control"
+							placeholder="Alamat Email"
+							aria-label="Email"
+							aria-describedby="basic-addon1"
+							formControlName="email"
+							ngModel
+							required>
+					</div>
+					<div class="p-2 bd-highlight">
+						<button id="loginbutton"
+							[ngClass]="!firstFormGroup.valid ? 'disab' : 'enab'"
+							mat-button
+							matStepperNext
+							(click)="sendotp()">
+							Get OTP
+						</button>
 
-					<!-- <input type="text"
-						class="form-control"
-						placeholder="Nomor OTP"
-						aria-label="otp"
-						aria-describedby="basic-addon1"
-						formControlName="otp"
-						ngModel
-						required> -->
-
-					<ng-otp-input (onInputChange)="onOtpChange($event)"
-						[config]="{length:6}"></ng-otp-input>
+					</div>
+					<div class="p-2 bd-highlight warning">
+						{{errlogin}}
+					</div>
+				</form>
+			</mat-step>
 
 
-				</div>
+			<mat-step [stepControl]="secondFormGroup">
+				<form [formGroup]="secondFormGroup">
 
-				<div class="p-2 bd-highlight">
-					Tidak Terima Nomor OTP? <span class='grey'>Kirim Ulang</span>&nbsp;
-					<countdown [config]="naconfig"
-						[ngStyle]="{'font-weight': '600','font-size':'22px','line-height': '30px','color':'#DB0A2A'}">
-					</countdown>
+					<div class="p-2 bd-highlight teks"><img src="../../../../assets/image/icons/login-otp.svg"></div>
+					<wsv wide="10px"></wsv>
+					<div class="p-2 bd-highlight teksbesar">Verifikasi OTP</div>
+					<wsv wide="15px"></wsv>
+					<div class="p-2 bd-highlight teks">Masukkan Nomor OTP yang sudah dikirim ke <b>{{emailnya}}</b>
+					</div>
+					<wsv wide="20px"></wsv>
+					<div class="p-2 bd-highlight teks">
 
-				</div>
 
-				<div class="p-2 bd-highlight kecil">
-					Harap periksa di inbox / junk email anda
-				</div>
+						<ng-otp-input (onInputChange)="onOtpChange($event,emailnya)"
+							[config]="{length:6}"></ng-otp-input>
 
-				<div class="p-2 bd-highlight">
-					<button (click)="submit()"
-						id="loginbutton"
-						[ngClass]="!secondFormGroup.valid ? 'enab' : 'enab'">
-						Verifikasi dan Proses
-					</button>
 
-				</div>
-			</form>
-		</mat-step>
+					</div>
 
-	</mat-horizontal-stepper>
+					<div class="p-2 bd-highlight">
+						Tidak Terima Nomor OTP? <span class='grey'
+							[ngStyle]="{'display':display}">Kirim Ulang</span>
+						<span class='kirimulang'
+							(click)="sendotp()"
+							[ngStyle]="{'display':tampil}">Kirim Ulang</span>
+						&nbsp;
+						<countdown [config]="naconfig"
+							[ngStyle]="{'font-weight': '600','font-size':'22px','line-height': '30px','color':'#DB0A2A'}">
+						</countdown>
+
+
+					</div>
+
+					<div class="p-2 bd-highlight kecil">
+						Harap periksa di inbox / junk email anda
+
+					</div>
+
+					<div class="p-2 bd-highlight">
+						<button mat-button
+							matStepperNext
+							id="loginbutton"
+							(click)="submit()"
+							[ngClass]="!secondFormGroup.valid ? 'enab' : 'enab'">
+							Verifikasi dan Proses
+						</button>
+						<input type="hidden"
+							formControlName="password"
+							ngModel
+							required>
+						<input type="hidden"
+							formControlName="email"
+							ngModel
+							required>
+
+					</div>
+
+					<div class="p-2 bd-highlight warning">
+						{{errotp}}
+					</div>
+				</form>
+			</mat-step>
+
+		</mat-horizontal-stepper>
+	</block-ui>
 
 </div>
 

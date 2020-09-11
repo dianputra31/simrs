@@ -3,19 +3,33 @@ import { UserModel } from '../../auth/model/response/user.model';
 
 @Injectable()
 export class StorageService {
-	constructor() {}
+	constructor() { }
 
 	public clear() {
 		localStorage.clear();
 	}
 
+	email: any;
+	role_name: any;
+	fullname: any;
+
 	/* Account Storage */
-	public stroreAccount(account: UserModel) {
-		localStorage.setItem('account', JSON.stringify(account));
+	public storeAccount(account: UserModel, info: any) {
+		if (info === 'token') {
+			localStorage.setItem('account', JSON.stringify(account));
+		} else {
+			localStorage.setItem('profile', JSON.stringify(account));
+		}
+
+
 	}
 
 	public getAccount(): UserModel {
 		return JSON.parse(localStorage.getItem('account'));
+	}
+
+	public getAccountProfile(): UserModel {
+		return JSON.parse(localStorage.getItem('profile'))
 	}
 
 	public getToken() {
@@ -25,21 +39,21 @@ export class StorageService {
 	}
 
 	public getName() {
-		const account = this.getAccount();
+		const account = this.getAccountProfile();
 
-		return account ? account.info.username : null;
+		return account ? account.fullname : null;
 	}
 
 	public getRole() {
-		const account = this.getAccount();
+		const account = this.getAccountProfile();
 
-		return account ? account.info.roleName : null;
+		return account ? account.role_name : null;
 	}
 
 	public getEmail() {
-		const account = this.getAccount();
+		const account = this.getAccountProfile();
 
-		return account ? account.info.email : null;
+		return account ? account.email : null;
 	}
 	/* Account Storage  */
 }

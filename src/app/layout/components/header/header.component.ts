@@ -14,6 +14,9 @@ import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up
 	styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+	datacompany;
+	datauser;
+
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
@@ -33,6 +36,10 @@ export class HeaderComponent implements OnInit {
 			//minimal 1 karakter
 			map(value => value.length >= 1 ? this._filter(value) : [])
 		);
+
+		this.datacompany = JSON.parse(localStorage.getItem("company"));
+		this.datauser = JSON.parse(localStorage.getItem("profile"));
+
 	}
 
 	private _filter(value: string): string[] {

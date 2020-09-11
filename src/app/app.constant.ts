@@ -11,6 +11,7 @@ export const RESPONSE = {
 	NOT_ALLOWED: 41,
 	TIMEOUT: 49,
 	SOMETHING_WRONG_BITCH: 99,
+	BAD_REQUEST_DOUCHEBAG: 40,
 };
 
 export const CatalogService = `${API}/product/category/list`;

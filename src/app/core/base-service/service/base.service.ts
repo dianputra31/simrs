@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { generateHttpParams } from '../../util/http-param-generator';
 export class BaseService {
 	public httpBodyRespModel = new HttpBodyRespModel();
 
-	constructor(public http: HttpClient) {}
+	constructor(public http: HttpClient) { }
 
 	public getData(
 		url: string,
@@ -29,6 +29,38 @@ export class BaseService {
 					// this.httpBodyRespMapper.mappingDTOToModel(resp)
 					return this.httpBodyRespModel.convert(resp);
 				}
+			),
+			map((model: HttpBodyRespModel): any => {
+				return isArray
+					? this.mapArrayData(model.data, responseModel)
+					: this.mapObjectData(model.data, responseModel);
+			})
+		);
+	}
+
+
+
+	public getDataWithToken(
+		url: string,
+		responseModel: any,
+		requestParamModel?: any,
+		isArray?: boolean,
+		accessToken?: any,
+	): Observable<any> {
+		const params = requestParamModel
+			? generateHttpParams(requestParamModel.convert())
+			: null;
+
+		const headers = new HttpHeaders({
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer ' + accessToken
+		})
+
+		return this.http.get(url, { headers, params }).pipe(
+			map(
+				(resp: any): HttpBodyRespModel =>
+					// this.httpBodyRespMapper.mappingDTOToModel(resp)
+					this.httpBodyRespModel.convert(resp)
 			),
 			map((model: HttpBodyRespModel): any => {
 				return isArray
