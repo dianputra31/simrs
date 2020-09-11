@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CatalogResponseModel } from '../../../models/catalog-response-model';
 
 @Component({
 	selector: 'catalog-card',
@@ -7,11 +8,14 @@ import { Router } from '@angular/router';
 	styleUrls: ['./catalog-card.component.scss'],
 })
 export class CatalogCardComponent implements OnInit {
+	@Input() item: CatalogResponseModel;
 	constructor(private router: Router) {}
 
 	ngOnInit() {}
 
 	backToHome() {
-		this.router.navigate(['./detail-product']);
+		this.router.navigate([
+			'./detail-product/' + this.item.partner_sku_item,
+		]);
 	}
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CatalogResponseModel } from '../../../../models/catalog-response-model';
 
 @Component({
 	selector: 'app-catalog',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
+	@Input() items: CatalogResponseModel;
 	constructor() {}
 
 	ngOnInit(): void {}

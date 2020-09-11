@@ -29,7 +29,7 @@ const routes: Routes = [
 					),
 			},
 			{
-				path: 'detail-product',
+				path: 'detail-product/:sku-item',
 				loadChildren: () =>
 					import(
 						'../modules/detail-product/detail-product.module'

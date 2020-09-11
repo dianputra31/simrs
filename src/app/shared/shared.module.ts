@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedPipesModule } from '../pipes/shared-pipes.module';
 import { AddressSectionComponent } from './components/address-section/address-section.component';
 import { BoxCartPriceComponent } from './components/box-cart-price/box-cart-price.component';
 import { ButtonGrayComponent } from './components/button-gray/button-gray.component';
@@ -65,7 +66,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		HorizontalLineComponent,
 		ButtonGrayComponent,
 	],
-	imports: [CommonModule, FormsModule, NgbModule],
+	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
 	exports: [
 		CatalogCardComponent,
 		CatalogCardButtonComponent,

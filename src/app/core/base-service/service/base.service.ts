@@ -26,7 +26,6 @@ export class BaseService {
 		return this.http.get(url, { params }).pipe(
 			map(
 				(resp: any): HttpBodyRespModel => {
-					console.log(resp);
 					// this.httpBodyRespMapper.mappingDTOToModel(resp)
 					return this.httpBodyRespModel.convert(resp);
 				}
@@ -165,6 +164,7 @@ export class BaseService {
 		if (Object.entries(dto).length === 0) {
 			return null;
 		}
+
 		const dataModel = new responseModel().convert(dto);
 
 		return dataModel;

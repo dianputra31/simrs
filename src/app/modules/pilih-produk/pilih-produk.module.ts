@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SharedPipesModule } from './../../pipes/shared-pipes.module';
 import { SharedModule } from './../../shared/shared.module';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { FilterCardComponent } from './components/filter-card/filter-card.component';
@@ -11,6 +12,11 @@ import { PilihProdukRoutingModule } from './pilih-produk-routing.module';
 		FilterCardComponent,
 		CatalogComponent,
 	],
-	imports: [CommonModule, PilihProdukRoutingModule, SharedModule],
+	imports: [
+		CommonModule,
+		PilihProdukRoutingModule,
+		SharedModule,
+		SharedPipesModule,
+	],
 })
-export class PilihProdukModule { }
+export class PilihProdukModule {}

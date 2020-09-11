@@ -1,10 +1,12 @@
 <div class="d-flex justify-content-start">
 
-	<span id="percent-label">10%</span>
-	<wsh wide="11px"></wsh>
+	<span *ngIf="discount_percent"
+		id="percent-label">10%</span>
+	<wsh *ngIf="discount_percent"
+		wide="11px"></wsh>
 	<span id="harga-coret"
-		class="align-self-center">Rp. 394.900</span>
+		class="align-self-center">{{original_price|rupiah}}</span>
 </div>
 
 <wsv wide="3.57px"></wsv>
-<div id="harga-sesudah-diskon">Rp. 325.000</div>
+<div id="harga-sesudah-diskon">{{sell_price|rupiah}}</div>
