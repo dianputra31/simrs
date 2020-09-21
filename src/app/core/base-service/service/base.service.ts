@@ -11,7 +11,7 @@ import { generateHttpParams } from '../../util/http-param-generator';
 export class BaseService {
 	public httpBodyRespModel = new HttpBodyRespModel();
 
-	constructor(public http: HttpClient) { }
+	constructor(public http: HttpClient) {}
 
 	public getData(
 		url: string,
@@ -27,6 +27,7 @@ export class BaseService {
 			map(
 				(resp: any): HttpBodyRespModel => {
 					// this.httpBodyRespMapper.mappingDTOToModel(resp)
+					console.log(resp);
 					return this.httpBodyRespModel.convert(resp);
 				}
 			),
@@ -38,14 +39,12 @@ export class BaseService {
 		);
 	}
 
-
-
 	public getDataWithToken(
 		url: string,
 		responseModel: any,
 		requestParamModel?: any,
 		isArray?: boolean,
-		accessToken?: any,
+		accessToken?: any
 	): Observable<any> {
 		const params = requestParamModel
 			? generateHttpParams(requestParamModel.convert())
@@ -53,8 +52,8 @@ export class BaseService {
 
 		const headers = new HttpHeaders({
 			'Content-Type': 'application/json',
-			'Authorization': 'Bearer ' + accessToken
-		})
+			Authorization: 'Bearer ' + accessToken,
+		});
 
 		return this.http.get(url, { headers, params }).pipe(
 			map(

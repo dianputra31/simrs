@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CatalogResponseModel } from '../../../models/catalog-response-model';
+import { ProductCatalogResponseModel } from '../../../models/product-catalog-response-model';
 
 @Component({
 	selector: 'catalog-card',
@@ -8,7 +8,7 @@ import { CatalogResponseModel } from '../../../models/catalog-response-model';
 	styleUrls: ['./catalog-card.component.scss'],
 })
 export class CatalogCardComponent implements OnInit {
-	@Input() item: CatalogResponseModel;
+	@Input() item: ProductCatalogResponseModel;
 	constructor(private router: Router) {}
 
 	ngOnInit() {}

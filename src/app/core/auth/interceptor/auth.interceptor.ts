@@ -34,9 +34,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
 		if (withToken) {
 			const token = this.authService.getToken();
-
 			if (token) {
-				header['access_token'] = token;
+				header['Authorization'] = 'Bearer ' + token;
 			}
 		}
 

@@ -1,4 +1,4 @@
-export class CatalogResponseModel {
+export class ProductCatalogResponseModel {
 	public id: Number;
 	public category_id: Number;
 	public category: String;

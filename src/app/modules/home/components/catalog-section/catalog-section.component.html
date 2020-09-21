@@ -6,17 +6,13 @@
 	<div class="white-space"></div>
 	<div class="d-flex">
 
-		<catalog-card></catalog-card>
-		<div class="white-space-18px-horizontal"></div>
-		<catalog-card></catalog-card>
-		<div class="white-space-18px-horizontal"></div>
-		<catalog-card></catalog-card>
-		<div class="white-space-18px-horizontal"></div>
-		<catalog-card></catalog-card>
-		<div class="white-space-18px-horizontal"></div>
-		<catalog-card></catalog-card>
-		<div class="white-space-18px-horizontal"></div>
-		<catalog-card></catalog-card>
-
+		<div *ngFor="let product of products;  let i=index">
+			<div *ngIf="i<6">
+				<div class="d-flex">
+					<div class="white-space-18px-horizontal"></div>
+					<catalog-card [item]="product"></catalog-card>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
