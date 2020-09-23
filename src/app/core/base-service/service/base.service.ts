@@ -27,7 +27,6 @@ export class BaseService {
 			map(
 				(resp: any): HttpBodyRespModel => {
 					// this.httpBodyRespMapper.mappingDTOToModel(resp)
-					console.log(resp);
 					return this.httpBodyRespModel.convert(resp);
 				}
 			),

@@ -15,6 +15,11 @@ export class CatalogSectionComponent implements OnInit {
 	constructor(private service: BaseService) {}
 
 	ngOnInit() {
+		console.log(this.products);
 		this.subsribers = [];
+	}
+
+	lihatSemua() {
+		console.log('test');
 	}
 }
