@@ -2,12 +2,11 @@
 	<div id="float-foot-wrapper"
 		class="container d-flex 
 	justify-content-between align-items-center">
-
-		<div id="review-foot">Sweater Merah</div>
+		<div id="review-foot">{{productDetail?.product_name}}</div>
 		<div class="d-flex align-items-center">
 			<div>
 				<div id="total-foot-label">Total</div>
-				<div id="total-foot">Rp. 718.000</div>
+				<div id="total-foot">{{productDetail?.sell_price * qtyObject?.qty | rupiah}}</div>
 			</div>
 			<wsh wide="26px"></wsh>
 			<div id="tambahkan-button"

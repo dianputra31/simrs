@@ -1,5 +1,6 @@
 <div class="rounded-container d-flex">
-	<image-main></image-main>
+	<image-main [productDetail]="productDetail"></image-main>
 	<wsh wide="20px"></wsh>
-	<price></price>
+	<price [productDetail]="productDetail"
+		[qtyObject]="qtyObject"></price>
 </div>

@@ -8,7 +8,6 @@ export class HttpBodyRespModel {
 		if (dto) {
 			this.data = dto.data;
 			this.status = new HttpBodyRespStatusModel().convert(dto.status);
-
 			return this;
 		} else {
 			console.error('HttpBodyRespModel: Cannot Mapping Empty Data!');

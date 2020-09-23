@@ -48,7 +48,7 @@ export class AddressSectionComponent implements OnInit {
 		// 	this.divnya = 'location-user-pendek';
 		// } else {
 		// 	this.divnya = 'location-user-panjang';
-		// } 
+		// }
 		this.divnya = 'location-user';
 		this.location = 'Graha Boulevard, Jl. Boulevard Raya, RW.1, Kelapa Gading Timur...';
 

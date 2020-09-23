@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ToastService } from '../../../../shared/toast/toast-service';
+import { ProductDetailResponseModel } from '../../models/product-detail-response.model';
 
 @Component({
 	selector: 'price',
@@ -7,8 +8,13 @@ import { ToastService } from '../../../../shared/toast/toast-service';
 	styleUrls: ['./price.component.scss'],
 })
 export class PriceComponent implements OnInit {
-	qty = 0;
-	constructor(public toastService: ToastService) { }
+	@Input() productDetail: ProductDetailResponseModel;
+	@Input() qtyObject: any;
+	constructor(public toastService: ToastService) {}
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
+
+	test(h: string) {
+		console.log(h);
+	}
 }

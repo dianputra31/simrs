@@ -3,11 +3,11 @@
 	<div class="white-space"></div>
 	<banner-section hidden></banner-section>
 
-	<div class="white-space"></div>
-	<catalog-section></catalog-section>
 
-	<div class="white-space"></div>
-	<catalog-section></catalog-section>
+	<div *ngFor="let row of productCatalogRows">
+		<div class="white-space"></div>
+		<catalog-section [products]="row"></catalog-section>
+	</div>
 
 	<br />
 

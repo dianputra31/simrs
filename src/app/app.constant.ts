@@ -15,4 +15,7 @@ export const RESPONSE = {
 };
 
 export const CatalogService = `${API}/product/category/list`;
-export const CatalogCategoryUrl = `${API}/product/catalog`;
+export const ProductCatalogUrl = `${API}/product/catalog`;
+export const CatalogProductDetailUrl = `${API}/product/detail`;
+export const ProductTopSubcategoryUrl = `${API}/product/top_subcategory`;
+export const ProfileUrl = `${API}/profile`;

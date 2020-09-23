@@ -9,32 +9,17 @@
 	</div>
 	<wsv wide="30px"></wsv>
 	<div *ngIf="selectedTab=='Deskripsi'; else elseBlock">
-		<div id="des-label-prod-name">Sweater Merah Pria</div>
+		<div id="des-label-prod-name">{{productDetail?.product_name}}</div>
 		<wsv wide="26px"></wsv>
-		<div id="des-content">
-			Viverra quam nullam faucibus nulla urna lorem eget. Placerat lorem rutrum malesuada mauris est facilisi
-			morbi
-			ullamcorper mattis. Enim malesuada nullam magna quam tincidunt. Condimentum suscipit mauris at senectus
-			egestas
-			congue proin odio pellentesque. Porttitor id risus augue mi. Posuere senectus mauris rhoncus, at duis.
-			Bibendum
-			sollicitudin arcu ac interdum varius venenatis faucibus. Aliquam vel netus nisl, eu enim nulla nisi,
-			maecenas.
-			Semper et volutpat dui mollis sed. Ut volutpat et mus risus eget sed tristique. Nam porta rhoncus cras sit
-			at
-			amet vestibulum. Tellus ut a at pellentesque lacus, ullamcorper eget in. At eu posuere tempor ultrices dis
-			in
-			congue. Pharetra quam pulvinar malesuada nunc aliquet sed sem. Mi ipsum sit aliquam risus lorem nunc amet.
-			At
-			dui sed nam a.
+		<div id="des-content"
+			[innerHTML]="productDetail?.product_description">
 		</div>
 
 	</div>
 	<ng-template #elseBlock>
-		<div id="des-label-prod-name">Sweater Merah Pria</div>
+		<div id="des-label-prod-name">{{productDetail?.product_name}}</div>
 		<wsv wide="26px"></wsv>
 		<div id="des-content">
-			Spesifikasi disini
 		</div>
 	</ng-template>
 

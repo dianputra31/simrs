@@ -2,11 +2,10 @@
 	<a id="remove_cart_logo_wrapper"
 		class="d-flex align-items-center"
 		(click)="removeFromCart()">
-
 		<object id="remove_cart_logo"
 			type="image/svg+xml"
 			data="../../../../../assets/image/icons/remove-logo.svg"
-			[className]="sanitizedNumber(qty)==1?'remove_cart_logo_disable':''"
+			[className]="qtyObject.qty==1?'remove_cart_logo_disable':''"
 			class="pointereventnone">
 			<style>
 				svg {
@@ -23,7 +22,7 @@
 			id="qty_input"
 			class="p-2"
 			type="text"
-			[(ngModel)]="qty"
+			[(ngModel)]="qtyObject.qtyDisplay"
 			maxlength="6"
 			(input)="formatNumbersss()"
 			[attr.disabled]="allowChanges? null : ''"

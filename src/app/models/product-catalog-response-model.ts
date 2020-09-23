@@ -1,4 +1,4 @@
-export class CatalogResponseModel {
+export class ProductCatalogResponseModel {
 	public id: Number;
 	public category_id: Number;
 	public category: String;
@@ -11,7 +11,7 @@ export class CatalogResponseModel {
 	public partner_sku: String;
 	public partner_sku_item: String;
 	public original_price: Number;
-	public sell_price: Number;
+	public sell_price: number;
 	public product_name: String;
 	public product_name_item: String;
 	public product_description: String;

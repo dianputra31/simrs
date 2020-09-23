@@ -3,10 +3,11 @@
 		[ngStyle]="stylesObj"
 		(click)="openDialogImage(imageMainSelected)">
 		<img id="detail-main-image"
-			src={{imageMainSelected}}>
+			src={{productDetail?.product_image}}>
 	</div>
 	<wsv wide="10px"></wsv>
 	<div id="image-grid">
-		<image-grid (changeImageEvent)="changeImageMain($event)"></image-grid>
+		<!-- <image-grid (changeImageEvent)="changeImageMain($event)"></image-grid> -->
 	</div>
+
 </div>

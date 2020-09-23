@@ -1,25 +1,31 @@
 <div>
-	<div id="product-detail-label">Sweater Merah Pria</div>
+	<div id="product-detail-label">{{productDetail?.product_name}}</div>
 	<wsv wide="27px"></wsv>
-	<discount-harga-coret></discount-harga-coret>
+	<discount-harga-coret [discount_percent]="null"
+		[original_price]="productDetail?.original_price"
+		[sell_price]="productDetail?.sell_price"></discount-harga-coret>
+
 	<wsv wide="34px"></wsv>
-	<div>
+	<div *ngIf="productDetail?.product_color">
 		<info-row title="warna">
 			<warna></warna>
 		</info-row>
 		<wsv wide="15px"></wsv>
 	</div>
-	<div>
+	<div *ngIf="productDetail?.product_size">
 		<info-row title="Berat">
 			<span class="info-row-content">2.400gr</span>
 		</info-row>
 		<wsv wide="15px"></wsv>
 	</div>
 
-	<info-row title="Stok">&nbsp;&nbsp;
+	<info-row title="Stok"
+		*ngIf="productDetail?.stock">&nbsp;&nbsp;
 		<span class="info-row-content">25</span>
 	</info-row>
 	<wsv wide="27px"></wsv>
 	<qty-ctrl notif="true"
-		allowChanges="true"></qty-ctrl>
+		allowChanges="true"
+		[qtyObject]="qtyObject"
+		(qtyChangeEvent)="test($event)"></qty-ctrl>
 </div>

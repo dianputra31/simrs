@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { QuantityModel } from '../../../models/quantity.model';
 import { ToastService } from '../../toast/toast-service';
 @Component({
 	selector: 'qty-ctrl',
@@ -8,34 +9,38 @@ import { ToastService } from '../../toast/toast-service';
 export class QtyCtrlComponent implements OnInit {
 	@Input() notif: string;
 	@Input() allowChanges: boolean;
+	@Input() qtyObject: QuantityModel;
+	@Output() qtyChangeEvent = new EventEmitter<number>();
 
-	qty = 1;
+	qtyToDisplay;
 	constructor(public toastService: ToastService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.qtyObject.qtyDisplay = this.qtyObject.display();
+	}
 
 	removeFromCart() {
-		this.qty = this.sanitizedNumber(this.qty);
+		this.qtyObject.qty = this.qtyObject.sanitizedNumber();
 		if (this.allowChanges) {
-			if (this.qty != 1) {
-				this.qty--;
-				this.qty = this.formatRupiah(this.qty.toString(), '');
+			if (this.qtyObject.qty != 1) {
+				this.qtyObject.qty--;
+				this.qtyObject.qtyDisplay = this.qtyObject.display();
 			}
 		}
 	}
 
 	qtyChange() {
-		if (this.qty == null || this.qty < 1) {
-			this.qty = 1;
+		if (this.qtyObject.qty == null || this.qtyObject.qty < 1) {
+			this.qtyObject.qty = 1;
 		}
 	}
 
 	addToCart() {
-		this.qty = this.sanitizedNumber(this.qty);
+		this.qtyObject.qty = this.qtyObject.sanitizedNumber();
 		if (this.allowChanges) {
-			if (this.qty != 999999) {
-				this.qty++;
-				this.qty = this.formatRupiah(this.qty.toString(), '');
+			if (this.qtyObject.qty != 999999) {
+				this.qtyObject.qty++;
+				this.qtyObject.qtyDisplay = this.qtyObject.display();
 			}
 		}
 	}
@@ -50,7 +55,12 @@ export class QtyCtrlComponent implements OnInit {
 	}
 
 	formatNumbersss() {
-		this.qty = this.formatRupiah(this.qty, '');
+		this.qtyObject.qtyDisplay = this.formatRupiah(
+			this.qtyObject.qtyDisplay,
+			''
+		);
+
+		this.qtyObject.qty = this.qtyObject.sanitizedNumber();
 	}
 
 	formatRupiah(angka, prefix) {
@@ -69,9 +79,5 @@ export class QtyCtrlComponent implements OnInit {
 
 		rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
 		return prefix == undefined ? rupiah : rupiah ? rupiah : '';
-	}
-
-	sanitizedNumber(angka) {
-		return angka.toString().replace('.', '');
 	}
 }

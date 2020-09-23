@@ -1,26 +1,12 @@
 <div class="card-deck">
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
-	<div class="white-space-27px"></div>
-	<catalog-card></catalog-card>
+	<span *ngFor="let item of items">
+		<wsv wide="10px"></wsv>
+		<div class="d-flex">
+			<wsh wide="20px"></wsh>
+			<catalog-card [item]="item"></catalog-card>
+		</div>
+		<wsv wide="10px"></wsv>
+
+	</span>
+
 </div>

@@ -1,11 +1,11 @@
 <div class="card white-rounded-rectangle"
 	(click)="backToHome()">
 	<div class="inner-padding">
-		<img src="https://rossellafashion.files.wordpress.com/2012/04/baju.jpg"
+		<img [src]="item.thumbnail"
 			class="card-img-top">
-		<div class="catalog-card-label">Sweater Merah Pria</div>
+		<div class="catalog-card-label">{{item.product_name}}</div>
 
-		<div class="catalog-card-price">Rp. 359.000</div>
+		<div class="catalog-card-price">{{item.sell_price|rupiah}}</div>
 	</div>
 	<catalog-card-button *ngIf="false"
 		class="catalog-card-button"></catalog-card-button>

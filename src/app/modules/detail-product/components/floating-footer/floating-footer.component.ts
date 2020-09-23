@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { QuantityModel } from '../../../../models/quantity.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
+import { ProductDetailResponseModel } from '../../models/product-detail-response.model';
 
 @Component({
 	selector: 'floating-footer',
@@ -8,6 +10,8 @@ import { ToastService } from '../../../../shared/toast/toast-service';
 	styleUrls: ['./floating-footer.component.scss'],
 })
 export class FloatingFooterComponent implements OnInit {
+	@Input() productDetail: ProductDetailResponseModel;
+	@Input() qtyObject: QuantityModel;
 	constructor(public toastService: ToastService, private router: Router) {}
 
 	ngOnInit(): void {}
@@ -30,5 +34,9 @@ export class FloatingFooterComponent implements OnInit {
 
 	pergiKeKeranjang() {
 		this.router.navigate(['./cart']);
+	}
+
+	countTotal() {
+		return this.productDetail?.sell_price * this.qtyObject?.qty;
 	}
 }
