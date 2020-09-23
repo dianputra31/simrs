@@ -17,23 +17,34 @@
 					<div id="loc-body-button">
 						<span class="button-location">Utama</span>
 					</div>
+					<div id="loc-body-checkbox">
+
+						<label class="radiyo">
+							<input type="radio"
+								checked="checked"
+								name="radio">
+							<span class="checkmark"></span>
+						</label>
+
+					</div>
 				</ng-template>
 				<ng-template #uncheckedaddress>
-					<div id="loc-body-button-unchecked">&nbsp;
+					<div id="loc-body-button">&nbsp;
+					</div>
+
+					<div id="loc-body-checkbox">
+
+						<label class="radiyo">
+							<input type="radio"
+								name="radio">
+							<span class="checkmark"></span>
+						</label>
+
 					</div>
 				</ng-template>
 
 
-				<div id="loc-body-checkbox">
 
-					<label class="radiyo">
-						<input type="radio"
-							checked="{{item.is_head_office==1}}"
-							name="radio">
-						<span class="checkmark"></span>
-					</label>
-
-				</div>
 			</div>
 		</div>
 	</div>
