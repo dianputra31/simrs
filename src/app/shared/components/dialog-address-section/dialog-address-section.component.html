@@ -1,14 +1,15 @@
 <div id="mbel">
 	<div id="loc-header">Alamat
 	</div>
-	<div *ngFor="let item of datalocation; let i = index">
+	<div *ngFor="let item of addresses; let i = index">
 		<div id="loc-hr-top">
 		</div>
 		<div id="loc-body">
 			<div id="body_address_1">{{item.address_name}}</div>
 
 			<div id="loc-body-address">
-				<div id="body_address_2">{{item.address_detail}}</div>
+				<div id="body_address_2">{{item.address_detail}} {{item.subdistrict}} {{item.district}}
+					{{item.province}} {{item.zipcode}}</div>
 			</div>
 			<div id="loc-body-manuver">
 				<ng-template *ngIf="item.is_head_office==1;then checkedaddress else uncheckedaddress"></ng-template>
