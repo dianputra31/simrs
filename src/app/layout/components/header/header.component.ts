@@ -16,6 +16,7 @@ import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up
 export class HeaderComponent implements OnInit {
 	datacompany;
 	datauser;
+	account;
 
 	constructor(
 		public dialog: MatDialog,
@@ -39,6 +40,7 @@ export class HeaderComponent implements OnInit {
 
 		this.datacompany = JSON.parse(localStorage.getItem("company"));
 		this.datauser = JSON.parse(localStorage.getItem("profile"));
+		this.account = JSON.parse(localStorage.getItem("account"));
 
 	}
 
