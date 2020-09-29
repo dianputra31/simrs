@@ -71,6 +71,7 @@
 							[ngStyle]="{'display':tampil}">Kirim Ulang</span>
 						&nbsp;
 						<countdown [config]="naconfig"
+							(event)="finishCount($event)"
 							[ngStyle]="{'font-weight': '600','font-size':'22px','line-height': '30px','color':'#DB0A2A'}">
 						</countdown>
 
