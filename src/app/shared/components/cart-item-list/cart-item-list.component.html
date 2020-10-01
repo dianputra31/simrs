@@ -1,7 +1,6 @@
 <div class="d-flex align-items-center">
-
 	<div id="item-image">
-		<img src="{{items.itemImage}}"
+		<img [src]="item?.product_image"
 			id="item-image"
 			[ngClass]="classObj"
 			(click)="goToDetail()"
@@ -12,21 +11,21 @@
 		<div id="item-list-name"
 			class="{{styles}}">
 			<a (click)="goToDetail()"
-				class="{{styles}}">{{items.itemName}}</a></div>
+				class="{{styles}}">{{item?.product_name}}</a></div>
 		<wsv wide="6px"></wsv>
-		<div id="item-list-price">{{items.itemPrice}}</div>
+		<div id="item-list-price">{{item?.sell_price}}</div>
 		<wsv wide="12px"></wsv>
-		<div id="item-list-color">
+		<!-- <div id="item-list-color">
 			<div id="rounded-item-wording">Warna</div>
 			<div id="rounded-item-color">
 				<div class="rounded-item-color"
-					style="background-color: {{items.itemColor}}"></div>
+					style="background-color: {{item.itemColor}}"></div>
 			</div>
 		</div>
 		<div id="item-list-weight">
 			<div id="item-list-weight-left">Berat :</div>
 			<div id="item-list-weight-right">{{items.itemWeight}}</div>
-		</div>
+		</div> -->
 		<wsv wide="10px"></wsv>
 		<ng-content></ng-content>
 	</div>

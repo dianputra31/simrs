@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CartListElement } from '../../../../models/cart-list.model';
+import { QuantityModel } from '../../../../models/quantity.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
 
 @Component({
@@ -7,10 +9,10 @@ import { ToastService } from '../../../../shared/toast/toast-service';
 	styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
-	@Input() items;
-	constructor(public toastService: ToastService) {}
+	@Input() items: CartListElement[];
+	constructor(public toastService: ToastService) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	deleteItem(dangerTpl) {
 		this.showDanger(dangerTpl);
@@ -30,5 +32,18 @@ export class ItemListComponent implements OnInit {
 		} else {
 			return selected;
 		}
+	}
+
+	getQtyObj(qty) {
+		var qtyObject = new QuantityModel();
+
+		qtyObject.qty = qty;
+		qtyObject.qtyDisplay = qtyObject.display();
+		return qtyObject;
+	}
+
+
+	test(h: any) {
+		console.log(h);
 	}
 }

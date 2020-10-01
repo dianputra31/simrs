@@ -9,14 +9,14 @@ import { ToastService } from '../../toast/toast-service';
 export class QtyCtrlComponent implements OnInit {
 	@Input() notif: string;
 	@Input() allowChanges: boolean;
-	@Input() qtyObject: QuantityModel;
+	@Input() qtyObject: QuantityModel = new QuantityModel();
 	@Output() qtyChangeEvent = new EventEmitter<number>();
 
 	qtyToDisplay;
-	constructor(public toastService: ToastService) {}
+	constructor(public toastService: ToastService) { }
 
 	ngOnInit(): void {
-		this.qtyObject.qtyDisplay = this.qtyObject.display();
+		this.qtyObject.qtyDisplay = this.qtyObject.display().length > 0 ? this.qtyObject.display() : "0";
 	}
 
 	removeFromCart() {
@@ -42,6 +42,7 @@ export class QtyCtrlComponent implements OnInit {
 				this.qtyObject.qty++;
 				this.qtyObject.qtyDisplay = this.qtyObject.display();
 			}
+
 		}
 	}
 

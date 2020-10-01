@@ -11,7 +11,7 @@ import { generateHttpParams } from '../../util/http-param-generator';
 export class BaseService {
 	public httpBodyRespModel = new HttpBodyRespModel();
 
-	constructor(public http: HttpClient) {}
+	constructor(public http: HttpClient) { }
 
 	public getData(
 		url: string,
@@ -23,7 +23,7 @@ export class BaseService {
 			? generateHttpParams(requestParamModel.convert())
 			: null;
 
-		return this.http.get(url, { params }).pipe(
+		return responseModel !== false ? this.http.get(url, { params }).pipe(
 			map(
 				(resp: any): HttpBodyRespModel => {
 					// this.httpBodyRespMapper.mappingDTOToModel(resp)
@@ -35,7 +35,7 @@ export class BaseService {
 					? this.mapArrayData(model.data, responseModel)
 					: this.mapObjectData(model.data, responseModel);
 			})
-		);
+		) : this.http.get(url, { params });
 	}
 
 	public getDataWithToken(
@@ -53,8 +53,7 @@ export class BaseService {
 			'Content-Type': 'application/json',
 			Authorization: 'Bearer ' + accessToken,
 		});
-
-		return this.http.get(url, { headers, params }).pipe(
+		return responseModel !== false ? this.http.get(url, { headers, params }).pipe(
 			map(
 				(resp: any): HttpBodyRespModel =>
 					// this.httpBodyRespMapper.mappingDTOToModel(resp)
@@ -65,7 +64,7 @@ export class BaseService {
 					? this.mapArrayData(model.data, responseModel)
 					: this.mapObjectData(model.data, responseModel);
 			})
-		);
+		) : this.http.get(url, { headers, params });
 	}
 
 	public getDataPaging(

@@ -7,12 +7,14 @@
 					(click)="item.selected = !item.selected"
 					[allowChanges]="!item.outOfStock"></check-box-round>
 				<wsh wide="10px"></wsh>
-
-				<cart-item-list [redirlink]="true">
+				<cart-item-list [redirlink]="true"
+					[item]="item">
 					<div class="d-flex align-items-center"
 						id="qty-div">
-						<qty-ctrl notif="false"
-							[allowChanges]="!item.outOfStock"></qty-ctrl>
+						<qty-ctrl notif="true"
+							allowChanges="true"
+							[qtyObject]="getQtyObj(item.quantity)"
+							(qtyChangeEvent)="test($event)"></qty-ctrl>
 						<wsh wide="250px"></wsh>
 						<img id="trash-can"
 							src="../../../../../assets/image/icons/trash_can.png"

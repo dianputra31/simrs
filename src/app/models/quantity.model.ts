@@ -1,5 +1,5 @@
 export class QuantityModel {
-	public qty: number;
+	public qty: number = 1;
 	public qtyDisplay: string;
 
 	public display() {
