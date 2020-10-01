@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 import { DeliveryAddressObjectModel } from '../address-section/model/delivery-address-object.model';
 
 @Component({
@@ -11,7 +12,9 @@ export class DialogAddressSectionComponent implements OnInit {
 	datalocation: DeliveryAddressObjectModel[];
 
 	constructor(
-		@Inject(MAT_DIALOG_DATA) public data: DeliveryAddressObjectModel[]
+		public dialogRef: MatDialogRef<DialogAddressSectionComponent>,
+		@Inject(MAT_DIALOG_DATA) public data: any,
+		private router: Router
 	) {
 		this.datalocation = data.address;
 	}
@@ -33,5 +36,10 @@ export class DialogAddressSectionComponent implements OnInit {
 		// 		checked: '',
 		// 	},
 		// ];
+	}
+
+	goToAkun() {
+		this.router.navigate(['./account/info-perusahaan']);
+		this.dialogRef.close();
 	}
 }
