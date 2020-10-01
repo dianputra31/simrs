@@ -30,7 +30,7 @@ export class AddressSectionComponent implements OnInit {
 		public dialog: MatDialog,
 		private router: Router,
 		private service: BaseService
-	) {}
+	) { }
 
 	stylesObj = {};
 

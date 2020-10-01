@@ -64,7 +64,7 @@ export class LoginCardComponent implements OnInit {
 	@ViewChild('countdown', { static: false }) private counter: CountdownComponent;
 
 	naconfig = {
-		leftTime: 180, demand: true, format: 'mm:ss'
+		leftTime: 3, demand: false, format: 'mm:ss'
 	};
 
 
@@ -175,6 +175,14 @@ export class LoginCardComponent implements OnInit {
 		this.blockUI.start();
 	}
 
+	public finishCount(e: Event) {
+		if (e["action"] == "done") {
+			this.display = "none";
+			this.tampil = "inline";
+			console.log("jalan");
+		}
+	}
+
 	public sendotp() {
 
 		if (this.firstFormGroup.valid) {
@@ -231,8 +239,12 @@ export class LoginCardComponent implements OnInit {
 	}
 
 	public submit() {
-		this.blockUI.start(); // Start blocking
-		this.initLoadingBar();
+		if (this.secondFormGroup.valid) {
+			this.blockUI.start(); // Start blocking
+			this.initLoadingBar();
+		} else {
+			console.log("empty otp!");
+		}
 
 	}
 

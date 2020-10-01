@@ -14,12 +14,13 @@ import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up
 export class HeaderComponent implements OnInit {
 	datacompany;
 	datauser;
+	account;
 
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router
-	) {}
+	) { }
 
 	myControl = new FormControl();
 	options: string[] = [

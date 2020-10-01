@@ -1,7 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AddressList } from '../../../app.constant';
+import { BaseService } from '../../../core/base-service/service/base.service';
 import { DeliveryAddressObjectModel } from '../address-section/model/delivery-address-object.model';
+import { DeliveryAddressResponseModel } from '../address-section/model/delivery-address-response.model';
 
 @Component({
 	selector: 'dialog-address-section',
@@ -10,36 +14,39 @@ import { DeliveryAddressObjectModel } from '../address-section/model/delivery-ad
 })
 export class DialogAddressSectionComponent implements OnInit {
 	datalocation: DeliveryAddressObjectModel[];
+	subsribers: Subscription[];
+	addresses: DeliveryAddressObjectModel[];
+	location;
 
 	constructor(
 		public dialogRef: MatDialogRef<DialogAddressSectionComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any,
-		private router: Router
+		private router: Router,
+		private service: BaseService
 	) {
-		this.datalocation = data.address;
+		// this.datalocation = data.address;
+		// console.log(data.address);
 	}
 
 	ngOnInit(): void {
-		// this.datalocation = [
-		// 	{
-		// 		address_name: 'Narindo',
-		// 		address:
-		// 			'JL. Boulevard Raya Graha Boulevard C-12 Kelapa Gading timur Rt.10 rw.15 Jakarta Utara 14240',
-		// 		address_utama: 'Utama',
-		// 		checked: 'checked',
-		// 	},
-		// 	{
-		// 		address_name: 'Telkomsel Smart Office',
-		// 		address:
-		// 			'Telkomsel Smart Office, Telkom Landmark Tower, Jl. Jend. Gatot Subroto Kav. 52,	Jakarta Selatan 12710',
-		// 		address_utama: '',
-		// 		checked: '',
-		// 	},
-		// ];
+		this.getAddressList();
 	}
 
 	goToAkun() {
 		this.router.navigate(['./account/info-perusahaan']);
 		this.dialogRef.close();
+	}
+
+	getAddressList() {
+		const url = AddressList;
+		const sub = this.service
+			.getData(url, DeliveryAddressResponseModel, null, false)
+			.subscribe((resp) => {
+				this.addresses = resp.delivery_address;
+
+				this.location = this.addresses[0].address_detail;
+			});
+
+		this.subsribers.push(sub);
 	}
 }

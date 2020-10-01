@@ -19,3 +19,4 @@ export const ProductCatalogUrl = `${API}/product/catalog`;
 export const CatalogProductDetailUrl = `${API}/product/detail`;
 export const ProductTopSubcategoryUrl = `${API}/product/top_subcategory`;
 export const ProfileUrl = `${API}/profile`;
+export const AddressList = `${API}/profile/address_list`;
