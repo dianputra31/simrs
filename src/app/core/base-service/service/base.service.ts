@@ -106,16 +106,19 @@ export class BaseService {
 
 		return this.http.post(url, requestBodyModel.convert(), { params }).pipe(
 			map(
-				(resp: any): HttpBodyRespModel =>
-					this.httpBodyRespModel.convert(resp)
-			),
-			map((model: HttpBodyRespModel): any => {
-				return responseModel
-					? isArray
-						? this.mapArrayData(model.data, responseModel)
-						: responseModel.convert(model.data)
-					: this.responseData(model.data);
-			})
+				(resp: any): HttpBodyRespModel => {
+					console.log(resp);
+					return this.httpBodyRespModel.convert(resp)
+				}
+			)
+			// map((model: HttpBodyRespModel): any => {
+			// 	console.log(responseModel.convert);
+			// 	return responseModel
+			// 		? isArray
+			// 			? this.mapArrayData(model.data, responseModel)
+			// 			: responseModel.convert(model.data)
+			// 		: this.responseData(model.data);
+			// })
 		);
 	}
 

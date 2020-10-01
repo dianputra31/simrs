@@ -21,7 +21,7 @@ import { ToastService } from './toast-service';
 	host: { '[class.ngb-toasts]': 'true' },
 })
 export class ToastsContainer {
-	constructor(public toastService: ToastService) {}
+	constructor(public toastService: ToastService) { }
 
 	isTemplate(toast) {
 		return toast.textOrTpl instanceof TemplateRef;
