@@ -35,8 +35,6 @@ export class FloatingFooterComponent implements OnInit {
 
 	tambahkanKeKeranjang(dangerTpl) {
 		this.showDanger(dangerTpl);
-		console.log("product: ", this.productDetail);
-		console.log("qty: ", this.qtyObject);
 		var test = new CartItemModel()
 		test.product_id = this.productDetail.id
 		test.quantity = this.qtyObject.qty
@@ -50,16 +48,7 @@ export class FloatingFooterComponent implements OnInit {
 			.subscribe((resp) => {
 				console.log("resp: ", resp)
 			})
-
-
-		//1. Call PostData from base service 
-		//2. create cart model (request & response) in folder "models"
-		//3. create class public convert(dto: any) 
-
 		this.subsribers.push(sub);
-
-		// add URL add-cart in file "app/app.constant.ts"
-
 	}
 
 	showDanger(dangerTpl) {
@@ -76,5 +65,13 @@ export class FloatingFooterComponent implements OnInit {
 
 	countTotal() {
 		return this.productDetail?.sell_price * this.qtyObject?.qty;
+	}
+
+	truncateChar(strtxt) {
+		var ret = strtxt
+		if (strtxt.length > 56) {
+			ret = strtxt.substring(0, 56) + "...";
+		}
+		return ret
 	}
 }

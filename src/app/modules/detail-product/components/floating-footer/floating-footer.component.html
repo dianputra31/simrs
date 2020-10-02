@@ -41,7 +41,8 @@
 						<img [src]="productDetail?.product_image"
 							id="notif-img">
 						<div>
-							<div id="item-name">{{productDetail?.product_name}}</div>
+							<!-- <div id="item-name">{{productDetail?.product_name}}</div> -->
+							<div id="item-name">{{truncateChar(productDetail?.product_name)}}</div>
 							<div>{{qtyObject?.qty}} Barang</div>
 						</div>
 					</div>
