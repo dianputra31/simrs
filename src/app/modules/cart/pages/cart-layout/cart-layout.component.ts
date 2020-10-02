@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CartListUrl } from '../../../../app.constant';
+import { CartListUrl, CheckoutCartUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
+import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
+import { CartItemModel } from '../../../../models/cart-item.model';
 import { CartListElement, Convert } from '../../../../models/cart-list.model';
 import { Company, ConvertCompany } from '../../../../models/company.model';
 import { QuantityModel } from '../../../../models/quantity.model';
-
 @Component({
 	selector: 'cart-layout',
 	templateUrl: './cart-layout.component.html',
@@ -153,6 +155,8 @@ export class CartLayoutComponent implements OnInit {
 		}
 
 		this.hitungJumlah();
+		adaItemChecked =
+			this.selectedItems.length == 0 ? false : adaItemChecked;
 		return adaItemChecked;
 	}
 
@@ -202,6 +206,43 @@ export class CartLayoutComponent implements OnInit {
 			this.pertotalan.ppn3 +
 			this.pertotalan.ongkir;
 	}
+
+	selanjutnyaClick() {
+		var cartreq = new CartItemRequestModel();
+		cartreq.cart_list = [];
+		for (var i = 0; i < this.selectedItems.length; i++) {
+			var x = new CartItemModel();
+			x.product_id = this.selectedItems[i].product_id;
+			x.quantity = this.selectedItems[i].qtyObject.qty;
+			cartreq.cart_list.push(x);
+		}
+
+		const sub = this.service
+			.postData(CheckoutCartUrl, cartreq, CartItemResponseModel, false)
+			.subscribe((resp) => {
+				console.log('resp: ', resp);
+				const stringnya = Convert.cartListToJson(resp);
+				const cartList = Convert.toCartList(stringnya);
+				console.log(cartList);
+			});
+		this.subsribers.push(sub);
+
+		// const param = new ProductCatalogRequestModel();
+
+		// param.category_id = category_id;
+		// param.limit = 6;
+
+		// const url = ProductCatalogUrl + '?' + param.convertQueryParameter();
+		// const sub = this.service
+		// 	.getData(url, ProductCatalogResponseModel, null, true)
+		// 	.subscribe((resp) => {
+		// 		this.productCatalogRows.push(resp);
+		// 	});
+
+		// this.subsribers.push(sub);
+	}
+
+	ngOnDestroy() {}
 
 	recalculate() {
 		this.getCartItem();

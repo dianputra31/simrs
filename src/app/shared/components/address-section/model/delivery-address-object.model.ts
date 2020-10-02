@@ -11,6 +11,7 @@ export class DeliveryAddressObjectModel {
 	public subdistrict: string;
 	public village: string;
 	public zipcode: string;
+	public id: number;
 
 	public convert(dto: any) {
 		this.address_detail = dto.address_detail;
@@ -25,6 +26,7 @@ export class DeliveryAddressObjectModel {
 		this.subdistrict = dto.subdistrict;
 		this.village = dto.village;
 		this.zipcode = dto.zipcode;
+		this.id = dto.id;
 
 		return this;
 	}

@@ -107,22 +107,30 @@ export class BaseService {
 			? generateHttpParams(requestParamModel.convert())
 			: null;
 
-		return this.http.post(url, requestBodyModel.convert(), { params }).pipe(
-			map(
-				(resp: any): HttpBodyRespModel => {
-					console.log(resp);
-					return this.httpBodyRespModel.convert(resp);
-				}
-			)
-			// map((model: HttpBodyRespModel): any => {
-			// 	console.log(responseModel.convert);
-			// 	return responseModel
-			// 		? isArray
-			// 			? this.mapArrayData(model.data, responseModel)
-			// 			: responseModel.convert(model.data)
-			// 		: this.responseData(model.data);
-			// })
-		);
+		return responseModel !== false
+			? this.http.post(url, requestBodyModel.convert(), { params }).pipe(
+					map(
+						(resp: any): HttpBodyRespModel => {
+							console.log(resp);
+							return this.httpBodyRespModel.convert(resp);
+						}
+					)
+					// map((model: HttpBodyRespModel): any => {
+					// 	console.log(responseModel.convert);
+					// 	return responseModel
+					// 		? isArray
+					// 			? this.mapArrayData(model.data, responseModel)
+					// 			: responseModel.convert(model.data)
+					// 		: this.responseData(model.data);
+					// })
+			  )
+			: this.http.post(
+					url,
+					params == null
+						? requestBodyModel
+						: requestBodyModel.convert(),
+					{ params }
+			  );
 	}
 
 	public putData(

@@ -2,8 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddressList } from '../../../app.constant';
+import { AddressList, SetDefaultAddress } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
+import { CartItemResponseModel } from '../../../models/cart-item-response.model';
+import { SetDefaultAddressReq } from '../../../models/default-address-request.model';
 import { DeliveryAddressObjectModel } from '../address-section/model/delivery-address-object.model';
 import { DeliveryAddressResponseModel } from '../address-section/model/delivery-address-response.model';
 
@@ -29,7 +31,12 @@ export class DialogAddressSectionComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.subsribers = [];
 		this.getAddressList();
+	}
+
+	ngOnDestroy() {
+		this.subsribers.forEach((each) => each.unsubscribe);
 	}
 
 	goToAkun() {
@@ -47,6 +54,26 @@ export class DialogAddressSectionComponent implements OnInit {
 				this.location = this.addresses[0].address_detail;
 			});
 
+		this.subsribers.push(sub);
+	}
+
+	setDefaultAddress(addressId) {
+		console.log("radio button is check id", addressId)
+		console.log("address-list: ", this.addresses)
+		var adid = <string>addressId.id
+		const url = SetDefaultAddress + adid
+
+		console.log("adid: ", adid)
+		console.log("url: ", url)
+
+		var dd = new SetDefaultAddressReq()
+		dd.address_id = adid
+		const sub = this.service
+			.postData(url, dd, CartItemResponseModel, false)
+			.subscribe((resp) => {
+				console.log("resp: ", resp)
+				this.dialogRef.close();
+			})
 		this.subsribers.push(sub);
 	}
 }

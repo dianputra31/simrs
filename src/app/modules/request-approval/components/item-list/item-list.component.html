@@ -2,10 +2,12 @@
 	<div class="white-rounded-corner-item-list-cart">
 		<div class="d-flex align-items-center">
 
-			<cart-item-list [redirlink]="false">
+			<cart-item-list [item]="item"
+				[redirlink]="false">
 				<wsv wide="10px"></wsv>
 				<div class="d-flex">
-					<div id="qty_label">2 barang</div>
+					<div id="qty_label">{{item.quantity}} barang <span style="color: red;">({{item.status}})</span>
+					</div>
 				</div>
 			</cart-item-list>
 
