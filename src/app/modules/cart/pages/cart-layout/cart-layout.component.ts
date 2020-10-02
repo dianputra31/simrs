@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { CartListUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { CartListElement, Convert } from '../../../../models/cart-list.model';
+import { Company, ConvertCompany } from '../../../../models/company.model';
 
 @Component({
 	selector: 'cart-layout',
@@ -13,9 +14,29 @@ import { CartListElement, Convert } from '../../../../models/cart-list.model';
 export class CartLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	items: CartListElement[];
+	isEmpty = 0;
+	company: Company = null;
+
+	pertotalan = {
+		saldo: 0,
+		totalPrice: 0,
+		totalItem: 0,
+		totalFee: 0,
+		ppn: 0,
+		ppn3: 0,
+		ongkir: 0,
+		subtotal: 0,
+		grandtotal: 0
+	}
+
+
+
 	constructor(private route: ActivatedRoute, private service: BaseService) { }
 
 	ngOnInit(): void {
+		var ls = localStorage.getItem('company');
+		this.company = ConvertCompany.toCompany(ls);
+		this.pertotalan.saldo = this.company.credit_rp;
 		this.subsribers = [];
 		this.route.paramMap.subscribe((params) => {
 			this.getCartItem();
@@ -23,12 +44,28 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	getCartItem() {
+
 		const sub = this.service
 			.getData(CartListUrl, false, null, true)
 			.subscribe((resp) => {
 				const stringnya = Convert.cartListToJson(resp);
 				const cartList = Convert.toCartList(stringnya);
 				this.items = cartList.data.cart_list;
+				this.isEmpty = this.items.length;
+				if (this.isEmpty > 0) {
+					this.pertotalan.totalPrice = cartList.data.total_price;
+					this.pertotalan.totalItem = cartList.data.total_item;
+					for (let index = 0; index < this.items.length; index++) {
+						const element: CartListElement = this.items[index];
+						this.pertotalan.totalFee += element.admin_fee;
+						this.pertotalan.ppn += (this.company.ppn_percentage / 100) * cartList.data.total_price;
+						this.pertotalan.ppn3 += (this.company.pph_percentage / 100) * element.admin_fee;
+						this.pertotalan.ongkir += element.shipping_cost;
+
+					}
+					this.pertotalan.subtotal = cartList.data.total_price + this.pertotalan.totalFee;
+					this.pertotalan.grandtotal = this.pertotalan.subtotal + this.pertotalan.ppn + this.pertotalan.ppn3 + this.pertotalan.ongkir;
+				}
 			});
 
 		this.subsribers.push(sub);
