@@ -10,7 +10,7 @@
 		<wsv wide="210px"></wsv>
 		<div id="poi">
 			<div id="asd">
-				<item-list></item-list>
+				<item-list [items]="items"></item-list>
 			</div>
 		</div>
 	</div>
@@ -19,7 +19,9 @@
 		<div id="right-fixed">
 			<div class="d-flex">
 				<wsh wide="57px"></wsh>
-				<box-cart-price buttonLabel="Request Approval"></box-cart-price>
+				<box-cart-price [pertotalan]="pertotalan"
+					[selectedItems]="selectedItems"
+					buttonLabel="Request Approval"></box-cart-price>
 			</div>
 
 		</div>

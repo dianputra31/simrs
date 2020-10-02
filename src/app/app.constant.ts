@@ -22,3 +22,4 @@ export const ProfileUrl = `${API}/profile`;
 export const AddressList = `${API}/profile/address_list`;
 export const CartListUrl = `${API}/cart/list`;
 export const AddCart = `${API}/cart`;
+export const CheckoutCartUrl = `${API}/approval/checkout_cart`;

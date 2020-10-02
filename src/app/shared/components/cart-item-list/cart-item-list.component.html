@@ -13,7 +13,7 @@
 			<a (click)="goToDetail()"
 				class="{{styles}}">{{item?.product_name}}</a></div>
 		<wsv wide="6px"></wsv>
-		<div id="item-list-price">{{item?.sell_price}}</div>
+		<div id="item-list-price">{{item?.sell_price|rupiah}}</div>
 		<wsv wide="12px"></wsv>
 		<!-- <div id="item-list-color">
 			<div id="rounded-item-wording">Warna</div>

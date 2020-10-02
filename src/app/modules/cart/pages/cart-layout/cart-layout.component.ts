@@ -16,6 +16,7 @@ export class CartLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	items: CartListElement[] = [];
 	itemsoriginal: CartListElement[];
+	selectedItems: CartListElement[] = [];
 	constructor(private route: ActivatedRoute, private service: BaseService) { }
 	isEmpty = 0;
 	company: Company = null;
@@ -60,13 +61,14 @@ export class CartLayoutComponent implements OnInit {
 						const element: CartListElement = this.itemsoriginal[
 							index
 						];
-						element.outOfStock =
-							element.stock - element.quantity < 0;
-						element.selected =
-							element.stock != 0 || element.stock != null;
+						element.outOfStock = element.stock - element.quantity < 0;
+						element.selected = element.stock - element.quantity >= 0;
 						element.qtyObject = new QuantityModel();
 						element.qtyObject.qty = element.quantity;
 						element.qtyObject.qtyDisplay = element.qtyObject.display();
+						if (element.stock - element.quantity >= 0) {
+							this.selectedItems.push(element);
+						}
 						this.items.push(element);
 						this.pertotalan.totalFee += (element.stock - element.quantity) < 0 ? 0 : element.admin_fee;
 						this.pertotalan.ppn += (element.stock - element.quantity) < 0 ? 0 : element.ppn;
@@ -108,6 +110,7 @@ export class CartLayoutComponent implements OnInit {
 		}
 
 		this.hitungJumlah();
+		adaItemChecked = this.selectedItems.length == 0 ? false : adaItemChecked
 		return adaItemChecked;
 	}
 

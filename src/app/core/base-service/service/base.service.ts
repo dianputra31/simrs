@@ -104,7 +104,7 @@ export class BaseService {
 			? generateHttpParams(requestParamModel.convert())
 			: null;
 
-		return this.http.post(url, requestBodyModel.convert(), { params }).pipe(
+		return responseModel !== false ? this.http.post(url, requestBodyModel.convert(), { params }).pipe(
 			map(
 				(resp: any): HttpBodyRespModel => {
 					console.log(resp);
@@ -119,7 +119,7 @@ export class BaseService {
 			// 			: responseModel.convert(model.data)
 			// 		: this.responseData(model.data);
 			// })
-		);
+		) : this.http.post(url, params == null ? requestBodyModel : requestBodyModel.convert(), { params });
 	}
 
 	public putData(

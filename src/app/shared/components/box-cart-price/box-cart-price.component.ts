@@ -1,6 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CheckoutCartUrl } from '../../../app.constant';
+import { BaseService } from '../../../core/base-service/service/base.service';
+import { CartListElement } from '../../../models/cart-list.model';
+import { CartListParams, CheckoutCartParams, ConvertCheckoutParams } from '../../../models/checkout-cart-params.model';
+import { CheckoutCart, ConvertCheckoutCart } from '../../../models/checkout-cart.model';
 import { ApprovalConfirmationDialogComponent } from '../../../modules/approval/components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 
@@ -15,14 +21,55 @@ export class BoxCartPriceComponent implements OnInit {
 	@Input() buttonLabel: string;
 	@Input() buttonDisable: boolean = true;
 	@Input() pertotalan: any;
+	@Input() selectedItems: CartListElement[];
+	subsribers: Subscription[];
+
 
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
-		private router: Router
-	) { }
+		private router: Router,
+		private service: BaseService
+	) {
 
-	ngOnInit(): void { }
+	}
+
+
+	ngOnInit(): void {
+
+	}
+
+	postCartItem() {
+		var cart_list: CartListParams[] = [];
+
+		for (let index = 0; index < this.selectedItems.length; index++) {
+			const element: CartListElement = this.selectedItems[index];
+			var cart = new CartListParams();
+			cart.product_id = element.product_id
+			cart.quantity = element.quantity
+			cart_list.push(cart)
+		}
+		const params: CheckoutCartParams = {
+			"cart_list": cart_list
+		}
+		var pm: String = ConvertCheckoutParams.checkoutCartParamsToJson(params);
+
+		const sub = this.service
+			.postData(CheckoutCartUrl, pm, false, false, true)
+			.subscribe((resp) => {
+				const stringnya = ConvertCheckoutCart.checkoutCartToJson(resp);
+				const cartCheckout: CheckoutCart = ConvertCheckoutCart.toCheckoutCart(stringnya);
+				if (cartCheckout.status.rc == 1) {
+					localStorage.setItem("checkout-cart", stringnya);
+					this.router.navigate(['./request-approval']);
+				} else {
+
+				}
+
+			});
+
+		this.subsribers.push(sub);
+	}
 
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
@@ -66,10 +113,14 @@ export class BoxCartPriceComponent implements OnInit {
 	}
 
 	clickButtonLabel() {
-		// console.log('Selanjutnya');
+
 		if (this.buttonDisable) {
 			if (this.buttonLabel == 'Selanjutnya') {
-				this.router.navigate(['./request-approval']);
+
+				this.subsribers = [];
+				this.route.paramMap.subscribe((params) => {
+					this.postCartItem();
+				});
 			} else if (this.buttonLabel == 'Request Approval') {
 				this.openDialogLocation('./cart');
 			} else if (this.buttonLabel == 'Proses') {
