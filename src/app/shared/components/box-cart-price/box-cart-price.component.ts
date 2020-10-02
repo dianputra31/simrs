@@ -14,6 +14,7 @@ import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up
 export class BoxCartPriceComponent implements OnInit {
 	@Input() buttonLabel: string;
 	@Input() buttonDisable: boolean = true;
+	@Input() pertotalan: any;
 
 	constructor(
 		public dialog: MatDialog,
