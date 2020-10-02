@@ -72,12 +72,28 @@ export class CartLayoutComponent implements OnInit {
 						element.qtyObject.qty = element.quantity;
 						element.qtyObject.qtyDisplay = element.qtyObject.display();
 						this.items.push(element);
-						this.pertotalan.totalFee += (element.stock - element.quantity) < 0 ? 0 : element.admin_fee;
-						this.pertotalan.ppn += (element.stock - element.quantity) < 0 ? 0 : this.company.ppn_percentage;
-						this.pertotalan.ppn3 += (element.stock - element.quantity) < 0 ? 0 : this.company.pph_percentage;
-						this.pertotalan.ongkir += (element.stock - element.quantity) < 0 ? 0 : element.shipping_cost;
-						this.pertotalan.totalPrice += (element.stock - element.quantity) < 0 ? 0 : element.sell_price;
-						this.pertotalan.totalItem += (element.stock - element.quantity) < 0 ? 0 : 1;
+						this.pertotalan.totalFee +=
+							element.stock - element.quantity < 0
+								? 0
+								: element.admin_fee;
+						this.pertotalan.ppn +=
+							element.stock - element.quantity < 0
+								? 0
+								: this.company.ppn_percentage;
+						this.pertotalan.ppn3 +=
+							element.stock - element.quantity < 0
+								? 0
+								: this.company.pph_percentage;
+						this.pertotalan.ongkir +=
+							element.stock - element.quantity < 0
+								? 0
+								: element.shipping_cost;
+						this.pertotalan.totalPrice +=
+							element.stock - element.quantity < 0
+								? 0
+								: element.sell_price;
+						this.pertotalan.totalItem +=
+							element.stock - element.quantity < 0 ? 0 : 1;
 					}
 					this.pertotalan.subtotal =
 						cartList.data.total_price + this.pertotalan.totalFee;
@@ -161,5 +177,7 @@ export class CartLayoutComponent implements OnInit {
 			this.pertotalan.ppn +
 			this.pertotalan.ppn3 +
 			this.pertotalan.ongkir;
+
+		console.log(this.pertotalan);
 	}
 }

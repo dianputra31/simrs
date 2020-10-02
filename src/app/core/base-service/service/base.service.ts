@@ -11,7 +11,7 @@ import { generateHttpParams } from '../../util/http-param-generator';
 export class BaseService {
 	public httpBodyRespModel = new HttpBodyRespModel();
 
-	constructor(public http: HttpClient) { }
+	constructor(public http: HttpClient) {}
 
 	public getData(
 		url: string,
@@ -22,20 +22,21 @@ export class BaseService {
 		const params = requestParamModel
 			? generateHttpParams(requestParamModel.convert())
 			: null;
-
-		return responseModel !== false ? this.http.get(url, { params }).pipe(
-			map(
-				(resp: any): HttpBodyRespModel => {
-					// this.httpBodyRespMapper.mappingDTOToModel(resp)
-					return this.httpBodyRespModel.convert(resp);
-				}
-			),
-			map((model: HttpBodyRespModel): any => {
-				return isArray
-					? this.mapArrayData(model.data, responseModel)
-					: this.mapObjectData(model.data, responseModel);
-			})
-		) : this.http.get(url, { params });
+		return responseModel !== false
+			? this.http.get(url, { params }).pipe(
+					map(
+						(resp: any): HttpBodyRespModel => {
+							// this.httpBodyRespMapper.mappingDTOToModel(resp)
+							return this.httpBodyRespModel.convert(resp);
+						}
+					),
+					map((model: HttpBodyRespModel): any => {
+						return isArray
+							? this.mapArrayData(model.data, responseModel)
+							: this.mapObjectData(model.data, responseModel);
+					})
+			  )
+			: this.http.get(url, { params });
 	}
 
 	public getDataWithToken(
@@ -53,18 +54,20 @@ export class BaseService {
 			'Content-Type': 'application/json',
 			Authorization: 'Bearer ' + accessToken,
 		});
-		return responseModel !== false ? this.http.get(url, { headers, params }).pipe(
-			map(
-				(resp: any): HttpBodyRespModel =>
-					// this.httpBodyRespMapper.mappingDTOToModel(resp)
-					this.httpBodyRespModel.convert(resp)
-			),
-			map((model: HttpBodyRespModel): any => {
-				return isArray
-					? this.mapArrayData(model.data, responseModel)
-					: this.mapObjectData(model.data, responseModel);
-			})
-		) : this.http.get(url, { headers, params });
+		return responseModel !== false
+			? this.http.get(url, { headers, params }).pipe(
+					map(
+						(resp: any): HttpBodyRespModel =>
+							// this.httpBodyRespMapper.mappingDTOToModel(resp)
+							this.httpBodyRespModel.convert(resp)
+					),
+					map((model: HttpBodyRespModel): any => {
+						return isArray
+							? this.mapArrayData(model.data, responseModel)
+							: this.mapObjectData(model.data, responseModel);
+					})
+			  )
+			: this.http.get(url, { headers, params });
 	}
 
 	public getDataPaging(
@@ -108,7 +111,7 @@ export class BaseService {
 			map(
 				(resp: any): HttpBodyRespModel => {
 					console.log(resp);
-					return this.httpBodyRespModel.convert(resp)
+					return this.httpBodyRespModel.convert(resp);
 				}
 			)
 			// map((model: HttpBodyRespModel): any => {

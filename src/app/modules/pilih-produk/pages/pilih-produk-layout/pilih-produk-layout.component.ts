@@ -12,7 +12,7 @@ import { ProductCatalogResponseModel } from '../../../../models/product-catalog-
 export class PilihProdukLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	items: ProductCatalogResponseModel[];
-	constructor(private route: ActivatedRoute, private service: BaseService) { }
+	constructor(private route: ActivatedRoute, private service: BaseService) {}
 
 	ngOnInit(): void {
 		this.subsribers = [];
@@ -26,7 +26,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 	getItems(category_id, sub_category_id) {
 		const sub = this.service
-			.getData(ProductCatalogUrl, null, null, true)
+			.getData(ProductCatalogUrl, ProductCatalogResponseModel, null, true)
 			.subscribe((resp) => {
 				console.log(resp);
 				this.items = resp;
