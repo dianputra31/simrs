@@ -16,7 +16,7 @@ export class CartLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	items: CartListElement[] = [];
 	itemsoriginal: CartListElement[];
-	constructor(private route: ActivatedRoute, private service: BaseService) {}
+	constructor(private route: ActivatedRoute, private service: BaseService) { }
 	isEmpty = 0;
 	company: Company = null;
 
@@ -50,7 +50,6 @@ export class CartLayoutComponent implements OnInit {
 				const cartList = Convert.toCartList(stringnya);
 				this.itemsoriginal = cartList.data.cart_list;
 
-				console.log(this.itemsoriginal);
 				this.isEmpty = this.itemsoriginal.length;
 				if (this.isEmpty > 0) {
 					for (
@@ -61,9 +60,6 @@ export class CartLayoutComponent implements OnInit {
 						const element: CartListElement = this.itemsoriginal[
 							index
 						];
-						console.log(
-							element.stock == null || element.stock == 0
-						);
 						element.outOfStock =
 							element.stock - element.quantity < 0;
 						element.selected =
@@ -73,10 +69,10 @@ export class CartLayoutComponent implements OnInit {
 						element.qtyObject.qtyDisplay = element.qtyObject.display();
 						this.items.push(element);
 						this.pertotalan.totalFee += (element.stock - element.quantity) < 0 ? 0 : element.admin_fee;
-						this.pertotalan.ppn += (element.stock - element.quantity) < 0 ? 0 : this.company.ppn_percentage;
-						this.pertotalan.ppn3 += (element.stock - element.quantity) < 0 ? 0 : this.company.pph_percentage;
+						this.pertotalan.ppn += (element.stock - element.quantity) < 0 ? 0 : element.ppn;
+						this.pertotalan.ppn3 += (element.stock - element.quantity) < 0 ? 0 : element.pph;
 						this.pertotalan.ongkir += (element.stock - element.quantity) < 0 ? 0 : element.shipping_cost;
-						this.pertotalan.totalPrice += (element.stock - element.quantity) < 0 ? 0 : element.sell_price;
+						this.pertotalan.totalPrice += (element.stock - element.quantity) < 0 ? 0 : element.purchase_amount;
 						this.pertotalan.totalItem += (element.stock - element.quantity) < 0 ? 0 : 1;
 					}
 					this.pertotalan.subtotal =
@@ -140,17 +136,17 @@ export class CartLayoutComponent implements OnInit {
 			this.pertotalan.ppn +=
 				element.stock - element.quantity < 0
 					? 0
-					: this.company.ppn_percentage;
+					: element.ppn;
 			this.pertotalan.ppn3 +=
 				element.stock - element.quantity < 0
 					? 0
-					: this.company.pph_percentage;
+					: element.pph;
 			this.pertotalan.ongkir +=
 				element.stock - element.quantity < 0
 					? 0
 					: element.shipping_cost;
 			this.pertotalan.totalPrice +=
-				element.stock - element.quantity < 0 ? 0 : element.sell_price;
+				element.stock - element.quantity < 0 ? 0 : element.purchase_amount;
 			this.pertotalan.totalItem +=
 				element.stock - element.quantity < 0 ? 0 : 1;
 		}
@@ -161,5 +157,6 @@ export class CartLayoutComponent implements OnInit {
 			this.pertotalan.ppn +
 			this.pertotalan.ppn3 +
 			this.pertotalan.ongkir;
+
 	}
 }
