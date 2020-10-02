@@ -22,7 +22,7 @@ export class CartListElement {
 	partner_sku_item?: string;
 	product_image?: string;
 	product_name?: string;
-	stock?: number;
+	stock?: number = 0;
 	sell_price?: number;
 	quantity?: number;
 	shipping_cost?: number;
