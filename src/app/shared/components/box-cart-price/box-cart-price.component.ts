@@ -111,6 +111,7 @@ export class BoxCartPriceComponent implements OnInit {
 			pageBefore: this.router.url,
 			pageDestination: des,
 			modePopUp: '1',
+			cartList: this.selectedItems,
 		};
 		const modalDialog = this.dialog.open(
 			ApprovalConfirmationDialogComponent,

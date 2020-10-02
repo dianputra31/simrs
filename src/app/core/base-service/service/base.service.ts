@@ -19,6 +19,7 @@ export class BaseService {
 		requestParamModel?: any,
 		isArray?: boolean
 	): Observable<any> {
+<<<<<<< HEAD
 		const params = requestParamModel
 			? generateHttpParams(requestParamModel.convert())
 			: null;
@@ -37,6 +38,30 @@ export class BaseService {
 					})
 			  )
 			: this.http.get(url, { params });
+=======
+		var params = null;
+		if (responseModel !== false) {
+			params = requestParamModel
+				? generateHttpParams(requestParamModel.convert()) : null;
+		} else {
+			params = requestParamModel
+		}
+
+		return responseModel !== false ? this.http.get(url, { params }).pipe(
+			map(
+				(resp: any): HttpBodyRespModel => {
+					console.log("getdata-without-token: ", resp)
+					// this.httpBodyRespMapper.mappingDTOToModel(resp)
+					return this.httpBodyRespModel.convert(resp);
+				}
+			),
+			map((model: HttpBodyRespModel): any => {
+				return isArray
+					? this.mapArrayData(model.data, responseModel)
+					: this.mapObjectData(model.data, responseModel);
+			})
+		) : this.http.get(url, { params });
+>>>>>>> 97fa228333cbc354f6bca106653ce4f506a9ece0
 	}
 
 	public getDataWithToken(
