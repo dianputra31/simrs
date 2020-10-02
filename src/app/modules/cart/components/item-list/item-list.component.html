@@ -13,7 +13,7 @@
 						id="qty-div">
 						<qty-ctrl notif="true"
 							allowChanges="true"
-							[qtyObject]="getQtyObj(item.quantity)"
+							[qtyObject]="item.qtyObject"
 							(qtyChangeEvent)="test($event)"></qty-ctrl>
 						<wsh wide="250px"></wsh>
 						<img id="trash-can"

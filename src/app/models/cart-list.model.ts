@@ -4,6 +4,8 @@
 //
 //   const cartList = Convert.toCartList(json);
 
+import { QuantityModel } from './quantity.model';
+
 export class CartList {
 	status?: Status;
 	data?: Data;
@@ -36,6 +38,7 @@ export class CartListElement {
 	grand_total?: number;
 	outOfStock: Boolean = false;
 	selected: Boolean = true;
+	qtyObject: QuantityModel;
 }
 
 export interface Status {
