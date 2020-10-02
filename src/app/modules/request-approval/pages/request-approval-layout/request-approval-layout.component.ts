@@ -87,5 +87,18 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		this.pertotalan.ongkir = this.checkoutCart.data.summary.shipping_cost;
 		this.pertotalan.grandtotal = this.checkoutCart.data.summary.grand_total;
 		this.pertotalan.saldo = this.company.credit_rp;
+
+		for (
+			let index = 0;
+			index < this.items.length;
+			index++
+		) {
+			const element: Product = this.items[
+				index
+			];
+			if (element.status == 'OK') {
+				this.selectedItems.push(element);
+			}
+		}
 	}
 }

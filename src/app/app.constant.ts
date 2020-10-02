@@ -24,3 +24,4 @@ export const SetDefaultAddress = `${API}/profile/save_default_address/`;
 export const CartListUrl = `${API}/cart/list`;
 export const AddCart = `${API}/cart`;
 export const CheckoutCartUrl = `${API}/approval/checkout_cart`;
+export const ApprovalUrl = `${API}/approval/submit`;

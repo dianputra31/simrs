@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CheckoutCartUrl } from '../../../app.constant';
+import { ApprovalUrl, CheckoutCartUrl } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { CartListElement } from '../../../models/cart-list.model';
 import { CartListParams, CheckoutCartParams, ConvertCheckoutParams } from '../../../models/checkout-cart-params.model';
@@ -39,7 +39,7 @@ export class BoxCartPriceComponent implements OnInit {
 
 	}
 
-	postCartItem() {
+	postCartItem(type: String) {
 		var cart_list: CartListParams[] = [];
 
 		for (let index = 0; index < this.selectedItems.length; index++) {
@@ -53,15 +53,24 @@ export class BoxCartPriceComponent implements OnInit {
 			"cart_list": cart_list
 		}
 		var pm: String = ConvertCheckoutParams.checkoutCartParamsToJson(params);
-
+		var url = "";
+		if (type == "selanjutnya") {
+			url = CheckoutCartUrl;
+		} else if (type == 'req-approval') {
+			url = ApprovalUrl;
+		}
 		const sub = this.service
-			.postData(CheckoutCartUrl, pm, false, false, true)
+			.postData(url, pm, false, false, true)
 			.subscribe((resp) => {
 				const stringnya = ConvertCheckoutCart.checkoutCartToJson(resp);
 				const cartCheckout: CheckoutCart = ConvertCheckoutCart.toCheckoutCart(stringnya);
 				if (cartCheckout.status.rc == 1) {
-					localStorage.setItem("checkout-cart", stringnya);
-					this.router.navigate(['./request-approval']);
+					if (type == "selanjutnya") {
+						localStorage.setItem("checkout-cart", stringnya);
+						this.router.navigate(['./request-approval']);
+					} else if (type == 'req-approval') {
+						this.router.navigate(['./cart']);
+					}
 				} else {
 
 				}
@@ -119,10 +128,14 @@ export class BoxCartPriceComponent implements OnInit {
 
 				this.subsribers = [];
 				this.route.paramMap.subscribe((params) => {
-					this.postCartItem();
+					this.postCartItem("selanjutnya");
 				});
 			} else if (this.buttonLabel == 'Request Approval') {
-				this.openDialogLocation('./cart');
+				if (this.selectedItems.length > 0) {
+					this.postCartItem('req-approval');
+				} else {
+					alert('Maaf tidak ada produk yang tersedia');
+				}
 			} else if (this.buttonLabel == 'Proses') {
 				this.openConfirmDialog('./approval');
 			}
