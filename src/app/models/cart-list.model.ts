@@ -36,8 +36,9 @@ export class CartListElement {
 	ppn?: number;
 	pph?: number;
 	grand_total?: number;
-	outOfStock: Boolean = false;
-	selected: Boolean = true;
+	outOfStock: boolean;
+	// selected: boolean = false;
+	selected: boolean = true;
 	qtyObject: QuantityModel;
 }
 

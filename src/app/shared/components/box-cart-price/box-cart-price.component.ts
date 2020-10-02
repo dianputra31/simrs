@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartListElement } from '../../../models/cart-list.model';
 import { ApprovalConfirmationDialogComponent } from '../../../modules/approval/components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
-
-
 
 @Component({
 	selector: 'box-cart-price',
@@ -15,14 +14,15 @@ export class BoxCartPriceComponent implements OnInit {
 	@Input() buttonLabel: string;
 	@Input() buttonDisable: boolean = true;
 	@Input() pertotalan: any;
+	@Input() selectedItems: CartListElement[];
 
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router
-	) { }
+	) {}
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
 
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
@@ -43,7 +43,6 @@ export class BoxCartPriceComponent implements OnInit {
 		);
 		return false;
 	}
-
 
 	openConfirmDialog(des) {
 		const dialogConfig = new MatDialogConfig();

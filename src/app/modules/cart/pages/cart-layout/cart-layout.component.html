@@ -18,10 +18,12 @@
 
 			<div class="d-flex">
 				<wsh wide="13px"></wsh>
-				<pilih-semua [items]="items"
+				<pilih-semua *ngIf="false"
+					[items]="items"
 					(onPilihSemua)="pilihSemuaEventHandler($event)"></pilih-semua>
 			</div>
-			<item-list [items]="items"></item-list>
+			<item-list [items]="itemsoriginal"
+				(recalculate)="recalculate()"></item-list>
 
 
 		</div>
@@ -31,9 +33,12 @@
 			<div id="right-fixed">
 				<div class="d-flex">
 					<wsh wide="57px"></wsh>
+					<!-- <box-cart-price [pertotalan]="pertotalan"
+						buttonLabel="Selanjutnya"
+						[buttonDisable]="adaItemDipilih()"></box-cart-price> -->
 					<box-cart-price [pertotalan]="pertotalan"
 						buttonLabel="Selanjutnya"
-						[buttonDisable]="adaItemDipilih()"></box-cart-price>
+						[selectedItems]="selectedItems"></box-cart-price>
 				</div>
 
 			</div>

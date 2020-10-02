@@ -3,8 +3,9 @@
 	<div id="wrapper-1">
 		<div [className]="'white-rounded-corner-item-list-cart'">
 			<div class="d-flex align-items-center">
-				<check-box-round [checked]="shouldSelectItem(item.outOfStock, item.selected)"
-					(click)="item.selected = !item.selected"
+				<check-box-round *ngIf="false"
+					[checked]="shouldSelectItem(item.outOfStock, item.selected)"
+					(click)="clickCheckBox(item)"
 					[allowChanges]="!item.outOfStock"></check-box-round>
 				<wsh wide="10px"></wsh>
 				<cart-item-list [redirlink]="true"
@@ -15,7 +16,9 @@
 							allowChanges="true"
 							[qtyObject]="item.qtyObject"
 							(qtyChangeEvent)="test($event)"></qty-ctrl>
-						<wsh wide="250px"></wsh>
+						<wsh wide="25px"></wsh>
+						<div (click)="update(item)">Update Button</div>
+						<wsh wide="150px"></wsh>
 						<img id="trash-can"
 							src="../../../../../assets/image/icons/trash_can.png"
 							(click)="deleteItem(dangerTpl)" />
