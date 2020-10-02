@@ -26,6 +26,7 @@ export class BaseService {
 		return responseModel !== false ? this.http.get(url, { params }).pipe(
 			map(
 				(resp: any): HttpBodyRespModel => {
+					console.log("getdata-without-token: ", resp)
 					// this.httpBodyRespMapper.mappingDTOToModel(resp)
 					return this.httpBodyRespModel.convert(resp);
 				}
