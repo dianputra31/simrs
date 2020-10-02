@@ -18,6 +18,7 @@ export interface Data {
 }
 
 export class CartListElement {
+	id?: number;
 	product_id?: number;
 	partner_sku_item?: string;
 	product_image?: string;

@@ -7,6 +7,7 @@ import {
 	Output,
 	ViewChild
 } from '@angular/core';
+import { AddressELement } from '../../../../models/address.model';
 
 @Component({
 	selector: 'item-summary-dropdown',
@@ -14,7 +15,7 @@ import {
 	styleUrls: ['./item-summary-dropdown.component.scss'],
 })
 export class ItemSummaryDropdownComponent implements OnInit {
-	@Input() list: any[];
+	@Input() list: AddressELement[];
 	@Input() selected: String;
 	@Output() onSelect = new EventEmitter<any>();
 
@@ -26,7 +27,10 @@ export class ItemSummaryDropdownComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit(): void {
-		this.selected = this.list[0];
+		console.log(this.list);
+		// if (this.list != null) {
+		// 	this.selected = this.list[0];
+		// }
 	}
 
 	checkDropDown(open: boolean) {
