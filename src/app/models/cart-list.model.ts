@@ -4,7 +4,6 @@
 //
 //   const cartList = Convert.toCartList(json);
 
-
 export class CartList {
 	status?: Status;
 	data?: Data;
@@ -17,13 +16,18 @@ export interface Data {
 }
 
 export class CartListElement {
+	product_id?: number;
+	partner_sku_item?: string;
 	product_image?: string;
 	product_name?: string;
+	stock?: number;
 	sell_price?: number;
 	quantity?: number;
 	shipping_cost?: number;
 	availability?: string;
 	updated_at?: Date;
+	product_color?: String;
+	product_size?: String;
 	purchase_amount?: number;
 	admin_fee?: number;
 	sub_total?: number;
@@ -45,7 +49,7 @@ export class Convert {
 		return JSON.parse(json);
 	}
 
-	public static cartListToJson(value: any): string {
+	public static cartListToJson(value: CartList): string {
 		return JSON.stringify(value);
 	}
 }

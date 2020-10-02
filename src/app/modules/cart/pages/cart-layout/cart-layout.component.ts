@@ -13,7 +13,8 @@ import { Company, ConvertCompany } from '../../../../models/company.model';
 })
 export class CartLayoutComponent implements OnInit {
 	subsribers: Subscription[];
-	items: CartListElement[];
+	items: CartListElement[] = [];
+	itemsoriginal: CartListElement[];
 	isEmpty = 0;
 	company: Company = null;
 
@@ -50,16 +51,19 @@ export class CartLayoutComponent implements OnInit {
 			.subscribe((resp) => {
 				const stringnya = Convert.cartListToJson(resp);
 				const cartList = Convert.toCartList(stringnya);
-				this.items = cartList.data.cart_list;
-				this.isEmpty = this.items.length;
+				this.itemsoriginal = cartList.data.cart_list;
+				this.isEmpty = this.itemsoriginal.length;
 				if (this.isEmpty > 0) {
 					this.pertotalan.totalPrice = cartList.data.total_price;
 					this.pertotalan.totalItem = cartList.data.total_item;
-					for (let index = 0; index < this.items.length; index++) {
-						const element: CartListElement = this.items[index];
+					for (let index = 0; index < this.itemsoriginal.length; index++) {
+						const element: CartListElement = this.itemsoriginal[index];
+						element.outOfStock = element.stock == 0;
+						element.selected = element.stock != 0;
+						this.items.push(element);
 						this.pertotalan.totalFee += element.admin_fee;
-						this.pertotalan.ppn += (this.company.ppn_percentage / 100) * cartList.data.total_price;
-						this.pertotalan.ppn3 += (this.company.pph_percentage / 100) * element.admin_fee;
+						this.pertotalan.ppn += this.company.ppn_percentage;
+						this.pertotalan.ppn3 += this.company.pph_percentage;
 						this.pertotalan.ongkir += element.shipping_cost;
 
 					}
@@ -73,32 +77,60 @@ export class CartLayoutComponent implements OnInit {
 
 	pilihSemuaEventHandler(pilihSemuaStatus) {
 		if (pilihSemuaStatus) {
+			this.pertotalan.totalPrice = 0;
+			this.pertotalan.totalItem = 0;
 			pilihSemuaStatus = false;
 			for (var index in this.items) {
-				var item = this.items[index];
-
-				item.selected = false;
+				const element: CartListElement = this.items[index];
+				element.outOfStock = element.stock == 0;
+				element.selected = false;
+				this.pertotalan.totalFee += 0;
+				this.pertotalan.ppn += 0;
+				this.pertotalan.ppn3 += 0;
+				this.pertotalan.ongkir += 0;
 			}
+			this.pertotalan.subtotal = 0;
+			this.pertotalan.grandtotal = 0;
 		} else {
 			pilihSemuaStatus = true;
+			this.pertotalan.totalPrice = this.pertotalan.totalPrice;
+			this.pertotalan.totalItem = this.pertotalan.totalItem;
 			for (var index in this.items) {
-				var item = this.items[index];
-				if (!item.outOfStock) {
-					item.selected = true;
-				}
+				const element: CartListElement = this.items[index];
+				element.outOfStock = element.stock == 0;
+				element.selected = true;
+				this.pertotalan.totalFee += element.admin_fee;
+				this.pertotalan.ppn += this.company.ppn_percentage;
+				this.pertotalan.ppn3 += this.company.pph_percentage;
+				this.pertotalan.ongkir += element.shipping_cost;
 			}
+			this.pertotalan.subtotal = this.pertotalan.totalPrice + this.pertotalan.totalFee;
+			this.pertotalan.grandtotal = this.pertotalan.subtotal + this.pertotalan.ppn + this.pertotalan.ppn3 + this.pertotalan.ongkir;
 		}
 	}
 
 	adaItemDipilih() {
 		var adaItemChecked = false;
+		this.pertotalan.totalPrice = 0;
+		this.pertotalan.totalItem = 0;
 		for (var index in this.items) {
-			var item = this.items[index];
 
-			if (item.selected == true) {
+			const element: CartListElement = this.items[index];
+			element.outOfStock = element.stock == 0;
+			element.selected = element.stock != 0;
+			this.pertotalan.totalFee += element.admin_fee;
+			this.pertotalan.ppn += this.company.ppn_percentage;
+			this.pertotalan.ppn3 += this.company.pph_percentage;
+			this.pertotalan.ongkir += element.shipping_cost;
+			this.pertotalan.totalPrice += element.sell_price;
+			this.pertotalan.totalItem += 1;
+
+			if (element.selected == true) {
 				adaItemChecked = true;
 			}
 		}
+		this.pertotalan.subtotal = this.pertotalan.totalPrice + this.pertotalan.totalFee;
+		this.pertotalan.grandtotal = this.pertotalan.subtotal + this.pertotalan.ppn + this.pertotalan.ppn3 + this.pertotalan.ongkir;
 
 		return adaItemChecked;
 	}
