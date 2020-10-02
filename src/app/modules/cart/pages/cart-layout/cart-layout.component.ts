@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { CartListUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { CartListElement, Convert } from '../../../../models/cart-list.model';
+import { QuantityModel } from '../../../../models/quantity.model';
 
 @Component({
 	selector: 'cart-layout',
@@ -13,7 +14,7 @@ import { CartListElement, Convert } from '../../../../models/cart-list.model';
 export class CartLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	items: CartListElement[];
-	constructor(private route: ActivatedRoute, private service: BaseService) { }
+	constructor(private route: ActivatedRoute, private service: BaseService) {}
 
 	ngOnInit(): void {
 		this.subsribers = [];
@@ -29,6 +30,14 @@ export class CartLayoutComponent implements OnInit {
 				const stringnya = Convert.cartListToJson(resp);
 				const cartList = Convert.toCartList(stringnya);
 				this.items = cartList.data.cart_list;
+
+				for (var i = 0; i < this.items.length; i++) {
+					this.items[i].qtyObject = new QuantityModel();
+					this.items[i].qtyObject.qty = this.items[i].quantity;
+					this.items[i].qtyObject.qtyDisplay = this.items[
+						i
+					].qtyObject.display();
+				}
 			});
 
 		this.subsribers.push(sub);
