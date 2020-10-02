@@ -20,5 +20,6 @@ export const CatalogProductDetailUrl = `${API}/product/detail`;
 export const ProductTopSubcategoryUrl = `${API}/product/top_subcategory`;
 export const ProfileUrl = `${API}/profile`;
 export const AddressList = `${API}/profile/address_list`;
+export const SetDefaultAddress = `${API}/profile/save_default_address/`;
 export const CartListUrl = `${API}/cart/list`;
 export const AddCart = `${API}/cart`;

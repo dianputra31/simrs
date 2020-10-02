@@ -49,6 +49,10 @@ export class AddressSectionComponent implements OnInit {
 			DialogAddressSectionComponent,
 			dialogConfig
 		);
+
+		modalDialog.afterClosed().subscribe(result => {
+			this.getAddress();
+		})
 	}
 
 	ngOnInit(): void {
@@ -81,7 +85,8 @@ export class AddressSectionComponent implements OnInit {
 			.subscribe((resp) => {
 				this.addresses = resp.delivery_address;
 
-				this.location = this.addresses[0].address_detail;
+				var def_addr = this.addresses[0].address_name + " - " + this.addresses[0].address_detail
+				this.location = def_addr;
 			});
 
 		this.subsribers.push(sub);
