@@ -19,13 +19,20 @@ export class BaseService {
 		requestParamModel?: any,
 		isArray?: boolean
 	): Observable<any> {
-		const params = requestParamModel
-			? generateHttpParams(requestParamModel.convert())
-			: null;
+		var params = null;
+		if (responseModel !== false) {
+			params = requestParamModel
+				? generateHttpParams(requestParamModel.convert())
+				: null;
+		} else {
+			params = requestParamModel;
+		}
+
 		return responseModel !== false
 			? this.http.get(url, { params }).pipe(
 					map(
 						(resp: any): HttpBodyRespModel => {
+							console.log('getdata-without-token: ', resp);
 							// this.httpBodyRespMapper.mappingDTOToModel(resp)
 							return this.httpBodyRespModel.convert(resp);
 						}
