@@ -97,7 +97,7 @@ export class BoxCartPriceComponent implements OnInit {
 			PopUpRequestApprovalComponent,
 			dialogConfig
 		);
-		return false;
+
 	}
 
 
@@ -131,6 +131,7 @@ export class BoxCartPriceComponent implements OnInit {
 					this.postCartItem("selanjutnya");
 				});
 			} else if (this.buttonLabel == 'Request Approval') {
+				// this.openDialogLocation('./cart');
 				if (this.selectedItems.length > 0) {
 					this.postCartItem('req-approval');
 				} else {
