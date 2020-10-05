@@ -9,7 +9,7 @@ export class FilterInputComponent implements OnInit {
 	@Input() hint: String;
 	@Input() logo: String;
 	@Input() disabled: Boolean;
-	constructor() {}
+	constructor() { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 }

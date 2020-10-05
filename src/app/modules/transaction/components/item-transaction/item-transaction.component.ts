@@ -13,6 +13,8 @@ export class ItemTransactionComponent implements OnInit {
 	fourth;
 	sixth;
 
+	filternya;
+
 	items = [
 		{
 			name: 'Purchaser A',
@@ -95,6 +97,10 @@ export class ItemTransactionComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
+	}
+
+	carilagibro(a) {
+		console.log(a);
 	}
 
 	openDialogLocation(des) {
