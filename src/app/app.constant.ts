@@ -20,6 +20,7 @@ export const CatalogProductDetailUrl = `${API}/product/detail`;
 export const ProductTopSubcategoryUrl = `${API}/product/top_subcategory`;
 export const ProfileUrl = `${API}/profile`;
 export const AddressList = `${API}/profile/address_list`;
+export const SaveDefaultAddressUrl = `${API}/profile/save_default_address/`;
 export const SetDefaultAddress = `${API}/profile/save_default_address/`;
 export const CartListUrl = `${API}/cart/list`;
 export const AddCart = `${API}/cart`;
@@ -27,3 +28,4 @@ export const CheckoutCartUrl = `${API}/approval/checkout_cart`;
 export const ApprovalUrl = `${API}/approval/submit`;
 export const ApprovalListUrl = `${API}/approval/list`;
 export const AddressListUrl = `${API}/approval/address_group`;
+
