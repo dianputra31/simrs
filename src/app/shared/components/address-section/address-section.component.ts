@@ -40,7 +40,7 @@ export class AddressSectionComponent implements OnInit {
 		dialogConfig.id = 'modal-component';
 		dialogConfig.height = 'auto';
 		dialogConfig.width = '680px';
-		dialogConfig.panelClass = 'border-radius:20px';
+		dialogConfig.panelClass = 'border-radius:30px';
 		dialogConfig.data = {
 			searchId: 'hello',
 			address: this.addresses,
