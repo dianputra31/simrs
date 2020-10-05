@@ -19,6 +19,8 @@ export class ItemTransactionComponent implements OnInit {
 	// keyword;
 	// filterservicesubscription;
 
+	filternya;
+
 	items = [
 		{
 			name: 'Purchaser A',
