@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReceiptConfirmationComponent } from './../receipt-confirmation/receipt-confirmation.component';
+// import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component'
+
 
 @Component({
 	selector: 'item-transaction',
@@ -9,9 +11,13 @@ import { ReceiptConfirmationComponent } from './../receipt-confirmation/receipt-
 	styleUrls: ['./item-transaction.component.scss']
 })
 export class ItemTransactionComponent implements OnInit {
+	@Input() param: any
 	second;
 	fourth;
 	sixth;
+	// items;
+	// keyword;
+	// filterservicesubscription;
 
 	items = [
 		{
@@ -88,14 +94,22 @@ export class ItemTransactionComponent implements OnInit {
 		}
 	];
 
+	// keywordSearch: FilterInputComponent = new FilterInputComponent()
 	constructor(
 		public dialog: MatDialog,
 		private router: Router,
-		private route: ActivatedRoute,
+		private route: ActivatedRoute
+		// private filterservice: FilterInputComponent,
 	) { }
 
 	ngOnInit(): void {
 	}
+
+	getTrxHist() {
+		// console.log("thisval in item-transaction: ", keyword)
+		// this.filterservicesubscription = this.filterservice
+	}
+
 
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
