@@ -1,4 +1,5 @@
 export class DeliveryAddressObjectModel {
+	public id: string;
 	public address_detail: string;
 	public address_name: string;
 	public district: string;
@@ -13,6 +14,7 @@ export class DeliveryAddressObjectModel {
 	public zipcode: string;
 
 	public convert(dto: any) {
+		this.id = dto.id;
 		this.address_detail = dto.address_detail;
 		this.address_name = dto.address_name;
 		this.district = dto.district;
