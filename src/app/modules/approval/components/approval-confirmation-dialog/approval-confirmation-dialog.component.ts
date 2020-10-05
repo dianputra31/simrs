@@ -84,6 +84,7 @@ export class ApprovalConfirmationDialogComponent implements OnInit {
 			.subscribe((resp) => {
 				this.dialogRef.close();
 				this.openDialogLocation('./transaction');
+				this.dialogRef.close({ event: 'proses' })
 			})
 		this.subsribers.push(sub);
 		// this.dialogRef.close();

@@ -14,6 +14,7 @@ export class DeliveryAddressObjectModel {
 	public id: number;
 
 	public convert(dto: any) {
+		this.id = dto.id;
 		this.address_detail = dto.address_detail;
 		this.address_name = dto.address_name;
 		this.district = dto.district;

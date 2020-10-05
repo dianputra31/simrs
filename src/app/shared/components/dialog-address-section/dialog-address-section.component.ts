@@ -1,13 +1,16 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddressList, SetDefaultAddress } from '../../../app.constant';
+import { AddressList, ProfileUrl, SaveDefaultAddressUrl, SetDefaultAddress } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { CartItemResponseModel } from '../../../models/cart-item-response.model';
 import { SetDefaultAddressReq } from '../../../models/default-address-request.model';
 import { DeliveryAddressObjectModel } from '../address-section/model/delivery-address-object.model';
 import { DeliveryAddressResponseModel } from '../address-section/model/delivery-address-response.model';
+
 
 @Component({
 	selector: 'dialog-address-section',
@@ -19,18 +22,66 @@ export class DialogAddressSectionComponent implements OnInit {
 	subsribers: Subscription[];
 	addresses: DeliveryAddressObjectModel[];
 	location;
+	account;
+
+	form = new FormGroup({
+		gender: new FormControl('', Validators.required)
+	});
+
+	changeDefault(e, a) {
+		console.log(e.target.value);
+		console.log(a);
+
+		const url = SaveDefaultAddressUrl + a;
+
+		console.log(url);
+		this.account = JSON.parse(localStorage.getItem('account'));
+
+		const accessToken = this.account.accessToken;
+
+		const headers = new HttpHeaders({
+			'Content-Type': 'application/json',
+			Authorization: 'Bearer ' + this.account.accessToken,
+		});
+
+
+		this.http.post<any>(url, { headers: headers }).subscribe(data => {
+			console.log(data);
+			this.getAddressList();
+			// this.dialog.close();
+		})
+
+	}
 
 	constructor(
 		public dialogRef: MatDialogRef<DialogAddressSectionComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any,
+		private service: BaseService,
+		private http: HttpClient,
 		private router: Router,
-		private service: BaseService
 	) {
 		// this.datalocation = data.address;
 		// console.log(data.address);
 	}
 
 	ngOnInit(): void {
+		const pro = ProfileUrl;
+
+		this.account = JSON.parse(localStorage.getItem('account'));
+
+		const accessToken = this.account.accessToken;
+
+		const headers = new HttpHeaders({
+			'Content-Type': 'application/json',
+			Authorization: 'Bearer ' + accessToken,
+		});
+
+
+		// this.http.get(pro, { headers: headers }).subscribe(
+		// 	(resp) => {
+		// 		this.picked = resp.data.profile;
+		// 	}
+		// )
 		this.subsribers = [];
 		this.getAddressList();
 	}
@@ -46,6 +97,8 @@ export class DialogAddressSectionComponent implements OnInit {
 
 	getAddressList() {
 		const url = AddressList;
+
+
 		const sub = this.service
 			.getData(url, DeliveryAddressResponseModel, null, false)
 			.subscribe((resp) => {
@@ -54,7 +107,7 @@ export class DialogAddressSectionComponent implements OnInit {
 				this.location = this.addresses[0].address_detail;
 			});
 
-		this.subsribers.push(sub);
+		// this.subsribers.push(sub);
 	}
 
 	setDefaultAddress(addressId) {
