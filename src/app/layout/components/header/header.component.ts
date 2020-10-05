@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit {
 
 		this.datacompany = JSON.parse(localStorage.getItem('company'));
 		this.datauser = JSON.parse(localStorage.getItem('profile'));
+		this.account = JSON.parse(localStorage.getItem('account'));
 	}
 
 	private _filter(value: string): string[] {
@@ -87,6 +88,10 @@ export class HeaderComponent implements OnInit {
 
 	goToPage(a) {
 		this.router.navigate([a]);
+	}
+
+	goToAccount() {
+		this.router.navigate(['./account']);
 	}
 
 	goToCart() {

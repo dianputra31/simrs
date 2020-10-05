@@ -98,7 +98,8 @@
 		<div id="right-fixed">
 			<div class="d-flex">
 				<wsh wide="57px"></wsh>
-				<box-cart-price [buttonLabel]="buttonSelanjutnyaLabel()"
+				<box-cart-price [pertotalan]="pertotalan"
+					[buttonLabel]="buttonSelanjutnyaLabel()"
 					[buttonDisable]="!cartIsEmpty()"></box-cart-price>
 			</div>
 

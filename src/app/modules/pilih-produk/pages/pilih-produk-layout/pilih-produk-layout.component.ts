@@ -28,6 +28,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 		const sub = this.service
 			.getData(ProductCatalogUrl, ProductCatalogResponseModel, null, true)
 			.subscribe((resp) => {
+				console.log(resp);
 				this.items = resp;
 			});
 

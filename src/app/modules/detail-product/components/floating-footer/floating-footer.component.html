@@ -10,18 +10,15 @@
 			</div>
 			<wsh wide="26px"></wsh>
 			<div id="tambahkan-button"
+				(click)="tambahkanKeKeranjang(dangerTpl)"
 				class="d-flex align-items-center justify-content-center">
 				<img id="cart-logo"
 					src="../../../../../assets/image/icons/add_to_cart_red.png">
 				<wsh wide="4px"></wsh>
-				<div id="tambahkan-label"
-					(click)="tambahkanKeKeranjang(dangerTpl)">Tambahkan</div>
+				<div id="tambahkan-label">Tambahkan</div>
 			</div>
 		</div>
-
-
 	</div>
-
 </div>
 
 <ng-template #dangerTpl>
@@ -41,14 +38,15 @@
 				<div id="rounded-inner-notif"
 					class="d-flex justify-content-between align-items-center">
 					<div class="d-flex align-items-center">
-						<img src="https://id.360buyimg.com/Indonesia/s880x0_/nHBfsgAAJAAAAB0AD6waZQACy0M.jpg.dpg.webp"
+						<img [src]="productDetail?.product_image"
 							id="notif-img">
 						<div>
-							<div id="item-name">Sweater Merah Pria</div>
-							<div>2 Barang (300gr)</div>
+							<!-- <div id="item-name">{{productDetail?.product_name}}</div> -->
+							<div id="item-name">{{truncateChar(productDetail?.product_name)}}</div>
+							<div>{{qtyObject?.qty}} Barang</div>
 						</div>
 					</div>
-					<div id="item-price">Rp359.000</div>
+					<div id="item-price">{{productDetail?.sell_price * qtyObject?.qty}}</div>
 				</div>
 
 			</div>

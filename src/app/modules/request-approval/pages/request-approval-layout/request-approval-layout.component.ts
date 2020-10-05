@@ -3,6 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import {
+	CheckoutCart,
+	ConvertCheckoutCart,
+	Product,
+} from '../../../../models/checkout-cart.model';
+import { Company, ConvertCompany } from '../../../../models/company.model';
 import { PopUpDialogComponent } from '../../../../shared/components/pop-up-dialog/pop-up-dialog.component';
 
 export let browserRefresh = false;
@@ -14,6 +20,21 @@ export let browserRefresh = false;
 })
 export class RequestApprovalLayoutComponent implements OnInit {
 	subscription: Subscription;
+	checkoutCart: CheckoutCart;
+	items: Product[];
+	selectedItems: Product[] = [];
+	company: Company = null;
+	pertotalan = {
+		saldo: 1,
+		totalPrice: 1,
+		totalItem: 1,
+		totalFee: 1,
+		ppn: 1,
+		ppn3: 1,
+		ongkir: 1,
+		subtotal: 1,
+		grandtotal: 1,
+	};
 
 	constructor(
 		public dialog: MatDialog,
@@ -57,5 +78,28 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		return false;
 	}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.checkoutCart = ConvertCheckoutCart.toCheckoutCart(
+			localStorage.getItem('checkout-cart')
+		);
+		console.log(this.checkoutCart);
+		var ls = localStorage.getItem('company');
+		this.company = ConvertCompany.toCompany(ls);
+		this.items = this.checkoutCart.data.products;
+		this.pertotalan.totalPrice = this.checkoutCart.data.summary.purchase_amount;
+		this.pertotalan.totalFee = this.checkoutCart.data.summary.admin_fee;
+		this.pertotalan.subtotal = this.checkoutCart.data.summary.sub_total;
+		this.pertotalan.ppn = this.checkoutCart.data.summary.ppn;
+		this.pertotalan.ppn3 = this.checkoutCart.data.summary.pph;
+		this.pertotalan.ongkir = this.checkoutCart.data.summary.shipping_cost;
+		this.pertotalan.grandtotal = this.checkoutCart.data.summary.grand_total;
+		this.pertotalan.saldo = this.company.credit_rp;
+
+		for (let index = 0; index < this.items.length; index++) {
+			const element: Product = this.items[index];
+			if (element.status == 'OK') {
+				this.selectedItems.push(element);
+			}
+		}
+	}
 }

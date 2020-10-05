@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../../../../models/Approval.model';
 import { ApprovalRejectDialogComponent } from './../approval-reject-dialog/approval-reject-dialog.component';
 
 @Component({
@@ -9,14 +10,14 @@ import { ApprovalRejectDialogComponent } from './../approval-reject-dialog/appro
 	styleUrls: ['./item-approval.component.scss'],
 })
 export class ItemApprovalComponent implements OnInit {
-	@Input() item: any;
+	@Input() item: Product;
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router
-	) {}
+	) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	actionTolak() {
 		const dialogConfig = new MatDialogConfig();
