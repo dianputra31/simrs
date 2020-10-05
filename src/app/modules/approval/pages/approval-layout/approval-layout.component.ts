@@ -140,7 +140,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		// "start_date": "string",
 		// 	"end_date": "string",
 		var params = {
-			"address_id": 2,
+			"address_id": 21,
 			"keyword": "",
 			"page": 1,
 			"limit": 20
@@ -149,6 +149,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		const sub = this.service
 			.postData(ApprovalListUrl, params, false, false, true)
 			.subscribe((resp) => {
+				console.log(resp);
 				const stringnya = ConvertApproval.approvalToJson(resp);
 				const cartList = ConvertApproval.toApproval(stringnya);
 				this.itemsoriginal = cartList.data;

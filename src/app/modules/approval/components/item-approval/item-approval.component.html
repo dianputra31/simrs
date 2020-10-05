@@ -9,8 +9,8 @@
 					allowChanges="true"></check-box-round>
 				<wsh wide="8.54px"></wsh>
 				<div id="purchaser-col-1">
-					<div id="purchaser-label">Purchaser 1</div>
-					<div id="purchase-date">14 Juni 2020</div>
+					<div id="purchaser-label">{{item.requester_fullname}}</div>
+					<div id="purchase-date">{{item.submitted_at}}</div>
 				</div>
 			</div>
 			<wsh wide="11px"></wsh>
@@ -20,7 +20,7 @@
 					class="d-flex align-items-center">
 					<div>
 						<div class="label-gray">Ongkos Kirim</div>
-						<div class="label-gray-2">Rp 1.000.000</div>
+						<div class="label-gray-2">{{item.shipping_cost}}</div>
 					</div>
 				</div>
 
@@ -28,7 +28,7 @@
 					class="d-flex align-items-center">
 					<div>
 						<div class="label-gray d-flex flex-row-reverse">Harga Belanja</div>
-						<div class="d-flex flex-row-reverse label-gray-2">Rp 1.000.000</div>
+						<div class="d-flex flex-row-reverse label-gray-2">{{item.purchase_amount}}</div>
 					</div>
 				</div>
 			</div>
@@ -36,13 +36,13 @@
 		</div>
 		<div id="content"
 			class="d-flex">
-			<img src='../../../../../assets/image/icons/macbook_a.png'
+			<img src='{{item.product_image}}'
 				id="item-img">
 			<wsh wide="15px"></wsh>
 			<div id="item-desc-wrapper">
-				<item-desc></item-desc>
+				<item-desc [item]="item"></item-desc>
 				<wsv wide="6px"></wsv>
-				<div class="gray-label-3">Jumlah: 3 Barang</div>
+				<div class="gray-label-3">Jumlah: {{item.quantity}} Barang</div>
 			</div>
 
 		</div>
@@ -69,7 +69,7 @@
 					<div class="d-flex flex-row-reverse">
 						<div id="out-of-stock"
 							class="d-flex justify-content-center align-items-center">
-							Out Of Stock
+							{{item.availability}}
 						</div>
 					</div>
 					<wsv wide="9px"></wsv>
