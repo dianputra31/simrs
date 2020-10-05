@@ -3,8 +3,23 @@
 	<div class="inner-padding">
 		<img [src]="item.thumbnail"
 			class="card-img-top">
-		<div class="catalog-card-label">{{item.product_name}}</div>
+		<div class="catalog-card-label">
+			<!-- {{ (item.product_name.length>29)? (item.product_name|slice:0:29)+'..':(item.product_name) }} -->
+			{{item.slice_name}}
+		</div>
+		<div class="catalog-card-disc">
+			<ng-template *ngIf="item.discount_percentage>0;then showdiscount"></ng-template>
+			<ng-template #showdiscount>
+				<div class="font-numdisc">
+					{{item.discount_percentage | number}}%
+				</div>
+				<div class="font-disc">
+					{{ (item.sell_price + (item.sell_price * item.discount_percentage/100) | rupiah) }}
+				</div>
+			</ng-template>
 
+
+		</div>
 		<div class="catalog-card-price">{{item.sell_price|rupiah}}</div>
 	</div>
 	<catalog-card-button *ngIf="false"

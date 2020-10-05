@@ -12,6 +12,7 @@
 	mix-blend-mode: normal;
 	box-shadow: $box-shadow-card;
 	cursor: pointer;
+	// border: solid greenyellow 1px;
 }
 
 .catalog-section-label{
@@ -40,14 +41,55 @@
 	color: $abu-abu-gelap;
 	font-style: normal;
 	font-weight: bold;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
 	font-size: 14px;
 	line-height: 19px;
-	overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 2; /* number of lines to show */
-   -webkit-box-orient: vertical;
-   height: 40px;
+	// min-height: 45px;
+}
+.catalog-card-disc {
+	color: $abu-abu-gelap;
+	font-style: normal;
+	font-weight: bold;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	// min-height: 15px;
+}
+
+.font-disc{
+	width: 80%;
+	float:left;
+	position: relative;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	text-decoration-line: line-through;
+	font-feature-settings: 'kern' off;
+	color: $abu-abu-sesuatu;
+	padding-left:10px;
+}
+
+.font-numdisc{
+	background: rgba(241, 38, 39, 0.2);
+	border-radius: 4px;
+	width: 20%;
+	text-align: center;
+	float:left;
+	position: relative;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 9px;
+	line-height: 16px;
+	display: flex;
+	padding-left:5px;
+	color: $merah-terang;
 }
 
 .catalog-card-price {
