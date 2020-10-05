@@ -1,16 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material';
-import { Subscription } from 'rxjs';
-import { AddressList, ProfileUrl, SaveDefaultAddressUrl } from '../../../app.constant';
-=======
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddressList, SetDefaultAddress } from '../../../app.constant';
->>>>>>> 0c4924d1d26ca9ac68b53b73db4ccfdcd9fcd5f4
+import { AddressList, ProfileUrl, SaveDefaultAddressUrl, SetDefaultAddress } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { CartItemResponseModel } from '../../../models/cart-item-response.model';
 import { SetDefaultAddressReq } from '../../../models/default-address-request.model';
@@ -30,7 +24,6 @@ export class DialogAddressSectionComponent implements OnInit {
 	location;
 	account;
 	picked;
-	data;
 
 	form = new FormGroup({
 		gender: new FormControl('', Validators.required)
@@ -64,20 +57,15 @@ export class DialogAddressSectionComponent implements OnInit {
 	constructor(
 		public dialogRef: MatDialogRef<DialogAddressSectionComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any,
-<<<<<<< HEAD
 		private service: BaseService,
-		private http: HttpClient
-=======
+		private http: HttpClient,
 		private router: Router,
-		private service: BaseService
->>>>>>> 0c4924d1d26ca9ac68b53b73db4ccfdcd9fcd5f4
 	) {
 		// this.datalocation = data.address;
 		// console.log(data.address);
 	}
 
 	ngOnInit(): void {
-<<<<<<< HEAD
 		const pro = ProfileUrl;
 
 		this.account = JSON.parse(localStorage.getItem('account'));
@@ -95,9 +83,7 @@ export class DialogAddressSectionComponent implements OnInit {
 				this.picked = resp.data.profile;
 			}
 		)
-=======
 		this.subsribers = [];
->>>>>>> 0c4924d1d26ca9ac68b53b73db4ccfdcd9fcd5f4
 		this.getAddressList();
 	}
 
