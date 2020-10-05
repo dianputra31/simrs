@@ -102,6 +102,23 @@ export class ApprovalLayoutComponent implements OnInit {
 			if (this.selected == true) {
 				this.selected = selected;
 				this.selectedItems.push(this.items[index]);
+				this.pertotalan.totalPrice += element.purchase_amount;
+				this.pertotalan.totalItem += element.quantity;
+				this.pertotalan.totalItem += element.admin_fee;
+				this.pertotalan.ppn += element.ppn;
+				this.pertotalan.ppn3 += element.pph;
+				this.pertotalan.ongkir += element.shipping_cost;
+				this.pertotalan.subtotal += element.sub_total;
+				this.pertotalan.grandtotal += element.grand_total;
+			} else {
+				this.pertotalan.totalPrice -= element.purchase_amount;
+				this.pertotalan.totalItem -= element.quantity;
+				this.pertotalan.totalItem -= element.admin_fee;
+				this.pertotalan.ppn -= element.ppn;
+				this.pertotalan.ppn3 -= element.pph;
+				this.pertotalan.ongkir -= element.shipping_cost;
+				this.pertotalan.subtotal -= element.sub_total;
+				this.pertotalan.grandtotal -= element.grand_total;
 			}
 		}
 	}
@@ -207,29 +224,59 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	handlePilihSemua() {
+
 		var i,
 			n = this.items.length;
 		for (i = 0; i < n; ++i) {
+
 			if (this.items[i].available) {
 				this.items[i].cart = this.pilihSemua;
 				this.selectedItems.push(this.items[i]);
+
 			}
 		}
 		this.pilihSemua = !this.pilihSemua;
 	}
 
 	handlePilihSemuaStatus(): Boolean {
+		this.pertotalan = {
+			saldo: 0,
+			totalPrice: 0,
+			totalItem: 0,
+			totalFee: 0,
+			ppn: 0,
+			ppn3: 0,
+			ongkir: 0,
+			subtotal: 0,
+			grandtotal: 0,
+		};
+		this.pertotalan.saldo = this.company.credit_rp;
 		var s = true;
 
 		var i,
 			n = this.items.length;
 		for (i = 0; i < n; ++i) {
+			const element = this.items[i];
 			if (this.items[i].available) {
 				if (!this.items[i].cart) {
 					s = false;
+					// this.items[i].available = s;
 					break;
 				}
+
+				if (s) {
+					this.pertotalan.totalPrice += element.purchase_amount;
+					this.pertotalan.totalItem += element.quantity;
+					this.pertotalan.totalItem += element.admin_fee;
+					this.pertotalan.ppn += element.ppn;
+					this.pertotalan.ppn3 += element.pph;
+					this.pertotalan.ongkir += element.shipping_cost;
+					this.pertotalan.subtotal += element.sub_total;
+					this.pertotalan.grandtotal += element.grand_total;
+				}
+
 			}
+			this.items[i].available = s;
 		}
 		return s;
 	}
