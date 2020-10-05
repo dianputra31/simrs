@@ -4,7 +4,6 @@
 		<img [src]="item.thumbnail"
 			class="card-img-top">
 		<div class="catalog-card-label">
-			<!-- {{ (item.product_name.length>29)? (item.product_name|slice:0:29)+'..':(item.product_name) }} -->
 			{{item.slice_name}}
 		</div>
 		<div class="catalog-card-disc">
@@ -14,7 +13,7 @@
 					{{item.discount_percentage | number}}%
 				</div>
 				<div class="font-disc">
-					{{ (item.sell_price + (item.sell_price * item.discount_percentage/100) | rupiah) }}
+					{{item.original_price | rupiah}}
 				</div>
 			</ng-template>
 

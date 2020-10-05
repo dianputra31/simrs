@@ -10,7 +10,7 @@ export class ProductCatalogResponseModel {
 	public product_sku: String;
 	public partner_sku: String;
 	public partner_sku_item: String;
-	public original_price: Number;
+	public original_price: number;
 	public sell_price: number;
 	public product_name: String;
 	public product_name_item: String;
