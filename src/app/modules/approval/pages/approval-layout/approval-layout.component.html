@@ -7,7 +7,7 @@
 			<wsv wide="7px"></wsv>
 			<div class="d-flex justify-content-center">
 				<item-summary-dropdown [list]="listApprovals"
-					(onSelect)="handleSelect($event)"
+					(onSelect)="handleSelectAddress($event)"
 					[selected]='selected'></item-summary-dropdown>
 			</div>
 			<wsv wide="19px"></wsv>
@@ -22,7 +22,7 @@
 						class="item">
 						<address-notif [label]='listApproval'
 							[selected]='selected'
-							(diklik)='handleSelect($event)'></address-notif>
+							(diklik)='handleSelectAddress($event)'></address-notif>
 						<address-warn-notif [label]='listApproval'></address-warn-notif>
 					</div>
 				</div>
@@ -90,7 +90,8 @@
 <div class="container d-flex">
 
 	<div id="left-container">
-		<item-list-section [items]="items"></item-list-section>
+		<item-list-section [items]="items"
+			(bapaknyaDiclick)="clickCheckBoxSatu($event)"></item-list-section>
 		<wsv wide="60px"></wsv>
 	</div>
 

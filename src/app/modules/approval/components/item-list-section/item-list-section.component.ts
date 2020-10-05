@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Product } from '../../../../models/Approval.model';
 
 @Component({
 	selector: 'item-list-section',
@@ -7,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ItemListSectionComponent implements OnInit {
 	@Input() items: [];
+	@Output() bapaknyaDiclick = new EventEmitter<Product>();
 
 	availableItems = [];
 	cart = [];
@@ -24,5 +26,9 @@ export class ItemListSectionComponent implements OnInit {
 		return element.available;
 	}
 
-	putTocart(item) {}
+	putTocart(item) { }
+
+	cobaDulu(item: Product) {
+		return this.bapaknyaDiclick.emit(item);
+	}
 }

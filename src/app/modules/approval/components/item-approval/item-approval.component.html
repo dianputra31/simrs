@@ -4,8 +4,8 @@
 			class="d-flex align-items-center">
 			<div id="purchaser-col-1"
 				class="d-flex align-items-center">
-				<check-box-round [checked]="isItemChecked()"
-					(click)="item.cart = !item.cart"
+				<check-box-round [checked]="sendClick(item)"
+					(click)="item.cart = !item.cart; "
 					allowChanges="true"></check-box-round>
 				<wsh wide="8.54px"></wsh>
 				<div id="purchaser-col-1">

@@ -42,7 +42,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		grandtotal: 0,
 	};
 
-	selected;
+	selectedAddress: AddressELement;
+	selected: Product;
 	selectedIndex;
 	pilihSemua = false;
 	// items = [
@@ -94,31 +95,19 @@ export class ApprovalLayoutComponent implements OnInit {
 	// 		qty: 2,
 	// 	},
 	// ];
+	handleSelectAddress(selectedAddress) {
+		this.selectedAddress = selectedAddress;
 
+		// console.log(selectedAddress);
+		this.getCartItem(this.selectedAddress.address_id);
+	}
 	handleSelect(selected) {
 		this.selected = selected;
 		for (var index in this.items) {
 			const element: Product = this.items[index];
 			if (this.selected == true) {
 				this.selected = selected;
-				this.selectedItems.push(this.items[index]);
-				this.pertotalan.totalPrice += element.purchase_amount;
-				this.pertotalan.totalItem += element.quantity;
-				this.pertotalan.totalItem += element.admin_fee;
-				this.pertotalan.ppn += element.ppn;
-				this.pertotalan.ppn3 += element.pph;
-				this.pertotalan.ongkir += element.shipping_cost;
-				this.pertotalan.subtotal += element.sub_total;
-				this.pertotalan.grandtotal += element.grand_total;
-			} else {
-				this.pertotalan.totalPrice -= element.purchase_amount;
-				this.pertotalan.totalItem -= element.quantity;
-				this.pertotalan.totalItem -= element.admin_fee;
-				this.pertotalan.ppn -= element.ppn;
-				this.pertotalan.ppn3 -= element.pph;
-				this.pertotalan.ongkir -= element.shipping_cost;
-				this.pertotalan.subtotal -= element.sub_total;
-				this.pertotalan.grandtotal -= element.grand_total;
+
 			}
 		}
 	}
@@ -147,17 +136,36 @@ export class ApprovalLayoutComponent implements OnInit {
 
 				this.listApprovals = addressList.data
 				if (addressList.data.length > 0) {
-					this.selected = this.listApprovals[0];
+					this.selectedAddress = this.listApprovals[0];
 				}
 			});
 	}
 
-	getCartItem() {
+	clickCheckBoxSatu(element: Product) {
+		// console.log(element);
+		// if (element.cart) {
+		// 	this.selectedItems.push(element);
+		// 	this.pertotalan.totalPrice += element.purchase_amount;
+		// 	this.pertotalan.totalItem += element.quantity;
+		// 	this.pertotalan.totalItem += element.admin_fee;
+		// 	this.pertotalan.ppn += element.ppn;
+		// 	this.pertotalan.ppn3 += element.pph;
+		// 	this.pertotalan.totalFee += element.admin_fee
+		// 	this.pertotalan.ongkir += element.shipping_cost;
+		// 	this.pertotalan.subtotal += element.sub_total;
+		// 	this.pertotalan.grandtotal += element.grand_total;
+		// } else {
+
+		// }
+		return element.available && element.cart;
+	}
+
+	getCartItem(addressid = 0) {
 		// "user_id": 0,
 		// "start_date": "string",
 		// 	"end_date": "string",
 		var params = {
-			"address_id": 21,
+			"address_id": addressid,
 			"keyword": "",
 			"page": 1,
 			"limit": 20
@@ -166,7 +174,6 @@ export class ApprovalLayoutComponent implements OnInit {
 		const sub = this.service
 			.postData(ApprovalListUrl, params, false, false, true)
 			.subscribe((resp) => {
-				console.log(resp);
 				const stringnya = ConvertApproval.approvalToJson(resp);
 				const cartList = ConvertApproval.toApproval(stringnya);
 				this.itemsoriginal = cartList.data;
@@ -200,6 +207,8 @@ export class ApprovalLayoutComponent implements OnInit {
 						this.pertotalan.ppn +
 						this.pertotalan.ppn3 +
 						this.pertotalan.ongkir;
+				} else {
+					this.items = [];
 				}
 			});
 
@@ -252,31 +261,45 @@ export class ApprovalLayoutComponent implements OnInit {
 		};
 		this.pertotalan.saldo = this.company.credit_rp;
 		var s = true;
+		this.selectedItems = [];
 
 		var i,
 			n = this.items.length;
 		for (i = 0; i < n; ++i) {
 			const element = this.items[i];
-			if (this.items[i].available) {
-				if (!this.items[i].cart) {
-					s = false;
-					// this.items[i].available = s;
-					break;
-				}
-
-				if (s) {
+			if (element.cart == true) {
+				if (element.cart) {
 					this.pertotalan.totalPrice += element.purchase_amount;
 					this.pertotalan.totalItem += element.quantity;
 					this.pertotalan.totalItem += element.admin_fee;
 					this.pertotalan.ppn += element.ppn;
+					this.pertotalan.totalFee += element.admin_fee
 					this.pertotalan.ppn3 += element.pph;
 					this.pertotalan.ongkir += element.shipping_cost;
 					this.pertotalan.subtotal += element.sub_total;
 					this.pertotalan.grandtotal += element.grand_total;
+					this.selectedItems.push(element);
+				} else if (element.cart == false) {
+					this.pertotalan.totalPrice -= this.pertotalan.totalPrice == 0 ? 0 : element.purchase_amount;
+					this.pertotalan.totalItem -= this.pertotalan.totalPrice == 0 ? 0 : element.quantity;
+					this.pertotalan.totalItem -= this.pertotalan.totalPrice == 0 ? 0 : element.admin_fee;
+					this.pertotalan.ppn -= this.pertotalan.totalPrice == 0 ? 0 : element.ppn;
+					this.pertotalan.totalFee -= this.pertotalan.totalPrice == 0 ? 0 : element.admin_fee
+					this.pertotalan.ppn3 -= this.pertotalan.totalPrice == 0 ? 0 : element.pph;
+					this.pertotalan.ongkir -= this.pertotalan.totalPrice == 0 ? 0 : element.shipping_cost;
+					this.pertotalan.subtotal -= this.pertotalan.totalPrice == 0 ? 0 : element.sub_total;
+					this.pertotalan.grandtotal -= this.pertotalan.totalPrice == 0 ? 0 : element.grand_total;
+				}
+			}
+			// console.log(i);
+			if (this.items[i].available) {
+				if (!this.items[i].cart) {
+					s = false;
+					break;
 				}
 
 			}
-			this.items[i].available = s;
+			// this.items[i].available = s;
 		}
 		return s;
 	}
