@@ -3,24 +3,17 @@
 
 .white-rounded-rectangle {
 	background: $putih-gelap-dikit;
-	border-radius: 10px;
-	// height: 290px;
-	width: 187px;
+	border-radius: 4px;
+	min-height: 290px;
+	width: 172px;
 	margin: 0px;
 	padding-bottom: 10px;
 	background: #ffffff;
 	mix-blend-mode: normal;
+	border-radius: 10px;
 	box-shadow: $box-shadow-card;
 	cursor: pointer;
 	// border: solid greenyellow 1px;
-}
-
-.catalog-section-label{
-	padding-left: 20px;
-}
-
-.catalog-section-lihat-semua{
-	padding-right: 20px;
 }
 
 .inner-padding {
