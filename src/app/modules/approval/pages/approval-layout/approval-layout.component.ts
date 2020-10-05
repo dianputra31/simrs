@@ -29,6 +29,8 @@ export class ApprovalLayoutComponent implements OnInit {
 	constructor(private route: ActivatedRoute, private service: BaseService) { }
 	isEmpty = 0;
 	company: Company = null;
+	date: Map<String, String> = null
+	filter = "";
 
 	pertotalan = {
 		saldo: 0,
@@ -126,6 +128,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		});
 	}
 
+
+
 	getAddrass() {
 		const sub = this.service
 			.getData(AddressListUrl, false, null, true)
@@ -139,6 +143,19 @@ export class ApprovalLayoutComponent implements OnInit {
 					this.selectedAddress = this.listApprovals[0];
 				}
 			});
+	}
+
+	filterDate(datenya) {
+		this.date = datenya;
+		const addressid = this.selectedAddress.address_id
+		this.getCartItem(addressid)
+	}
+
+	cari(event) {
+		// console.log(event.target.value);
+		const addressid = this.selectedAddress.address_id
+		this.filter = event.target.value;
+		this.getCartItem(addressid)
 	}
 
 	clickCheckBoxSatu(element: Product) {
@@ -162,13 +179,16 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	getCartItem(addressid = 0) {
 		// "user_id": 0,
-		// "start_date": "string",
-		// 	"end_date": "string",
 		var params = {
 			"address_id": addressid,
-			"keyword": "",
+			"keyword": this.filter,
 			"page": 1,
-			"limit": 20
+			"limit": 1000
+		}
+
+		if (this.date !== null) {
+			params["start_date"] = this.date["startdate"];
+			params["end_date"] = this.date["enddate"];
 		}
 		//  getData(CartListUrl, false, null, true)
 		const sub = this.service

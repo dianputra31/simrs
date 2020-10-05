@@ -52,12 +52,14 @@
 				<div class="flex-grow-1 d-flex ">
 					<date-dropdown class="flex-even"></date-dropdown>
 					<wsh wide="24px"></wsh>
-					<filter-input class="flex-even"
+					<filter-input (keyup)="cari($event)"
+						class="flex-even"
 						hint="Cari Pesanan"
 						logo="../../../../assets/image/icons/searchbutton.png"
 						[disabled]="false"></filter-input>
 					<wsh wide="24px"></wsh>
-					<filter-date class="flex-even"></filter-date>
+					<filter-date (dateSelectedEvent)="filterDate($event)"
+						class="flex-even"></filter-date>
 				</div>
 
 				<wsh wide="24px"></wsh>
