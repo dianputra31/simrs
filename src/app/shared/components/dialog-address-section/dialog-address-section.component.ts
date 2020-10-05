@@ -23,7 +23,6 @@ export class DialogAddressSectionComponent implements OnInit {
 	addresses: DeliveryAddressObjectModel[];
 	location;
 	account;
-	picked;
 
 	form = new FormGroup({
 		gender: new FormControl('', Validators.required)
@@ -78,11 +77,11 @@ export class DialogAddressSectionComponent implements OnInit {
 		});
 
 
-		this.http.get(pro, { headers: headers }).subscribe(
-			(resp) => {
-				this.picked = resp.data.profile;
-			}
-		)
+		// this.http.get(pro, { headers: headers }).subscribe(
+		// 	(resp) => {
+		// 		this.picked = resp.data.profile;
+		// 	}
+		// )
 		this.subsribers = [];
 		this.getAddressList();
 	}
