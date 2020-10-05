@@ -16,9 +16,9 @@
 			id="header-center">
 			<div class="header-center-top">
 				<div class="d-flex align-items-start bigtext"
-					id="hct-left">{{datacompany.trade_name}}</div>
+					id="hct-left">{{datacompany?.trade_name}}</div>
 				<div class="d-flex align-items-center upfirst"
-					id="hct-center">{{datauser.fullname}}</div>
+					id="hct-center">{{datauser?.fullname}}</div>
 				<div class="d-flex align-items-end"
 					id="hct-right">
 
@@ -106,7 +106,7 @@
 						<img src="../../../../assets/image/icons/wallet.svg">
 					</div>
 					<div class="div-saldo-right">
-						Rp. {{datacompany.credit_rp | number}}
+						Rp. {{datacompany?.credit_rp | number}}
 					</div>
 				</div>
 

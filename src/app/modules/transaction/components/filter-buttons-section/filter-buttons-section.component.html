@@ -13,7 +13,8 @@
 			(keyword)="test($event)"
 			[disabled]="false"></filter-input>
 		<wsh wide="10px"></wsh>
-		<filter-date class="flex-even"></filter-date>
+		<filter-date class="flex-even"
+			(dateSelectedEvent)="updateDate($event)"></filter-date>
 	</div>
 	<wsh wide="24px"></wsh>
 

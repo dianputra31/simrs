@@ -14,6 +14,10 @@ export const RESPONSE = {
 	BAD_REQUEST_DOUCHEBAG: 40,
 };
 
+export const HTTPSTATUS = {
+	UNAUTHORIZED: 401,
+};
+
 export const CatalogService = `${API}/product/category/list`;
 export const ProductCatalogUrl = `${API}/product/catalog`;
 export const CatalogProductDetailUrl = `${API}/product/detail`;
@@ -30,4 +34,3 @@ export const ApprovalListUrl = `${API}/approval/list`;
 export const AddressListUrl = `${API}/approval/address_group`;
 export const GetCompanyUsers = `${API}/user/company_users`;
 export const ApproveUrl = `${API}/approval/approve`;
-

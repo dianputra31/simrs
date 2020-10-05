@@ -1,8 +1,16 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { DOCUMENT } from '@angular/common';
+import {
+	HttpClient,
+	HttpErrorResponse,
+	HttpEvent,
+	HttpHeaders,
+} from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { HttpBodyRespModel } from '../../http-body-resp/model/http-body-resp.model';
+import { StorageService } from '../../storage/service/storage.service';
 import { generateHttpParams } from '../../util/http-param-generator';
 
 @Injectable({
@@ -11,7 +19,12 @@ import { generateHttpParams } from '../../util/http-param-generator';
 export class BaseService {
 	public httpBodyRespModel = new HttpBodyRespModel();
 
-	constructor(public http: HttpClient) {}
+	constructor(
+		public http: HttpClient,
+		private router: Router,
+		private storageService: StorageService,
+		@Inject(DOCUMENT) private _document: Document
+	) {}
 
 	public getData(
 		url: string,
@@ -41,6 +54,17 @@ export class BaseService {
 						return isArray
 							? this.mapArrayData(model.data, responseModel)
 							: this.mapObjectData(model.data, responseModel);
+					}),
+					catchError((err, caught: Observable<HttpEvent<any>>) => {
+						if (
+							err instanceof HttpErrorResponse &&
+							err.status == 401
+						) {
+							this.storageService.clear();
+							this._document.defaultView.location.reload();
+							return of(err as any);
+						}
+						throw err;
 					})
 			  )
 			: this.http.get(url, { params });
@@ -72,6 +96,17 @@ export class BaseService {
 						return isArray
 							? this.mapArrayData(model.data, responseModel)
 							: this.mapObjectData(model.data, responseModel);
+					}),
+					catchError((err, caught: Observable<HttpEvent<any>>) => {
+						if (
+							err instanceof HttpErrorResponse &&
+							err.status == 401
+						) {
+							this.storageService.clear();
+							this._document.defaultView.location.reload();
+							return of(err as any);
+						}
+						throw err;
 					})
 			  )
 			: this.http.get(url, { headers, params });
@@ -116,12 +151,21 @@ export class BaseService {
 
 		return responseModel !== false
 			? this.http.post(url, requestBodyModel.convert(), { params }).pipe(
-					map(
-						(resp: any): HttpBodyRespModel => {
-							console.log(resp);
-							return this.httpBodyRespModel.convert(resp);
+					map((resp: any): any => {
+						console.log(resp);
+						return this.httpBodyRespModel.convert(resp);
+					}),
+					catchError((err, caught: Observable<HttpEvent<any>>) => {
+						if (
+							err instanceof HttpErrorResponse &&
+							err.status == 401
+						) {
+							this.storageService.clear();
+							this._document.defaultView.location.reload();
+							return of(err as any);
 						}
-					)
+						throw err;
+					})
 					// map((model: HttpBodyRespModel): any => {
 					// 	console.log(responseModel.convert);
 					// 	return responseModel
