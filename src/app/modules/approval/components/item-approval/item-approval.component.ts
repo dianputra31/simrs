@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../../../models/Approval.model';
@@ -11,6 +11,7 @@ import { ApprovalRejectDialogComponent } from './../approval-reject-dialog/appro
 })
 export class ItemApprovalComponent implements OnInit {
 	@Input() item: Product;
+	@Output() clickEvent = new EventEmitter<Product>();
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
@@ -39,7 +40,8 @@ export class ItemApprovalComponent implements OnInit {
 		return false;
 	}
 
-	isItemChecked() {
+	sendClick(item: Product) {
+		this.clickEvent.emit(item);
 		return this.item.available && this.item.cart;
 	}
 }
