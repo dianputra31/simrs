@@ -1,5 +1,4 @@
 export class DeliveryAddressObjectModel {
-	public id: string;
 	public address_detail: string;
 	public address_name: string;
 	public district: string;
