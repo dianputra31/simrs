@@ -28,5 +28,9 @@ export const CheckoutCartUrl = `${API}/approval/checkout_cart`;
 export const ApprovalUrl = `${API}/approval/submit`;
 export const ApprovalListUrl = `${API}/approval/list`;
 export const AddressListUrl = `${API}/approval/address_group`;
+<<<<<<< HEAD
+export const GetCompanyUsers = `${API}/user/company_users`;
+=======
 export const ApproveUrl = `${API}/approval/approve`;
+>>>>>>> ec63cbd715706f7a0e8cce1772a052dc4bead2bb
 
