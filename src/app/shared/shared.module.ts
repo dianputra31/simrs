@@ -14,8 +14,10 @@ import { DateDropdownComponent } from './components/date-dropdown/date-dropdown.
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
 import { EmailButtonComponent } from './components/email-button/email-button.component';
+import { FilterDeliveryAddressComponent } from './components/filter-delivery-address/filter-delivery-address.component';
 import { FilterDropdownListComponent } from './components/filter-dropdown-list/filter-dropdown-list.component';
 import { FilterInputComponent } from './components/filter-input/filter-input.component';
+import { FilterPurchaserComponent } from './components/filter-purchaser/filter-purchaser.component';
 import { FooterBarComponent } from './components/footer-bar/footer-bar.component';
 import { FooterCustomerSupportComponent } from './components/footer-customer-support/footer-customer-support.component';
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
@@ -55,6 +57,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		PopUpDialogComponent,
 		NestDatepickerAComponent,
 		FilterInputComponent,
+		FilterPurchaserComponent,
+		FilterDeliveryAddressComponent,
 		ItemDescComponent,
 		FilterDropdownListComponent,
 		RedBorderWhiteBgButtonComponent,
@@ -65,6 +69,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		DateDropdownComponent,
 		HorizontalLineComponent,
 		ButtonGrayComponent,
+		FilterPurchaserComponent,
+		FilterDeliveryAddressComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
 	exports: [
@@ -86,6 +92,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CartItemListComponent,
 		NestDatepickerAComponent,
 		FilterInputComponent,
+		FilterPurchaserComponent,
+		FilterDeliveryAddressComponent,
 		ItemDescComponent,
 		FilterDropdownListComponent,
 		RedBorderWhiteBgButtonComponent,
@@ -97,4 +105,4 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		ButtonGrayComponent,
 	],
 })
-export class SharedModule {}
+export class SharedModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'filter-buttons-section',
@@ -6,7 +6,26 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./filter-buttons-section.component.scss'],
 })
 export class FilterButtonsSectionComponent implements OnInit {
-	constructor() {}
+	@Input() param: any
 
-	ngOnInit(): void {}
+	constructor() { }
+
+	ngOnInit(): void { }
+
+	test(keyword) {
+		console.log("param: ", this.param)
+		console.log(keyword);
+
+		this.param.keyword = keyword
+
+		console.log("this-keyword: ", this.param.keyword)
+	}
+
+	updateUserId(user_id) {
+		this.param.user_id = user_id
+	}
+
+	updateDeliveryAddress(address_id) {
+		this.param.address_id = address_id
+	}
 }

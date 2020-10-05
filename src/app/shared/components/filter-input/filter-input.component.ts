@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
 	selector: 'filter-input',
@@ -9,7 +9,18 @@ export class FilterInputComponent implements OnInit {
 	@Input() hint: String;
 	@Input() logo: String;
 	@Input() disabled: Boolean;
-	constructor() {}
+	@Output() keyword = new EventEmitter<string>();
+	constructor() {
 
-	ngOnInit(): void {}
+	}
+
+	ngOnInit(): void { }
+
+
+	getKeyword(thisval) {
+		this.keyword.emit(thisval);
+	}
+
 }
+
+
