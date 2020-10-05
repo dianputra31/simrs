@@ -51,6 +51,9 @@
 	font-weight: bold;
 	font-size: 14px;
 	line-height: 19px;
+	position: absolute;
+	bottom: 26px;
+	width: 100%;
 	// min-height: 15px;
 }
 
@@ -62,12 +65,13 @@
 	font-weight: normal;
 	font-size: 12px;
 	line-height: 16px;
-	display: flex;
+	display: inline-block;
 	align-items: center;
 	text-decoration-line: line-through;
 	font-feature-settings: 'kern' off;
 	color: $abu-abu-sesuatu;
 	padding-left:10px;
+	width: 80%;
 }
 
 .font-numdisc{
@@ -81,7 +85,7 @@
 	font-weight: bold;
 	font-size: 9px;
 	line-height: 16px;
-	display: flex;
+	display: inline-block;
 	padding-left:5px;
 	color: $merah-terang;
 }
@@ -95,7 +99,8 @@
 	font-size: 14px;
 	line-height: 19px;
 	position: absolute;
-    bottom: 7px;
+	bottom: 7px;
+	width: 100%;
 }
 
 .catalog-card-button {
