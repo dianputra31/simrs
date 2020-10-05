@@ -3,16 +3,23 @@
 
 .white-rounded-rectangle {
 	background: $putih-gelap-dikit;
-	border-radius: 4px;
+	border-radius: 10px;
 	// height: 290px;
-	width: 172px;
+	width: 187px;
 	margin: 0px;
 	padding-bottom: 10px;
 	background: #ffffff;
 	mix-blend-mode: normal;
-	border-radius: 4px;
 	box-shadow: $box-shadow-card;
 	cursor: pointer;
+}
+
+.catalog-section-label{
+	padding-left: 20px;
+}
+
+.catalog-section-lihat-semua{
+	padding-right: 20px;
 }
 
 .inner-padding {
@@ -35,6 +42,12 @@
 	font-weight: bold;
 	font-size: 14px;
 	line-height: 19px;
+	overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   height: 40px;
 }
 
 .catalog-card-price {

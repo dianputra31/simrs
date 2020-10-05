@@ -7,7 +7,7 @@
 			<wsv wide="7px"></wsv>
 			<div class="d-flex justify-content-center">
 				<item-summary-dropdown [list]="listApprovals"
-					(onSelect)="handleSelect($event)"
+					(onSelect)="handleSelectAddress($event)"
 					[selected]='selected'></item-summary-dropdown>
 			</div>
 			<wsv wide="19px"></wsv>
@@ -22,7 +22,7 @@
 						class="item">
 						<address-notif [label]='listApproval'
 							[selected]='selected'
-							(diklik)='handleSelect($event)'></address-notif>
+							(diklik)='handleSelectAddress($event)'></address-notif>
 						<address-warn-notif [label]='listApproval'></address-warn-notif>
 					</div>
 				</div>
@@ -52,12 +52,14 @@
 				<div class="flex-grow-1 d-flex ">
 					<date-dropdown class="flex-even"></date-dropdown>
 					<wsh wide="24px"></wsh>
-					<filter-input class="flex-even"
+					<filter-input (keyup)="cari($event)"
+						class="flex-even"
 						hint="Cari Pesanan"
 						logo="../../../../assets/image/icons/searchbutton.png"
 						[disabled]="false"></filter-input>
 					<wsh wide="24px"></wsh>
-					<filter-date class="flex-even"></filter-date>
+					<filter-date (dateSelectedEvent)="filterDate($event)"
+						class="flex-even"></filter-date>
 				</div>
 
 				<wsh wide="24px"></wsh>
@@ -90,7 +92,8 @@
 <div class="container d-flex">
 
 	<div id="left-container">
-		<item-list-section [items]="items"></item-list-section>
+		<item-list-section [items]="items"
+			(bapaknyaDiclick)="clickCheckBoxSatu($event)"></item-list-section>
 		<wsv wide="60px"></wsv>
 	</div>
 
@@ -98,7 +101,8 @@
 		<div id="right-fixed">
 			<div class="d-flex">
 				<wsh wide="57px"></wsh>
-				<box-cart-price [pertotalan]="pertotalan"
+				<box-cart-price [selectedItems]="selectedItems"
+					[pertotalan]="pertotalan"
 					[buttonLabel]="buttonSelanjutnyaLabel()"
 					[buttonDisable]="!cartIsEmpty()"></box-cart-price>
 			</div>

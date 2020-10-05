@@ -13,12 +13,13 @@ export class PopUpRequestApprovalComponent implements OnInit {
 		@Inject(MAT_DIALOG_DATA) public modalData: any,
 		private route: ActivatedRoute,
 		private router: Router
-	) {}
+	) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	goesToPage(a) {
-		this.dialogRef.close();
+		// this.dialogRef.close();
 		this.router.navigate([a]);
+		this.dialogRef.close({ event: 'proses' })
 	}
 }

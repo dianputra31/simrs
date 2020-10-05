@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
 	selector: 'filter-date',
@@ -6,18 +6,29 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./filter-date.component.scss'],
 })
 export class FilterDateComponent implements OnInit {
+	@Output() dateSelectedEvent = new EventEmitter<any>();
 	startDate = '';
 	endDate = '';
-	constructor() {}
+	constructor() { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	selectedStartDate(date) {
 		this.startDate = date.day + '/' + date.month + '/' + date.year;
+		date = {
+			"startdate": this.startDate,
+			"enddate": this.endDate == '' ? this.startDate : this.endDate
+		}
+		this.dateSelectedEvent.emit(date)
 	}
 
 	selectedEndDate(date) {
 		this.endDate = date.day + '/' + date.month + '/' + date.year;
+		date = {
+			"startdate": this.startDate,
+			"enddate": this.endDate == '' ? this.startDate : this.endDate
+		}
+		this.dateSelectedEvent.emit(date)
 	}
 
 	resetDate() {
