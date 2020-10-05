@@ -14,6 +14,10 @@ export const RESPONSE = {
 	BAD_REQUEST_DOUCHEBAG: 40,
 };
 
+export const HTTPSTATUS = {
+	UNAUTHORIZED: 401,
+};
+
 export const CatalogService = `${API}/product/category/list`;
 export const ProductCatalogUrl = `${API}/product/catalog`;
 export const CatalogProductDetailUrl = `${API}/product/detail`;

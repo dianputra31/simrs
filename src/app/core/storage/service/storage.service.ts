@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserModel } from '../../auth/model/response/user.model';
 
 @Injectable()
 export class StorageService {
-	constructor() { }
+	constructor(private router: Router) {}
 
 	public clear() {
 		localStorage.clear();
@@ -20,8 +21,6 @@ export class StorageService {
 		} else {
 			localStorage.setItem('profile', JSON.stringify(account));
 		}
-
-
 	}
 
 	public getAccount(): UserModel {
@@ -29,7 +28,7 @@ export class StorageService {
 	}
 
 	public getAccountProfile(): UserModel {
-		return JSON.parse(localStorage.getItem('profile'))
+		return JSON.parse(localStorage.getItem('profile'));
 	}
 
 	public getToken() {
