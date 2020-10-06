@@ -4,7 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { ApprovalCount, CartListUrl } from '../../../app.constant';
+import { ApprovalCount, CartListUrl, OpenTrxCount } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 
@@ -53,6 +53,7 @@ export class HeaderComponent implements OnInit {
 
 		this.numberitemInCart()
 		this.numberOfApproval()
+		this.numberOfOpenTrx()
 	}
 
 	ngOnDestroy() {
@@ -115,7 +116,6 @@ export class HeaderComponent implements OnInit {
 	}
 
 	numberitemInCart() {
-		console.log("item in cart")
 		const sub = this.service
 			.getData(CartListUrl, false, null, true)
 			.subscribe((resp) => {
@@ -131,7 +131,6 @@ export class HeaderComponent implements OnInit {
 	}
 
 	numberOfApproval() {
-		console.log("number of approval")
 		const sub = this.service
 			.postData(ApprovalCount, false, false, false)
 			.subscribe((resp) => {
@@ -141,6 +140,22 @@ export class HeaderComponent implements OnInit {
 				} else {
 					document.getElementById('item-to-approve').innerText = ""
 					document.getElementById('item-to-approve').classList.remove('show')
+				}
+			});
+		this.subsribers.push(sub);
+	}
+
+	numberOfOpenTrx() {
+		const sub = this.service
+			.postData(OpenTrxCount, false, false, false)
+			.subscribe((resp) => {
+				var tc = resp.data.open_transaction_count
+				console.log("tc: ", tc)
+				if (parseInt(tc) > 0) {
+					document.getElementById('open-trx').innerText = tc
+				} else {
+					document.getElementById('open-trx').innerText = ""
+					document.getElementById('open-trx').classList.remove('show')
 				}
 			});
 		this.subsribers.push(sub);
