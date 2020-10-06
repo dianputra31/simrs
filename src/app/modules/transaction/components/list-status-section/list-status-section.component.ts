@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TransactionStatusOptionUrl } from '../../../../app.constant';
+import { BaseService } from '../../../../core/base-service/service/base.service';
+import { TransactionListRequestModel } from '../../../../models/transaction-list-request.model';
+import { TransactionStatusOptionResponseModel } from '../../../../models/transaction-status-option-response.model';
 
 @Component({
 	selector: 'list-status-section',
@@ -6,10 +11,35 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./list-status-section.component.scss'],
 })
 export class ListStatusSectionComponent implements OnInit {
-	statuses = ['Semua', 'Diproses', 'Ditolak', 'Dibatalkan', 'Selesai'];
-	constructor() {}
-	selected = '';
+	statuses: TransactionStatusOptionResponseModel[];
+	selected: TransactionStatusOptionResponseModel;
+	subsribers: Subscription[];
+
+	constructor(private service: BaseService) {}
+
 	ngOnInit(): void {
-		this.selected = this.statuses[0];
+		this.subsribers = [];
+		this.getTrxStatus();
+	}
+
+	ngOnDestroy() {
+		this.subsribers.forEach((each) => each.unsubscribe);
+	}
+
+	getTrxStatus() {
+		const sub = this.service
+			.postData2(
+				TransactionStatusOptionUrl,
+				new TransactionListRequestModel(),
+				TransactionStatusOptionResponseModel,
+				null,
+				true
+			)
+			.subscribe((resp) => {
+				this.statuses = resp;
+
+				this.selected = this.statuses[0];
+			});
+		this.subsribers.push(sub);
 	}
 }
