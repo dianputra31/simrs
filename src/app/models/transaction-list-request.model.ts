@@ -1,5 +1,6 @@
 export class TransactionListRequestModel {
 	public status_code: string;
+	public status_name: string;
 	public address_id: number;
 	public user_id: number;
 	public keyword: string;
@@ -11,6 +12,7 @@ export class TransactionListRequestModel {
 	public convert() {
 		return {
 			status_code: this.status_code,
+			status_name: this.status_name,
 			address_id: this.address_id,
 			user_id: this.user_id,
 			keyword: this.keyword,
