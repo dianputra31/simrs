@@ -20,7 +20,7 @@ export class ItemListComponent implements OnInit {
 	constructor(
 		public toastService: ToastService,
 		public service: BaseService
-	) {}
+	) { }
 
 	subsribers: Subscription[];
 
@@ -31,7 +31,23 @@ export class ItemListComponent implements OnInit {
 	ngOnDestroy(): void {
 		this.subsribers.forEach((each) => each.unsubscribe);
 	}
-	deleteItem(dangerTpl) {
+	deleteItem(dangerTpl, item: CartListElement) {
+		var test = new CartItemModel();
+		test.product_id = item.product_id;
+		test.quantity = 0;
+
+		var cartreq = new CartItemRequestModel();
+		cartreq.cart_list = [];
+		cartreq.cart_list.push(test);
+
+		const sub = this.service
+			.postData(AddCart, cartreq, CartItemResponseModel, false)
+			.subscribe((resp) => {
+				console.log('resp: ', resp);
+				this.recalculate.emit(true);
+			});
+		this.subsribers.push(sub);
+
 		this.showDanger(dangerTpl);
 	}
 
