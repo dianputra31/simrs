@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { BadgeComponent } from './components/badge/badge.component';
 import { FilterButtonsSectionComponent } from './components/filter-buttons-section/filter-buttons-section.component';
@@ -31,6 +32,7 @@ import { TransactionRoutingModule } from './transaction-routing.module';
 		SharedModule,
 		NgbDropdownModule,
 		NgbModule,
+		SharedPipesModule,
 	],
 })
-export class TransactionModule { }
+export class TransactionModule {}

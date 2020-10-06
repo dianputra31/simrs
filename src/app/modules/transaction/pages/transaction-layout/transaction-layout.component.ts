@@ -18,14 +18,14 @@ export class TransactionLayoutComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.param = new TransactionListRequestModel();
-		this.param.address_id = 0;
-
-		this.param.end_date = '';
-		this.param.keyword = '';
-		this.param.limit = 0;
-		this.param.page = 0;
-		this.param.start_date = '';
-		this.param.user_id = 0;
+		this.param.status_code = 'ALL';
+		// this.param.address_id = null;
+		// this.param.end_date = null;
+		// this.param.keyword = null;
+		// this.param.limit = null;
+		// this.param.page = null;
+		// this.param.start_date = null;
+		// this.param.user_id = null;
 		this.subsribers = [];
 
 		this.getTrxList();
@@ -43,6 +43,7 @@ export class TransactionLayoutComponent implements OnInit {
 				true
 			)
 			.subscribe((resp) => {
+				this.items = resp;
 				console.log(resp);
 			});
 		this.subsribers.push(sub);

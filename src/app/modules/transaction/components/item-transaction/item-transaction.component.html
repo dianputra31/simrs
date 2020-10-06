@@ -5,20 +5,20 @@
 		<wsh wide="20px"></wsh>
 		<div class="col-1-trx-item">
 			<div class="title-1">
-				{{item.name}}
+				{{item.request_full_name}}
 			</div>
 			<div class="title-2">
-				{{item.code}}
+				{{item.partner_sku_item}}
 			</div>
 		</div>
 
 		<wsh wide="30px"></wsh>
 		<div class="col-2-trx-item">
 			<div class="title-1">
-				{{item.office}}
+				{{item.delivery_address_json.address_name}}
 			</div>
 			<div class="title-2">
-				{{item.date}}
+				{{item.requested_at}}
 			</div>
 		</div>
 		<div class="col-3-trx-item flex-grow-1">
@@ -26,7 +26,7 @@
 				Harga Belanja
 			</div>
 			<div class="title-2">
-				Rp {{item.price}}
+				{{item.purchase_amount|rupiah}}
 			</div>
 		</div>
 		<div class="col-4-trx-item">
@@ -41,14 +41,14 @@
 		<wsh wide="20px"></wsh>
 		<div class="col-1-trx-item">
 			<img id="image-item-trx"
-				src="../../../../../assets/image/icons/macbook_a.png">
+				[src]="item.product_image">
 		</div>
 		<wsh wide="30px"></wsh>
 		<div class="col-2-trx-item">
 			<div class="title-2">
-				Macbook Pro 2020 13" Inch 2.0 GHZ i5 10th Gen 512GB 1TB 16GB TouchBar - 512 GB, Space Grey
+				{{item.product_name}}
 			</div>
-			<div class="title-3">3 Barang</div>
+			<div class="title-3">{{item.quantity}} Barang</div>
 		</div>
 		<div class="col-3-trx-item flex-grow-1">
 			<div class="title-4">
