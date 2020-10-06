@@ -12,7 +12,7 @@
 					{{item.province}} {{item.zipcode}}</div>
 			</div>
 			<div id="loc-body-manuver">
-				<ng-template *ngIf="item.is_head_office==1;then checkedaddress else uncheckedaddress"></ng-template>
+				<ng-template *ngIf="i==0;then checkedaddress else uncheckedaddress"></ng-template>
 				<ng-template #checkedaddress>
 					<div id="loc-body-button">
 						<span class="button-location">Utama</span>
@@ -36,7 +36,8 @@
 
 						<label class="radiyo">
 							<input type="radio"
-								name="radio">
+								name="radio"
+								(change)="setDefaultAddress(item)">
 							<span class="checkmark"></span>
 						</label>
 

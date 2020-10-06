@@ -35,4 +35,8 @@ export const AddressListUrl = `${API}/approval/address_group`;
 export const GetCompanyUsers = `${API}/user/company_users`;
 export const ApproveUrl = `${API}/approval/approve`;
 export const TransactionListUrl = `${API}/transaction/list`;
+<<<<<<< HEAD
 export const TransactionStatusOptionUrl = `${API}/transaction/status_option`;
+=======
+export const ApprovalCount = `${API}/approval/approval_count`;
+>>>>>>> 859b4e405ee505e4d38648002c331ec1d3b77676

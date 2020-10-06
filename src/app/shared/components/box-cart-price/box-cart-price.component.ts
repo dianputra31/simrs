@@ -32,6 +32,7 @@ export class BoxCartPriceComponent implements OnInit {
 	// @Input() product: Product[] = [];
 	@Output() buttonBoxCartPriceClick = new EventEmitter();
 	subsribers: Subscription[];
+	datacompany;
 
 	constructor(
 		public dialog: MatDialog,
@@ -41,6 +42,7 @@ export class BoxCartPriceComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
+		this.datacompany = JSON.parse(localStorage.getItem('company'));
 	}
 
 	postCartItem(type: String) {
