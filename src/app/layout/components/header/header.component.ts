@@ -119,7 +119,13 @@ export class HeaderComponent implements OnInit {
 		const sub = this.service
 			.getData(CartListUrl, false, null, true)
 			.subscribe((resp) => {
-				document.getElementById('item-count').innerText = resp.data.cart_list.length
+				var tc = resp.data.cart_list.length
+				if (parseInt(tc) > 0) {
+					document.getElementById('item-count').innerText = resp.data.cart_list.length
+				} else {
+					document.getElementById('item-count').innerText = ""
+					document.getElementById('item-count').classList.remove('show')
+				}
 			});
 		this.subsribers.push(sub);
 	}
@@ -129,8 +135,13 @@ export class HeaderComponent implements OnInit {
 		const sub = this.service
 			.postData(ApprovalCount, false, false, false)
 			.subscribe((resp) => {
-				document.getElementById('item-to-approve').innerText = resp.data.approval_count
-
+				var tc = resp.data.approval_count
+				if (parseInt(tc) > 0) {
+					document.getElementById('item-to-approve').innerText = tc
+				} else {
+					document.getElementById('item-to-approve').innerText = ""
+					document.getElementById('item-to-approve').classList.remove('show')
+				}
 			});
 		this.subsribers.push(sub);
 	}
