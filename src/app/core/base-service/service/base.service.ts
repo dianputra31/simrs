@@ -152,7 +152,6 @@ export class BaseService {
 		return responseModel !== false
 			? this.http.post(url, requestBodyModel.convert(), { params }).pipe(
 					map((resp: any): any => {
-						console.log(resp);
 						return this.httpBodyRespModel.convert(resp);
 					}),
 					catchError((err, caught: Observable<HttpEvent<any>>) => {
@@ -174,6 +173,51 @@ export class BaseService {
 					// 			: responseModel.convert(model.data)
 					// 		: this.responseData(model.data);
 					// })
+			  )
+			: this.http.post(
+					url,
+					params == null
+						? requestBodyModel
+						: requestBodyModel.convert(),
+					{ params }
+			  );
+	}
+
+	public postData2(
+		url: string,
+		requestBodyModel: any,
+		responseModel?: any,
+		requestParamModel?: any,
+		isArray?: boolean
+	): Observable<any> {
+		const params = requestParamModel
+			? generateHttpParams(requestParamModel.convert())
+			: null;
+
+		return responseModel !== false
+			? this.http.post(url, requestBodyModel.convert(), { params }).pipe(
+					map((resp: any): any => {
+						return this.httpBodyRespModel.convert(resp);
+					}),
+					map((model: HttpBodyRespModel): any => {
+						console.log(responseModel.convert);
+						return responseModel
+							? isArray
+								? this.mapArrayData(model.data, responseModel)
+								: responseModel.convert(model.data)
+							: this.responseData(model.data);
+					}),
+					catchError((err, caught: Observable<HttpEvent<any>>) => {
+						if (
+							err instanceof HttpErrorResponse &&
+							err.status == 401
+						) {
+							this.storageService.clear();
+							this._document.defaultView.location.reload();
+							return of(err as any);
+						}
+						throw err;
+					})
 			  )
 			: this.http.post(
 					url,

@@ -34,3 +34,4 @@ export const ApprovalListUrl = `${API}/approval/list`;
 export const AddressListUrl = `${API}/approval/address_group`;
 export const GetCompanyUsers = `${API}/user/company_users`;
 export const ApproveUrl = `${API}/approval/approve`;
+export const TransactionListUrl = `${API}/transaction/list`;

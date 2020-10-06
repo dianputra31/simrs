@@ -21,6 +21,7 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 		LayoutModule,
 		RouterModule.forRoot([], {
 			scrollPositionRestoration: 'top',
+			useHash: true,
 		}),
 		BrowserAnimationsModule,
 		MaterialModule,
@@ -37,4 +38,4 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
