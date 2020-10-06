@@ -6,9 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./status-button.component.scss'],
 })
 export class StatusButtonComponent implements OnInit {
-	@Input() label: String;
-	@Input() selected: String;
-	constructor() {}
+	@Input() label: any;
+	@Input() selected: string;
+	constructor() { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 }
