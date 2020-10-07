@@ -38,3 +38,4 @@ export const TransactionListUrl = `${API}/transaction/list`;
 export const TransactionStatusOptionUrl = `${API}/transaction/status_option`;
 export const ApprovalCount = `${API}/approval/approval_count`;
 export const OpenTrxCount = `${API}/transaction/open_transaction_count`;
+export const SearchProduct = `${API}/product/catalog`;

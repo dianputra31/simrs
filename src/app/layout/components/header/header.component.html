@@ -74,21 +74,24 @@
 
 
 
-							<input type="text"
+							<input #pencarian
+								type="text"
 								class="textbox-header-search"
 								aria-label="Number"
 								matInput
 								[formControl]="myControl"
 								[matAutocomplete]="auto"
-								placeholder="Search">
+								placeholder="Search"
+								(change)=getKey(pencarian.value)>
+							<!-- autoActiveFirstOption -->
 
-
-							<mat-autocomplete autoActiveFirstOption
-								id="mat-autocomplete"
+							<mat-autocomplete id="mat-autocomplete"
 								#auto="matAutocomplete"
-								style="z-index: 9999;">
+								style="z-index: 9999;"
+								(optionSelected)='goesToDetailProduct($event.option.value)'>
 								<mat-option *ngFor="let option of filteredOptions | async"
-									[value]="option">
+									[value]="option"
+									(selectionChange)="goesToDetailProduct($event.option.value)">
 									{{option}}
 								</mat-option>
 							</mat-autocomplete>

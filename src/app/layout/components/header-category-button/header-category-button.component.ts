@@ -8,6 +8,7 @@ import { CatalogCategoryModel } from '../../../models/catalog-category.model';
 import { CatalogRespModel } from '../../../models/catalog-response.model';
 import { CatalogSubcategoryModel } from '../../../models/catalog-subcategory.model';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
+import { RedirectParameterService } from '../../redirect-parameter.service';
 
 @Component({
 	selector: 'header-category-button',
@@ -35,8 +36,9 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		private router: Router,
 		private service: BaseService,
 		public dialog: MatDialog,
-		private route: ActivatedRoute
-	) {}
+		private route: ActivatedRoute,
+		private _redirectparam: RedirectParameterService,
+	) { }
 
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
@@ -71,11 +73,13 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		clickedCategory: CatalogCategoryModel,
 		sub: CatalogSubcategoryModel
 	) {
+		this._redirectparam.namaproduk = "";
 		if (this.router.url == '/request-approval') {
-			this.openDialogLocation('/pilih-produk');
+			this.openDialogLocation('/pilih-produk/0/0/0');
 		} else {
+			console.log('here');
 			this.router.navigate([
-				'/pilih-produk/' + clickedCategory.id + '/' + sub.id,
+				'/pilih-produk/' + clickedCategory.id + '/' + sub.id + '/0'
 			]);
 		}
 	}
