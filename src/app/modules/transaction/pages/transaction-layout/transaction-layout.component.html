@@ -10,7 +10,8 @@
 			</div>
 			<wsv wide="19px"></wsv>
 
-			<filter-buttons-section [param]="param"></filter-buttons-section>
+			<filter-buttons-section (onParamUpdate)="getTrxList()"
+				[param]="param"></filter-buttons-section>
 
 			<wsv wide="20px"></wsv>
 			<div id="horizontal-line"></div>

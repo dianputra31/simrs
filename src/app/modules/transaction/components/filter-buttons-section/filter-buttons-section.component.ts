@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
 	selector: 'filter-buttons-section',
@@ -6,11 +6,14 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./filter-buttons-section.component.scss'],
 })
 export class FilterButtonsSectionComponent implements OnInit {
+	ngOnInit(): void {
+		throw new Error('Method not implemented.');
+	}
+
 	@Input() param: any;
+	@Output() onParamUpdate = new EventEmitter();
 
 	constructor() {}
-
-	ngOnInit(): void {}
 
 	test(keyword) {
 		console.log('param: ', this.param);
@@ -18,7 +21,7 @@ export class FilterButtonsSectionComponent implements OnInit {
 
 		this.param.keyword = keyword;
 
-		console.log('this-keyword: ', this.param.keyword);
+		this.onParamUpdate.emit();
 	}
 
 	updateUserId(user_id) {
@@ -27,10 +30,12 @@ export class FilterButtonsSectionComponent implements OnInit {
 
 	updateDeliveryAddress(address_id) {
 		this.param.address_id = address_id;
+		this.onParamUpdate.emit();
 	}
 
 	updateDate(date) {
 		this.param.start_date = date.startdate;
 		this.param.end_date = date.enddate;
+		this.onParamUpdate.emit();
 	}
 }
