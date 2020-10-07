@@ -17,8 +17,10 @@
 							[qtyObject]="item.qtyObject"
 							(qtyChangeEvent)="test($event)"></qty-ctrl>
 						<wsh wide="25px"></wsh>
-						<div (click)="update(item)">Update Button</div>
-						<wsh wide="150px"></wsh>
+						<div (click)="update(item)">
+							<red-bg-button label="Update"></red-bg-button>
+						</div>
+						<wsh wide="130px"></wsh>
 						<img id="trash-can"
 							src="../../../../../assets/image/icons/trash_can.png"
 							(click)="deleteItem(dangerTpl, item)" />
