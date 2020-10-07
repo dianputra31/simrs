@@ -3,7 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddressListUrl, ApprovalListUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-import { AddressELement, ConvertAddress } from '../../../../models/address.model';
+import {
+	AddressELement,
+	ConvertAddress,
+} from '../../../../models/address.model';
 import { ConvertApproval, Product } from '../../../../models/Approval.model';
 import { Company, ConvertCompany } from '../../../../models/company.model';
 import { FilterDateComponent } from '../../components/filter-date/filter-date.component';
@@ -26,11 +29,12 @@ export class ApprovalLayoutComponent implements OnInit {
 	itemsoriginal: Product[];
 	selectedItems: Product[] = [];
 	listApprovals: AddressELement[];
-	constructor(private route: ActivatedRoute, private service: BaseService) { }
+	constructor(private route: ActivatedRoute, private service: BaseService) {}
 	isEmpty = 0;
 	company: Company = null;
-	date: Map<String, String> = null
-	filter = "";
+	date: Map<String, String> = null;
+	filter = '';
+	selectedUserId = 0;
 
 	pertotalan = {
 		saldo: 0,
@@ -109,7 +113,6 @@ export class ApprovalLayoutComponent implements OnInit {
 			const element: Product = this.items[index];
 			if (this.selected == true) {
 				this.selected = selected;
-
 			}
 		}
 	}
@@ -124,21 +127,17 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.route.paramMap.subscribe((params) => {
 			this.getAddrass();
 			this.getCartItem();
-
 		});
 	}
-
-
 
 	getAddrass() {
 		const sub = this.service
 			.getData(AddressListUrl, false, null, true)
 			.subscribe((resp) => {
-
 				const stringnya = ConvertAddress.addressToJson(resp);
 				const addressList = ConvertAddress.toAddress(stringnya);
 
-				this.listApprovals = addressList.data
+				this.listApprovals = addressList.data;
 				if (addressList.data.length > 0) {
 					this.selectedAddress = this.listApprovals[0];
 				}
@@ -147,15 +146,21 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	filterDate(datenya) {
 		this.date = datenya;
-		const addressid = this.selectedAddress.address_id
-		this.getCartItem(addressid)
+		const addressid = this.selectedAddress.address_id;
+		this.getCartItem(addressid);
 	}
 
 	cari(event) {
 		// console.log(event.target.value);
-		const addressid = this.selectedAddress.address_id
+		const addressid = this.selectedAddress.address_id;
 		this.filter = event.target.value;
-		this.getCartItem(addressid)
+		this.getCartItem(addressid);
+	}
+
+	updateUserId(uid) {
+		console.log(uid);
+		this.selectedUserId = uid;
+		this.getCartItem(this.selectedAddress.address_id);
 	}
 
 	clickCheckBoxSatu(element: Product) {
@@ -180,15 +185,16 @@ export class ApprovalLayoutComponent implements OnInit {
 	getCartItem(addressid = 0) {
 		// "user_id": 0,
 		var params = {
-			"address_id": addressid,
-			"keyword": this.filter,
-			"page": 1,
-			"limit": 1000
-		}
-
+			address_id: addressid,
+			keyword: this.filter,
+			page: 1,
+			limit: 1000,
+			user_id: this.updateUserId,
+		};
+		console.log();
 		if (this.date !== null) {
-			params["start_date"] = this.date["startdate"];
-			params["end_date"] = this.date["enddate"];
+			params['start_date'] = this.date['startdate'];
+			params['end_date'] = this.date['enddate'];
 		}
 		//  getData(CartListUrl, false, null, true)
 		const sub = this.service
@@ -205,20 +211,34 @@ export class ApprovalLayoutComponent implements OnInit {
 						index < this.itemsoriginal.length;
 						index++
 					) {
-						const element: Product = this.itemsoriginal[
-							index
-						];
-						element.available = element.availability == "AVAILABLE";
-						if (element.availability == "AVAILABLE") {
+						const element: Product = this.itemsoriginal[index];
+						element.available = element.availability == 'AVAILABLE';
+						if (element.availability == 'AVAILABLE') {
 							this.selectedItems.push(element);
 						}
 						this.items.push(element);
-						this.pertotalan.totalFee += element.availability == "AVAILABLE" ? 0 : element.admin_fee;
-						this.pertotalan.ppn += element.availability == "AVAILABLE" ? 0 : element.ppn;
-						this.pertotalan.ppn3 += element.availability == "AVAILABLE" ? 0 : element.pph;
-						this.pertotalan.ongkir += element.availability == "AVAILABLE" ? 0 : element.shipping_cost;
-						this.pertotalan.totalPrice += element.availability == "AVAILABLE" ? 0 : element.purchase_amount;
-						this.pertotalan.totalItem += element.availability == "AVAILABLE" ? 0 : 1;
+						this.pertotalan.totalFee +=
+							element.availability == 'AVAILABLE'
+								? 0
+								: element.admin_fee;
+						this.pertotalan.ppn +=
+							element.availability == 'AVAILABLE'
+								? 0
+								: element.ppn;
+						this.pertotalan.ppn3 +=
+							element.availability == 'AVAILABLE'
+								? 0
+								: element.pph;
+						this.pertotalan.ongkir +=
+							element.availability == 'AVAILABLE'
+								? 0
+								: element.shipping_cost;
+						this.pertotalan.totalPrice +=
+							element.availability == 'AVAILABLE'
+								? 0
+								: element.purchase_amount;
+						this.pertotalan.totalItem +=
+							element.availability == 'AVAILABLE' ? 0 : 1;
 					}
 					this.pertotalan.subtotal =
 						this.pertotalan.totalPrice + this.pertotalan.totalFee;
@@ -234,7 +254,6 @@ export class ApprovalLayoutComponent implements OnInit {
 
 		this.subsribers.push(sub);
 	}
-
 
 	scrollLeft() {
 		this.widgetsContent.nativeElement.scrollTo({
@@ -253,15 +272,12 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	handlePilihSemua() {
-
 		var i,
 			n = this.items.length;
 		for (i = 0; i < n; ++i) {
-
 			if (this.items[i].available) {
 				this.items[i].cart = this.pilihSemua;
 				this.selectedItems.push(this.items[i]);
-
 			}
 		}
 		this.pilihSemua = !this.pilihSemua;
@@ -293,22 +309,37 @@ export class ApprovalLayoutComponent implements OnInit {
 					this.pertotalan.totalItem += element.quantity;
 					this.pertotalan.totalItem += element.admin_fee;
 					this.pertotalan.ppn += element.ppn;
-					this.pertotalan.totalFee += element.admin_fee
+					this.pertotalan.totalFee += element.admin_fee;
 					this.pertotalan.ppn3 += element.pph;
 					this.pertotalan.ongkir += element.shipping_cost;
 					this.pertotalan.subtotal += element.sub_total;
 					this.pertotalan.grandtotal += element.grand_total;
 					this.selectedItems.push(element);
 				} else if (element.cart == false) {
-					this.pertotalan.totalPrice -= this.pertotalan.totalPrice == 0 ? 0 : element.purchase_amount;
-					this.pertotalan.totalItem -= this.pertotalan.totalPrice == 0 ? 0 : element.quantity;
-					this.pertotalan.totalItem -= this.pertotalan.totalPrice == 0 ? 0 : element.admin_fee;
-					this.pertotalan.ppn -= this.pertotalan.totalPrice == 0 ? 0 : element.ppn;
-					this.pertotalan.totalFee -= this.pertotalan.totalPrice == 0 ? 0 : element.admin_fee
-					this.pertotalan.ppn3 -= this.pertotalan.totalPrice == 0 ? 0 : element.pph;
-					this.pertotalan.ongkir -= this.pertotalan.totalPrice == 0 ? 0 : element.shipping_cost;
-					this.pertotalan.subtotal -= this.pertotalan.totalPrice == 0 ? 0 : element.sub_total;
-					this.pertotalan.grandtotal -= this.pertotalan.totalPrice == 0 ? 0 : element.grand_total;
+					this.pertotalan.totalPrice -=
+						this.pertotalan.totalPrice == 0
+							? 0
+							: element.purchase_amount;
+					this.pertotalan.totalItem -=
+						this.pertotalan.totalPrice == 0 ? 0 : element.quantity;
+					this.pertotalan.totalItem -=
+						this.pertotalan.totalPrice == 0 ? 0 : element.admin_fee;
+					this.pertotalan.ppn -=
+						this.pertotalan.totalPrice == 0 ? 0 : element.ppn;
+					this.pertotalan.totalFee -=
+						this.pertotalan.totalPrice == 0 ? 0 : element.admin_fee;
+					this.pertotalan.ppn3 -=
+						this.pertotalan.totalPrice == 0 ? 0 : element.pph;
+					this.pertotalan.ongkir -=
+						this.pertotalan.totalPrice == 0
+							? 0
+							: element.shipping_cost;
+					this.pertotalan.subtotal -=
+						this.pertotalan.totalPrice == 0 ? 0 : element.sub_total;
+					this.pertotalan.grandtotal -=
+						this.pertotalan.totalPrice == 0
+							? 0
+							: element.grand_total;
 				}
 			}
 			// console.log(i);
@@ -317,7 +348,6 @@ export class ApprovalLayoutComponent implements OnInit {
 					s = false;
 					break;
 				}
-
 			}
 			// this.items[i].available = s;
 		}

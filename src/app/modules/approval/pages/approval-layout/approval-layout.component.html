@@ -50,7 +50,8 @@
 
 			<div class="d-flex align-items-center">
 				<div class="flex-grow-1 d-flex ">
-					<date-dropdown class="flex-even"></date-dropdown>
+					<filter-purchaser class="flex-even"
+						(user_id)="updateUserId($event)"></filter-purchaser>
 					<wsh wide="24px"></wsh>
 					<filter-input (keyup)="cari($event)"
 						class="flex-even"
