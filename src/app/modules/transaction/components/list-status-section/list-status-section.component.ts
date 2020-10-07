@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TransactionStatusOptionUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -13,6 +13,9 @@ import { TransactionStatusOptionResponseModel } from '../../../../models/transac
 export class ListStatusSectionComponent implements OnInit {
 	statuses: TransactionStatusOptionResponseModel[];
 	selected: TransactionStatusOptionResponseModel;
+	@Output() onStatusSelected = new EventEmitter<
+		TransactionStatusOptionResponseModel
+	>();
 	subsribers: Subscription[];
 
 	constructor(private service: BaseService) {}
@@ -41,5 +44,10 @@ export class ListStatusSectionComponent implements OnInit {
 				this.selected = this.statuses[0];
 			});
 		this.subsribers.push(sub);
+	}
+
+	clickStatus(status) {
+		this.selected = status;
+		this.onStatusSelected.emit(this.selected);
 	}
 }

@@ -6,7 +6,7 @@
 			<div id="keranjang-label">TRANSAKSI</div>
 			<wsv wide="20px"></wsv>
 			<div class="d-flex justify-content-left">
-				<list-status-section></list-status-section>
+				<list-status-section (onStatusSelected)="handleSelectStatus($event)"></list-status-section>
 			</div>
 			<wsv wide="19px"></wsv>
 

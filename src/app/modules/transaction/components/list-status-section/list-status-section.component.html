@@ -4,7 +4,7 @@
 		*ngFor="let status of statuses">
 		<status-button [label]="status"
 			[selected]="selected"
-			(click)="selected=status"></status-button>
+			(click)="clickStatus(status)"></status-button>
 
 		<wsh wide="40px"></wsh>
 	</div>

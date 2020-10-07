@@ -4,6 +4,7 @@ import { TransactionListUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { TransactionListRequestModel } from '../../../../models/transaction-list-request.model';
+import { TransactionStatusOptionResponseModel } from '../../../../models/transaction-status-option-response.model';
 
 @Component({
 	selector: 'transaction-layout',
@@ -47,5 +48,10 @@ export class TransactionLayoutComponent implements OnInit {
 				console.log(resp);
 			});
 		this.subsribers.push(sub);
+	}
+
+	handleSelectStatus(status: TransactionStatusOptionResponseModel) {
+		this.param.status_code = status.status_code;
+		this.getTrxList();
 	}
 }

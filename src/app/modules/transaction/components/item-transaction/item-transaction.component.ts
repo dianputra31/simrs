@@ -25,9 +25,8 @@ export class ItemTransactionComponent implements OnInit {
 	constructor(
 		public dialog: MatDialog,
 		private router: Router,
-		private route: ActivatedRoute
-	) // private filterservice: FilterInputComponent,
-	{}
+		private route: ActivatedRoute // private filterservice: FilterInputComponent,
+	) {}
 
 	ngOnInit(): void {}
 
