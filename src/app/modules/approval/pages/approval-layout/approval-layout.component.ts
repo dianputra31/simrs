@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddressListUrl, ApprovalListUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { StorageService } from '../../../../core/storage/service/storage.service';
 import {
 	AddressELement,
 	ConvertAddress,
@@ -29,7 +30,11 @@ export class ApprovalLayoutComponent implements OnInit {
 	itemsoriginal: Product[];
 	selectedItems: Product[] = [];
 	listApprovals: AddressELement[];
-	constructor(private route: ActivatedRoute, private service: BaseService) {}
+	constructor(
+		private route: ActivatedRoute,
+		private service: BaseService,
+		private storageService: StorageService
+	) {}
 	isEmpty = 0;
 	company: Company = null;
 	date: Map<String, String> = null;
@@ -395,5 +400,9 @@ export class ApprovalLayoutComponent implements OnInit {
 		} else {
 			return 'Proses';
 		}
+	}
+
+	isManager(): Boolean {
+		return this.storageService.getRole() == 'Manager';
 	}
 }

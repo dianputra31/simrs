@@ -7,6 +7,7 @@ import {
 	ProductTopSubcategoryUrl,
 } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { StorageService } from '../../../../core/storage/service/storage.service';
 import { ProductCatalogRequestModel } from '../../../../models/product-catalog-request.model';
 import { ProductCatalogResponseModel } from '../../../../models/product-catalog-response-model';
 import { ProductTopSubcategoryResponseModel } from '../../../../models/product-top-subcategory-response.model';
@@ -21,14 +22,20 @@ export class HomeLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	topCategories: ProductTopSubcategoryResponseModel[];
 	productCatalogRows: ProductCatalogResponseModel[][];
-	constructor(private service: BaseService, public dialog: MatDialog) {}
+	constructor(
+		private service: BaseService,
+		public dialog: MatDialog,
+		private storageService: StorageService
+	) {}
 
 	ngOnInit() {
 		this.subsribers = [];
 		this.getProductTopSubcategory();
 		this.productCatalogRows = [];
 
-		this.numberOfApproval();
+		if (this.storageService.getRole() == 'Manager') {
+			this.numberOfApproval();
+		}
 	}
 
 	ngOnDestroy() {

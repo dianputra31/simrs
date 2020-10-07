@@ -2,19 +2,25 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ApprovalUrl, ApproveUrl, CheckoutCartUrl } from '../../../app.constant';
+import {
+	ApprovalUrl,
+	ApproveUrl,
+	CheckoutCartUrl,
+} from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
+import { StorageService } from '../../../core/storage/service/storage.service';
 import { CartListElement } from '../../../models/cart-list.model';
 import {
 	ApproveCartParams,
-	CartListApproveParams, CartListParams,
+	CartListApproveParams,
+	CartListParams,
 	CheckoutCartParams,
 	ConvertApproveParams,
-	ConvertCheckoutParams
+	ConvertCheckoutParams,
 } from '../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart
+	ConvertCheckoutCart,
 } from '../../../models/checkout-cart.model';
 import { ApprovalConfirmationDialogComponent } from '../../../modules/approval/components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
@@ -38,8 +44,9 @@ export class BoxCartPriceComponent implements OnInit {
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router,
-		private service: BaseService
-	) { }
+		private service: BaseService,
+		private storageService: StorageService
+	) {}
 
 	ngOnInit(): void {
 		this.datacompany = JSON.parse(localStorage.getItem('company'));
@@ -57,11 +64,12 @@ export class BoxCartPriceComponent implements OnInit {
 			}
 			const params: ApproveCartParams = {
 				cart_list: cart_list,
-				message: "hahahahhatot"
+				message: 'hahahahhatot',
 			};
 
-			var pm: String = ConvertApproveParams.approveCartParamsToJson(params);
-
+			var pm: String = ConvertApproveParams.approveCartParamsToJson(
+				params
+			);
 		} else {
 			const cart_list: CartListParams[] = [];
 
@@ -75,7 +83,9 @@ export class BoxCartPriceComponent implements OnInit {
 			const params: CheckoutCartParams = {
 				cart_list: cart_list,
 			};
-			var pm: String = ConvertCheckoutParams.checkoutCartParamsToJson(params);
+			var pm: String = ConvertCheckoutParams.checkoutCartParamsToJson(
+				params
+			);
 		}
 		var url = '';
 		if (type == 'selanjutnya') {
@@ -84,6 +94,9 @@ export class BoxCartPriceComponent implements OnInit {
 			url = ApprovalUrl;
 		} else if (type == 'proses') {
 			url = ApproveUrl;
+			if (this.storageService.getRole() != 'Manager') {
+				pm = null;
+			}
 		}
 		const sub = this.service
 			.postData(url, pm, false, false, true)
@@ -125,11 +138,10 @@ export class BoxCartPriceComponent implements OnInit {
 			PopUpRequestApprovalComponent,
 			dialogConfig
 		);
-		modalDialog.afterClosed().subscribe(result => {
+		modalDialog.afterClosed().subscribe((result) => {
 			if (result.event == 'proses') {
-
 			}
-		})
+		});
 	}
 
 	openConfirmDialog(des) {
@@ -151,11 +163,11 @@ export class BoxCartPriceComponent implements OnInit {
 			dialogConfig
 		);
 
-		modalDialog.afterClosed().subscribe(result => {
+		modalDialog.afterClosed().subscribe((result) => {
 			if (result.event == 'proses') {
 				this.postCartItem('proses');
 			}
-		})
+		});
 		return false;
 	}
 
@@ -168,7 +180,6 @@ export class BoxCartPriceComponent implements OnInit {
 					this.postCartItem('selanjutnya');
 				});
 			} else if (this.buttonLabel == 'Request Approval') {
-
 				if (this.selectedItems.length > 0) {
 					this.postCartItem('req-approval');
 				} else {
