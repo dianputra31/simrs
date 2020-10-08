@@ -30,21 +30,19 @@ export class FilterCardComponent implements OnInit {
 		this._redirectparam.price_end = b;
 
 
-		console.log(this._redirectparam.price_start + ' s/d ' + this._redirectparam.price_end);
+
 		this.route.paramMap.subscribe((params) => {
 
 
 			this.cat_id = params.get('category_id');
 			this.subcat_id = params.get('sub_category_id');
-			this.keyword = params.get('keyword');
-			this._redirectparam.namaproduk;
+			this.keyword = this._redirectparam.namaproduk;
 
 
 		});
 
 
 		this.PilihProdukLayout.getItems(this.cat_id, this.subcat_id, this.keyword, a, b);
-		//this.router.navigate(['./pilih-produk/' + this.cat_id + '/' + this.subcat_id + '/' + this._redirectparam.namaproduk + '.']);
 
 	}
 }

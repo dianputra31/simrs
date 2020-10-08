@@ -40,6 +40,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 		this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 		this.namakategori = 'semua Kategori';
 
+
 		this.IsWait = true;
 		this.subsribers = [];
 		this.route.paramMap.subscribe((params) => {
