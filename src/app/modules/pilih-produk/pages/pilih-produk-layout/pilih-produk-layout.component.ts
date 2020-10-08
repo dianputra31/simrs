@@ -1,11 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductCatalogUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { ProductCatalogResponseModel } from '../../../../models/product-catalog-response-model';
-
 
 @Component({
 	selector: 'app-pilih-produk-layout',
@@ -22,7 +21,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 	subsribers: Subscription[];
 	items: ProductCatalogResponseModel[];
-	constructor(private route: ActivatedRoute, private service: BaseService, private _redirectparam: RedirectParameterService,) { }
+	constructor(private route: ActivatedRoute, private router: Router, private service: BaseService, private _redirectparam: RedirectParameterService,) { }
 
 	test(keyword) {
 		console.log('param: ', this.param);
@@ -34,6 +33,8 @@ export class PilihProdukLayoutComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
 		this.IsWait = true;
 		this.subsribers = [];
 		this.route.paramMap.subscribe((params) => {
@@ -53,7 +54,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 		this.IsWait = true;
 		if (category_id != '0') var s_cat = '&category_id=' + category_id; else var s_cat = '';
 		if (sub_category_id != '0') var s_subcat = '&sub_category_id=' + sub_category_id; else var s_subcat = '';
-		if (keyword != '') var s_key = '&keyword=' + keyword; else s_key = '';
+		if (keyword != '' && keyword != '0') var s_key = '&keyword=' + keyword; else s_key = '';
 		if (price_start != '0') var s_price_start = '&price_start=' + price_start; else var s_price_start = '';
 		if (price_end != '0') var s_price_end = '&price_end=' + price_end; else var s_price_end = '';
 

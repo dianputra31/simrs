@@ -12,12 +12,16 @@
 		type="text"
 		class="textbox-search"
 		placeholder="Minimum"
+		(keyup.enter)="carilagi(minimum.value,maximum.value)"
+		autocomplete="off"
 		#minimum>
 	<div class="filter-card-underline"></div>
 	<input id="maximum-input"
 		type="text"
 		class="textbox-search"
 		placeholder="Maximum"
+		(keyup.enter)="carilagi(minimum.value,maximum.value)"
+		autocomplete="off"
 		#maximum>
 
 	<div class="filter-card-underline"></div>
