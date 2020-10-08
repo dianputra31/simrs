@@ -73,12 +73,16 @@ export class HeaderComponent implements OnInit {
 	goesToDetailProduct(a) {
 		// const prod = event.option.value;
 		// console.log(event);
+		this._redirectparam.price_start = 0;
+		this._redirectparam.price_end = 0;
 		this._redirectparam.namaproduk = a.replaceAll('/', '-');
 		this.router.navigate(['./pilih-produk/0/0' + '/' + this._redirectparam.namaproduk]);
 	}
 
 	getKey(a) {
 		this.keyword.emit(a);
+		this._redirectparam.price_start = 0;
+		this._redirectparam.price_end = 0;
 		this._redirectparam.namaproduk = a.replaceAll('/', '-');
 		if (this.router.url == '/pilih-produk/0/0') {
 			this.router.navigate(['./pilih-produk/0/0' + '/' + this._redirectparam.namaproduk]);

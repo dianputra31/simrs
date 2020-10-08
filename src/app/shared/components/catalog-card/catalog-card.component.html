@@ -2,7 +2,8 @@
 	(click)="backToHome()">
 	<div class="inner-padding">
 		<img [src]="item.thumbnail"
-			class="card-img-top">
+			class="card-img-top"
+			(error)="onImgError($event)">
 		<div class="catalog-card-label">
 			{{item.slice_name}}
 		</div>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductCatalogUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -16,10 +16,12 @@ export class PilihProdukLayoutComponent implements OnInit {
 	keyword: any;
 	minprice: any;
 	maxprice: any;
+	IsWait: boolean;
+	qtyproduk: number;
 
 	subsribers: Subscription[];
 	items: ProductCatalogResponseModel[];
-	constructor(private route: ActivatedRoute, private service: BaseService, private _redirectparam: RedirectParameterService,) { }
+	constructor(private route: ActivatedRoute, private router: Router, private service: BaseService, private _redirectparam: RedirectParameterService,) { }
 
 	test(keyword) {
 		console.log('param: ', this.param);
@@ -31,6 +33,9 @@ export class PilihProdukLayoutComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+		this.IsWait = true;
 		this.subsribers = [];
 		this.route.paramMap.subscribe((params) => {
 			this.getItems(
@@ -42,14 +47,25 @@ export class PilihProdukLayoutComponent implements OnInit {
 			);
 			this.keyword = this._redirectparam.namaproduk;
 		});
+		this.IsWait = false;
 	}
 
 	getItems(category_id, sub_category_id, keyword, price_start, price_end) {
+		this.IsWait = true;
+		if (category_id != '0') var s_cat = '&category_id=' + category_id; else var s_cat = '';
+		if (sub_category_id != '0') var s_subcat = '&sub_category_id=' + sub_category_id; else var s_subcat = '';
+		if (keyword != '' && keyword != '0') var s_key = '&keyword=' + keyword; else s_key = '';
+		if (price_start != '0') var s_price_start = '&price_start=' + price_start; else var s_price_start = '';
+		if (price_end != '0') var s_price_end = '&price_end=' + price_end; else var s_price_end = '';
+
+		// console.log(ProductCatalogUrl + '?' + s_key);
+
 		const sub = this.service
-			.getData(ProductCatalogUrl + '?keyword=' + keyword, ProductCatalogResponseModel, null, true)
+			.getData(ProductCatalogUrl + '?page=1' + s_cat + s_subcat + s_key + s_price_start + s_price_end, ProductCatalogResponseModel, null, true)
 			.subscribe((resp) => {
-				console.log(resp);
 				this.items = resp;
+				this.IsWait = false;
+				this.qtyproduk = resp.length;
 			});
 
 		this.subsribers.push(sub);

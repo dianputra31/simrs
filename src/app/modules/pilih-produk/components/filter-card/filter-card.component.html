@@ -9,15 +9,19 @@
 	<div class="filter-card-underline"></div>-->
 	<div id="filter-label-2">Harga</div>
 	<input id="minimum-input"
-		type="text"
+		type="number"
 		class="textbox-search"
 		placeholder="Minimum"
+		(keyup.enter)="carilagi(minimum.value,maximum.value)"
+		autocomplete="off"
 		#minimum>
 	<div class="filter-card-underline"></div>
 	<input id="maximum-input"
-		type="text"
+		type="number"
 		class="textbox-search"
 		placeholder="Maximum"
+		(keyup.enter)="carilagi(minimum.value,maximum.value)"
+		autocomplete="off"
 		#maximum>
 
 	<div class="filter-card-underline"></div>

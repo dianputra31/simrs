@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root'
 })
 export class RedirectParameterService {
-	namaproduk;
+	namaproduk = "";
 	price_start = 0;
 	price_end = 0;
 	limit = 20;
