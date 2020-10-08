@@ -6,6 +6,7 @@ import { BaseService } from '../../../../core/base-service/service/base.service'
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { ProductCatalogResponseModel } from '../../../../models/product-catalog-response-model';
 
+
 @Component({
 	selector: 'app-pilih-produk-layout',
 	templateUrl: './pilih-produk-layout.component.html',
@@ -16,6 +17,8 @@ export class PilihProdukLayoutComponent implements OnInit {
 	keyword: any;
 	minprice: any;
 	maxprice: any;
+	IsWait: boolean;
+	qtyproduk: number;
 
 	subsribers: Subscription[];
 	items: ProductCatalogResponseModel[];
@@ -31,6 +34,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.IsWait = true;
 		this.subsribers = [];
 		this.route.paramMap.subscribe((params) => {
 			this.getItems(
@@ -42,14 +46,25 @@ export class PilihProdukLayoutComponent implements OnInit {
 			);
 			this.keyword = this._redirectparam.namaproduk;
 		});
+		this.IsWait = false;
 	}
 
 	getItems(category_id, sub_category_id, keyword, price_start, price_end) {
+		this.IsWait = true;
+		if (category_id != '0') var s_cat = '&category_id=' + category_id; else var s_cat = '';
+		if (sub_category_id != '0') var s_subcat = '&sub_category_id=' + sub_category_id; else var s_subcat = '';
+		if (keyword != '') var s_key = '&keyword=' + keyword; else s_key = '';
+		if (price_start != '0') var s_price_start = '&price_start=' + price_start; else var s_price_start = '';
+		if (price_end != '0') var s_price_end = '&price_end=' + price_end; else var s_price_end = '';
+
+		// console.log(ProductCatalogUrl + '?' + s_key);
+
 		const sub = this.service
-			.getData(ProductCatalogUrl + '?keyword=' + keyword, ProductCatalogResponseModel, null, true)
+			.getData(ProductCatalogUrl + '?page=1' + s_cat + s_subcat + s_key + s_price_start + s_price_end, ProductCatalogResponseModel, null, true)
 			.subscribe((resp) => {
-				console.log(resp);
 				this.items = resp;
+				this.IsWait = false;
+				this.qtyproduk = resp.length;
 			});
 
 		this.subsribers.push(sub);

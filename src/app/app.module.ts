@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,8 @@ import { MaterialModule } from './material.module';
 import { NgbdToastGlobal } from './shared/toast/toast-global.component';
 import { ToastsContainer } from './shared/toast/toasts-container.component';
 
+
+
 @NgModule({
 	declarations: [AppComponent, NgbdToastGlobal, ToastsContainer],
 	imports: [
@@ -26,6 +28,7 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 		BrowserAnimationsModule,
 		MaterialModule,
 		NgbModule,
+		HttpClientModule,
 	],
 	providers: [
 		/* Declare service for this module */
@@ -38,4 +41,4 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
