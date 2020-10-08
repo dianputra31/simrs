@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartListUrl, CheckoutCartUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -19,7 +19,11 @@ export class CartLayoutComponent implements OnInit {
 	items: CartListElement[] = [];
 	selectedItems: CartListElement[] = [];
 	itemsoriginal: CartListElement[] = [];
-	constructor(private route: ActivatedRoute, private service: BaseService) {}
+	constructor(
+		private route: ActivatedRoute,
+		private service: BaseService,
+		private router: Router
+	) {}
 	isEmpty = 0;
 	company: Company = null;
 
@@ -208,6 +212,7 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	selanjutnyaClick() {
+		console.log('test');
 		var cartreq = new CartItemRequestModel();
 		cartreq.cart_list = [];
 		for (var i = 0; i < this.selectedItems.length; i++) {
@@ -224,6 +229,8 @@ export class CartLayoutComponent implements OnInit {
 				const stringnya = Convert.cartListToJson(resp);
 				const cartList = Convert.toCartList(stringnya);
 				console.log(cartList);
+				localStorage.setItem('checkout-cart', stringnya);
+				this.router.navigate(['./request-approval']);
 			});
 		this.subsribers.push(sub);
 

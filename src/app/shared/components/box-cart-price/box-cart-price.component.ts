@@ -2,11 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import {
-	ApprovalUrl,
-	ApproveUrl,
-	CheckoutCartUrl,
-} from '../../../app.constant';
+import { ApprovalUrl, ApproveUrl } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { StorageService } from '../../../core/storage/service/storage.service';
 import { CartListElement } from '../../../models/cart-list.model';
@@ -88,9 +84,7 @@ export class BoxCartPriceComponent implements OnInit {
 			);
 		}
 		var url = '';
-		if (type == 'selanjutnya') {
-			url = CheckoutCartUrl;
-		} else if (type == 'req-approval') {
+		if (type == 'req-approval') {
 			url = ApprovalUrl;
 		} else if (type == 'proses') {
 			url = ApproveUrl;
@@ -106,10 +100,7 @@ export class BoxCartPriceComponent implements OnInit {
 					stringnya
 				);
 				if (cartCheckout.status.rc == 1) {
-					if (type == 'selanjutnya') {
-						localStorage.setItem('checkout-cart', stringnya);
-						this.router.navigate(['./request-approval']);
-					} else if (type == 'req-approval') {
+					if (type == 'req-approval') {
 						this.openDialogLocation('./cart');
 					} else if (type == 'proses') {
 						this.router.navigate(['./approval']);
