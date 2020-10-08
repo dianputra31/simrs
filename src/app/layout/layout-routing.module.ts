@@ -46,8 +46,8 @@ const routes: Routes = [
 			{
 				path: 'cart',
 				loadChildren: () =>
-					import('../modules/cart/cart.module').then(
-						(m) => m.CartModule
+					import('../modules/cart2/cart2.module').then(
+						(m) => m.Cart2Module
 					),
 			},
 			{
@@ -92,4 +92,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {}
