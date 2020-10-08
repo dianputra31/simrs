@@ -20,17 +20,7 @@ export class HeaderCategoryButtonComponent implements OnInit {
 	clickedCategory: CatalogCategoryModel;
 	subsribers: Subscription[];
 
-	subcategories = [
-		'Kemeja',
-		'Kaos',
-		'Celana',
-		'Celana Pendek',
-		'Jas',
-		'Topi',
-		'Dasi',
-		'Kacamata',
-		'Jogger Pants',
-	];
+
 
 	constructor(
 		private router: Router,
@@ -75,11 +65,11 @@ export class HeaderCategoryButtonComponent implements OnInit {
 	) {
 		this._redirectparam.namaproduk = "";
 		if (this.router.url == '/request-approval') {
-			this.openDialogLocation('/pilih-produk/0/0/0');
+			this.openDialogLocation('/pilih-produk/0/0');
 		} else {
 			console.log('here');
 			this.router.navigate([
-				'/pilih-produk/' + clickedCategory.id + '/' + sub.id + '/0'
+				'/pilih-produk/' + clickedCategory.id + '/' + sub.id
 			]);
 		}
 	}
