@@ -165,7 +165,7 @@ export class BoxCartPriceComponent implements OnInit {
 	clickButtonLabel() {
 		this.buttonBoxCartPriceClick.emit();
 		if (this.buttonDisable) {
-			if (this.buttonLabel == 'Selanjutnya') {
+			if (this.buttonLabel == 'Selanjutnya123') {
 				this.subsribers = [];
 				this.route.paramMap.subscribe((params) => {
 					this.postCartItem('selanjutnya');
