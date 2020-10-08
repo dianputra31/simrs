@@ -107,7 +107,8 @@
 					<box-cart-price [selectedItems]="selectedItems"
 						[pertotalan]="pertotalan"
 						[buttonLabel]="buttonSelanjutnyaLabel()"
-						[buttonDisable]="!cartIsEmpty()"></box-cart-price>
+						[buttonDisable]="!cartIsEmpty()"
+						(buttonBoxCartPriceClick)="selanjutnyaClick()"></box-cart-price>
 				</div>
 
 			</div>

@@ -116,10 +116,10 @@ export class BoxCartPriceComponent implements OnInit {
 	}
 
 	clickButtonLabel() {
-		this.buttonBoxCartPriceClick.emit();
 		if (this.buttonDisable) {
+			this.buttonBoxCartPriceClick.emit();
 			if (this.buttonLabel == 'Proses') {
-				this.openConfirmDialog('./approval');
+				// this.openConfirmDialog('./approval');
 			}
 		}
 	}

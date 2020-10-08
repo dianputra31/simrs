@@ -1,7 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddressListUrl, ApprovalListUrl } from '../../../../app.constant';
+import {
+	AddressListUrl,
+	ApprovalListUrl,
+	ApproveUrl,
+} from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { StorageService } from '../../../../core/storage/service/storage.service';
 import {
@@ -9,7 +14,18 @@ import {
 	ConvertAddress,
 } from '../../../../models/address.model';
 import { ConvertApproval, Product } from '../../../../models/Approval.model';
+import {
+	ApproveCartParams,
+	CartListApproveParams,
+	ConvertApproveParams,
+} from '../../../../models/checkout-cart-params.model';
+import {
+	CheckoutCart,
+	ConvertCheckoutCart,
+} from '../../../../models/checkout-cart.model';
 import { Company, ConvertCompany } from '../../../../models/company.model';
+import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
+import { ApprovalResultConfirmationDialogComponent } from '../../components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
 import { FilterDateComponent } from '../../components/filter-date/filter-date.component';
 import { FilterDropdownComponent } from '../../components/filter-dropdown/filter-dropdown.component';
 
@@ -33,7 +49,9 @@ export class ApprovalLayoutComponent implements OnInit {
 	constructor(
 		private route: ActivatedRoute,
 		private service: BaseService,
-		private storageService: StorageService
+		private storageService: StorageService,
+		private router: Router,
+		private dialog: MatDialog
 	) {}
 	isEmpty = 0;
 	company: Company = null;
@@ -404,5 +422,91 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	isManager(): Boolean {
 		return this.storageService.getRole() == 'Manager';
+	}
+
+	selanjutnyaClick() {
+		this.openConfirmDialog();
+	}
+
+	openConfirmDialog() {
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = 'modal-component';
+		dialogConfig.height = 'auto';
+		dialogConfig.width = '480px';
+		dialogConfig.height = '170px';
+		dialogConfig.panelClass = 'border-radius:10px';
+		dialogConfig.data = {
+			pageBefore: this.router.url,
+			modePopUp: '1',
+			cartList: this.selectedItems,
+		};
+		const modalDialog = this.dialog.open(
+			ApprovalConfirmationDialogComponent,
+			dialogConfig
+		);
+
+		modalDialog.afterClosed().subscribe((result) => {
+			this.proses();
+		});
+		return false;
+	}
+
+	openDialogLocation() {
+		//processing data
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = 'modal-result-confirmation';
+		dialogConfig.height = 'auto';
+		dialogConfig.width = '477px';
+		dialogConfig.height = '155px';
+		dialogConfig.panelClass = 'border-radius:20px';
+		dialogConfig.data = {
+			pageBefore: this.router.url,
+			modePopUp: '1',
+		};
+		const modalDialog = this.dialog.open(
+			ApprovalResultConfirmationDialogComponent,
+			dialogConfig
+		);
+
+		return false;
+	}
+
+	proses() {
+		const cart_list: CartListApproveParams[] = [];
+
+		for (let index = 0; index < this.selectedItems.length; index++) {
+			const element: Product = this.selectedItems[index];
+			const cart = new CartListApproveParams();
+			cart.cart_request_id = element.id;
+			cart_list.push(cart);
+		}
+		const params: ApproveCartParams = {
+			cart_list: cart_list,
+			message: 'hahahahhatot',
+		};
+
+		var pm: String = ConvertApproveParams.approveCartParamsToJson(params);
+
+		var url = ApproveUrl;
+		if (this.storageService.getRole() != 'Manager') {
+			pm = null;
+		}
+
+		const sub = this.service
+			.postData(url, pm, false, false, true)
+			.subscribe((resp) => {
+				const stringnya = ConvertCheckoutCart.checkoutCartToJson(resp);
+				const cartCheckout: CheckoutCart = ConvertCheckoutCart.toCheckoutCart(
+					stringnya
+				);
+				if (cartCheckout.status.rc == 1) {
+					this.openDialogLocation();
+				} else {
+				}
+			});
+
+		this.subsribers.push(sub);
 	}
 }
