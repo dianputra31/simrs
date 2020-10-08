@@ -212,7 +212,6 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	selanjutnyaClick() {
-		console.log('test');
 		var cartreq = new CartItemRequestModel();
 		cartreq.cart_list = [];
 		for (var i = 0; i < this.selectedItems.length; i++) {
@@ -225,10 +224,8 @@ export class CartLayoutComponent implements OnInit {
 		const sub = this.service
 			.postData(CheckoutCartUrl, cartreq, CartItemResponseModel, false)
 			.subscribe((resp) => {
-				console.log('resp: ', resp);
 				const stringnya = Convert.cartListToJson(resp);
 				const cartList = Convert.toCartList(stringnya);
-				console.log(cartList);
 				localStorage.setItem('checkout-cart', stringnya);
 				this.router.navigate(['./request-approval']);
 			});
