@@ -18,6 +18,13 @@
 	
 }
 
+#merah{
+	background-color: $color-primary;
+	height: 100%;
+	margin-left:-100px;
+	width:25%;
+}
+
 .putih{
 	background-color: $putih-tok;
 	height: 100%;
@@ -55,7 +62,9 @@
 #footer-logo {
 	width: 185.83px;
 	height: 86px;
-	margin-top: 12px;
+	margin-top: 50px;
+	margin-left:30%;
+	background-color: $color-primary;
 }
 
 .white-space-60px {
