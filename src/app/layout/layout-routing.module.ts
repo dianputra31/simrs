@@ -37,6 +37,13 @@ const routes: Routes = [
 					).then((m) => m.DetailProductModule),
 			},
 			{
+				path: 'pilih-produk/:category_id/:sub_category_id',
+				loadChildren: () =>
+					import('../modules/pilih-produk/pilih-produk.module').then(
+						(m) => m.PilihProdukModule
+					),
+			},
+			{
 				path: 'pilih-produk/:category_id/:sub_category_id/:keyword',
 				loadChildren: () =>
 					import('../modules/pilih-produk/pilih-produk.module').then(

@@ -26,8 +26,6 @@ export class CatalogSectionComponent implements OnInit {
 	}
 
 	lihatSemua(a, b) {
-
-
 		this.router.navigate([
 			'/pilih-produk/' + a + '/' + b,
 		])

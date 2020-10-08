@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ProductCatalogUrl } from '../../../../app.constant';
+import { CatalogService, ProductCatalogUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
+import { CatalogRespModel } from '../../../../models/catalog-response.model';
 import { ProductCatalogResponseModel } from '../../../../models/product-catalog-response-model';
 
 @Component({
@@ -18,6 +19,9 @@ export class PilihProdukLayoutComponent implements OnInit {
 	maxprice: any;
 	IsWait: boolean;
 	qtyproduk: number;
+	namakategori: any;
+	categories;
+	category_id;
 
 	subsribers: Subscription[];
 	items: ProductCatalogResponseModel[];
@@ -34,6 +38,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+		this.namakategori = 'semua Kategori';
 
 		this.IsWait = true;
 		this.subsribers = [];
@@ -45,8 +50,22 @@ export class PilihProdukLayoutComponent implements OnInit {
 				this._redirectparam.price_start,
 				this._redirectparam.price_end,
 			);
-			this.keyword = this._redirectparam.namaproduk;
+			this.category_id = params.get('category_id');
+			if (this._redirectparam.namaproduk !== '' && this._redirectparam.namaproduk !== '0') this.keyword = '"' + this._redirectparam.namaproduk + '"'; else this.keyword = '';
 		});
+
+		const url = CatalogService;
+
+		const sub = this.service
+			.getData(url, CatalogRespModel)
+			.subscribe((resp) => {
+				this.categories = resp.category;
+				for (let items of this.categories) {
+					if (items.id == this.category_id) this.namakategori = 'kategori ' + items.category_name;
+				}
+
+			});
+
 		this.IsWait = false;
 	}
 
