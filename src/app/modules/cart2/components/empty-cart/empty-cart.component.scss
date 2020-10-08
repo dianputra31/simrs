@@ -1,0 +1,26 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+.label-cart-empty {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 26px;
+	line-height: 31px;
+	font-feature-settings: 'kern' off;
+	color: $abu-abu-gelap;
+}
+
+.btn-cart-empty {
+	width: 176px;
+	height: 36px;
+	background-color: $kresek-merah;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	align-items: center;
+	text-align: center;
+	color: $putih-tok;
+}
