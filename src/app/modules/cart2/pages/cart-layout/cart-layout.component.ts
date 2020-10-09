@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import { CartListUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -14,6 +15,8 @@ export class CartLayoutComponent implements OnInit {
 	items: CartListItemModel[];
 	total_item: number = 0;
 	total_price: number;
+
+	@BlockUI() blockUI: NgBlockUI;
 	constructor(private service: BaseService) {}
 
 	ngOnInit(): void {
@@ -25,9 +28,11 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	getCartItem() {
+		this.blockUI.start();
 		const sub = this.service
 			.getData(CartListUrl, CartListResponseModel, null, false)
 			.subscribe((resp) => {
+				this.blockUI.stop();
 				this.items = resp.cart_list;
 				this.total_item = resp.total_item;
 				this.total_price = resp.total_price;
@@ -37,6 +42,6 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	updateItemCartList() {
-		console.log(this.items);
+		this.getCartItem();
 	}
 }

@@ -1,4 +1,5 @@
 export class CartListItemModel {
+	public product_id: number;
 	public product_image: string;
 	public product_name: string;
 	public sell_price: number;
@@ -15,6 +16,8 @@ export class CartListItemModel {
 	public selected: boolean;
 
 	public convert(dto: any) {
+		console.log(dto);
+		this.product_id = dto.product_id;
 		this.product_image = dto.product_image;
 		this.product_name = dto.product_name;
 		this.sell_price = dto.sell_price;

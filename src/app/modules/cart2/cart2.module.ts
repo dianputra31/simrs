@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { BlockUIModule } from 'ng-block-ui';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { CartRoutingModule } from './cart-routing.module';
@@ -9,6 +10,12 @@ import { CartLayoutComponent } from './pages/cart-layout/cart-layout.component';
 
 @NgModule({
 	declarations: [CartLayoutComponent, EmptyCartComponent, ItemCardComponent],
-	imports: [CartRoutingModule, CommonModule, SharedModule, SharedPipesModule],
+	imports: [
+		CartRoutingModule,
+		CommonModule,
+		SharedModule,
+		SharedPipesModule,
+		BlockUIModule.forRoot(),
+	],
 })
 export class Cart2Module {}
