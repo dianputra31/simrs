@@ -1,0 +1,11 @@
+<div (click)="onClick()">
+	<div *ngIf="checked; else elseBlock">
+		<div class="custom-checkbox-checked">
+			<img class="custom-checkbox-mark"
+				src="../../../../assets/image/icons/centang_putih.png">
+		</div>
+	</div>
+	<ng-template #elseBlock>
+		<div class="custom-checkbox"></div>
+	</ng-template>
+</div>

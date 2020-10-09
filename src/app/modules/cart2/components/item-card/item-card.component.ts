@@ -11,4 +11,8 @@ export class ItemCardComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	handleClickCheckbox(checked) {
+		this.item.selected = checked;
+	}
 }

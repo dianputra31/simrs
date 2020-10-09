@@ -12,6 +12,7 @@ export class CartListItemModel {
 	public ppn: number;
 	public pph: number;
 	public grand_total: number;
+	public selected: boolean;
 
 	public convert(dto: any) {
 		this.product_image = dto.product_image;
@@ -27,6 +28,7 @@ export class CartListItemModel {
 		this.ppn = dto.ppn;
 		this.pph = dto.pph;
 		this.grand_total = dto.grand_total;
+		this.selected = true;
 
 		return this;
 	}

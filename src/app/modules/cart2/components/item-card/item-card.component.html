@@ -1,6 +1,32 @@
 <div class="rectangle-87">
-	Test
-	<div class="rectangle-86 w-100">
-		{{item}}
+	<div class="d-flex header-wrapper align-items-center">
+		<check-box-two [initialValue]="item.selected"
+			allowChanges="true"
+			(onClickEvent)="handleClickCheckbox($event)"
+			class="check-box-container"></check-box-two>
+		<div class="d-flex flex-grow-1 justify-content-between">
+			<div>
+				<div class="label-gray">Ongkos Kirim</div>
+				<div class="label-gray-2">Rp 1.000.000</div>
+			</div>
+			<div>
+				<div class="label-gray">Harga Belanja</div>
+				<div class="label-gray-2">Rp 49.500.000</div>
+			</div>
+		</div>
+
 	</div>
+	<div class="rectangle-86 w-100 d-flex">
+		<img src='{{item.product_image}}'
+			class="item-img">
+		<wsh wide="15px"></wsh>
+		<div id="item-desc-wrapper">
+			<item-desc [item]="item"></item-desc>
+			<wsv wide="6px"></wsv>
+			<div class="gray-label-3">Jumlah: {{item.quantity}} Barang</div>
+		</div>
+
+	</div>
+
+
 </div>

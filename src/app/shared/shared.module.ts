@@ -10,6 +10,7 @@ import { CartItemListComponent } from './components/cart-item-list/cart-item-lis
 import { CatalogCardButtonComponent } from './components/catalog-card-button/catalog-card-button.component';
 import { CatalogCardComponent } from './components/catalog-card/catalog-card.component';
 import { CheckBoxRoundComponent } from './components/check-box-round/check-box-round.component';
+import { CheckBoxTwoComponent } from './components/check-box-two/check-box-two.component';
 import { DateDropdownComponent } from './components/date-dropdown/date-dropdown.component';
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
@@ -71,6 +72,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		ButtonGrayComponent,
 		FilterPurchaserComponent,
 		FilterDeliveryAddressComponent,
+		CheckBoxTwoComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
 	exports: [
@@ -103,6 +105,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		DateDropdownComponent,
 		HorizontalLineComponent,
 		ButtonGrayComponent,
+		CheckBoxTwoComponent,
 	],
 })
-export class SharedModule { }
+export class SharedModule {}
