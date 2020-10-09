@@ -15,4 +15,7 @@ export class ItemCardComponent implements OnInit {
 	handleClickCheckbox(checked) {
 		this.item.selected = checked;
 	}
+	handleQtyUpdate(qty) {
+		this.item.quantity = qty;
+	}
 }

@@ -7,11 +7,11 @@
 		<div class="d-flex flex-grow-1 justify-content-between">
 			<div>
 				<div class="label-gray">Ongkos Kirim</div>
-				<div class="label-gray-2">Rp 1.000.000</div>
+				<div class="label-gray-2">{{item.shipping_cost|rupiah}}</div>
 			</div>
 			<div>
 				<div class="label-gray">Harga Belanja</div>
-				<div class="label-gray-2">Rp 49.500.000</div>
+				<div class="label-gray-2">{{item.grand_total|rupiah}}</div>
 			</div>
 		</div>
 
@@ -23,10 +23,11 @@
 		<div id="item-desc-wrapper">
 			<item-desc [item]="item"></item-desc>
 			<wsv wide="6px"></wsv>
-			<!-- <div class="gray-label-3">Jumlah: {{item.quantity}} Barang</div> -->
+			<qty-ctrl-two [initQty]="item.quantity"
+				(onUpdateQty)="handleQtyUpdate($event)"></qty-ctrl-two>
 		</div>
 		<wsh wide="90px"></wsh>
 	</div>
-
+	{{item|json}}
 
 </div>
