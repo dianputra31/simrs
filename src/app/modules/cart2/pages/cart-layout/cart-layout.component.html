@@ -11,18 +11,23 @@
 			</div>
 		</div>
 		<ng-template #elseBlock>
-			<div>
-				<address-section wide="596px"
-					borderRadius='20px'
-					margin="0px">
-				</address-section>
+			<div class="d-flex">
 				<div>
-					<div *ngFor="let item of items">
-						<item-card [item]="item"
-							(onUpdateQty)="updateItemCartList($event)"></item-card>
-						<wsv wide="10px"></wsv>
+					<address-section wide="596px"
+						borderRadius='20px'
+						margin="0px">
+					</address-section>
+					<div>
+						<div *ngFor="let item of items">
+							<item-card [item]="item"
+								(onUpdateQty)="updateItemCartList($event)"></item-card>
+							<wsv wide="10px"></wsv>
+						</div>
 					</div>
 				</div>
+				<box-cart-price [pertotalan]="calculate()"
+					buttonLabel="Selanjutnya"
+					[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
 			</div>
 		</ng-template>
 

@@ -12,7 +12,6 @@ export class QtyCtrlTwoComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {
-		console.log(this.initQty);
 		this.qty = this.initQty;
 	}
 
@@ -32,7 +31,6 @@ export class QtyCtrlTwoComponent implements OnInit {
 
 	onChange() {
 		if (this.qty < 1 || this.qty == null) {
-			console.log(this.qty + ' is less than 1');
 			this.qty = 1;
 		} else if (this.qty > 999999) {
 			this.qty = 999999;

@@ -27,6 +27,12 @@ export class StorageService {
 		return JSON.parse(localStorage.getItem('account'));
 	}
 
+	public getCompany() {
+		console.log('test');
+		console.log(JSON.parse(localStorage.getItem('company')));
+		return JSON.parse(localStorage.getItem('company'));
+	}
+
 	public getAccountProfile(): UserModel {
 		return JSON.parse(localStorage.getItem('profile'));
 	}

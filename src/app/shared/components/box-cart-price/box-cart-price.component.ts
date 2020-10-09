@@ -116,7 +116,7 @@ export class BoxCartPriceComponent implements OnInit {
 	}
 
 	clickButtonLabel() {
-		if (this.buttonDisable) {
+		if (!this.buttonDisable) {
 			this.buttonBoxCartPriceClick.emit();
 			if (this.buttonLabel == 'Proses') {
 				// this.openConfirmDialog('./approval');
