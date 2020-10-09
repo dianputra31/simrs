@@ -1,10 +1,26 @@
 <div class="container d-flex">
 	<div id="keranjang-label">KERANJANG</div>
-	<div class="w-100 d-flex justify-content-center">
+</div>
+<div class="container d-flex">
+	<div *ngIf="total_item == 0 else elseBlock"
+		class="w-100 d-flex justify-content-center">
 		<div>
 			<wsv wide="20px"></wsv>
 			<empty-cart></empty-cart>
 		</div>
 	</div>
+	<ng-template #elseBlock>
+		<div>
+			<address-section wide="596px"
+				borderRadius='20px'
+				margin="0px">
+			</address-section>
+			<div>
+				<div *ngFor="let item of items">
+					<item-card [item]="item"></item-card>
+				</div>
+			</div>
+		</div>
+	</ng-template>
 
 </div>
