@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CartListItemModel } from '../../../../models/cart-list-item.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 })
 export class ItemCardComponent implements OnInit {
 	@Input() item: CartListItemModel;
+	@Output() onUpdateQty = new EventEmitter();
 	constructor() {}
 
 	ngOnInit(): void {}
@@ -17,5 +18,10 @@ export class ItemCardComponent implements OnInit {
 	}
 	handleQtyUpdate(qty) {
 		this.item.quantity = qty;
+		this.onUpdateQty.emit();
+	}
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
 	}
 }

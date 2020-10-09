@@ -35,4 +35,8 @@ export class CartLayoutComponent implements OnInit {
 
 		this.subscribers.push(sub);
 	}
+
+	updateItemCartList() {
+		console.log(this.items);
+	}
 }

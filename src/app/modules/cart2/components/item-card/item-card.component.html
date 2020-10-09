@@ -18,6 +18,7 @@
 	</div>
 	<div class="rectangle-86 w-100 d-flex">
 		<img src='{{item.product_image}}'
+			(error)="onImgError($event)"
 			class="item-img">
 		<wsh wide="15px"></wsh>
 		<div id="item-desc-wrapper">
@@ -28,6 +29,4 @@
 		</div>
 		<wsh wide="90px"></wsh>
 	</div>
-	{{item|json}}
-
 </div>
