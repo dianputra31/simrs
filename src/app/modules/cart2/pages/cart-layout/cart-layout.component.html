@@ -1,0 +1,39 @@
+<block-ui>
+	<div class="container d-flex">
+		<div id="keranjang-label">KERANJANG</div>
+	</div>
+	<div class="container d-flex">
+		<div *ngIf="total_item == 0 else elseBlock"
+			class="w-100 d-flex justify-content-center">
+			<div>
+				<wsv wide="20px"></wsv>
+				<empty-cart></empty-cart>
+			</div>
+		</div>
+		<ng-template #elseBlock>
+			<div class="d-flex w-100 justify-content-between">
+				<div>
+					<address-section wide="596px"
+						borderRadius='20px'
+						margin="0px">
+					</address-section>
+
+					<pilih-semua (onPilihSemuaCheckboxClick)="pilihSemuaClickEvent($event)"></pilih-semua>
+					<div style="overflow:scroll; ">
+						<div *ngFor="let item of items">
+							<item-card [item]="item"
+								(onUpdateQty)="updateItemCartList($event)"></item-card>
+							<wsv wide="40px"></wsv>
+						</div>
+					</div>
+				</div>
+				<box-cart-price class="box-cart-price"
+					[pertotalan]="calculate()"
+					buttonLabel="Selanjutnya"
+					(buttonBoxCartPriceClick)="selanjutnyaClick()"
+					[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+			</div>
+		</ng-template>
+
+	</div>
+</block-ui>

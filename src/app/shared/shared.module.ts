@@ -10,6 +10,7 @@ import { CartItemListComponent } from './components/cart-item-list/cart-item-lis
 import { CatalogCardButtonComponent } from './components/catalog-card-button/catalog-card-button.component';
 import { CatalogCardComponent } from './components/catalog-card/catalog-card.component';
 import { CheckBoxRoundComponent } from './components/check-box-round/check-box-round.component';
+import { CheckBoxTwoComponent } from './components/check-box-two/check-box-two.component';
 import { DateDropdownComponent } from './components/date-dropdown/date-dropdown.component';
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
@@ -29,6 +30,7 @@ import { NestDatepickerBComponent } from './components/nest-datepicker-b/nest-da
 import { NestDatepickerWrapperComponent } from './components/nest-datepicker-wrapper/nest-datepicker-wrapper.component';
 import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.component';
 import { PopUpRequestApprovalComponent } from './components/pop-up-request-approval/pop-up-request-approval.component';
+import { QtyCtrlTwoComponent } from './components/qty-ctrl-two/qty-ctrl-two.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
 import { RedBgButtonComponent } from './components/red-bg-button/red-bg-button.component';
 import { RedBorderWhiteBgButtonComponent } from './components/red-border-white-bg-button/red-border-white-bg-button.component';
@@ -71,6 +73,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		ButtonGrayComponent,
 		FilterPurchaserComponent,
 		FilterDeliveryAddressComponent,
+		CheckBoxTwoComponent,
+		QtyCtrlTwoComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
 	exports: [
@@ -103,6 +107,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		DateDropdownComponent,
 		HorizontalLineComponent,
 		ButtonGrayComponent,
+		CheckBoxTwoComponent,
+		QtyCtrlTwoComponent,
 	],
 })
-export class SharedModule { }
+export class SharedModule {}

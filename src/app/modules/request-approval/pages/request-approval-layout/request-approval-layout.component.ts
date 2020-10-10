@@ -106,7 +106,7 @@ export class RequestApprovalLayoutComponent implements OnInit {
 
 		for (let index = 0; index < this.items.length; index++) {
 			const element: Product = this.items[index];
-			if (element.status == 'OK') {
+			if (element.status == 'OK' || element.status == 'UNBUYABLE') {
 				this.selectedItems.push(element);
 			}
 		}
