@@ -7,9 +7,10 @@ import { CartRoutingModule } from './cart-routing.module';
 import { EmptyCartComponent } from './components/empty-cart/empty-cart.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { CartLayoutComponent } from './pages/cart-layout/cart-layout.component';
+import { PilihSemuaComponent } from './components/pilih-semua/pilih-semua.component';
 
 @NgModule({
-	declarations: [CartLayoutComponent, EmptyCartComponent, ItemCardComponent],
+	declarations: [CartLayoutComponent, EmptyCartComponent, ItemCardComponent, PilihSemuaComponent],
 	imports: [
 		CartRoutingModule,
 		CommonModule,

@@ -11,22 +11,26 @@
 			</div>
 		</div>
 		<ng-template #elseBlock>
-			<div class="d-flex">
+			<div class="d-flex w-100 justify-content-between">
 				<div>
 					<address-section wide="596px"
 						borderRadius='20px'
 						margin="0px">
 					</address-section>
-					<div>
+
+					<pilih-semua (onPilihSemuaCheckboxClick)="pilihSemuaClickEvent($event)"></pilih-semua>
+					<div style="overflow:scroll; ">
 						<div *ngFor="let item of items">
 							<item-card [item]="item"
 								(onUpdateQty)="updateItemCartList($event)"></item-card>
-							<wsv wide="10px"></wsv>
+							<wsv wide="40px"></wsv>
 						</div>
 					</div>
 				</div>
-				<box-cart-price [pertotalan]="calculate()"
+				<box-cart-price class="box-cart-price"
+					[pertotalan]="calculate()"
 					buttonLabel="Selanjutnya"
+					(buttonBoxCartPriceClick)="selanjutnyaClick()"
 					[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
 			</div>
 		</ng-template>

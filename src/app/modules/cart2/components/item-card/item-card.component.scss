@@ -11,6 +11,7 @@
 	border-radius: 10px;
 	padding-top: 10px;
 	padding-left: 10px;
+	height: 100%;
 }
 
 .check-box-container {
@@ -56,4 +57,73 @@
 	height: 92px;
 
 	object-fit: scale-down;
+}
+
+#main-wrapper {
+	position: relative;
+}
+
+#masking {
+	opacity: 0.5;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+}
+
+#above-masking {
+	background-color: transparent;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+}
+
+#out-of-stock {
+	background: #fbb829;
+	border-radius: 19px;
+	width: 84px;
+	height: 18px;
+
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 10px;
+	line-height: 14px;
+
+	color: #ffffff;
+}
+
+#trash-can {
+	width: 21px;
+	height: 20.76px;
+}
+
+#tolak-button {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	text-align: right;
+	text-decoration-line: underline;
+
+	color: #606060;
+	margin-bottom: 15px;
+}
+
+.transparent {
+	background-color: transparent !important;
+}
+
+.container-29 {
+	padding-right: 20px;
+}
+
+#item-telah-dihapus {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+
+	color: #ffffff;
 }
