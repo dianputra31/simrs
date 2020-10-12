@@ -3,14 +3,21 @@
 
 #top-fixed {
 	position: fixed;
-	width: 97%;
+	width: 1200px;
 	background-color: $abu-abu-2;
 	z-index: 1;
+	border: solid blue 0px;
+}
+
+.filternya{
+	position: relative;
+	float: left;
+	width:95%;
 }
 
 #keranjang-label {
 	font-family: $primary-font;
-	font-weight: bold;
+	font-weight: bold; 
 	font-size: 24px;
 	color: $abu-abu-gelap;
 	margin-top: 25px;

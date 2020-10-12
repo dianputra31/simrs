@@ -3,17 +3,20 @@
 
 		<div id="top-fixed"
 			class="bg-10">
-			<div id="keranjang-label">TRANSAKSI</div>
-			<wsv wide="20px"></wsv>
-			<div class="d-flex justify-content-left">
-				<list-status-section (onStatusSelected)="handleSelectStatus($event)"></list-status-section>
+			<div class="filternya">
+				<div id="keranjang-label">TRANSAKSI</div>
+				<wsv wide="20px"></wsv>
+
+				<div class="d-flex justify-content-left">
+					<list-status-section (onStatusSelected)="handleSelectStatus($event)"></list-status-section>
+				</div>
+				<wsv wide="19px"></wsv>
+
+				<filter-buttons-section (onParamUpdate)="getTrxList()"
+					[param]="param"></filter-buttons-section>
+
+				<wsv wide="20px"></wsv>
 			</div>
-			<wsv wide="19px"></wsv>
-
-			<filter-buttons-section (onParamUpdate)="getTrxList()"
-				[param]="param"></filter-buttons-section>
-
-			<wsv wide="20px"></wsv>
 			<div id="horizontal-line"></div>
 			<wsv wide="10px"></wsv>
 			<wsv wide="20px"></wsv>
