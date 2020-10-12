@@ -5,14 +5,18 @@
 	<img src="../../../../../assets/image/icons/arrow.svg"
 		class="arrow-breadcrumb">
 	<div class="breadcrumb-link"
-		[routerLink]="['../pilih-produk']">Fashion Pria</div>
+		[routerLink]="['../pilih-produk']"
+		(click)="bukapencarian(productDetail.category_id,productDetail.subcategory_id)">{{productDetail.category}}</div>
 	<img src="../../../../../assets/image/icons/arrow.svg"
 		class="arrow-breadcrumb">
 	<div class="breadcrumb-link"
-		[routerLink]="['../pilih-produk']">Outer Pria</div>
+		[routerLink]="['../pilih-produk']"
+		(click)="bukapencarian(productDetail.category_id,productDetail.subcategory_id)">{{productDetail.subcategory}}
+	</div>
 	<img src="../../../../../assets/image/icons/arrow.svg"
 		class="arrow-breadcrumb">
 	<font class="th-produk">
-		<div class="breadcrumb-link">Sweater Pria</div>
+		<div class="breadcrumb-link">{{productDetail.product_name}}</div>
 	</font>
+	<!-- {{productDetail | json}} -->
 </div>

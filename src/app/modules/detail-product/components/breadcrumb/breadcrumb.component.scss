@@ -28,6 +28,11 @@ a[ng-reflect-router-link] {
 	margin-right: 12px;
 }
 
+
+.arrow-breadcrumb :hover {
+	font-weight: 300;
+}
+
 .th-produk {
 	color: $merah-terang;
 }

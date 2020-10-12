@@ -6,8 +6,6 @@ import { RedirectParameterService } from '../../../../layout/redirect-parameter.
 import { CatalogCategoryModel } from '../../../../models/catalog-category.model';
 import { ProductCatalogResponseModel } from '../../../../models/product-catalog-response-model';
 
-
-
 @Component({
 	selector: 'catalog-section',
 	templateUrl: './catalog-section.component.html',
@@ -18,9 +16,10 @@ export class CatalogSectionComponent implements OnInit {
 	subsribers: Subscription[];
 	clickedCategory: CatalogCategoryModel;
 
-	constructor(private service: BaseService,
+	constructor(
+		private service: BaseService,
 		private router: Router,
-		private _redirectparam: RedirectParameterService,
+		private _redirectparam: RedirectParameterService
 	) { }
 
 	ngOnInit() {
@@ -29,9 +28,7 @@ export class CatalogSectionComponent implements OnInit {
 	}
 
 	lihatSemua(a, b) {
-		this._redirectparam.namaproduk = "";
-		this.router.navigate([
-			'/pilih-produk/' + a + '/' + b,
-		])
+		this._redirectparam.namaproduk = '';
+		this.router.navigate(['/pilih-produk/' + a + '/' + b]);
 	}
 }

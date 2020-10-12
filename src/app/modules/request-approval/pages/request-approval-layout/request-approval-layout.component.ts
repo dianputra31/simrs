@@ -17,7 +17,7 @@ import {
 } from '../../../../models/checkout-cart.model';
 import { Company, ConvertCompany } from '../../../../models/company.model';
 import { PopUpDialogComponent } from '../../../../shared/components/pop-up-dialog/pop-up-dialog.component';
-
+import { SuccessDialogComponent } from '../../components/success-dialog/success-dialog.component';
 export let browserRefresh = false;
 
 @Component({
@@ -141,16 +141,43 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		const sub = this.service
 			.postData(ApprovalUrl, pm, false, false, true)
 			.subscribe((resp) => {
+				console.log(resp);
 				const stringnya = ConvertCheckoutCart.checkoutCartToJson(resp);
 				const cartCheckout: CheckoutCart = ConvertCheckoutCart.toCheckoutCart(
 					stringnya
 				);
 				if (cartCheckout.status.rc == 1) {
-					this.openDialogLocation('./cart');
+					this.openSuccessDialog();
 				} else {
 				}
 			});
 
 		this.subsribers.push(sub);
+	}
+
+	openSuccessDialog() {
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = 'modal-component';
+		dialogConfig.height = 'auto';
+		dialogConfig.width = '477px';
+		dialogConfig.height = '155px';
+		dialogConfig.panelClass = 'border-radius:20px';
+		dialogConfig.data = {};
+
+		const modalDialog = this.dialog.open(
+			SuccessDialogComponent,
+			dialogConfig
+		);
+
+		modalDialog.afterClosed().subscribe((data) => {
+			if (data == 'ok') {
+				this.router.navigate(['./cart']);
+			} else if (data == 'cancel') {
+				history.pushState(null, null, window.location.href);
+			}
+		});
+
+		return false;
 	}
 }
