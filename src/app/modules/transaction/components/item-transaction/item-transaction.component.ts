@@ -78,4 +78,8 @@ export class ItemTransactionComponent implements OnInit {
 	viewDetail() {
 		this.router.navigate(['./transaction-detail']);
 	}
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
+	}
 }
