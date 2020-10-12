@@ -10,9 +10,12 @@
 			<address-section borderRadius='20px'
 				wide='75%'></address-section>
 			<div class="white-space"></div>
-			<div id="label-total-produk">{{qtyproduk}} produk <span id="choosen-produk">{{keyword}}</span> di
-				<span id="choosen-produk">{{namakategori}}</span>
+			<div *ngIf="qtyproduk > 0;else kosong">
+				<div id="label-total-produk">{{qtyproduk}} produk <span id="choosen-produk">{{keyword}}</span> di
+					<span id="choosen-produk">{{namakategori}}</span>
+				</div>
 			</div>
+			<ng-template #kosong><b>Barang</b> {{keyword}} <b>tidak tersedia</b></ng-template>
 			<div class="white-space"></div>
 			<!-- *ngIf="IsWait" -->
 			<mat-progress-spinner mode="indeterminate"
