@@ -75,8 +75,10 @@ export class ItemTransactionComponent implements OnInit {
 		this.router.navigate(['./pilih-produk']);
 	}
 
-	viewDetail() {
-		this.router.navigate(['./transaction-detail']);
+	viewDetail(item: TransactionItemResponseModel) {
+		this.router.navigate([
+			`./transaction-detail/${item.purchased_id}/${item.id}`,
+		]);
 	}
 
 	onImgError(event) {
