@@ -36,23 +36,14 @@ export class HeaderComponent implements OnInit {
 	) { }
 
 	myControl = new FormControl();
-	options: string[] = [
-		'Ampelas Halus',
-		'Ampelas Kasar',
-		'Amplifier Jumbo',
-		'Bawang Merah',
-		'Bawang Putih',
-		'Bolpoint',
-		'Centong Super',
-		'Sweater Merah Pria',
-	];
+	options: string[] = [];
 	filteredOptions: Observable<string[]>;
 
 	ngOnInit() {
 		this.filteredOptions = this.myControl.valueChanges.pipe(
 			startWith(''),
 			//minimal 1 karakter
-			map((value) => (value.length >= 3 ? this._filter(value) : []))
+			map((value) => (value.length >= 1 ? this._filter(value) : []))
 
 		);
 
