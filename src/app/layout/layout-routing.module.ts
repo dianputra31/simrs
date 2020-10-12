@@ -79,7 +79,7 @@ const routes: Routes = [
 					),
 			},
 			{
-				path: 'transaction-detail',
+				path: 'transaction-detail/:purchased_id/:item_id',
 				loadChildren: () =>
 					import(
 						'../modules/transaction-detail/transaction-detail.module'
