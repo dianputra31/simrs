@@ -25,9 +25,8 @@ export class ItemTransactionComponent implements OnInit {
 	constructor(
 		public dialog: MatDialog,
 		private router: Router,
-		private route: ActivatedRoute
-	) // private filterservice: FilterInputComponent,
-	{}
+		private route: ActivatedRoute // private filterservice: FilterInputComponent,
+	) {}
 
 	ngOnInit(): void {}
 
@@ -78,5 +77,9 @@ export class ItemTransactionComponent implements OnInit {
 
 	viewDetail() {
 		this.router.navigate(['./transaction-detail']);
+	}
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
 	}
 }

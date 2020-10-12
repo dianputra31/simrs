@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckBoxItemComponent } from './check-box-item.component';
+import { QtyCtrlTwoComponent } from './qty-ctrl-two.component';
 
-describe('CheckBoxItemComponent', () => {
-  let component: CheckBoxItemComponent;
-  let fixture: ComponentFixture<CheckBoxItemComponent>;
+describe('QtyCtrlTwoComponent', () => {
+  let component: QtyCtrlTwoComponent;
+  let fixture: ComponentFixture<QtyCtrlTwoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckBoxItemComponent ]
+      declarations: [ QtyCtrlTwoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckBoxItemComponent);
+    fixture = TestBed.createComponent(QtyCtrlTwoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

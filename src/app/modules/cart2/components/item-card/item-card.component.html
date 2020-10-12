@@ -1,0 +1,77 @@
+<div id="main-wrapper">
+	<div class="rectangle-87">
+		<div class="d-flex header-wrapper align-items-center">
+			<check-box-two [checked]="item.selected"
+				[allowChanges]="item.enableSelection"
+				(onClickEvent)="handleClickCheckbox($event)"
+				class="check-box-container"></check-box-two>
+			<div class="d-flex flex-grow-1 justify-content-between">
+				<div>
+					<div class="label-gray">Ongkos Kirim</div>
+					<div class="label-gray-2">{{item.shipping_cost|rupiah}}</div>
+				</div>
+				<div>
+					<div class="label-gray">Harga Belanja</div>
+					<div class="label-gray-2">{{item.grand_total|rupiah}}</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="rectangle-86 w-100 d-flex">
+			<img src='{{item.product_image}}'
+				(error)="onImgError($event)"
+				class="item-img">
+			<wsh wide="15px"></wsh>
+			<div id="item-desc-wrapper">
+				<item-desc [item]="item"></item-desc>
+				<wsv wide="6px"></wsv>
+				<qty-ctrl-two [initQty]="item.quantity"
+					(onUpdateQty)="handleQtyUpdate($event)"></qty-ctrl-two>
+			</div>
+			<wsh wide="90px"></wsh>
+
+			<div id="tolak-button"
+				class="container-29 d-flex flex-grow-1 flex-row-reverse align-items-end">
+				<img id="trash-can"
+					src="../../../../../assets/image/icons/trash_can.png"
+					(click)="deleteItem(dangerTpl, item)" />
+			</div>
+
+
+		</div>
+	</div>
+	<div id="masking"
+		*ngIf="item.availability != 'AVAILABLE'"
+		class="rectangle-87">
+	</div>
+
+	<div id="above-masking"
+		*ngIf="item.availability != 'AVAILABLE'"
+		class="rectangle-87">
+		<div class="d-flex flex-grow-1 flex-row-reverse align-items-end"
+			style="height: 100%;">
+			<div class="container-29">
+				<div class="d-flex flex-row-reverse">
+					<div id="out-of-stock"
+						class="d-flex justify-content-center align-items-center">
+						{{item.availability}}
+					</div>
+				</div>
+				<wsv wide="9px"></wsv>
+				<div id="tolak-button"
+					class="d-flex flex-row-reverse">
+					<img id="trash-can"
+						src="../../../../../assets/image/icons/trash_can.png"
+						(click)="deleteItem(dangerTpl, item)" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<ng-template #dangerTpl>
+	<div class="d-flex align-self-center justify-content-center">
+		<div id="item-telah-dihapus">Item telah dihapus</div>
+	</div>
+</ng-template>

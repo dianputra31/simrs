@@ -1,0 +1,58 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+#remove_cart_logo_wrapper {
+	width: 22px;
+	height: 16px;
+	cursor: pointer;
+}
+
+#remove_cart_logo {
+	width: 11px;
+	height: 4px;
+}
+
+#remove_cart_logo {
+	width: 11px;
+	height: 4px;
+	cursor: pointer;
+	pointer-events: none;
+}
+
+.remove_cart_logo_disable {
+	filter: contrast(0%) brightness(150%) saturate(0%);
+}
+
+.pointereventnone {
+	pointer-events: none;
+}
+
+#add_to_cart_logo {
+	width: 11px;
+	height: 11px;
+}
+
+.control-wrapper {
+	width: 160px !important;
+}
+
+#qty_input {
+	font-family: $secondary-font;
+	width: 120px;
+	background: transparent;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: $abu-abu-gelap;
+}
+
+#horizontal-underline {
+	height: 1px;
+	width: 70%;
+	margin: auto;
+	background-color: $abu-abu-sesuatu;
+}

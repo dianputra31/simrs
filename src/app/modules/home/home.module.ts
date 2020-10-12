@@ -10,6 +10,7 @@ import { BannerSectionComponent } from './components/banner-section/banner-secti
 import { CatalogSectionComponent } from './components/catalog-section/catalog-section.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
+import { DialogWaitingApprovalComponent } from './components/dialog-waiting-approval/dialog-waiting-approval.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 		HomeLayoutComponent,
 		CatalogSectionComponent,
 		BannerSectionComponent,
+		DialogWaitingApprovalComponent,
 	],
 	imports: [
 		CommonModule,

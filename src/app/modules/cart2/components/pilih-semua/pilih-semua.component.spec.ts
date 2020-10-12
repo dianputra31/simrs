@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CartEmptyComponent } from './cart-empty.component';
+import { PilihSemuaComponent } from './pilih-semua.component';
 
-describe('CartEmptyComponent', () => {
-  let component: CartEmptyComponent;
-  let fixture: ComponentFixture<CartEmptyComponent>;
+describe('PilihSemuaComponent', () => {
+  let component: PilihSemuaComponent;
+  let fixture: ComponentFixture<PilihSemuaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CartEmptyComponent ]
+      declarations: [ PilihSemuaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CartEmptyComponent);
+    fixture = TestBed.createComponent(PilihSemuaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

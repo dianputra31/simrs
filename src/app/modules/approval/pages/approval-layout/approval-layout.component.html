@@ -3,7 +3,8 @@
 
 		<div id="top-fixed"
 			class="bg-10">
-			<div id="keranjang-label">APPROVAL</div>
+
+			<!-- <div id="keranjang-label">APPROVAL</div> -->
 			<wsv wide="7px"></wsv>
 			<div class="d-flex justify-content-center">
 				<item-summary-dropdown [list]="listApprovals"
@@ -50,7 +51,8 @@
 
 			<div class="d-flex align-items-center">
 				<div class="flex-grow-1 d-flex ">
-					<date-dropdown class="flex-even"></date-dropdown>
+					<filter-purchaser class="flex-even"
+						(user_id)="updateUserId($event)"></filter-purchaser>
 					<wsh wide="24px"></wsh>
 					<filter-input (keyup)="cari($event)"
 						class="flex-even"
@@ -88,7 +90,7 @@
 	</div>
 
 </div>
-<wsv wide="310px"></wsv>
+<wsv wide="260px"></wsv>
 <div class="container d-flex">
 
 	<div id="left-container">
@@ -101,10 +103,14 @@
 		<div id="right-fixed">
 			<div class="d-flex">
 				<wsh wide="57px"></wsh>
-				<box-cart-price [selectedItems]="selectedItems"
-					[pertotalan]="pertotalan"
-					[buttonLabel]="buttonSelanjutnyaLabel()"
-					[buttonDisable]="!cartIsEmpty()"></box-cart-price>
+				<div *ngIf="isManager()">
+					<box-cart-price [selectedItems]="selectedItems"
+						[pertotalan]="pertotalan"
+						[buttonLabel]="buttonSelanjutnyaLabel()"
+						[buttonDisable]="!cartIsEmpty()"
+						(buttonBoxCartPriceClick)="selanjutnyaClick()"></box-cart-price>
+				</div>
+
 			</div>
 
 		</div>

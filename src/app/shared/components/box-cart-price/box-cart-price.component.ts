@@ -2,22 +2,20 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ApprovalUrl, ApproveUrl, CheckoutCartUrl } from '../../../app.constant';
+import { ApproveUrl } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
+import { StorageService } from '../../../core/storage/service/storage.service';
 import { CartListElement } from '../../../models/cart-list.model';
 import {
 	ApproveCartParams,
-	CartListApproveParams, CartListParams,
-	CheckoutCartParams,
+	CartListApproveParams,
 	ConvertApproveParams,
-	ConvertCheckoutParams
 } from '../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart
+	ConvertCheckoutCart,
 } from '../../../models/checkout-cart.model';
 import { ApprovalConfirmationDialogComponent } from '../../../modules/approval/components/approval-confirmation-dialog/approval-confirmation-dialog.component';
-import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 
 @Component({
 	selector: 'box-cart-price',
@@ -38,8 +36,9 @@ export class BoxCartPriceComponent implements OnInit {
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router,
-		private service: BaseService
-	) { }
+		private service: BaseService,
+		private storageService: StorageService
+	) {}
 
 	ngOnInit(): void {
 		this.datacompany = JSON.parse(localStorage.getItem('company'));
@@ -57,33 +56,19 @@ export class BoxCartPriceComponent implements OnInit {
 			}
 			const params: ApproveCartParams = {
 				cart_list: cart_list,
-				message: "hahahahhatot"
+				message: 'hahahahhatot',
 			};
 
-			var pm: String = ConvertApproveParams.approveCartParamsToJson(params);
-
-		} else {
-			const cart_list: CartListParams[] = [];
-
-			for (let index = 0; index < this.selectedItems.length; index++) {
-				const element: CartListElement = this.selectedItems[index];
-				const cart = new CartListParams();
-				cart.product_id = element.product_id;
-				cart.quantity = element.quantity;
-				cart_list.push(cart);
-			}
-			const params: CheckoutCartParams = {
-				cart_list: cart_list,
-			};
-			var pm: String = ConvertCheckoutParams.checkoutCartParamsToJson(params);
+			var pm: String = ConvertApproveParams.approveCartParamsToJson(
+				params
+			);
 		}
 		var url = '';
-		if (type == 'selanjutnya') {
-			url = CheckoutCartUrl;
-		} else if (type == 'req-approval') {
-			url = ApprovalUrl;
-		} else if (type == 'proses') {
+		if (type == 'proses') {
 			url = ApproveUrl;
+			if (this.storageService.getRole() != 'Manager') {
+				pm = null;
+			}
 		}
 		const sub = this.service
 			.postData(url, pm, false, false, true)
@@ -93,12 +78,7 @@ export class BoxCartPriceComponent implements OnInit {
 					stringnya
 				);
 				if (cartCheckout.status.rc == 1) {
-					if (type == 'selanjutnya') {
-						localStorage.setItem('checkout-cart', stringnya);
-						this.router.navigate(['./request-approval']);
-					} else if (type == 'req-approval') {
-						this.openDialogLocation('./cart');
-					} else if (type == 'proses') {
+					if (type == 'proses') {
 						this.router.navigate(['./approval']);
 					}
 				} else {
@@ -106,30 +86,6 @@ export class BoxCartPriceComponent implements OnInit {
 			});
 
 		this.subsribers.push(sub);
-	}
-
-	openDialogLocation(des) {
-		const dialogConfig = new MatDialogConfig();
-		dialogConfig.disableClose = false;
-		dialogConfig.id = 'modal-component';
-		dialogConfig.height = 'auto';
-		dialogConfig.width = '477px';
-		dialogConfig.height = '155px';
-		dialogConfig.panelClass = 'border-radius:20px';
-		dialogConfig.data = {
-			pageBefore: this.router.url,
-			pageDestination: des,
-			modePopUp: '1',
-		};
-		const modalDialog = this.dialog.open(
-			PopUpRequestApprovalComponent,
-			dialogConfig
-		);
-		modalDialog.afterClosed().subscribe(result => {
-			if (result.event == 'proses') {
-
-			}
-		})
 	}
 
 	openConfirmDialog(des) {
@@ -151,31 +107,19 @@ export class BoxCartPriceComponent implements OnInit {
 			dialogConfig
 		);
 
-		modalDialog.afterClosed().subscribe(result => {
+		modalDialog.afterClosed().subscribe((result) => {
 			if (result.event == 'proses') {
 				this.postCartItem('proses');
 			}
-		})
+		});
 		return false;
 	}
 
 	clickButtonLabel() {
-		this.buttonBoxCartPriceClick.emit();
-		if (this.buttonDisable) {
-			if (this.buttonLabel == 'Selanjutnya') {
-				this.subsribers = [];
-				this.route.paramMap.subscribe((params) => {
-					this.postCartItem('selanjutnya');
-				});
-			} else if (this.buttonLabel == 'Request Approval') {
-
-				if (this.selectedItems.length > 0) {
-					this.postCartItem('req-approval');
-				} else {
-					alert('Maaf tidak ada produk yang tersedia');
-				}
-			} else if (this.buttonLabel == 'Proses') {
-				this.openConfirmDialog('./approval');
+		if (!this.buttonDisable) {
+			this.buttonBoxCartPriceClick.emit();
+			if (this.buttonLabel == 'Proses') {
+				// this.openConfirmDialog('./approval');
 			}
 		}
 	}

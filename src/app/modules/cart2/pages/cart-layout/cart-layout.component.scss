@@ -1,9 +1,10 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
-#pilih-semua-label {
+#keranjang-label {
 	font-family: $primary-font;
 	font-weight: bold;
-	font-size: 16px;
-	color: $color-primary;
+	font-size: 24px;
+	color: $abu-abu-gelap;
+	margin-top: 20px;
 }

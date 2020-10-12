@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between align-items-center control-wrapper">
+	<a id="remove_cart_logo_wrapper"
+		class="d-flex align-items-center"
+		(click)="removeOneFromCart()">
+		<object id="remove_cart_logo"
+			type="image/svg+xml"
+			data="../../../../../assets/image/icons/remove-logo.svg"
+			class="pointereventnone">
+			<style>
+				svg {
+					cursor: pointer;
+					pointer-events: none;
+				}
+
+			</style>
+		</object>
+	</a>
+	<div>
+		<input id="qty_input"
+			type="number"
+			maxlength="6"
+			[(ngModel)]="qty"
+			(change)="onChange()">
+		<div id="horizontal-underline">
+		</div>
+	</div>
+
+	<div id="remove_cart_logo_wrapper"
+		class="d-flex align-items-center"
+		(click)="addOneToCart()">
+		<img id="add_to_cart_logo"
+			src="../../../../../assets/image/icons/add_to_cart_ic.png"></div>
+</div>
