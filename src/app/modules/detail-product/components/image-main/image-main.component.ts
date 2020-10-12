@@ -18,7 +18,7 @@ export class ImageMainComponent implements OnInit {
 
 	imageMainSelected;
 
-	constructor(public dialog: MatDialog) {}
+	constructor(public dialog: MatDialog) { }
 
 	stylesObj = {};
 

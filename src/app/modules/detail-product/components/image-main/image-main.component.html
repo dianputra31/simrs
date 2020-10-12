@@ -1,7 +1,7 @@
 <div>
 	<div id="image-main"
 		[ngStyle]="stylesObj"
-		(click)="openDialogImage(imageMainSelected)">
+		(click)="openDialogImage(productDetail?.product_image)">
 		<img id="detail-main-image"
 			src={{productDetail?.product_image}}>
 	</div>
