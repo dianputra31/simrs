@@ -18,6 +18,7 @@ import {
 import { Company, ConvertCompany } from '../../../../models/company.model';
 import { PopUpDialogComponent } from '../../../../shared/components/pop-up-dialog/pop-up-dialog.component';
 import { SuccessDialogComponent } from '../../components/success-dialog/success-dialog.component';
+
 export let browserRefresh = false;
 
 @Component({

@@ -77,7 +77,7 @@ export class ItemTransactionComponent implements OnInit {
 
 	viewDetail(item: TransactionItemResponseModel) {
 		this.router.navigate([
-			`./transaction-detail/${item.purchased_id}/${item.id}`,
+			`./transaction-detail/${item.order_code}/${item.id}`,
 		]);
 	}
 

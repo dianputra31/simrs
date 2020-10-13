@@ -32,6 +32,7 @@ export class TransactionItemResponseModel {
 	public requested_at: Date;
 	public delivery_address_id: number;
 	public delivery_address_json: DeliveryAddressJsonModel;
+	public order_code: string;
 
 	public convert(dto: any) {
 		this.id = dto.id;
@@ -63,6 +64,7 @@ export class TransactionItemResponseModel {
 		this.requester_full_name = dto.requester_full_name;
 		this.approved_at = dto.approved_at;
 		this.requested_at = dto.requested_at;
+		this.order_code = dto.order_code;
 		this.delivery_address_id = dto.delivery_address_id;
 		this.delivery_address_json = new DeliveryAddressJsonModel().convert(
 			dto.delivery_address_json
