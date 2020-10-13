@@ -36,8 +36,11 @@
 		</div>
 		<div id="content"
 			class="d-flex">
-			<img src='{{item.product_image}}'
+			<img [src]="item.product_image"
+				class="card-img-top"
+				(error)="onImgError($event)"
 				id="item-img">
+
 			<wsh wide="15px"></wsh>
 			<div id="item-desc-wrapper">
 				<item-desc [item]="item"></item-desc>

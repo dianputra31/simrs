@@ -44,4 +44,9 @@ export class ItemApprovalComponent implements OnInit {
 		this.clickEvent.emit(item);
 		return this.item.available && this.item.cart;
 	}
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
+	}
+
 }
