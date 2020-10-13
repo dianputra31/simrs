@@ -1,0 +1,37 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+.gray-label {
+	background: #e0e0e0;
+	border: 0.5px solid #ffffff;
+	box-sizing: border-box;
+	border-radius: 57px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	color: #bdbdbd;
+
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.red-label {
+	background: #db0a2a;
+	border: 0.5px solid #ffffff;
+	box-sizing: border-box;
+	border-radius: 57px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	color: #ffffff;
+
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
