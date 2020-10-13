@@ -1,10 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RupiahPipe } from './rupiah.pipe';
+import { TanggalPipe } from './tanggal.pipe';
+
+
 
 @NgModule({
 	imports: [CommonModule],
-	declarations: [RupiahPipe],
-	exports: [RupiahPipe],
+	declarations: [RupiahPipe, TanggalPipe],
+	exports: [RupiahPipe, TanggalPipe],
 })
 export class SharedPipesModule {}
