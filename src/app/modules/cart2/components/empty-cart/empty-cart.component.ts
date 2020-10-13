@@ -14,7 +14,7 @@ export class EmptyCartComponent implements OnInit {
 
 	mulaiBelanja() {
 		this.router.navigate([
-			`./pilih-produk/0/0`
+			`./home`
 		]);
 	}
 
