@@ -81,7 +81,6 @@ export class StatusAlasanComponent implements OnInit {
 		this.processes.push(z);
 		this.processes.push(a);
 
-		console.log(this.processes);
 		return this.processes;
 	}
 

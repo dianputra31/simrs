@@ -1,11 +1,11 @@
-<div>
-	<div class="d-flex align-items-center">
-		<div class="horizontal-line"></div>
-		<img [src]="image">
-	</div>
-
-	<div class="label-1 d-flex w-100 justify-content-center">{{date|tanggal}}</div>
+<div class="d-flex align-items-center">
+	<div *ngIf="separator"
+		class="horizontal-line"></div>
+	<img [src]="image">
 </div>
+
+<div class="label-1 d-flex w-100 justify-content-center">{{date|tanggal}}</div>
+
 
 <!-- <img src="../../../../../assets/image/icons/dikirim-grey.svg">
 <img src="../../../../../assets/image/icons/dikirim-red.svg">

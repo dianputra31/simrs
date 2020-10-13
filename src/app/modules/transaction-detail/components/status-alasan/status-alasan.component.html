@@ -1,10 +1,10 @@
 <div *ngIf="!showStatusLabel()"
 	class="d-flex">
-	<div *ngFor="let process of createProcess()">
+	<div *ngFor="let process of createProcess(); let i = index">
 		<process-logo [image]="process.image"
+			[separator]="i != 0"
 			[date]="process.date"></process-logo>
 	</div>
-
 </div>
 
 

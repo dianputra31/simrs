@@ -1,29 +1,42 @@
 <block-ui>
 	<div class="container">
-
 		<div id="keranjang-label">DETAIL PEMESANAN</div>
 
+		<wsv wide="20px"></wsv>
 		<div class="d-flex">
 			<div class="flex-grow-1 left-wrapper">
-				<div class="d-flex justify-content-between">
-					<div class="label-1">Request by: <span class="label-2">{{item?.requester_full_name}}</span></div>
-					<status-label [status]="item?.status"></status-label>
+
+				<wsv wide="20px"></wsv>
+				<div class="padding">
+					<div class="d-flex justify-content-between">
+						<div class="label-1">Request by: <span class="label-2">{{item?.requester_full_name}}</span>
+						</div>
+						<status-label [status]="item?.status"></status-label>
+					</div>
+					<wsv wide="15px"></wsv>
+					<div class="d-flex justify-content-between">
+						<div>
+							<div class="label-1">Tgl. Pemesanan</div>
+							<wsv wide="3px"></wsv>
+							<div class="label-2">{{item?.requested_at|tanggal}}</div>
+						</div>
+						<div>
+							<div class="label-1">No. Pemesanan</div>
+							<wsv wide="3px"></wsv>
+							<div class="label-2">{{item?.order_code}}</div>
+						</div>
+						<div>
+							<div class="label-1">Pengiriman & No. Resi</div>
+							<wsv wide="3px"></wsv>
+							<div class="label-2">{{item?.receipt_number}}</div>
+						</div>
+					</div>
 				</div>
-				<div class="d-flex justify-content-between">
-					<div>
-						<div class="label-1">Tgl. Pemesanan</div>
-						<div class="label-2">{{item?.requested_at|tanggal}}</div>
-					</div>
-					<div>
-						<div class="label-1">No. Pemesanan</div>
-						<div class="label-2">{{item?.order_code}}</div>
-					</div>
-					<div>
-						<div class="label-1">Pengiriman & No. Resi</div>
-						<div class="label-2">{{item?.receipt_number}}</div>
-					</div>
-				</div>
+
+				<wsv wide="20px"></wsv>
 				<horizontal-line></horizontal-line>
+
+				<wsv wide="20px"></wsv>
 				<div class="d-flex">
 					<img src='{{item?.product_image}}'
 						(error)="onImgError($event)"
@@ -37,23 +50,38 @@
 					</div>
 					<wsh wide="150px"></wsh>
 				</div>
+
+				<wsv wide="20px"></wsv>
 				<horizontal-line></horizontal-line>
-				<status-alasan [item]="item"></status-alasan>
+
+				<wsv wide="20px"></wsv>
+				<div class="padding">
+					<status-alasan [item]="item"></status-alasan>
+				</div>
+
+				<wsv wide="20px"></wsv>
 				<horizontal-line></horizontal-line>
-				<div>
+
+				<wsv wide="20px"></wsv>
+				<div class="padding">
 					<div class="label-1">Perkiraan Waktu Sampai:</div>
 					<div class="label-2">---</div>
 				</div>
+
+				<wsv wide="20px"></wsv>
 				<horizontal-line></horizontal-line>
-				<div>
+				<wsv wide="20px"></wsv>
+				<div class="padding">
 					<div class="label-1">Catatan Pengiriman:</div>
 					<div class="label-2">{{item?.message}}</div>
 				</div>
+
+				<wsv wide="20px"></wsv>
 			</div>
 
 			<wsh wide="30px"></wsh>
 
-			<status-pembelian></status-pembelian>
+			<status-pembelian [item]="item"></status-pembelian>
 		</div>
 		<div id="left-container">
 

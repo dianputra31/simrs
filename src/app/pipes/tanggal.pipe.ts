@@ -5,7 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 	name: 'tanggal',
 })
 export class TanggalPipe extends DatePipe implements PipeTransform {
-	transform(value: any, args?: any): any {
-		return super.transform(value, 'd MMM y HH:mm');
+	transform(value: any, tipe?: any): any {
+		switch (tipe) {
+			case 'tgl':
+				return super.transform(value, 'd MMMM y');
+			default:
+				return super.transform(value, 'd MMMM y h:mm a');
+		}
 	}
 }

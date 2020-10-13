@@ -1,35 +1,58 @@
 <div class="wrapper">
-	<div class="d-flex justify-content-between align-items-center">
-		<div class="label-1 ">
+	<wsv wide="20px"></wsv>
+	<div class="d-flex justify-content-between align-items-center padding">
+		<div class="label-1 d-flex">
 			Status Pembelian
 		</div>
-		<div class="label-2">
-			Di proses
+		<div class="label-2 d-flex">
+			{{item?.status}}
 		</div>
 	</div>
+	<wsv wide="70px"></wsv>
 	<horizontal-line></horizontal-line>
-	<div class="label-3">Tagihan</div>
-	<div>
-		<div class="d-flex justify-content-between">
-			<div class="label-5">Harga Belanja</div>
-			<div class="d-flex justify-content-between width-1">
-				<div class="label-5">Rp</div>
-				<div class="label-5">5.000.000</div>
+
+	<wsv wide="10px"></wsv>
+	<div class="padding">
+		<div class="label-3">Tagihan</div>
+		<div>
+			<div class="d-flex justify-content-between">
+				<div class="label-5">Harga Belanja</div>
+				<div class="d-flex justify-content-between width-1">
+					<div class="label-5">Rp</div>
+					<div class="label-5">{{item?.grand_total|rupiah}}</div>
+				</div>
+			</div>
+			<div class="d-flex justify-content-between">
+				<div class="label-5">Total Ongkos Kirim</div>
+				<div class="d-flex justify-content-between width-1">
+					<div class="label-5">Rp</div>
+					<div class="label-5">{{item?.shipping_cost|rupiah}}</div>
+				</div>
 			</div>
 		</div>
-		<div class="d-flex justify-content-between">
-			<div class="label-5">Total Ongkos Kirim</div>
-			<div class="d-flex justify-content-between width-1">
-				<div class="label-5">Rp</div>
-				<div class="label-5">5.000.000</div>
-			</div>
-		</div>
+		<div class="label-6">*Harga belanja belum termasuk pajak</div>
 	</div>
 
-	<div class="label-6">*Harga belanja belum termasuk pajak</div>
+
+
+	<wsv wide="48px"></wsv>
 	<horizontal-line></horizontal-line>
-	<div class="label-1 ">
-		Alamat Pengiriman:
+	<wsv wide="10px"></wsv>
+	<div class="padding">
+		<div class="label-1 ">
+			Alamat Pengiriman:
+		</div>
+		<div class="label-3">{{item?.delivery_address_json.recipient_name}}</div>
+		<div class="label-3">{{item?.delivery_address_json.address_name}}</div>
+		<div class="label-5">{{item?.delivery_address_json.address_detail}},
+			{{item?.delivery_address_json.village}},
+			{{item?.delivery_address_json.subdistrict}},
+			{{item?.delivery_address_json.district}},
+			{{item?.delivery_address_json.province}},
+			{{item?.delivery_address_json.zipcode}}
+		</div>
+
 	</div>
 
+	<wsv wide="120px"></wsv>
 </div>

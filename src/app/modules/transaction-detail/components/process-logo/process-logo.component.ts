@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProcessLogoComponent implements OnInit {
 	@Input() image: string;
 	@Input() date: string;
+	@Input() separator: boolean;
 	constructor() {}
 
 	ngOnInit(): void {}
