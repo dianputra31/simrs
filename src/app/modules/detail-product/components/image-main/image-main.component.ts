@@ -53,4 +53,9 @@ export class ImageMainComponent implements OnInit {
 		//console.log($event)
 		this.imageMainSelected = $event;
 	}
+
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
+	}
 }

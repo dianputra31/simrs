@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'empty-cart',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./empty-cart.component.scss'],
 })
 export class EmptyCartComponent implements OnInit {
-	constructor() {}
+	constructor(private router: Router,) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
+
+
+	mulaiBelanja() {
+		this.router.navigate([
+			`./home`
+		]);
+	}
+
 }

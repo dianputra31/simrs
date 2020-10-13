@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { ReceiptConfirmationComponent } from './../receipt-confirmation/receipt-confirmation.component';
 // import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component'
@@ -25,10 +26,11 @@ export class ItemTransactionComponent implements OnInit {
 	constructor(
 		public dialog: MatDialog,
 		private router: Router,
-		private route: ActivatedRoute // private filterservice: FilterInputComponent,
-	) {}
+		private route: ActivatedRoute, // private filterservice: FilterInputComponent,
+		private _redirectparam: RedirectParameterService,
+	) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	getTrxHist() {
 		// console.log("thisval in item-transaction: ", keyword)
@@ -71,8 +73,12 @@ export class ItemTransactionComponent implements OnInit {
 		this.router.navigate(['./pilih-produk']);
 	}
 
-	carisejenis() {
-		this.router.navigate(['./pilih-produk']);
+	carisejenis(item: TransactionItemResponseModel) {
+		const a: any = item.product_name;
+		this._redirectparam.namaproduk = a;
+		this.router.navigate([
+			`./pilih-produk/${item.category_id}/${item.subcategory_id}/` + a.replaceAll('/', '-')
+		]);
 	}
 
 	viewDetail(item: TransactionItemResponseModel) {
