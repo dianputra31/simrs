@@ -4,6 +4,7 @@ export class TransactionItemResponseModel {
 	public id: number;
 	public purchased_id: number;
 	public product_id: number;
+	public category_id: number;
 	public subcategory_id: number;
 	public quantity: number;
 	public product_name: string;
@@ -37,6 +38,7 @@ export class TransactionItemResponseModel {
 		this.id = dto.id;
 		this.purchased_id = dto.purchased_id;
 		this.product_id = dto.product_id;
+		this.category_id = dto.category_id;
 		this.subcategory_id = dto.subcategory_id;
 		this.quantity = dto.quantity;
 		this.product_name = dto.product_name;
