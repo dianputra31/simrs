@@ -1,18 +1,33 @@
 <div *ngFor="let item of items">
-	<div class="white-rounded-corner-item-list-cart">
-		<div class="d-flex align-items-center">
+  <div class="grey-rounded-corner-header-card">
+    <div class="d-flex align-items-center">
+      <div class="col-lg-4 text-header-card">
+        <span class="title-text-header-card">Purchaser A</span> <br />
+        <span class="sub-text-header-card"> {{item?.updated_at|tanggal}} </span>
+      </div>
+      <div class="col-lg-4 text-header-card">
+        <span class="title-text-header-card-2">Ongkos Kirim</span><br />
+        <span class="sub-text-header-card">{{item?.shipping_cost}}</span>
+      </div>
+      <div class="col-lg-4 text-header-card-2">
+        <span class="title-text-header-card-2">Harga Belanja</span> <br />
+        <span class="sub-text-header-card">{{item?.sub_total|rupiah}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="white-rounded-corner-item-list-cart">
+    <div class="d-flex align-items-center">
+      <item-card [item]="item"
+        [redirlink]="false">
+        <wsv wide="10px"></wsv>
+        <div class="d-flex">
+          <div id="qty_label">{{item.quantity}} barang <span style="color: red;">({{item.status}})</span>
+          </div>
+        </div>
+      </item-card>
 
-			<cart-item-list [item]="item"
-				[redirlink]="false">
-				<wsv wide="10px"></wsv>
-				<div class="d-flex">
-					<div id="qty_label">{{item.quantity}} barang <span style="color: red;">({{item.status}})</span>
-					</div>
-				</div>
-			</cart-item-list>
 
-
-		</div>
-	</div>
-	<wsv wide="24px"></wsv>
+    </div>
+  </div>
+  <wsv wide="24px"></wsv>
 </div>

@@ -1,0 +1,42 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#item-image {
+	height: 117px;
+	width: 180px;
+	object-fit: cover;
+}
+#item-list-name{
+  color: #606060;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+#item-list-price{
+  color: #F12627;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+#sub-header{
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #A9A9A9;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.flex-grow-1{
+  width: 100vh;
+  margin-left: 3%;
+}
+.form-check-label{
+  margin-right: 10%;
+}
+
+.quantity{
+  line-height: 37px;
+}

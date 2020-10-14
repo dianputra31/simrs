@@ -24,7 +24,8 @@ export class CartListElement {
 	product_image?: string;
 	product_name?: string;
 	stock?: number = 0;
-	sell_price?: number;
+  sell_price?: number;
+  status?: string;
 	quantity?: number;
 	shipping_cost?: number;
 	availability?: string;
