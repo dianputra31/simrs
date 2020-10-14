@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./red-bg-button.component.scss'],
 })
 export class RedBgButtonComponent implements OnInit {
-	@Input() label: String = 'test';
+  @Input() label: String = 'test';
 	constructor() { }
 
 	ngOnInit(): void { }

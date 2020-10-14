@@ -1,0 +1,136 @@
+<div id="wrapper-item-approval">
+  <div id="header">
+
+    <div id="header-top">
+
+      <div id="header-top-1">
+        <span class="label-gray">Request By : </span>
+        <span class="label-gray-2">Purchaser 01</span>
+      </div>
+      <div id="header-top-2">
+
+        <ng-template *ngIf="statustrx=='Selesai'; then first
+			else second"></ng-template>
+
+        <ng-template #first>
+          <red-button label="Beli Lagi"
+            font="14px"
+            paddingtop="10px"
+            paddingbottom="10px"
+            paddingleft="0px"
+            paddingright="0px"
+            float="right"
+            (click)="belilagi()"></red-button>
+        </ng-template>
+
+        <ng-template #second>
+          <ng-template *ngIf="statustrx=='Ditolak'; then third else fourth"></ng-template>
+          <ng-template #third>
+            <red-button label="Ajukan Lagi"
+              font="14px"
+              paddingtop="10px"
+              paddingbottom="10px"
+              paddingleft="0px"
+              paddingright="0px"
+              float="right"
+              (click)="ajukanlagi()"></red-button>
+          </ng-template>
+
+          <ng-template #fourth>
+            <ng-template *ngIf="statustrx=='Diproses'; then fifth else sixth"></ng-template>
+            <ng-template #fifth>
+              <ng-template *ngIf="statustrx=='Diproses' || statustrx=='Dikirim'; then disab else enab">
+              </ng-template>
+              <ng-template #disab>
+                <div id="button-wrapper"
+                  class="d-flex align-items-center justify-content-center">
+                  Selesai
+                </div>
+
+              </ng-template>
+
+              <ng-template #enab>
+                <red-button label="Selesai"
+                  font="14px"
+                  paddingtop="10px"
+                  paddingbottom="10px"
+                  paddingleft="0px"
+                  paddingright="0px"
+                  float="right"
+                  (click)="selesai()"></red-button>
+              </ng-template>
+
+            </ng-template>
+
+            <ng-template #sixth>
+              <red-button label="Cari Sejenis"
+                font="14px"
+                paddingtop="10px"
+                paddingbottom="10px"
+                paddingleft="0px"
+                paddingright="0px"
+                (click)="carisejenis()"></red-button>
+            </ng-template>
+
+          </ng-template>
+
+        </ng-template>
+
+
+      </div>
+    </div>
+
+    <div id="header-bottom">
+
+      <div id="purchaser-col-1"
+        class="d-flex align-items-center">
+
+        <div id="purchaser-col-1">
+          <div class="label-gray">Tgl. Pemesanan</div>
+          <div class="label-gray-2">18 Juli 2020</div>
+        </div>
+      </div>
+
+      <wsh wide="11px"></wsh>
+
+
+      <div id="purchaser-col-2"
+        class="d-flex align-items-center">
+        <div>
+          <div id="purchaser-col-1">
+            <div class="label-gray">No. Pemesanan</div>
+            <div class="label-gray-2">20300040218</div>
+          </div>
+        </div>
+      </div>
+      <wsh wide="11px"></wsh>
+
+      <div id="purchaser-col-3"
+        class="d-flex align-items-center">
+        <div>
+          <div id="purchaser-col-1">
+            <div class="label-gray">No. Resi</div>
+            <div class="label-gray-2">00000000000000000000001</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="content"
+    class="d-flex">
+    <img src='../../../../../assets/image/icons/macbook_a.png'
+      id="item-img">
+    <wsh wide="15px"></wsh>
+    <div id="item-desc-wrapper">
+      <item-desc></item-desc>
+      <wsv wide="6px"></wsv>
+      <div class="gray-label-3">Jumlah: 3 Barang</div>
+    </div>
+
+  </div>
+
+
+
+</div>
