@@ -49,6 +49,8 @@
 			<div class="title-2">
 				{{item.product_name}}
 			</div>
+			<div *ngIf="item.initial_quantity != item.quantity"
+				class="title-3 coret">{{item.initial_quantity}} Barang</div>
 			<div class="title-3">{{item.quantity}} Barang</div>
 		</div>
 		<div class="col-3-trx-item flex-grow-1">

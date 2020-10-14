@@ -44,6 +44,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 			.subscribe((resp) => {
 				this.blockUI.stop();
 				this.item = resp;
+				console.log(this.item);
 			});
 		this.subscribers.push(sub);
 
