@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmptyCartComponent } from './empty-cart.component';
+import { StatusPembelianComponent } from './status-pembelian.component';
 
-describe('EmptyCartComponent', () => {
-  let component: EmptyCartComponent;
-  let fixture: ComponentFixture<EmptyCartComponent>;
+describe('StatusPembelianComponent', () => {
+  let component: StatusPembelianComponent;
+  let fixture: ComponentFixture<StatusPembelianComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmptyCartComponent ]
+      declarations: [ StatusPembelianComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmptyCartComponent);
+    fixture = TestBed.createComponent(StatusPembelianComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

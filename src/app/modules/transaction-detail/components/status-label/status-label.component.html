@@ -1,0 +1,29 @@
+<div *ngIf="status == 'ORDERED'"
+	class="gray-label">SELESAI</div>
+
+<div *ngIf="status == 'PROCESS'"
+	class="gray-label">SELESAI</div>
+
+<div *ngIf="status == 'CANCEL'"
+	class="red-label">AJUKAN LAGI</div>
+
+<div *ngIf="status == 'PENDING'"
+	class="gray-label">SELESAI</div>
+
+<div *ngIf="status == 'DELIVER'"
+	class="gray-label">SELESAI</div>
+
+<div *ngIf="status == 'RECEIVED'"
+	class="red-label">SELESAI</div>
+
+<div *ngIf="status == 'CLOSED'"
+	class="red-label">BELI LAGI</div>
+<!-- 
+ORDERED : Order sudah diapprove oleh manager / Selesai (abu-abu)
+PROCESS : Sudah dikonfirmasi oleh supplier / Selesai (abu-abu)
+CANCEL : Dibatalkan / Ajukan lagi (merah)
+PENDING : (status sementara) Sedang ada kendala di supplier/di delivery  / Selesai (abu-abu)
+DELIVER: Sedang diantarkan / Selesai (abu-abu)
+RECEIVED: Sudah sampai tujuan / Selesai (merah)
+CLOSED: Barang yg diterima sudah dikonfirmasi / Beli Lagi (merah)
+-->

@@ -40,7 +40,6 @@ export class BaseService {
 		} else {
 			params = requestParamModel;
 		}
-
 		return responseModel !== false
 			? this.http.get(url, { params }).pipe(
 					map(

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CartLayoutComponent } from './cart-layout.component';
+import { StatusLabelComponent } from './status-label.component';
 
-describe('CartLayoutComponent', () => {
-  let component: CartLayoutComponent;
-  let fixture: ComponentFixture<CartLayoutComponent>;
+describe('StatusLabelComponent', () => {
+  let component: StatusLabelComponent;
+  let fixture: ComponentFixture<StatusLabelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CartLayoutComponent ]
+      declarations: [ StatusLabelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CartLayoutComponent);
+    fixture = TestBed.createComponent(StatusLabelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

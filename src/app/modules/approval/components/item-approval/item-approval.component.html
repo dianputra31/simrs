@@ -10,7 +10,7 @@
 				<wsh wide="8.54px"></wsh>
 				<div id="purchaser-col-1">
 					<div id="purchaser-label">{{item.requester_fullname}}</div>
-					<div id="purchase-date">{{item.submitted_at}}</div>
+					<div id="purchase-date">{{item.submitted_at | tanggal: 'tgl'}}</div>
 				</div>
 			</div>
 			<wsh wide="11px"></wsh>
@@ -20,7 +20,7 @@
 					class="d-flex align-items-center">
 					<div>
 						<div class="label-gray">Ongkos Kirim</div>
-						<div class="label-gray-2">{{item.shipping_cost}}</div>
+						<div class="label-gray-2">{{item.shipping_cost | rupiah}}</div>
 					</div>
 				</div>
 
@@ -28,7 +28,7 @@
 					class="d-flex align-items-center">
 					<div>
 						<div class="label-gray d-flex flex-row-reverse">Harga Belanja</div>
-						<div class="d-flex flex-row-reverse label-gray-2">{{item.purchase_amount}}</div>
+						<div class="d-flex flex-row-reverse label-gray-2">{{item.purchase_amount | rupiah}}</div>
 					</div>
 				</div>
 			</div>
@@ -36,8 +36,11 @@
 		</div>
 		<div id="content"
 			class="d-flex">
-			<img src='{{item.product_image}}'
+			<img [src]="item.product_image"
+				class="card-img-top"
+				(error)="onImgError($event)"
 				id="item-img">
+
 			<wsh wide="15px"></wsh>
 			<div id="item-desc-wrapper">
 				<item-desc [item]="item"></item-desc>

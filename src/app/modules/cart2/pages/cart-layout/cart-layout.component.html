@@ -1,8 +1,5 @@
 <block-ui>
 	<div class="container d-flex">
-		<div id="keranjang-label">KERANJANG</div>
-	</div>
-	<div class="container d-flex">
 		<div *ngIf="total_item == 0 else elseBlock"
 			class="w-100 d-flex justify-content-center">
 			<div>
@@ -10,30 +7,46 @@
 				<empty-cart></empty-cart>
 			</div>
 		</div>
+
 		<ng-template #elseBlock>
-			<div class="d-flex w-100 justify-content-between">
-				<div>
-					<address-section wide="596px"
+			<div id="left-container">
+				<div id="top-fixed"
+					class="bg-10">
+					<div id="keranjang-label">KERANJANG</div>
+					<wsv wide="10px"></wsv>
+					<address-section wide="600px"
 						borderRadius='20px'
 						margin="0px">
 					</address-section>
-
+					<wsv wide="20px"></wsv>
 					<pilih-semua (onPilihSemuaCheckboxClick)="pilihSemuaClickEvent($event)"></pilih-semua>
-					<div style="overflow:scroll; ">
-						<div *ngFor="let item of items">
-							<item-card [item]="item"
-								(onUpdateQty)="updateItemCartList($event)"></item-card>
-							<wsv wide="40px"></wsv>
-						</div>
+					<wsv wide="10px"></wsv>
+				</div>
+				<wsv wide="180px"></wsv>
+				<div style="overflow:scroll; ">
+					<div *ngFor="let item of items">
+						<item-card [item]="item"
+							(onUpdateQty)="updateItemCartList($event)"></item-card>
+						<wsv wide="40px"></wsv>
 					</div>
 				</div>
-				<box-cart-price class="box-cart-price"
-					[pertotalan]="calculate()"
-					buttonLabel="Selanjutnya"
-					(buttonBoxCartPriceClick)="selanjutnyaClick()"
-					[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+			</div>
+
+			<div id="right-container">
+				<wsv wide="180px"></wsv>
+				<div id="right-fixed">
+					<div class="d-flex">
+						<box-cart-price class="box-cart-price"
+							[pertotalan]="calculate()"
+							buttonLabel="Selanjutnya"
+							(buttonBoxCartPriceClick)="selanjutnyaClick()"
+							[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+					</div>
+				</div>
 			</div>
 		</ng-template>
 
 	</div>
+
+
 </block-ui>

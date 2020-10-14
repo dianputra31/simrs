@@ -1,0 +1,21 @@
+<div *ngIf="!showStatusLabel()"
+	class="d-flex">
+	<div *ngFor="let process of createProcess(); let i = index">
+		<process-logo [image]="process.image"
+			[separator]="i != 0"
+			[date]="process.date"></process-logo>
+	</div>
+</div>
+
+
+<div *ngIf="showStatusLabel()"
+	class="d-flex justify-content-between">
+	<div>
+		<div class="label-1">Status</div>
+		<div class="label-2">{{item?.status}}</div>
+	</div>
+	<div class="w-50">
+		<div class="label-1">Alasan:</div>
+		<div class="label-2">{{item?.reason}}</div>
+	</div>
+</div>

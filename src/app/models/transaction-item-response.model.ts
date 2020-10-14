@@ -4,6 +4,7 @@ export class TransactionItemResponseModel {
 	public id: number;
 	public purchased_id: number;
 	public product_id: number;
+	public category_id: number;
 	public subcategory_id: number;
 	public quantity: number;
 	public product_name: string;
@@ -32,11 +33,13 @@ export class TransactionItemResponseModel {
 	public requested_at: Date;
 	public delivery_address_id: number;
 	public delivery_address_json: DeliveryAddressJsonModel;
+	public order_code: string;
 
 	public convert(dto: any) {
 		this.id = dto.id;
 		this.purchased_id = dto.purchased_id;
 		this.product_id = dto.product_id;
+		this.category_id = dto.category_id;
 		this.subcategory_id = dto.subcategory_id;
 		this.quantity = dto.quantity;
 		this.product_name = dto.product_name;
@@ -63,6 +66,7 @@ export class TransactionItemResponseModel {
 		this.requester_full_name = dto.requester_full_name;
 		this.approved_at = dto.approved_at;
 		this.requested_at = dto.requested_at;
+		this.order_code = dto.order_code;
 		this.delivery_address_id = dto.delivery_address_id;
 		this.delivery_address_json = new DeliveryAddressJsonModel().convert(
 			dto.delivery_address_json

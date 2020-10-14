@@ -1,49 +1,134 @@
-<div class="container d-flex">
-	<div id="left-container">
+<block-ui>
+	<div class="container">
+		<div id="keranjang-label">DETAIL PEMESANAN</div>
 
-		<div id="top-fixed"
-			class="bg-10">
-			<div id="keranjang-label">DETAIL PEMESANAN</div>
-			<wsv wide="30px"></wsv>
+		<wsv wide="20px"></wsv>
+		<div class="d-flex">
+			<div class="flex-grow-1 left-wrapper">
 
-			<div id="left-container"
-				class="d-flex justify-content-start"
-				style="width:700px;background: #FFFFFF;float:left;position: relative;
-			box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
-			border-radius: 10px;">
-
-				<div class="d-flex flex-column">
-					<div class="p-2">
-						<detail-pesanan></detail-pesanan>
+				<wsv wide="20px"></wsv>
+				<div class="padding">
+					<div class="d-flex justify-content-between">
+						<div class="label-1">Request by: <span class="label-2">{{item?.requester_full_name}}</span>
+						</div>
+						<status-label [status]="item?.status"></status-label>
 					</div>
-					<div class="p-2">
-						<status-pesanan></status-pesanan>
+					<wsv wide="15px"></wsv>
+					<div class="d-flex justify-content-between">
+						<div>
+							<div class="label-1">Tgl. Pemesanan</div>
+							<wsv wide="3px"></wsv>
+							<div class="label-2">{{item?.requested_at|tanggal}}</div>
+						</div>
+						<div>
+							<div class="label-1">No. Pemesanan</div>
+							<wsv wide="3px"></wsv>
+							<div class="label-2">{{item?.order_code}}</div>
+						</div>
+						<div>
+							<div class="label-1">Pengiriman & No. Resi</div>
+							<wsv wide="3px"></wsv>
+							<div class="label-2">{{item?.receipt_number}}</div>
+						</div>
 					</div>
 				</div>
 
+				<wsv wide="20px"></wsv>
+				<horizontal-line></horizontal-line>
 
+				<wsv wide="20px"></wsv>
+				<div class="d-flex">
+					<img src='{{item?.product_image}}'
+						(error)="onImgError($event)"
+						class="item-img">
+					<div>
+						<div class="label-2">{{item?.product_name}}</div>
+						<div class="label-4">{{item?.purchase_amount|rupiah}}</div>
+						<div class="label-1">Warna</div>
+						<div class="label-1">Berat</div>
+						<div class="label-1">Jumlah :{{item?.quantity}} barang</div>
+					</div>
+					<wsh wide="150px"></wsh>
+				</div>
 
+				<wsv wide="20px"></wsv>
+				<horizontal-line></horizontal-line>
 
+				<wsv wide="20px"></wsv>
+				<div class="padding">
+					<status-alasan [item]="item"></status-alasan>
+				</div>
 
+				<wsv wide="20px"></wsv>
+				<horizontal-line></horizontal-line>
 
+				<wsv wide="20px"></wsv>
+				<div class="padding">
+					<div class="label-1">Perkiraan Waktu Sampai:</div>
+					<div class="label-2">---</div>
+				</div>
 
+				<wsv wide="20px"></wsv>
+				<horizontal-line></horizontal-line>
+				<wsv wide="20px"></wsv>
+				<div class="padding">
+					<div class="label-1">Catatan Pengiriman:</div>
+					<div class="label-2">{{item?.message}}</div>
+				</div>
+
+				<wsv wide="20px"></wsv>
 			</div>
 
-			<wsh wide="20px"></wsh>
+			<wsh wide="30px"></wsh>
 
-			<div id="right-container"
-				class="d-flex justify-content-end"
-				style="height:auto;min-height:510px;width:380px;background: #FFFFFF;float:left;
+			<status-pembelian [item]="item"></status-pembelian>
+		</div>
+		<div id="left-container">
+
+			<div id="top-fixed"
+				class="bg-10">
+				<wsv wide="30px"></wsv>
+
+				<!-- <div id="left-container"
+					class="d-flex justify-content-start"
+					style="width:700px;background: #FFFFFF;float:left;position: relative;
+			box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+			border-radius: 10px;">
+
+					<div class="d-flex flex-column">
+						<div class="p-2">
+							<detail-pesanan></detail-pesanan>
+						</div>
+						<div class="p-2">
+							<status-pesanan></status-pesanan>
+						</div>
+					</div>
+
+
+
+
+
+
+
+				</div>
+
+				<wsh wide="20px"></wsh>
+
+				<div id="right-container"
+					class="d-flex justify-content-end"
+					style="height:auto;min-height:510px;width:380px;background: #FFFFFF;float:left;
 			box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
 			border-radius: 10px;position: relative;float:right;">
-				<rekap-tagihan></rekap-tagihan>
+					<rekap-tagihan></rekap-tagihan>
+				</div> -->
+
+
+
+
+
 			</div>
-
-
-
-
-
 		</div>
+
 	</div>
 
-</div>
+</block-ui>
