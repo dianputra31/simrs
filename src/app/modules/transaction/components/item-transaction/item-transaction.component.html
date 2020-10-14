@@ -1,5 +1,4 @@
 <div id="item-container"
-<<<<<<< HEAD
 	*ngFor="let item of items">
 	<div id="item-header"
 		class="d-flex align-items-center">
@@ -67,148 +66,81 @@
 		<div class="d-flex col-4-trx-item align-items-end">
 
 
-			<ng-template *ngIf="item.statustrx=='Selesai'; then first 
-=======
-  *ngFor="let item of items">
-  <div id="item-header"
-    class="d-flex align-items-center">
-    <wsh wide="20px"></wsh>
-    <div class="col-1-trx-item">
-      <div class="title-1">
-        {{item.request_full_name}}
-      </div>
-      <div class="title-2">
-        {{item.partner_sku_item}}
-      </div>
-    </div>
-
-    <wsh wide="30px"></wsh>
-    <div class="col-2-trx-item">
-      <div class="title-1">
-        {{item.delivery_address_json.address_name}}
-      </div>
-      <div class="title-2">
-        {{item.requested_at |tanggal}}
-      </div>
-    </div>
-    <div class="col-3-trx-item flex-grow-1">
-      <div class="title-3">
-        Harga Belanja
-      </div>
-      <div class="title-2">
-        {{item.purchase_amount|rupiah}}
-      </div>
-    </div>
-    <div class="col-4-trx-item">
-      <red-border-white-bg-button label="Lihat Detail"
-        (click)="viewDetail(item)"></red-border-white-bg-button>
-    </div>
-    <wsh wide="20px"></wsh>
-  </div>
-  <div class="d-flex"
-    id="item-content">
-
-    <wsh wide="20px"></wsh>
-    <div class="col-1-trx-item">
-      <img id="image-item-trx"
-        [src]="item.product_image"
-        (error)="onImgError($event)">
-    </div>
-    <wsh wide="30px"></wsh>
-    <div class="col-2-trx-item">
-      <div class="title-2">
-        {{item.product_name}}
-      </div>
-      <div class="title-3">{{item.quantity}} Barang</div>
-    </div>
-    <div class="col-3-trx-item flex-grow-1">
-      <div class="title-4">
-        Status
-      </div>
-      <div class="title-2">
-        <badge [label]='item'
-          [show]='item.show'
-          [statusprocess]='item.status'></badge>
-      </div>
-    </div>
-    <div class="d-flex col-4-trx-item align-items-end">
-
-
-      <ng-template *ngIf="item.statustrx=='Selesai'; then first
->>>>>>> ca007f706765e7d166b6911a67fd6ea5a109f6eb
+			<ng-template *ngIf="item.statustrx=='Selesai'; then first
 			else second"></ng-template>
 
-      <ng-template #first>
-        <red-button label="Beli Lagi"
-          font="14px"
-          paddingtop="10px"
-          paddingbottom="10px"
-          paddingleft="0px"
-          paddingright="0px"
-          float="right"
-          (click)="belilagi()"></red-button>
-      </ng-template>
+			<ng-template #first>
+				<red-button label="Beli Lagi"
+					font="14px"
+					paddingtop="10px"
+					paddingbottom="10px"
+					paddingleft="0px"
+					paddingright="0px"
+					float="right"
+					(click)="belilagi()"></red-button>
+			</ng-template>
 
-      <ng-template #second>
-        <ng-template *ngIf="item.statustrx=='Ditolak'; then third else fourth"></ng-template>
-        <ng-template #third>
-          <red-button label="Ajukan Lagi"
-            font="14px"
-            paddingtop="10px"
-            paddingbottom="10px"
-            paddingleft="0px"
-            paddingright="0px"
-            float="right"
-            (click)="ajukanlagi()"></red-button>
-        </ng-template>
+			<ng-template #second>
+				<ng-template *ngIf="item.statustrx=='Ditolak'; then third else fourth"></ng-template>
+				<ng-template #third>
+					<red-button label="Ajukan Lagi"
+						font="14px"
+						paddingtop="10px"
+						paddingbottom="10px"
+						paddingleft="0px"
+						paddingright="0px"
+						float="right"
+						(click)="ajukanlagi()"></red-button>
+				</ng-template>
 
-        <ng-template #fourth>
-          <ng-template *ngIf="item.statustrx=='Diproses'; then fifth else sixth"></ng-template>
-          <ng-template #fifth>
-            <ng-template *ngIf="item.statusprocess=='Diproses' || item.statusprocess=='Dikirim'; then disab else enab">
-            </ng-template>
-            <ng-template #disab>
-              <div id="button-wrapper"
-                class="d-flex align-items-center justify-content-center">
-                Selesai
-              </div>
+				<ng-template #fourth>
+					<ng-template *ngIf="item.statustrx=='Diproses'; then fifth else sixth"></ng-template>
+					<ng-template #fifth>
+						<ng-template
+							*ngIf="item.statusprocess=='Diproses' || item.statusprocess=='Dikirim'; then disab else enab">
+						</ng-template>
+						<ng-template #disab>
+							<div id="button-wrapper"
+								class="d-flex align-items-center justify-content-center">
+								Selesai
+							</div>
 
-            </ng-template>
+						</ng-template>
 
-            <ng-template #enab>
-              <red-button label="Selesai"
-                font="14px"
-                paddingtop="10px"
-                paddingbottom="10px"
-                paddingleft="0px"
-                paddingright="0px"
-                float="right"
-                (click)="selesai()"></red-button>
-            </ng-template>
+						<ng-template #enab>
+							<red-button label="Selesai"
+								font="14px"
+								paddingtop="10px"
+								paddingbottom="10px"
+								paddingleft="0px"
+								paddingright="0px"
+								float="right"
+								(click)="selesai()"></red-button>
+						</ng-template>
 
-          </ng-template>
+					</ng-template>
 
-          <ng-template #sixth>
-            <!-- {{item | json}} -->
-            <red-button label="Cari Sejenis"
-              font="14px"
-              paddingtop="10px"
-              paddingbottom="10px"
-              paddingleft="0px"
-              paddingright="0px"
-              (click)="carisejenis(item)"></red-button>
-            <!-- <red-bg-button label="Cari Sejenis"
+					<ng-template #sixth>
+						<!-- {{item | json}} -->
+						<red-button label="Cari Sejenis"
+							font="14px"
+							paddingtop="10px"
+							paddingbottom="10px"
+							paddingleft="0px"
+							paddingright="0px"
+							(click)="carisejenis(item)"></red-button>
+						<!-- <red-bg-button label="Cari Sejenis"
 							(click)="carisejenis(item)"></red-bg-button> -->
-          </ng-template>
+					</ng-template>
 
-        </ng-template>
+				</ng-template>
 
-      </ng-template>
-
-
+			</ng-template>
 
 
-    </div>
-    <wsh wide="20px"></wsh>
-  </div>
+
+
+		</div>
+		<wsh wide="20px"></wsh>
+	</div>
 </div>
