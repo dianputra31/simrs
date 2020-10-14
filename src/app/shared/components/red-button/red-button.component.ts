@@ -13,6 +13,7 @@ export class RedButtonComponent implements OnInit {
   @Input() paddingleft:String = '50px';
   @Input() paddingright:String = '50px';
   @Input() float:String = 'left';
+  @Input() width:String = '129px'
   constructor() { }
 
   ngOnInit(): void {
