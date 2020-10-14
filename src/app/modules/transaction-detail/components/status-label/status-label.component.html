@@ -14,7 +14,8 @@
 	class="gray-label">SELESAI</div>
 
 <div *ngIf="status == 'RECEIVED'"
-	class="red-label">SELESAI</div>
+	class="red-label"
+	(click)="confirmOrder()">SELESAI</div>
 
 <div *ngIf="status == 'CLOSED'"
 	class="red-label">BELI LAGI</div>

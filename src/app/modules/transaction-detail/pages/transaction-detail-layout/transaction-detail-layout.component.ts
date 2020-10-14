@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { TransactionDetailUrl } from '../../../../app.constant';
+import {
+	TransactionConfirmUrl,
+	TransactionDetailUrl,
+} from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { TransactionDetailModel } from '../../../../models/transaction-detaily-response.model';
 @Component({
@@ -15,25 +18,17 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	subscribers: Subscription[];
 	item: TransactionDetailModel;
 
+	purchased_id: string;
+	item_id: string;
 	constructor(private route: ActivatedRoute, private service: BaseService) {}
 
 	ngOnInit(): void {
 		this.subscribers = [];
 		this.route.paramMap.subscribe((params) => {
 			this.blockUI.start();
-			this.getTransactionDetail(
-				params.get('purchased_id'),
-				params.get('item_id')
-			);
-			// this.getItems(
-			// 	params.get('category_id'),
-			// 	params.get('sub_category_id'),
-			// 	this._redirectparam.namaproduk,
-			// 	this._redirectparam.price_start,
-			// 	this._redirectparam.price_end,
-			// );
-			// this.category_id = params.get('category_id');
-			// if (this._redirectparam.namaproduk !== '' && this._redirectparam.namaproduk !== '0') this.keyword = '"' + this._redirectparam.namaproduk + '"'; else this.keyword = '';
+			this.purchased_id = params.get('purchased_id');
+			this.item_id = params.get('item_id');
+			this.getTransactionDetail();
 		});
 	}
 
@@ -41,8 +36,9 @@ export class TransactionDetailLayoutComponent implements OnInit {
 		this.subscribers.forEach((each) => each.unsubscribe);
 	}
 
-	getTransactionDetail(purchaseId, itemId) {
-		const url = `${TransactionDetailUrl}/${purchaseId}/${itemId}`;
+	getTransactionDetail() {
+		this.blockUI.start();
+		const url = `${TransactionDetailUrl}/${this.purchased_id}/${this.item_id}`;
 		const sub = this.service
 			.getData(url, TransactionDetailModel, false, false)
 			.subscribe((resp) => {
@@ -56,5 +52,22 @@ export class TransactionDetailLayoutComponent implements OnInit {
 
 	onImgError(event) {
 		event.target.src = '../../../../assets/image/icons/default-item.png';
+	}
+
+	confirmSelesaiOrder($event) {
+		this.blockUI.start();
+
+		const url = `${TransactionConfirmUrl}/${this.purchased_id}/${this.item_id}`;
+		const sub = this.service
+			.postData(url, false, false, false, false)
+			.subscribe((resp) => {
+				this.blockUI.stop();
+				if (resp.data) {
+					this.getTransactionDetail();
+				}
+			});
+		this.subscribers.push(sub);
+
+		this.blockUI.stop();
 	}
 }

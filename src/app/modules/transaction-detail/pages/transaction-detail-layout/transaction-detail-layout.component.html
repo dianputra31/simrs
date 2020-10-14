@@ -11,7 +11,8 @@
 					<div class="d-flex justify-content-between">
 						<div class="label-1">Request by: <span class="label-2">{{item?.requester_full_name}}</span>
 						</div>
-						<status-label [status]="item?.status"></status-label>
+						<status-label [status]="item?.status"
+							(konfirmasiSelesaiEvent)="confirmSelesaiOrder($event)"></status-label>
 					</div>
 					<wsv wide="15px"></wsv>
 					<div class="d-flex justify-content-between">
