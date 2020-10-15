@@ -47,3 +47,6 @@ export const AddressMasterSubDistrictUrl = `${API}/address/master_subdistrict`;
 export const AddressMasterVillageUrl = `${API}/address/master_village`;
 export const AddressCreateUrl = `${API}/address/create`;
 export const AddressEditUrl = `${API}/address/edit`;
+export const UserCompanyUsersUrl = `${API}/user/company_users`;
+export const UserCreateUserUrl = `${API}/user`;
+export const UserDeleteUrl = `${API}/user/delete`;

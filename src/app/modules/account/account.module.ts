@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { AccountRoutingModule } from './account-routing.module';
+import { EditAlamatDialogComponent } from './components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
 import { EditComponent } from './components-info-perusahaan/edit/edit.component';
 import { LabelInputComponent } from './components-info-perusahaan/label-input/label-input.component';
 import { NameAddressComponent } from './components-info-perusahaan/name-address/name-address.component';
@@ -14,7 +15,6 @@ import { AddButtonComponent } from './components-kelola-purchaser/add-button/add
 import { AddPurchaserEditorComponent } from './components-kelola-purchaser/add-purchaser-editor/add-purchaser-editor.component';
 import { DeletePurchaserConfirmationDialogComponent } from './components-kelola-purchaser/delete-purchaser-confirmation-dialog/delete-purchaser-confirmation-dialog.component';
 import { PurchaserCardComponent } from './components-kelola-purchaser/purchaser-card/purchaser-card.component';
-import { PurchaserListComponent } from './components-kelola-purchaser/purchaser-list/purchaser-list.component';
 import { CentangImageComponent } from './components-kredit-perusahaan/centang-image/centang-image.component';
 import { KreditTableComponent } from './components-kredit-perusahaan/kredit-table/kredit-table.component';
 import { SilinderComponent } from './components-kredit-perusahaan/silinder/silinder.component';
@@ -30,7 +30,6 @@ import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchase
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
-import { EditAlamatDialogComponent } from './components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -53,7 +52,6 @@ import { EditAlamatDialogComponent } from './components-info-perusahaan/edit-ala
 		AccountKelolaPurchaserComponent,
 		AddButtonComponent,
 		PurchaserCardComponent,
-		PurchaserListComponent,
 		AccountTagihanComponent,
 		TagihanTableComponent,
 		AddPurchaserEditorComponent,
