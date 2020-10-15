@@ -3,6 +3,7 @@ export class UserInfoModel {
 	public username: string;
 	public roleName: string;
 	public company_id: string;
+	public role_id: string;
 
 	public convert(dto: any) {
 		if (dto) {
@@ -10,6 +11,7 @@ export class UserInfoModel {
 			this.username = dto.fullname;
 			this.roleName = dto.role_name;
 			this.company_id = dto.company_id;
+			this.role_id = dto.role_id;
 
 			return this;
 		} else {

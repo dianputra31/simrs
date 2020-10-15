@@ -40,3 +40,4 @@ export const ApprovalCount = `${API}/approval/approval_count`;
 export const OpenTrxCount = `${API}/transaction/open_transaction_count`;
 export const SearchProduct = `${API}/product/catalog`;
 export const TransactionDetailUrl = `${API}/transaction`;
+export const EditProfile = `${API}/user/edit/`;
