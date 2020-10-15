@@ -15,5 +15,6 @@
 </div>
 <wsv wide="24px"></wsv>
 <div *ngFor="let address of addresses">
-	<info-perusahaan-address-card [address]="address"></info-perusahaan-address-card>
+	<info-perusahaan-address-card [address]="address"
+		(editEvent)="editAddress(address)"></info-perusahaan-address-card>
 </div>

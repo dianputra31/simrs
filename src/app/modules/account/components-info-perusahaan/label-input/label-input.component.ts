@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LabelInputComponent implements OnInit {
 	@Input() label: String;
+	@Input() harusDiisi: Boolean;
 	constructor() {}
 
 	ngOnInit(): void {}

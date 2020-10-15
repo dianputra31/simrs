@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center">
 	<div id="header">
-		Tambah Alamat Baru
+		Ubah Alamat
 	</div>
 	<img id="close-dialog-button"
 		src="../../../../../assets/image/icons/ic-x.png">
@@ -25,6 +25,7 @@
 			<wsh wide="16px"></wsh>
 			<rounded-input width="298px"
 				placeholderText="Nama Perusahaan"
+				[content]="address?.address_name"
 				(onUserInput)="onUserInputNamaPerusahaan($event)"></rounded-input>
 		</div>
 	</div>
@@ -37,6 +38,7 @@
 	<wsh wide="16px"></wsh>
 	<rounded-input width="788px"
 		placeholderText="Detail Alamat"
+		[content]="address?.address_detail"
 		(onUserInput)="onUserInputDetailPerusahaan($event)"></rounded-input>
 </div>
 
@@ -48,6 +50,7 @@
 			<wsh wide="16px"></wsh>
 			<input-dropdown style="width: 298px;"
 				[items]="provinces"
+				[selected]="selectedProvince"
 				(onSelect)="onProvinceSelected($event)"></input-dropdown>
 		</div>
 
@@ -58,6 +61,7 @@
 			<wsh wide="16px"></wsh>
 			<input-dropdown style="width: 298px;"
 				[items]="districts"
+				[selected]="selectedDistrict"
 				(onSelect)="onDistrictSelected($event)"></input-dropdown>
 		</div>
 	</div>
@@ -71,6 +75,7 @@
 			<wsh wide="16px"></wsh>
 			<input-dropdown style="width: 298px;"
 				[items]="subdistricts"
+				[selected]="selectedSubdistrict"
 				(onSelect)="onSubdistrictSelected($event)">
 			</input-dropdown>
 		</div>
@@ -82,6 +87,7 @@
 			<wsh wide="16px"></wsh>
 			<input-dropdown style="width: 298px;"
 				[items]="villages"
+				[selected]="selectedVillage"
 				(onSelect)="onVillageSelected($event)">
 			</input-dropdown>
 		</div>
@@ -115,6 +121,7 @@
 			<wsh wide="16px"></wsh>
 			<rounded-input width="298px"
 				placeholderText="Detail Alamat"
+				[content]="address?.recipient_name"
 				(onUserInput)="onUserInputNamaPenerima($event)"></rounded-input>
 		</div>
 
@@ -125,7 +132,8 @@
 			<wsh wide="16px"></wsh>
 			<rounded-input width="298px"
 				placeholderText="No Telp"
-				(onUserInput)="onUserInputNoTelp($event)"></rounded-input>
+				(onUserInput)="onUserInputNoTelp($event)"
+				[content]="address?.recipient_contact"></rounded-input>
 		</div>
 	</div>
 </div>
@@ -136,6 +144,7 @@
 	<wsh wide="16px"></wsh>
 	<rounded-input width="788px"
 		placeholderText="Titip Resepsionis"
+		[content]="address?.delivery_message"
 		(onUserInput)="onUserInputCatatanPengiriman($event)"></rounded-input>
 </div>
 
@@ -146,7 +155,7 @@
 		<button-gray label="Batal"
 			(click)="batal()"></button-gray>
 		<wsh wide="16px"></wsh>
-		<red-button label="Tambah"
+		<red-button label="Ubah"
 			font="14px"
 			paddingtop="10px"
 			paddingbottom="10px"

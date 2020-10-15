@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DeliveryAddressObjectModel } from '../../../../shared/components/address-section/model/delivery-address-object.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { DeliveryAddressObjectModel } from '../../../../shared/components/addres
 export class InfoPerusahaanAddressCardComponent implements OnInit {
 	@Input() utama: Boolean;
 	@Input() address: DeliveryAddressObjectModel;
+	@Output() editEvent = new EventEmitter();
 	constructor() {}
 
 	ngOnInit(): void {}
@@ -27,5 +28,9 @@ export class InfoPerusahaanAddressCardComponent implements OnInit {
 			', ' +
 			this.address?.recipient_contact;
 		return detail;
+	}
+
+	edit() {
+		this.editEvent.emit();
 	}
 }

@@ -6,6 +6,7 @@ import { AddressList } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { DeliveryAddressObjectModel } from '../../../../shared/components/address-section/model/delivery-address-object.model';
 import { DeliveryAddressResponseModel } from '../../../../shared/components/address-section/model/delivery-address-response.model';
+import { EditAlamatDialogComponent } from '../../components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
 import { TambahAlamatBaruDialogComponent } from '../../components-info-perusahaan/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 
 @Component({
@@ -44,6 +45,9 @@ export class AccountInfoPerusahaanComponent implements OnInit {
 			dialogConfig
 		);
 
+		modalDialog.afterClosed().subscribe((result) => {
+			this.getAddressList();
+		});
 		return false;
 	}
 
@@ -55,5 +59,27 @@ export class AccountInfoPerusahaanComponent implements OnInit {
 				this.addresses = resp.delivery_address;
 			});
 		this.subscribers.push(sub);
+	}
+
+	editAddress(address) {
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = 'modal-component';
+		dialogConfig.height = 'auto';
+		dialogConfig.width = '1034px';
+		dialogConfig.panelClass = 'border-radius:20px';
+		dialogConfig.data = {
+			address,
+		};
+
+		const modalDialog = this.dialog.open(
+			EditAlamatDialogComponent,
+			dialogConfig
+		);
+
+		modalDialog.afterClosed().subscribe((result) => {
+			this.getAddressList();
+		});
+		return false;
 	}
 }

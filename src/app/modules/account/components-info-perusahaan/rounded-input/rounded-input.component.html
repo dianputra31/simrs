@@ -1,5 +1,8 @@
 <div class="rounded-input-wrapper"
 	[style.width]="width">
 	<input type="text"
-		[placeholder]="placeholderText">
+		[readonly]="disable"
+		[placeholder]="placeholderText"
+		[(ngModel)]="content"
+		(keyup)="onKey($event)">
 </div>
