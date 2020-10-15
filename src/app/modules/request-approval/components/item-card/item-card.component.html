@@ -1,0 +1,45 @@
+<div class="d-flex">
+  <div id="item-image">
+    <img [src]="item?.product_image"
+      alt="image"
+      id="item-image"
+      [ngClass]="classObj"
+      (click)="goToDetail()"
+      class="{{styles}}">
+  </div>
+  <div class="flex-grow-1">
+    <div id="item-list-name"
+      class="{{styles}}">
+      <a class="{{styles}}">{{item?.product_name}} </a></div>
+    <wsv wide="6px"></wsv>
+    <div id="item-list-price">{{item?.sell_price|rupiah}}</div>
+    <wsv wide="12px"></wsv>
+
+    <wsv wide="10px"></wsv>
+    <div id=sub-header>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label"
+          for="inlineRadio1">Warna</label>
+        <input class="form-check-input"
+          type="radio"
+          name="inlineRadioOptions"
+          id="inlineRadio1"
+          value="option1">
+        <span> Berat {{item?.product_size}}</span>
+      </div>
+      <div class="quantity">
+        <div class="d-flex">
+          <div id="qty_label">Jumlah {{item.quantity}} barang <span
+              style="color: red; text-align: right;">({{item.status}})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+
+
+
+
+    </div>
+
+  </div>

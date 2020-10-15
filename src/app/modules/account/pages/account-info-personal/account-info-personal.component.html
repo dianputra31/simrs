@@ -1,32 +1,42 @@
 <wsv wide="28px"></wsv>
 <div class="d-flex">
-	<div class="flex-grow-1">
-		<div class="label-title">
-			Informasi Personal
-		</div>
-		<wsv wide="40px"></wsv>
-		<div>
-			<info-personal-row label="Nama Depan"
-				[isEditting]="isEditting"
-				content="Erika"></info-personal-row>
+  <div class="flex-grow-1">
+    <div class="label-title">
+      Informasi Personal
+    </div>
+    <wsv wide="40px"></wsv>
+    <div>
+      <info-personal-row label="Nama Depan"
+        [isEditting]="isEditting"
+        content="Erika"></info-personal-row>
 
-			<wsv wide="24px"></wsv>
-			<info-personal-row label="Nama Belakang"
-				[isEditting]="isEditting"
-				content="Goeltom"></info-personal-row>
-		</div>
-		<wsv wide="40px"></wsv>
+      <wsv wide="24px"></wsv>
+      <info-personal-row label="Nama Belakang"
+        [isEditting]="isEditting"
+        content="Goeltom"></info-personal-row>
+    </div>
+    <wsv wide="40px"></wsv>
 
-		<red-bg-button *ngIf="isEditting"
-			(click)="save()"
-			label="Simpan"></red-bg-button>
-		<red-bg-button *ngIf="!isEditting"
-			(click)="edit()"
-			label="Edit"></red-bg-button>
-	</div>
-	<div>
-		<div id="email-label">
-			sukhito.tanawal@gmail.com
-		</div>
-	</div>
+    <red-button *ngIf="isEditting"
+      (click)="save()"
+      label="Simpan"
+      font="14px"
+      paddingtop="10px"
+      paddingbottom="10px"
+      paddingleft="100px"
+      paddingright="100px"></red-button>
+    <red-button *ngIf="!isEditting"
+      (click)="edit()"
+      label="Edit"
+      font="14px"
+      paddingtop="10px"
+      paddingbottom="10px"
+      paddingleft="100px"
+      paddingright="100px"></red-button>
+  </div>
+  <div>
+    <div id="email-label">
+      sukhito.tanawal@gmail.com
+    </div>
+  </div>
 </div>

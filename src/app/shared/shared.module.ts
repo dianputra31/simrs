@@ -34,6 +34,7 @@ import { QtyCtrlTwoComponent } from './components/qty-ctrl-two/qty-ctrl-two.comp
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
 import { RedBgButtonComponent } from './components/red-bg-button/red-bg-button.component';
 import { RedBorderWhiteBgButtonComponent } from './components/red-border-white-bg-button/red-border-white-bg-button.component';
+import { RedButtonComponent } from './components/red-button/red-button.component';
 import { ResetFilterComponent } from './components/reset-filter/reset-filter.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
@@ -75,6 +76,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		FilterDeliveryAddressComponent,
 		CheckBoxTwoComponent,
 		QtyCtrlTwoComponent,
+		RedButtonComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
 	exports: [
@@ -108,7 +110,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		HorizontalLineComponent,
 		ButtonGrayComponent,
 		CheckBoxTwoComponent,
-		QtyCtrlTwoComponent,
+    QtyCtrlTwoComponent,
+    RedButtonComponent,
 	],
 })
 export class SharedModule {}

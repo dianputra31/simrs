@@ -18,7 +18,7 @@
 				{{item.delivery_address_json.address_name}}
 			</div>
 			<div class="title-2">
-				{{item.requested_at |tanggal : 'tgl'}}
+				{{item.requested_at |tanggal}}
 			</div>
 		</div>
 		<div class="col-3-trx-item flex-grow-1">
@@ -64,19 +64,31 @@
 		<div class="d-flex col-4-trx-item align-items-end">
 
 
-			<ng-template *ngIf="item.statustrx=='Selesai'; then first 
+			<ng-template *ngIf="item.statustrx=='Selesai'; then first
 			else second"></ng-template>
 
 			<ng-template #first>
-				<red-bg-button label="Beli Lagi"
-					(click)="belilagi()"></red-bg-button>
+				<red-button label="Beli Lagi"
+					font="14px"
+					paddingtop="10px"
+					paddingbottom="10px"
+					paddingleft="0px"
+					paddingright="0px"
+					float="right"
+					(click)="belilagi()"></red-button>
 			</ng-template>
 
 			<ng-template #second>
 				<ng-template *ngIf="item.statustrx=='Ditolak'; then third else fourth"></ng-template>
 				<ng-template #third>
-					<red-bg-button label="Ajukan Lagi"
-						(click)="ajukanlagi()"></red-bg-button>
+					<red-button label="Ajukan Lagi"
+						font="14px"
+						paddingtop="10px"
+						paddingbottom="10px"
+						paddingleft="0px"
+						paddingright="0px"
+						float="right"
+						(click)="ajukanlagi()"></red-button>
 				</ng-template>
 
 				<ng-template #fourth>
@@ -94,16 +106,29 @@
 						</ng-template>
 
 						<ng-template #enab>
-							<red-bg-button label="Selesai"
-								(click)="selesai()"></red-bg-button>
+							<red-button label="Selesai"
+								font="14px"
+								paddingtop="10px"
+								paddingbottom="10px"
+								paddingleft="0px"
+								paddingright="0px"
+								float="right"
+								(click)="selesai()"></red-button>
 						</ng-template>
 
 					</ng-template>
 
 					<ng-template #sixth>
 						<!-- {{item | json}} -->
-						<red-bg-button label="Cari Sejenis"
-							(click)="carisejenis(item)"></red-bg-button>
+						<red-button label="Cari Sejenis"
+							font="14px"
+							paddingtop="10px"
+							paddingbottom="10px"
+							paddingleft="0px"
+							paddingright="0px"
+							(click)="carisejenis(item)"></red-button>
+						<!-- <red-bg-button label="Cari Sejenis"
+							(click)="carisejenis(item)"></red-bg-button> -->
 					</ng-template>
 
 				</ng-template>
