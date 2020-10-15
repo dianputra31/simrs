@@ -40,3 +40,67 @@
 .quantity{
   line-height: 37px;
 }
+.flex-row-reverse {
+  padding-top: 19%;
+  padding-right: 2%;
+}
+.item-spec-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 26px;
+
+	color: #a9a9a9;
+}
+#item-desc-wrapper {
+	width: 373px;
+}
+.rounded-gray {
+  width: 703px;
+  height: 178px;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+#rounded-item-color {
+	width: 12px;
+	height: 12px;
+	border: 0.5px solid #606060;
+	border-radius: 6px;
+}
+
+.item-desc{
+  width: 300px
+}
+
+#masking {
+	opacity: 0.5;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#above-masking {
+	background-color: transparent;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.transparent {
+	background-color: transparent !important;
+}
+
+#out-of-stock {
+	background: #fbb829;
+	border-radius: 19px;
+	width: 84px;
+	height: 18px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 10px;
+	line-height: 14px;
+	color: #ffffff;
+}
+

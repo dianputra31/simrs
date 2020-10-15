@@ -1,17 +1,18 @@
-<div *ngFor="let item of items">
+<div id="main-wrapper"
+  *ngFor="let item of items">
   <div class="grey-rounded-corner-header-card">
-    <div class="d-flex align-items-center">
-      <div class="col-lg-4 text-header-card">
+    <div class="d-flex flex-grow-1 justify-content-between">
+      <div class="text-header-card">
         <span class="title-text-header-card">Purchaser A</span> <br />
         <span class="sub-text-header-card"> {{item?.updated_at|tanggal}} </span>
       </div>
-      <div class="col-lg-4 text-header-card">
+      <div class="text-header-card left-margin">
         <span class="title-text-header-card-2">Ongkos Kirim</span><br />
         <span class="sub-text-header-card">{{item?.shipping_cost}}</span>
       </div>
-      <div class="col-lg-4 text-header-card-2">
+      <div class="text-header-card-2">
         <span class="title-text-header-card-2">Harga Belanja</span> <br />
-        <span class="sub-text-header-card">{{item?.sub_total|rupiah}}</span>
+        <span class="sub-text-header-card">{{item?.sell_price|rupiah}}</span>
       </div>
     </div>
   </div>
@@ -19,14 +20,7 @@
     <div class="d-flex align-items-center">
       <item-card [item]="item"
         [redirlink]="false">
-        <wsv wide="10px"></wsv>
-        <div class="d-flex">
-          <div id="qty_label">{{item.quantity}} barang <span style="color: red;">({{item.status}})</span>
-          </div>
-        </div>
       </item-card>
-
-
     </div>
   </div>
   <wsv wide="24px"></wsv>
