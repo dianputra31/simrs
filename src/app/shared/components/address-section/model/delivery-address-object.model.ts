@@ -12,6 +12,7 @@ export class DeliveryAddressObjectModel {
 	public village: string;
 	public zipcode: string;
 	public id: number;
+	public delivery_message: string;
 
 	public convert(dto: any) {
 		this.id = dto.id;
@@ -28,6 +29,7 @@ export class DeliveryAddressObjectModel {
 		this.village = dto.village;
 		this.zipcode = dto.zipcode;
 		this.id = dto.id;
+		this.delivery_message = dto.delivery_message;
 
 		return this;
 	}
