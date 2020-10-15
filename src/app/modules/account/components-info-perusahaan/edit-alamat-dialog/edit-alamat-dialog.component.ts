@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
-	AddressCreateUrl,
+	AddressEditUrl,
 	AddressMasterDistrictUrl,
 	AddressMasterProvinceUrl,
 	AddressMasterSubDistrictUrl,
@@ -18,11 +18,11 @@ import {
 import { BaseService } from '../../../../core/base-service/service/base.service';
 
 @Component({
-	selector: 'tambah-alamat-baru-dialog',
-	templateUrl: './tambah-alamat-baru-dialog.component.html',
-	styleUrls: ['./tambah-alamat-baru-dialog.component.scss'],
+	selector: 'edit-alamat-dialog',
+	templateUrl: './edit-alamat-dialog.component.html',
+	styleUrls: ['./edit-alamat-dialog.component.scss'],
 })
-export class TambahAlamatBaruDialogComponent implements OnInit {
+export class EditAlamatDialogComponent implements OnInit {
 	subscribers: Subscription[];
 	provinces: any[];
 	districts: any[];
@@ -33,37 +33,51 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	selectedDistrict: any;
 	selectedSubdistrict: any;
 	selectedVillage: any;
-
-	param = {
-		address_name: '',
-		recipient_name: '',
-		recipient_contact: '',
-		village: '',
-		province: '',
-		district: '',
-		district_type: '',
-		subdistrict: '',
-		zipcode: '',
-		address_detail: '',
-		is_head_office: false,
-		latitude: 0,
-		longitude: 0,
-		delivery_message: '',
-	};
+	address;
 
 	constructor(
-		public dialogRef: MatDialogRef<TambahAlamatBaruDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public modalData: any,
+		public dialogRef: MatDialogRef<EditAlamatDialogComponent>,
+		@Inject(MAT_DIALOG_DATA) public data: any,
 		private route: ActivatedRoute,
 		private router: Router,
 		public dialog: MatDialog,
 		private service: BaseService,
 		private http: HttpClient
-	) {}
+	) {
+		console.log(data.address);
+		this.address = data.address;
+	}
 
 	ngOnInit(): void {
 		this.subscribers = [];
+
 		this.getProvince();
+
+		this.selectedProvince = {
+			province: this.address.province,
+			label: this.address.province,
+		};
+
+		this.selectedDistrict = {
+			district: this.address.district,
+			label: this.address.district,
+		};
+
+		this.selectedSubdistrict = {
+			subdistrict: this.address.subdistrict,
+			label: this.address.subdistrict,
+		};
+
+		this.selectedVillage = {
+			village: this.address.village,
+			zipcode: this.address.zipcode,
+			label: this.address.village,
+		};
+
+		this.onProvinceSelected(this.selectedProvince);
+		this.onDistrictSelected(this.selectedDistrict);
+		this.onSubdistrictSelected(this.selectedSubdistrict);
+		this.onVillageSelected(this.selectedVillage);
 	}
 
 	ngOnDestroy() {
@@ -84,23 +98,23 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	}
 
 	onUserInputNamaPerusahaan(input) {
-		this.param.address_name = input;
+		this.address.address_name = input;
 	}
 
 	onUserInputDetailPerusahaan(input) {
-		this.param.address_detail = input;
+		this.address.address_detail = input;
 	}
 
 	onUserInputNamaPenerima(input) {
-		this.param.recipient_name = input;
+		this.address.recipient_name = input;
 	}
 
 	onUserInputNoTelp(input) {
-		this.param.recipient_contact = input;
+		this.address.recipient_contact = input;
 	}
 
 	onUserInputCatatanPengiriman(input) {
-		this.param.delivery_message = input;
+		this.address.delivery_message = input;
 	}
 
 	getProvince() {
@@ -115,7 +129,7 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 
 	onProvinceSelected(province) {
 		this.selectedProvince = province;
-		this.param.province = this.selectedProvince.province;
+		this.address.province = this.selectedProvince.province;
 		this.getDistrict();
 	}
 
@@ -129,15 +143,18 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 			.postData(url, false, false, false)
 			.subscribe((resp) => {
 				this.districts = resp.data;
-				this.districts.forEach((dis) => (dis.label = dis.district));
+				this.districts.forEach((dis) => {
+					dis.label = dis.district;
+					delete dis.district_type;
+				});
 			});
 		this.subscribers.push(sub);
 	}
 
 	onDistrictSelected(district) {
 		this.selectedDistrict = district;
-		this.param.district = district.district;
-		this.param.district_type = district.district_type;
+		this.address.district = district.district;
+		this.address.district_type = district.district_type;
 		this.getSubDistrict();
 	}
 
@@ -163,7 +180,7 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	onSubdistrictSelected(subdistrict) {
 		console.log(subdistrict);
 		this.selectedSubdistrict = subdistrict;
-		this.param.subdistrict = subdistrict.subdistrict;
+		this.address.subdistrict = subdistrict.subdistrict;
 		this.getVillage();
 	}
 
@@ -191,33 +208,36 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	onVillageSelected(village) {
 		this.selectedVillage = village;
 
-		this.param.village = village.village;
-		this.param.zipcode = village.zipcode;
+		this.address.village = village.village;
+		this.address.zipcode = village.zipcode;
 	}
 
 	submit() {
-		const sub = this.http.post(AddressCreateUrl, this.param).pipe(
-			map((resp: any): any => {
-				return resp;
-			}),
-			catchError((err, caught: Observable<HttpEvent<any>>) => {
-				if (err instanceof HttpErrorResponse && err.status == 401) {
-					// this.storageService.clear();
-					// this._document.defaultView.location.reload();
-					return of(err as any);
-				}
-				throw err;
-			})
+		console.log(this.address);
+		const sub = this.http
+			.post(AddressEditUrl + `/${this.address.id}`, this.address)
+			.pipe(
+				map((resp: any): any => {
+					return resp;
+				}),
+				catchError((err, caught: Observable<HttpEvent<any>>) => {
+					if (err instanceof HttpErrorResponse && err.status == 401) {
+						// this.storageService.clear();
+						// this._document.defaultView.location.reload();
+						return of(err as any);
+					}
+					throw err;
+				})
 
-			// map((model: HttpBodyRespModel): any => {
-			// 	console.log(responseModel.convert);
-			// 	return responseModel
-			// 		? isArray
-			// 			? this.mapArrayData(model.data, responseModel)
-			// 			: responseModel.convert(model.data)
-			// 		: this.responseData(model.data);
-			// })
-		);
+				// map((model: HttpBodyRespModel): any => {
+				// 	console.log(responseModel.convert);
+				// 	return responseModel
+				// 		? isArray
+				// 			? this.mapArrayData(model.data, responseModel)
+				// 			: responseModel.convert(model.data)
+				// 		: this.responseData(model.data);
+				// })
+			);
 
 		sub.subscribe((resp) => {
 			this.dialogRef.close();

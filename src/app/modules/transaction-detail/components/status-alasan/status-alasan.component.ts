@@ -23,7 +23,7 @@ export class StatusAlasanComponent implements OnInit {
 		this.processes = [];
 		var o = {
 			image: '../../../../../assets/image/icons/diproses-red.svg',
-			date: this.item.item_status_history.filter(
+			date: this.item?.item_status_history.filter(
 				(x) => x.status == 'PROCESS'
 			)[0].updated_at,
 		};
@@ -43,35 +43,34 @@ export class StatusAlasanComponent implements OnInit {
 			date: '',
 		};
 
-		if (this.item.status == 'PROCESS') {
-		} else if (this.item.status == 'DELIVERY') {
+		if (this.item?.status == 'DELIVERY') {
 			i.image = '../../../../../assets/image/icons/dikirim-red.svg';
-			i.date = this.item.item_status_history.filter(
+			i.date = this.item?.item_status_history.filter(
 				(x) => x.status == 'DELIVERY'
 			)[0]?.updated_at;
-		} else if (this.item.status == 'RECEIVED') {
+		} else if (this.item?.status == 'RECEIVED') {
 			i.image = '../../../../../assets/image/icons/dikirim-red.svg';
-			i.date = this.item.item_status_history.filter(
+			i.date = this.item?.item_status_history.filter(
 				(x) => x.status == 'DELIVERY'
 			)[0]?.updated_at;
 
 			z.image = '../../../../../assets/image/icons/sampai-red.svg';
-			z.date = this.item.item_status_history.filter(
+			z.date = this.item?.item_status_history.filter(
 				(x) => x.status == 'RECEIVED'
 			)[0]?.updated_at;
-		} else if (this.item.status == 'CLOSED') {
+		} else if (this.item?.status == 'CLOSED') {
 			i.image = '../../../../../assets/image/icons/dikirim-red.svg';
-			i.date = this.item.item_status_history.filter(
+			i.date = this.item?.item_status_history.filter(
 				(x) => x.status == 'DELIVERY'
 			)[0]?.updated_at;
 
 			z.image = '../../../../../assets/image/icons/sampai-red.svg';
-			z.date = this.item.item_status_history.filter(
+			z.date = this.item?.item_status_history.filter(
 				(x) => x.status == 'RECEIVED'
 			)[0]?.updated_at;
 
 			a.image = '../../../../../assets/image/icons/selesai-red.svg';
-			a.date = this.item.item_status_history.filter(
+			a.date = this.item?.item_status_history.filter(
 				(x) => x.status == 'CLOSED'
 			)[0]?.updated_at;
 		}

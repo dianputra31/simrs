@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatusLabelComponent } from './status-label.component';
+import { EditAlamatDialogComponent } from './edit-alamat-dialog.component';
 
-describe('StatusLabelComponent', () => {
-  let component: StatusLabelComponent;
-  let fixture: ComponentFixture<StatusLabelComponent>;
+describe('EditAlamatDialogComponent', () => {
+  let component: EditAlamatDialogComponent;
+  let fixture: ComponentFixture<EditAlamatDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatusLabelComponent ]
+      declarations: [ EditAlamatDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatusLabelComponent);
+    fixture = TestBed.createComponent(EditAlamatDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

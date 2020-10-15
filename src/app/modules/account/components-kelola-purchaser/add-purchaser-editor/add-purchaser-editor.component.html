@@ -1,11 +1,12 @@
 <div class="d-flex">
-  <div class="label-1">
-    Nama Depan
-  </div>
-  <div>
-    <input type="text"
-      class="textbox-search">
-  </div>
+	<div class="label-1">
+		Nama Depan
+	</div>
+	<div>
+		<input type="text"
+			class="textbox-search"
+			[(ngModel)]="param.first_name">
+	</div>
 </div>
 
 <wsv wide="24px"></wsv>
@@ -13,34 +14,37 @@
 <wsv wide="24px"></wsv>
 
 <div class="d-flex">
-  <div class="label-1">
-    Nama Belakang
-  </div>
-  <div>
-    <input type="text"
-      class="textbox-search">
-  </div>
+	<div class="label-1">
+		Nama Belakang
+	</div>
+	<div>
+		<input type="text"
+			class="textbox-search"
+			[(ngModel)]="param.last_name">
+	</div>
 </div>
 <wsv wide="24px"></wsv>
 <horizontal-line></horizontal-line>
 <wsv wide="24px"></wsv>
 
 <div class="d-flex">
-  <div class="label-1">
-    Email
-  </div>
-  <div>
-    <input type="text"
-      class="textbox-search">
-  </div>
+	<div class="label-1">
+		Email
+	</div>
+	<div>
+		<input type="text"
+			class="textbox-search"
+			[(ngModel)]="param.email">
+	</div>
 </div>
 <wsv wide="24px"></wsv>
 <horizontal-line></horizontal-line>
 <wsv wide="24px"></wsv>
 <red-button label="Tambah"
-  font="14px"
-  paddingtop="10px"
-  paddingbottom="10px"
-  paddingleft="0px"
-  paddingright="0px"
-  float="right"></red-button>
+	font="14px"
+	paddingtop="10px"
+	paddingbottom="10px"
+	paddingleft="0px"
+	paddingright="0px"
+	float="right"
+	(click)="submit()"></red-button>
