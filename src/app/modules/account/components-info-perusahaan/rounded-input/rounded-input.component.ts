@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
 	selector: 'rounded-input',
@@ -8,7 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class RoundedInputComponent implements OnInit {
 	@Input() width: String;
 	@Input() placeholderText: String;
+	@Output() onUserInput = new EventEmitter<string>();
+	@Input() disable: boolean = false;
+	@Input() content: string;
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	onKey(key) {
+		this.onUserInput.emit(this.content);
+	}
 }

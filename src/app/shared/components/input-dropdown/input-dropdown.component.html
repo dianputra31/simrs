@@ -1,0 +1,40 @@
+<div #myDrop="ngbDropdown"
+	ngbDropdown>
+	<div ngbDropdownToggle
+		id="filter-dropdown-wrapper"
+		class="d-flex">
+		<div class="flex-grow-1 d-flex align-items-center">
+			<div id="filter-dropdown-label">{{selected?.label}}</div>
+		</div>
+		<div id="arrow-down-gray-wrapper"
+			class="d-flex justify-content-center align-items-center">
+			<img id="arrow-down-gray"
+				src="../../../../../assets/image/icons/arrow_down_gray.png">
+		</div>
+	</div>
+	<div ngbDropdownMenu>
+		<div id="padding-right-for-scroll">
+			<wsv wide="15px">
+			</wsv>
+			<div class="scrollbar"
+				id="style-2">
+				<div>
+					<div *ngFor="let item of items">
+						<div id="item-row"
+							class="d-flex justify-content-between"
+							[ngClass]="selected == item ? 'selected' : '' "
+							(click)="selectItem(item);myDrop.close();">
+							<div class="item-dropdown-class">
+								{{item.label}}
+							</div>
+
+						</div>
+						<wsv wide="15px"></wsv>
+					</div>
+				</div>
+			</div>
+
+			<wsv wide="15px"></wsv>
+		</div>
+	</div>
+</div>

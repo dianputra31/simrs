@@ -24,6 +24,7 @@ import { FooterCustomerSupportComponent } from './components/footer-customer-sup
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HorizontalLineComponent } from './components/horizontal-line/horizontal-line.component';
+import { InputDropdownComponent } from './components/input-dropdown/input-dropdown.component';
 import { ItemDescComponent } from './components/item-desc/item-desc.component';
 import { NestDatepickerAComponent } from './components/nest-datepicker-a/nest-datepicker-a.component';
 import { NestDatepickerBComponent } from './components/nest-datepicker-b/nest-datepicker-b.component';
@@ -77,9 +78,11 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CheckBoxTwoComponent,
 		QtyCtrlTwoComponent,
 		RedButtonComponent,
+		InputDropdownComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
 	exports: [
+		InputDropdownComponent,
 		CatalogCardComponent,
 		CatalogCardButtonComponent,
 		AddressSectionComponent,
@@ -110,8 +113,8 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		HorizontalLineComponent,
 		ButtonGrayComponent,
 		CheckBoxTwoComponent,
-    QtyCtrlTwoComponent,
-    RedButtonComponent,
+		QtyCtrlTwoComponent,
+		RedButtonComponent,
 	],
 })
 export class SharedModule {}

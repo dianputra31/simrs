@@ -7,6 +7,7 @@ export class TransactionItemResponseModel {
 	public category_id: number;
 	public subcategory_id: number;
 	public quantity: number;
+	public initial_quantity: number;
 	public product_name: string;
 	public product_sku: string;
 	public partner_sku: string;
@@ -67,6 +68,7 @@ export class TransactionItemResponseModel {
 		this.approved_at = dto.approved_at;
 		this.requested_at = dto.requested_at;
 		this.order_code = dto.order_code;
+		this.initial_quantity = dto.initial_quantity;
 		this.delivery_address_id = dto.delivery_address_id;
 		this.delivery_address_json = new DeliveryAddressJsonModel().convert(
 			dto.delivery_address_json
