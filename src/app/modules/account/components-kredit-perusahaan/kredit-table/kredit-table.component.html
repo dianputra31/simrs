@@ -25,7 +25,7 @@
 				</th>
 				<th>
 					<div>
-						<div class="d-flex justify-content-center">
+						<div class="d-flex justify-content-center text-right">
 							Mutasi
 						</div>
 						<wsv wide="9px"></wsv>
@@ -34,7 +34,7 @@
 				</th>
 				<th>
 					<div>
-						<div class="d-flex justify-content-center">
+						<div class="d-flex justify-content-center text-right">
 							Sisa Kredit
 						</div>
 						<wsv wide="9px"></wsv>
@@ -43,7 +43,7 @@
 				</th>
 				<th>
 					<div>
-						<div class="d-flex justify-content-center">
+						<div class="d-flex justify-content-center text-center">
 							Keterangan
 						</div>
 						<wsv wide="9px"></wsv>
@@ -53,42 +53,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>15/06/20</td>
-				<td>Debit</td>
-				<td>50.000.000</td>
-				<th>150.000.000</th>
-				<td>Transaksi 012078312093</td>
-			</tr>
-			<tr>
-				<td>10/02/20</td>
-				<td>Debit</td>
-				<td>150.000.000</td>
-				<th>200.000.000</th>
-				<td>Pembayaran Pesanan NEST-01-0902</td>
-			</tr>
-			<tr>
-				<td>10/10/20</td>
-				<td>Kredit</td>
-				<td>100.000.000</td>
-				<th>350.000.000</th>
-				<td>Pembayaran Pesanan 081241234</td>
-			</tr>
-			<tr>
-				<td>29/07/20</td>
-				<td>Debit</td>
-				<td>50.000.000</td>
-				<th>250.000.000</th>
-				<td>Transaksi 8991823712</td>
-			</tr>
-			<tr>
-				<td>17/05/20</td>
-				<td>Kredit</td>
-				<td>50.000.000</td>
-				<th>300.000.000</th>
-				<td>Pembayaran Pesanan 0812378123</td>
-			</tr>
 
+			<tr *ngFor="let items of hist; let i = index">
+				<td class="text-center">{{items.updated_at | tanggal: 'dmy'}}</td>
+				<td class="text-center">
+					<div *ngIf="items.type=='C'; then kredit else debit"></div>
+					<ng-template #kredit>Kredit</ng-template>
+					<ng-template #debit>Debit</ng-template>
+				</td>
+				<td class="text-right">{{items.mutation | number}}</td>
+				<td class="text-right tebal">{{items.balance | number}}</td>
+				<td class="text-left">{{items.description}}</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

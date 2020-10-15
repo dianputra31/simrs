@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AccountRoutingModule } from './account-routing.module';
 import { EditAlamatDialogComponent } from './components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
@@ -61,6 +62,7 @@ import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan
 		LabelInputComponent,
 		EditAlamatDialogComponent,
 	],
-	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule],
+	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule, SharedPipesModule,
+	],
 })
-export class AccountModule {}
+export class AccountModule { }
