@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { BaseService } from '../../../../core/base-service/service/base.service';
 
 @Component({
 	selector: 'account-info-personal',
@@ -12,12 +11,7 @@ export class AccountInfoPersonalComponent implements OnInit {
 	isEditting;
 	firstName;
 	lastName;
-	email;
-
-
-	constructor(
-		private service: BaseService,
-	) { }
+	constructor() { }
 
 	subsribers: Subscription[];
 
@@ -25,7 +19,6 @@ export class AccountInfoPersonalComponent implements OnInit {
 		this.subsribers = [];
 
 		var datausr = JSON.parse(localStorage.getItem('profile'));
-		this.email = datausr.email;
 		var splitted = datausr.fullname.split(" ", 2);
 		this.firstName = splitted[0];
 		this.lastName = splitted[1];
@@ -35,8 +28,6 @@ export class AccountInfoPersonalComponent implements OnInit {
 
 	save() {
 		this.isEditting = false;
-
-
 
 	}
 
