@@ -67,9 +67,9 @@
             Tidak Terima Nomor OTP? <span class='grey'
               (click)="sendotp()"
               [ngStyle]="{'display':display}">Kirim Ulang</span>
-            <!-- <span class='kirimulang'
-							(click)="sendotp()"
-							[ngStyle]="{'display':tampil}">Kirim Ulang</span> -->
+            <span class='kirimulang'
+              (click)="sendotp()"
+              [ngStyle]="{'display':tampil}">Kirim Ulang</span>
             &nbsp;
             <countdown [config]="naconfig"
               (event)="finishCount($event)"
