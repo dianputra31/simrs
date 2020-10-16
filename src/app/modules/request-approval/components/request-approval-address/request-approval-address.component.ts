@@ -25,11 +25,12 @@ export class RequestApprovalAddressComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.fullname = this.storageService.fullname;
+		this.fullname = this.storageService.getName();
 		const url = ProfileUrl;
 		const sub = this.service
 			.getData(url, ProfileResponseModel, null, false)
 			.subscribe((resp) => {
+				console.log(resp);
 				this.addresses = resp.delivery_address;
 
 				var def_addr =
@@ -44,7 +45,9 @@ export class RequestApprovalAddressComponent implements OnInit {
 					', ' +
 					this.addresses[0].subdistrict +
 					', ' +
-					this.addresses[0].district;
+					this.addresses[0].district +
+					', ' +
+					this.addresses[0].zipcode;
 				this.province = this.addresses[0].province;
 				this.phone = 'Telp. ' + this.addresses[0].recipient_contact;
 			});
