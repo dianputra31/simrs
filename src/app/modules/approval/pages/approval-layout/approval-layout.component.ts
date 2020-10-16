@@ -75,55 +75,6 @@ export class ApprovalLayoutComponent implements OnInit {
 	selected: Product;
 	selectedIndex;
 	pilihSemua = false;
-	// items = [
-	// 	{
-	// 		item: '1',
-	// 		available: true,
-	// 		cart: true,
-	// 	},
-	// 	{
-	// 		item: '2',
-	// 		available: false,
-	// 		cart: false,
-	// 	},
-	// 	{
-	// 		item: '3',
-	// 		available: true,
-	// 		cart: true,
-	// 	},
-	// ];
-
-	// listApprovals = [
-	// 	{
-	// 		name: 'Kantor Pusat',
-	// 		qty: 10,
-	// 	},
-	// 	{
-	// 		name: 'Kantor Pertama Di Jalan Samudera',
-	// 		qty: 8,
-	// 	},
-	// 	{
-	// 		name: 'Kantor Cabang 2',
-	// 		qty: 0,
-	// 	},
-	// 	{
-	// 		name:
-	// 			'Jl Kompleks Gelora Bung Karno Baru Jaksel No 45, Kebayoran Baru, Jakarta Selatan, DKI Jakarta',
-	// 		qty: 0,
-	// 	},
-	// 	{
-	// 		name: 'Kantor Cabang 4',
-	// 		qty: 6,
-	// 	},
-	// 	{
-	// 		name: 'Kantor Cabang 5',
-	// 		qty: 0,
-	// 	},
-	// 	{
-	// 		name: 'Kantor Cabang 6',
-	// 		qty: 2,
-	// 	},
-	// ];
 	handleSelectAddress(selectedAddress) {
 		this.selectedAddress = selectedAddress;
 
@@ -187,21 +138,6 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	clickCheckBoxSatu(element: Product) {
-		// console.log(element);
-		// if (element.cart) {
-		// 	this.selectedItems.push(element);
-		// 	this.pertotalan.totalPrice += element.purchase_amount;
-		// 	this.pertotalan.totalItem += element.quantity;
-		// 	this.pertotalan.totalItem += element.admin_fee;
-		// 	this.pertotalan.ppn += element.ppn;
-		// 	this.pertotalan.ppn3 += element.pph;
-		// 	this.pertotalan.totalFee += element.admin_fee
-		// 	this.pertotalan.ongkir += element.shipping_cost;
-		// 	this.pertotalan.subtotal += element.sub_total;
-		// 	this.pertotalan.grandtotal += element.grand_total;
-		// } else {
-
-		// }
 		return element.available && element.cart;
 	}
 
@@ -212,9 +148,9 @@ export class ApprovalLayoutComponent implements OnInit {
 			keyword: this.filter,
 			page: 1,
 			limit: 1000,
-			user_id: this.updateUserId,
+			user_id: this.selectedUserId,
 		};
-		console.log();
+		console.log(params);
 		if (this.date !== null) {
 			params['start_date'] = this.date['startdate'];
 			params['end_date'] = this.date['enddate'];
