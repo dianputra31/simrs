@@ -67,8 +67,8 @@ const routes: Routes = [
 			{
 				path: 'approval',
 				loadChildren: () =>
-					import('../modules/approval/approval.module').then(
-						(m) => m.ApprovalModule
+					import('../modules/approval2/approval2.module').then(
+						(m) => m.Approval2Module
 					),
 			},
 			{
@@ -100,4 +100,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {}

@@ -1,0 +1,124 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#wrapper-approval-item-summary-dropdown {
+	width: 497px;
+	height: 32px;
+	background: $putih-tok;
+	border: 0.5px solid $abu-abu-sesuatu;
+	box-sizing: border-box;
+	border-radius: 45px;
+}
+
+#drop-down-item-summary-arrow {
+	width: 12.53px;
+	height: 6px;
+}
+
+#arrow-approval-wrapper {
+	width: 34px;
+	height: 100%;
+	background-color: $color-primary;
+	border-radius: 45px;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+}
+
+#item-belum-diapprove {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 14px;
+	color: $abu-abu-gelap;
+	span {
+		color: $color-primary;
+	}
+}
+
+//remove default background
+.dropdown-menu {
+	background-color: transparent;
+	border: none;
+}
+
+#dropdown-location {
+	width: 497px;
+	height: 157px;
+	overflow: scroll;
+	background: $putih-tok;
+	border: 0.5px solid $abu-abu-sesuatu;
+	box-sizing: border-box;
+	border-radius: 20px;
+	padding-left: 17px;
+	padding-bottom: 15px;
+	padding-right: 27px;
+}
+
+.item-dropdown-class {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	text-overflow: ellipsis;
+	max-width: 290px;
+	white-space: nowrap;
+	color: $abu-abu-gelap;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#item-row {
+	margin-right: 12px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.selected {
+	background: $color-primary;
+	border-radius: 20px;
+	.item-dropdown-class {
+		color: $putih-tok !important;
+	}
+}
+.scrollbar {
+	height: 127px;
+	width: 469px;
+	background: $putih-tok;
+	overflow-y: scroll;
+}
+
+#style-2::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 2px;
+	width: 4px;
+	height: 9px;
+	background-color: #f2f2f2;
+}
+
+#style-2::-webkit-scrollbar {
+	width: 4px;
+	background-color: #f2f2f2;
+}
+
+#style-2::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	width: 4px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: $color-primary;
+}
+
+#padding-right-for-scroll {
+	background: $putih-tok;
+
+	width: 497px;
+	height: 157px;
+	padding-left: 17px;
+	background: $putih-tok;
+	border: 0.5px solid $abu-abu-sesuatu;
+	box-sizing: border-box;
+	border-radius: 20px;
+	position: absolute;
+	z-index: 2;
+}
+
+.visibility-hidden {
+	visibility: hidden;
+}
