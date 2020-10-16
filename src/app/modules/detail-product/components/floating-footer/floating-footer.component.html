@@ -40,13 +40,14 @@
 					<div class="d-flex align-items-center">
 						<img [src]="productDetail?.product_image"
 							id="notif-img">
+						<wsh wide="10px"></wsh>
 						<div>
 							<!-- <div id="item-name">{{productDetail?.product_name}}</div> -->
 							<div id="item-name">{{truncateChar(productDetail?.product_name)}}</div>
 							<div>{{qtyObject?.qty}} Barang</div>
 						</div>
 					</div>
-					<div id="item-price">{{productDetail?.sell_price * qtyObject?.qty}}</div>
+					<div id="item-price">{{productDetail?.sell_price * qtyObject?.qty|rupiah}}</div>
 				</div>
 
 			</div>
