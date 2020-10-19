@@ -13,9 +13,10 @@ import { FilterDateComponent } from './components/filter-date/filter-date.compon
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { ApprovalConfirmationDialogComponent } from './components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { ApprovalResultConfirmationDialogComponent } from './components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
+import { ApprovalRejectDialogComponent } from './components/approval-reject-dialog/approval-reject-dialog.component';
 
 @NgModule({
-	declarations: [ApprovalLayoutComponent, ItemSummaryDropdownComponent, AddressWithNotifComponent, FilterDateComponent, ItemCardComponent, ApprovalConfirmationDialogComponent, ApprovalResultConfirmationDialogComponent],
+	declarations: [ApprovalLayoutComponent, ItemSummaryDropdownComponent, AddressWithNotifComponent, FilterDateComponent, ItemCardComponent, ApprovalConfirmationDialogComponent, ApprovalResultConfirmationDialogComponent, ApprovalRejectDialogComponent],
 	imports: [
 		CommonModule,
 		ApprovalRoutingModule,

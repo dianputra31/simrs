@@ -30,6 +30,7 @@ export const CartListUrl = `${API}/cart/list`;
 export const AddCart = `${API}/cart`;
 export const CheckoutCartUrl = `${API}/approval/checkout_cart`;
 export const ApprovalUrl = `${API}/approval/submit`;
+export const ApprovalRejectUrl = `${API}/approval/reject`;
 export const ApprovalListUrl = `${API}/approval/list`;
 export const AddressListUrl = `${API}/approval/address_group`;
 export const GetCompanyUsers = `${API}/user/company_users`;

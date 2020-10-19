@@ -417,4 +417,8 @@ export class ApprovalLayoutComponent implements OnInit {
 
 		this.getItems();
 	}
+
+	rejectItem() {
+		this.getItems();
+	}
 }
