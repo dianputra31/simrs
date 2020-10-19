@@ -26,8 +26,8 @@ import {
 	ConvertCheckoutCart,
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
-import { ApprovalResultConfirmationDialogComponent } from '../../../approval/components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
 import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
+import { ApprovalResultConfirmationDialogComponent } from '../../components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
 import { FilterDateComponent } from '../../components/filter-date/filter-date.component';
 
 @Component({
@@ -346,6 +346,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	proses() {
+		this.blockUI.start();
 		const cart_list: CartListApproveParams[] = [];
 
 		const selectedItems = this.selectedItems();
@@ -371,6 +372,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		const sub = this.service
 			.postData(url, pm, false, false, true)
 			.subscribe((resp) => {
+				this.blockUI.stop();
 				const stringnya = ConvertCheckoutCart.checkoutCartToJson(resp);
 				const cartCheckout: CheckoutCart = ConvertCheckoutCart.toCheckoutCart(
 					stringnya
@@ -378,6 +380,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				if (cartCheckout.status.rc == 1) {
 					this.openDialogLocation();
 				} else {
+					alert(cartCheckout.status.msg);
 				}
 			});
 
