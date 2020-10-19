@@ -7,11 +7,7 @@ import {
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ApprovalUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
-import { SelectedCartItemModel } from '../../../../models/selected-cart-item.model';
-import { SelectedCartItemRequestModel } from '../../../../models/selected-cart-request.model';
 import { ApprovalResultConfirmationDialogComponent } from '../approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
 
 @Component({
@@ -29,6 +25,7 @@ export class ApprovalConfirmationDialogComponent implements OnInit {
 		private service: BaseService,
 		public dialog: MatDialog
 	) {
+		console.log(modalData);
 		modalData.cartList;
 	}
 
@@ -71,24 +68,6 @@ export class ApprovalConfirmationDialogComponent implements OnInit {
 	}
 
 	proses() {
-		console.log(this.modalData);
-
-		var test = new SelectedCartItemModel();
-		test.cart_request_id = this.modalData.product_id;
-
-		var cartreq = new SelectedCartItemRequestModel();
-		cartreq.cart_list = [];
-		cartreq.cart_list.push(test);
-
-		const sub = this.service
-			.postData(ApprovalUrl, cartreq, CartItemResponseModel, false)
-			.subscribe((resp) => {
-				this.dialogRef.close();
-				this.openDialogLocation('./transaction');
-				this.dialogRef.close({ event: 'proses' });
-			});
-		this.subsribers.push(sub);
-		// this.dialogRef.close();
-		// this.openDialogLocation('./transaction');
+		this.dialogRef.close('proses');
 	}
 }

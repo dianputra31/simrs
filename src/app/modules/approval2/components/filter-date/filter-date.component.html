@@ -1,0 +1,23 @@
+<div #myDrop="ngbDropdown"
+	ngbDropdown>
+	<div ngbDropdownToggle
+		id="filter-dropdown-wrapper"
+		class="d-flex">
+		<div class="flex-grow-1 d-flex align-items-center">
+			<div id="filter-dropdown-label">{{startDate}} - {{endDate}}</div>
+		</div>
+		<div id="arrow-down-gray-wrapper"
+			class="d-flex justify-content-center align-items-center">
+			<img id="arrow-down-gray"
+				src="../../../../../assets/image/icons/arrow_down_gray.png">
+		</div>
+	</div>
+	<div ngbDropdownMenu>
+		<div id="date-picker-wrapper"
+			class="d-flex">
+			<nest-datepicker-b (dateSelectedEvent)="selectedStartDate($event)"></nest-datepicker-b>
+			<nest-datepicker-b (dateSelectedEvent)="selectedEndDate($event)"></nest-datepicker-b>
+		</div>
+
+	</div>
+</div>

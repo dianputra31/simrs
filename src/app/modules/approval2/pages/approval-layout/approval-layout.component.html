@@ -20,7 +20,45 @@
 			</div>
 		</div>
 
+		<div class="d-flex">
+			<input-dropdown [items]="purchasers"
+				[selected]="selectedPurchaser"
+				(onSelect)="selectPurchaser($event)"
+				class="flex-even"></input-dropdown>
+			<filter-input (keyword)="cariKeyword($event)"
+				class="flex-even"
+				hint="Cari Pesanan"
+				logo="../../../../assets/image/icons/searchbutton.png"
+				[disabled]="false"></filter-input>
+			<filter-date (dateSelectedEvent)="filterDate($event)"
+				class="flex-even"></filter-date>
+		</div>
 
+		<div class="d-flex">
+			<div class="flex-grow-1">
+				<div class="d-flex justify-content-between">
+					<div class="d-flex">
+						<check-box-two [checked]="true"
+							[allowChanges]="true"
+							(onClickEvent)="pilihSemuaClickEvent($event)"
+							class="check-box-container"></check-box-two>
+						<div>Pilih Semua</div>
+					</div>
+
+					<div>{{numberOfItemsSelected()}} Barang Dipilih</div>
+				</div>
+				<div *ngFor="let item of items">
+					<item-card [item]="item"></item-card>
+					<wsv wide="40px"></wsv>
+				</div>
+			</div>
+			<box-cart-price class="box-cart-price"
+				[pertotalan]="calculate()"
+				buttonLabel="Selanjutnya"
+				(buttonBoxCartPriceClick)="selanjutnyaClick()"
+				[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+
+		</div>
 	</div>
 
 </block-ui>
