@@ -16,6 +16,7 @@ export class FilterInputComponent implements OnInit {
 	ngOnInit(): void {}
 
 	getKeyword(thisval) {
+		this.a = thisval;
 		this.keyword.emit(thisval);
 	}
 }

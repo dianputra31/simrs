@@ -17,6 +17,7 @@ export class FilterDateComponent implements OnInit {
 	@Output() dateSelectedEvent = new EventEmitter<any>();
 	startDate = '';
 	endDate = '';
+	showEndDate;
 	constructor() {}
 
 	ngOnInit(): void {}
@@ -27,7 +28,7 @@ export class FilterDateComponent implements OnInit {
 			startdate: this.startDate,
 			enddate: this.endDate == '' ? this.startDate : this.endDate,
 		};
-		this.dateSelectedEvent.emit(date);
+		this.showEndDate = true;
 	}
 
 	selectedEndDate(date) {

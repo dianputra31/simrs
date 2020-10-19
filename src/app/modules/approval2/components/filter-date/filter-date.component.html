@@ -16,7 +16,8 @@
 		<div id="date-picker-wrapper"
 			class="d-flex">
 			<nest-datepicker-b (dateSelectedEvent)="selectedStartDate($event)"></nest-datepicker-b>
-			<nest-datepicker-b (dateSelectedEvent)="selectedEndDate($event)"></nest-datepicker-b>
+			<nest-datepicker-b *ngIf="showEndDate"
+				(dateSelectedEvent)="selectedEndDate($event)"></nest-datepicker-b>
 		</div>
 
 	</div>

@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Observable, of, Subscription } from 'rxjs';
@@ -25,8 +25,10 @@ import {
 	CheckoutCart,
 	ConvertCheckoutCart,
 } from '../../../../models/checkout-cart.model';
+import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { ApprovalResultConfirmationDialogComponent } from '../../../approval/components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
 import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
+import { FilterDateComponent } from '../../components/filter-date/filter-date.component';
 
 @Component({
 	selector: 'approval-layout',
@@ -45,7 +47,15 @@ export class ApprovalLayoutComponent implements OnInit {
 	selectedAddress: any;
 
 	purchasers: any[];
-	selectedPurchaser: any[];
+	selectedPurchaser: any;
+
+	keyword;
+	start_date;
+	end_date;
+
+	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
+	@ViewChild('inputDate') inputDate: FilterDateComponent;
+
 	constructor(
 		private http: HttpClient,
 		private storageService: StorageService,
@@ -56,17 +66,22 @@ export class ApprovalLayoutComponent implements OnInit {
 	ngOnInit(): void {
 		this.getAddress();
 		this.numberOfApproval();
-		this.getPurchaserList();
 	}
 
 	getItems() {
-		var params = {
+		var params: any = {
 			address_id: this.selectedAddress?.address_id,
-			// keyword: this.filter,
+			keyword: this.keyword,
+			start_date: this.start_date,
+			end_date: this.end_date,
 			// page: 1,
 			// limit: 1000,
-			// user_id: this.selectedUserId,
 		};
+
+		if (this.selectedPurchaser.id) {
+			params.user_id = this.selectedPurchaser.id;
+		}
+
 		this.blockUI.start();
 		this.http
 			.post(ApprovalListUrl, params)
@@ -121,7 +136,8 @@ export class ApprovalLayoutComponent implements OnInit {
 				this.blockUI.stop();
 				this.listSummaryByAddress = resp.data;
 				this.selectedAddress = resp.data[0];
-				this.getItems();
+
+				this.getPurchaserList();
 			});
 
 		this.subscribers.push(sub);
@@ -185,6 +201,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				});
 
 				this.selectedPurchaser = this.purchasers[0];
+				this.getItems();
 			});
 
 		this.subscribers.push(sub);
@@ -196,15 +213,22 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	selectPurchaser(purchaser) {
-		this.selectPurchaser = purchaser;
+		this.selectedPurchaser = purchaser;
+		this.getItems();
 	}
 
 	cariKeyword(keyword) {
-		console.log(keyword);
+		if (keyword.length >= 3 || keyword.length == 0) {
+			this.keyword = keyword;
+			this.getItems();
+		}
 	}
 
 	filterDate(datenya) {
-		console.log(datenya);
+		this.start_date = datenya.startdate;
+		this.end_date = datenya.enddate;
+
+		this.getItems();
 		// this.date = datenya;
 		// const addressid = this.selectedAddress.address_id;
 		// this.getCartItem(addressid);
@@ -378,5 +402,19 @@ export class ApprovalLayoutComponent implements OnInit {
 		);
 
 		return false;
+	}
+
+	reset() {
+		this.selectedAddress = this.listSummaryByAddress[0];
+		this.selectedPurchaser = this.purchasers[0];
+		this.keyword = '';
+
+		this.inputKeyword.getKeyword('');
+
+		this.inputDate.resetDate();
+		this.start_date = '';
+		this.end_date = '';
+
+		this.getItems();
 	}
 }

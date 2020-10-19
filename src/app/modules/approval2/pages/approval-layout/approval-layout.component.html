@@ -21,18 +21,30 @@
 		</div>
 
 		<div class="d-flex">
-			<input-dropdown [items]="purchasers"
-				[selected]="selectedPurchaser"
-				(onSelect)="selectPurchaser($event)"
-				class="flex-even"></input-dropdown>
-			<filter-input (keyword)="cariKeyword($event)"
-				class="flex-even"
-				hint="Cari Pesanan"
-				logo="../../../../assets/image/icons/searchbutton.png"
-				[disabled]="false"></filter-input>
-			<filter-date (dateSelectedEvent)="filterDate($event)"
-				class="flex-even"></filter-date>
+			<div class="d-flex flex-grow-1">
+				<input-dropdown [items]="purchasers"
+					[selected]="selectedPurchaser"
+					(onSelect)="selectPurchaser($event)"
+					class="flex-even"></input-dropdown>
+				<filter-input #inputKeyword
+					(keyword)="cariKeyword($event)"
+					class="flex-even"
+					hint="Cari Pesanan"
+					logo="../../../../assets/image/icons/searchbutton.png"
+					[disabled]="false"></filter-input>
+				<filter-date #inputDate
+					(dateSelectedEvent)="filterDate($event)"
+					class="flex-even"></filter-date>
+			</div>
+			<red-button label="Reset"
+				font="14px"
+				paddingtop="10px"
+				paddingbottom="10px"
+				paddingleft="0px"
+				paddingright="0px"
+				(click)="reset()"></red-button>
 		</div>
+
 
 		<div class="d-flex">
 			<div class="flex-grow-1">
