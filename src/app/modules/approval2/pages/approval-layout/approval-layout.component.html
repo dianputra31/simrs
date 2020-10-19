@@ -25,7 +25,8 @@
 				<input-dropdown [items]="purchasers"
 					[selected]="selectedPurchaser"
 					(onSelect)="selectPurchaser($event)"
-					class="flex-even"></input-dropdown>
+					class="flex-even"
+					style="cursor: pointer;"></input-dropdown>
 				<filter-input #inputKeyword
 					(keyword)="cariKeyword($event)"
 					class="flex-even"
@@ -34,7 +35,8 @@
 					[disabled]="false"></filter-input>
 				<filter-date #inputDate
 					(dateSelectedEvent)="filterDate($event)"
-					class="flex-even"></filter-date>
+					class="flex-even"
+					style="cursor: pointer;"></filter-date>
 			</div>
 			<red-button label="Reset"
 				font="14px"
