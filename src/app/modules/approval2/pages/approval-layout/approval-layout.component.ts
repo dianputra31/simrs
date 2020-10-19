@@ -57,18 +57,17 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.getAddress();
 		this.numberOfApproval();
 		this.getPurchaserList();
-		this.getItems();
 	}
 
 	getItems() {
 		var params = {
-			// address_id: addressid,
+			address_id: this.selectedAddress?.address_id,
 			// keyword: this.filter,
 			// page: 1,
 			// limit: 1000,
 			// user_id: this.selectedUserId,
 		};
-
+		this.blockUI.start();
 		this.http
 			.post(ApprovalListUrl, params)
 			.pipe(
@@ -92,6 +91,8 @@ export class ApprovalLayoutComponent implements OnInit {
 					each.selected = this.enableSelect(each.availability);
 					each.enableSelection = this.enableSelect(each.availability);
 				});
+
+				this.blockUI.stop();
 			});
 	}
 
@@ -120,6 +121,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				this.blockUI.stop();
 				this.listSummaryByAddress = resp.data;
 				this.selectedAddress = resp.data[0];
+				this.getItems();
 			});
 
 		this.subscribers.push(sub);
@@ -190,6 +192,7 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	selectAddressGroup(i) {
 		this.selectedAddress = i;
+		this.getItems();
 	}
 
 	selectPurchaser(purchaser) {
