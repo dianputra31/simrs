@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApproveUrl } from '../../../app.constant';
@@ -15,7 +15,6 @@ import {
 	CheckoutCart,
 	ConvertCheckoutCart,
 } from '../../../models/checkout-cart.model';
-import { ApprovalConfirmationDialogComponent } from '../../../modules/approval/components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 
 @Component({
 	selector: 'box-cart-price',
@@ -86,33 +85,6 @@ export class BoxCartPriceComponent implements OnInit {
 			});
 
 		this.subsribers.push(sub);
-	}
-
-	openConfirmDialog(des) {
-		const dialogConfig = new MatDialogConfig();
-		dialogConfig.disableClose = false;
-		dialogConfig.id = 'modal-component';
-		dialogConfig.height = 'auto';
-		dialogConfig.width = '480px';
-		dialogConfig.height = '170px';
-		dialogConfig.panelClass = 'border-radius:10px';
-		dialogConfig.data = {
-			pageBefore: this.router.url,
-			pageDestination: des,
-			modePopUp: '1',
-			cartList: this.selectedItems,
-		};
-		const modalDialog = this.dialog.open(
-			ApprovalConfirmationDialogComponent,
-			dialogConfig
-		);
-
-		modalDialog.afterClosed().subscribe((result) => {
-			if (result.event == 'proses') {
-				this.postCartItem('proses');
-			}
-		});
-		return false;
 	}
 
 	clickButtonLabel() {
