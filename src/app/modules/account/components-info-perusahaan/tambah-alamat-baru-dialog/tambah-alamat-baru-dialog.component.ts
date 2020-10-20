@@ -15,6 +15,7 @@ import {
 	AddressMasterSubDistrictUrl,
 	AddressMasterVillageUrl,
 } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 
 @Component({
@@ -58,7 +59,8 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 		private router: Router,
 		public dialog: MatDialog,
 		private service: BaseService,
-		private http: HttpClient
+		private http: HttpClient,
+		private http2: HttpService
 	) {}
 
 	ngOnInit(): void {
