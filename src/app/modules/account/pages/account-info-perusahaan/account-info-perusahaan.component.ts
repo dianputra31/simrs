@@ -82,4 +82,7 @@ export class AccountInfoPerusahaanComponent implements OnInit {
 		});
 		return false;
 	}
+	setUtamaAddress(address) {
+		this.getAddressList();
+	}
 }
