@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
@@ -30,6 +31,7 @@ import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchase
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
+import { OutputGraphComponent } from './components/output-graph/output-graph.component';
 
 @NgModule({
 	declarations: [
@@ -60,7 +62,8 @@ import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan
 		RoundedInputComponent,
 		LabelInputComponent,
 		EditAlamatDialogComponent,
+		OutputGraphComponent,
 	],
-	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule],
+	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule, HttpClientModule],
 })
 export class AccountModule {}

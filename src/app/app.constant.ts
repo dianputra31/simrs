@@ -51,3 +51,6 @@ export const UserCompanyUsersUrl = `${API}/user/company_users`;
 export const UserCreateUserUrl = `${API}/user`;
 export const UserDeleteUrl = `${API}/user/delete`;
 export const EditProfile = `${API}/user/edit/`;
+export const DashboardPerMonth = `${API}/dashboard/per_month/`;
+export const DashboardPerPurchaser = `${API}/dashboard/per_purchaser/`;
+export const DashboardPerProduct = `${API}/dashboard/per_product/`;
