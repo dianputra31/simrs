@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TagihanCompany } from '../../../../app.constant';
-import { BaseService } from '../../../../core/base-service/service/base.service';
+import { HttpService } from '../../../../core/base-service/http.service';
 
 
 @Component({
@@ -13,18 +13,20 @@ export class TagihanTableComponent implements OnInit {
 	tagihanHist;
 	subsribers: Subscription[];
 
-	constructor(private service: BaseService) { }
+	param = {
+		page: 1,
+		limit: 30
+	}
+
+	constructor(private service: HttpService) { }
 
 	ngOnInit(): void {
-		const sub = this.service
-			.postData(TagihanCompany, false, false, false)
-			.subscribe((resp) => {
-				var tc = resp.data.length;
-				// console.log(resp.data);
-				if (parseInt(tc) > 0) {
-					this.tagihanHist = resp.data;
-				}
-			});
+		const sub = this.service.post(TagihanCompany, this.param).subscribe((resp) => {
+			var tc = resp.data.length;
+			if (parseInt(tc) > 0) {
+				this.tagihanHist = resp.data;
+			}
+		});
 		this.subsribers.push(sub);
 
 	}

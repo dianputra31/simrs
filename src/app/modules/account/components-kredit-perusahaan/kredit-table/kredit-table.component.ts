@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HistoryMutation } from '../../../../app.constant';
-import { BaseService } from '../../../../core/base-service/service/base.service';
+import { HttpService } from '../../../../core/base-service/http.service';
 
 @Component({
 	selector: 'kredit-table',
@@ -16,14 +16,13 @@ export class KreditTableComponent implements OnInit {
 		limit: 30
 	}
 
-	constructor(private service: BaseService,
+	constructor(private service: HttpService,
 	) { }
 
 	ngOnInit(): void {
 
 
-		const sub = this.service
-			.postData(HistoryMutation, false, false, false)
+		const sub = this.service.post(HistoryMutation, this.param)
 			.subscribe((resp) => {
 				var tc = resp.data.length;
 				if (parseInt(tc) > 0) {
