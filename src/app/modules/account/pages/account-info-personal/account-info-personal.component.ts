@@ -40,9 +40,9 @@ export class AccountInfoPersonalComponent implements OnInit {
 
 	}
 
-	save() {
+	save(a, b) {
 		this.isEditting = false;
-
+		console.log(a + ' ' + b);
 	}
 
 	edit() {

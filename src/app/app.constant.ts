@@ -51,4 +51,5 @@ export const UserCompanyUsersUrl = `${API}/user/company_users`;
 export const UserCreateUserUrl = `${API}/user`;
 export const UserDeleteUrl = `${API}/user/delete`;
 export const EditProfile = `${API}/user/edit/`;
-export const HistoryMutation = `${API}/history/mutation/`;
+export const HistoryMutation = `${API}/history/mutation`;
+export const TagihanCompany = `${API}/history/invoice_list`;
