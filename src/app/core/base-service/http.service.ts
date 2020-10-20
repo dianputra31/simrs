@@ -15,7 +15,7 @@ export class HttpService {
 		@Inject(DOCUMENT) private _document: Document
 	) {}
 
-	public get(url: string, param: any): Observable<any> {
+	public get(url: string, param?: any): Observable<any> {
 		return this.http.get(url, param).pipe(
 			map((resp: any): any => {
 				return resp;

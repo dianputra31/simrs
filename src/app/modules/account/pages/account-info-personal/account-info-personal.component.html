@@ -20,7 +20,7 @@
 		<wsv wide="40px"></wsv>
 
 		<red-button *ngIf="isEditting"
-			(click)="save()"
+			(click)="save(this.firstname,this.lastname)"
 			label="Simpan"
 			font="14px"
 			paddingtop="10px"
