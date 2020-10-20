@@ -1,7 +1,7 @@
 <div>
 	<div id="product-detail-label">{{productDetail?.product_name}}</div>
 	<wsv wide="27px"></wsv>
-	<discount-harga-coret [discount_percent]="null"
+	<discount-harga-coret [discount_percent]="productDetail?.discount_percentage"
 		[original_price]="productDetail?.original_price"
 		[sell_price]="productDetail?.sell_price"></discount-harga-coret>
 

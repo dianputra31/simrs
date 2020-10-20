@@ -29,7 +29,6 @@ export class AccountInfoPersonalComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.subsribers = [];
-
 		var datausr = JSON.parse(localStorage.getItem('profile'));
 		var splitted = datausr.fullname.split(" ", 2);
 		this.firstName = splitted[0];

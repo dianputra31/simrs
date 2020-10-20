@@ -1,34 +1,34 @@
 <div class="container d-flex">
-  <div id="left-container">
-    <div id="top-fixed"
-      class="bg-10">
-      <wsv wide="52px"></wsv>
-      <div id="keranjang-label">REQUEST APPROVAL</div>
-      <wsv wide="14px"></wsv>
-      <request-approval-address></request-approval-address>
-    </div>
-    <wsv wide="210px"></wsv>
-    <div id="poi">
-      <div id="asd">
-        <!-- <item-card></item-card> -->
-        <item-list [items]="items"></item-list>
-      </div>
-    </div>
-  </div>
-  <div id="right-container">
-    <wsv wide="210px"></wsv>
-    <div id="right-fixed">
-      <div class="d-flex">
-        <wsh wide="57px"></wsh>
-        <box-cart-price [pertotalan]="pertotalan"
-          [selectedItems]="selectedItems"
-          [buttonDisable]="false"
-          buttonLabel="Request Approval"
-          (buttonBoxCartPriceClick)="selanjutnyaClick()"></box-cart-price>
-      </div>
+	<div id="left-container">
+		<div id="top-fixed"
+			class="bg-10">
+			<wsv wide="25px"></wsv>
+			<div id="keranjang-label">REQUEST APPROVAL</div>
+			<wsv wide="14px"></wsv>
+			<request-approval-address></request-approval-address>
+		</div>
+		<wsv wide="200px"></wsv>
+		<div id="poi">
+			<div id="asd">
+				<!-- <item-card></item-card> -->
+				<item-list [items]="items"></item-list>
+			</div>
+		</div>
+	</div>
+	<div id="right-container">
+		<wsv wide="200px"></wsv>
+		<div id="right-fixed">
+			<div class="d-flex">
+				<wsh wide="57px"></wsh>
+				<box-cart-price [pertotalan]="pertotalan"
+					[selectedItems]="selectedItems"
+					[buttonDisable]="false"
+					buttonLabel="Selanjutnya"
+					(buttonBoxCartPriceClick)="selanjutnyaClick()"></box-cart-price>
+			</div>
 
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
 
 <!-- <div class="container">

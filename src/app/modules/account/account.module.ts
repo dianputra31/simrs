@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
@@ -24,6 +25,7 @@ import { AccountNavItemComponent } from './components/account-nav-item/account-n
 import { AccountNavigationBarComponent } from './components/account-navigation-bar/account-navigation-bar.component';
 import { InfoPersonalRowComponent } from './components/info-personal-row/info-personal-row.component';
 import { InfoPerusahaanAddressCardComponent } from './components/info-perusahaan-address-card/info-perusahaan-address-card.component';
+import { OutputGraphComponent } from './components/output-graph/output-graph.component';
 import { AccountDashboardComponent } from './pages/account-dashboard/account-dashboard.component';
 import { AccountInfoPersonalComponent } from './pages/account-info-personal/account-info-personal.component';
 import { AccountInfoPerusahaanComponent } from './pages/account-info-perusahaan/account-info-perusahaan.component';
@@ -61,8 +63,9 @@ import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan
 		RoundedInputComponent,
 		LabelInputComponent,
 		EditAlamatDialogComponent,
+		OutputGraphComponent,
 	],
-	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule, SharedPipesModule,
+	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule, SharedPipesModule,HttpClientModule
 	],
 })
 export class AccountModule { }

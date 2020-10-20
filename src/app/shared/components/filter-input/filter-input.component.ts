@@ -10,17 +10,13 @@ export class FilterInputComponent implements OnInit {
 	@Input() logo: String;
 	@Input() disabled: Boolean;
 	@Output() keyword = new EventEmitter<string>();
-	constructor() {
+	a;
+	constructor() {}
 
-	}
-
-	ngOnInit(): void { }
-
+	ngOnInit(): void {}
 
 	getKeyword(thisval) {
+		this.a = thisval;
 		this.keyword.emit(thisval);
 	}
-
 }
-
-

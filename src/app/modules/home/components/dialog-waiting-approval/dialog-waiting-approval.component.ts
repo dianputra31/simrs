@@ -22,4 +22,7 @@ export class DialogWaitingApprovalComponent implements OnInit {
 		this.router.navigate(['./approval']);
 		this.dialogRef.close('ok');
 	}
+	close() {
+		this.dialogRef.close();
+	}
 }

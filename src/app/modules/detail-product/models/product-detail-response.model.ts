@@ -26,6 +26,7 @@ export class ProductDetailResponseModel {
 	public stock: string;
 	public product_color: string;
 	public product_size: string;
+	public discount_percentage: number;
 
 	public convert(dto: any) {
 		this.id = dto.id;
@@ -55,6 +56,7 @@ export class ProductDetailResponseModel {
 		this.stock = dto.stock;
 		this.product_color = dto.product_color;
 		this.product_size = dto.product_size;
+		this.discount_percentage = dto.discount_percentage;
 
 		return this;
 	}

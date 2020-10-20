@@ -29,6 +29,7 @@
     "@syncfusion/ej2-angular-calendars": "^18.1.43",
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.5",
+    "highcharts": "^8.2.0",
     "jquery": "^3.5.1",
     "moment": "^2.24.0",
     "ng-block-ui": "^3.0.2",
