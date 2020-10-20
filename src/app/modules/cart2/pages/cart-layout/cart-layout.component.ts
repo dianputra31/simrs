@@ -100,7 +100,7 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	numberOfItemsSelected() {
-		return this.items.filter((x) => x.selected).length;
+		return this.items?.filter((x) => x.selected).length;
 	}
 
 	pilihSemuaClickEvent(pilihSemuaValue) {

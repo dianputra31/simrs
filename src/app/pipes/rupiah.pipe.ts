@@ -16,6 +16,8 @@ export class RupiahPipe implements PipeTransform {
 						.split('-')[1]
 						.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 				);
+			case 'no-rp':
+				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 			default:
 				return (
 					'Rp ' +

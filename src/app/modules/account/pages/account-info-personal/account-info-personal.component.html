@@ -7,11 +7,13 @@
 		<wsv wide="40px"></wsv>
 		<div>
 			<info-personal-row label="Nama Depan"
+				#firstname
 				[isEditting]="isEditting"
 				content="{{firstName}}"></info-personal-row>
 
 			<wsv wide="24px"></wsv>
 			<info-personal-row label="Nama Belakang"
+				#lastname
 				[isEditting]="isEditting"
 				content="{{lastName}}"></info-personal-row>
 		</div>

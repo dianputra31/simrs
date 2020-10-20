@@ -1,0 +1,10 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#label1 {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 24px;
+	color: $abu-abu-gelap;
+	margin-top: 9px;
+}

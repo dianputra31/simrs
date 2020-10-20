@@ -10,7 +10,8 @@ import {
 	ApprovalCount,
 	CartListUrl,
 	OpenTrxCount,
-	SearchProduct
+
+	ProfileUrl, SearchProduct
 } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
@@ -49,13 +50,22 @@ export class HeaderComponent implements OnInit {
 	ngOnInit() {
 		this.filteredOptions = this.myControl.valueChanges.pipe(
 			startWith(''),
-			//minimal 1 karakter
+			//minimal 3 karakter
 			map((value) => (value.length >= 3 ? this._filter(value) : []))
 		);
 
 		this.subsribers = [];
-		this.datacompany = JSON.parse(localStorage.getItem('company'));
-		this.datauser = JSON.parse(localStorage.getItem('profile'));
+
+		const sub = this.service
+			.getData(ProfileUrl, false, null, true)
+			.subscribe((resp) => {
+				this.datacompany = resp.data.company;
+				this.datauser = resp.data.profile;
+			});
+		this.subsribers.push(sub);
+
+		// this.datacompany = JSON.parse(localStorage.getItem('company'));
+		// this.datauser = JSON.parse(localStorage.getItem('profile'));
 		this.account = JSON.parse(localStorage.getItem('account'));
 
 		this.numberitemInCart();

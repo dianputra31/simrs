@@ -8,36 +8,42 @@ import { PurchaserComboItemResponseModel } from '../../../models/purchaser-combo
 @Component({
 	selector: 'filter-purchaser',
 	templateUrl: './filter-purchaser.component.html',
-	styleUrls: ['./filter-purchaser.component.scss']
+	styleUrls: ['./filter-purchaser.component.scss'],
 })
 export class FilterPurchaserComponent implements OnInit {
-	purchasers = []
+	purchasers = [];
 	selected;
 	subsribers: Subscription[];
 	@Output() user_id = new EventEmitter<number>();
 
-	constructor(
-		private router: Router,
-		private service: BaseService
-	) { }
+	constructor(private router: Router, private service: BaseService) {}
 
 	ngOnInit(): void {
-		this.subsribers = []
-		this.purchaser_list()
+		this.subsribers = [];
+		this.purchaser_list();
 	}
 
 	ngOnDestroy() {
 		this.subsribers.forEach((each) => each.unsubscribe);
 	}
 
-
 	purchaser_list() {
 		const sub = this.service
-			.getData(GetCompanyUsers, PurchaserComboItemResponseModel, null, true)
+			.getData(
+				GetCompanyUsers,
+				PurchaserComboItemResponseModel,
+				null,
+				true
+			)
 			.subscribe((resp) => {
-				this.purchasers = resp
-				this.selected = resp[0]
-				this.selectedUser(this.selected)
+				this.purchasers = resp;
+
+				const x = new PurchaserComboItemResponseModel();
+				x.fullname = 'Semua';
+				x.id = null;
+				this.purchasers.splice(0, 0, x);
+				this.selected = resp[0];
+				this.selectedUser(this.selected);
 			});
 
 		this.subsribers.push(sub);

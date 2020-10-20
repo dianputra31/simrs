@@ -11,6 +11,18 @@ export class AccountInfoPersonalComponent implements OnInit {
 	isEditting;
 	firstName;
 	lastName;
+
+	param =
+		{
+			email: "",
+			first_name: "",
+			last_name: "",
+			gender: "",
+			role_id: "",
+			company_id: "",
+			profile_picture_url: ""
+		}
+
 	constructor() { }
 
 	subsribers: Subscription[];
@@ -21,7 +33,10 @@ export class AccountInfoPersonalComponent implements OnInit {
 		var splitted = datausr.fullname.split(" ", 2);
 		this.firstName = splitted[0];
 		this.lastName = splitted[1];
+
+		this.param.email = datausr.email;
 		this.isEditting = false;
+
 	}
 
 	save() {

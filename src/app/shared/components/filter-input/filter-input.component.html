@@ -6,7 +6,8 @@
 		type="text"
 		[attr.disabled]="disabled ? '' : null"
 		[placeholder]="hint"
-		(change)=getKeyword(searchbox.value)>
+		[(ngModel)]="a"
+		(keyup)=getKeyword(a)>
 	<img id="search-logo"
 		[src]="logo">
 

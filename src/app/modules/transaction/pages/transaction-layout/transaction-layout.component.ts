@@ -1,6 +1,11 @@
+import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { TransactionListUrl } from '../../../../app.constant';
+import { Observable, of, Subscription } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import {
+	TransactionListUrl,
+	TransactionStatusOptionUrl,
+} from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { TransactionListRequestModel } from '../../../../models/transaction-list-request.model';
@@ -15,7 +20,7 @@ export class TransactionLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	param: TransactionListRequestModel;
 	items: TransactionItemResponseModel[];
-	constructor(private service: BaseService) {}
+	constructor(private http: HttpClient, private service: BaseService) {}
 
 	ngOnInit(): void {
 		this.param = new TransactionListRequestModel();
@@ -29,7 +34,37 @@ export class TransactionLayoutComponent implements OnInit {
 		// this.param.user_id = null;
 		this.subsribers = [];
 
-		this.getTrxList();
+		// this.getTrxList();
+	}
+
+	getTrxStatus() {
+		const sub = this.http
+			.post(TransactionStatusOptionUrl, this.param)
+			.pipe(
+				map((resp: any): any => {
+					return resp;
+				}),
+				catchError((err, caught: Observable<HttpEvent<any>>) => {
+					if (err instanceof HttpErrorResponse && err.status == 401) {
+						// this.storageService.clear();
+						// this._document.defaultView.location.reload();
+						return of(err as any);
+					}
+					throw err;
+				})
+			)
+			.subscribe((resp) => {
+				console.log(resp);
+			});
+
+		// map((model: HttpBodyRespModel): any => {
+		// 	console.log(responseModel.convert);
+		// 	return responseModel
+		// 		? isArray
+		// 			? this.mapArrayData(model.data, responseModel)
+		// 			: responseModel.convert(model.data)
+		// 		: this.responseData(model.data);
+		// })
 	}
 
 	getTrxList() {

@@ -9,6 +9,8 @@ export class TanggalPipe extends DatePipe implements PipeTransform {
 		switch (tipe) {
 			case 'tgl':
 				return super.transform(value, 'd MMMM y');
+			case 'dmy':
+				return super.transform(value, 'd/M/yy');
 			default:
 				return super.transform(value, 'd MMMM y h:mm a');
 		}

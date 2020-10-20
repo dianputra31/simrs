@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AccountRoutingModule } from './account-routing.module';
 import { EditAlamatDialogComponent } from './components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
@@ -24,6 +25,7 @@ import { AccountNavItemComponent } from './components/account-nav-item/account-n
 import { AccountNavigationBarComponent } from './components/account-navigation-bar/account-navigation-bar.component';
 import { InfoPersonalRowComponent } from './components/info-personal-row/info-personal-row.component';
 import { InfoPerusahaanAddressCardComponent } from './components/info-perusahaan-address-card/info-perusahaan-address-card.component';
+import { OutputGraphComponent } from './components/output-graph/output-graph.component';
 import { AccountDashboardComponent } from './pages/account-dashboard/account-dashboard.component';
 import { AccountInfoPersonalComponent } from './pages/account-info-personal/account-info-personal.component';
 import { AccountInfoPerusahaanComponent } from './pages/account-info-perusahaan/account-info-perusahaan.component';
@@ -31,7 +33,6 @@ import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchase
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
-import { OutputGraphComponent } from './components/output-graph/output-graph.component';
 
 @NgModule({
 	declarations: [
@@ -64,6 +65,7 @@ import { OutputGraphComponent } from './components/output-graph/output-graph.com
 		EditAlamatDialogComponent,
 		OutputGraphComponent,
 	],
-	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule, HttpClientModule],
+	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule, SharedPipesModule,HttpClientModule
+	],
 })
-export class AccountModule {}
+export class AccountModule { }

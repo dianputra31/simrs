@@ -1,25 +1,33 @@
-<div id="float-foot">
-	<div id="float-foot-wrapper"
-		class="container d-flex 
-	justify-content-between align-items-center">
-		<div id="review-foot">{{productDetail?.product_name}}</div>
-		<div class="d-flex align-items-center">
-			<div>
-				<div id="total-foot-label">Total</div>
-				<div id="total-foot">{{productDetail?.sell_price * qtyObject?.qty | rupiah}}</div>
-			</div>
-			<wsh wide="26px"></wsh>
-			<div id="tambahkan-button"
-				(click)="tambahkanKeKeranjang(dangerTpl)"
-				class="d-flex align-items-center justify-content-center">
-				<img id="cart-logo"
-					src="../../../../../assets/image/icons/add_to_cart_red.png">
-				<wsh wide="4px"></wsh>
-				<div id="tambahkan-label">Tambahkan</div>
+<div id="outer-wrapper">
+	<div class="d-flex flex-row-reverse">
+		<app-email-button id="email-button"></app-email-button>
+	</div>
+
+	<div id="float-foot">
+
+		<div id="float-foot-wrapper"
+			class="container d-flex 
+		justify-content-between align-items-center">
+			<div id="review-foot">{{productDetail?.product_name}}</div>
+			<div class="d-flex align-items-center">
+				<div>
+					<div id="total-foot-label">Total</div>
+					<div id="total-foot">{{productDetail?.sell_price * qtyObject?.qty | rupiah}}</div>
+				</div>
+				<wsh wide="26px"></wsh>
+				<div id="tambahkan-button"
+					(click)="tambahkanKeKeranjang(dangerTpl)"
+					class="d-flex align-items-center justify-content-center">
+					<img id="cart-logo"
+						src="../../../../../assets/image/icons/add_to_cart_red.png">
+					<wsh wide="4px"></wsh>
+					<div id="tambahkan-label">Tambahkan</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 <ng-template #dangerTpl>
 	<div id="wrapper-notification"
@@ -40,13 +48,14 @@
 					<div class="d-flex align-items-center">
 						<img [src]="productDetail?.product_image"
 							id="notif-img">
+						<wsh wide="10px"></wsh>
 						<div>
 							<!-- <div id="item-name">{{productDetail?.product_name}}</div> -->
 							<div id="item-name">{{truncateChar(productDetail?.product_name)}}</div>
 							<div>{{qtyObject?.qty}} Barang</div>
 						</div>
 					</div>
-					<div id="item-price">{{productDetail?.sell_price * qtyObject?.qty}}</div>
+					<div id="item-price">{{productDetail?.sell_price * qtyObject?.qty|rupiah}}</div>
 				</div>
 
 			</div>
