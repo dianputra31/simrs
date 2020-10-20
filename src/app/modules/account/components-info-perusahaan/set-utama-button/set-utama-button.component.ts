@@ -6,8 +6,15 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./set-utama-button.component.scss'],
 })
 export class SetUtamaButtonComponent implements OnInit {
-	@Input() utama;
+  @Input() index: number
+	@Input() utama : Boolean;
 	constructor() {}
 
-	ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.index === 0){
+      this.utama = true
+    } else {
+      this.utama = false
+    }
+  }
 }
