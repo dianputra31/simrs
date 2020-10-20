@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BlockUIModule } from 'ng-block-ui';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AccountRoutingModule } from './account-routing.module';
@@ -65,7 +66,14 @@ import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan
 		EditAlamatDialogComponent,
 		OutputGraphComponent,
 	],
-	imports: [CommonModule, AccountRoutingModule, SharedModule, FormsModule, SharedPipesModule,HttpClientModule
+	imports: [
+		CommonModule,
+		AccountRoutingModule,
+		SharedModule,
+		FormsModule,
+		SharedPipesModule,
+		HttpClientModule,
+		BlockUIModule.forRoot(),
 	],
 })
-export class AccountModule { }
+export class AccountModule {}
