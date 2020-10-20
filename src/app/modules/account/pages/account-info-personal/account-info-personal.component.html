@@ -1,5 +1,7 @@
-<wsv wide="28px"></wsv>
+<wsv wide="40px"></wsv>
 <div class="d-flex">
+	<wsh wide="30px"></wsh>
+
 	<div class="flex-grow-1">
 		<div class="label-title">
 			Informasi Personal
@@ -8,19 +10,22 @@
 		<div>
 			<info-personal-row label="Nama Depan"
 				#firstname
+				ids="firstname"
 				[isEditting]="isEditting"
-				content="{{firstName}}"></info-personal-row>
+				content="{{firstName}}"
+				(firstnameEdit)='firstnameChange($event)'></info-personal-row>
 
 			<wsv wide="24px"></wsv>
 			<info-personal-row label="Nama Belakang"
-				#lastname
+				ids="lastname"
 				[isEditting]="isEditting"
-				content="{{lastName}}"></info-personal-row>
+				content="{{lastName}}"
+				(lastnameEdit)='lastnameChange($event)'></info-personal-row>
 		</div>
 		<wsv wide="40px"></wsv>
 
 		<red-button *ngIf="isEditting"
-			(click)="save(this.firstname,this.lastname)"
+			(click)="save()"
 			label="Simpan"
 			font="14px"
 			paddingtop="10px"
@@ -38,7 +43,7 @@
 	</div>
 	<div>
 		<div id="email-label">
-			sukhito.tanawal@gmail.com
+			{{email}}
 		</div>
 	</div>
 </div>
