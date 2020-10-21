@@ -8,6 +8,7 @@ import { DeliveryAddressObjectModel } from '../../../../shared/components/addres
 import { DeliveryAddressResponseModel } from '../../../../shared/components/address-section/model/delivery-address-response.model';
 import { EditAlamatDialogComponent } from '../../components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
 import { TambahAlamatBaruDialogComponent } from '../../components-info-perusahaan/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
+import { TrashCanDialogComponent } from '../../components-info-perusahaan/trash-can-dialog/trash-can-dialog.component';
 
 @Component({
 	selector: 'account-info-perusahaan',
@@ -78,6 +79,28 @@ export class AccountInfoPerusahaanComponent implements OnInit {
 		);
 
 		modalDialog.afterClosed().subscribe((result) => {
+			this.getAddressList();
+		});
+		return false;
+	}
+	deleteAddress(address) {
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = 'modal-component';
+		dialogConfig.height = '138px';
+		dialogConfig.width = '477px';
+		dialogConfig.panelClass = 'border-radius:10px';
+		dialogConfig.data = {
+			address,
+		};
+
+		const modalDialog = this.dialog.open(
+			TrashCanDialogComponent,
+			dialogConfig
+		);
+
+		modalDialog.afterClosed().subscribe((result) => {
+			console.log(result);
 			this.getAddressList();
 		});
 		return false;

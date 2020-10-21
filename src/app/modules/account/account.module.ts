@@ -34,6 +34,7 @@ import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchase
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
+import { TrashCanDialogComponent } from './components-info-perusahaan/trash-can-dialog/trash-can-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -65,6 +66,7 @@ import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan
 		LabelInputComponent,
 		EditAlamatDialogComponent,
 		OutputGraphComponent,
+		TrashCanDialogComponent,
 	],
 	imports: [
 		CommonModule,

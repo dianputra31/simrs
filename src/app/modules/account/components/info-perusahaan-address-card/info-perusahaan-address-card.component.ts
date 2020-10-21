@@ -14,6 +14,7 @@ export class InfoPerusahaanAddressCardComponent implements OnInit {
 	@Input() index: number;
 	@Input() address: DeliveryAddressObjectModel;
 	@Output() setUtamaEvent = new EventEmitter();
+	@Output() deleteEvent = new EventEmitter();
 	@Output() editEvent = new EventEmitter();
 	@BlockUI() blockUI: NgBlockUI;
 	constructor(private http: HttpService) {}
@@ -38,6 +39,10 @@ export class InfoPerusahaanAddressCardComponent implements OnInit {
 
 	edit() {
 		this.editEvent.emit();
+	}
+
+	deleteInfo() {
+		this.deleteEvent.emit();
 	}
 
 	setUtama(e) {
