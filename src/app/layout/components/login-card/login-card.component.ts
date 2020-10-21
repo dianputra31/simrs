@@ -4,13 +4,13 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import {
 	FormBuilder,
 	FormControl,
 	FormGroup,
-	Validators,
+	Validators
 } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
@@ -91,8 +91,10 @@ export class LoginCardComponent implements OnInit {
 		// stepper.next();
 	}
 
-	resetNgOtpVal() {
-		// this.ngOtpInput.setValue("");
+
+	@ViewChild('ngOtpInput') ngOtpInputRef:any;
+	resetNgOtpVal(){
+		this.ngOtpInputRef.setValue('');
 		this.secondFormGroup.controls['password'].setValue('');
 	}
 
@@ -112,7 +114,7 @@ export class LoginCardComponent implements OnInit {
 
 	ngOnInit() {
 		this.credential = new CredentialModel();
-
+ 
 		this.initForm();
 		this.isLogin();
 
@@ -167,7 +169,7 @@ export class LoginCardComponent implements OnInit {
 		if (e['action'] == 'done') {
 			this.display = 'none';
 			this.tampil = 'inline';
-			console.log('jalan');
+			this.errotp = 'OTP Expired!';
 		}
 	}
 
@@ -205,6 +207,8 @@ export class LoginCardComponent implements OnInit {
 							this.resetNgOtpVal();
 							this.goForward();
 							this.emailnya = this.firstFormGroup.value.email;
+							
+							this.errotp = '';
 							this.blockUI.stop();
 						}
 					}
