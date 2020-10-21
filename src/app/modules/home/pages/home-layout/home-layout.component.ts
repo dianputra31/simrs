@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
 	ApprovalCount,
 	ProductCatalogUrl,
 	ProductTopSubcategoryUrl,
+	RESPONSE,
 } from '../../../../app.constant';
-import { BaseService } from '../../../../core/base-service/service/base.service';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { StorageService } from '../../../../core/storage/service/storage.service';
-import { ProductCatalogRequestModel } from '../../../../models/product-catalog-request.model';
-import { ProductCatalogResponseModel } from '../../../../models/product-catalog-response-model';
-import { ProductTopSubcategoryResponseModel } from '../../../../models/product-top-subcategory-response.model';
 import { DialogWaitingApprovalComponent } from '../../components/dialog-waiting-approval/dialog-waiting-approval.component';
 
 @Component({
@@ -20,18 +19,19 @@ import { DialogWaitingApprovalComponent } from '../../components/dialog-waiting-
 })
 export class HomeLayoutComponent implements OnInit {
 	subsribers: Subscription[];
-	topCategories: ProductTopSubcategoryResponseModel[];
-	productCatalogRows: ProductCatalogResponseModel[][];
+	topCategories: any[];
+	productCatalogRows: any[][] = [];
+	@BlockUI() blockUI: NgBlockUI;
+
 	constructor(
-		private service: BaseService,
 		public dialog: MatDialog,
-		private storageService: StorageService
+		private storageService: StorageService,
+		private http: HttpService
 	) {}
 
 	ngOnInit() {
 		this.subsribers = [];
 		this.getProductTopSubcategory();
-		this.productCatalogRows = [];
 
 		if (this.storageService.getRole() == 'Manager') {
 			this.numberOfApproval();
@@ -43,14 +43,19 @@ export class HomeLayoutComponent implements OnInit {
 	}
 
 	getProductTopSubcategory() {
-		const url = ProductTopSubcategoryUrl;
-		const sub = this.service
-			.getData(url, ProductTopSubcategoryResponseModel, null, true)
+		this.blockUI.start();
+		const sub = this.http
+			.get(ProductTopSubcategoryUrl)
 			.subscribe((resp) => {
-				this.topCategories = resp;
+				this.blockUI.stop();
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this.topCategories = resp.data;
 
-				for (var i = 0; i < this.topCategories.length; ++i) {
-					this.getCatalog(this.topCategories[i].id);
+					for (var i = 0; i < this.topCategories.length; ++i) {
+						this.getCatalog(this.topCategories[i].id);
+					}
+				} else {
+					alert(resp.status.msg);
 				}
 			});
 
@@ -58,17 +63,18 @@ export class HomeLayoutComponent implements OnInit {
 	}
 
 	getCatalog(category_id: number) {
-		const param = new ProductCatalogRequestModel();
+		const url = ProductCatalogUrl + '?/category_id=' + category_id;
 
-		param.category_id = category_id;
-		param.limit = 6;
-
-		const url = ProductCatalogUrl + '?' + param.convertQueryParameter();
-		const sub = this.service
-			.getData(url, ProductCatalogResponseModel, null, true)
-			.subscribe((resp) => {
-				this.productCatalogRows.push(resp);
-			});
+		console.log(url);
+		this.blockUI.start();
+		const sub = this.http.get(url).subscribe((resp) => {
+			this.blockUI.stop();
+			if (resp.status.rc === RESPONSE.SUCCESS) {
+				this.productCatalogRows.push(resp.data);
+			} else {
+				alert(resp.status.msg);
+			}
+		});
 
 		this.subsribers.push(sub);
 	}
@@ -94,15 +100,16 @@ export class HomeLayoutComponent implements OnInit {
 	}
 
 	numberOfApproval() {
-		const sub = this.service
-			.postData(ApprovalCount, false, false, false)
-			.subscribe((resp) => {
-				var tc = resp.data.approval_count;
-
-				if (tc > 0) {
-					this.openDialogManager(tc);
+		const sub = this.http.post(ApprovalCount, {}).subscribe((resp) => {
+			if (resp.status.rc === RESPONSE.SUCCESS) {
+				if (resp.data.approval_count > 0) {
+					this.openDialogManager(resp.data.approval_count);
 				}
-			});
+			} else {
+				alert(resp.status.msg);
+			}
+		});
+
 		this.subsribers.push(sub);
 	}
 }
