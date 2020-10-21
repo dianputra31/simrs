@@ -5,7 +5,9 @@
 			class="card-img-top"
 			(error)="onImgError($event)">
 		<div class="catalog-card-label">
-			{{item.slice_name}}
+			<div *ngIf="item.product_name.length>29; then namalengkap else namasingkat"></div>
+			<ng-template #namalengkap>{{item.product_name.slice(0, 29) + ".."}}</ng-template>
+			<ng-template #namasingkat>{{item.product_name}}</ng-template>
 		</div>
 		<div class="catalog-card-disc">
 			<ng-template *ngIf="item.discount_percentage>0;then showdiscount"></ng-template>
