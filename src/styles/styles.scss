@@ -12,6 +12,10 @@ body {
 	background-color: $main-background;
 }
 
+body.no-scroll {
+	overflow: hidden !important;
+}
+
 input {
 	border: none;
 }
@@ -36,8 +40,6 @@ button:focus {
 @media (min-width: 1366px) {
 	.container {
 		max-width: 1366px;
-		padding-left: 78px;
-		padding-right: 78px;
 	}
 }
 
