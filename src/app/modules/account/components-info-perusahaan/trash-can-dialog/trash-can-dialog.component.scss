@@ -1,0 +1,40 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#header {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 19px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #606060;
+}
+
+.grey-button {
+	background: #606060;
+	border: 0.5px solid #606060;
+	box-sizing: border-box;
+	border-radius: 57px;
+	height: 32px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	display: flex;
+	cursor: pointer;
+	color: $putih-tok;
+	margin-left: auto;
+}
+
+.text-button {
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 184px;
+}
+
+.container-button {
+	padding-top: 7%;
+}
