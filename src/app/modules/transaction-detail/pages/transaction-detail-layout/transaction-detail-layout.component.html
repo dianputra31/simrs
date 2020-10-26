@@ -47,8 +47,8 @@
 						<div class="label-4">{{item?.purchase_amount|rupiah}}</div>
 						<div class="label-1">Warna</div>
 						<div class="label-1">Berat</div>
-						<div *ngIf="item.initial_quantity != item.quantity"
-							class="label-1 coret">Jumlah : {{item.initial_quantity}} Barang</div>
+						<div *ngIf="item?.initial_quantity != item?.quantity"
+							class="label-1 coret">Jumlah : {{item?.initial_quantity}} Barang</div>
 						<div class="label-1">Jumlah :{{item?.quantity}} barang</div>
 					</div>
 					<wsh wide="150px"></wsh>

@@ -3,8 +3,10 @@
 	<div class="grey-rounded-corner-header-card">
 		<div class="d-flex flex-grow-1 justify-content-between">
 			<div class="text-header-card">
-				<span class="title-text-header-card">Purchaser A</span> <br />
-				<span class="sub-text-header-card"> {{item?.updated_at|tanggal}} </span>
+				<span class="title-text-header-card">
+					{{item?.supplier_name}}
+				</span> <br />
+				<span class="sub-text-header-card"> {{item?.updated_at|tanggal : 'tgl'}} </span>
 			</div>
 			<div class="text-header-card left-margin">
 				<span class="title-text-header-card-2">Ongkos Kirim</span><br />

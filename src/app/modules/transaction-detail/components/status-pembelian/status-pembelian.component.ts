@@ -10,5 +10,8 @@ export class StatusPembelianComponent implements OnInit {
 	@Input() item: TransactionDetailModel;
 	constructor() {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		console.log(this.item);
+	}
+	
 }
