@@ -25,7 +25,7 @@ export class StatusAlasanComponent implements OnInit {
 			image: '../../../../../assets/image/icons/diproses-red.svg',
 			date: this.item?.item_status_history.filter(
 				(x) => x.status == 'PROCESS'
-			)[0].updated_at,
+			)[0]?.updated_at,
 		};
 
 		var i = {
