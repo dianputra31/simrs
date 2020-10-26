@@ -1,6 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import {
+	Component,
+	HostListener,
+	Inject,
+	OnInit,
+	ViewChild,
+} from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Observable, of, Subscription } from 'rxjs';
@@ -53,6 +59,12 @@ export class ApprovalLayoutComponent implements OnInit {
 	start_date;
 	end_date;
 
+	innerHeight: any;
+	leftContainerHeight: any;
+	rightContainerHeight: any;
+	topFixed: any;
+	headers: any;
+
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: FilterDateComponent;
 
@@ -66,6 +78,14 @@ export class ApprovalLayoutComponent implements OnInit {
 	ngOnInit(): void {
 		this.getAddress();
 		this.numberOfApproval();
+
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.add('no-scroll');
+
+		this.topFixed = document?.getElementById('top-fixed').offsetHeight;
+		this.headers = document?.getElementById('headers').offsetHeight;
+
+		this.onResize();
 	}
 
 	getItems() {
@@ -113,6 +133,9 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	ngOnDestroy() {
 		this.subscribers.forEach((each) => each.unsubscribe);
+
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.remove('no-scroll');
 	}
 
 	getAddress() {
@@ -423,5 +446,16 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	rejectItem() {
 		this.getItems();
+	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.innerHeight = window.innerHeight;
+
+		this.leftContainerHeight =
+			this.innerHeight - this.topFixed - this.headers;
+
+		this.rightContainerHeight =
+			this.innerHeight - this.topFixed - this.headers;
 	}
 }
