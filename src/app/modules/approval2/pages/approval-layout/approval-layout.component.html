@@ -1,7 +1,7 @@
 <block-ui>
 	<div class="container d-flex">
 
-		<div id="left-container">
+		<div class="left-container">
 
 			<div id="top-fixed"
 				class="bg-10">
@@ -83,9 +83,10 @@
 
 			<wsv wide="260px"></wsv>
 
-			<div style="overflow:scroll; width:70%;"
+			<div class="d-flex flex-column bd-highlight mb-3 row-item"
 				*ngIf="items.length>1">
-				<div *ngFor="let item of items">
+				<div *ngFor="let item of items"
+					class="p-2 bd-highlight">
 					<item-card [item]="item"
 						(onReject)="rejectItem()"></item-card>
 					<wsv wide="40px"></wsv>

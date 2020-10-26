@@ -9,10 +9,47 @@
 	margin-top: 9px;
 }
 
-#left-container {
-	position: relative;
-	width: 1100px;
-}
+@media only screen and (max-width: 1400px) {
+	.left-container {
+		position: relative;
+		width: 760px;
+		// border: solid blue 1px;
+	}
+
+	#right-container {
+		position: absolute;
+		margin-left:20px;
+		top:110px;
+		left:830px;	
+	}
+
+	.row-item{
+		overflow:scroll; width:100%;
+	}
+
+  }
+
+  @media only screen and (min-width: 1400px) {
+	.left-container {
+		position: relative;
+		width: 1100px;
+		// border: solid yellow 2px;
+	}
+
+	#right-container {
+		position: absolute;
+		margin-left:20px;
+		top:110px;
+		left:1100px;
+	}
+
+	.row-item{
+		overflow:scroll; width:70%;
+	}
+
+  }
+
+
 
 #top-fixed {
 	position: fixed;
@@ -24,12 +61,7 @@
 #right-fixed {
 	position: fixed;
 }
-#right-container {
-	position: absolute;
-	margin-left:20px;
-	top:110px;
-	left:1110px;
-}
+
 
 .bg-10 {
 	background-color: $abu-abu-2;
