@@ -70,7 +70,7 @@
 						<check-box-two [checked]="true"
 							[allowChanges]="true"
 							(onClickEvent)="pilihSemuaClickEvent($event)"
-							class="check-box-container"></check-box-two>
+							class="check-box-container tautan"></check-box-two>
 						<div id="pilihsemua">Pilih Semua</div>
 
 						<div id="terpilih">{{numberOfItemsSelected()}} Barang Dipilih</div>
@@ -81,7 +81,7 @@
 
 			</div>
 
-			<wsv wide="260px"></wsv>
+			<wsv wide="280px"></wsv>
 
 			<div class="d-flex flex-column bd-highlight mb-3 row-item"
 				*ngIf="items.length>1">
@@ -97,7 +97,7 @@
 
 		<div id="right-container"
 			*ngIf="items.length>1">
-			<wsv wide="250px"></wsv>
+			<wsv wide="280px"></wsv>
 			<div id="right-fixed">
 				<div class="d-flex">
 					<box-cart-price class="box-cart-price"
