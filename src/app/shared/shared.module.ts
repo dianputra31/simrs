@@ -15,6 +15,7 @@ import { DateDropdownComponent } from './components/date-dropdown/date-dropdown.
 import { DialogAddressSectionComponent } from './components/dialog-address-section/dialog-address-section.component';
 import { DiscountHargaCoretComponent } from './components/discount-harga-coret/discount-harga-coret.component';
 import { EmailButtonComponent } from './components/email-button/email-button.component';
+import { EmptyCartComponent } from './components/empty-cart/empty-cart.component';
 import { FilterDeliveryAddressComponent } from './components/filter-delivery-address/filter-delivery-address.component';
 import { FilterDropdownListComponent } from './components/filter-dropdown-list/filter-dropdown-list.component';
 import { FilterInputComponent } from './components/filter-input/filter-input.component';
@@ -79,6 +80,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		QtyCtrlTwoComponent,
 		RedButtonComponent,
 		InputDropdownComponent,
+		EmptyCartComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
 	exports: [
@@ -115,6 +117,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CheckBoxTwoComponent,
 		QtyCtrlTwoComponent,
 		RedButtonComponent,
+		EmptyCartComponent,
 	],
 })
 export class SharedModule {}
