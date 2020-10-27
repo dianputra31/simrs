@@ -1,110 +1,122 @@
 <block-ui>
-	<div class="container">
-		<div id="top-fixed">
-			<div id="keranjang-label">APPROVAL</div>
-			<wsv wide="10px"></wsv>
 
-			<div class="d-flex justify-content-center">
-				<item-summary-dropdown [nApproval]="nNotApproved"
-					[list]="listSummaryByAddress"
-					[selected]="selectedAddress"
-					(onSelect)="selectAddressGroup($event)"></item-summary-dropdown>
-			</div>
-
+	<div *ngIf="listSummaryByAddress.length == 0 else elseBlock"
+		class="w-100 d-flex justify-content-center">
+		<div>
 			<wsv wide="20px"></wsv>
+			<empty-cart></empty-cart>
+		</div>
+	</div>
 
+	<ng-template #elseBlock>
+		<div class="container">
+			<div id="top-fixed">
+				<div id="keranjang-label">APPROVAL</div>
+				<wsv wide="10px"></wsv>
 
-			<div class="d-flex">
-				<div *ngFor="let item of listSummaryByAddress"
-					class="item"
-					style="padding-right: 20px;">
-					<address-with-notif [item]="item"
+				<div class="d-flex justify-content-center">
+					<item-summary-dropdown [nApproval]="nNotApproved"
+						[list]="listSummaryByAddress"
 						[selected]="selectedAddress"
-						(onClick)="selectAddressGroup(item)">
-					</address-with-notif>
-
+						(onSelect)="selectAddressGroup($event)"></item-summary-dropdown>
 				</div>
-			</div>
 
-			<wsv wide="25px"></wsv>
-			<div id="horizontal-line"></div>
-			<wsv wide="15px"></wsv>
+				<wsv wide="20px"></wsv>
 
-			<div class="d-flex">
-				<div class="d-flex flex-grow-1">
-					<input-dropdown [items]="purchasers"
-						[selected]="selectedPurchaser"
-						(onSelect)="selectPurchaser($event)"
-						class="flex-even"
-						style="cursor: pointer;"></input-dropdown>
+
+				<div class="d-flex">
+					<div *ngFor="let item of listSummaryByAddress"
+						class="item"
+						style="padding-right: 20px;">
+						<address-with-notif [item]="item"
+							[selected]="selectedAddress"
+							(onClick)="selectAddressGroup(item)">
+						</address-with-notif>
+
+					</div>
+				</div>
+
+				<wsv wide="25px"></wsv>
+				<div id="horizontal-line"></div>
+				<wsv wide="15px"></wsv>
+
+				<div class="d-flex">
+					<div class="d-flex flex-grow-1">
+						<input-dropdown [items]="purchasers"
+							[selected]="selectedPurchaser"
+							(onSelect)="selectPurchaser($event)"
+							class="flex-even"
+							style="cursor: pointer;"></input-dropdown>
+						<wsh wide="10px">
+						</wsh>
+						<filter-input #inputKeyword
+							(keyword)="cariKeyword($event)"
+							class="flex-even"
+							hint="Cari Pesanan"
+							logo="../../../../assets/image/icons/searchbutton.png"
+							[disabled]="false"></filter-input>
+						<wsh wide="10px">
+						</wsh>
+						<filter-date #inputDate
+							(dateSelectedEvent)="filterDate($event)"
+							class="flex-even"
+							style="cursor: pointer;"></filter-date>
+					</div>
 					<wsh wide="10px">
 					</wsh>
-					<filter-input #inputKeyword
-						(keyword)="cariKeyword($event)"
-						class="flex-even"
-						hint="Cari Pesanan"
-						logo="../../../../assets/image/icons/searchbutton.png"
-						[disabled]="false"></filter-input>
-					<wsh wide="10px">
-					</wsh>
-					<filter-date #inputDate
-						(dateSelectedEvent)="filterDate($event)"
-						class="flex-even"
-						style="cursor: pointer;"></filter-date>
-				</div>
-				<wsh wide="10px">
-				</wsh>
 
-				<reset-filter class="d-flex align-items-center"
-					(click)="reset()"></reset-filter>
-			</div>
-
-			<wsv wide="15px"></wsv>
-			<div class="d-flex justify-content-between"
-				*ngIf="items.length>1">
-				<div class="d-flex">
-					<check-box-two [checked]="true"
-						[allowChanges]="true"
-						(onClickEvent)="pilihSemuaClickEvent($event)"
-						class="check-box-container"></check-box-two>
-					<div id="pilihsemua">Pilih Semua</div>
-
-					<div id="terpilih">{{numberOfItemsSelected()}} Barang Dipilih</div>
+					<reset-filter class="d-flex align-items-center"
+						(click)="reset()"></reset-filter>
 				</div>
 
+				<wsv wide="15px"></wsv>
+				<div class="d-flex justify-content-between"
+					*ngIf="items?.length>1">
+					<div class="d-flex">
+						<check-box-two [checked]="true"
+							[allowChanges]="true"
+							(onClickEvent)="pilihSemuaClickEvent($event)"
+							class="check-box-container"></check-box-two>
+						<div id="pilihsemua">Pilih Semua</div>
+
+						<div id="terpilih">{{numberOfItemsSelected()}} Barang Dipilih</div>
+					</div>
+
+
+				</div>
 
 			</div>
-
 		</div>
-	</div>
-	<wsv wide="260px"></wsv>
-	<div class="container d-flex">
-		<div id="left-container"
-			[style.height.px]="leftContainerHeight"
-			class="flex-grow-1">
-			<div *ngIf="items.length>1">
-				<div *ngFor="let item of items">
-					<item-card [item]="item"
-						(onReject)="rejectItem()"></item-card>
-					<wsv wide="40px"></wsv>
+		<wsv wide="260px"></wsv>
+		<div class="container d-flex">
+			<div id="left-container"
+				[style.height.px]="leftContainerHeight"
+				class="flex-grow-1">
+				<div *ngIf="items?.length>1">
+					<div *ngFor="let item of items">
+						<item-card [item]="item"
+							(onReject)="rejectItem()"></item-card>
+						<wsv wide="40px"></wsv>
+					</div>
 				</div>
+
 			</div>
 
-		</div>
-
-		<wsh wide="20px"></wsh>
-		<div id="right-container"
-			[style.height.px]="rightContainerHeight"
-			*ngIf="items.length>1">
-			<div id="right-fixed">
-				<div class="d-flex">
-					<box-cart-price class="box-cart-price"
-						[pertotalan]="calculate()"
-						buttonLabel="Selanjutnya"
-						(buttonBoxCartPriceClick)="selanjutnyaClick()"
-						[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+			<wsh wide="20px"></wsh>
+			<div id="right-container"
+				[style.height.px]="rightContainerHeight"
+				*ngIf="items?.length>1">
+				<div id="right-fixed">
+					<div class="d-flex">
+						<box-cart-price class="box-cart-price"
+							[pertotalan]="calculate()"
+							buttonLabel="Selanjutnya"
+							(buttonBoxCartPriceClick)="selanjutnyaClick()"
+							[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</ng-template>
+
 </block-ui>
