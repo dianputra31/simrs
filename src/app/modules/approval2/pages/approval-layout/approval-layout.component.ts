@@ -1,23 +1,23 @@
 import { DOCUMENT } from '@angular/common';
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import {
 	Component,
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
-import { Observable, of, Subscription } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import {
 	AddressListUrl,
 	ApprovalCount,
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
+	RESPONSE
 } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { StorageService } from '../../../../core/storage/service/storage.service';
 import { Product } from '../../../../models/Approval.model';
@@ -25,11 +25,11 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams,
+	ConvertApproveParams
 } from '../../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart,
+	ConvertCheckoutCart
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
@@ -49,7 +49,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	items: any[];
 
 	nNotApproved: number;
-	listSummaryByAddress: any[];
+	listSummaryByAddress: any[] = [];
 	selectedAddress: any;
 
 	purchasers: any[];
@@ -69,10 +69,10 @@ export class ApprovalLayoutComponent implements OnInit {
 	@ViewChild('inputDate') inputDate: FilterDateComponent;
 
 	constructor(
-		private http: HttpClient,
 		private storageService: StorageService,
 		public dialog: MatDialog,
-		public service: BaseService
+		public service: BaseService,
+		public http: HttpService
 	) {}
 
 	ngOnInit(): void {
@@ -81,11 +81,6 @@ export class ApprovalLayoutComponent implements OnInit {
 
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.add('no-scroll');
-
-		this.topFixed = document?.getElementById('top-fixed').offsetHeight;
-		this.headers = document?.getElementById('headers').offsetHeight;
-
-		this.onResize();
 	}
 
 	getItems() {
@@ -103,23 +98,10 @@ export class ApprovalLayoutComponent implements OnInit {
 		}
 
 		this.blockUI.start();
-		this.http
-			.post(ApprovalListUrl, params)
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						this.storageService.clear();
-						this._document.defaultView.location.reload();
-						return of(err as any);
-					}
-					throw err;
-				})
-			)
-			.subscribe((resp) => {
-				this.blockUI.stop();
+		this.http.post(ApprovalListUrl, params).subscribe((resp) => {
+			this.blockUI.stop();
+
+			if (resp.status.rc === RESPONSE.SUCCESS) {
 				this.items = resp.data;
 
 				this.items.forEach((each) => {
@@ -127,8 +109,11 @@ export class ApprovalLayoutComponent implements OnInit {
 					each.enableSelection = this.enableSelect(each.availability);
 				});
 
-				this.blockUI.stop();
-			});
+				this.initScrolling();
+			} else {
+				alert(resp.status.msg);
+			}
+		});
 	}
 
 	ngOnDestroy() {
@@ -140,75 +125,46 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	getAddress() {
 		this.blockUI.start();
-		const sub = this.http
-			.get(AddressListUrl)
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						this.storageService.clear();
-						this._document.defaultView.location.reload();
-						return of(err as any);
-					}
-					throw err;
-				})
-			)
-			.subscribe((resp) => {
-				this.blockUI.stop();
-				this.listSummaryByAddress = resp.data;
-				this.selectedAddress = resp.data[0];
 
-				this.getPurchaserList();
-			});
+		const sub = this.http.get(AddressListUrl).subscribe((resp) => {
+			this.blockUI.stop();
+			if (resp.status.rc === RESPONSE.SUCCESS) {
+				//push address with request_total is no 0 to new array
+				resp.data.forEach((element) => {
+					if (element.request_total != 0) {
+						this.listSummaryByAddress.push(element);
+					}
+				});
+
+				if (this.listSummaryByAddress.length != 0) {
+					this.selectedAddress = this.listSummaryByAddress[0];
+					this.getPurchaserList();
+				}
+			} else {
+				alert(resp.status.msg);
+			}
+		});
 
 		this.subscribers.push(sub);
 	}
 
 	numberOfApproval() {
 		this.blockUI.start();
-		const sub = this.http
-			.post(ApprovalCount, {})
-
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						this.storageService.clear();
-						this._document.defaultView.location.reload();
-						return of(err as any);
-					}
-					throw err;
-				})
-			)
-			.subscribe((resp) => {
-				this.blockUI.stop();
+		const sub = this.http.post(ApprovalCount, {}).subscribe((resp) => {
+			this.blockUI.stop();
+			if (resp.status.rc === RESPONSE.SUCCESS) {
 				this.nNotApproved = resp.data.approval_count;
-			});
+			} else {
+				alert(resp.status.msg);
+			}
+		});
 		this.subscribers.push(sub);
 	}
 
 	getPurchaserList() {
 		this.blockUI.start();
-		const sub = this.http
-			.get(GetCompanyUsers)
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						this.storageService.clear();
-						this._document.defaultView.location.reload();
-						return of(err as any);
-					}
-					throw err;
-				})
-			)
-			.subscribe((resp) => {
+		const sub = this.http.get(GetCompanyUsers).subscribe((resp) => {
+			if (resp.status.rc === RESPONSE.SUCCESS) {
 				this.blockUI.stop();
 				this.purchasers = resp.data;
 
@@ -225,7 +181,10 @@ export class ApprovalLayoutComponent implements OnInit {
 
 				this.selectedPurchaser = this.purchasers[0];
 				this.getItems();
-			});
+			} else {
+				alert(resp.status.msg);
+			}
+		});
 
 		this.subscribers.push(sub);
 	}
@@ -446,6 +405,13 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	rejectItem() {
 		this.getItems();
+	}
+
+	initScrolling() {
+		this.topFixed = document?.getElementById('top-fixed')?.offsetHeight;
+		this.headers = document?.getElementById('headers')?.offsetHeight;
+
+		this.onResize();
 	}
 
 	@HostListener('window:resize', ['$event'])
