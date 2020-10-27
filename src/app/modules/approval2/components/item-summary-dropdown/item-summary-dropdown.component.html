@@ -7,7 +7,8 @@
 		class="d-flex">
 		<div class="flex-grow-1 d-flex justify-content-center align-items-center"
 			id="item-belum-diapprove">
-			<span>{{nApproval}}&nbsp;</span>Barang belum diapprove
+			<span class="tautan">{{nApproval}}&nbsp;</span>
+			<font class="tautan-hitam">Barang belum diapprove</font>
 		</div>
 		<div id="arrow-approval-wrapper"
 			class="d-flex justify-content-center align-items-center">
@@ -31,7 +32,7 @@
 		<div>
 			<div *ngFor="let AddressELement of list;let i = index">
 				<div id="item-row"
-					class="d-flex justify-content-between {{AddressELement.address_name}}"
+					class="d-flex justify-content-between {{AddressELement.address_name}} tautan-hitam"
 					[ngClass]="selected == AddressELement ? 'selected'  : '' "
 					(click)="click(AddressELement);myDrop.close();">
 					<div class="item-dropdown-class">

@@ -52,6 +52,23 @@
 	height: 38px;
 }
 
+#searchbutton {
+	margin-left: -50px;
+	background: url('../../../../assets/image/icons/button-cari.png') 10px
+		no-repeat;
+	background-position: right 15px center;
+	background-position: top 10px bottom;
+	background-size: 22px;
+	position: absolute;
+	width: 50px;
+	padding-top: 10px;
+	height: 40px;
+	padding: 0px;
+	border: 0px;
+	background-color: $kuning-emas;
+	border-radius: 1px 31px 31px 1px;
+}
+
 #container ng-untouched ng-pristine ng-valid {
 	border: solid greenyellow 0px;
 }

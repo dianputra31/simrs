@@ -76,9 +76,35 @@
 	background-color: #e5e5e5;
 }
 
-#horizontal-line {
-	height: 0.5px;
-	width: 100%;
-	background-color: #a9a9a9;
-	opacity: 0.6;
+
+
+.tautan{
+	cursor: pointer;
+}
+
+@media (min-width: 1368px) {
+	#horizontal-line {
+		height: 0.5px;
+		width: 100%;
+		background-color: #a9a9a9;
+		opacity: 0.6;
+	}
+
+	.hasembuh{
+		width:100%;
+	}
+}
+
+@media (max-width: 1366px) {
+	#horizontal-line {
+		height: 0.5px;
+		width: 80%;
+		background-color: #a9a9a9;
+		opacity: 0.6;
+	}
+
+	
+	.hasembuh{
+		width: 80%;
+	}
 }

@@ -8,11 +8,13 @@
 	border: 0.5px solid $abu-abu-sesuatu;
 	box-sizing: border-box;
 	border-radius: 45px;
+
 }
 
 #drop-down-item-summary-arrow {
 	width: 12.53px;
 	height: 6px;
+	cursor: pointer;
 }
 
 #arrow-approval-wrapper {
@@ -121,4 +123,14 @@
 
 .visibility-hidden {
 	visibility: hidden;
+}
+
+
+.tautan{
+	cursor: pointer;
+}
+
+.tautan-hitam{
+	cursor: pointer;
+	color: $abu-abu-gelap;
 }

@@ -19,6 +19,8 @@ export class CartListItemModel {
 	public product_color: string;
 	public product_size: string;
 	public enableSelection: boolean;
+	public supplier_name: string;
+	public submitted_at: string;
 
 	public convert(dto: any) {
 		console.log(dto);
@@ -42,6 +44,8 @@ export class CartListItemModel {
 		this.product_size = dto.product_size;
 		this.selected = this.select();
 		this.enableSelection = this.enableSelect();
+		this.supplier_name = dto.supplier_name;
+		this.submitted_at = dto.submitted_at;
 		return this;
 	}
 

@@ -1,11 +1,21 @@
 <div (click)="onClick()">
 	<div *ngIf="checked; else elseBlock">
-		<div class="custom-checkbox-checked">
-			<img class="custom-checkbox-mark"
-				src="../../../../assets/image/icons/centang_putih.png">
+		<div id="left-box">
+			<div class="custom-checkbox-checked tautan">
+				<img class="custom-checkbox-mark"
+					src="../../../../assets/image/icons/centang_putih.png">
+			</div>
+		</div>
+		<div id="right-box">
+			<div class="data-box">{{detSupplier}}</div>
+			<div class="data-box big">{{detDate | tanggal: 'tgl'}}</div>
 		</div>
 	</div>
 	<ng-template #elseBlock>
 		<div class="custom-checkbox"></div>
+		<div id="right-box">
+			<div class="data-box">{{detSupplier}}</div>
+			<div class="data-box big">{{detDate | tanggal: 'tgl'}}</div>
+		</div>
 	</ng-template>
 </div>

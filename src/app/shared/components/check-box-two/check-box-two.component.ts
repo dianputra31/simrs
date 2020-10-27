@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class CheckBoxTwoComponent implements OnInit {
 	@Input() checked: boolean;
 	@Input() allowChanges: boolean;
+	@Input() detSupplier: string;
+	@Input() detDate: string;
 	@Output() onClickEvent = new EventEmitter<boolean>();
 
 	constructor() {}
