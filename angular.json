@@ -34,6 +34,9 @@
 							},
 							{
 								"input": "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
+							},
+							{
+								"input": "node_modules/ng-zorro-antd/date-picker/style/index.min.css"
 							}
 						],
 						"scripts": [

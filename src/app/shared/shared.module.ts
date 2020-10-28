@@ -1,7 +1,12 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { IconDefinition } from '@ant-design/icons-angular';
+import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { SharedPipesModule } from '../pipes/shared-pipes.module';
 import { AddressSectionComponent } from './components/address-section/address-section.component';
 import { BoxCartPriceComponent } from './components/box-cart-price/box-cart-price.component';
@@ -33,12 +38,24 @@ import { PopUpDialogComponent } from './components/pop-up-dialog/pop-up-dialog.c
 import { PopUpRequestApprovalComponent } from './components/pop-up-request-approval/pop-up-request-approval.component';
 import { QtyCtrlTwoComponent } from './components/qty-ctrl-two/qty-ctrl-two.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
+import { RangeDatepickerComponent } from './components/range-datepicker/range-datepicker.component';
 import { RedBgButtonComponent } from './components/red-bg-button/red-bg-button.component';
 import { RedBorderWhiteBgButtonComponent } from './components/red-border-white-bg-button/red-border-white-bg-button.component';
 import { RedButtonComponent } from './components/red-button/red-button.component';
 import { ResetFilterComponent } from './components/reset-filter/reset-filter.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
+import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
+
+registerLocaleData(en);
+
+const antDesignIcons = AllIcons as {
+	[key: string]: IconDefinition;
+};
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
+	(key) => antDesignIcons[key]
+);
+
 @NgModule({
 	declarations: [
 		CatalogCardComponent,
@@ -79,8 +96,15 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		QtyCtrlTwoComponent,
 		RedButtonComponent,
 		InputDropdownComponent,
+		RangeDatepickerComponent,
 	],
-	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
+	imports: [
+		CommonModule,
+		FormsModule,
+		NgbModule,
+		SharedPipesModule,
+		DemoNgZorroAntdModule,
+	],
 	exports: [
 		InputDropdownComponent,
 		CatalogCardComponent,
@@ -115,6 +139,11 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		CheckBoxTwoComponent,
 		QtyCtrlTwoComponent,
 		RedButtonComponent,
+		RangeDatepickerComponent,
+	],
+	providers: [
+		{ provide: NZ_I18N, useValue: en_US },
+		{ provide: NZ_ICONS, useValue: icons },
 	],
 })
 export class SharedModule {}
