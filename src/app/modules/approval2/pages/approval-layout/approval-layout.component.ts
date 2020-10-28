@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,11 +25,11 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams,
+	ConvertApproveParams
 } from '../../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart,
+	ConvertCheckoutCart
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
