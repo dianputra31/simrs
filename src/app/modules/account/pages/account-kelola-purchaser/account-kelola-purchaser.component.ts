@@ -1,8 +1,7 @@
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, Subscription } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { UserCompanyUsersUrl } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 
 @Component({
 	selector: 'account-kelola-purchaser',
@@ -14,7 +13,7 @@ export class AccountKelolaPurchaserComponent implements OnInit {
 	subscriptions: Subscription[];
 	users: any;
 
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpService) {}
 
 	ngOnInit(): void {
 		this.subscriptions = [];
@@ -31,24 +30,9 @@ export class AccountKelolaPurchaserComponent implements OnInit {
 	}
 
 	getUserList() {
-		const sub = this.http
-			.get(UserCompanyUsersUrl)
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						// this.storageService.clear();
-						// this._document.defaultView.location.reload();
-						return of(err as any);
-					}
-					throw err;
-				})
-			)
-			.subscribe((resp) => {
-				this.users = resp.data;
-			});
+		const sub = this.http.get(UserCompanyUsersUrl).subscribe((resp) => {
+			this.users = resp.data;
+		});
 
 		this.subscriptions.push(sub);
 	}

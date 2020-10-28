@@ -1,8 +1,7 @@
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable, of, Subscription } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { UserCreateUserUrl } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 
 @Component({
 	selector: 'add-purchaser-editor',
@@ -21,7 +20,7 @@ export class AddPurchaserEditorComponent implements OnInit {
 	};
 	@Output() addEvent = new EventEmitter();
 	subscriptions: Subscription[];
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpService) {}
 
 	ngOnInit(): void {
 		this.subscriptions = [];
@@ -35,19 +34,6 @@ export class AddPurchaserEditorComponent implements OnInit {
 		console.log(this.param);
 		const sub = this.http
 			.post(UserCreateUserUrl, this.param)
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						// this.storageService.clear();
-						// this._document.defaultView.location.reload();
-						return of(err as any);
-					}
-					throw err;
-				})
-			)
 			.subscribe((resp) => {
 				this.addEvent.emit();
 			});
