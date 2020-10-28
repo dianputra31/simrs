@@ -40,6 +40,7 @@ import { RedButtonComponent } from './components/red-button/red-button.component
 import { ResetFilterComponent } from './components/reset-filter/reset-filter.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
+import { AnyAlertComponent } from './components/any-alert/any-alert.component';
 @NgModule({
 	declarations: [
 		CatalogCardComponent,
@@ -81,6 +82,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 		RedButtonComponent,
 		InputDropdownComponent,
 		EmptyCartComponent,
+		AnyAlertComponent,
 	],
 	imports: [CommonModule, FormsModule, NgbModule, SharedPipesModule],
 	exports: [
