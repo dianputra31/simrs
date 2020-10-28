@@ -9,7 +9,8 @@
 	border: 1px solid $color-primary;
 	border-radius: 50%;
 	box-sizing: border-box;
-	position: relative;float:left;width:10%;
+	position: relative;float:left;
+	
 }
 
 #left-box{
@@ -50,7 +51,7 @@
 }
 
 .custom-checkbox-mark {
-	width: 17.23px;
+	width: 17.23px; 
 	height: 12.02px;
 	margin-left: 1px;
 	margin-bottom: 13px;
