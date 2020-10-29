@@ -100,6 +100,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		InputDropdownComponent,
 		EmptyCartComponent,
 		RangeDatepickerComponent,
+		AnyAlertComponent,
 	],
 	imports: [
 		CommonModule,
@@ -107,9 +108,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		NgbModule,
 		SharedPipesModule,
 		DemoNgZorroAntdModule,
-		AnyAlertComponent,
 	],
 	exports: [
+		AnyAlertComponent,
 		InputDropdownComponent,
 		CatalogCardComponent,
 		CatalogCardButtonComponent,
