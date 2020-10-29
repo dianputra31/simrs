@@ -3,12 +3,14 @@ import {
 	HttpClient,
 	HttpErrorResponse,
 	HttpEvent,
-	HttpHeaders,
+	HttpHeaders
 } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { AnyAlertComponent } from '../../../shared/components/any-alert/any-alert.component';
 import { HttpBodyRespModel } from '../../http-body-resp/model/http-body-resp.model';
 import { StorageService } from '../../storage/service/storage.service';
 import { generateHttpParams } from '../../util/http-param-generator';
@@ -19,11 +21,12 @@ import { generateHttpParams } from '../../util/http-param-generator';
 export class BaseService {
 	public httpBodyRespModel = new HttpBodyRespModel();
 
-	constructor(
+	constructor( 
 		public http: HttpClient,
 		private router: Router,
 		private storageService: StorageService,
-		@Inject(DOCUMENT) private _document: Document
+		@Inject(DOCUMENT) private _document: Document,
+		public dialog: MatDialog,
 	) {}
 
 	public getData(
@@ -40,6 +43,7 @@ export class BaseService {
 		} else {
 			params = requestParamModel;
 		}
+
 		return responseModel !== false
 			? this.http.get(url, { params }).pipe(
 					map(
@@ -320,5 +324,13 @@ export class BaseService {
 
 	private responseData(status: boolean) {
 		return { data: status };
+	}
+
+	public showAlert(msg: string){
+		this.dialog.open(AnyAlertComponent, {
+				  data: {
+					msg: msg
+				  }
+				});
 	}
 }

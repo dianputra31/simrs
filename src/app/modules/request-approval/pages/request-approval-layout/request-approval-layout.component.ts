@@ -8,12 +8,12 @@ import { BaseService } from '../../../../core/base-service/service/base.service'
 import {
 	CartListParams,
 	CheckoutCartParams,
-	ConvertCheckoutParams,
+	ConvertCheckoutParams
 } from '../../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
 	ConvertCheckoutCart,
-	Product,
+	Product
 } from '../../../../models/checkout-cart.model';
 import { Company, ConvertCompany } from '../../../../models/company.model';
 import { PopUpDialogComponent } from '../../../../shared/components/pop-up-dialog/pop-up-dialog.component';
@@ -120,7 +120,9 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		if (this.selectedItems.length > 0) {
 			this.proses();
 		} else {
-			alert('Maaf tidak ada produk yang tersedia');
+
+			this.service.showAlert('Maaf tidak ada produk yang tersedia');
+
 		}
 	}
 
