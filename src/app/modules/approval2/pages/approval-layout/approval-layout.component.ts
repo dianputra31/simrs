@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE
+	RESPONSE,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,16 +25,16 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams
+	ConvertApproveParams,
 } from '../../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart
+	ConvertCheckoutCart,
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
+import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
 import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { ApprovalResultConfirmationDialogComponent } from '../../components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
-import { FilterDateComponent } from '../../components/filter-date/filter-date.component';
 
 @Component({
 	selector: 'approval-layout',
@@ -66,7 +66,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	headers: any;
 
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
-	@ViewChild('inputDate') inputDate: FilterDateComponent;
+	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
 
 	constructor(
 		private storageService: StorageService,
@@ -209,11 +209,18 @@ export class ApprovalLayoutComponent implements OnInit {
 	filterDate(datenya) {
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
+		console.log('mashok');
+		console.log('test', this.start_date, this.end_date);
 
 		this.getItems();
-		// this.date = datenya;
-		// const addressid = this.selectedAddress.address_id;
-		// this.getCartItem(addressid);
+	}
+
+	filterRemoved(datenya) {
+		console.log('mashok2');
+		this.start_date = datenya.startdate;
+		this.end_date = datenya.enddate;
+		console.log('test2', this.start_date, this.end_date);
+		this.getItems();
 	}
 
 	calculate() {
@@ -393,9 +400,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.selectedAddress = this.listSummaryByAddress[0];
 		this.selectedPurchaser = this.purchasers[0];
 		this.keyword = '';
-
 		this.inputKeyword.getKeyword('');
-
 		this.inputDate.resetDate();
 		this.start_date = '';
 		this.end_date = '';
