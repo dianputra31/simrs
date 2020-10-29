@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { SaveDefaultAddressUrl } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
-import { DeliveryAddressObjectModel } from '../../../../shared/components/address-section/model/delivery-address-object.model';
 
 @Component({
 	selector: 'info-perusahaan-address-card',
@@ -12,7 +11,7 @@ import { DeliveryAddressObjectModel } from '../../../../shared/components/addres
 export class InfoPerusahaanAddressCardComponent implements OnInit {
 	@Input() utama: Boolean;
 	@Input() index: number;
-	@Input() address: DeliveryAddressObjectModel;
+	@Input() address: any;
 	@Output() setUtamaEvent = new EventEmitter();
 	@Output() deleteEvent = new EventEmitter();
 	@Output() editEvent = new EventEmitter();

@@ -3,9 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddressList } from '../../../../app.constant';
-import { BaseService } from '../../../../core/base-service/service/base.service';
-import { DeliveryAddressObjectModel } from '../../../../shared/components/address-section/model/delivery-address-object.model';
-import { DeliveryAddressResponseModel } from '../../../../shared/components/address-section/model/delivery-address-response.model';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { EditAlamatDialogComponent } from '../../components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
 import { TambahAlamatBaruDialogComponent } from '../../components-info-perusahaan/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 import { TrashCanDialogComponent } from '../../components-info-perusahaan/trash-can-dialog/trash-can-dialog.component';
@@ -17,12 +15,12 @@ import { TrashCanDialogComponent } from '../../components-info-perusahaan/trash-
 })
 export class AccountInfoPerusahaanComponent implements OnInit {
 	subscribers: Subscription[];
-	addresses: DeliveryAddressObjectModel[];
+	addresses: any[];
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router,
-		private service: BaseService
+		private http: HttpService
 	) {}
 
 	ngOnInit(): void {
@@ -54,11 +52,9 @@ export class AccountInfoPerusahaanComponent implements OnInit {
 
 	getAddressList() {
 		const url = AddressList;
-		const sub = this.service
-			.getData(url, DeliveryAddressResponseModel, null, false)
-			.subscribe((resp) => {
-				this.addresses = resp.delivery_address;
-			});
+		const sub = this.http.get(url).subscribe((resp) => {
+			this.addresses = resp.data;
+		});
 		this.subscribers.push(sub);
 	}
 

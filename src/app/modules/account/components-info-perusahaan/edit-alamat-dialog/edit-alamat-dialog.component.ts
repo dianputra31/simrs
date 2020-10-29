@@ -60,6 +60,7 @@ export class EditAlamatDialogComponent implements OnInit {
 
 		this.selectedDistrict = {
 			district: this.address.district,
+			district_type: this.address.district_type,
 			label: this.address.district,
 		};
 

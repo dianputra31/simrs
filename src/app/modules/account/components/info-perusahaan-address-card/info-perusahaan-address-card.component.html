@@ -1,28 +1,28 @@
 <div class="info-perusahaan-card-wrapper d-flex">
-  <div class="flex-grow-1">
-    <div id="perusahaan-label">
-      {{address?.address_name}}
-    </div>
-    <wsv wide="12px"></wsv>
-    <horizontal-line></horizontal-line>
-    <wsv wide="12px"></wsv>
-    <div class="d-flex">
-      <name-address class="flex-even"
-        [title]="address?.recipient_name"
-        [content]="getAddress()"></name-address>
-      <wsh wide="25px"></wsh>
-      <name-address class="flex-even"
-        title="Catatan Pengiriman"
-        [content]="address?.delivery_message"></name-address>
-    </div>
-  </div>
-  <div class="d-flex">
-    <trash-can (click)="deleteInfo()"></trash-can>
-    <wsh wide="16px"></wsh>
-    <edit (click)="edit()"></edit>
-    <wsh wide="16px"></wsh>
-    <set-utama-button [utama]="utama"
-      [index]="index"
-      (click)="setUtama(address.id)"></set-utama-button>
-  </div>
+	<div class="flex-grow-1">
+		<div id="perusahaan-label">
+			{{address?.address_name}}
+		</div>
+		<wsv wide="12px"></wsv>
+		<horizontal-line></horizontal-line>
+		<wsv wide="12px"></wsv>
+		<div class="d-flex">
+			<name-address class="flex-even"
+				[title]="address?.recipient_name"
+				[content]="getAddress()"></name-address>
+			<wsh wide="25px"></wsh>
+			<name-address class="flex-even"
+				title="Catatan Pengiriman"
+				[content]="address?.delivery_message"></name-address>
+		</div>
+	</div>
+	<div class="d-flex">
+		<trash-can (click)="deleteInfo()"></trash-can>
+		<wsh wide="16px"></wsh>
+		<edit (click)="edit()"></edit>
+		<wsh wide="16px"></wsh>
+		<set-utama-button [utama]="utama"
+			[index]="index"
+			(click)="setUtama(address.id)"></set-utama-button>
+	</div>
 </div>

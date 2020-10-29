@@ -3,6 +3,7 @@
 		Tambah Alamat Baru
 	</div>
 	<img id="close-dialog-button"
+		(click)="batal()"
 		src="../../../../../assets/image/icons/ic-x.png">
 </div>
 
@@ -144,6 +145,7 @@
 	<div>* Wajib diisi</div>
 	<div class="d-flex">
 		<button-gray label="Batal"
+			style="cursor: pointer;"
 			(click)="batal()"></button-gray>
 		<wsh wide="16px"></wsh>
 		<red-button label="Tambah"
