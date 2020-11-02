@@ -369,7 +369,8 @@ export class ApprovalLayoutComponent implements OnInit {
 				if (cartCheckout.status.rc == 1) {
 					this.openDialogLocation();
 				} else {
-					alert(cartCheckout.status.msg);
+					this.service.showAlert(cartCheckout.status.msg);
+					// alert(cartCheckout.status.msg);
 				}
 			});
 
@@ -408,7 +409,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.getItems();
 	}
 
-	rejectItem() {
+	rejectItem() { 
 		this.getItems();
 	}
 

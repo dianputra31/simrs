@@ -13,9 +13,11 @@
 		<div class="d-flex justify-content-end align-items-center">
 			<label-input label="Jenis Perusahaan"></label-input>
 			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"
-				placeholderText="PT"
-				(onUserInput)="onUserInputJenisPerusahaan($event)"></rounded-input>
+
+			<input-dropdown style="width: 298px;"
+				[items]="states"
+				(onSelect)="onUserInputJenisPerusahaan($event)"></input-dropdown>
+
 		</div>
 
 	</div>

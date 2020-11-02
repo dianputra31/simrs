@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {
 	MatDialog,
 	MatDialogRef,
-	MAT_DIALOG_DATA,
+	MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
@@ -13,10 +13,11 @@ import {
 	AddressMasterDistrictUrl,
 	AddressMasterProvinceUrl,
 	AddressMasterSubDistrictUrl,
-	AddressMasterVillageUrl,
+	AddressMasterVillageUrl
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+
 
 @Component({
 	selector: 'tambah-alamat-baru-dialog',
@@ -34,6 +35,15 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	selectedDistrict: any;
 	selectedSubdistrict: any;
 	selectedVillage: any;
+	
+	  states: any[] = [
+		{'jenis':'PT', 'label':'PT'}, 
+		{'jenis':'CV', 'label':'CV'}, 
+		{'jenis':'Firma', 'label':'Firma'}
+	  ];
+
+	 
+	
 
 	param = {
 		address_name: '',
@@ -67,6 +77,8 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 		this.subscribers = [];
 		this.getProvince();
 	}
+
+
 
 	ngOnDestroy() {
 		this.subscribers.forEach((x) => x.unsubscribe);
