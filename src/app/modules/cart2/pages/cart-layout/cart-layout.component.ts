@@ -67,7 +67,6 @@ export class CartLayoutComponent implements OnInit {
 		pertotalan.totalItem = 0;
 		for (var index in this.items) {
 			if (this.items[index].selected) {
-				console.log(this.items[index]);
 				const element: CartListItemModel = this.items[index];
 
 				pertotalan.totalFee += element.admin_fee;
