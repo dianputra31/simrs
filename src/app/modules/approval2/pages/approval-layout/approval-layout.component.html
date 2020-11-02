@@ -1,5 +1,4 @@
 <block-ui>
-
 	<div *ngIf="listSummaryByAddress.length == 0 else elseBlock"
 		class="w-100 d-flex justify-content-center">
 		<div>
@@ -56,10 +55,14 @@
 							hint="Cari Pesanan"
 							logo="../../../../assets/image/icons/searchbutton.png"
 							[disabled]="false"></filter-input>
-						<filter-date #inputDate
+						<wsh wide="10px">
+						</wsh>
+						<range-datepicker class="flex-even"
+							#inputDate
+							style="cursor: pointer;"
 							(dateSelectedEvent)="filterDate($event)"
-							class="flex-even"
-							style="cursor: pointer;"></filter-date>
+							(dateRemovedEvent)="filterRemoved($event)">
+						</range-datepicker>
 						<wsh wide="10px">
 						</wsh>
 
@@ -114,5 +117,4 @@
 		</div>
 
 	</ng-template>
-
 </block-ui>
