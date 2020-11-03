@@ -62,15 +62,15 @@ export class ItemTransactionComponent implements OnInit {
 	}
 
 	carilagi() {
-		this.router.navigate(['./pilih-produk']);
+		this.router.navigate(['./pilih-produk/0/0']);
 	}
 
 	belilagi() {
-		this.router.navigate(['./pilih-produk']);
+		this.router.navigate(['./pilih-produk/0/0']);
 	}
 
 	ajukanlagi() {
-		this.router.navigate(['./pilih-produk']);
+		this.router.navigate(['./pilih-produk/0/0']);
 	}
 
 	carisejenis(item: TransactionItemResponseModel) {

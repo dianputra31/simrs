@@ -8,7 +8,7 @@
 				{{item.requester_full_name}}
 			</div>
 			<div class="title-2">
-				{{item.id}}
+				{{item.order_code}}
 			</div>
 		</div>
 
@@ -66,7 +66,7 @@
 		<div class="d-flex col-4-trx-item align-items-end">
 
 
-			<ng-template *ngIf="item.statustrx=='Selesai'; then first
+			<ng-template *ngIf="item.status=='CLOSED'; then first
 			else second"></ng-template>
 
 			<ng-template #first>
@@ -81,7 +81,7 @@
 			</ng-template>
 
 			<ng-template #second>
-				<ng-template *ngIf="item.statustrx=='Ditolak'; then third else fourth"></ng-template>
+				<ng-template *ngIf="item.status=='REJECTED'; then third else fourth"></ng-template>
 				<ng-template #third>
 					<red-button label="Ajukan Lagi"
 						font="14px"
@@ -94,10 +94,9 @@
 				</ng-template>
 
 				<ng-template #fourth>
-					<ng-template *ngIf="item.statustrx=='Diproses'; then fifth else sixth"></ng-template>
+					<ng-template *ngIf="item.status=='PROCESS'; then fifth else sixth"></ng-template>
 					<ng-template #fifth>
-						<ng-template
-							*ngIf="item.statusprocess=='Diproses' || item.statusprocess=='Dikirim'; then disab else enab">
+						<ng-template *ngIf="item.status=='PROCESS'; then disab else enab">
 						</ng-template>
 						<ng-template #disab>
 							<div id="button-wrapper"
