@@ -44,8 +44,8 @@ export class RangeDatepickerComponent {
 			console.log('onChange: ', result[0], result[1]);
 			this.dateRemovedEvent.emit(dateRemoved);
 		} else {
-			this.startDate = format(result[0], 'dd/MM/yyyy');
-			this.endDate = format(result[1], 'dd/MM/yyyy');
+			this.startDate = format(result[0], 'yyyy-MM-dd');
+			this.endDate = format(result[1], 'yyyy-MM-dd');
 			console.log('onChange: ', result[0], result[1]);
 			var date = {
 				startdate: this.startDate,

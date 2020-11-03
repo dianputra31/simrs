@@ -23,7 +23,6 @@ export class CartListItemModel {
 	public submitted_at: string;
 
 	public convert(dto: any) {
-		console.log(dto);
 		this.product_id = dto.product_id;
 		this.partner_sku_item = dto.partner_sku_item;
 		this.product_image = dto.product_image;

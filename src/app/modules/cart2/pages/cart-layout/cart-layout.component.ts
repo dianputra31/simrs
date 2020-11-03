@@ -69,24 +69,12 @@ export class CartLayoutComponent implements OnInit {
 			if (this.items[index].selected) {
 				const element: CartListItemModel = this.items[index];
 
-				pertotalan.totalFee +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.admin_fee;
-				pertotalan.ppn +=
-					element.stock - element.quantity < 0 ? 0 : element.ppn;
-				pertotalan.ppn3 +=
-					element.stock - element.quantity < 0 ? 0 : element.pph;
-				pertotalan.ongkir +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.shipping_cost;
-				pertotalan.totalPrice +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.purchase_amount;
-				pertotalan.totalItem +=
-					element.stock - element.quantity < 0 ? 0 : 1;
+				pertotalan.totalFee += element.admin_fee;
+				pertotalan.ppn += Math.round(element.ppn);
+				pertotalan.ppn3 += Math.round(element.pph);
+				pertotalan.ongkir += element.shipping_cost;
+				pertotalan.totalPrice += element.purchase_amount;
+				pertotalan.totalItem += 1;
 			}
 			pertotalan.subtotal = pertotalan.totalPrice + pertotalan.totalFee;
 			pertotalan.grandtotal =
@@ -95,7 +83,6 @@ export class CartLayoutComponent implements OnInit {
 				pertotalan.ppn3 +
 				pertotalan.ongkir;
 		}
-
 		return pertotalan;
 	}
 
