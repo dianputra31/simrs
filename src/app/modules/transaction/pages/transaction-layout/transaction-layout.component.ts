@@ -6,10 +6,11 @@ import {
 	GetCompanyUsers,
 	RESPONSE,
 	TransactionListUrl,
-	TransactionStatusOptionUrl,
+	TransactionStatusOptionUrl
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { TransactionListRequestModel } from '../../../../models/transaction-list-request.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
@@ -30,6 +31,7 @@ export class TransactionLayoutComponent implements OnInit {
 	selectedAddress: any;
 	purchasers: any[];
 	selectedPurchaser: any;
+	selectedStatuses: any;
 
 	keyword: string;
 	start_date: string;
@@ -40,11 +42,14 @@ export class TransactionLayoutComponent implements OnInit {
 
 	@BlockUI() blockUI: NgBlockUI;
 
-	constructor(private http: HttpService, private service: BaseService) {}
+	constructor(private http: HttpService, private service: BaseService, 
+		private _redirectparam: RedirectParameterService ) {}
 
 	ngOnInit(): void {
 		this.param = new TransactionListRequestModel();
-		this.param.status_code = 'ALL';
+		if(localStorage.getItem('selectedStatuses') !== '') this.param.status_code = localStorage.getItem('selectedStatuses'); else this.param.status_code = 'ALL';
+		this.selectedStatuses = localStorage.getItem('selectedStatuses');
+		localStorage.setItem('selectedStatuses', this.selectedStatuses);
 		this.subsribers = [];
 
 		this.getTrxStatus();
@@ -65,10 +70,11 @@ export class TransactionLayoutComponent implements OnInit {
 					this.selectedStatus = this.statuses[0];
 					this.getAddress();
 				} else {
-					alert(resp.status.msg);
+					this.service.showAlert(resp.status.msg);
 				}
 			});
 		this.subsribers.push(sub);
+		this.selectedStatuses = localStorage.getItem(this.selectedStatuses);
 	}
 
 	getAddress() {
@@ -92,7 +98,7 @@ export class TransactionLayoutComponent implements OnInit {
 				this.selectedAddress = this.addresses[0];
 				this.getPurchaserList();
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 
@@ -119,7 +125,7 @@ export class TransactionLayoutComponent implements OnInit {
 				this.selectedPurchaser = this.purchasers[0];
 				this.getTrxList();
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 
@@ -127,8 +133,11 @@ export class TransactionLayoutComponent implements OnInit {
 	}
 
 	getTrxList() {
+		if(localStorage.getItem('selectedStatuses') !== '') var statuscode = localStorage.getItem('selectedStatuses'); else var statuscode = 'ALL';
+		this.selectedStatuses = localStorage.getItem('selectedStatuses');
+		
 		const param = {
-			status_code: this.selectedStatus.status_code,
+			status_code: statuscode,
 			address_id: this.selectedAddress.id,
 			user_id: this.selectedPurchaser.id,
 			keyword: this.keyword,
@@ -138,8 +147,9 @@ export class TransactionLayoutComponent implements OnInit {
 			// limit: 20,
 		};
 
+
 		this.blockUI.start();
-		console.log('param-get trxlist: ', param);
+		// console.log('param-get trxlist: ', param);
 		const sub = this.http
 			.post(TransactionListUrl, param)
 			.subscribe((resp) => {
@@ -147,15 +157,17 @@ export class TransactionLayoutComponent implements OnInit {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.items = resp.data;
 				} else {
-					alert(resp.status.msg);
+					this.service.showAlert(resp.status.msg);
 				}
 			});
 
 		this.subsribers.push(sub);
 	}
 
-	selectStatus(status) {
+	selectStatus(status) { 
 		this.selectedStatus = status;
+		// this._redirectparam.selectedbutton_transaksi = status.status_code;
+		localStorage.setItem('selectedStatuses',status.status_code)
 		this.getTrxList();
 	}
 
