@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE
+	RESPONSE,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,11 +25,11 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams
+	ConvertApproveParams,
 } from '../../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart
+	ConvertCheckoutCart,
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -46,7 +46,11 @@ export class ApprovalLayoutComponent implements OnInit {
 	@BlockUI() blockUI: NgBlockUI;
 	subscribers: Subscription[] = [];
 
-	items: any[];
+	items: any[] = [];
+	itemArray: any[] = [];
+	selector: string = '#left-container';
+	page: number = 1;
+	limit: number = 5;
 
 	nNotApproved: number;
 	listSummaryByAddress: any[] = [];
@@ -84,16 +88,26 @@ export class ApprovalLayoutComponent implements OnInit {
 		body.classList.add('no-scroll');
 	}
 
-	getItems() {
-		this.selectedAddress = JSON.parse(localStorage.getItem('selectedAddress'));
-		// var addr = JSON.parse(this.selectedAddress);
-		const param: any = {
+	onScrollDown(e) {
+		console.log('scrolled down!!', e);
+		this.getItems(this.page++);
+	}
+
+	// onScrollUp(e) {
+	// 	this.page++;
+	// 	console.log('scrolled up!!', e);
+	// 	this.getItems(this.page++);
+	// }
+
+	getItems(ev) {
+		console.log('page', this.page);
+		var param: any = {
 			address_id: this.selectedAddress?.address_id,
 			keyword: this.keyword,
 			start_date: this.start_date,
 			end_date: this.end_date,
-			// page: 1,
-			// limit: 1000,
+			page: this.page,
+			limit: this.limit,
 		};
 
 		if (this.selectedPurchaser.id) {
@@ -107,13 +121,13 @@ export class ApprovalLayoutComponent implements OnInit {
 			this.blockUI.stop();
 
 			if (resp.status.rc === RESPONSE.SUCCESS) {
-				this.items = resp.data;
-
-				this.items.forEach((each) => {
+				var newData = resp.data;
+				newData.forEach((each) => {
 					each.selected = this.enableSelect(each.availability);
 					each.enableSelection = this.enableSelect(each.availability);
 				});
 
+				this.items = this.items.concat(newData);
 				this.initScrolling();
 			} else {
 				this.service.showAlert(resp.status.msg);
@@ -143,7 +157,9 @@ export class ApprovalLayoutComponent implements OnInit {
 
 				if (this.listSummaryByAddress.length != 0) {
 					// this.selectedAddress = this.listSummaryByAddress[0];
-					this.selectedAddress = localStorage.getItem('selectedAddress');
+					this.selectedAddress = localStorage.getItem(
+						'selectedAddress'
+					);
 					this.getPurchaserList();
 				}
 			} else {
@@ -186,7 +202,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				});
 
 				this.selectedPurchaser = this.purchasers[0];
-				this.getItems();
+				this.getItems(this.page);
 			} else {
 				this.service.showAlert(resp.status.msg);
 			}
@@ -197,19 +213,20 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	selectAddressGroup(i) {
 		this.selectedAddress = i;
-		localStorage.setItem('selectedAddress', JSON.stringify(i));
-		this.getItems();
+		this.page = 0;
+		this.items = [];
+		this.getItems(this.page);
 	}
 
 	selectPurchaser(purchaser) {
 		this.selectedPurchaser = purchaser;
-		this.getItems();
+		this.getItems(this.page);
 	}
 
 	cariKeyword(keyword) {
 		if (keyword.length >= 3 || keyword.length == 0) {
 			this.keyword = keyword;
-			this.getItems();
+			this.getItems(this.page);
 		}
 	}
 
@@ -219,7 +236,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		console.log('mashok');
 		console.log('test', this.start_date, this.end_date);
 
-		this.getItems();
+		this.getItems(this.page);
 	}
 
 	filterRemoved(datenya) {
@@ -227,7 +244,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
 		console.log('test2', this.start_date, this.end_date);
-		this.getItems();
+		this.getItems(this.page);
 	}
 
 	calculate() {
@@ -414,11 +431,11 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.start_date = '';
 		this.end_date = '';
 
-		this.getItems();
+		this.getItems(this.page);
 	}
 
 	rejectItem() {
-		this.getItems();
+		this.getItems(this.page);
 	}
 
 	initScrolling() {

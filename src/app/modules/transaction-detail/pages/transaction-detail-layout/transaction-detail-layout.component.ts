@@ -3,11 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
+	RESPONSE,
 	TransactionConfirmUrl,
 	TransactionDetailUrl,
 } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-import { TransactionDetailModel } from '../../../../models/transaction-detaily-response.model';
+import { TanggalPipe } from '../../../../pipes/tanggal.pipe';
 @Component({
 	selector: 'transaction-detail-layout',
 	templateUrl: './transaction-detail-layout.component.html',
@@ -16,11 +18,16 @@ import { TransactionDetailModel } from '../../../../models/transaction-detaily-r
 export class TransactionDetailLayoutComponent implements OnInit {
 	@BlockUI() blockUI: NgBlockUI;
 	subscribers: Subscription[];
-	item: TransactionDetailModel;
+	item: any;
 
 	purchased_id: string;
 	item_id: string;
-	constructor(private route: ActivatedRoute, private service: BaseService) {}
+	constructor(
+		private route: ActivatedRoute,
+		private service: BaseService,
+		private http: HttpService,
+		private datePipe: TanggalPipe
+	) {}
 
 	ngOnInit(): void {
 		this.subscribers = [];
@@ -39,16 +46,17 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	getTransactionDetail() {
 		this.blockUI.start();
 		const url = `${TransactionDetailUrl}/${this.purchased_id}/${this.item_id}`;
-		const sub = this.service
-			.getData(url, TransactionDetailModel, false, false)
-			.subscribe((resp) => {
-				this.blockUI.stop();
-				this.item = resp;
-				console.log(this.item);
-			});
-		this.subscribers.push(sub);
 
-		this.blockUI.stop();
+		const sub = this.http.get(url).subscribe((resp) => {
+			this.blockUI.stop();
+			if (resp.status.rc === RESPONSE.SUCCESS) {
+				this.item = resp.data;
+				console.log(this.item);
+			} else {
+				alert('error');
+			}
+		});
+		this.subscribers.push(sub);
 	}
 
 	onImgError(event) {
@@ -70,5 +78,43 @@ export class TransactionDetailLayoutComponent implements OnInit {
 		this.subscribers.push(sub);
 
 		this.blockUI.stop();
+	}
+
+	estimateDeliveryTime(item) {
+		// if (item) {
+		// 	var processDateString = item?.item_status_history?.filter(
+		// 		(x) => x.status == 'PROCESS'
+		// 	)[0]?.updated_at;
+
+		// 	if (processDateString) {
+		// 		var processDate = new Date(processDateString);
+		// 		var deliveryDate = new Date(
+		// 			processDate.setTime(
+		// 				processDate.getTime() + item?.max_days * 86400000
+		// 			)
+		// 		);
+
+		// 		return this.datePipe.transform(
+		// 			deliveryDate.toISOString(),
+		// 			'tgl'
+		// 		);
+		// 	} else {
+		// 		return '---';
+		// 	}
+		// } else {
+		// 	return '---';
+		// }
+
+		if (item?.item_status_history?.PROCESS != null) {
+			var update = item?.item_status_history?.PROCESS.updated_at;
+
+			var processDate = new Date(update);
+			var deliveryDate = new Date(
+				processDate.setTime(
+					processDate.getTime() + item?.max_days * 86400000
+				)
+			);
+			return this.datePipe.transform(deliveryDate.toISOString(), 'tgl');
+		}
 	}
 }

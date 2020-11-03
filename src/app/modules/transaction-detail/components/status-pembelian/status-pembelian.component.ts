@@ -13,5 +13,31 @@ export class StatusPembelianComponent implements OnInit {
 	ngOnInit(): void {
 		console.log(this.item);
 	}
-	
+
+	statusPembelianMapping(status) {
+		switch (status) {
+			case 'ORDERED':
+				'DIORDER';
+				break;
+			case 'PROCESS':
+				'DIPROSES';
+				break;
+			case 'CANCEL':
+				'DIBATALKAN';
+				break;
+			case 'PENDING':
+				'PENDING';
+				break;
+			case 'DELIVER':
+				'DIKIRIM';
+				break;
+			case 'RECEIVED':
+				'DITERIMA';
+				break;
+			case 'CLOSED':
+				'SELESAI';
+				break;
+		}
+		return status;
+	}
 }

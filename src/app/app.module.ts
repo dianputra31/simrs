@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppComponent } from './app.component';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
@@ -26,6 +27,7 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 		MaterialModule,
 		NgbModule,
 		HttpClientModule,
+		InfiniteScrollModule,
 	],
 	providers: [
 		/* Declare service for this module */
