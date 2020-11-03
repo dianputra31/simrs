@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,11 +25,11 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams,
+	ConvertApproveParams
 } from '../../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart,
+	ConvertCheckoutCart
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -78,13 +78,16 @@ export class ApprovalLayoutComponent implements OnInit {
 	ngOnInit(): void {
 		this.getAddress();
 		this.numberOfApproval();
+		this.selectedAddress = localStorage.getItem('selectedAddress');
 
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.add('no-scroll');
 	}
 
 	getItems() {
-		var params: any = {
+		this.selectedAddress = JSON.parse(localStorage.getItem('selectedAddress'));
+		// var addr = JSON.parse(this.selectedAddress);
+		const param: any = {
 			address_id: this.selectedAddress?.address_id,
 			keyword: this.keyword,
 			start_date: this.start_date,
@@ -94,11 +97,13 @@ export class ApprovalLayoutComponent implements OnInit {
 		};
 
 		if (this.selectedPurchaser.id) {
-			params.user_id = this.selectedPurchaser.id;
+			param.user_id = this.selectedPurchaser.id;
 		}
 
+		// console.log(param);
+
 		this.blockUI.start();
-		this.http.post(ApprovalListUrl, params).subscribe((resp) => {
+		this.http.post(ApprovalListUrl, param).subscribe((resp) => {
 			this.blockUI.stop();
 
 			if (resp.status.rc === RESPONSE.SUCCESS) {
@@ -111,7 +116,7 @@ export class ApprovalLayoutComponent implements OnInit {
 
 				this.initScrolling();
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 	}
@@ -137,11 +142,12 @@ export class ApprovalLayoutComponent implements OnInit {
 				});
 
 				if (this.listSummaryByAddress.length != 0) {
-					this.selectedAddress = this.listSummaryByAddress[0];
+					// this.selectedAddress = this.listSummaryByAddress[0];
+					this.selectedAddress = localStorage.getItem('selectedAddress');
 					this.getPurchaserList();
 				}
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 
@@ -155,7 +161,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			if (resp.status.rc === RESPONSE.SUCCESS) {
 				this.nNotApproved = resp.data.approval_count;
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 		this.subscribers.push(sub);
@@ -182,7 +188,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				this.selectedPurchaser = this.purchasers[0];
 				this.getItems();
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 
@@ -191,6 +197,7 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	selectAddressGroup(i) {
 		this.selectedAddress = i;
+		localStorage.setItem('selectedAddress', JSON.stringify(i));
 		this.getItems();
 	}
 
@@ -398,7 +405,8 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	reset() {
-		this.selectedAddress = this.listSummaryByAddress[0];
+		// this.selectedAddress = this.listSummaryByAddress[0];
+		this.selectedAddress = localStorage.getItem('selectedAddress');
 		this.selectedPurchaser = this.purchasers[0];
 		this.keyword = '';
 		this.inputKeyword.getKeyword('');
