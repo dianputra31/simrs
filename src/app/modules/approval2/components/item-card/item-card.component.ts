@@ -119,4 +119,12 @@ export class ItemCardComponent implements OnInit {
 				this.blockUI.stop();
 			});
 	}
+
+	availability(availability) {
+		if (availability == 'AVAILABLE' || availability == 'LIMITED') {
+			return 'AVAILABLE';
+		} else {
+			return 'OUT OF STOCK';
+		}
+	}
 }

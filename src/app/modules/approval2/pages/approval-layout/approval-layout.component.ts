@@ -82,7 +82,6 @@ export class ApprovalLayoutComponent implements OnInit {
 	ngOnInit(): void {
 		this.getAddress();
 		this.numberOfApproval();
-		this.selectedAddress = localStorage.getItem('selectedAddress');
 
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.add('no-scroll');
@@ -157,9 +156,18 @@ export class ApprovalLayoutComponent implements OnInit {
 
 				if (this.listSummaryByAddress.length != 0) {
 					// this.selectedAddress = this.listSummaryByAddress[0];
-					this.selectedAddress = localStorage.getItem(
+					const storedSelectedAddressIndex = localStorage.getItem(
 						'selectedAddress'
 					);
+
+					this.selectedAddress = this.listSummaryByAddress.filter(
+						(x) => x.address_id == storedSelectedAddressIndex
+					)[0];
+
+					if (!this.selectedAddress) {
+						this.selectedAddress = this.listSummaryByAddress[0];
+					}
+
 					this.getPurchaserList();
 				}
 			} else {
@@ -216,6 +224,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.page = 0;
 		this.items = [];
 		this.getItems(this.page);
+		console.log(this.selectedAddress);
+		localStorage.setItem('selectedAddress', i.address_id);
 	}
 
 	selectPurchaser(purchaser) {
