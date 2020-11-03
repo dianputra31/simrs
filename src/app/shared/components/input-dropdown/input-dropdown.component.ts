@@ -12,6 +12,7 @@ export class InputDropdownComponent implements OnInit {
 	addresses = [];
 	@Input() items: any;
 	@Input() selected: any;
+	@Input() placeholderText: String;
 	subsribers: Subscription[];
 	@Output() onSelect = new EventEmitter<any>();
 

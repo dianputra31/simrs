@@ -12,7 +12,7 @@
 						<div class="d-flex"
 							*ngFor="let status of statuses">
 							<status-button [label]="status"
-								[selected]="selectedStatus"
+								[selected]="selectedStatuses"
 								(click)="selectStatus(status)"></status-button>
 
 							<wsh wide="40px"></wsh>
@@ -20,7 +20,7 @@
 					</div>
 					<wsv wide="19px"></wsv>
 
-					<div class="d-flex">
+					<div class="d-flex pas">
 						<div class="flex-grow-1 d-flex ">
 							<input-dropdown class="flex-even"
 								[items]="addresses"
