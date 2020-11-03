@@ -47,8 +47,9 @@ export class TransactionLayoutComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.param = new TransactionListRequestModel();
-		if(this._redirectparam.selectedbutton_transaksi !== '') this.param.status_code = this._redirectparam.selectedbutton_transaksi; else this.param.status_code = 'ALL';
-		this.selectedStatuses = this._redirectparam.selectedbutton_transaksi;
+		if(localStorage.getItem('selectedStatuses') !== '') this.param.status_code = localStorage.getItem('selectedStatuses'); else this.param.status_code = 'ALL';
+		this.selectedStatuses = localStorage.getItem('selectedStatuses');
+		localStorage.setItem('selectedStatuses', this.selectedStatuses);
 		this.subsribers = [];
 
 		this.getTrxStatus();
@@ -73,6 +74,7 @@ export class TransactionLayoutComponent implements OnInit {
 				}
 			});
 		this.subsribers.push(sub);
+		this.selectedStatuses = localStorage.getItem(this.selectedStatuses);
 	}
 
 	getAddress() {
@@ -131,8 +133,8 @@ export class TransactionLayoutComponent implements OnInit {
 	}
 
 	getTrxList() {
-		if(this._redirectparam.selectedbutton_transaksi !== '') var statuscode = this._redirectparam.selectedbutton_transaksi; else var statuscode = 'ALL';
-		this.selectedStatuses = this._redirectparam.selectedbutton_transaksi;
+		if(localStorage.getItem('selectedStatuses') !== '') var statuscode = localStorage.getItem('selectedStatuses'); else var statuscode = 'ALL';
+		this.selectedStatuses = localStorage.getItem('selectedStatuses');
 		
 		const param = {
 			status_code: statuscode,
@@ -145,11 +147,9 @@ export class TransactionLayoutComponent implements OnInit {
 			// limit: 20,
 		};
 
-		console.log(this.selectedStatus.status_code + ' ==> DIPILIH');
-		console.log(this._redirectparam.selectedbutton_transaksi + ' ==> DISIMPAN');
 
 		this.blockUI.start();
-		console.log('param-get trxlist: ', param);
+		// console.log('param-get trxlist: ', param);
 		const sub = this.http
 			.post(TransactionListUrl, param)
 			.subscribe((resp) => {
@@ -166,7 +166,8 @@ export class TransactionLayoutComponent implements OnInit {
 
 	selectStatus(status) { 
 		this.selectedStatus = status;
-		this._redirectparam.selectedbutton_transaksi = status.status_code;
+		// this._redirectparam.selectedbutton_transaksi = status.status_code;
+		localStorage.setItem('selectedStatuses',status.status_code)
 		this.getTrxList();
 	}
 
