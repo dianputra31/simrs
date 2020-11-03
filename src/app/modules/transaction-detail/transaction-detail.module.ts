@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BlockUIModule } from 'ng-block-ui';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
+import { TanggalPipe } from '../../pipes/tanggal.pipe';
 import { SharedModule } from '../../shared/shared.module';
 import { ProcessLogoComponent } from './components/process-logo/process-logo.component';
 import { StatusAlasanComponent } from './components/status-alasan/status-alasan.component';
@@ -25,5 +26,6 @@ import { TransactionDetailRoutingModule } from './transaction-detail-routing.mod
 		BlockUIModule.forRoot(),
 		SharedPipesModule,
 	],
+	providers: [TanggalPipe],
 })
 export class TransactionDetailModule {}

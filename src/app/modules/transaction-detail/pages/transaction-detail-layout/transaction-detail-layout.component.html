@@ -44,9 +44,9 @@
 						class="item-img">
 					<div>
 						<div class="label-2">{{item?.product_name}}</div>
+						<wsv wide="7px"></wsv>
 						<div class="label-4">{{item?.purchase_amount|rupiah}}</div>
-						<div class="label-1">Warna</div>
-						<div class="label-1">Berat</div>
+						<wsv wide="7px"></wsv>
 						<div *ngIf="item?.initial_quantity != item?.quantity"
 							class="label-1 coret">Jumlah : {{item?.initial_quantity}} Barang</div>
 						<div class="label-1">Jumlah :{{item?.quantity}} barang</div>
@@ -66,9 +66,19 @@
 				<horizontal-line></horizontal-line>
 
 				<wsv wide="20px"></wsv>
-				<div class="padding">
-					<div class="label-1">Perkiraan Waktu Sampai:</div>
-					<div class="label-2">---</div>
+				<div class="padding d-flex justify-content-between">
+					<div>
+						<div class="label-1">Perkiraan Waktu Sampai:</div>
+						<div class="label-2">{{estimateDeliveryTime(item)}}</div>
+					</div>
+					<div *ngIf="item?.initial_quantity != item?.quantity">
+						<div class="label-1">Alasan:</div>
+						<div class="label-4">
+							<div>{{item?.quantity}} Barang di proses </div>
+							<div>{{item?.initial_quantity - item?.quantity}} Barang Out of Stock </div>
+						</div>
+					</div>
+
 				</div>
 
 				<wsv wide="20px"></wsv>

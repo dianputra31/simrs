@@ -19,6 +19,12 @@
 
 <div *ngIf="status == 'CLOSED'"
 	class="red-label">BELI LAGI</div>
+
+<div *ngIf="status == 'OUTOFSTOCK'"
+	class="red-label">BELI LAGI</div>
+
+<div *ngIf="status == 'REJECTED'"
+	class="red-label">AJUKAN LAGI</div>
 <!-- 
 ORDERED : Order sudah diapprove oleh manager / Selesai (abu-abu)
 PROCESS : Sudah dikonfirmasi oleh supplier / Selesai (abu-abu)
