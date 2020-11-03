@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlockUIModule } from 'ng-block-ui';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { ApprovalRoutingModule } from './approval-routing.module';
@@ -35,6 +36,7 @@ import { ApprovalLayoutComponent } from './pages/approval-layout/approval-layout
 		FormsModule,
 		SharedPipesModule,
 		BlockUIModule.forRoot(),
+		InfiniteScrollModule,
 	],
 })
 export class Approval2Module {}

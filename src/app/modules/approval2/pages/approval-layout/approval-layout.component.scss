@@ -37,6 +37,7 @@
 }
 
 #left-container {
+	height: 100%;
 	overflow: scroll;
 }
 
@@ -76,9 +77,7 @@
 	background-color: #e5e5e5;
 }
 
-
-
-.tautan{
+.tautan {
 	cursor: pointer;
 }
 
@@ -90,8 +89,8 @@
 		opacity: 0.6;
 	}
 
-	.hasembuh{
-		width:100%;	
+	.hasembuh {
+		width: 100%;
 	}
 }
 
@@ -103,8 +102,7 @@
 		opacity: 0.6;
 	}
 
-	
-	.hasembuh{
+	.hasembuh {
 		width: 80%;
 	}
 }
