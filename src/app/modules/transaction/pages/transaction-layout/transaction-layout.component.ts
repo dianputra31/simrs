@@ -13,7 +13,7 @@ import { BaseService } from '../../../../core/base-service/service/base.service'
 import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { TransactionListRequestModel } from '../../../../models/transaction-list-request.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
-import { FilterDateComponent } from '../../components/filter-date/filter-date.component';
+import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
 
 @Component({
 	selector: 'transaction-layout',
@@ -36,7 +36,7 @@ export class TransactionLayoutComponent implements OnInit {
 	end_date: string;
 
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
-	@ViewChild('inputDate') inputDate: FilterDateComponent;
+	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
 
 	@BlockUI() blockUI: NgBlockUI;
 
@@ -179,11 +179,17 @@ export class TransactionLayoutComponent implements OnInit {
 	filterDate(datenya) {
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
+		console.log('mashok');
+		console.log('test', this.start_date, this.end_date);
+		this.getTrxStatus();
+	}
 
-		this.getTrxList();
-		// this.date = datenya;
-		// const addressid = this.selectedAddress.address_id;
-		// this.getCartItem(addressid);
+	filterRemoved(datenya) {
+		console.log('mashok2');
+		this.start_date = datenya.startdate;
+		this.end_date = datenya.enddate;
+		console.log('test2', this.start_date, this.end_date);
+		this.getTrxStatus();
 	}
 
 	reset() {
