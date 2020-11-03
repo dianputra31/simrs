@@ -409,7 +409,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.getItems();
 	}
 
-	rejectItem() { 
+	rejectItem() {
 		this.getItems();
 	}
 
