@@ -34,7 +34,6 @@
 				<div class="gray-label-3">Jumlah: {{item.quantity}} Barang</div>
 			</div>
 			<wsh wide="90px"></wsh>
-
 			<div id="tolak-button"
 				class="container-29 d-flex flex-grow-1 flex-row-reverse align-items-end">
 				<div (click)="tolakItem(item)"
@@ -45,12 +44,12 @@
 		</div>
 	</div>
 	<div id="masking"
-		*ngIf="item.availability != 'AVAILABLE'"
+		*ngIf="availability(item.availability) != 'AVAILABLE'"
 		class="rectangle-87">
 	</div>
 
 	<div id="above-masking"
-		*ngIf="item.availability != 'AVAILABLE'"
+		*ngIf="availability(item.availability) != 'AVAILABLE'"
 		class="rectangle-87">
 		<div class="d-flex flex-grow-1 flex-row-reverse align-items-end"
 			style="height: 100%;">
@@ -58,7 +57,7 @@
 				<div class="d-flex flex-row-reverse">
 					<div id="out-of-stock"
 						class="d-flex justify-content-center align-items-center">
-						{{item.availability}}
+						{{availability(item.availability)}}
 					</div>
 				</div>
 				<wsv wide="9px"></wsv>
