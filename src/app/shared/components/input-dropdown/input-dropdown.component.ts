@@ -13,10 +13,13 @@ export class InputDropdownComponent implements OnInit {
 	@Input() items: any;
 	@Input() selected: any;
 	@Input() placeholderText: String;
+	@Input() idText:string;
 	subsribers: Subscription[];
 	@Output() onSelect = new EventEmitter<any>();
 
 	constructor(private router: Router, private service: BaseService) {}
+
+	public edited = true;
 
 	ngOnInit(): void {
 		this.subsribers = [];
@@ -29,5 +32,9 @@ export class InputDropdownComponent implements OnInit {
 	selectItem(item) {
 		this.selected = item;
 		this.onSelect.emit(item);
+	}
+
+	hidePlaceholder(a){
+		this.edited = false;
 	}
 }
