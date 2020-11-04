@@ -5,7 +5,10 @@
 
 		<container-element [ngSwitch]="label.status">
 			<div *ngSwitchCase="'CANCEL'">Dibatalkan</div>
-			<div *ngSwitchCase="'OUTOFSTOCK'">Ditolak</div>
+			<div *ngSwitchCase="'OUTOFSTOCK'">
+				<div *ngIf="label.availability == 'COMING_SOON'; else default">Stok Habis</div>
+				<ng-template #default>Stok Habis</ng-template>
+			</div>
 			<div *ngSwitchCase="'REJECTED'">Ditolak</div>
 			<div *ngSwitchCase="'CLOSED'">Selesai</div>
 			<div *ngSwitchCase="'PROCESS'">Diproses</div>
