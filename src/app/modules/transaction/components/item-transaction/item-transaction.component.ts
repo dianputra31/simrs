@@ -27,10 +27,10 @@ export class ItemTransactionComponent implements OnInit {
 		public dialog: MatDialog,
 		private router: Router,
 		private route: ActivatedRoute, // private filterservice: FilterInputComponent,
-		private _redirectparam: RedirectParameterService,
-	) { }
+		private _redirectparam: RedirectParameterService
+	) {}
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
 
 	getTrxHist() {
 		// console.log("thisval in item-transaction: ", keyword)
@@ -77,7 +77,8 @@ export class ItemTransactionComponent implements OnInit {
 		const a: any = item.product_name;
 		this._redirectparam.namaproduk = a;
 		this.router.navigate([
-			`./pilih-produk/${item.category_id}/${item.subcategory_id}/` + a.replaceAll('/', '-')
+			`./pilih-produk/${item.category_id}/${item.subcategory_id}/` +
+				a.replaceAll('/', '-'),
 		]);
 	}
 

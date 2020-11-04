@@ -10,6 +10,7 @@ export class StatusLabelComponent implements OnInit {
 	@Input() statusTranslated: string;
 	@Output() konfirmasiSelesaiEvent = new EventEmitter();
 	@Output() cariSejenisEvent = new EventEmitter();
+	@Output() ajukanLagiEvent = new EventEmitter();
 
 	// ORDERED : Order sudah diapprove oleh manager / Selesai (abu-abu)
 	// PROCESS : Sudah dikonfirmasi oleh supplier / Selesai (abu-abu)
@@ -28,5 +29,9 @@ export class StatusLabelComponent implements OnInit {
 
 	cariSejenis() {
 		this.cariSejenisEvent.emit();
+	}
+
+	ajukanLagi() {
+		this.ajukanLagiEvent.emit();
 	}
 }
