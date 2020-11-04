@@ -9,6 +9,7 @@ export class BadgeComponent implements OnInit {
 	@Input() label;
 	@Input() show;
 	@Input() statusprocess;
+	ngSwitch: any;
 
 	constructor() { }
 
