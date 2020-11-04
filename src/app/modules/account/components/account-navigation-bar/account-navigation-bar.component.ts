@@ -46,7 +46,8 @@ export class AccountNavigationBarComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.selected = this.navItems[0];
+		this.selected = localStorage.getItem('selectedInfo');
+		// this.selected = this.navItems[0];
 	}
 
 	selectItem(item) {
@@ -54,6 +55,7 @@ export class AccountNavigationBarComponent implements OnInit {
 			this.storageService.clear();
 			this._document.defaultView.location.reload();
 		}
-		this.selected = item;
+		this.selected = item.label;
+		localStorage.setItem('selectedInfo', item.label);
 	}
 }

@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {
 	MatDialog,
 	MatDialogRef,
-	MAT_DIALOG_DATA,
+	MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import {
 	AddressMasterDistrictUrl,
 	AddressMasterProvinceUrl,
 	AddressMasterSubDistrictUrl,
-	AddressMasterVillageUrl,
+	AddressMasterVillageUrl
 } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 
@@ -33,8 +33,15 @@ export class EditAlamatDialogComponent implements OnInit {
 	selectedDistrict: any;
 	selectedSubdistrict: any;
 	selectedVillage: any;
+	selectedJenis: any;
 	address;
 
+	states: any[] = [
+		{'jenis':'PT', 'label':'PT'}, 
+		{'jenis':'CV', 'label':'CV'}, 
+		{'jenis':'Firma', 'label':'Firma'}
+	  ];
+	  
 	constructor(
 		public dialogRef: MatDialogRef<EditAlamatDialogComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any,
@@ -57,6 +64,11 @@ export class EditAlamatDialogComponent implements OnInit {
 			province: this.address.province,
 			label: this.address.province,
 		};
+
+		this.selectedJenis = {
+			jenis: 'PT',
+			label: 'PT',
+		}
 
 		this.selectedDistrict = {
 			district: this.address.district,

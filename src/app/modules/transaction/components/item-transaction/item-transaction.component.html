@@ -94,9 +94,9 @@
 				</ng-template>
 
 				<ng-template #fourth>
-					<ng-template *ngIf="item.status=='PROCESS'; then fifth else sixth"></ng-template>
+					<ng-template *ngIf="item.status=='RECEIVED'; then fifth else sixth"></ng-template>
 					<ng-template #fifth>
-						<ng-template *ngIf="item.status=='PROCESS'; then disab else enab">
+						<ng-template *ngIf="item.status=='RECEIVED'; then enab else disab">
 						</ng-template>
 						<ng-template #disab>
 							<div id="button-wrapper"
