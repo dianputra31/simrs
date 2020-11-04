@@ -5,10 +5,22 @@
 			Status Pembelian
 		</div>
 		<div class="label-2 d-flex">
-			{{item?.status}}
+			{{item?.statusTranslated}}
 		</div>
 	</div>
-	<wsv wide="70px"></wsv>
+	<wsv *ngIf="item?.status != 'CLOSED'"
+		wide="70px"></wsv>
+	<div class="padding invoice"
+		*ngIf="item?.status == 'CLOSED'">
+		<wsv wide="36px"></wsv>
+		<div class="label-1">
+			No. Tagihan
+		</div>
+		<div class="label-3">
+			{{item?.invoice_no}}
+		</div>
+	</div>
+	<wsv wide="10px"></wsv>
 	<horizontal-line></horizontal-line>
 
 	<wsv wide="10px"></wsv>

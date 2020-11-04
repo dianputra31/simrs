@@ -17,7 +17,6 @@ export class StatusAlasanComponent implements OnInit {
 	showStatusLabel() {
 		return (
 			this.item?.status == 'CANCEL' ||
-			this.item?.status == 'PENDING' ||
 			this.item?.status == 'OUTOFSTOCK' ||
 			this.item?.status == 'REJECTED'
 		);

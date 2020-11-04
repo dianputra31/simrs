@@ -12,7 +12,9 @@
 						<div class="label-1">Request by: <span class="label-2">{{item?.requester_full_name}}</span>
 						</div>
 						<status-label [status]="item?.status"
-							(konfirmasiSelesaiEvent)="confirmSelesaiOrder($event)"></status-label>
+							[statusTranslated]="item?.statusTranslated"
+							(konfirmasiSelesaiEvent)="confirmSelesaiOrder()"
+							(cariSejenisEvent)="cariSejenis()"></status-label>
 					</div>
 					<wsv wide="15px"></wsv>
 					<div class="d-flex justify-content-between pas">
@@ -21,18 +23,24 @@
 							<wsv wide="3px"></wsv>
 							<div class="label-2">{{item?.requested_at|tanggal : 'tgl'}}</div>
 						</div>
-						<div>
+						<div
+							*ngIf="!(item?.status == 'OUTOFSTOCK' || item?.status == 'CANCEL' || item?.status == 'REJECTED')">
 							<div class="label-1">No. Pemesanan</div>
 							<wsv wide="3px"></wsv>
 							<div class="label-2">{{item?.order_code}}</div>
 						</div>
-						<div>
+						<div
+							*ngIf="!(item?.status == 'OUTOFSTOCK' || item?.status == 'CANCEL' || item?.status == 'REJECTED')">
 							<div class="label-1">Pengiriman & No. Resi</div>
 							<wsv wide="3px"></wsv>
 							<div class="label-2">{{item?.receipt_number}}</div>
 						</div>
 					</div>
 				</div>
+
+
+
+
 
 				<wsv wide="20px"></wsv>
 				<horizontal-line></horizontal-line>
@@ -47,8 +55,17 @@
 						<wsv wide="7px"></wsv>
 						<div class="label-4">{{item?.purchase_amount|rupiah}}</div>
 						<wsv wide="7px"></wsv>
-						<div *ngIf="item?.initial_quantity != item?.quantity"
-							class="label-1 coret">Jumlah : {{item?.initial_quantity}} Barang</div>
+
+						<div *ngIf="
+							item?.status == 'ORDERED' || 
+							item?.status == 'PENDING' || 
+							item?.status == 'PROCESS' || 
+							item?.status == 'DELIVER' || 
+							item?.status == 'RECEIVED' ||
+							 item?.status == 'CLOSED'">
+							<div *ngIf="item?.initial_quantity != item?.quantity"
+								class="label-1 coret">Jumlah : {{item?.initial_quantity}} Barang</div>
+						</div>
 						<div class="label-1">Jumlah :{{item?.quantity}} barang</div>
 					</div>
 					<wsh wide="150px"></wsh>
@@ -71,13 +88,22 @@
 						<div class="label-1">Perkiraan Waktu Sampai:</div>
 						<div class="label-2">{{estimateDeliveryTime(item)}}</div>
 					</div>
-					<div *ngIf="item?.initial_quantity != item?.quantity">
-						<div class="label-1">Alasan:</div>
-						<div class="label-4">
-							<div>{{item?.quantity}} Barang di proses </div>
-							<div>{{item?.initial_quantity - item?.quantity}} Barang Out of Stock </div>
+					<div *ngIf="
+					item?.status == 'ORDERED' ||
+					item?.status == 'PENDING' ||
+					item?.status == 'PROCESS' ||
+					item?.status == 'DELIVER' ||
+					item?.status == 'RECEIVED' ||
+					item?.status == 'CLOSED'">
+						<div *ngIf="item?.initial_quantity != item?.quantity">
+							<div class="label-1">Alasan:</div>
+							<div class="label-4">
+								<div>{{item?.quantity}} Barang di proses </div>
+								<div>{{item?.initial_quantity - item?.quantity}} Barang Out of Stock </div>
+							</div>
 						</div>
 					</div>
+
 
 				</div>
 
