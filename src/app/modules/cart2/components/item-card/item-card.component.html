@@ -41,12 +41,11 @@
 		</div>
 	</div>
 	<div id="masking"
-		*ngIf="item.availability != 'AVAILABLE'"
+		*ngIf="item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK'"
 		class="rectangle-87">
 	</div>
-
 	<div id="above-masking"
-		*ngIf="item.availability != 'AVAILABLE'"
+		*ngIf="item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK'"
 		class="rectangle-87">
 		<div class="d-flex flex-grow-1 flex-row-reverse align-items-end"
 			style="height: 100%;">

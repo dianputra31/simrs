@@ -49,7 +49,10 @@ export class CartListItemModel {
 	}
 
 	public select() {
-		if (this.availability == 'AVAILABLE') {
+		if (
+			this.availability == 'AVAILABLE' ||
+			this.availability == 'LIMITED'
+		) {
 			return true;
 		} else {
 			return false;
@@ -57,7 +60,10 @@ export class CartListItemModel {
 	}
 
 	public enableSelect() {
-		if (this.availability == 'AVAILABLE') {
+		if (
+			this.availability == 'AVAILABLE' ||
+			this.availability == 'LIMITED'
+		) {
 			return true;
 		} else {
 			return false;
