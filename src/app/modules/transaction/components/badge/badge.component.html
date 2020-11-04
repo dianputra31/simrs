@@ -9,40 +9,42 @@
 			<div *ngSwitchCase="'REJECTED'">Ditolak</div>
 			<div *ngSwitchCase="'CLOSED'">Selesai</div>
 			<div *ngSwitchCase="'PROCESS'">Diproses</div>
+			<div *ngSwitchCase="'RECEIVED'">Diterima</div>
 			<div *ngSwitchDefault>Diproses</div>
 		</container-element>
 
 	</div>
 </div>
-
-<div [ngClass]="(label.status == 'PROCESS' || label.status =='CLOSED')? 'showicon' : 'noshowicon'">
+<div
+	[ngClass]="(label.status == 'PROCESS' || label.status =='CLOSED'  || label.status =='RECEIVED')? 'showicon' : 'noshowicon'">
 	<div class="d-flex"
 		id="icon-status">
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 
 			<div class="d-sm-inline-flex"
-				[ngClass]="(label.status == 'PROCESS' || label.status == 'CLOSED')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'PROCESS' || label.status == 'CLOSED' || label.status =='RECEIVED')? 'showred' : 'showgrey'"
 				id="kotak-icon">
 
-				<span [ngClass]="(label.status == 'PROCESS' || label.status == 'CLOSED')? 'processed' : 'processed2'"
+				<span
+					[ngClass]="(label.status == 'PROCESS' || label.status == 'CLOSED' || label.status =='RECEIVED')? 'processed' : 'processed2'"
 					id="icon-processed"></span>
 			</div>
 		</div>
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 			<div class="d-sm-inline-flex"
-				[ngClass]="(label.status == 'CLOSED')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'showred' : 'showgrey'"
 				id="kotak-icon">
-				<span [ngClass]="(label.status == 'CLOSED')? 'delivery' : 'delivery2'"
+				<span [ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'delivery' : 'delivery2'"
 					id="icon-delivery"></span></div>
 		</div>
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 			<div class="d-sm-inline-flex"
-				[ngClass]="(label.status == 'CLOSED')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'showred' : 'showgrey'"
 				id="kotak-icon">
-				<span [ngClass]="(label.status == 'CLOSED')? 'sampai' : 'sampai2'"
+				<span [ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'sampai' : 'sampai2'"
 					id="icon-delivered"></span>
 			</div>
 		</div>
