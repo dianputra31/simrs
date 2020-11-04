@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
+	AddCart,
 	RESPONSE,
 	TransactionConfirmUrl,
 	TransactionDetailUrl,
@@ -10,7 +11,11 @@ import {
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
+import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
+import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
+import { CartItemModel } from '../../../../models/cart-item.model';
 import { TanggalPipe } from '../../../../pipes/tanggal.pipe';
+import { ToastService } from '../../../../shared/toast/toast-service';
 @Component({
 	selector: 'transaction-detail-layout',
 	templateUrl: './transaction-detail-layout.component.html',
@@ -29,7 +34,8 @@ export class TransactionDetailLayoutComponent implements OnInit {
 		private http: HttpService,
 		private datePipe: TanggalPipe,
 		private _redirectparam: RedirectParameterService,
-		private router: Router
+		private router: Router,
+		public toastService: ToastService
 	) {}
 
 	ngOnInit(): void {
@@ -165,6 +171,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 				var update = item?.item_status_history?.PROCESS.updated_at;
 
 				var processDate = new Date(update);
+				var processDate2 = new Date(update);
 				var deliveryDate = new Date(
 					processDate.setTime(
 						processDate.getTime() + item?.min_days * 86400000
@@ -172,8 +179,8 @@ export class TransactionDetailLayoutComponent implements OnInit {
 				);
 
 				var deliveryDate2 = new Date(
-					processDate.setTime(
-						processDate.getTime() + item?.max_days * 86400000
+					processDate2.setTime(
+						processDate2.getTime() + item?.max_days * 86400000
 					)
 				);
 				return (
@@ -200,5 +207,44 @@ export class TransactionDetailLayoutComponent implements OnInit {
 
 	showPengirimanNoResi() {
 		return this.item.status != 'OUTOFSTOCK';
+	}
+
+	tambahkanKeKeranjang(dangerTpl) {
+		console.log('yest');
+		this.showDanger(dangerTpl);
+		var test = new CartItemModel();
+		test.product_id = this.item.id;
+		test.quantity = 1;
+
+		var cartreq = new CartItemRequestModel();
+		cartreq.cart_list = [];
+		cartreq.cart_list.push(test);
+
+		const sub = this.service
+			.postData(AddCart, cartreq, CartItemResponseModel, false)
+			.subscribe((resp) => {
+				console.log('resp: ', resp);
+			});
+		this.subscribers.push(sub);
+	}
+
+	showDanger(dangerTpl) {
+		this.toastService.removeAll();
+		this.toastService.show(dangerTpl, {
+			delay: 100,
+			classname: 'kanan-atas',
+		});
+	}
+
+	pergiKeKeranjang() {
+		this.router.navigate(['./cart']);
+	}
+
+	truncateChar(strtxt) {
+		var ret = strtxt;
+		if (strtxt.length > 56) {
+			ret = strtxt.substring(0, 56) + '...';
+		}
+		return ret;
 	}
 }

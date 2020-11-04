@@ -9,7 +9,8 @@
 	class="red-label">BELI LAGI</div>
 
 <div *ngIf="status == 'REJECTED'"
-	class="red-label">AJUKAN LAGI</div>
+	class="red-label"
+	(click)="ajukanLagi()">AJUKAN LAGI</div>
 
 <div *ngIf="status == 'OUTOFSTOCK' || status == 'CANCEL'"
 	class="red-label"

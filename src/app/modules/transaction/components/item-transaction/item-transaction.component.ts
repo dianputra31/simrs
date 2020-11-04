@@ -42,7 +42,7 @@ export class ItemTransactionComponent implements OnInit {
 		public toastService: ToastService, 
 	) { }
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
 
 	getTrxHist() {
 		// console.log("thisval in item-transaction: ", keyword)
@@ -90,7 +90,8 @@ export class ItemTransactionComponent implements OnInit {
 		const a: any = item.product_name;
 		this._redirectparam.namaproduk = a;
 		this.router.navigate([
-			`./pilih-produk/${item.category_id}/${item.subcategory_id}/` + a.replaceAll('/', '-')
+			`./pilih-produk/${item.category_id}/${item.subcategory_id}/` +
+				a.replaceAll('/', '-'),
 		]);
 	}
 
