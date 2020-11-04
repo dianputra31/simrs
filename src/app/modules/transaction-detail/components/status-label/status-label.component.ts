@@ -7,7 +7,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class StatusLabelComponent implements OnInit {
 	@Input() status: string;
+	@Input() statusTranslated: string;
 	@Output() konfirmasiSelesaiEvent = new EventEmitter();
+	@Output() cariSejenisEvent = new EventEmitter();
 
 	// ORDERED : Order sudah diapprove oleh manager / Selesai (abu-abu)
 	// PROCESS : Sudah dikonfirmasi oleh supplier / Selesai (abu-abu)
@@ -22,5 +24,9 @@ export class StatusLabelComponent implements OnInit {
 
 	confirmOrder() {
 		this.konfirmasiSelesaiEvent.emit();
+	}
+
+	cariSejenis() {
+		this.cariSejenisEvent.emit();
 	}
 }
