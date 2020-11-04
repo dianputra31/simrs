@@ -6,7 +6,8 @@
 	(click)="confirmOrder()">SELESAI</div>
 
 <div *ngIf="status == 'CLOSED'"
-	class="red-label">BELI LAGI</div>
+	class="red-label"
+	(click)="ajukanLagi()">BELI LAGI</div>
 
 <div *ngIf="status == 'REJECTED'"
 	class="red-label"
