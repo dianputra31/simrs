@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/auth/guard/auth.guard';
-import { LoginLayoutComponent } from './pages/login-layout/login-layout.component';
+import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: LoginLayoutComponent,
+		component: LoginLayout2Component,
 	},
 	{
 		path: '',

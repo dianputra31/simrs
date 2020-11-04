@@ -15,6 +15,8 @@ import { LoginCardComponent } from './components/login-card/login-card.component
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LoginLayoutComponent } from './pages/login-layout/login-layout.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
+import { LoginCard2Component } from './components/login-card2/login-card2.component';
 
 
 
@@ -25,6 +27,8 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 		MainLayoutComponent,
 		HeaderComponent,
 		HeaderCategoryButtonComponent,
+		LoginLayout2Component,
+		LoginCard2Component,
 	],
 	imports: [
 		CommonModule,
