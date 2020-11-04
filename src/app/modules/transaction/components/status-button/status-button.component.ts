@@ -11,7 +11,5 @@ export class StatusButtonComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit(): void {
-		console.log(this.label.status_code + ' ==> LABEL');
-		console.log(this.selected + ' ==> SELECTED')
 	 }
 }

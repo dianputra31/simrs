@@ -77,7 +77,7 @@
 					paddingleft="0px"
 					paddingright="0px"
 					float="right"
-					(click)="belilagi()"></red-button>
+					(click)="belilagi(dangerTpl,item)"></red-button>
 			</ng-template>
 
 			<ng-template #second>
@@ -114,7 +114,7 @@
 								paddingleft="0px"
 								paddingright="0px"
 								float="right"
-								(click)="selesai()"></red-button>
+								(click)="selesai(item)"></red-button>
 						</ng-template>
 
 					</ng-template>
@@ -140,6 +140,44 @@
 
 
 		</div>
-		<wsh wide="20px"></wsh>
+		<wsh wide="20px">{{item.qty}}</wsh>
 	</div>
 </div>
+
+
+<ng-template #dangerTpl>
+	<div id="wrapper-notification"
+		class="d-flex container justify-content-end">
+		<div>
+			<wsv wide="9px"></wsv>
+			<div id="wrapper-inner-notification">
+				<div class="d-flex justify-content-between align-self-center">
+					<div id="keranjang-label">Keranjang</div>
+					<div id="lihat-keranjang-label"
+						class="d-flex justify-content-center align-items-center"
+						(click)="pergiKeKeranjang()">Lihat Keranjang</div>
+				</div>
+				<wsv wide="13px"></wsv>
+
+				<div id="rounded-inner-notif"
+					class="d-flex justify-content-between align-items-center">
+					<div class="d-flex align-items-center">
+						<img [src]="item?.product_image"
+							id="notif-img">
+						<wsh wide="10px"></wsh>
+						<div>
+							<div id="item-name">{{truncateChar(item?.product_name)}}</div>
+							<div>{{item?.qty}} Barang</div>
+						</div>
+					</div>
+					<div id="item-price">{{item?.sell_price * item?.qty|rupiah}}</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+</ng-template>
