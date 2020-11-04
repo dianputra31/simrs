@@ -171,6 +171,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 				var update = item?.item_status_history?.PROCESS.updated_at;
 
 				var processDate = new Date(update);
+				var processDate2 = new Date(update);
 				var deliveryDate = new Date(
 					processDate.setTime(
 						processDate.getTime() + item?.min_days * 86400000
@@ -178,8 +179,8 @@ export class TransactionDetailLayoutComponent implements OnInit {
 				);
 
 				var deliveryDate2 = new Date(
-					processDate.setTime(
-						processDate.getTime() + item?.max_days * 86400000
+					processDate2.setTime(
+						processDate2.getTime() + item?.max_days * 86400000
 					)
 				);
 				return (
