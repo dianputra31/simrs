@@ -65,7 +65,6 @@ export class HomeLayoutComponent implements OnInit {
 	getCatalog(category_id: number) {
 		const url = ProductCatalogUrl + '?/category_id=' + category_id;
 
-		console.log(url);
 		this.blockUI.start();
 		const sub = this.http.get(url).subscribe((resp) => {
 			this.blockUI.stop();
@@ -95,8 +94,6 @@ export class HomeLayoutComponent implements OnInit {
 			DialogWaitingApprovalComponent,
 			dialogConfig
 		);
-
-		return false;
 	}
 
 	numberOfApproval() {
