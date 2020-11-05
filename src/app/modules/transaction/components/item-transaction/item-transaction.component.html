@@ -8,7 +8,7 @@
                 {{item.requester_full_name}}
             </div>
             <div class="title-2">
-                {{item.id}}
+                {{item.order_code}}
             </div>
         </div>
 
@@ -66,7 +66,7 @@
         <div class="d-flex col-4-trx-item align-items-end">
 
 
-            <ng-template *ngIf="item.statustrx=='Selesai'; then first
+            <ng-template *ngIf="item.status=='CLOSED'; then first
 			else second"></ng-template>
 
             <ng-template #first>
@@ -77,11 +77,11 @@
                     paddingleft="0px"
                     paddingright="0px"
                     float="right"
-                    (click)="belilagi()"></red-button>
+                    (click)="belilagi(dangerTpl,item)"></red-button>
             </ng-template>
 
             <ng-template #second>
-                <ng-template *ngIf="item.statustrx=='Ditolak'; then third else fourth"></ng-template>
+                <ng-template *ngIf="item.status=='REJECTED'; then third else fourth"></ng-template>
                 <ng-template #third>
                     <red-button label="Ajukan Lagi"
                         font="14px"
@@ -94,10 +94,9 @@
                 </ng-template>
 
                 <ng-template #fourth>
-                    <ng-template *ngIf="item.statustrx=='Diproses'; then fifth else sixth"></ng-template>
+                    <ng-template *ngIf="item.status=='RECEIVED'; then fifth else sixth"></ng-template>
                     <ng-template #fifth>
-                        <ng-template
-                            *ngIf="item.statusprocess=='Diproses' || item.statusprocess=='Dikirim'; then disab else enab">
+                        <ng-template *ngIf="item.status=='RECEIVED'; then enab else disab">
                         </ng-template>
                         <ng-template #disab>
                             <div id="button-wrapper"
@@ -115,7 +114,7 @@
                                 paddingleft="0px"
                                 paddingright="0px"
                                 float="right"
-                                (click)="selesai()"></red-button>
+                                (click)="selesai(item)"></red-button>
                         </ng-template>
 
                     </ng-template>
@@ -137,10 +136,45 @@
 
             </ng-template>
 
-
-
-
         </div>
-        <wsh wide="20px"></wsh>
+        <wsh wide="20px">{{item.qty}}</wsh>
     </div>
 </div>
+
+
+<ng-template #dangerTpl>
+    <div id="wrapper-notification"
+        class="d-flex container justify-content-end">
+        <div>
+            <wsv wide="9px"></wsv>
+            <div id="wrapper-inner-notification">
+                <div class="d-flex justify-content-between align-self-center">
+                    <div id="keranjang-label">Keranjang</div>
+                    <div id="lihat-keranjang-label"
+                        class="d-flex justify-content-center align-items-center"
+                        (click)="pergiKeKeranjang()">Lihat Keranjang</div>
+                </div>
+                <wsv wide="13px"></wsv>
+
+                <div id="rounded-inner-notif"
+                    class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img [src]="item?.product_image"
+                            id="notif-img">
+                        <wsh wide="10px"></wsh>
+                        <div>
+                            <div id="item-name">{{truncateChar(item?.product_name)}}</div>
+                            <div>{{item?.qty}} Barang</div>
+                        </div>
+                    </div>
+                    <div id="item-price">{{item?.sell_price * item?.qty|rupiah}}</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</ng-template>

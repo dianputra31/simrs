@@ -111,6 +111,8 @@ export class ApprovalLayoutComponent implements OnInit {
 			params.user_id = this.selectedPurchaser.id;
 		}
 
+		// console.log(param);
+
 		this.blockUI.start();
 		this.http.post(ApprovalListUrl, params).subscribe((resp) => {
 			this.blockUI.stop();
@@ -151,7 +153,7 @@ export class ApprovalLayoutComponent implements OnInit {
 					this.initScrolling();
 				}
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 	}
@@ -177,11 +179,23 @@ export class ApprovalLayoutComponent implements OnInit {
 				});
 
 				if (this.listSummaryByAddress.length != 0) {
-					this.selectedAddress = this.listSummaryByAddress[0];
+					// this.selectedAddress = this.listSummaryByAddress[0];
+					const storedSelectedAddressIndex = localStorage.getItem(
+						'selectedAddress'
+					);
+
+					this.selectedAddress = this.listSummaryByAddress.filter(
+						(x) => x.address_id == storedSelectedAddressIndex
+					)[0];
+
+					if (!this.selectedAddress) {
+						this.selectedAddress = this.listSummaryByAddress[0];
+					}
+
 					this.getPurchaserList();
 				}
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 
@@ -195,7 +209,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			if (resp.status.rc === RESPONSE.SUCCESS) {
 				this.nNotApproved = resp.data.approval_count;
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 		this.subscribers.push(sub);
@@ -222,7 +236,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				this.selectedPurchaser = this.purchasers[0];
 				this.getItems(this.page);
 			} else {
-				alert(resp.status.msg);
+				this.service.showAlert(resp.status.msg);
 			}
 		});
 
@@ -234,6 +248,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.page = 0;
 		this.items = [];
 		this.getItems(this.page);
+		console.log(this.selectedAddress);
+		localStorage.setItem('selectedAddress', i.address_id);
 	}
 
 	selectPurchaser(purchaser) {
@@ -441,7 +457,8 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	reset() {
-		this.selectedAddress = this.listSummaryByAddress[0];
+		// this.selectedAddress = this.listSummaryByAddress[0];
+		this.selectedAddress = localStorage.getItem('selectedAddress');
 		this.selectedPurchaser = this.purchasers[0];
 		this.keyword = '';
 		this.inputKeyword.getKeyword('');

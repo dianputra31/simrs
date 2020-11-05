@@ -7,11 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StatusButtonComponent implements OnInit {
 	@Input() label: any;
-	@Input() selected: string; 
-	constructor() { }
+	@Input() selected: string;
+	constructor() {}
 
 	ngOnInit(): void {
-		console.log(this.label.status_code + ' ==> LABEL');
-		console.log(this.selected + ' ==> SELECTED')
 	 }
 }

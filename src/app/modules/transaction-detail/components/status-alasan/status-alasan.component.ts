@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TransactionDetailModel } from '../../../../models/transaction-detaily-response.model';
 
 @Component({
 	selector: 'status-alasan',
@@ -7,23 +6,27 @@ import { TransactionDetailModel } from '../../../../models/transaction-detaily-r
 	styleUrls: ['./status-alasan.component.scss'],
 })
 export class StatusAlasanComponent implements OnInit {
-	@Input() item: TransactionDetailModel;
+	@Input() item: any;
 	processes: any[];
 	constructor() {}
 
 	ngOnInit(): void {
-		this.createProcess();
+		// this.createProcess();
 	}
 
 	showStatusLabel() {
-		return this.item?.status == 'CANCEL' || this.item?.status == 'PENDING';
+		return (
+			this.item?.status == 'CANCEL' ||
+			this.item?.status == 'OUTOFSTOCK' ||
+			this.item?.status == 'REJECTED'
+		);
 	}
 
 	createProcess() {
 		this.processes = [];
 		var o = {
 			image: '../../../../../assets/image/icons/diproses-red.svg',
-			date: this.item?.item_status_history.filter(
+			date: this.item?.item_status_history?.filter(
 				(x) => x.status == 'PROCESS'
 			)[0]?.updated_at,
 		};
@@ -45,32 +48,32 @@ export class StatusAlasanComponent implements OnInit {
 
 		if (this.item?.status == 'DELIVERY') {
 			i.image = '../../../../../assets/image/icons/dikirim-red.svg';
-			i.date = this.item?.item_status_history.filter(
+			i.date = this.item?.item_status_history?.filter(
 				(x) => x.status == 'DELIVERY'
 			)[0]?.updated_at;
 		} else if (this.item?.status == 'RECEIVED') {
 			i.image = '../../../../../assets/image/icons/dikirim-red.svg';
-			i.date = this.item?.item_status_history.filter(
+			i.date = this.item?.item_status_history?.filter(
 				(x) => x.status == 'DELIVERY'
 			)[0]?.updated_at;
 
 			z.image = '../../../../../assets/image/icons/sampai-red.svg';
-			z.date = this.item?.item_status_history.filter(
+			z.date = this.item?.item_status_history?.filter(
 				(x) => x.status == 'RECEIVED'
 			)[0]?.updated_at;
 		} else if (this.item?.status == 'CLOSED') {
 			i.image = '../../../../../assets/image/icons/dikirim-red.svg';
-			i.date = this.item?.item_status_history.filter(
+			i.date = this.item?.item_status_history?.filter(
 				(x) => x.status == 'DELIVERY'
 			)[0]?.updated_at;
 
 			z.image = '../../../../../assets/image/icons/sampai-red.svg';
-			z.date = this.item?.item_status_history.filter(
+			z.date = this.item?.item_status_history?.filter(
 				(x) => x.status == 'RECEIVED'
 			)[0]?.updated_at;
 
 			a.image = '../../../../../assets/image/icons/selesai-red.svg';
-			a.date = this.item?.item_status_history.filter(
+			a.date = this.item?.item_status_history?.filter(
 				(x) => x.status == 'CLOSED'
 			)[0]?.updated_at;
 		}
@@ -83,6 +86,8 @@ export class StatusAlasanComponent implements OnInit {
 		return this.processes;
 	}
 
+	a = '../../../../../assets/image/icons/selesai-red.svg';
+	v = '2020-10-22T11:27:56';
 	// ORDERED : Order sudah diapprove oleh manager / icon
 	// PROCESS : Sudah dikonfirmasi oleh supplier / icon
 	// CANCEL : Dibatalkan /status n alasan

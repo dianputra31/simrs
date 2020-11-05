@@ -65,7 +65,6 @@ export class TransactionLayoutComponent implements OnInit {
 		this.selectedStatuses = localStorage.getItem('selectedStatuses');
 		localStorage.setItem('selectedStatuses', this.selectedStatuses);
 		this.subsribers = [];
-
 		this.getTrxStatus();
 	}
 
@@ -81,6 +80,7 @@ export class TransactionLayoutComponent implements OnInit {
 		const sub = this.http
 			.post(TransactionStatusOptionUrl, {})
 			.subscribe((resp) => {
+				console.log(resp);
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.statuses = resp.data;
@@ -149,8 +149,7 @@ export class TransactionLayoutComponent implements OnInit {
 		this.subsribers.push(sub);
 	}
 
-	getTrxList(ev) {
-		console.log(this.page);
+	getTrxList() {
 		if (localStorage.getItem('selectedStatuses') !== '')
 			var statuscode = localStorage.getItem('selectedStatuses');
 		else var statuscode = 'ALL';
@@ -193,26 +192,26 @@ export class TransactionLayoutComponent implements OnInit {
 		this.selectedStatus = status;
 		// this._redirectparam.selectedbutton_transaksi = status.status_code;
 		localStorage.setItem('selectedStatuses', status.status_code);
-		this.getTrxList(this.page);
+		this.getTrxList();
 	}
 
 	selectAddress(address) {
 		this.items = [];
 		this.selectedAddress = address;
-		this.getTrxList(this.page);
+		this.getTrxList();
 	}
 
 	selectPurchaser(purchaser) {
 		this.items = [];
 		this.selectedPurchaser = purchaser;
-		this.getTrxList(this.page);
+		this.getTrxList();
 	}
 
 	cariKeyword(keyword) {
 		if (keyword.length >= 3 || keyword.length == 0) {
 			this.items = [];
 			this.keyword = keyword;
-			this.getTrxList(this.page);
+			this.getTrxList();
 		}
 	}
 
@@ -258,6 +257,6 @@ export class TransactionLayoutComponent implements OnInit {
 		this.end_date = null;
 		this.page = 1;
 		this.items = [];
-		this.getTrxList(this.page);
+		this.getTrxList();
 	}
 }

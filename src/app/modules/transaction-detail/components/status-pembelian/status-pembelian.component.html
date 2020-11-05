@@ -5,10 +5,22 @@
 			Status Pembelian
 		</div>
 		<div class="label-2 d-flex">
-			{{item?.status}}
+			{{item?.statusTranslated}}
 		</div>
 	</div>
-	<wsv wide="70px"></wsv>
+	<wsv *ngIf="item?.status != 'CLOSED'"
+		wide="70px"></wsv>
+	<div class="padding invoice"
+		*ngIf="item?.status == 'CLOSED'">
+		<wsv wide="36px"></wsv>
+		<div class="label-1">
+			No. Tagihan
+		</div>
+		<div class="label-3">
+			{{item?.invoice_no}}
+		</div>
+	</div>
+	<wsv wide="10px"></wsv>
 	<horizontal-line></horizontal-line>
 
 	<wsv wide="10px"></wsv>
@@ -43,15 +55,15 @@
 			Alamat Pengiriman:
 		</div>
 		<wsv wide="10px"></wsv>
-		<div class="label-3">{{item?.delivery_address_json.recipient_name}}</div>
-		<div class="label-3">{{item?.delivery_address_json.address_name}}</div>
-		<div class="label-5">{{item?.delivery_address_json.address_detail}},
-			{{item?.delivery_address_json.village}},
-			{{item?.delivery_address_json.subdistrict}},
-			{{item?.delivery_address_json.district}},
-			{{item?.delivery_address_json.province}},
-			{{item?.delivery_address_json.zipcode}}
-			{{item?.delivery_address_json.phone}}
+		<div class="label-3">{{item?.delivery_address_json?.recipient_name}}</div>
+		<div class="label-3">{{item?.delivery_address_json?.address_name}}</div>
+		<div class="label-5">{{item?.delivery_address_json?.address_detail}},
+			{{item?.delivery_address_json?.village}},
+			{{item?.delivery_address_json?.subdistrict}},
+			{{item?.delivery_address_json?.district}},
+			{{item?.delivery_address_json?.province}},
+			{{item?.delivery_address_json?.zipcode}},
+			{{item?.delivery_address_json?.recipient_contact}}
 		</div>
 
 	</div>

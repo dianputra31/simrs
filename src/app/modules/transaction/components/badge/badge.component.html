@@ -1,51 +1,62 @@
 <div [ngClass]="(show == true)? 'noshowing' : 'showing'">
 	<div id="badge-wrapper"
 		class="d-flex align-items-center justify-content-center">
-		{{label.status}}
+
+
+		<container-element [ngSwitch]="label.status">
+			<div *ngSwitchCase="'CANCEL'">Dibatalkan</div>
+			<div *ngSwitchCase="'OUTOFSTOCK'">
+				<div *ngIf="label.availability == 'COMING_SOON'; else default">Stok Habis</div>
+				<ng-template #default>Stok Habis</ng-template>
+			</div>
+			<div *ngSwitchCase="'REJECTED'">Ditolak</div>
+			<div *ngSwitchCase="'CLOSED'">Selesai</div>
+			<div *ngSwitchCase="'PROCESS'">Diproses</div>
+			<div *ngSwitchCase="'RECEIVED'">Diterima</div>
+			<div *ngSwitchDefault>Diproses</div>
+		</container-element>
+
 	</div>
 </div>
-
-<div [ngClass]="(show == true)? 'showicon' : 'noshowicon'">
+<div
+	[ngClass]="(label.status == 'PROCESS' || label.status =='CLOSED'  || label.status =='RECEIVED')? 'showicon' : 'noshowicon'">
 	<div class="d-flex"
 		id="icon-status">
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 
 			<div class="d-sm-inline-flex"
-				[ngClass]="(statusprocess == 'Diproses' || statusprocess == 'Dikirim' || statusprocess == 'Sampai' || statusprocess == 'Selesai')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'PROCESS' || label.status == 'CLOSED' || label.status =='RECEIVED')? 'showred' : 'showgrey'"
 				id="kotak-icon">
-				<!-- <img src="../../../../../assets/image/icons/icon-processed.svg"
-					id="icon-processed"> -->
+
 				<span
-					[ngClass]="(statusprocess == 'Diproses' || statusprocess == 'Dikirim' || statusprocess == 'Sampai' || statusprocess == 'Selesai')? 'processed' : 'processed2'"
+					[ngClass]="(label.status == 'PROCESS' || label.status == 'CLOSED' || label.status =='RECEIVED')? 'processed' : 'processed2'"
 					id="icon-processed"></span>
 			</div>
 		</div>
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 			<div class="d-sm-inline-flex"
-				[ngClass]="(statusprocess == 'Dikirim' || statusprocess == 'Sampai' || statusprocess == 'Selesai')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'showred' : 'showgrey'"
 				id="kotak-icon">
-				<span [ngClass]="(statusprocess == 'Sampai' || statusprocess == 'Selesai')? 'delivery' : 'delivery2'"
+				<span [ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'delivery' : 'delivery2'"
 					id="icon-delivery"></span></div>
 		</div>
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 			<div class="d-sm-inline-flex"
-				[ngClass]="(statusprocess == 'Sampai' || statusprocess == 'Selesai')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'showred' : 'showgrey'"
 				id="kotak-icon">
-				<!-- <img src="../../../../../assets/image/icons/icon-delivered.svg"> -->
-				<span [ngClass]="(statusprocess == 'Sampai' || statusprocess == 'Selesai')? 'sampai' : 'sampai2'"
+				<span [ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'sampai' : 'sampai2'"
 					id="icon-delivered"></span>
 			</div>
 		</div>
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 			<div class="d-sm-inline-flex"
-				[ngClass]="(statusprocess == 'Selesai')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'CLOSED')? 'showred' : 'showgrey'"
 				id="kotak-icon">
-				<!-- <img src="../../../../../assets/image/icons/icon-confirmed.svg"	id="icon-confirmed"> -->
-				<span [ngClass]="(statusprocess == 'Selesai')? 'confirmed' : 'confirmed2'"
+				<span [ngClass]="(label.status == 'CLOSED')? 'confirmed' : 'confirmed2'"
 					id="icon-confirmed"></span>
 			</div>
 		</div>

@@ -12,18 +12,26 @@
 				src="../../../../../assets/image/icons/arrow_down_gray.png">
 		</div>
 	</div>
+	<div class="item-placeholder"
+		*ngIf="edited"
+		id="{{idText}}"
+		(click)="hidePlaceholder(idText)">{{placeholderText}}</div>
 	<div ngbDropdownMenu>
+
 		<div id="padding-right-for-scroll">
 			<wsv wide="15px">
 			</wsv>
 			<div class="scrollbar"
 				id="style-2">
+
 				<div>
+
 					<div *ngFor="let item of items">
+
 						<div id="item-row"
 							class="d-flex justify-content-between"
 							[ngClass]="selected == item ? 'selected' : '' "
-							(click)="selectItem(item);myDrop.close();">
+							(click)="hidePlaceholder(idText);selectItem(item);myDrop.close();">
 							<div class="item-dropdown-class">
 								{{item.label}}
 							</div>
@@ -31,6 +39,9 @@
 						</div>
 						<wsv wide="15px"></wsv>
 					</div>
+
+
+
 				</div>
 			</div>
 
