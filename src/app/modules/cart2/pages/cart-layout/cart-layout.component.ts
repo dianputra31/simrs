@@ -1,14 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import { CartListUrl, CheckoutCartUrl } from '../../../../app.constant';
-import { BaseService } from '../../../../core/base-service/service/base.service';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
-import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
 import { CartItemModel } from '../../../../models/cart-item.model';
-import { CartListItemModel } from '../../../../models/cart-list-item.model';
-import { CartListResponseModel } from '../../../../models/cart-list-response.model';
 import { Convert } from '../../../../models/cart-list.model';
 @Component({
 	selector: 'cart-layout',
@@ -17,37 +14,65 @@ import { Convert } from '../../../../models/cart-list.model';
 })
 export class CartLayoutComponent implements OnInit {
 	subscribers: Subscription[];
-	items: CartListItemModel[];
+	items: any[];
 	total_item: number = 0;
 	total_price: number;
 
+	leftContainerHeight;
+	windowHeight;
+	topFixed;
+	headers;
 	@BlockUI() blockUI: NgBlockUI;
-	constructor(private service: BaseService, private router: Router) {}
+	constructor(private service: HttpService, private router: Router) {}
 
 	ngOnInit(): void {
 		this.subscribers = [];
 		this.getCartItem();
+
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.add('no-scroll');
 	}
 
 	ngOnDestroy() {
 		this.subscribers.forEach((each) => each.unsubscribe);
+
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.remove('no-scroll');
 	}
 
 	getCartItem() {
 		this.blockUI.start();
-		const sub = this.service
-			.getData(CartListUrl, CartListResponseModel, null, false)
-			.subscribe((resp) => {
-				this.blockUI.stop();
-				this.items = resp.cart_list;
-				this.total_item = resp.total_item;
-				this.total_price = resp.total_price;
+		const sub = this.service.get(CartListUrl).subscribe((resp) => {
+			this.items = resp.data.cart_list;
+
+			this.items.forEach((item) => {
+				item.selected = this.select(item);
+				item.enableSelection = this.select(item);
 			});
+			this.total_item = resp.total_item;
+			this.total_price = resp.total_price;
+
+			setTimeout(() => {
+				this.initScrolling();
+				this.blockUI.stop();
+			}, 0);
+		});
 
 		this.subscribers.push(sub);
 	}
 
-	updateItemCartList(t) {
+	public select(item) {
+		if (
+			item.availability == 'AVAILABLE' ||
+			item.availability == 'LIMITED'
+		) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	updateItemCartList() {
 		this.getCartItem();
 	}
 
@@ -67,7 +92,7 @@ export class CartLayoutComponent implements OnInit {
 		pertotalan.totalItem = 0;
 		for (var index in this.items) {
 			if (this.items[index].selected) {
-				const element: CartListItemModel = this.items[index];
+				const element: any = this.items[index];
 
 				pertotalan.totalFee += element.admin_fee;
 				pertotalan.ppn += Math.round(element.ppn);
@@ -110,17 +135,33 @@ export class CartLayoutComponent implements OnInit {
 			}
 		}
 
+		console.log(cartreq);
 		this.blockUI.start();
 		const sub = this.service
-			.postData(CheckoutCartUrl, cartreq, CartItemResponseModel, false)
+			.post(CheckoutCartUrl, { cartreq })
 			.subscribe((resp) => {
 				this.blockUI.stop();
-				console.log(resp);
 				const stringnya = Convert.cartListToJson(resp);
-				const cartList = Convert.toCartList(stringnya);
 				localStorage.setItem('checkout-cart', stringnya);
 				this.router.navigate(['./request-approval']);
 			});
+
 		this.subscribers.push(sub);
+	}
+
+	initScrolling() {
+		// this.topFixed = document?.getElementById('top-fixed')?.offsetHeight;
+		this.topFixed = document?.getElementById('top-fixed')?.offsetHeight;
+		this.headers = document?.getElementById('headers')?.offsetHeight;
+
+		this.onResize();
+	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.windowHeight = window.innerHeight;
+
+		this.leftContainerHeight =
+			this.windowHeight - this.topFixed - this.headers;
 	}
 }
