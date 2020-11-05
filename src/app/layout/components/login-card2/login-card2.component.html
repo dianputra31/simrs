@@ -14,9 +14,10 @@
                     <div class="d-flex justify-content-center teksbesar">Log In</div>
                     <wsv wide="15px"></wsv>
                     <div class="d-flex justify-content-center ">Kami akan mengirimkan OTP ke alamat email anda</div>
-                    <wsv wide="50px"></wsv>
+                    <wsv wide="20px"></wsv>
                     <div class="d-flex justify-content-center teks">Masukkan Alamat Email Anda</div>
 
+                    <wsv wide="20px"></wsv>
                     <div class="d-flex w-100">
                         <input type="text"
                             class="rounded-gray d-flex w-100 justify-content-center email-input"
@@ -26,6 +27,7 @@
                     </div>
 
 
+                    <wsv wide="20px"></wsv>
                     <get-otp-button [valid]="firstFormGroup.valid"
                         (getOtpEvent)="sendotp()"></get-otp-button>
 
@@ -46,9 +48,11 @@
                     <div class="d-flex justify-content-center teksbesar">
                         Verifikasi OTP
                     </div>
+                    <wsv wide="20px"></wsv>
                     <div class="d-flex justify-content-center">
                         Masukkan Nomor OTP yang sudah dikirim ke
                     </div>
+                    <wsv wide="20px"></wsv>
                     <div class="d-flex justify-content-center">
                         <b>{{firstFormGroup.value.email}}</b>
                     </div>
@@ -75,7 +79,7 @@
                     <div class="d-flex justify-content-center kecil">
                         <span>Harap periksa di inbox / junk email anda</span>
                     </div>
-
+                    <wsv wide="15px"></wsv>
                     <rounded-red-button label="Verifikasi dan Proses"
                         paddingtop="8px"
                         paddingbottom="8px"

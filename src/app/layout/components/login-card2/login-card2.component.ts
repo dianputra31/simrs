@@ -146,6 +146,7 @@ export class LoginCard2Component implements OnInit {
 	}
 
 	public getUserProfile() {
+		this.blockUI.start();
 		this.http.get(AuthServiceProfilePathConst).subscribe(
 			(resp) => {
 				this.blockUI.stop();
@@ -163,12 +164,6 @@ export class LoginCard2Component implements OnInit {
 						JSON.stringify(resp.data.company)
 					);
 
-					this.router.navigate(['./home']);
-					this.router.navigate(['./home']);
-					this.router.navigate(['./home']);
-					this.router.navigate(['./home']);
-					this.router.navigate(['./home']);
-					this.router.navigate(['./home']);
 					this.router.navigate(['./home']);
 				} else {
 					alert(resp.status.msg);

@@ -1,5 +1,4 @@
 @import '../../../../styles/variables/colors';
-@import '../../../../styles/variables/fonts';
 
 .rounded-corner {
 	border-radius: 80px;
@@ -32,7 +31,8 @@
 .email-input {
 	padding-top: 10px;
 	padding-bottom: 10px;
-	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .kecil {
@@ -42,46 +42,6 @@
 	line-height: 16px;
 	text-align: center;
 	color: #606060;
-}
-
-.cunt {
-	font-family: $primary-font;
-	font-style: normal;
-	font-weight: 600;
-	font-size: 22px;
-	line-height: 30px;
-	text-align: center;
-	letter-spacing: 0.1em;
-	color: $color-primary;
-}
-
-#loginbutton {
-	position: relative;
-	width: 388px;
-	height: 48px;
-	border-radius: 50px;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 16px;
-	line-height: 22px;
-}
-
-.enab {
-	color: $putih-tok;
-	background: $color-primary;
-	border: solid $color-primary 1px;
-	cursor: pointer;
-}
-
-.disab {
-	color: $abu-abu-sesuatu;
-	background: $abu-abu-muda;
-	border: solid $abu-abu-muda 1px;
-	cursor: none;
-}
-
-.sembunyikan {
-	opacity: 0;
 }
 
 ::ng-deep .mat-horizontal-stepper-header-container {
