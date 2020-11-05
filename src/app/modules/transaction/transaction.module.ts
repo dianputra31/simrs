@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlockUIModule } from 'ng-block-ui';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { BadgeComponent } from './components/badge/badge.component';
@@ -33,6 +34,7 @@ import { TransactionRoutingModule } from './transaction-routing.module';
 		NgbModule,
 		SharedPipesModule,
 		BlockUIModule.forRoot(),
+		InfiniteScrollModule,
 	],
 })
 export class TransactionModule {}

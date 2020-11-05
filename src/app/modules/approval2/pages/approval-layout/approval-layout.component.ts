@@ -51,6 +51,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	selector: string = '#left-container';
 	page: number = 1;
 	limit: number = 5;
+	totalPages: number;
 
 	nNotApproved: number;
 	listSummaryByAddress: any[] = [];
@@ -92,14 +93,10 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.getItems(this.page++);
 	}
 
-	// onScrollUp(e) {
-	// 	this.page++;
-	// 	console.log('scrolled up!!', e);
-	// 	this.getItems(this.page++);
-	// }
-
 	getItems(ev) {
 		console.log('page', this.page);
+		// this.totalPages = Math.ceil(this.items.length / this.limit);
+		// console.log('total page', this.totalPages);
 		var params: any = {
 			address_id: this.selectedAddress?.address_id,
 			keyword: this.keyword,
@@ -109,6 +106,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			limit: this.limit,
 		};
 
+		console.log(params);
 		if (this.selectedPurchaser.id) {
 			params.user_id = this.selectedPurchaser.id;
 		}
@@ -123,9 +121,35 @@ export class ApprovalLayoutComponent implements OnInit {
 					each.selected = this.enableSelect(each.availability);
 					each.enableSelection = this.enableSelect(each.availability);
 				});
-
-				this.items = this.items.concat(newData);
-				this.initScrolling();
+				console.log(newData);
+				if (
+					this.start_date === undefined ||
+					this.end_date === undefined ||
+					this.start_date === '' ||
+					this.end_date === ''
+				) {
+					if (this.items.length === 0) {
+						this.items = this.items.concat(newData);
+						console.log('itemsnya sdk', this.items);
+						this.initScrolling();
+					} else {
+						if (this.page > 1 || this.page === 0) {
+							this.items = this.items.concat(newData);
+							console.log('itemsnya 1', this.items);
+							this.initScrolling();
+						} else {
+							this.items = [];
+							this.items = this.items.concat(newData);
+							console.log('itemsnya 2', this.items);
+							this.initScrolling();
+						}
+					}
+				} else {
+					this.items = [];
+					this.items = this.items.concat(newData);
+					console.log('itemsnya 2ss', this.items);
+					this.initScrolling();
+				}
 			} else {
 				alert(resp.status.msg);
 			}
@@ -229,7 +253,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.end_date = datenya.enddate;
 		console.log('mashok');
 		console.log('test', this.start_date, this.end_date);
-
+		this.items = [];
+		this.page = 0;
 		this.getItems(this.page);
 	}
 
@@ -423,7 +448,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.inputDate.resetDate();
 		this.start_date = '';
 		this.end_date = '';
-
+		this.items = [];
+		this.page = 0;
 		this.getItems(this.page);
 	}
 

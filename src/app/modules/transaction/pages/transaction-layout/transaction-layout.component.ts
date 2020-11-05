@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
@@ -6,12 +6,11 @@ import {
 	GetCompanyUsers,
 	RESPONSE,
 	TransactionListUrl,
-	TransactionStatusOptionUrl
+	TransactionStatusOptionUrl,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
-import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { TransactionListRequestModel } from '../../../../models/transaction-list-request.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -24,7 +23,7 @@ import { RangeDatepickerComponent } from '../../../../shared/components/range-da
 export class TransactionLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	param: TransactionListRequestModel;
-	items: TransactionItemResponseModel[];
+	items: any[] = [];
 	statuses: any[];
 	selectedStatus: any;
 	addresses: any[];
@@ -37,17 +36,32 @@ export class TransactionLayoutComponent implements OnInit {
 	start_date: string;
 	end_date: string;
 
+	page: number = 1;
+	limit: number = 5;
+
+	data: any[];
+	innerHeight: any;
+	leftContainerHeight: any;
+	rightContainerHeight: any;
+	topFixed: any;
+	headers: any;
+
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
 
 	@BlockUI() blockUI: NgBlockUI;
 
-	constructor(private http: HttpService, private service: BaseService, 
-		private _redirectparam: RedirectParameterService ) {}
+	constructor(
+		private http: HttpService,
+		private service: BaseService,
+		private _redirectparam: RedirectParameterService
+	) {}
 
 	ngOnInit(): void {
 		this.param = new TransactionListRequestModel();
-		if(localStorage.getItem('selectedStatuses') !== '') this.param.status_code = localStorage.getItem('selectedStatuses'); else this.param.status_code = 'ALL';
+		if (localStorage.getItem('selectedStatuses') !== '')
+			this.param.status_code = localStorage.getItem('selectedStatuses');
+		else this.param.status_code = 'ALL';
 		this.selectedStatuses = localStorage.getItem('selectedStatuses');
 		localStorage.setItem('selectedStatuses', this.selectedStatuses);
 		this.subsribers = [];
@@ -58,7 +72,10 @@ export class TransactionLayoutComponent implements OnInit {
 	ngOnDestroy() {
 		this.subsribers.forEach((each) => each.unsubscribe());
 	}
-
+	onScroll(e) {
+		console.log('scrolled!!', e);
+		this.getTrxList(this.page++);
+	}
 	getTrxStatus() {
 		this.blockUI.start();
 		const sub = this.http
@@ -123,7 +140,7 @@ export class TransactionLayoutComponent implements OnInit {
 				this.purchasers.splice(0, 0, x);
 
 				this.selectedPurchaser = this.purchasers[0];
-				this.getTrxList();
+				this.getTrxList(this.page);
 			} else {
 				this.service.showAlert(resp.status.msg);
 			}
@@ -132,10 +149,13 @@ export class TransactionLayoutComponent implements OnInit {
 		this.subsribers.push(sub);
 	}
 
-	getTrxList() {
-		if(localStorage.getItem('selectedStatuses') !== '') var statuscode = localStorage.getItem('selectedStatuses'); else var statuscode = 'ALL';
+	getTrxList(ev) {
+		console.log(this.page);
+		if (localStorage.getItem('selectedStatuses') !== '')
+			var statuscode = localStorage.getItem('selectedStatuses');
+		else var statuscode = 'ALL';
 		this.selectedStatuses = localStorage.getItem('selectedStatuses');
-		
+
 		const param = {
 			status_code: statuscode,
 			address_id: this.selectedAddress.id,
@@ -143,10 +163,9 @@ export class TransactionLayoutComponent implements OnInit {
 			keyword: this.keyword,
 			start_date: this.start_date,
 			end_date: this.end_date,
-			// page: 0,
-			// limit: 20,
+			page: this.page,
+			limit: this.limit,
 		};
-
 
 		this.blockUI.start();
 		// console.log('param-get trxlist: ', param);
@@ -155,7 +174,13 @@ export class TransactionLayoutComponent implements OnInit {
 			.subscribe((resp) => {
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
-					this.items = resp.data;
+					// this.items = resp.data;
+					// console.log(this.items);
+					// this.initScrolling();
+					var newData = resp.data;
+					this.items = this.items.concat(newData);
+					this.initScrolling();
+					// this.items = this.items.concat(newData);
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}
@@ -164,31 +189,35 @@ export class TransactionLayoutComponent implements OnInit {
 		this.subsribers.push(sub);
 	}
 
-	selectStatus(status) { 
+	selectStatus(status) {
 		this.selectedStatus = status;
 		// this._redirectparam.selectedbutton_transaksi = status.status_code;
-		localStorage.setItem('selectedStatuses',status.status_code)
-		this.getTrxList();
+		localStorage.setItem('selectedStatuses', status.status_code);
+		this.getTrxList(this.page);
 	}
 
 	selectAddress(address) {
+		this.items = [];
 		this.selectedAddress = address;
-		this.getTrxList();
+		this.getTrxList(this.page);
 	}
 
 	selectPurchaser(purchaser) {
+		this.items = [];
 		this.selectedPurchaser = purchaser;
-		this.getTrxList();
+		this.getTrxList(this.page);
 	}
 
 	cariKeyword(keyword) {
 		if (keyword.length >= 3 || keyword.length == 0) {
+			this.items = [];
 			this.keyword = keyword;
-			this.getTrxList();
+			this.getTrxList(this.page);
 		}
 	}
 
 	filterDate(datenya) {
+		this.items = [];
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
 		console.log('mashok');
@@ -204,18 +233,31 @@ export class TransactionLayoutComponent implements OnInit {
 		this.getTrxStatus();
 	}
 
+	initScrolling() {
+		this.topFixed = document?.getElementById('top-fixed')?.offsetHeight;
+		this.headers = document?.getElementById('headers')?.offsetHeight;
+
+		this.onResize();
+	}
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.innerHeight = window.innerHeight;
+
+		this.leftContainerHeight =
+			this.innerHeight - this.topFixed - this.headers;
+	}
+
 	reset() {
 		this.selectedAddress = this.addresses[0];
 		this.selectedPurchaser = this.purchasers[0];
 		this.selectedStatus = this.statuses[0];
-
 		this.keyword = '';
 		this.inputKeyword.getKeyword('');
-
 		this.inputDate.resetDate();
 		this.start_date = null;
 		this.end_date = null;
-
-		this.getTrxList();
+		this.page = 1;
+		this.items = [];
+		this.getTrxList(this.page);
 	}
 }
