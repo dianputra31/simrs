@@ -9,26 +9,25 @@ import { CountdownModule } from 'ngx-countdown';
 import { AuthService } from '../core/auth/service/auth.service';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
+import { Shared2Module } from '../shared2/shared2.module';
+import { GetOtpButtonComponent } from './components/get-otp-button/get-otp-button.component';
 import { HeaderCategoryButtonComponent } from './components/header-category-button/header-category-button.component';
 import { HeaderComponent } from './components/header/header.component';
-import { LoginCardComponent } from './components/login-card/login-card.component';
-import { LayoutRoutingModule } from './layout-routing.module';
-import { LoginLayoutComponent } from './pages/login-layout/login-layout.component';
-import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
-import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
+import { KirimUlangButtonComponent } from './components/kirim-ulang-button/kirim-ulang-button.component';
 import { LoginCard2Component } from './components/login-card2/login-card2.component';
-
-
+import { LayoutRoutingModule } from './layout-routing.module';
+import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
+import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
 @NgModule({
 	declarations: [
-		LoginLayoutComponent,
-		LoginCardComponent,
 		MainLayoutComponent,
 		HeaderComponent,
 		HeaderCategoryButtonComponent,
 		LoginLayout2Component,
 		LoginCard2Component,
+		GetOtpButtonComponent,
+		KirimUlangButtonComponent,
 	],
 	imports: [
 		CommonModule,
@@ -39,11 +38,11 @@ import { LoginCard2Component } from './components/login-card2/login-card2.compon
 		NgbDropdownModule,
 		NgbModule,
 		SharedModule,
+		Shared2Module,
 		NgOtpInputModule,
 		CountdownModule,
 		BlockUIModule.forRoot(),
-
 	],
 	providers: [AuthService],
 })
-export class LayoutModule { }
+export class LayoutModule {}

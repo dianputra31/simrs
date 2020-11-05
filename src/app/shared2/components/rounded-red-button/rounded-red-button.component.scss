@@ -1,0 +1,9 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+#button-wrapper {
+	background: $color-primary;
+	border-radius: 100px;
+	cursor: pointer;
+	color: $putih-tok;
+}
