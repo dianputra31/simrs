@@ -89,27 +89,27 @@ export class CartLayoutComponent implements OnInit {
 			subtotal: 0,
 			grandtotal: 0,
 		};
-		// pertotalan.saldo = this.company.credit_rp;
+
+		var selectedItem = this.items.filter((x) => x.selected);
+
 		pertotalan.totalPrice = 0;
 		pertotalan.totalItem = 0;
-		for (var index in this.items) {
-			if (this.items[index].selected) {
-				const element = this.items[index];
+		selectedItem.forEach((item) => {
+			pertotalan.totalFee += item.admin_fee;
+			pertotalan.ppn += Math.round(item.ppn);
+			pertotalan.ppn3 += Math.round(item.pph);
+			pertotalan.ongkir += item.shipping_cost;
+			pertotalan.totalPrice += item.purchase_amount;
+			pertotalan.totalItem += 1;
 
-				pertotalan.totalFee += element.admin_fee;
-				pertotalan.ppn += Math.round(element.ppn);
-				pertotalan.ppn3 += Math.round(element.pph);
-				pertotalan.ongkir += element.shipping_cost;
-				pertotalan.totalPrice += element.purchase_amount;
-				pertotalan.totalItem += 1;
-			}
 			pertotalan.subtotal = pertotalan.totalPrice + pertotalan.totalFee;
 			pertotalan.grandtotal =
 				pertotalan.subtotal +
 				pertotalan.ppn +
 				pertotalan.ppn3 +
 				pertotalan.ongkir;
-		}
+		});
+
 		return pertotalan;
 	}
 
