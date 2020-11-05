@@ -4,9 +4,7 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import { CartListUrl, CheckoutCartUrl } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
-import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
-import { CartItemModel } from '../../../../models/cart-item.model';
-import { Convert } from '../../../../models/cart-list.model';
+import { BaseService } from '../../../../core/base-service/service/base.service';
 @Component({
 	selector: 'cart-layout',
 	templateUrl: './cart-layout.component.html',
@@ -23,7 +21,11 @@ export class CartLayoutComponent implements OnInit {
 	topFixed;
 	headers;
 	@BlockUI() blockUI: NgBlockUI;
-	constructor(private service: HttpService, private router: Router) {}
+	constructor(
+		private service: HttpService,
+		private router: Router,
+		private dialogService: BaseService
+	) {}
 
 	ngOnInit(): void {
 		this.subscribers = [];
@@ -92,7 +94,7 @@ export class CartLayoutComponent implements OnInit {
 		pertotalan.totalItem = 0;
 		for (var index in this.items) {
 			if (this.items[index].selected) {
-				const element: any = this.items[index];
+				const element = this.items[index];
 
 				pertotalan.totalFee += element.admin_fee;
 				pertotalan.ppn += Math.round(element.ppn);
@@ -124,27 +126,33 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	selanjutnyaClick() {
-		var cartreq = new CartItemRequestModel();
-		cartreq.cart_list = [];
-		for (var i = 0; i < this.items.length; i++) {
-			if (this.items[i].selected) {
-				var x = new CartItemModel();
-				x.product_id = this.items[i].product_id;
-				x.quantity = this.items[i].quantity;
-				cartreq.cart_list.push(x);
-			}
-		}
+		var param = {
+			cart_list: [],
+		};
 
-		console.log(cartreq);
+		this.items.forEach((item) => {
+			param.cart_list.push({
+				product_id: item.product_id,
+				quantity: item.quantity,
+			});
+		});
+
 		this.blockUI.start();
-		const sub = this.service
-			.post(CheckoutCartUrl, { cartreq })
-			.subscribe((resp) => {
+		const sub = this.service.post(CheckoutCartUrl, param).subscribe(
+			(resp) => {
 				this.blockUI.stop();
-				const stringnya = Convert.cartListToJson(resp);
+
+				const stringnya = JSON.stringify(resp);
 				localStorage.setItem('checkout-cart', stringnya);
 				this.router.navigate(['./request-approval']);
-			});
+			},
+			(error: any) => {
+				this.blockUI.stop();
+				if (error.status === 400) {
+					this.dialogService.showAlert(error.error.msg);
+				}
+			}
+		);
 
 		this.subscribers.push(sub);
 	}
