@@ -1,78 +1,83 @@
 <block-ui>
-	<div class="container d-flex">
-		<div id="left-container">
+    <div class="container d-flex">
+        <div id="left-container">
 
-			<div id="top-fixed"
-				class="bg-10">
-				<div class="filternya">
-					<div id="keranjang-label">TRANSAKSI</div>
-					<wsv wide="20px"></wsv>
+            <div id="top-fixed"
+                class="bg-10">
+                <div class="filternya">
+                    <div id="keranjang-label">TRANSAKSI</div>
+                    <wsv wide="20px"></wsv>
 
-					<div class="d-flex justify-content-left">
-						<div class="d-flex"
-							*ngFor="let status of statuses">
-							<status-button [label]="status"
-								[selected]="selectedStatuses"
-								(click)="selectStatus(status)"></status-button>
+                    <div class="d-flex justify-content-left">
+                        <div class="d-flex"
+                            *ngFor="let status of statuses">
+                            <status-button [label]="status"
+                                [selected]="selectedStatuses"
+                                (click)="selectStatus(status)"></status-button>
 
-							<wsh wide="40px"></wsh>
-						</div>
-					</div>
-					<wsv wide="19px"></wsv>
+                            <wsh wide="40px"></wsh>
+                        </div>
+                    </div>
+                    <wsv wide="19px"></wsv>
 
-					<div class="d-flex pas">
-						<div class="flex-grow-1 d-flex ">
-							<input-dropdown class="flex-even"
-								[items]="addresses"
-								[selected]="selectedAddress"
-								(onSelect)="selectAddress($event)"
-								class="flex-even"
-								style="cursor: pointer;"></input-dropdown>
+                    <div class="d-flex pas">
+                        <div class="flex-grow-1 d-flex ">
+                            <input-dropdown class="flex-even"
+                                [items]="addresses"
+                                [selected]="selectedAddress"
+                                (onSelect)="selectAddress($event)"
+                                class="flex-even"
+                                style="cursor: pointer;"></input-dropdown>
 
-							<wsh wide="10px"></wsh>
-							<input-dropdown class="flex-even"
-								[items]="purchasers"
-								[selected]="selectedPurchaser"
-								(onSelect)="selectPurchaser($event)"
-								class="flex-even"
-								style="cursor: pointer;"></input-dropdown>
+                            <wsh wide="10px"></wsh>
+                            <input-dropdown class="flex-even"
+                                [items]="purchasers"
+                                [selected]="selectedPurchaser"
+                                (onSelect)="selectPurchaser($event)"
+                                class="flex-even"
+                                style="cursor: pointer;"></input-dropdown>
 
-							<wsh wide="10px"></wsh>
-							<filter-input #inputKeyword
-								(keyword)="cariKeyword($event)"
-								class="flex-even"
-								hint="Cari Pesanan"
-								logo="../../../../assets/image/icons/searchbutton.png"
-								[disabled]="false"></filter-input>
-							<wsh wide="10px"></wsh>
-							<range-datepicker class="flex-even"
-								#inputDate
-								style="cursor: pointer;"
-								(dateSelectedEvent)="filterDate($event)"
-								(dateRemovedEvent)="filterRemoved($event)">
-							</range-datepicker>
-						</div>
-						<wsh wide="10px"></wsh>
-						<reset-filter class="d-flex align-items-center"
-							(click)="reset()"></reset-filter>
-					</div>
+                            <wsh wide="10px"></wsh>
+                            <filter-input #inputKeyword
+                                (keyword)="cariKeyword($event)"
+                                class="flex-even"
+                                hint="Cari Pesanan"
+                                logo="../../../../assets/image/icons/searchbutton.png"
+                                [disabled]="false"></filter-input>
+                            <wsh wide="10px"></wsh>
+                            <range-datepicker class="flex-even"
+                                #inputDate
+                                style="cursor: pointer;"
+                                (dateSelectedEvent)="filterDate($event)"
+                                (dateRemovedEvent)="filterRemoved($event)">
+                            </range-datepicker>
+                        </div>
+                        <wsh wide="10px"></wsh>
+                        <reset-filter class="d-flex align-items-center"
+                            (click)="reset()"></reset-filter>
+                    </div>
 
-					<wsv wide="20px"></wsv>
-				</div>
-				<div id="horizontal-line"></div>
-				<wsv wide="10px"></wsv>
-				<wsv wide="20px"></wsv>
-			</div>
-		</div>
-	</div>
-	<wsv wide="200px"></wsv>
+                    <wsv wide="20px"></wsv>
+                </div>
+                <div id="horizontal-line"></div>
+                <wsv wide="10px"></wsv>
+                <wsv wide="20px"></wsv>
+            </div>
+        </div>
+    </div>
+    <wsv wide="200px"></wsv>
 
-	<div class="container d-flex">
-		<div id="left-container">
-			<item-transaction [items]="items"></item-transaction>
-			<wsv wide="60px"></wsv>
-		</div>
+    <div class="container d-flex">
+        <div class="search-results"
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            [fromRoot]="true"
+            (scrolled)="onScroll($event)">
+            <item-transaction [items]="items"></item-transaction>
+            <wsv wide="60px"></wsv>
+        </div>
 
-	</div>
+    </div>
 
 </block-ui>

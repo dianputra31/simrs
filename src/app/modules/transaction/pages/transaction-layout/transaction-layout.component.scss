@@ -15,19 +15,17 @@
 	width: 95%;
 }
 
-
 @media (min-width: 1368px) {
-	.pas{
-		max-width:100%;
+	.pas {
+		max-width: 100%;
 	}
 }
 
 @media (max-width: 1366px) {
-	.pas{
-		max-width:80%;
+	.pas {
+		max-width: 80%;
 	}
 }
-
 
 #keranjang-label {
 	font-family: $primary-font;
@@ -37,9 +35,17 @@
 	margin-top: 25px;
 }
 
+.search-results {
+	height: 100%;
+	overflow-y: scroll;
+	width: 100%;
+	overflow: hidden;
+}
+
 #left-container {
 	position: relative;
 	width: 97%;
+	height: 100%;
 }
 
 #right-fixed {
