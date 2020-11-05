@@ -73,7 +73,8 @@ export class TransactionLayoutComponent implements OnInit {
 	}
 	onScroll(e) {
 		console.log('scrolled!!', e);
-		this.getTrxList(this.page++);
+		this.page++;
+		this.getTrxList();
 	}
 	getTrxStatus() {
 		this.blockUI.start();
@@ -140,7 +141,7 @@ export class TransactionLayoutComponent implements OnInit {
 				this.purchasers.splice(0, 0, x);
 
 				this.selectedPurchaser = this.purchasers[0];
-				this.getTrxList(this.page);
+				this.getTrxList();
 			} else {
 				this.service.showAlert(resp.status.msg);
 			}
@@ -173,13 +174,10 @@ export class TransactionLayoutComponent implements OnInit {
 			.subscribe((resp) => {
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
-					// this.items = resp.data;
-					// console.log(this.items);
-					// this.initScrolling();
+					console.log(resp.data);
 					var newData = resp.data;
 					this.items = this.items.concat(newData);
 					this.initScrolling();
-					// this.items = this.items.concat(newData);
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}
@@ -190,19 +188,22 @@ export class TransactionLayoutComponent implements OnInit {
 
 	selectStatus(status) {
 		this.selectedStatus = status;
-		// this._redirectparam.selectedbutton_transaksi = status.status_code;
+		this.items = [];
+		this.page = 1;
 		localStorage.setItem('selectedStatuses', status.status_code);
 		this.getTrxList();
 	}
 
 	selectAddress(address) {
 		this.items = [];
+		this.page = 1;
 		this.selectedAddress = address;
 		this.getTrxList();
 	}
 
 	selectPurchaser(purchaser) {
 		this.items = [];
+		this.page = 1;
 		this.selectedPurchaser = purchaser;
 		this.getTrxList();
 	}
@@ -210,6 +211,7 @@ export class TransactionLayoutComponent implements OnInit {
 	cariKeyword(keyword) {
 		if (keyword.length >= 3 || keyword.length == 0) {
 			this.items = [];
+			this.page = 1;
 			this.keyword = keyword;
 			this.getTrxList();
 		}
@@ -217,6 +219,7 @@ export class TransactionLayoutComponent implements OnInit {
 
 	filterDate(datenya) {
 		this.items = [];
+		this.page = 1;
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
 		console.log('mashok');
