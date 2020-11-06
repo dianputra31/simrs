@@ -3,9 +3,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CatalogService } from '../../../app.constant';
+import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { CatalogCategoryModel } from '../../../models/catalog-category.model';
-import { CatalogRespModel } from '../../../models/catalog-response.model';
 import { CatalogSubcategoryModel } from '../../../models/catalog-subcategory.model';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 import { RedirectParameterService } from '../../redirect-parameter.service';
@@ -20,15 +20,39 @@ export class HeaderCategoryButtonComponent implements OnInit {
 	clickedCategory: CatalogCategoryModel;
 	subsribers: Subscription[];
 
-
-
 	constructor(
 		private router: Router,
-		private service: BaseService,
+		private service: HttpService,
+		private baseService: BaseService,
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
-		private _redirectparam: RedirectParameterService,
-	) { }
+		private _redirectparam: RedirectParameterService
+	) {}
+
+	ngOnInit() {
+		this.subsribers = [];
+		this.getCatalog();
+	}
+
+	getCatalog() {
+		const url = CatalogService;
+
+		const sub = this.service.get(url).subscribe(
+			(resp) => {
+				this.categories = resp.data.category;
+				this.clickedCategory = this.categories[0];
+			},
+			(error) => {
+				if (error.status == 400) {
+					this.baseService.showAlert(
+						'Maaf tidak ada produk yang tersedia'
+					);
+				}
+			}
+		);
+
+		this.subsribers.push(sub);
+	}
 
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
@@ -50,11 +74,6 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		return false;
 	}
 
-	ngOnInit() {
-		this.subsribers = [];
-		this.getCatalog();
-	}
-
 	ngOnDestroy() {
 		this.subsribers.forEach((each) => each.unsubscribe);
 	}
@@ -63,27 +82,16 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		clickedCategory: CatalogCategoryModel,
 		sub: CatalogSubcategoryModel
 	) {
-		this._redirectparam.namaproduk = "";
+		this._redirectparam.namaproduk = '';
 		if (this.router.url == '/request-approval') {
 			this.openDialogLocation('/pilih-produk/0/0');
 		} else {
 			console.log('here');
 			this.router.navigate([
-				'/pilih-produk/' + clickedCategory.id + '/' + sub.id
+				'/pilih-produk/' + clickedCategory.id + '/' + sub.id,
 			]);
 		}
 	}
 
-	getCatalog() {
-		const url = CatalogService;
-
-		const sub = this.service
-			.getData(url, CatalogRespModel)
-			.subscribe((resp) => {
-				this.categories = resp.category;
-				this.clickedCategory = this.categories[0];
-			});
-
-		this.subsribers.push(sub);
-	}
+	mouseOut() {}
 }
