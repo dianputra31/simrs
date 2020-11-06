@@ -9,8 +9,8 @@ export class AuthGuard implements CanActivate {
 	constructor(private authService: AuthService, private router: Router) {}
 
 	public canActivate(): Observable<boolean> {
+		this.authService.refreshIsAuthenticated();
 		this.authService.isAuthenticated().subscribe((resp) => {
-			console.log(resp);
 			if (!resp) {
 				this.router.navigate(['/']);
 			}
@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
 
 		return this.authService.isAuthenticated().pipe(
 			map((resp) => {
-				console.log(resp);
 				return resp;
 			})
 		);

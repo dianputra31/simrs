@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
@@ -11,7 +11,6 @@ import {
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
-import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { TransactionListRequestModel } from '../../../../models/transaction-list-request.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -24,7 +23,7 @@ import { RangeDatepickerComponent } from '../../../../shared/components/range-da
 export class TransactionLayoutComponent implements OnInit {
 	subsribers: Subscription[];
 	param: TransactionListRequestModel;
-	items: TransactionItemResponseModel[];
+	items: any[] = [];
 	statuses: any[];
 	selectedStatus: any;
 	addresses: any[];
@@ -36,6 +35,16 @@ export class TransactionLayoutComponent implements OnInit {
 	keyword: string;
 	start_date: string;
 	end_date: string;
+
+	page: number = 1;
+	limit: number = 5;
+
+	data: any[];
+	innerHeight: any;
+	leftContainerHeight: any;
+	rightContainerHeight: any;
+	topFixed: any;
+	headers: any;
 
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
@@ -62,7 +71,11 @@ export class TransactionLayoutComponent implements OnInit {
 	ngOnDestroy() {
 		this.subsribers.forEach((each) => each.unsubscribe());
 	}
-
+	onScroll(e) {
+		console.log('scrolled!!', e);
+		this.page++;
+		this.getTrxList();
+	}
 	getTrxStatus() {
 		this.blockUI.start();
 		const sub = this.http
@@ -150,8 +163,8 @@ export class TransactionLayoutComponent implements OnInit {
 			keyword: this.keyword,
 			start_date: this.start_date,
 			end_date: this.end_date,
-			// page: 0,
-			// limit: 20,
+			page: this.page,
+			limit: this.limit,
 		};
 
 		this.blockUI.start();
@@ -161,7 +174,10 @@ export class TransactionLayoutComponent implements OnInit {
 			.subscribe((resp) => {
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
-					this.items = resp.data;
+					console.log(resp.data);
+					var newData = resp.data;
+					this.items = this.items.concat(newData);
+					this.initScrolling();
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}
@@ -172,29 +188,38 @@ export class TransactionLayoutComponent implements OnInit {
 
 	selectStatus(status) {
 		this.selectedStatus = status;
-		// this._redirectparam.selectedbutton_transaksi = status.status_code;
+		this.items = [];
+		this.page = 1;
 		localStorage.setItem('selectedStatuses', status.status_code);
 		this.getTrxList();
 	}
 
 	selectAddress(address) {
+		this.items = [];
+		this.page = 1;
 		this.selectedAddress = address;
 		this.getTrxList();
 	}
 
 	selectPurchaser(purchaser) {
+		this.items = [];
+		this.page = 1;
 		this.selectedPurchaser = purchaser;
 		this.getTrxList();
 	}
 
 	cariKeyword(keyword) {
 		if (keyword.length >= 3 || keyword.length == 0) {
+			this.items = [];
+			this.page = 1;
 			this.keyword = keyword;
 			this.getTrxList();
 		}
 	}
 
 	filterDate(datenya) {
+		this.items = [];
+		this.page = 1;
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
 		console.log('mashok');
@@ -210,18 +235,31 @@ export class TransactionLayoutComponent implements OnInit {
 		this.getTrxStatus();
 	}
 
+	initScrolling() {
+		this.topFixed = document?.getElementById('top-fixed')?.offsetHeight;
+		this.headers = document?.getElementById('headers')?.offsetHeight;
+
+		this.onResize();
+	}
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.innerHeight = window.innerHeight;
+
+		this.leftContainerHeight =
+			this.innerHeight - this.topFixed - this.headers;
+	}
+
 	reset() {
 		this.selectedAddress = this.addresses[0];
 		this.selectedPurchaser = this.purchasers[0];
 		this.selectedStatus = this.statuses[0];
-
 		this.keyword = '';
 		this.inputKeyword.getKeyword('');
-
 		this.inputDate.resetDate();
 		this.start_date = null;
 		this.end_date = null;
-
+		this.page = 1;
+		this.items = [];
 		this.getTrxList();
 	}
 }

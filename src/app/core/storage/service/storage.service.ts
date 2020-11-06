@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserModel } from '../../auth/model/response/user.model';
 
 @Injectable()
 export class StorageService {
 	constructor(private router: Router) {}
 
+	tokenPrefix = 'token';
 	public clear() {
 		localStorage.clear();
+	}
+
+	public storeToken(token: any) {
+		localStorage.setItem(this.tokenPrefix, JSON.stringify(token));
+	}
+
+	public getToken() {
+		return JSON.parse(localStorage.getItem(this.tokenPrefix));
 	}
 
 	email: any;
@@ -15,7 +23,7 @@ export class StorageService {
 	fullname: any;
 
 	/* Account Storage */
-	public storeAccount(account: UserModel, info: any) {
+	public storeAccount(account: any, info: any) {
 		if (info === 'token') {
 			localStorage.setItem('account', JSON.stringify(account));
 		} else {
@@ -23,7 +31,7 @@ export class StorageService {
 		}
 	}
 
-	public getAccount(): UserModel {
+	public getAccount(): any {
 		return JSON.parse(localStorage.getItem('account'));
 	}
 
@@ -33,14 +41,8 @@ export class StorageService {
 		return JSON.parse(localStorage.getItem('company'));
 	}
 
-	public getAccountProfile(): UserModel {
+	public getAccountProfile(): any {
 		return JSON.parse(localStorage.getItem('profile'));
-	}
-
-	public getToken() {
-		const account = this.getAccount();
-
-		return account ? account.accessToken : null;
 	}
 
 	public getName() {

@@ -8,7 +8,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppComponent } from './app.component';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
-import { AuthService } from './core/auth/service/auth.service';
+import { StorageService } from './core/storage/service/storage.service';
 import { LayoutModule } from './layout/layout.module';
 import { MaterialModule } from './material.module';
 import { NgbdToastGlobal } from './shared/toast/toast-global.component';
@@ -32,7 +32,7 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 	providers: [
 		/* Declare service for this module */
 		{
-			deps: [AuthService],
+			deps: [StorageService],
 			multi: true,
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthInterceptor,

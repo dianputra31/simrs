@@ -2,18 +2,15 @@
 @import '../../../../../styles/variables/fonts';
 
 #left-container {
-	position: relative;	
+	position: relative;
 }
 
-#top-fixed {
-	position: fixed;
-}
 #right-fixed {
 	position: fixed;
 }
 #right-container {
 	position: relative;
-	margin-left:20px;
+	margin-left: 20px;
 }
 
 .bg-10 {
@@ -24,6 +21,10 @@
 #asd {
 	overflow: hidden;
 	/*overflow-y: scroll;*/
+}
+
+#item-list {
+	overflow: scroll;
 }
 
 #keranjang-label {

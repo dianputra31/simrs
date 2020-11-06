@@ -1,53 +1,80 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import { CartListUrl, CheckoutCartUrl } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
-import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
-import { CartItemModel } from '../../../../models/cart-item.model';
-import { CartListItemModel } from '../../../../models/cart-list-item.model';
-import { CartListResponseModel } from '../../../../models/cart-list-response.model';
-import { Convert } from '../../../../models/cart-list.model';
 @Component({
 	selector: 'cart-layout',
-	templateUrl: './cart-layout.component.html',
+	templateUrl: './cart-layout2.component.html',
 	styleUrls: ['./cart-layout.component.scss'],
 })
 export class CartLayoutComponent implements OnInit {
 	subscribers: Subscription[];
-	items: CartListItemModel[];
+	items: any[];
 	total_item: number = 0;
 	total_price: number;
 
+	leftContainerHeight;
+	windowHeight;
+	topFixed;
+	headers;
 	@BlockUI() blockUI: NgBlockUI;
-	constructor(private service: BaseService, private router: Router) {}
+	constructor(
+		private service: HttpService,
+		private router: Router,
+		private dialogService: BaseService
+	) {}
 
 	ngOnInit(): void {
 		this.subscribers = [];
 		this.getCartItem();
+
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.add('no-scroll');
 	}
 
 	ngOnDestroy() {
 		this.subscribers.forEach((each) => each.unsubscribe);
+
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.remove('no-scroll');
 	}
 
 	getCartItem() {
 		this.blockUI.start();
-		const sub = this.service
-			.getData(CartListUrl, CartListResponseModel, null, false)
-			.subscribe((resp) => {
-				this.blockUI.stop();
-				this.items = resp.cart_list;
-				this.total_item = resp.total_item;
-				this.total_price = resp.total_price;
+		const sub = this.service.get(CartListUrl).subscribe((resp) => {
+			this.items = resp.data.cart_list;
+
+			this.items.forEach((item) => {
+				item.selected = this.select(item);
+				item.enableSelection = this.select(item);
 			});
+			this.total_item = resp.total_item;
+			this.total_price = resp.total_price;
+
+			setTimeout(() => {
+				this.initScrolling();
+				this.blockUI.stop();
+			}, 0);
+		});
 
 		this.subscribers.push(sub);
 	}
 
-	updateItemCartList(t) {
+	public select(item) {
+		if (
+			item.availability == 'AVAILABLE' ||
+			item.availability == 'LIMITED'
+		) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	updateItemCartList() {
 		this.getCartItem();
 	}
 
@@ -62,27 +89,27 @@ export class CartLayoutComponent implements OnInit {
 			subtotal: 0,
 			grandtotal: 0,
 		};
-		// pertotalan.saldo = this.company.credit_rp;
+
+		var selectedItem = this.items.filter((x) => x.selected);
+
 		pertotalan.totalPrice = 0;
 		pertotalan.totalItem = 0;
-		for (var index in this.items) {
-			if (this.items[index].selected) {
-				const element: CartListItemModel = this.items[index];
+		selectedItem.forEach((item) => {
+			pertotalan.totalFee += item.admin_fee;
+			pertotalan.ppn += Math.round(item.ppn);
+			pertotalan.ppn3 += Math.round(item.pph);
+			pertotalan.ongkir += item.shipping_cost;
+			pertotalan.totalPrice += item.purchase_amount;
+			pertotalan.totalItem += 1;
 
-				pertotalan.totalFee += element.admin_fee;
-				pertotalan.ppn += Math.round(element.ppn);
-				pertotalan.ppn3 += Math.round(element.pph);
-				pertotalan.ongkir += element.shipping_cost;
-				pertotalan.totalPrice += element.purchase_amount;
-				pertotalan.totalItem += 1;
-			}
 			pertotalan.subtotal = pertotalan.totalPrice + pertotalan.totalFee;
 			pertotalan.grandtotal =
 				pertotalan.subtotal +
 				pertotalan.ppn +
 				pertotalan.ppn3 +
 				pertotalan.ongkir;
-		}
+		});
+
 		return pertotalan;
 	}
 
@@ -99,28 +126,50 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	selanjutnyaClick() {
-		var cartreq = new CartItemRequestModel();
-		cartreq.cart_list = [];
-		for (var i = 0; i < this.items.length; i++) {
-			if (this.items[i].selected) {
-				var x = new CartItemModel();
-				x.product_id = this.items[i].product_id;
-				x.quantity = this.items[i].quantity;
-				cartreq.cart_list.push(x);
-			}
-		}
+		var param = {
+			cart_list: [],
+		};
+
+		this.items.forEach((item) => {
+			param.cart_list.push({
+				product_id: item.product_id,
+				quantity: item.quantity,
+			});
+		});
 
 		this.blockUI.start();
-		const sub = this.service
-			.postData(CheckoutCartUrl, cartreq, CartItemResponseModel, false)
-			.subscribe((resp) => {
+		const sub = this.service.post(CheckoutCartUrl, param).subscribe(
+			(resp) => {
 				this.blockUI.stop();
-				console.log(resp);
-				const stringnya = Convert.cartListToJson(resp);
-				const cartList = Convert.toCartList(stringnya);
+
+				const stringnya = JSON.stringify(resp);
 				localStorage.setItem('checkout-cart', stringnya);
 				this.router.navigate(['./request-approval']);
-			});
+			},
+			(error: any) => {
+				this.blockUI.stop();
+				if (error.status === 400) {
+					this.dialogService.showAlert(error.error.msg);
+				}
+			}
+		);
+
 		this.subscribers.push(sub);
+	}
+
+	initScrolling() {
+		// this.topFixed = document?.getElementById('top-fixed')?.offsetHeight;
+		this.topFixed = document?.getElementById('top-fixed')?.offsetHeight;
+		this.headers = document?.getElementById('headers')?.offsetHeight;
+
+		this.onResize();
+	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.windowHeight = window.innerHeight;
+
+		this.leftContainerHeight =
+			this.windowHeight - this.topFixed - this.headers;
 	}
 }

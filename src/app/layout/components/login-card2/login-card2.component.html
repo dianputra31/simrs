@@ -1,0 +1,100 @@
+<block-ui>
+    <div>
+        <mat-horizontal-stepper [linear]="true"
+            class="rounded-corner"
+            #stepper>
+
+
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <div class="d-flex justify-content-center">
+                        <img src="../../../../assets/image/icons/login.svg">
+                    </div>
+                    <wsv wide="10px"></wsv>
+                    <div class="d-flex justify-content-center teksbesar">Log In</div>
+                    <wsv wide="15px"></wsv>
+                    <div class="d-flex justify-content-center ">Kami akan mengirimkan OTP ke alamat email anda</div>
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex justify-content-center teks">Masukkan Alamat Email Anda</div>
+
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex w-100">
+                        <input type="text"
+                            class="rounded-gray d-flex w-100 justify-content-center email-input"
+                            placeholder="Alamat Email"
+                            formControlName="email"
+                            required>
+                    </div>
+
+
+                    <wsv wide="20px"></wsv>
+                    <get-otp-button [valid]="firstFormGroup.valid"
+                        (getOtpEvent)="sendotp()"></get-otp-button>
+
+                    <div class="warning">
+                        {{errlogin}}
+                    </div>
+
+                </form>
+            </mat-step>
+
+
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <div class="d-flex justify-content-center">
+                        <img src="../../../../assets/image/icons/login-otp.svg">
+                    </div>
+
+                    <div class="d-flex justify-content-center teksbesar">
+                        Verifikasi OTP
+                    </div>
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex justify-content-center">
+                        Masukkan Nomor OTP yang sudah dikirim ke
+                    </div>
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex justify-content-center">
+                        <b>{{firstFormGroup.value.email}}</b>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <ng-otp-input (onInputChange)="onOtpChange($event)"
+                            #ngOtpInput
+                            [config]="{length:6}"></ng-otp-input>
+                    </div>
+
+
+                    <div class="d-flex justify-content-center">
+                        Tidak Terima Nomor OTP?
+                        <wsh wide="10px"></wsh>
+                        <kirim-ulang-button [isCountingDown]="isCountingDown"
+                            (requestOtpEvent)="sendotp()"></kirim-ulang-button>
+                        <wsh wide="10px"></wsh>
+                        <countdown [config]="naconfig"
+                            (event)="finishCount($event)"
+                            [ngStyle]="{'font-weight': '600','font-size':'22px','line-height': '30px','color':'#DB0A2A'}">
+                        </countdown>
+                    </div>
+
+                    <div class="d-flex justify-content-center kecil">
+                        <span>Harap periksa di inbox / junk email anda</span>
+                    </div>
+                    <wsv wide="15px"></wsv>
+                    <rounded-red-button label="Verifikasi dan Proses"
+                        paddingtop="8px"
+                        paddingbottom="8px"
+                        font="17px"
+                        [matchParentWidth]="true"
+                        (click)="login()"></rounded-red-button>
+
+
+                    <div class="warning">
+                        {{errotp}}
+                    </div>
+
+                </form>
+            </mat-step>
+
+        </mat-horizontal-stepper>
+    </div>
+</block-ui>
