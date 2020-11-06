@@ -10,15 +10,15 @@ import {
 	ApprovalCount,
 	CartListUrl,
 	OpenTrxCount,
-
-	ProfileUrl, SearchProduct
+	ProfileUrl,
+	SearchProduct,
 } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 import { RedirectParameterService } from '../../redirect-parameter.service';
 
 @Component({
-	selector: 'app-header',
+	selector: 'header',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
 })
@@ -37,9 +37,8 @@ export class HeaderComponent implements OnInit {
 		private router: Router,
 		private service: BaseService,
 		private MatAutocompleteModule: MatAutocompleteModule,
-		private _redirectparam: RedirectParameterService
-	) // private ProductCatalogResponseModel: ProductCatalogResponseModel,
-	{ }
+		private _redirectparam: RedirectParameterService // private ProductCatalogResponseModel: ProductCatalogResponseModel,
+	) {}
 
 	myControl = new FormControl();
 
