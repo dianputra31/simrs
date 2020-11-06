@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserModel } from '../../auth/model/response/user.model';
 
 @Injectable()
 export class StorageService {
@@ -24,7 +23,7 @@ export class StorageService {
 	fullname: any;
 
 	/* Account Storage */
-	public storeAccount(account: UserModel, info: any) {
+	public storeAccount(account: any, info: any) {
 		if (info === 'token') {
 			localStorage.setItem('account', JSON.stringify(account));
 		} else {
@@ -42,7 +41,7 @@ export class StorageService {
 		return JSON.parse(localStorage.getItem('company'));
 	}
 
-	public getAccountProfile(): UserModel {
+	public getAccountProfile(): any {
 		return JSON.parse(localStorage.getItem('profile'));
 	}
 

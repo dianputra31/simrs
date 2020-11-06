@@ -7,7 +7,7 @@ import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 @Component({
 	selector: 'cart-layout',
-	templateUrl: './cart-layout.component.html',
+	templateUrl: './cart-layout2.component.html',
 	styleUrls: ['./cart-layout.component.scss'],
 })
 export class CartLayoutComponent implements OnInit {

@@ -26,7 +26,7 @@
 				<div style="overflow:scroll; ">
 					<div *ngFor="let item of items">
 						<item-card [item]="item"
-							(onUpdateQty)="updateItemCartList($event)"></item-card>
+							(onUpdateQty)="updateItemCartList()"></item-card>
 						<wsv wide="40px"></wsv>
 					</div>
 				</div>
