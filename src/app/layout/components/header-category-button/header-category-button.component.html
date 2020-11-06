@@ -2,7 +2,7 @@
 	#myDrop="ngbDropdown"
 	class="d-inline-block"
 	(mouseover)="myDrop.open();"
-	(mouseout)="myDrop.close();">
+	(mouseout)="myDrop.open();">
 	<div class="d-flex justify-content-center align-items-center"
 		ngbDropdownToggle>
 		<img id="headers-menubar"
@@ -10,9 +10,7 @@
 		<div id="headers-kategori">KATEGORI</div>
 	</div>
 	<div ngbDropdownMenu
-		id="transparent-box"
-		(mouseout)="myDrop.close();">
-		<div class="white-space-top-10px"></div>
+		id="transparent-box">
 		<div class="arrow-up"></div>
 		<div class="d-flex container-round"
 			id="menubar-box">
@@ -21,7 +19,7 @@
 				<div *ngFor="let category of categories">
 					<div [ngClass]="(clickedCategory==category)?'label-kategori-name-red':'label-kategori-name'"
 						(mouseover)='clickedCategory = category'
-						(mouseout)='myDrop.close();$event.stopPropagation();'>
+						(mouseout)='$event.stopPropagation();'>
 
 						{{category.category_name}}</div>
 				</div>
