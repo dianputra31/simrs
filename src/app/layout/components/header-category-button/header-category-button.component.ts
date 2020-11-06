@@ -6,7 +6,6 @@ import { CatalogService } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { CatalogCategoryModel } from '../../../models/catalog-category.model';
-import { CatalogSubcategoryModel } from '../../../models/catalog-subcategory.model';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 import { RedirectParameterService } from '../../redirect-parameter.service';
 
@@ -78,20 +77,18 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		this.subsribers.forEach((each) => each.unsubscribe);
 	}
 
-	goesToSub(
-		clickedCategory: CatalogCategoryModel,
-		sub: CatalogSubcategoryModel
-	) {
+	goesToSub(clickedCategory: any, sub: any) {
 		this._redirectparam.namaproduk = '';
 		if (this.router.url == '/request-approval') {
 			this.openDialogLocation('/pilih-produk/0/0');
 		} else {
-			console.log('here');
 			this.router.navigate([
 				'/pilih-produk/' + clickedCategory.id + '/' + sub.id,
 			]);
 		}
 	}
 
-	mouseOut() {}
+	resetSelectedCategory() {
+		this.clickedCategory = this.categories[0];
+	}
 }
