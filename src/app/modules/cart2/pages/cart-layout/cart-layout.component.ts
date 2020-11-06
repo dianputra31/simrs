@@ -57,7 +57,7 @@ export class CartLayoutComponent implements OnInit {
 			setTimeout(() => {
 				this.initScrolling();
 				this.blockUI.stop();
-			}, 0);
+			}, 40);
 		});
 
 		this.subscribers.push(sub);
