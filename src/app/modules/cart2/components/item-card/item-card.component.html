@@ -12,7 +12,8 @@
 				</div>
 				<div>
 					<div class="label-gray">Harga Belanja</div>
-					<div class="label-gray-2">{{item.grand_total| number:'1.0-0' | rupiah : 'bulat'}}</div>
+					<!-- <div class="label-gray-2">{{item.grand_total| number:'1.0-0' | rupiah : 'bulat'}}</div> -->
+					<div class="label-gray-2">{{item.grand_total| rupiah : 'bulat'}}</div>
 				</div>
 			</div>
 
@@ -42,11 +43,11 @@
 	</div>
 	<div id="masking"
 		*ngIf="item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK'"
-		class="rectangle-87">
+		class="rectangle-87 w-100">
 	</div>
 	<div id="above-masking"
 		*ngIf="item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK'"
-		class="rectangle-87">
+		class="rectangle-87 w-100">
 		<div class="d-flex flex-grow-1 flex-row-reverse align-items-end"
 			style="height: 100%;">
 			<div class="container-29">
