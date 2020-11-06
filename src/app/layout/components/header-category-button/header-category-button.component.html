@@ -2,7 +2,7 @@
 	#myDrop="ngbDropdown"
 	class="d-inline-block"
 	(mouseover)="myDrop.open();"
-	(mouseout)="myDrop.open();">
+	(mouseout)="myDrop.close();resetSelectedCategory()">
 	<div class="d-flex justify-content-center align-items-center"
 		ngbDropdownToggle>
 		<img id="headers-menubar"
@@ -19,7 +19,7 @@
 				<div *ngFor="let category of categories">
 					<div [ngClass]="(clickedCategory==category)?'label-kategori-name-red':'label-kategori-name'"
 						(mouseover)='clickedCategory = category'
-						(mouseout)='$event.stopPropagation();'>
+						(mouseout)='myDrop.close();resetSelectedCategory();$event.stopPropagation();'>
 
 						{{category.category_name}}</div>
 				</div>
