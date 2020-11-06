@@ -17,7 +17,7 @@ export class RequestApprovalAddressComponent implements OnInit {
 	addresses;
 	phone;
 	province;
-	subsribers: Subscription[];
+	subsribers: Subscription[] = [];
 
 	constructor(
 		private service: BaseService,
