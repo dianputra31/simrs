@@ -6,8 +6,17 @@ import { UserModel } from '../../auth/model/response/user.model';
 export class StorageService {
 	constructor(private router: Router) {}
 
+	tokenPrefix = 'token';
 	public clear() {
 		localStorage.clear();
+	}
+
+	public storeToken(token: any) {
+		localStorage.setItem(this.tokenPrefix, JSON.stringify(token));
+	}
+
+	public getToken() {
+		return JSON.parse(localStorage.getItem(this.tokenPrefix));
 	}
 
 	email: any;
@@ -23,7 +32,7 @@ export class StorageService {
 		}
 	}
 
-	public getAccount(): UserModel {
+	public getAccount(): any {
 		return JSON.parse(localStorage.getItem('account'));
 	}
 
@@ -35,12 +44,6 @@ export class StorageService {
 
 	public getAccountProfile(): UserModel {
 		return JSON.parse(localStorage.getItem('profile'));
-	}
-
-	public getToken() {
-		const account = this.getAccount();
-
-		return account ? account.accessToken : null;
 	}
 
 	public getName() {

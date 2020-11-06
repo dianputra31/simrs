@@ -1,0 +1,20 @@
+@import '../../../../styles/variables/colors';
+
+.grey {
+	font-weight: 700;
+	font-style: normal;
+	font-size: 16px;
+	line-height: 22px;
+	// text-align: center;
+	color: $abu-abu-lainnya;
+}
+
+.kirimulang {
+	cursor: pointer;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 16px;
+	line-height: 22px;
+	// text-align: center;
+	color: $color-primary;
+}

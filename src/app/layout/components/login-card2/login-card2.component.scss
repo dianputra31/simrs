@@ -1,0 +1,59 @@
+@import '../../../../styles/variables/colors';
+
+.rounded-corner {
+	border-radius: 80px;
+	padding: 20px;
+}
+
+.rounded-gray {
+	background: #f2f2f2;
+	border-radius: 50px;
+}
+
+.teks {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+	text-align: center;
+	color: #606060;
+}
+
+.teksbesar {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 49px;
+	text-align: center;
+	color: #606060;
+}
+
+.email-input {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.kecil {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 16px;
+	text-align: center;
+	color: #606060;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+	display: none !important;
+}
+
+.warning {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 16px;
+	text-align: center;
+	color: $color-primary;
+	text-align: center;
+}
