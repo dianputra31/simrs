@@ -92,6 +92,7 @@
             <div id="left-container"
                 [style.height.px]="leftContainerHeight"
                 class="flex-grow-1">
+
                 <div infiniteScroll
                     [infiniteScrollDistance]="2"
                     [infiniteScrollUpDistance]="1.5"
@@ -99,7 +100,6 @@
                     [infiniteScrollContainer]="selector"
                     [fromRoot]="true"
                     (scrolled)="onScrollDown($event)"
-                    style="background-color: blue;"
                     *ngIf="items?.length>=1">
                     <div *ngFor="let item of items">
                         <item-card [item]="item"
@@ -126,3 +126,10 @@
 
     </ng-template>
 </block-ui>
+
+<div style="position:absolute;top:92%;left:50%;height:60px;width:60px;"
+    id="divload"
+    *ngIf="isSpinner">
+    <img src="../../../../../assets/image/icons/nestloading.gif"
+        style="position: relative;width:50px;">
+</div>

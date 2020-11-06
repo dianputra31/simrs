@@ -33,7 +33,7 @@ export class FloatingFooterComponent implements OnInit {
 		this.subsribers.forEach((each) => each.unsubscribe);
 	}
 
-	tambahkanKeKeranjang(dangerTpl) {
+	tambahkanKeKeranjang(dangerTpl) { 
 		this.showDanger(dangerTpl);
 		var test = new CartItemModel()
 		test.product_id = this.productDetail.id

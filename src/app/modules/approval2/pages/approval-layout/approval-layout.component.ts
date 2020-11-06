@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,11 +25,11 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams,
+	ConvertApproveParams
 } from '../../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart,
+	ConvertCheckoutCart
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -69,6 +69,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	rightContainerHeight: any;
 	topFixed: any;
 	headers: any;
+	isSpinner: Boolean = false;
 
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
@@ -113,9 +114,11 @@ export class ApprovalLayoutComponent implements OnInit {
 
 		// console.log(param);
 
-		this.blockUI.start();
+		// this.blockUI.start();
+		this.isSpinner = true;
 		this.http.post(ApprovalListUrl, params).subscribe((resp) => {
-			this.blockUI.stop();
+			// this.blockUI.stop();
+			this.isSpinner = false;
 
 			if (resp.status.rc === RESPONSE.SUCCESS) {
 				var newData = resp.data;
@@ -123,7 +126,7 @@ export class ApprovalLayoutComponent implements OnInit {
 					each.selected = this.enableSelect(each.availability);
 					each.enableSelection = this.enableSelect(each.availability);
 				});
-				console.log(newData);
+				// console.log(newData);
 				if (
 					this.start_date === undefined ||
 					this.end_date === undefined ||
@@ -132,24 +135,24 @@ export class ApprovalLayoutComponent implements OnInit {
 				) {
 					if (this.items.length === 0) {
 						this.items = this.items.concat(newData);
-						console.log('itemsnya sdk', this.items);
+						// console.log('itemsnya sdk', this.items);
 						this.initScrolling();
 					} else {
 						if (this.page > 1 || this.page === 0) {
 							this.items = this.items.concat(newData);
-							console.log('itemsnya 1', this.items);
+							// console.log('itemsnya 1', this.items);
 							this.initScrolling();
 						} else {
 							this.items = [];
 							this.items = this.items.concat(newData);
-							console.log('itemsnya 2', this.items);
+							// console.log('itemsnya 2', this.items);
 							this.initScrolling();
 						}
 					}
 				} else {
 					this.items = [];
 					this.items = this.items.concat(newData);
-					console.log('itemsnya 2ss', this.items);
+					// console.log('itemsnya 2ss', this.items);
 					this.initScrolling();
 				}
 			} else {
@@ -407,7 +410,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		}
 		const params: ApproveCartParams = {
 			cart_list: cart_list,
-			message: 'hahahahhatot',
+			message: '',
 		};
 
 		var pm: String = ConvertApproveParams.approveCartParamsToJson(params);
