@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE
+	RESPONSE,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,11 +25,11 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams
+	ConvertApproveParams,
 } from '../../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart
+	ConvertCheckoutCart,
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -107,7 +107,6 @@ export class ApprovalLayoutComponent implements OnInit {
 			limit: this.limit,
 		};
 
-		console.log(params);
 		if (this.selectedPurchaser.id) {
 			params.user_id = this.selectedPurchaser.id;
 		}
@@ -122,6 +121,7 @@ export class ApprovalLayoutComponent implements OnInit {
 
 			if (resp.status.rc === RESPONSE.SUCCESS) {
 				var newData = resp.data;
+
 				newData.forEach((each) => {
 					each.selected = this.enableSelect(each.availability);
 					each.enableSelection = this.enableSelect(each.availability);
@@ -303,24 +303,12 @@ export class ApprovalLayoutComponent implements OnInit {
 			if (this.items[index].selected) {
 				const element: CartListItemModel = this.items[index];
 
-				pertotalan.totalFee +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.admin_fee;
-				pertotalan.ppn +=
-					element.stock - element.quantity < 0 ? 0 : element.ppn;
-				pertotalan.ppn3 +=
-					element.stock - element.quantity < 0 ? 0 : element.pph;
-				pertotalan.ongkir +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.shipping_cost;
-				pertotalan.totalPrice +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.purchase_amount;
-				pertotalan.totalItem +=
-					element.stock - element.quantity < 0 ? 0 : 1;
+				pertotalan.totalFee += element.admin_fee;
+				pertotalan.ppn += element.ppn;
+				pertotalan.ppn3 += element.pph;
+				pertotalan.ongkir += element.shipping_cost;
+				pertotalan.totalPrice += element.purchase_amount;
+				pertotalan.totalItem += 1;
 			}
 			pertotalan.subtotal = pertotalan.totalPrice + pertotalan.totalFee;
 			pertotalan.grandtotal =
