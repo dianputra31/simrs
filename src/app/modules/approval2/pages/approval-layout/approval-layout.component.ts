@@ -120,60 +120,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			this.isSpinner = false;
 
 			if (resp.status.rc === RESPONSE.SUCCESS) {
-				// var newData = resp.data;
-
-				var x = {
-					status: {
-						msg: 'Success',
-						rc: 1,
-					},
-					data: [
-						{
-							id: 143,
-							user_id: 86,
-							product_id: 31146,
-							delivery_address_id: 99,
-							quantity: 1,
-							approval_status: 'WAITING',
-							submitted_at: '2020-11-05T17:10:01',
-							request_group_id: 106,
-							action_code: null,
-							action_by: null,
-							action_at: null,
-							updated_at: '2020-11-05T17:10:01',
-							purchase_amount: 30000,
-							admin_fee: 900,
-							ppn: 3090,
-							pph: -18,
-							shipping_cost: 66192,
-							sub_total: 30900,
-							grand_total: 100164,
-							product_name: 'NARINDO - Faster C6 Ballpoint',
-							product_image:
-								'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium//102/MTA-9264873/Faster_NARINDO_-_Faster_C6_Ballpoint_full01_nhzgiurp.jpg',
-							product_sku: '',
-							partner_sku: 'B2N-60021-00013',
-							partner_sku_item: 'B2N-60021-00013-00001',
-							category: 'Perlengkapan Kantor',
-							subcategory: 'Alat Tulis Kantor',
-							original_price: 30000,
-							sell_price: 30000,
-							availability: 'AVAILABLE',
-							discount_percentage: 0.0,
-							supplier_name: 'Blibli',
-							stock: null,
-							requester_fullname: 'Firman Taher',
-							selected: true,
-							enableSelection: true,
-						},
-					],
-					query: {
-						page: 1,
-						limit: 5,
-						found_rows: 1,
-					},
-				};
-				var newData = x.data;
+				var newData = resp.data;
 
 				newData.forEach((each) => {
 					each.selected = this.enableSelect(each.availability);
