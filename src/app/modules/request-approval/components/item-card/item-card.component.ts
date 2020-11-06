@@ -34,8 +34,8 @@ export class ItemCardComponent implements OnInit {
 		}
 	}
 
-	status() {
-		this.item.availability;
-		REQUEST_APPROVAL_STATUS;
+	status(availability) {
+		var x = REQUEST_APPROVAL_STATUS.find((s) => s.status == availability);
+		return x?.display;
 	}
 }
