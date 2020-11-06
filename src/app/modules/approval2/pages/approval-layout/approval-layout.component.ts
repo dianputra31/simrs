@@ -69,6 +69,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	rightContainerHeight: any;
 	topFixed: any;
 	headers: any;
+	isSpinner: Boolean = false;
 
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
@@ -113,9 +114,11 @@ export class ApprovalLayoutComponent implements OnInit {
 
 		// console.log(param);
 
-		this.blockUI.start();
+		// this.blockUI.start();
+		this.isSpinner = true;
 		this.http.post(ApprovalListUrl, params).subscribe((resp) => {
-			this.blockUI.stop();
+			// this.blockUI.stop();
+			this.isSpinner = false;
 
 			if (resp.status.rc === RESPONSE.SUCCESS) {
 				var newData = resp.data;
@@ -123,7 +126,7 @@ export class ApprovalLayoutComponent implements OnInit {
 					each.selected = this.enableSelect(each.availability);
 					each.enableSelection = this.enableSelect(each.availability);
 				});
-				console.log(newData);
+				// console.log(newData);
 				if (
 					this.start_date === undefined ||
 					this.end_date === undefined ||
@@ -132,24 +135,24 @@ export class ApprovalLayoutComponent implements OnInit {
 				) {
 					if (this.items.length === 0) {
 						this.items = this.items.concat(newData);
-						console.log('itemsnya sdk', this.items);
+						// console.log('itemsnya sdk', this.items);
 						this.initScrolling();
 					} else {
 						if (this.page > 1 || this.page === 0) {
 							this.items = this.items.concat(newData);
-							console.log('itemsnya 1', this.items);
+							// console.log('itemsnya 1', this.items);
 							this.initScrolling();
 						} else {
 							this.items = [];
 							this.items = this.items.concat(newData);
-							console.log('itemsnya 2', this.items);
+							// console.log('itemsnya 2', this.items);
 							this.initScrolling();
 						}
 					}
 				} else {
 					this.items = [];
 					this.items = this.items.concat(newData);
-					console.log('itemsnya 2ss', this.items);
+					// console.log('itemsnya 2ss', this.items);
 					this.initScrolling();
 				}
 			} else {

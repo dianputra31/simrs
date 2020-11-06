@@ -54,7 +54,7 @@ export class DialogAddressSectionComponent implements OnInit {
 				this.location = this.addresses[0].address_detail;
 			});
 
-		this.subsribers.push(sub);
+		this.subsribers.push(sub); 
 	}
 
 	setDefaultAddress(addressId) {

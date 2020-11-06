@@ -1,19 +1,19 @@
 import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
-	MatDialog,
-	MatDialogRef,
-	MAT_DIALOG_DATA
+    MatDialog,
+    MatDialogRef,
+    MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
-	AddressCreateUrl,
-	AddressMasterDistrictUrl,
-	AddressMasterProvinceUrl,
-	AddressMasterSubDistrictUrl,
-	AddressMasterVillageUrl
+    AddressCreateUrl,
+    AddressMasterDistrictUrl,
+    AddressMasterProvinceUrl,
+    AddressMasterSubDistrictUrl,
+    AddressMasterVillageUrl
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
