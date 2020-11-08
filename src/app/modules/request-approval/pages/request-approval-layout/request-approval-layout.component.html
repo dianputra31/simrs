@@ -1,56 +1,25 @@
-<div class="container d-flex">
-	<div id="left-container">
-		<div id="top-fixed"
-			class="bg-10">
-			<wsv wide="25px"></wsv>
-			<div id="keranjang-label">REQUEST APPROVAL</div>
-			<wsv wide="14px"></wsv>
-			<request-approval-address></request-approval-address>
-		</div>
-		<wsv wide="200px"></wsv>
-		<div id="poi">
-			<div id="asd">
-				<!-- <item-card></item-card> -->
-				<item-list [items]="items"></item-list>
-			</div>
-		</div>
-	</div>
-	<div id="right-container">
-		<wsv wide="200px"></wsv>
-		<div id="right-fixed">
-			<div class="d-flex">
-				<wsh wide="57px"></wsh>
-				<box-cart-price [pertotalan]="pertotalan"
-					[selectedItems]="selectedItems"
-					[buttonDisable]="false"
-					buttonLabel="Selanjutnya"
-					(buttonBoxCartPriceClick)="selanjutnyaClick()"></box-cart-price>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-<!-- <div class="container">
-	<div id="div-top-address">
-		<wsv wide="53px"></wsv>
-		<div id="request-approval-label"></div>
+<div class="container">
+	<div id="top-fixed">
+		<div id="keranjang-label">REQUEST APPROVAL {{leftContainerHeight}} {{topFixed}} {{headers}}</div>
 		<wsv wide="14px"></wsv>
-		<request-approval-address></request-approval-address>
-
+		<request-approval-address [fullname]="fullname"
+			[addressData]="addressData"></request-approval-address>
 	</div>
 
-	<div class="d-flex justify-content-between"
-		id="scrollable-div">
-		<item-list></item-list>
-
+	<div class="d-flex">
+		<div class="flex-grow-1"
+			id="left-container"
+			[style.height.px]="leftContainerHeight">
+			<wsv wide="20px"></wsv>
+			<div *ngFor="let item of items">
+				<item-card2 [item]="item"></item-card2>
+				<wsv wide="20px"></wsv>
+			</div>
+		</div>
+		<wsh wide="20px"></wsh>
+		<box-cart-price [pertotalan]="pertotalan"
+			[buttonDisable]="false"
+			buttonLabel="Selanjutnya"
+			(buttonBoxCartPriceClick)="selanjutnyaClick()"></box-cart-price>
 	</div>
-
-
-	<div id="div-cart-price">
-		<box-cart-price buttonLabel="Request Approval"></box-cart-price>
-		<wsv wide="280px"></wsv>
-	</div>
-
 </div>
-<wsv wide="300px"></wsv> -->
