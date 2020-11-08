@@ -1,34 +1,44 @@
+export const REQUEST_APPROVAL_STATUS_DICT = {
+	DUPLICATE_ITEM: 'DUPLICATE_ITEM',
+	ITEM_NOT_FOUND: 'ITEM_NOT_FOUND',
+	UNBUYABLE: 'UNBUYABLE',
+	DIFFERENT_PRICE: 'DIFFERENT_PRICE',
+	UNDISCOVERABLE: 'UNDISCOVERABLE',
+	OUT_OF_STOCK: 'OUT_OF_STOCK',
+	SHIP_NOT_COVERED: 'SHIP_NOT_COVERED',
+	OK: 'OK',
+};
 export const REQUEST_APPROVAL_STATUS = [
 	{
-		status: 'DUPLICATE_ITEM',
+		status: REQUEST_APPROVAL_STATUS_DICT.DUPLICATE_ITEM,
 		display: 'Stok Habis',
 	},
 	{
-		status: 'ITEM_NOT_FOUND',
+		status: REQUEST_APPROVAL_STATUS_DICT.ITEM_NOT_FOUND,
 		display: 'Stok Habis',
 	},
 	{
-		status: 'UNBUYABLE',
+		status: REQUEST_APPROVAL_STATUS_DICT.UNBUYABLE,
 		display: 'Stok Habis',
 	},
 	{
-		status: 'DIFFERENT_PRICE',
+		status: REQUEST_APPROVAL_STATUS_DICT.DIFFERENT_PRICE,
 		display: 'Stok Habis',
 	},
 	{
-		status: 'UNDISCOVERABLE',
+		status: REQUEST_APPROVAL_STATUS_DICT.UNDISCOVERABLE,
 		display: 'Area Tidak Terjangkau',
 	},
 	{
-		status: 'OUT_OF_STOCK',
+		status: REQUEST_APPROVAL_STATUS_DICT.OUT_OF_STOCK,
 		display: 'Stok Habis',
 	},
 	{
-		status: 'SHIP_NOT_COVERED',
+		status: REQUEST_APPROVAL_STATUS_DICT.SHIP_NOT_COVERED,
 		display: 'Stok Habis',
 	},
 	{
-		status: 'OK',
+		status: REQUEST_APPROVAL_STATUS_DICT.OK,
 		display: 'Ok',
 	},
 ];

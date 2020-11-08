@@ -1,20 +1,6 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
-
-#request-approval{
-	width: 100%;
-	position: relative;
-	min-height: 100px;
-	font-family: $primary-font;
-}
-
-.rap-row{ 
-	width:30%;
-	text-align: left;
-	word-wrap: normal;
-	font-style: normal;
+.rap-row {
 	font-size: 14px;
-	line-height: 18px;
-	font-feature-settings: 'kern' off;
 }
