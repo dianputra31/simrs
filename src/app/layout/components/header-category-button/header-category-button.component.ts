@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CatalogService } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
@@ -24,7 +24,6 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		private service: HttpService,
 		private baseService: BaseService,
 		public dialog: MatDialog,
-		private route: ActivatedRoute,
 		private _redirectparam: RedirectParameterService
 	) {}
 
