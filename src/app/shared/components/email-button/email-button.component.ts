@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailCs } from '../../../../app/app.constant';
 
 @Component({
 	selector: 'app-email-button',
@@ -7,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailButtonComponent implements OnInit {
 	constructor() {}
+	email: string = EmailCs;
 
-	ngOnInit(): void {}
+	
+
+	ngOnInit(): void {
+	}
+
 }

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlockUIModule } from 'ng-block-ui';
 import { NgOtpInputModule } from 'ng-otp-input';
@@ -44,6 +45,7 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 		CountdownModule,
 		BlockUIModule.forRoot(),
 		SharedPipesModule,
+		MatMenuModule,
 	],
 	providers: [AuthService],
 })

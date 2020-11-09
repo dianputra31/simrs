@@ -42,7 +42,7 @@ export class FilterCardComponent implements OnInit {
 		});
 
 
-		this.PilihProdukLayout.getItems(this.cat_id, this.subcat_id, this.keyword, a, b);
+		// this.PilihProdukLayout.getItems(this.cat_id, this.subcat_id, this.keyword, a, b);
 
 	}
 }

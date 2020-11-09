@@ -19,6 +19,7 @@
 				</div>
 				<div class="d-flex align-items-center">
 					<div id="div-approval"
+						(contextmenu)="onRightClick($event, {content: 'Approval', redir: 'approval'})"
 						class="relative"
 						(click)="goToPage('./approval')">
 						<div class="label-1">Approval</div>
@@ -27,6 +28,7 @@
 					</div>
 					<wsh wide="20px"></wsh>
 					<div id="div-transaksi"
+						(contextmenu)="onRightClick($event, {content: 'Transaksi', redir: 'transaction'})"
 						class="relative"
 						(click)="goToPage('./transaction')">
 						<div class="label-1">Transaksi</div>
@@ -35,6 +37,7 @@
 					</div>
 					<wsh wide="20px"></wsh>
 					<div id="div-cart"
+						(contextmenu)="onRightClick($event, {content: 'Cart', redir: 'cart'})"
 						class="relative"
 						(click)="goToCart()">
 						<img src="../../../../assets/image/icons/cart-logo.svg"
@@ -95,11 +98,28 @@
 			</div>
 		</div>
 		<wsh wide="30px"></wsh>
-
 		<div id="headers-user-menu"
-			(click)="goToAccount()">
+			(click)="goToAccount()"
+			(contextmenu)="onRightClick($event, {content: 'Profile', redir: 'account'})">
 			<img id="headers-user-photo"
 				src="{{datauser?.profile_picture_url}}">
 		</div>
+
+		<!-- an hidden div is created to set the position of appearance of the menu-->
+		<div style="visibility: hidden; position: fixed;"
+			[style.left]="menuTopLeftPosition.x"
+			[style.top]="menuTopLeftPosition.y"
+			[matMenuTriggerFor]="rightMenu"></div>
+
+		<!-- standard material menu -->
+		<mat-menu #rightMenu="matMenu">
+			<ng-template matMenuContent
+				let-item="item">
+				<button mat-menu-item
+					(click)="openNewTab(item.redir)">Buka {{item.content}} di Tab Baru</button>
+				<button mat-menu-item>Cancel</button>
+			</ng-template>
+		</mat-menu>
+
 	</div>
 </div>

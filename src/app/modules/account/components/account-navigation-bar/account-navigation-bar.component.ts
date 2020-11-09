@@ -46,7 +46,7 @@ export class AccountNavigationBarComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.selected = localStorage.getItem('selectedInfo');
+		if(localStorage.getItem('selectedInfo') === 'Log out' || localStorage.getItem('selectedInfo') === '') this.selected = 'Dashboard'; else this.selected = localStorage.getItem('selectedInfo');
 		// this.selected = this.navItems[0];
 	}
 
