@@ -11,11 +11,12 @@
 				<address-section borderRadius='20px'
 					wide='60%'></address-section>
 				<div class="white-space"></div>
-				<div *ngIf="qtyproduk > 0;else kosong">
+				<div *ngIf="qtyproduk > 0;">
 					<div id="label-total-produk">{{qtyproduk}} produk <span id="choosen-produk">{{keyword}}</span> di
 						<span id="choosen-produk">{{namakategori}}</span>
 					</div>
 				</div>
+
 				<div class="white-space"></div>
 
 			</div>
@@ -69,6 +70,8 @@
 				<!-- <b>Barang</b> {{keyword}} <b>tidak tersedia</b> -->
 
 			</ng-template>
+
+
 
 			<div style="position:absolute;top:90%;left:55%;height:60px;width:60px;z-index: 1000;"
 				id="divload"
