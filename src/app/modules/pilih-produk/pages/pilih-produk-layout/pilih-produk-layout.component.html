@@ -4,91 +4,84 @@
 			style="padding-bottom: 20px;">
 			<filter-card></filter-card>
 		</div>
-		<div *ngIf="qtyproduk > 0;else kosong">
-			<div id="pilih-produk-container-2"
-				class="flex-grow-1">
-				<div id="top-fixed">
-					<div class="white-space"></div>
-					<address-section borderRadius='20px'
-						wide='60%'></address-section>
-					<div class="white-space"></div>
-
+		<div id="pilih-produk-container-2"
+			class="flex-grow-1">
+			<div id="top-fixed">
+				<div class="white-space"></div>
+				<address-section borderRadius='20px'
+					wide='60%'></address-section>
+				<div class="white-space"></div>
+				<div *ngIf="qtyproduk > 0;else kosong">
 					<div id="label-total-produk">{{qtyproduk}} produk <span id="choosen-produk">{{keyword}}</span> di
 						<span id="choosen-produk">{{namakategori}}</span>
 					</div>
-					<div class="white-space"></div>
-
 				</div>
+				<div class="white-space"></div>
+
+			</div>
 
 
 
-				<wsv wide="60px"></wsv>
+			<wsv wide="60px"></wsv>
 
-				<div *ngIf="qtyproduk > 0;else kosong">
-					<!-- <app-catalog [items]="items"></app-catalog> -->
-					<div class="container d-flex">
-						<div id="left-container"
-							[style.height.px]="leftContainerHeight"
-							class="flex-grow-1">
+			<div *ngIf="qtyproduk > 0;else kosong">
+				<!-- <app-catalog [items]="items"></app-catalog> -->
+				<div class="container d-flex">
+					<div id="left-container"
+						[style.height.px]="leftContainerHeight"
+						class="flex-grow-1">
 
-							<div style="margin-top:20px;padding-top:60px;"
-								infiniteScroll
-								[infiniteScrollDistance]="2"
-								[infiniteScrollUpDistance]="1.5"
-								[infiniteScrollThrottle]="50"
-								[infiniteScrollContainer]="selector"
-								[fromRoot]="true"
-								(scrolled)="onScrollDown($event)"
-								*ngIf="items?.length>=1">
-								<div>
+						<div style="margin-top:20px;padding-top:60px;"
+							infiniteScroll
+							[infiniteScrollDistance]="2"
+							[infiniteScrollUpDistance]="1.5"
+							[infiniteScrollThrottle]="50"
+							[infiniteScrollContainer]="selector"
+							[fromRoot]="true"
+							(scrolled)="onScrollDown($event)"
+							*ngIf="items?.length>=1">
+							<div>
 
-									<wsv wide="10px"></wsv>
+								<wsv wide="10px"></wsv>
 
-									<div class="d-flex">
-										<wsh wide="20px"></wsh>
-										<app-catalog [items]="items"></app-catalog>
-									</div>
-
-									<wsv wide="10px"></wsv>
-
+								<div class="d-flex">
+									<wsh wide="20px"></wsh>
+									<app-catalog [items]="items"></app-catalog>
 								</div>
+
+								<wsv wide="10px"></wsv>
+
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
-
-
-				<div style="position:absolute;top:90%;left:55%;height:60px;width:60px;z-index: 1000;"
-					id="divload"
-					*ngIf="isSpinner">
-					<img src="../../../../../assets/image/icons/nestloading.gif"
-						style="position: relative;width:50px;">
+			<ng-template #kosong>
+				<div class="nope">
+					<img src="../../../../../assets/image/icons/nope.svg"
+						style="position: relative;width:66px;">
 				</div>
 
+				<div class="nope-text">Barang tidak tersedia</div>
 
 
+				<!-- <b>Barang</b> {{keyword}} <b>tidak tersedia</b> -->
 
+			</ng-template>
 
+			<div style="position:absolute;top:90%;left:55%;height:60px;width:60px;z-index: 1000;"
+				id="divload"
+				*ngIf="isSpinner">
+				<img src="../../../../../assets/image/icons/nestloading.gif"
+					style="position: relative;width:50px;">
 			</div>
+
+
+
+
+
 		</div>
-
-		<ng-template #kosong>
-			<div class="nope">
-				<img src="../../../../../assets/image/icons/nope.svg"
-					style="position: relative;width:66px;">
-			</div>
-
-			<div class="nope-text">Barang tidak tersedia</div>
-
-
-			<!-- <b>Barang</b> {{keyword}} <b>tidak tersedia</b> -->
-
-		</ng-template>
-
-
-
-
 	</div>
 
 </div>
