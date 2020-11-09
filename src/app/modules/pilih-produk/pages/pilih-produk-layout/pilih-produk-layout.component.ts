@@ -106,10 +106,11 @@ export class PilihProdukLayoutComponent implements OnInit {
 		
 		this.route.paramMap.subscribe((params) => {
 			if (this._redirectparam.namaproduk !== '' && this._redirectparam.namaproduk !== '0') this.keyword = '"' + this._redirectparam.namaproduk + '"'; else this.keyword = '';
+			var keywordnya = this.keyword.replace(/['"]+/g, '');
 			var paramet: any = {
 				category_id: params.get('category_id'),
 				sub_category_id: params.get('sub_category_id'),
-				namaproduk: this.keyword,
+				namaproduk: keywordnya,
 				price_start: this._redirectparam.price_start,
 				price_end: this._redirectparam.price_end,
 				page: this.page,
