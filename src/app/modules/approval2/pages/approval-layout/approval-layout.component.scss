@@ -2,7 +2,6 @@
 @import '../../../../../styles/variables/fonts';
 
 #top-fixed {
-	position: fixed;
 	width: 1366px;
 	background-color: $main-background;
 	z-index: 1;
@@ -13,7 +12,7 @@
 	font-weight: bold;
 	font-size: 24px;
 	color: $abu-abu-gelap;
-	margin-top: 25px;
+	margin-top: 10px;
 }
 
 #pilihsemua {
@@ -47,6 +46,7 @@
 
 #right-container {
 	overflow: scroll;
+	padding-bottom: 20px;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 #left-container::-webkit-scrollbar {
