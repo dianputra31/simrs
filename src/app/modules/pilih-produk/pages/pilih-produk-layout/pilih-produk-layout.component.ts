@@ -62,6 +62,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 		this.items = [];
 		this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 		this.namakategori = 'semua Kategori';
+		this.qtyproduk = 0;
 
 
 		this.IsWait = true;
@@ -158,6 +159,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 		
 		// RESPONSE
+		
 		this.isSpinner = true;
 		const sub = this.http.get(ProductCatalogUrl + s_page + s_limit  + s_cat + s_subcat + s_key + s_price_start + s_price_end)
 			.subscribe((resp) => {
@@ -166,7 +168,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 				if (resp.status.rc === RESPONSE.SUCCESS) {
 					var newData = resp.data;
 
-						this.qtyproduk = resp.data.length;
+						this.qtyproduk += resp.data.length;
 						
 						this.items = this.items.concat(newData);
 						console.log(this.items);
