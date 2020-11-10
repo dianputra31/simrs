@@ -8,6 +8,7 @@ import { CartItemResponseModel } from '../../../../models/cart-item-response.mod
 import { CartItemModel } from '../../../../models/cart-item.model';
 import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
+import { ITEM_AVAILABILITY } from '../../cart.constant';
 
 @Component({
 	selector: 'item-card',
@@ -44,6 +45,13 @@ export class ItemCardComponent implements OnInit {
 
 	onImgError(event) {
 		event.target.src = '../../../../assets/image/icons/default-item.png';
+	}
+
+	getAvailabilityLabel() {
+		var x = ITEM_AVAILABILITY.find(
+			(s) => s.status == this.item.availability
+		);
+		return x?.display;
 	}
 
 	updateItemCart() {
