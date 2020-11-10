@@ -30,12 +30,14 @@ export class QtyCtrlTwoComponent implements OnInit {
 	}
 
 	onChange() {
-		if (this.qty < 1 || this.qty == null) {
-			this.qty = 1;
-		} else if (this.qty > 999999) {
-			this.qty = 999999;
-		}
-		this.updateQtyEvent();
+		setTimeout(() => {
+			if (this.qty < 1 || this.qty == null) {
+				this.qty = 1;
+			} else if (this.qty > 999999) {
+				this.qty = 999999;
+			}
+			this.updateQtyEvent();
+		}, 2000);
 	}
 
 	updateQtyEvent() {
