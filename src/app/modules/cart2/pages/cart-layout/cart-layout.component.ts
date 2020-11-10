@@ -133,12 +133,12 @@ export class CartLayoutComponent implements OnInit {
 		};
 
 		this.items.forEach((item) => {
-			// if (item.selected) {
-			param.cart_list.push({
-				product_id: item.product_id,
-				quantity: item.quantity,
-			});
-			// }
+			if (item.selected) {
+				param.cart_list.push({
+					product_id: item.product_id,
+					quantity: item.quantity,
+				});
+			}
 		});
 
 		this.blockUI.start();
