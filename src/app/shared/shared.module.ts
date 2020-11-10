@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { SharedPipesModule } from '../pipes/shared-pipes.module';
+import { Shared2Module } from '../shared2/shared2.module';
 import { AddressSectionComponent } from './components/address-section/address-section.component';
 import { AnyAlertComponent } from './components/any-alert/any-alert.component';
 import { BoxCartPriceComponent } from './components/box-cart-price/box-cart-price.component';
@@ -108,6 +109,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		NgbModule,
 		SharedPipesModule,
 		DemoNgZorroAntdModule,
+		Shared2Module,
 	],
 	exports: [
 		AnyAlertComponent,
