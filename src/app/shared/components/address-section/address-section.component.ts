@@ -89,6 +89,6 @@ export class AddressSectionComponent implements OnInit {
 				this.location = def_addr;
 			});
 
-		this.subsribers.push(sub);
+		this.subsribers.push(sub); 
 	}
 }

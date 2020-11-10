@@ -9,9 +9,9 @@
 		</div>
 
 		<ng-template #elseBlock>
-			<div id="left-container">
-				<div id="top-fixed"
-					class="bg-10">
+			<div class="w-100">
+
+				<div id="top-fixed">
 					<div id="keranjang-label">KERANJANG</div>
 					<wsv wide="10px"></wsv>
 					<address-section wide="600px"
@@ -22,32 +22,27 @@
 					<pilih-semua (onPilihSemuaCheckboxClick)="pilihSemuaClickEvent($event)"></pilih-semua>
 					<wsh wide="10px"></wsh>
 				</div>
-				<wsv wide="200px"></wsv>
-				<div style="overflow:scroll; ">
-					<div *ngFor="let item of items">
-						<item-card [item]="item"
-							(onUpdateQty)="updateItemCartList()"></item-card>
-						<wsv wide="40px"></wsv>
+
+				<div class="d-flex">
+					<div [style.height.px]="leftContainerHeight"
+						id="item-list"
+						class="w-100">
+						<div *ngFor="let item of items">
+							<item-card [item]="item"
+								(onUpdateQty)="updateItemCartList()"></item-card>
+							<wsv wide="40px"></wsv>
+						</div>
 					</div>
+					<wsh wide="30px"></wsh>
+					<box-cart-price class="box-cart-price"
+						[pertotalan]="calculate()"
+						buttonLabel="Selanjutnya"
+						(buttonBoxCartPriceClick)="selanjutnyaClick()"
+						[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+
 				</div>
-				<wsh wide="20px"></wsh>
 			</div>
 
-			<div id="right-container">
-				<wsv wide="200px"></wsv>
-				<div id="right-fixed">
-					<div class="d-flex">
-						<box-cart-price class="box-cart-price"
-							[pertotalan]="calculate()"
-							buttonLabel="Selanjutnya"
-							(buttonBoxCartPriceClick)="selanjutnyaClick()"
-							[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
-					</div>
-				</div>
-			</div>
 		</ng-template>
-
 	</div>
-
-
 </block-ui>

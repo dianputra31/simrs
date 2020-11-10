@@ -2,12 +2,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlockUIModule } from 'ng-block-ui';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { CountdownModule } from 'ngx-countdown';
 import { AuthService } from '../core/auth/service/auth.service';
 import { MaterialModule } from '../material.module';
+import { SharedPipesModule } from '../pipes/shared-pipes.module';
 import { SharedModule } from '../shared/shared.module';
 import { Shared2Module } from '../shared2/shared2.module';
 import { GetOtpButtonComponent } from './components/get-otp-button/get-otp-button.component';
@@ -42,6 +44,8 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 		NgOtpInputModule,
 		CountdownModule,
 		BlockUIModule.forRoot(),
+		SharedPipesModule,
+		MatMenuModule,
 	],
 	providers: [AuthService],
 })

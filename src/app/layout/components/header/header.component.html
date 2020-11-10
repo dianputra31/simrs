@@ -1,5 +1,4 @@
 <div id="headers">
-
 	<div class="container d-flex align-items-center">
 		<div id="div-logo">
 			<img id="headers-logo"
@@ -9,133 +8,118 @@
 				width="81">
 		</div>
 
-		<div class="white-space-60px"></div>
-
-
-		<div class="d-flex flex-column bd-highlight mb-3"
-			id="header-center">
-			<div class="header-center-top">
-				<div class="d-flex align-items-start bigtext"
-					id="hct-left">{{datacompany?.trade_name}}</div>
-				<div class="d-flex align-items-center upfirst"
-					id="hct-center">{{datauser?.fullname}}</div>
-				<div class="d-flex align-items-end"
-					id="hct-right">
-
-					<div class="d-flex bd-highlight"
-						id="right-shortcut">
-						<div class="p-2 flex-fill bd-highlight"
-							id="div-approval"
-							(click)="goToPage('./approval')">
-							<div class="warn-label">Approval</div>
-							<div id="item-to-approve"
-								class="warn-notif show">0</div>
-						</div>
-
-
-						<div class="p-2 flex-fill bd-highlight"
-							id="div-transaksi"
-							(click)="goToPage('./transaction')">
-							<div class="warn-label">Transaksi</div>
-							<div id="open-trx"
-								class="warn-notif show">0</div>
-						</div>
-						<div class="p-2 flex-fill bd-highlight"
-							id="div-cart"
-							(click)="goToCart()">
-							<img src="../../../../assets/image/icons/cart-logo.svg"
-								style="width:25px;"
-								id="headers-cart">
-							<div id="item-count"
-								class="warn-notife show">0</div>
-
-						</div>
-					</div>
-
+		<wsh wide="30px"></wsh>
+		<div class="flex-grow-1">
+			<div class="d-flex flex-grow-1 align-items-center">
+				<div class="d-flex w-100 align-items-center">
+					<div id="company-name">{{datacompany?.trade_name}}</div>
+					<div id="separator"></div>
+					<div id="user-name"
+						class="label-1">{{datauser?.fullname}}</div>
 				</div>
-
+				<div class="d-flex align-items-center">
+					<div id="div-approval"
+						(contextmenu)="onRightClick($event, {content: 'Approval', redir: 'approval'})"
+						class="relative"
+						(click)="goToPage('./approval')">
+						<div class="label-1">Approval</div>
+						<div id="item-to-approve"
+							class="warn-notif">0</div>
+					</div>
+					<wsh wide="20px"></wsh>
+					<div id="div-transaksi"
+						(contextmenu)="onRightClick($event, {content: 'Transaksi', redir: 'transaction'})"
+						class="relative"
+						(click)="goToPage('./transaction')">
+						<div class="label-1">Transaksi</div>
+						<div id="open-trx"
+							class="warn-notif">0</div>
+					</div>
+					<wsh wide="20px"></wsh>
+					<div id="div-cart"
+						(contextmenu)="onRightClick($event, {content: 'Cart', redir: 'cart'})"
+						class="relative"
+						(click)="goToCart()">
+						<img src="../../../../assets/image/icons/cart-logo.svg"
+							style="width:22px;"
+							id="headers-cart">
+						<div id="item-count"
+							class="warn-notif">0</div>
+					</div>
+				</div>
 			</div>
-			<div class="header-center-middle">
-			</div>
-			<div class="header-center-bottom">
-				<div class="d-flex justify-content-start"
-					id="header-kategori">
-					<header-category-button></header-category-button>
-				</div>
 
+			<div class="separator-2"></div>
+			<div class="d-flex w-100 align-items-center">
+				<header-category-button></header-category-button>
 
-				<div class="d-flex justify-content-between"
-					id="header-pencarian">
-					<div id="headers-search"
-						class="d-flex justify-content-center align-items-center">
-						<form class="container"
-							style="padding:0px;"
-							[formGroup]="myControl">
+				<div id="headers-search"
+					class="d-flex flex-grow-1 justify-content-center">
+					<form [formGroup]="myControl">
+						<input #pencarian
+							type="text"
+							class="textbox-header-search"
+							aria-label="Number"
+							matInput
+							[formControl]="myControl"
+							[matAutocomplete]="auto"
+							placeholder="Search"
+							(change)=getKey(pencarian.value)>
+						<!-- autoActiveFirstOption -->
 
+						<mat-autocomplete id="mat-autocomplete"
+							#auto="matAutocomplete"
+							style="z-index: 9999;"
+							(optionSelected)='goesToDetailProduct($event.option.value)'>
+							<mat-option *ngFor="let option of filteredOptions | async"
+								[value]="option"
+								(selectionChange)="goesToDetailProduct($event.option.value)">
+								{{option}}
+							</mat-option>
+						</mat-autocomplete>
 
+						<button type="submit"
+							id="searchbutton">
+						</button>
 
-							<input #pencarian
-								type="text"
-								class="textbox-header-search"
-								aria-label="Number"
-								matInput
-								[formControl]="myControl"
-								[matAutocomplete]="auto"
-								placeholder="Search"
-								(change)=getKey(pencarian.value)>
-							<!-- autoActiveFirstOption -->
-
-							<mat-autocomplete id="mat-autocomplete"
-								#auto="matAutocomplete"
-								style="z-index: 9999;"
-								(optionSelected)='goesToDetailProduct($event.option.value)'>
-								<mat-option *ngFor="let option of filteredOptions | async"
-									[value]="option"
-									(selectionChange)="goesToDetailProduct($event.option.value)">
-									{{option}}
-								</mat-option>
-							</mat-autocomplete>
-
-							<button type="submit"
-								id="searchbutton">
-							</button>
-
-						</form>
-
-					</div>
+					</form>
 
 				</div>
 
-				<div class="d-flex justify-content-end"
-					id="div-saldo">
-					<div class="div-saldo-left">
-						<img src="../../../../assets/image/icons/wallet.svg">
-					</div>
-					<div class="div-saldo-right">
-						Rp. {{datacompany?.credit_rp | number}}
+
+				<div id="div-saldo"
+					class="d-flex">
+					<img src="../../../../assets/image/icons/wallet.svg">
+					<div class="d-flex credit">
+						{{datacompany?.credit_rp | rupiah}}
 					</div>
 				</div>
-
 
 			</div>
 		</div>
-
-
-
-
-		<div class="white-space-100px"></div>
-		<div class="ml-auto d-flex align-items-center">
-
-
-			<div id="headers-user-menu"
-				(click)="goToAccount()">
-				<img id="headers-user-photo"
-					src="{{datauser?.profile_picture_url}}">
-			</div>
-
+		<wsh wide="30px"></wsh>
+		<div id="headers-user-menu"
+			(click)="goToAccount()"
+			(contextmenu)="onRightClick($event, {content: 'Profile', redir: 'account'})">
+			<img id="headers-user-photo"
+				src="{{datauser?.profile_picture_url}}">
 		</div>
+
+		<!-- an hidden div is created to set the position of appearance of the menu-->
+		<div style="visibility: hidden; position: fixed;"
+			[style.left]="menuTopLeftPosition.x"
+			[style.top]="menuTopLeftPosition.y"
+			[matMenuTriggerFor]="rightMenu"></div>
+
+		<!-- standard material menu -->
+		<mat-menu #rightMenu="matMenu">
+			<ng-template matMenuContent
+				let-item="item">
+				<button mat-menu-item
+					(click)="openNewTab(item.redir)">Buka {{item.content}} di Tab Baru</button>
+				<button mat-menu-item>Cancel</button>
+			</ng-template>
+		</mat-menu>
 
 	</div>
-
-
 </div>

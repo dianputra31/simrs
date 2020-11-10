@@ -15,7 +15,7 @@ import { CartLayoutComponent } from './pages/cart-layout/cart-layout.component';
 		CommonModule,
 		SharedModule,
 		SharedPipesModule,
-		BlockUIModule.forRoot(),
+		BlockUIModule.forRoot(), 
 	],
 })
 export class Cart2Module {}

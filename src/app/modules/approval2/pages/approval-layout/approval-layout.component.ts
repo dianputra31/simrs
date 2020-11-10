@@ -69,6 +69,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	rightContainerHeight: any;
 	topFixed: any;
 	headers: any;
+	isSpinner: Boolean = false;
 
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
@@ -106,24 +107,26 @@ export class ApprovalLayoutComponent implements OnInit {
 			limit: this.limit,
 		};
 
-		console.log(params);
 		if (this.selectedPurchaser.id) {
 			params.user_id = this.selectedPurchaser.id;
 		}
 
 		// console.log(param);
 
-		this.blockUI.start();
+		// this.blockUI.start();
+		this.isSpinner = true;
 		this.http.post(ApprovalListUrl, params).subscribe((resp) => {
-			this.blockUI.stop();
+			// this.blockUI.stop();
+			this.isSpinner = false;
 
 			if (resp.status.rc === RESPONSE.SUCCESS) {
 				var newData = resp.data;
+
 				newData.forEach((each) => {
 					each.selected = this.enableSelect(each.availability);
 					each.enableSelection = this.enableSelect(each.availability);
 				});
-				console.log(newData);
+				// console.log(newData);
 				if (
 					this.start_date === undefined ||
 					this.end_date === undefined ||
@@ -132,24 +135,24 @@ export class ApprovalLayoutComponent implements OnInit {
 				) {
 					if (this.items.length === 0) {
 						this.items = this.items.concat(newData);
-						console.log('itemsnya sdk', this.items);
+						// console.log('itemsnya sdk', this.items);
 						this.initScrolling();
 					} else {
 						if (this.page > 1 || this.page === 0) {
 							this.items = this.items.concat(newData);
-							console.log('itemsnya 1', this.items);
+							// console.log('itemsnya 1', this.items);
 							this.initScrolling();
 						} else {
 							this.items = [];
 							this.items = this.items.concat(newData);
-							console.log('itemsnya 2', this.items);
+							// console.log('itemsnya 2', this.items);
 							this.initScrolling();
 						}
 					}
 				} else {
 					this.items = [];
 					this.items = this.items.concat(newData);
-					console.log('itemsnya 2ss', this.items);
+					// console.log('itemsnya 2ss', this.items);
 					this.initScrolling();
 				}
 			} else {
@@ -300,24 +303,12 @@ export class ApprovalLayoutComponent implements OnInit {
 			if (this.items[index].selected) {
 				const element: CartListItemModel = this.items[index];
 
-				pertotalan.totalFee +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.admin_fee;
-				pertotalan.ppn +=
-					element.stock - element.quantity < 0 ? 0 : element.ppn;
-				pertotalan.ppn3 +=
-					element.stock - element.quantity < 0 ? 0 : element.pph;
-				pertotalan.ongkir +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.shipping_cost;
-				pertotalan.totalPrice +=
-					element.stock - element.quantity < 0
-						? 0
-						: element.purchase_amount;
-				pertotalan.totalItem +=
-					element.stock - element.quantity < 0 ? 0 : 1;
+				pertotalan.totalFee += element.admin_fee;
+				pertotalan.ppn += element.ppn;
+				pertotalan.ppn3 += element.pph;
+				pertotalan.ongkir += element.shipping_cost;
+				pertotalan.totalPrice += element.purchase_amount;
+				pertotalan.totalItem += 1;
 			}
 			pertotalan.subtotal = pertotalan.totalPrice + pertotalan.totalFee;
 			pertotalan.grandtotal =
@@ -407,7 +398,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		}
 		const params: ApproveCartParams = {
 			cart_list: cart_list,
-			message: 'hahahahhatot',
+			message: '',
 		};
 
 		var pm: String = ConvertApproveParams.approveCartParamsToJson(params);

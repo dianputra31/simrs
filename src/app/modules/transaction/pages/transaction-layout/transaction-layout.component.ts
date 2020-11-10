@@ -6,7 +6,7 @@ import {
 	GetCompanyUsers,
 	RESPONSE,
 	TransactionListUrl,
-	TransactionStatusOptionUrl,
+	TransactionStatusOptionUrl
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -45,6 +45,7 @@ export class TransactionLayoutComponent implements OnInit {
 	rightContainerHeight: any;
 	topFixed: any;
 	headers: any;
+	isSpinner: Boolean = false;
 
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
@@ -167,12 +168,11 @@ export class TransactionLayoutComponent implements OnInit {
 			limit: this.limit,
 		};
 
-		this.blockUI.start();
+		this.isSpinner = true;
 		// console.log('param-get trxlist: ', param);
 		const sub = this.http
 			.post(TransactionListUrl, param)
 			.subscribe((resp) => {
-				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					console.log(resp.data);
 					var newData = resp.data;
@@ -180,10 +180,11 @@ export class TransactionLayoutComponent implements OnInit {
 					this.initScrolling();
 				} else {
 					this.service.showAlert(resp.status.msg);
-				}
+				} 
 			});
 
 		this.subsribers.push(sub);
+		this.isSpinner = false;
 	}
 
 	selectStatus(status) {

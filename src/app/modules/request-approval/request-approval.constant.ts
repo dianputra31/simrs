@@ -1,0 +1,44 @@
+export const REQUEST_APPROVAL_STATUS_DICT = {
+	DUPLICATE_ITEM: 'DUPLICATE_ITEM',
+	ITEM_NOT_FOUND: 'ITEM_NOT_FOUND',
+	UNBUYABLE: 'UNBUYABLE',
+	DIFFERENT_PRICE: 'DIFFERENT_PRICE',
+	UNDISCOVERABLE: 'UNDISCOVERABLE',
+	OUT_OF_STOCK: 'OUT_OF_STOCK',
+	SHIP_NOT_COVERED: 'SHIP_NOT_COVERED',
+	OK: 'OK',
+};
+export const REQUEST_APPROVAL_STATUS = [
+	{
+		status: REQUEST_APPROVAL_STATUS_DICT.DUPLICATE_ITEM,
+		display: 'Stok Habis',
+	},
+	{
+		status: REQUEST_APPROVAL_STATUS_DICT.ITEM_NOT_FOUND,
+		display: 'Stok Habis',
+	},
+	{
+		status: REQUEST_APPROVAL_STATUS_DICT.UNBUYABLE,
+		display: 'Stok Habis',
+	},
+	{
+		status: REQUEST_APPROVAL_STATUS_DICT.DIFFERENT_PRICE,
+		display: 'Stok Habis',
+	},
+	{
+		status: REQUEST_APPROVAL_STATUS_DICT.UNDISCOVERABLE,
+		display: 'Area Tidak Terjangkau',
+	},
+	{
+		status: REQUEST_APPROVAL_STATUS_DICT.OUT_OF_STOCK,
+		display: 'Stok Habis',
+	},
+	{
+		status: REQUEST_APPROVAL_STATUS_DICT.SHIP_NOT_COVERED,
+		display: 'Stok Habis',
+	},
+	{
+		status: REQUEST_APPROVAL_STATUS_DICT.OK,
+		display: 'Ok',
+	},
+];

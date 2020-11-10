@@ -1,6 +1,7 @@
 <div ngbDropdown
 	#myDrop="ngbDropdown"
 	class="d-inline-block"
+	(mouseenter)="resetSelectedCategory()"
 	(mouseover)="myDrop.open();"
 	(mouseout)="myDrop.close();">
 	<div class="d-flex justify-content-center align-items-center"
@@ -10,9 +11,7 @@
 		<div id="headers-kategori">KATEGORI</div>
 	</div>
 	<div ngbDropdownMenu
-		id="transparent-box"
-		(mouseout)="myDrop.close();">
-		<div class="white-space-top-10px"></div>
+		id="transparent-box">
 		<div class="arrow-up"></div>
 		<div class="d-flex container-round"
 			id="menubar-box">

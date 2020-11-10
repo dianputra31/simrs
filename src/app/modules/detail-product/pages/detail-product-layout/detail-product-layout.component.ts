@@ -29,7 +29,7 @@ export class DetailProductLayoutComponent implements OnInit {
 			.getData(url, ProductDetailResponseModel, null, false)
 			.subscribe((resp) => {
 				this.productDetail = resp;
-			});
+			}); 
 
 		// this.subsribers.push(sub);
 	}

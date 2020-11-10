@@ -1,8 +1,9 @@
 // import { ProductCatalogResponseModel } from '../../../models/product-catalog-response-model';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -10,15 +11,16 @@ import {
 	ApprovalCount,
 	CartListUrl,
 	OpenTrxCount,
-
-	ProfileUrl, SearchProduct
+	ProfileUrl,
+	SearchProduct
 } from '../../../app.constant';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 import { RedirectParameterService } from '../../redirect-parameter.service';
 
+
 @Component({
-	selector: 'app-header',
+	selector: 'header',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
 })
@@ -28,7 +30,11 @@ export class HeaderComponent implements OnInit {
 	account;
 	dataproduk;
 	optionsname;
+	menuTopLeftPosition =  {x: '0', y: '0'}
+
 	@Output() keyword = new EventEmitter<string>();
+	@ViewChild(MatMenuTrigger, {static: true}) matMenuTrigger: MatMenuTrigger;
+
 
 	subsribers: Subscription[];
 	constructor(
@@ -37,9 +43,8 @@ export class HeaderComponent implements OnInit {
 		private router: Router,
 		private service: BaseService,
 		private MatAutocompleteModule: MatAutocompleteModule,
-		private _redirectparam: RedirectParameterService
-	) // private ProductCatalogResponseModel: ProductCatalogResponseModel,
-	{ }
+		private _redirectparam: RedirectParameterService // private ProductCatalogResponseModel: ProductCatalogResponseModel,
+	) {}
 
 	myControl = new FormControl();
 
@@ -71,6 +76,23 @@ export class HeaderComponent implements OnInit {
 		this.numberitemInCart();
 		this.numberOfApproval();
 		this.numberOfOpenTrx();
+	}
+
+	onRightClick(event: MouseEvent, item) {
+		// preventDefault avoids to show the visualization of the right-click menu of the browser
+		event.preventDefault();
+  
+		// we record the mouse position in our object
+		this.menuTopLeftPosition.x = event.clientX + 'px';
+		this.menuTopLeftPosition.y = event.clientY + 'px';
+  
+		// we open the menu
+		// we pass to the menu the information about our object
+		this.matMenuTrigger.menuData = {item: item}
+  
+		// we open the menu
+		this.matMenuTrigger.openMenu();
+  
 	}
 
 	ngOnDestroy() {
@@ -144,6 +166,8 @@ export class HeaderComponent implements OnInit {
 		console.log('hello');
 	}
 
+
+
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
@@ -178,6 +202,7 @@ export class HeaderComponent implements OnInit {
 
 	goToAccount() {
 		this.router.navigate(['./account']);
+		// window.open('./#/account', "_blank");
 	}
 
 	goToCart() {
@@ -185,6 +210,17 @@ export class HeaderComponent implements OnInit {
 			this.openDialogLocation('./cart');
 		} else {
 			this.router.navigate(['./cart']);
+		}
+	}
+
+	openNewTab(a){
+		if (this.router.url == '/request-approval') {
+			this.openDialogLocation(a);
+		} else {
+			// this.router.navigate(['./cart']);
+			// window.open('./#/account', "_blank");
+			this.router.navigate([a]).then(result => {  window.open('/#/'+a, '_blank'); });
+
 		}
 	}
 
