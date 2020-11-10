@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProfileUrl } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import {
 	REQUEST_APPROVAL_STATUS,
-	REQUEST_APPROVAL_STATUS_DICT,
+	REQUEST_APPROVAL_STATUS_DICT
 } from '../../request-approval.constant';
 
 @Component({
@@ -10,10 +12,19 @@ import {
 	styleUrls: ['./item-card2.component.scss'],
 })
 export class ItemCard2Component implements OnInit {
+	datauser;
+	
 	@Input() item: any;
-	constructor() {}
+	constructor(private http: HttpService, ) {} 
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		const sub = this.http.get(ProfileUrl, '').subscribe(
+			resp => {
+				this.datauser = resp.data.profile;
+
+			}
+		)
+	}
 
 	blurItem() {
 		return this.item.status !== REQUEST_APPROVAL_STATUS_DICT.OK;
