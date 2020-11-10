@@ -1,31 +1,36 @@
 @import '../../../../styles/variables/colors';
 @import '../../../../styles/variables/fonts';
 #mbel {
-	width: 90%;
-	height: auto;
 	background-color: white;
 	z-index: 9999;
 	border-radius: 30px;
+	padding: 20px;
+	height: 500px;
 }
 
 #loc-header {
-	position: relative;
-	width: 100%;
-	font-family: $secondary-font;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
-	line-height: 28px;
 	color: #606060;
-	padding-left: 20px;
 	font-weight: bold;
-	margin-top: 10px;
-	height: 25px;
+}
+
+#loc-bottom {
+	position: relative;
+	color: $color-primary;
+	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.horizontal-line {
+	width: 100%;
+	height: 1px;
+	background-color: #a9a9a9;
 }
 
 #body_address_1 {
-	width: 100%;
-	font-family: $secondary-font;
 	line-height: 25px;
 	font-weight: bold;
 	font-size: 17px;
@@ -37,137 +42,10 @@
 	font-size: 14px;
 }
 
-#loc-hr-top {
-	position: relative;
-	width: 100%;
-	margin-left: 20px;
-	margin-top: 25px;
-	padding: 10px;
-	border-bottom: 1px solid #a9a9a9;
+.plus-red {
+	width: 17px;
+	height: 17px;
 }
-
-#loc-body {
-	position: relative;
-	width: 100%;
-	padding: 15px 10px 15px 25px;
-	font-weight: bold;
-	margin-top: 10px;
-	height: auto;
-}
-
-#loc-body-address {
-	position: relative;
-	float: left;
-	width: 75%;
-	color: #606060;
-	font-family: $secondary-font;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 15px;
-	line-height: 22px;
-}
-
-#loc-body-manuver {
-	position: relative;
-	float: left;
-	width: 22%;
-	border: solid blue 0px;
-}
-
-#loc-body-button {
-	position: relative;
-	float: left;
-	margin: 0px;
-	padding-left: 10px;
-	width: 85%;
-}
-
-#loc-body-checkbox {
-	width: 12%;
-	position: relative;
-	float: left;
-	margin: 0px;
-	padding-left: 10px;
-}
-
-#loc-body-button-unchecked {
-	position: relative;
-	float: left;
-	margin: 0px;
-	padding-left: 10px;
-	width: 45%;
-}
-
-.button-location {
-	background-color: $color-primary;
-	border: 0px;
-	width: 89px;
-	height: 28px;
-	padding: 5px 15px 5px 15px;
-	border-radius: 23px;
-	color: #ffffff;
-	font-size: 14px;
-	border-radius: 10px;
-	font-family: $secondary-font;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 16px;
-	line-height: 19px;
-
-	// background: linear-gradient(
-	// 	0.36deg,
-	// 	rgba(239, 33, 58, 0.75) 21.28%,
-	// 	rgba(226, 23, 59, 0.75) 68.11%,
-	// 	rgba(218, 19, 19, 0.75) 123.54%
-	// );
-	// box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.25);
-	border-radius: 23px;
-	text-align: center;
-}
-
-.button-location-kosong {
-	background-color: transparent;
-	border: 0px;
-	width: 89px;
-	height: 28px;
-	padding: 5px 15px 5px 15px;
-	border-radius: 10px;
-	color: #ffffff;
-	font-size: 14px;
-	border-radius: 10px;
-	font-family: $secondary-font;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 16px;
-	line-height: 19px;
-	/* identical to box height */
-	text-align: center;
-}
-
-#loc-hr-bottom {
-	position: relative;
-	width: 100%;
-	margin-left: 20px;
-	padding: 10px;
-	border-bottom: 1px solid #a9a9a9;
-}
-
-#loc-bottom {
-	position: relative;
-	width: 100%;
-	margin-left: 20px;
-	text-align: center;
-	padding-top: 20px;
-	color: $color-primary;
-	float: left;
-	margin-top: 20px;
-	font-family: $primary-font;
-	font-weight: bold;
-	line-height: 19px;
-	font-size: 16px;
-	cursor: pointer;
-}
-
 .radiyo {
 	display: block;
 	position: relative;
@@ -182,7 +60,6 @@
 
 /* Hide the browser's default radio button */
 .radiyo input {
-	position: absolute;
 	opacity: 0;
 	cursor: pointer;
 }

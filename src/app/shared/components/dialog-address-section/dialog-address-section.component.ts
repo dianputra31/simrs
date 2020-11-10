@@ -3,11 +3,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddressList, SetDefaultAddress } from '../../../app.constant';
-import { BaseService } from '../../../core/base-service/service/base.service';
-import { CartItemResponseModel } from '../../../models/cart-item-response.model';
+import { HttpService } from '../../../core/base-service/http.service';
 import { SetDefaultAddressReq } from '../../../models/default-address-request.model';
 import { DeliveryAddressObjectModel } from '../address-section/model/delivery-address-object.model';
-import { DeliveryAddressResponseModel } from '../address-section/model/delivery-address-response.model';
 
 @Component({
 	selector: 'dialog-address-section',
@@ -24,11 +22,8 @@ export class DialogAddressSectionComponent implements OnInit {
 		public dialogRef: MatDialogRef<DialogAddressSectionComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any,
 		private router: Router,
-		private service: BaseService
-	) {
-		// this.datalocation = data.address;
-		// console.log(data.address);
-	}
+		private service: HttpService
+	) {}
 
 	ngOnInit(): void {
 		this.subsribers = [];
@@ -46,29 +41,31 @@ export class DialogAddressSectionComponent implements OnInit {
 
 	getAddressList() {
 		const url = AddressList;
-		const sub = this.service
-			.getData(url, DeliveryAddressResponseModel, null, false)
-			.subscribe((resp) => {
-				this.addresses = resp.delivery_address;
+		const sub = this.service.get(url).subscribe((resp) => {
+			this.addresses = resp.data;
 
-				this.location = this.addresses[0].address_detail;
-			});
+			this.location = this.addresses[0].address_detail;
+		});
 
-		this.subsribers.push(sub); 
+		this.subsribers.push(sub);
 	}
 
 	setDefaultAddress(addressId) {
-		console.log("radio button is check id", addressId)
-		console.log("address-list: ", this.addresses)
-		var adid = <string>addressId.id
-		const url = SetDefaultAddress + adid
-		var dd = new SetDefaultAddressReq()
-		dd.address_id = adid
-		const sub = this.service
-			.postData(url, dd, CartItemResponseModel, false)
-			.subscribe((resp) => {
-				this.dialogRef.close();
-			})
+		var adid = <string>addressId.id;
+		const url = SetDefaultAddress + adid;
+		var dd = new SetDefaultAddressReq();
+		dd.address_id = adid;
+		const sub = this.service.post(url, dd).subscribe((resp) => {
+			this.dialogRef.close();
+		});
 		this.subsribers.push(sub);
+	}
+
+	checkedItem(index) {
+		if (index == 0) {
+			return 'checked';
+		} else {
+			return '';
+		}
 	}
 }
