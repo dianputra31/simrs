@@ -4,6 +4,7 @@
 	background-color: white;
 	z-index: 9999;
 	border-radius: 30px;
+	padding: 20px;
 	height: 500px;
 }
 
@@ -13,6 +14,14 @@
 	font-size: 24px;
 	color: #606060;
 	font-weight: bold;
+}
+
+#loc-bottom {
+	position: relative;
+	color: $color-primary;
+	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
 }
 
 .horizontal-line {
@@ -33,6 +42,10 @@
 	font-size: 14px;
 }
 
+.plus-red {
+	width: 17px;
+	height: 17px;
+}
 .radiyo {
 	display: block;
 	position: relative;
