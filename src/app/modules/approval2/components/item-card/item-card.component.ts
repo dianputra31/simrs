@@ -13,7 +13,6 @@ import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ApprovalRejectUrl } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
 import { ApprovalRejectDialogComponent } from '../../../approval2/components/approval-reject-dialog/approval-reject-dialog.component';
 @Component({
@@ -22,7 +21,7 @@ import { ApprovalRejectDialogComponent } from '../../../approval2/components/app
 	styleUrls: ['./item-card.component.scss'],
 })
 export class ItemCardComponent implements OnInit {
-	@Input() item: CartListItemModel;
+	@Input() item: any;
 	@ViewChild('dangerTpl') dangerTpl;
 	@Output() onReject = new EventEmitter();
 	@BlockUI() blockUI: NgBlockUI;
