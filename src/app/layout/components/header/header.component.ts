@@ -195,10 +195,11 @@ export class HeaderComponent implements OnInit {
 	}
 
 	backToHome() {
-		if (this.router.url == '/request-approval') {
+		console.log(this.router.url)
+		if (this.router.url === '/request-approval') {
 			this.openDialogLocation('./');
 		} else {
-			this.router.navigate(['./']);
+			this.router.navigate(['./home']);
 		}
 	}
 
