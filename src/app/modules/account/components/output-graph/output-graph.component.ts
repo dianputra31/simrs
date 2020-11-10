@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Subscription } from 'rxjs';
-import { DashboardPerMonth } from '../../../../app.constant';
 
 declare var require: any;
 let Boost = require('highcharts/modules/boost');
@@ -20,6 +18,24 @@ noData(Highcharts);
 	styleUrls: ['./output-graph.component.scss'],
 })
 export class OutputGraphComponent implements OnInit {
+	subscribers: Subscription[];
+	initialized = false;
+	@Input() items_month: any[] = [];
+	@Input() items_purchaser: any[] = [];
+	@Input() items_product: any[] = [];
+
+	month: any[] = [];
+	month_name: any[] = [];
+	years: any[] = [];
+	total: any[] = [];
+
+	requester_name: any[] = [];
+	requester_years: any[] = [];
+	requester_total: any[] = [];
+
+	product_name: any[] = [];
+	product_total: any[] = [];
+
 	public options: any = {
 		chart: {
 			type: 'line',
@@ -28,14 +44,7 @@ export class OutputGraphComponent implements OnInit {
 			text: 'Pembelian Perusahaan',
 		},
 		xAxis: {
-			categories: [
-				'Jul 2020',
-				'Ags 2020',
-				'Sept 2020',
-				'Okt 2020',
-				'Nov 2020',
-				'Des 2020',
-			],
+			categories: this.month_name,
 		},
 		yAxis: {
 			title: false,
@@ -55,14 +64,7 @@ export class OutputGraphComponent implements OnInit {
 			{
 				showInLegend: false,
 				cursor: 'pointer',
-				data: [
-					10000000,
-					15000000,
-					17500000,
-					5000000,
-					20000000,
-					25000000,
-				],
+				data: this.total,
 				color: '#FF0000',
 			},
 		],
@@ -76,13 +78,7 @@ export class OutputGraphComponent implements OnInit {
 			text: 'Pembelian per User',
 		},
 		xAxis: {
-			categories: [
-				'Purchaser 9',
-				'Purchaser 6',
-				'Purchaser 3',
-				'Purchaser 10',
-				'Purchaser 2',
-			],
+			categories: this.requester_name,
 			title: {
 				text: null,
 				enabled: false,
@@ -135,29 +131,8 @@ export class OutputGraphComponent implements OnInit {
 		},
 		series: [
 			{
-				name: 'Year 1800',
-				data: [
-					{
-						y: 300,
-						color: 'purple',
-					},
-					{
-						y: 1200,
-						color: 'green',
-					},
-					{
-						y: 800,
-						color: 'orange',
-					},
-					{
-						y: 900,
-						color: 'purple',
-					},
-					{
-						y: 450,
-						color: 'red',
-					},
-				],
+				name: 'total',
+				data: this.requester_years,
 			},
 		],
 	};
@@ -210,31 +185,126 @@ export class OutputGraphComponent implements OnInit {
 				type: 'pie',
 				name: 'Browser share',
 				innerSize: '60%',
-				data: [
-					['Chrome', 58.9],
-					['Firefox', 33.29],
-					['Internet Explorer', 13],
-				],
+				data: this.product_name,
 			},
 		],
 	};
-	subscription: Subscription;
-	constructor(private http: HttpClient) {}
+	constructor() {}
 
 	ngOnInit() {
+		this.initialized = true;
+		this.graphMonth();
+		this.graphPurchaser();
+		this.graphProduct();
 		Highcharts.chart('container', this.options);
 		Highcharts.chart('container2', this.chart2);
 		Highcharts.chart('container3', this.chart3);
-		this.getSummaryMonth();
-		// this.getSummaryPurchaser();
-		// this.getSummaryProduct();
+	}
+	ngOnDestroy() {
+		this.subscribers.forEach((each) => each.unsubscribe());
+	}
+	graphMonth() {
+		console.log('items month', this.items_month);
+		if (this.items_month.length === 0) {
+			console.log('nilainya 0');
+			// this.total = [];
+		} else {
+			this.items_month.forEach((item, index) => {
+				this.month.push(item.m);
+				this.years.push(item.y);
+				this.total.push(item.total);
+				console.log(index, this.month);
+			});
+			console.log('items month', this.month.length, this.month);
+			console.log('items month', this.total.length, this.total);
+			this.month.forEach((item) => {
+				if (item === 1) {
+					item = 'Januari';
+					this.month_name.push(item);
+				} else if (item === 2) {
+					item = 'Februari';
+					this.month_name.push(item);
+				} else if (item === 3) {
+					item = 'Maret';
+					this.month_name.push(item);
+				} else if (item === 4) {
+					item = 'April';
+					this.month_name.push(item);
+				} else if (item === 5) {
+					item = 'Mei';
+					this.month_name.push(item);
+				} else if (item === 6) {
+					item = 'Juni';
+					this.month_name.push(item);
+				} else if (item === 7) {
+					item = 'Juli';
+					this.month_name.push(item);
+				} else if (item === 8) {
+					item = 'Agustus';
+					this.month_name.push(item);
+				} else if (item === 9) {
+					item = 'September';
+					this.month_name.push(item);
+				} else if (item === 10) {
+					item = 'Oktober';
+					this.month_name.push(item);
+				} else if (item === 11) {
+					item = 'November';
+					this.month_name.push(item);
+				} else {
+					item = 'Desember';
+					this.month_name.push(item);
+				}
+			});
+		}
+	}
+	graphPurchaser() {
+		console.log('items purchaser', this.items_purchaser);
+		var data;
+		if (this.items_purchaser.length === 0) {
+			console.log('nilainya 00');
+		} else {
+			console.log('graph purchaser');
+			this.items_purchaser.forEach((item) => {
+				data = { y: item.total, color: this.getRandomColor() };
+				this.requester_name.push(item.requester_full_name);
+				this.requester_years.push(data);
+				this.requester_total.push(item.total);
+			});
+		}
+	}
+	graphProduct() {
+		console.log('items product', this.items_product);
+		if (this.items_product.length === 0) {
+			console.log('nilainya 000');
+		} else {
+			var data;
+			console.log('graph product');
+			this.items_product.forEach((item) => {
+				data = [item.product_name, item.total];
+				this.product_name.push(data);
+			});
+		}
+	}
+	getRandomColor() {
+		var letters = '0123456789ABCDEF';
+		var color = '#';
+		for (var i = 0; i <= this.items_purchaser.length; i++) {
+			color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
 	}
 
-	getSummaryMonth() {
-		// var url = DashboardPerMonth + `${e}`;
-		var url = DashboardPerMonth + '?year=2020&company_id=1';
-		var param = {};
-		console.log('idnya', url);
-		this.http.post(url, param).subscribe((resp) => {});
+	ngOnChanges() {
+		if (this.initialized) {
+			this.graphMonth();
+			this.graphPurchaser();
+			this.graphProduct();
+			Highcharts.chart('container', this.options);
+			Highcharts.chart('container2', this.chart2);
+			Highcharts.chart('container3', this.chart3);
+			console.log('month', this.month);
+			console.log(this.options);
+		}
 	}
 }

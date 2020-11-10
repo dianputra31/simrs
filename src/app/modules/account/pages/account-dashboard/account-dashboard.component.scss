@@ -1,6 +1,11 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
+nz-date-picker {
+	border-radius: 50px;
+	width: 100%;
+	border: 0.5px solid #a9a9a9;
+}
 .label-title {
 	font-family: $primary-font;
 	font-style: normal;
@@ -12,28 +17,28 @@
 }
 
 #filter-wrapper {
-  width: 500px;
-  height: 100%;
+	width: 300px;
+	height: 100%;
 }
 
-#main-head{
-  background-color: cornflowerblue;
-  text-align: center;
+#main-head {
+	background-color: cornflowerblue;
+	text-align: center;
 }
 
 .highcharts-legend-item rect {
-  visibility: hidden;
+	visibility: hidden;
 }
 
 .xLegendSymbol {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid;
-  border-radius: 50px;
-  height: 40px;
-  width: 40px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  font-size: 11px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 3px solid;
+	border-radius: 50px;
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 11px;
 }
