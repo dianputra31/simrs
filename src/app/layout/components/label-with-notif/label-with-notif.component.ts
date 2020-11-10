@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LabelWithNotifComponent implements OnInit {
 	@Input() label: String;
-	@Input() badge: String;
+	@Input() badge;
 	constructor() {}
 
 	ngOnInit(): void {}

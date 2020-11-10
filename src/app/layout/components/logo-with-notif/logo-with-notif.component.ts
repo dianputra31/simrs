@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./logo-with-notif.component.scss'],
 })
 export class LogoWithNotifComponent implements OnInit {
-	@Input() badge: String;
+	@Input() badge;
 	constructor() {}
 
 	ngOnInit(): void {}
