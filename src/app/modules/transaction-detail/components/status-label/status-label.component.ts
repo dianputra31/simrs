@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TRANSACTION_STATUS_DICT } from '../../../../app.constant';
 
 @Component({
 	selector: 'status-label',
@@ -33,5 +34,29 @@ export class StatusLabelComponent implements OnInit {
 
 	ajukanLagi() {
 		this.ajukanLagiEvent.emit();
+	}
+
+	tampilkanSelesaiAbu2() {
+		return (
+			this.status == TRANSACTION_STATUS_DICT.ORDERED ||
+			this.status == TRANSACTION_STATUS_DICT.PENDING ||
+			this.status == TRANSACTION_STATUS_DICT.PROCESS ||
+			this.status == TRANSACTION_STATUS_DICT.DELIVER
+		);
+	}
+	tampilkanSelesaiMerah() {
+		return this.status == TRANSACTION_STATUS_DICT.RECEIVED;
+	}
+	tampilkanBeliLagi() {
+		return this.status == TRANSACTION_STATUS_DICT.CLOSED;
+	}
+	tampilkanAjukanLagi() {
+		return this.status == TRANSACTION_STATUS_DICT.REJECTED;
+	}
+	tampilkanCariSejenis() {
+		return (
+			this.status == TRANSACTION_STATUS_DICT.OUTOFSTOCK ||
+			this.status == TRANSACTION_STATUS_DICT.CANCEL
+		);
 	}
 }

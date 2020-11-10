@@ -31,7 +31,8 @@ export class AccountKelolaPurchaserComponent implements OnInit {
 
 	getUserList() {
 		const sub = this.http.get(UserCompanyUsersUrl).subscribe((resp) => {
-			this.users = resp.data;
+			const usersList: any[] = resp.data;
+			this.users = usersList.filter((user) => user.role_id == 1);
 		});
 
 		this.subscriptions.push(sub);
