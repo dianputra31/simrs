@@ -52,6 +52,7 @@ export class CartLayoutComponent implements OnInit {
 				item.selected = this.select(item);
 				item.enableSelection = this.select(item);
 			});
+			console.log(this.items);
 			this.total_item = resp.total_item;
 			this.total_price = resp.total_price;
 
@@ -132,10 +133,12 @@ export class CartLayoutComponent implements OnInit {
 		};
 
 		this.items.forEach((item) => {
+			// if (item.selected) {
 			param.cart_list.push({
 				product_id: item.product_id,
 				quantity: item.quantity,
 			});
+			// }
 		});
 
 		this.blockUI.start();

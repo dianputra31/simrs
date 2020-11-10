@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { BlockUIModule } from 'ng-block-ui';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { ItemCard2Component } from './components/item-card2/item-card2.component';
@@ -22,6 +23,7 @@ import { RequestApprovalRoutingModule } from './request-approval-routing.module'
 		RequestApprovalRoutingModule,
 		SharedModule,
 		SharedPipesModule,
+		BlockUIModule.forRoot(),
 	],
 })
 export class RequestApprovalModule {}
