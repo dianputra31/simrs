@@ -2,6 +2,7 @@ import { PlatformLocation } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import { ApprovalUrl, ProfileUrl, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
@@ -21,6 +22,7 @@ export let browserRefresh = false;
 })
 export class RequestApprovalLayoutComponent implements OnInit {
 	subsribers: Subscription[] = [];
+	@BlockUI() blockUI: NgBlockUI;
 
 	items: any[];
 
@@ -200,18 +202,19 @@ export class RequestApprovalLayoutComponent implements OnInit {
 		this.innerHeight = window.innerHeight;
 
 		this.leftContainerHeight =
-			this.innerHeight - this.topFixed - this.headers - 20;
+			this.innerHeight - this.topFixed - this.headers;
 	}
 
 	getAddress() {
 		this.fullname = this.storageService.getName();
+		this.blockUI.start();
 		const sub = this.service.get(ProfileUrl).subscribe((resp) => {
 			this.addressData = resp.data.delivery_address;
 
+			this.blockUI.stop();
 			setTimeout(() => {
 				this.initScrolling();
-			}, 40);
-			this.initScrolling();
+			}, 1000);
 		});
 
 		this.subsribers.push(sub);
