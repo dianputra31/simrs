@@ -19,14 +19,14 @@
 	</div>
 </div>
 <div
-	[ngClass]="(label.status == 'PROCESS' || label.status =='CLOSED'  || label.status =='RECEIVED')? 'showicon' : 'noshowicon'">
+	[ngClass]="(label.status == 'PROCESS' || label.status =='CLOSED'  || label.status =='RECEIVED'  || label.status =='ORDERED'  || label.status =='DELIVER')? 'showicon' : 'noshowicon'">
 	<div class="d-flex"
 		id="icon-status">
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 
 			<div class="d-sm-inline-flex"
-				[ngClass]="(label.status == 'PROCESS' || label.status == 'CLOSED' || label.status =='RECEIVED')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'PROCESS' || label.status == 'CLOSED' || label.status =='RECEIVED'  || label.status =='ORDERED'  || label.status =='DELIVER')? 'showred' : 'showgrey'"
 				id="kotak-icon">
 
 				<span
