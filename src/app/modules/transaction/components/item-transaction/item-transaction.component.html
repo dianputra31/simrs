@@ -94,7 +94,9 @@
                 </ng-template>
 
                 <ng-template #fourth>
-                    <ng-template *ngIf="item.status=='RECEIVED'; then fifth else sixth"></ng-template>
+                    <ng-template
+                        *ngIf="item.status=='RECEIVED' || item.status=='PROCESS' || item.status=='ORDERED' || item.status=='DELIVER'; then fifth else sixth">
+                    </ng-template>
                     <ng-template #fifth>
                         <ng-template *ngIf="item.status=='RECEIVED'; then enab else disab">
                         </ng-template>
@@ -120,7 +122,6 @@
                     </ng-template>
 
                     <ng-template #sixth>
-                        <!-- {{item | json}} -->
                         <red-button label="Cari Sejenis"
                             font="14px"
                             paddingtop="10px"
@@ -128,8 +129,7 @@
                             paddingleft="0px"
                             paddingright="0px"
                             (click)="carisejenis(item)"></red-button>
-                        <!-- <red-bg-button label="Cari Sejenis"
-							(click)="carisejenis(item)"></red-bg-button> -->
+
                     </ng-template>
 
                 </ng-template>
