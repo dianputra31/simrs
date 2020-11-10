@@ -18,34 +18,16 @@
 						class="label-1">{{datauser?.fullname}}</div>
 				</div>
 				<div class="d-flex align-items-center">
-					<div id="div-approval"
-						(contextmenu)="onRightClick($event, {content: 'Approval', redir: 'approval'})"
-						class="relative"
-						(click)="goToPage('./approval')">
-						<div class="label-1">Approval</div>
-						<div id="item-to-approve"
-							class="warn-notif">0</div>
-					</div>
+					<label-with-notif label="approval"
+						[badge]="nApproval"
+						(click)="goToApproval()"></label-with-notif>
 					<wsh wide="20px"></wsh>
-					<div id="div-transaksi"
-						(contextmenu)="onRightClick($event, {content: 'Transaksi', redir: 'transaction'})"
-						class="relative"
-						(click)="goToPage('./transaction')">
-						<div class="label-1">Transaksi</div>
-						<div id="open-trx"
-							class="warn-notif">0</div>
-					</div>
+					<label-with-notif label="Transaksi"
+						(click)="goToTransaction()"
+						[badge]="nTransaction"></label-with-notif>
 					<wsh wide="20px"></wsh>
-					<div id="div-cart"
-						(contextmenu)="onRightClick($event, {content: 'Cart', redir: 'cart'})"
-						class="relative"
-						(click)="goToCart()">
-						<img src="../../../../assets/image/icons/cart-logo.svg"
-							style="width:22px;"
-							id="headers-cart">
-						<div id="item-count"
-							class="warn-notif">0</div>
-					</div>
+					<logo-with-notif [badge]="nCart"
+						(click)="goToCart()"></logo-with-notif>
 				</div>
 			</div>
 
