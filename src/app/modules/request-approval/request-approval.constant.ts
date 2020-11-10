@@ -35,7 +35,7 @@ export const REQUEST_APPROVAL_STATUS = [
 	},
 	{
 		status: REQUEST_APPROVAL_STATUS_DICT.SHIP_NOT_COVERED,
-		display: 'Stok Habis',
+		display: 'Area Tidak Terjangkau',
 	},
 	{
 		status: REQUEST_APPROVAL_STATUS_DICT.OK,
