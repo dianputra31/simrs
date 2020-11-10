@@ -1,9 +1,15 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import en from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { IconDefinition } from '@ant-design/icons-angular';
+import * as AllIcons from '@ant-design/icons-angular/icons';
 import { BlockUIModule } from 'ng-block-ui';
+import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
+import { DemoNgZorroAntdModule } from '../../shared/ng-zorro-antd.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AccountRoutingModule } from './account-routing.module';
 import { EditAlamatDialogComponent } from './components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
@@ -13,6 +19,7 @@ import { NameAddressComponent } from './components-info-perusahaan/name-address/
 import { RoundedInputComponent } from './components-info-perusahaan/rounded-input/rounded-input.component';
 import { SetUtamaButtonComponent } from './components-info-perusahaan/set-utama-button/set-utama-button.component';
 import { TambahAlamatBaruDialogComponent } from './components-info-perusahaan/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
+import { TrashCanDialogComponent } from './components-info-perusahaan/trash-can-dialog/trash-can-dialog.component';
 import { TrashCanComponent } from './components-info-perusahaan/trash-can/trash-can.component';
 import { AddButtonComponent } from './components-kelola-purchaser/add-button/add-button.component';
 import { AddPurchaserEditorComponent } from './components-kelola-purchaser/add-purchaser-editor/add-purchaser-editor.component';
@@ -34,8 +41,14 @@ import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchase
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
-import { TrashCanDialogComponent } from './components-info-perusahaan/trash-can-dialog/trash-can-dialog.component';
+registerLocaleData(en);
 
+const antDesignIcons = AllIcons as {
+	[key: string]: IconDefinition;
+};
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
+	(key) => antDesignIcons[key]
+);
 @NgModule({
 	declarations: [
 		AccountLayoutComponent,
@@ -76,6 +89,11 @@ import { TrashCanDialogComponent } from './components-info-perusahaan/trash-can-
 		SharedPipesModule,
 		HttpClientModule,
 		BlockUIModule.forRoot(),
+		DemoNgZorroAntdModule,
+	],
+	providers: [
+		{ provide: NZ_I18N, useValue: en_US },
+		{ provide: NZ_ICONS, useValue: icons },
 	],
 })
 export class AccountModule {}

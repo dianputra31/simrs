@@ -1,23 +1,19 @@
 <wsv wide="28px"></wsv>
 <div class="d-flex justify-content-between">
-  <div class="label-title">
-    Dashboard
-  </div>
-  <div class="d-flex"
-    id="filter-wrapper">
-    <date-dropdown class="flex-even"></date-dropdown>
-    <wsh wide="24px"></wsh>
-    <filter-dropdown-list class="flex-even"></filter-dropdown-list>
-  </div>
+    <div class="label-title">
+        Dashboard
+    </div>
+    <div class="d-flex"
+        id="filter-wrapper">
+        <nz-date-picker nzMode="year"
+            [(ngModel)]="date"
+            (ngModelChange)="onChange($event)"></nz-date-picker>
+        <!-- <wsh wide="24px"></wsh>
+        <filter-dropdown-list class="flex-even"></filter-dropdown-list> -->
+    </div>
 </div>
 
-<output-graph></output-graph>
-
-<!-- <div id="chartContainer"
-	style="height: 370px; width: 100%;"></div>
-
-<div id="chartContainer2"
-	style="height: 370px; width: 100%;"></div>
-
-<div id="chartContainer3"
-	style="height: 370px; width: 100%;"></div> -->
+<output-graph #inputgetData
+    [items_month]="items_month"
+    [items_purchaser]="items_purchaser"
+    [items_product]="items_product"></output-graph>
