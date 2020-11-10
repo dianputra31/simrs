@@ -1,5 +1,11 @@
 // import { ProductCatalogResponseModel } from '../../../models/product-catalog-response-model';
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	OnInit,
+	Output,
+	ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -12,12 +18,12 @@ import {
 	CartListUrl,
 	OpenTrxCount,
 	ProfileUrl,
-	SearchProduct
+	SearchProduct,
 } from '../../../app.constant';
+import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 import { RedirectParameterService } from '../../redirect-parameter.service';
-
 
 @Component({
 	selector: 'header',
@@ -30,17 +36,20 @@ export class HeaderComponent implements OnInit {
 	account;
 	dataproduk;
 	optionsname;
-	menuTopLeftPosition =  {x: '0', y: '0'}
+	menuTopLeftPosition = { x: '0', y: '0' };
+	nApproval = 0;
+	nTransaction = 0;
+	nCart = 0;
 
 	@Output() keyword = new EventEmitter<string>();
-	@ViewChild(MatMenuTrigger, {static: true}) matMenuTrigger: MatMenuTrigger;
-
+	@ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger: MatMenuTrigger;
 
 	subsribers: Subscription[];
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router,
+		private http: HttpService,
 		private service: BaseService,
 		private MatAutocompleteModule: MatAutocompleteModule,
 		private _redirectparam: RedirectParameterService // private ProductCatalogResponseModel: ProductCatalogResponseModel,
@@ -81,18 +90,17 @@ export class HeaderComponent implements OnInit {
 	onRightClick(event: MouseEvent, item) {
 		// preventDefault avoids to show the visualization of the right-click menu of the browser
 		event.preventDefault();
-  
+
 		// we record the mouse position in our object
 		this.menuTopLeftPosition.x = event.clientX + 'px';
 		this.menuTopLeftPosition.y = event.clientY + 'px';
-  
+
 		// we open the menu
 		// we pass to the menu the information about our object
-		this.matMenuTrigger.menuData = {item: item}
-  
+		this.matMenuTrigger.menuData = { item: item };
+
 		// we open the menu
 		this.matMenuTrigger.openMenu();
-  
 	}
 
 	ngOnDestroy() {
@@ -166,8 +174,6 @@ export class HeaderComponent implements OnInit {
 		console.log('hello');
 	}
 
-
-
 	openDialogLocation(des) {
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
@@ -202,7 +208,14 @@ export class HeaderComponent implements OnInit {
 
 	goToAccount() {
 		this.router.navigate(['./account']);
-		// window.open('./#/account', "_blank");
+	}
+
+	goToTransaction() {
+		this.router.navigate(['./transaction']);
+	}
+
+	goToApproval() {
+		this.router.navigate(['./transaction']);
 	}
 
 	goToCart() {
@@ -213,67 +226,36 @@ export class HeaderComponent implements OnInit {
 		}
 	}
 
-	openNewTab(a){
+	openNewTab(a) {
 		if (this.router.url == '/request-approval') {
 			this.openDialogLocation(a);
 		} else {
 			// this.router.navigate(['./cart']);
 			// window.open('./#/account', "_blank");
-			this.router.navigate([a]).then(result => {  window.open('/#/'+a, '_blank'); });
-
+			this.router.navigate([a]).then((result) => {
+				window.open('/#/' + a, '_blank');
+			});
 		}
 	}
 
 	numberitemInCart() {
-		const sub = this.service
-			.getData(CartListUrl, false, null, true)
-			.subscribe((resp) => {
-				var tc = resp.data.cart_list.length;
-				if (parseInt(tc) > 0) {
-					document.getElementById('item-count').innerText =
-						resp.data.cart_list.length;
-				} else {
-					document.getElementById('item-count').innerText = '';
-					document
-						.getElementById('item-count')
-						.classList.remove('show');
-				}
-			});
+		const sub = this.http.get(CartListUrl).subscribe((resp) => {
+			this.nCart = resp.data.cart_list.length;
+		});
 		this.subsribers.push(sub);
 	}
 
 	numberOfApproval() {
-		const sub = this.service
-			.postData(ApprovalCount, false, false, false)
-			.subscribe((resp) => {
-				var tc = resp.data.approval_count;
-				if (parseInt(tc) > 0) {
-					document.getElementById('item-to-approve').innerText = tc;
-				} else {
-					document.getElementById('item-to-approve').innerText = '';
-					document
-						.getElementById('item-to-approve')
-						.classList.remove('show');
-				}
-			});
+		const sub = this.http.post(ApprovalCount, {}).subscribe((resp) => {
+			this.nApproval = resp.data.approval_count;
+		});
 		this.subsribers.push(sub);
 	}
 
 	numberOfOpenTrx() {
-		const sub = this.service
-			.postData(OpenTrxCount, false, false, false)
-			.subscribe((resp) => {
-				var tc = resp.data.open_transaction_count;
-				console.log('tc: ', tc);
-				if (parseInt(tc) > 0) {
-					document.getElementById('open-trx').innerText = tc;
-				} else {
-					document.getElementById('open-trx').innerText = '';
-					document
-						.getElementById('open-trx')
-						.classList.remove('show');
-				}
-			});
+		const sub = this.http.post(OpenTrxCount, {}).subscribe((resp) => {
+			this.nTransaction = resp.data.open_transaction_count;
+		});
 		this.subsribers.push(sub);
 	}
 }
