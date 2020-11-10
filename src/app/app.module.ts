@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppComponent } from './app.component';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
@@ -13,6 +12,9 @@ import { LayoutModule } from './layout/layout.module';
 import { MaterialModule } from './material.module';
 import { NgbdToastGlobal } from './shared/toast/toast-global.component';
 import { ToastsContainer } from './shared/toast/toasts-container.component';
+
+
+
 @NgModule({
 	declarations: [AppComponent, NgbdToastGlobal, ToastsContainer],
 	imports: [
@@ -23,11 +25,10 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 			scrollPositionRestoration: 'top',
 			useHash: true,
 		}),
-		BrowserAnimationsModule,
+		BrowserAnimationsModule, 
 		MaterialModule,
 		NgbModule,
 		HttpClientModule,
-		InfiniteScrollModule,
 	],
 	providers: [
 		/* Declare service for this module */
@@ -40,4 +41,4 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
