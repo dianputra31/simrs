@@ -11,7 +11,7 @@ export class AccountNavigationBarComponent implements OnInit {
 	navItems = [
 		{
 			label: 'Dashboard',
-			endPoint: '',
+			endPoint: 'dashboard',
 		},
 		{
 			label: 'Informasi Personal',
@@ -46,8 +46,9 @@ export class AccountNavigationBarComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		if(localStorage.getItem('selectedInfo') === 'Log out' || localStorage.getItem('selectedInfo') === '') this.selected = 'Dashboard'; else this.selected = localStorage.getItem('selectedInfo');
-		// this.selected = this.navItems[0];
+		// if(localStorage.getItem('selectedInfo') === 'Log out' || localStorage.getItem('selectedInfo') === '') this.selected = 'Dashboard'; else this.selected = localStorage.getItem('selectedInfo');
+		this.selected = this.navItems[0];
+		console.log(this.selected);
 	}
 
 	selectItem(item) {
@@ -55,7 +56,8 @@ export class AccountNavigationBarComponent implements OnInit {
 			this.storageService.clear();
 			this._document.defaultView.location.reload();
 		}
-		this.selected = item.label;
-		localStorage.setItem('selectedInfo', item.label);
+		this.selected = item;
+		// this.selected = item.label;
+		// localStorage.setItem('selectedInfo', item.label);
 	}
 }

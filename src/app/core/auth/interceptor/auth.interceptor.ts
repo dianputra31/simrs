@@ -2,7 +2,7 @@ import {
 	HttpEvent,
 	HttpHandler,
 	HttpInterceptor,
-	HttpRequest,
+	HttpRequest
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StorageService } from '../../storage/service/storage.service';
