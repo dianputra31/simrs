@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserCompanyUsersUrl } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
-
+import { USER_ROLE_DICT } from '../../account.constant';
 @Component({
 	selector: 'account-kelola-purchaser',
 	templateUrl: './account-kelola-purchaser.component.html',
@@ -32,7 +32,9 @@ export class AccountKelolaPurchaserComponent implements OnInit {
 	getUserList() {
 		const sub = this.http.get(UserCompanyUsersUrl).subscribe((resp) => {
 			const usersList: any[] = resp.data;
-			this.users = usersList.filter((user) => user.role_id == 1);
+			this.users = usersList.filter(
+				(user) => user.role_id == USER_ROLE_DICT.PURCHASER
+			);
 		});
 
 		this.subscriptions.push(sub);
