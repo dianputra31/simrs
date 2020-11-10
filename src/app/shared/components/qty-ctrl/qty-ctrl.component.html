@@ -26,7 +26,8 @@
 			(input)="formatNumbersss()"
 			[attr.disabled]="allowChanges? null : ''"
 			(keypress)="preventAlphabet($event)"
-			(change)="qtyChange()">
+			(change)="qtyChange()"
+			autocomplete="off">
 		<div id="horizontal-underline">
 		</div>
 	</div>
