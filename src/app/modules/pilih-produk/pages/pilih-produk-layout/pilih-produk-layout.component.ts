@@ -23,6 +23,9 @@ export class PilihProdukLayoutComponent implements OnInit {
 	qtyproduk: number;
 	namakategori: any;
 	categories;
+	sub_category_id;
+	subcategories;
+	namasubkategori;
 	category_id;
 	limit: number = 30;
 	page: number = 1;
@@ -123,6 +126,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 			
 			this.category_id = params.get('category_id');
+			this.sub_category_id = params.get('sub_category_id');
 		});
 
 		
@@ -133,7 +137,17 @@ export class PilihProdukLayoutComponent implements OnInit {
 			.subscribe((resp) => {
 				this.categories = resp.category;
 				for (let items of this.categories) {
-					if (items.id == this.category_id) this.namakategori = 'kategori ' + items.category_name;
+					if (items.id == this.category_id) {
+						this.namakategori = items.category_name;
+						for (let itemsub of items.subcategories){
+							// console.log('SUBKATEGORI: ' + itemsub.id + '-' +  itemsub.category_name + ' | ID: ' + this.sub_category_id);
+							// console.log(itemsub.id + "===" + this.sub_category_id)
+							if(itemsub.id == this.sub_category_id) {
+								this.namakategori = itemsub.category_name;
+							}
+						}
+					}
+					
 				}
 
 			});
@@ -169,10 +183,10 @@ export class PilihProdukLayoutComponent implements OnInit {
 				if (resp.status.rc === RESPONSE.SUCCESS) {
 					var newData = resp.data;
 
-						this.qtyproduk += resp.data.length;
+						this.qtyproduk = resp.query.found_rows;
 						
 						this.items = this.items.concat(newData);
-						console.log(this.items);
+						// console.log(this.items);
 
 						this.initScrolling();
 				} else {

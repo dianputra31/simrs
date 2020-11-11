@@ -4,7 +4,7 @@
 		(click)="openDialogImage(productDetail?.product_image)">
 
 
-		<img [src]="productDetail.product_image"
+		<img src="{{productDetail?.product_image}}"
 			class="card-img-top"
 			id="detail-main-image"
 			(error)="onImgError($event)">

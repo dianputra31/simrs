@@ -1,12 +1,25 @@
 <div class="container">
 	<wsv wide="20px"></wsv>
-	<breadcrumb [productDetail]="productDetail"></breadcrumb>
+	<breadcrumb [prodcat]="prodcat"
+		[subcat]="subcat"
+		[prodname]="prodname"
+		[catid]="catid"
+		[subcatid]="subcatid"></breadcrumb>
+
+
 	<wsv wide='17px'></wsv>
 	<image-price-section [productDetail]="productDetail"
 		[qtyObject]="qtyObject"></image-price-section>
 	<wsv wide='23px'></wsv>
 	<deskripsi-spesifikasi-section [productDetail]="productDetail"></deskripsi-spesifikasi-section>
 	<wsv wide='30px'></wsv>
+
 </div>
 <floating-footer [productDetail]="productDetail"
 	[qtyObject]="qtyObject"></floating-footer>
+
+<div id="divload"
+	*ngIf="isSpinner">
+	<img src="../../../../../assets/image/icons/nestloading.gif"
+		style="position: relative;width:50px;">
+</div>
