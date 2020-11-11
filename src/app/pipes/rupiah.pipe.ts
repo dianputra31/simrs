@@ -20,12 +20,12 @@ export class RupiahPipe implements PipeTransform {
 				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 			case 'bulat':
 				return (
-					'Rp. ' +
+					'Rp ' +
 					value.toString().replace(/,/g, '.')
 				);
 			default:
 				return (
-					'Rp. ' +
+					'Rp ' +
 					value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 				);
 		}
