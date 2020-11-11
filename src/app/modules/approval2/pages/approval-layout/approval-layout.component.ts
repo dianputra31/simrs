@@ -64,6 +64,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	start_date;
 	end_date;
 
+	rightContainerWidth: any = 0;
 	innerHeight: any;
 	leftContainerHeight: any;
 	rightContainerHeight: any;
@@ -468,7 +469,6 @@ export class ApprovalLayoutComponent implements OnInit {
 	initScrolling() {
 		this.topFixed = document?.getElementById('top-fixed')?.offsetHeight;
 		this.headers = document?.getElementById('headers')?.offsetHeight;
-
 		this.onResize();
 	}
 

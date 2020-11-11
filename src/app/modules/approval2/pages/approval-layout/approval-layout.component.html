@@ -40,7 +40,7 @@
                 <div id="horizontal-line"></div>
                 <wsv wide="15px"></wsv>
 
-                <div class="d-flex hasembuh">
+                <div class="d-flex">
 
                     <div class="d-flex flex-grow-1">
                         <input-dropdown [items]="purchasers"
@@ -74,14 +74,23 @@
                 <wsv wide="15px"></wsv>
                 <div class="d-flex justify-content-between"
                     *ngIf="items?.length>=1">
-                    <div class="d-flex">
-                        <check-box-two [checked]="true"
-                            [allowChanges]="true"
-                            (onClickEvent)="pilihSemuaClickEvent($event)"
-                            class="check-box-container"></check-box-two>
-                        <div id="pilihsemua">Pilih Semua</div>
+                    <div class="d-flex w-100">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="d-flex">
+                                <check-box-two [checked]="true"
+                                    [allowChanges]="true"
+                                    (onClickEvent)="pilihSemuaClickEvent($event)"
+                                    class="check-box-container"></check-box-two>
+                                <div id="pilihsemua">Pilih Semua</div>
+                            </div>
 
-                        <div id="terpilih">{{numberOfItemsSelected()}} Barang Dipilih</div>
+                            <div class="d-flex">
+                                <div id="terpilih">{{numberOfItemsSelected()}}</div>
+                                <div id="terpilih-label">Barang Dipilih</div>
+                            </div>
+
+                        </div>
+                        <div style="width: 610px;"></div>
                     </div>
 
 
