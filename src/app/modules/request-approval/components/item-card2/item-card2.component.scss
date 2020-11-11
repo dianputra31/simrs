@@ -80,13 +80,14 @@
 #out-of-stock {
 	background: #fbb829;
 	border-radius: 19px;
-	width: 84px;
 	height: 18px;
 
 	font-style: normal;
 	font-weight: bold;
 	font-size: 10px;
-	line-height: 14px;
+
+	padding-left: 10px;
+	padding-right: 10px;
 
 	color: #ffffff;
 }

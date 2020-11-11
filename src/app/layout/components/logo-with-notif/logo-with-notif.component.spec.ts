@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmptyCartComponent } from './empty-cart.component';
+import { LogoWithNotifComponent } from './logo-with-notif.component';
 
-describe('EmptyCartComponent', () => {
-  let component: EmptyCartComponent;
-  let fixture: ComponentFixture<EmptyCartComponent>;
+describe('LogoWithNotifComponent', () => {
+  let component: LogoWithNotifComponent;
+  let fixture: ComponentFixture<LogoWithNotifComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmptyCartComponent ]
+      declarations: [ LogoWithNotifComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmptyCartComponent);
+    fixture = TestBed.createComponent(LogoWithNotifComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

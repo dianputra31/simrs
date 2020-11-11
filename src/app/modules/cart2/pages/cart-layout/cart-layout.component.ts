@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { CartListUrl, CheckoutCartUrl } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { ITEM_AVAILABILITY_DICT } from '../../cart.constant';
 @Component({
 	selector: 'cart-layout',
 	templateUrl: './cart-layout2.component.html',
@@ -51,6 +52,7 @@ export class CartLayoutComponent implements OnInit {
 				item.selected = this.select(item);
 				item.enableSelection = this.select(item);
 			});
+			console.log(this.items);
 			this.total_item = resp.total_item;
 			this.total_price = resp.total_price;
 
@@ -65,8 +67,8 @@ export class CartLayoutComponent implements OnInit {
 
 	public select(item) {
 		if (
-			item.availability == 'AVAILABLE' ||
-			item.availability == 'LIMITED'
+			item.availability == ITEM_AVAILABILITY_DICT.AVAILABLE ||
+			item.availability == ITEM_AVAILABILITY_DICT.LIMITED
 		) {
 			return true;
 		} else {
@@ -131,10 +133,12 @@ export class CartLayoutComponent implements OnInit {
 		};
 
 		this.items.forEach((item) => {
-			param.cart_list.push({
-				product_id: item.product_id,
-				quantity: item.quantity,
-			});
+			if (item.selected) {
+				param.cart_list.push({
+					product_id: item.product_id,
+					quantity: item.quantity,
+				});
+			}
 		});
 
 		this.blockUI.start();

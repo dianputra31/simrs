@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ItemCard2Component } from './item-card2.component';
+import { LabelWithNotifComponent } from './label-with-notif.component';
 
-describe('ItemCard2Component', () => {
-  let component: ItemCard2Component;
-  let fixture: ComponentFixture<ItemCard2Component>;
+describe('LabelWithNotifComponent', () => {
+  let component: LabelWithNotifComponent;
+  let fixture: ComponentFixture<LabelWithNotifComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemCard2Component ]
+      declarations: [ LabelWithNotifComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ItemCard2Component);
+    fixture = TestBed.createComponent(LabelWithNotifComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

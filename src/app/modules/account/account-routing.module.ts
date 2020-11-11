@@ -18,6 +18,10 @@ const routes: Routes = [
 				component: AccountDashboardComponent,
 			},
 			{
+				path: 'dashboard',
+				component: AccountDashboardComponent,
+			},
+			{
 				path: 'info-personal',
 				component: AccountInfoPersonalComponent,
 			},

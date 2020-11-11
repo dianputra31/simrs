@@ -10,6 +10,7 @@ export class CheckBoxTwoComponent implements OnInit {
 	@Input() allowChanges: boolean;
 	@Input() detSupplier: string;
 	@Input() detDate: string;
+	@Input() detPurchaser: string;
 	@Output() onClickEvent = new EventEmitter<boolean>();
 
 	constructor() {}

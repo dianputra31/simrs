@@ -7,6 +7,7 @@ import {
 	RESPONSE,
 	TransactionConfirmUrl,
 	TransactionDetailUrl,
+	TRANSACTION_STATUS_DICT,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -246,5 +247,37 @@ export class TransactionDetailLayoutComponent implements OnInit {
 			ret = strtxt.substring(0, 56) + '...';
 		}
 		return ret;
+	}
+
+	tampilkanNoPemesananPengirimanNoResi() {
+		return !(
+			this.item?.status == TRANSACTION_STATUS_DICT.OUTOFSTOCK ||
+			this.item?.status == TRANSACTION_STATUS_DICT.CANCEL ||
+			this.item?.status == TRANSACTION_STATUS_DICT.REJECTED
+		);
+	}
+
+	tampilkanHargaCoret() {
+		return (
+			(this.item?.status == TRANSACTION_STATUS_DICT.ORDERED ||
+				this.item?.status == TRANSACTION_STATUS_DICT.PENDING ||
+				this.item?.status == TRANSACTION_STATUS_DICT.PROCESS ||
+				this.item?.status == TRANSACTION_STATUS_DICT.DELIVER ||
+				this.item?.status == TRANSACTION_STATUS_DICT.RECEIVED ||
+				this.item?.status == TRANSACTION_STATUS_DICT.CLOSED) &&
+			this.item?.initial_quantity != this.item?.quantity
+		);
+	}
+
+	tampilkanAlasanPartialFulfilled() {
+		return (
+			(this.item?.status == TRANSACTION_STATUS_DICT.ORDERED ||
+				this.item?.status == TRANSACTION_STATUS_DICT.PENDING ||
+				this.item?.status == TRANSACTION_STATUS_DICT.PROCESS ||
+				this.item?.status == TRANSACTION_STATUS_DICT.DELIVER ||
+				this.item?.status == TRANSACTION_STATUS_DICT.RECEIVED ||
+				this.item?.status == TRANSACTION_STATUS_DICT.CLOSED) &&
+			this.item?.initial_quantity != this.item?.quantity
+		);
 	}
 }

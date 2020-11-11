@@ -1,64 +1,47 @@
 <div id="mbel">
-	<div id="loc-header">Alamat
-	</div>
+	<div id="loc-header">Alamat</div>
+	<wsv wide="25px"></wsv>
+	<div class="horizontal-line"></div>
+	<wsv wide="25px"></wsv>
 	<div *ngFor="let item of addresses; let i = index">
-		<div id="loc-hr-top">
-		</div>
-		<div id="loc-body">
-			<div id="body_address_1">{{item.address_name}}</div>
 
-			<div id="loc-body-address">
+		<div class="d-flex justify-content-between align-items-center">
+			<div style="width: 360px;">
+				<div id="body_address_1">{{item.address_name}}</div>
 				<div id="body_address_2">{{item.address_detail}} {{item.subdistrict}} {{item.district}}
 					{{item.province}} {{item.zipcode}}</div>
 			</div>
-			<div id="loc-body-manuver">
-				<ng-template *ngIf="i==0;then checkedaddress else uncheckedaddress"></ng-template>
-				<ng-template #checkedaddress>
-					<div id="loc-body-button">
-						<span class="button-location">Utama</span>
-					</div>
-					<div id="loc-body-checkbox">
+			<div class="d-flex">
 
-						<label class="radiyo">
-							<input type="radio"
-								checked="checked"
-								name="radio">
-							<span class="checkmark"></span>
-						</label>
+				<rounded-red-button label="Utama"
+					paddingtop="5px"
+					paddingbottom="5px"
+					paddingleft="15px"
+					paddingright="15px"></rounded-red-button>
 
-					</div>
-				</ng-template>
-				<ng-template #uncheckedaddress>
-					<div id="loc-body-button">&nbsp;
-					</div>
-
-					<div id="loc-body-checkbox">
-
-						<label class="radiyo">
-							<input type="radio"
-								name="radio"
-								(change)="setDefaultAddress(item)">
-							<span class="checkmark"></span>
-						</label>
-
-					</div>
-				</ng-template>
-
-
-
+				<wsh wide="58px"></wsh>
+				<div class="d-flex">
+					<label class="radiyo">
+						<input type="radio"
+							[checked]="checkedItem(i)"
+							name="radio"
+							(click)="setDefaultAddress(item)">
+						<span class="checkmark"></span>
+					</label>
+					<div>A</div>
+				</div>
 			</div>
+
 		</div>
+
+		<wsv wide="43px"></wsv>
 	</div>
-
-
-
-	<div id="loc-hr-top"></div>
-
-
-	<!-- 
-		<div id="loc-hr-bottom">
-	</div> -->
-	<div id="loc-bottom">
-		+ Tambah Alamat Baru
+	<div class="d-flex justify-content-center align-items-center"
+		style="cursor: pointer;">
+		<img src="../../../../assets/image/icons/plus-red.png"
+			class="plus-red">
+		<wsh wide="15px"></wsh>
+		<div id="loc-bottom">Tambah Alamat Baru</div>
 	</div>
+	<wsv wide="24px"></wsv>
 </div>

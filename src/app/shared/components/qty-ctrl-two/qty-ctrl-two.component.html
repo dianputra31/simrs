@@ -18,9 +18,9 @@
 	<div>
 		<input id="qty_input"
 			type="number"
-			maxlength="6"
+			maxlength="4"
 			[(ngModel)]="qty"
-			(change)="onChange()">
+			(ngModelChange)="onChange()">
 		<div id="horizontal-underline">
 		</div>
 	</div>

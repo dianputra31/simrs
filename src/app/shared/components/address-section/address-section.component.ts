@@ -3,10 +3,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProfileUrl } from '../../../app.constant';
-import { BaseService } from '../../../core/base-service/service/base.service';
+import { HttpService } from '../../../core/base-service/http.service';
 import { DialogAddressSectionComponent } from '../dialog-address-section/dialog-address-section.component';
 import { DeliveryAddressObjectModel } from './model/delivery-address-object.model';
-import { ProfileResponseModel } from './model/profile-response.model';
 @Component({
 	selector: 'address-section',
 	templateUrl: './address-section.component.html',
@@ -18,7 +17,7 @@ export class AddressSectionComponent implements OnInit {
 	@Input() pl: number;
 	@Input() borderRadius: number;
 
-	subsribers: Subscription[];
+	subsribers: Subscription[] = [];
 
 	hlmn_ini;
 	divnya;
@@ -29,10 +28,21 @@ export class AddressSectionComponent implements OnInit {
 	constructor(
 		public dialog: MatDialog,
 		private router: Router,
-		private service: BaseService
-	) { }
+		private service: HttpService
+	) {}
 
 	stylesObj = {};
+
+	ngOnInit(): void {
+		this.stylesObj = {
+			width: this.wide,
+			margin: this.margin,
+			paddingLeft: this.pl,
+			borderRadius: this.borderRadius,
+		};
+
+		this.getAddress();
+	}
 
 	openDialogLocation() {
 		const dialogConfig = new MatDialogConfig();
@@ -50,28 +60,9 @@ export class AddressSectionComponent implements OnInit {
 			dialogConfig
 		);
 
-		modalDialog.afterClosed().subscribe(result => {
+		modalDialog.afterClosed().subscribe((result) => {
 			this.getAddress();
-		})
-	}
-
-	ngOnInit(): void {
-		// if (this.router.url == '/pilih-produk') {
-		// 	this.divnya = 'location-user-pendek';
-		// } else {
-		// 	this.divnya = 'location-user-panjang';
-		// }
-		this.subsribers = [];
-		this.divnya = 'location-user';
-
-		this.stylesObj = {
-			width: this.wide,
-			margin: this.margin,
-			paddingLeft: this.pl,
-			borderRadius: this.borderRadius,
-		};
-
-		this.getAddress();
+		});
 	}
 
 	ngOnDestroy() {
@@ -80,15 +71,16 @@ export class AddressSectionComponent implements OnInit {
 
 	getAddress() {
 		const url = ProfileUrl;
-		const sub = this.service
-			.getData(url, ProfileResponseModel, null, false)
-			.subscribe((resp) => {
-				this.addresses = resp.delivery_address;
+		const sub = this.service.get(url).subscribe((resp) => {
+			this.addresses = resp.data.delivery_address;
 
-				var def_addr = this.addresses[0].address_name + " - " + this.addresses[0].address_detail
-				this.location = def_addr;
-			});
+			var def_addr =
+				this.addresses[0].address_name +
+				' - ' +
+				this.addresses[0].address_detail;
+			this.location = def_addr;
+		});
 
-		this.subsribers.push(sub); 
+		this.subsribers.push(sub);
 	}
 }

@@ -20,6 +20,8 @@ import { LoginCard2Component } from './components/login-card2/login-card2.compon
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import { LabelWithNotifComponent } from './components/label-with-notif/label-with-notif.component';
+import { LogoWithNotifComponent } from './components/logo-with-notif/logo-with-notif.component';
 
 @NgModule({
 	declarations: [
@@ -30,6 +32,8 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 		LoginCard2Component,
 		GetOtpButtonComponent,
 		KirimUlangButtonComponent,
+		LabelWithNotifComponent,
+		LogoWithNotifComponent,
 	],
 	imports: [
 		CommonModule,

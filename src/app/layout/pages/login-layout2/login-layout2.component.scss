@@ -1,3 +1,8 @@
+@import '../../../../styles/variables/fonts';
+#main-layout-container {
+	margin-top: 113px;
+}
+
 .main-container {
 	height: 100vh;
 	overflow: hidden;
@@ -5,4 +10,14 @@
 	background-position: right 0px bottom 10%;
 	background-repeat: no-repeat;
 	background-size: 100%;
+}
+
+@font-face {
+	font-family: $secondary-font;
+	src: url(/../../../../assets/font/raleway-v16-latin-regular.woff);
+}
+
+@font-face {
+	font-family: $primary-font;
+	src: url(/../../../../assets/font/open-sans-v17-latin-regular.woff);
 }

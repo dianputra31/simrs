@@ -11,6 +11,8 @@ export class QtyCtrlTwoComponent implements OnInit {
 	qty: number;
 	constructor() {}
 
+	max = 1000;
+
 	ngOnInit(): void {
 		this.qty = this.initQty;
 	}
@@ -23,19 +25,21 @@ export class QtyCtrlTwoComponent implements OnInit {
 	}
 
 	addOneToCart() {
-		if (this.qty < 999999) {
+		if (this.qty < this.max) {
 			this.qty++;
 			this.updateQtyEvent();
 		}
 	}
 
 	onChange() {
-		if (this.qty < 1 || this.qty == null) {
-			this.qty = 1;
-		} else if (this.qty > 999999) {
-			this.qty = 999999;
-		}
-		this.updateQtyEvent();
+		setTimeout(() => {
+			if (this.qty < 1 || this.qty == null) {
+				this.qty = 1;
+			} else if (this.qty > this.max) {
+				this.qty = this.max;
+			}
+			this.updateQtyEvent();
+		}, 2000);
 	}
 
 	updateQtyEvent() {

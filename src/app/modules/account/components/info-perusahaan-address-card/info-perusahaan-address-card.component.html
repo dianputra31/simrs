@@ -17,9 +17,11 @@
 		</div>
 	</div>
 	<div class="d-flex">
-		<trash-can (click)="deleteInfo()"></trash-can>
+		<trash-can (click)="deleteInfo()"
+			*ngIf="index != 0"></trash-can>
 		<wsh wide="16px"></wsh>
-		<edit (click)="edit()"></edit>
+		<edit (click)="edit()"
+			*ngIf="index != 0"></edit>
 		<wsh wide="16px"></wsh>
 		<set-utama-button [utama]="utama"
 			[index]="index"

@@ -8,12 +8,16 @@
         <nz-date-picker nzMode="year"
             [(ngModel)]="date"
             (ngModelChange)="onChange($event)"></nz-date-picker>
+
         <!-- <wsh wide="24px"></wsh>
         <filter-dropdown-list class="flex-even"></filter-dropdown-list> -->
     </div>
 </div>
+{{items_purchaser}}
+{{items_month}}
+{{items_product}}
 
-<output-graph #inputgetData
+<!-- <output-graph #inputgetData
     [items_month]="items_month"
     [items_purchaser]="items_purchaser"
-    [items_product]="items_product"></output-graph>
+    [items_product]="items_product"></output-graph> -->
