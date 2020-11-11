@@ -30,12 +30,12 @@
 			</div>
 			<wsh wide="90px"></wsh>
 
-			<div id="tolak-button"
-				class="container-29 d-flex flex-grow-1 flex-row-reverse align-items-end">
+			<div class="d-flex w-100 align-items-end justify-content-end container-29">
 				<img id="trash-can"
 					src="../../../../../assets/image/logo/trash-3.png"
 					(click)="deleteItem(dangerTpl, item)" />
 			</div>
+
 
 
 		</div>
@@ -44,6 +44,7 @@
 		*ngIf="item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK'"
 		class="rectangle-87">
 	</div>
+
 	<div id="above-masking"
 		*ngIf="item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK'"
 		class="rectangle-87">
@@ -57,12 +58,23 @@
 					</div>
 				</div>
 				<wsv wide="9px"></wsv>
-				<div id="tolak-button"
-					class="d-flex flex-row-reverse">
+				<div class="d-flex align-items-center">
+
 					<img id="trash-can"
 						src="../../../../../assets/image/logo/trash-3.png"
 						(click)="deleteItem(dangerTpl, item)" />
+					<wsh wide="15px"></wsh>
+					<rounded-red-button label="Cari Sejenis"
+						font="14px"
+						paddingtop="4px"
+						paddingbottom="4px"
+						paddingleft="13px"
+						paddingright="13px"
+						(click)="carisejenis(item)"
+						style="cursor: pointer;"></rounded-red-button>
+
 				</div>
+
 			</div>
 		</div>
 	</div>

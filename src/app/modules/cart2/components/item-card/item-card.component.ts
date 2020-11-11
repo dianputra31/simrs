@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import { AddCart } from '../../../../app.constant';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
 import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
 import { CartItemModel } from '../../../../models/cart-item.model';
@@ -23,7 +25,9 @@ export class ItemCardComponent implements OnInit {
 	subscribers: Subscription[];
 	constructor(
 		public service: BaseService,
-		public toastService: ToastService
+		public toastService: ToastService,
+		private _redirectparam: RedirectParameterService,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
@@ -98,5 +102,15 @@ export class ItemCardComponent implements OnInit {
 			delay: 15000,
 			classname: 'bawah-tengah',
 		});
+	}
+
+	carisejenis(item: any) {
+		console.log(item);
+		const a: any = item.product_name;
+		this._redirectparam.namaproduk = a;
+		this.router.navigate([
+			`./pilih-produk/${item.category_id}/${item.subcategory_id}/` +
+				a.replaceAll('/', '-'),
+		]);
 	}
 }
