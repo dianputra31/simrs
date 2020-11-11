@@ -59,7 +59,6 @@ export class RangeDatepickerComponent {
 		this.date = null;
 		this.startDate = '';
 		this.endDate = '';
-		console.log(this.startDate, this.endDate);
 	}
 
 	ngOnInit() {

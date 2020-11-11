@@ -14,6 +14,7 @@ import { ProductDetailResponseModel } from '../../models/product-detail-response
 	styleUrls: ['./detail-product-layout.component.scss'],
 })
 export class DetailProductLayoutComponent implements OnInit {
+	subsribers: Subscription[];
 	productDetail: ProductDetailResponseModel;
 	qtyObject: QuantityModel = new QuantityModel();
 	isSpinner: boolean = false;
@@ -35,7 +36,9 @@ export class DetailProductLayoutComponent implements OnInit {
 
 		this.qtyObject.qty = 1;
 	}
-
+	ngOnDestroy() {
+		this.subsribers.forEach((each) => each.unsubscribe());
+	}
 	getItemDetail(skuItem: String) {
 		this.isSpinner = true;
 		const url = CatalogProductDetailUrl + '/' + skuItem;
