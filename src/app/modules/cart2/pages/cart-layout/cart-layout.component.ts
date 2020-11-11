@@ -80,8 +80,21 @@ export class CartLayoutComponent implements OnInit {
 		}
 	}
 
-	updateItemCartList() {
-		this.getCartItem();
+	updateItemCartList(newItem, i) {
+		console.log(newItem);
+		this.items[i] = newItem;
+
+		this.items[i].selected = this.select(this.items[i]);
+		this.items[i].enableSelection = this.select(this.items[i]);
+		console.log(this.items[i]);
+		console.log(this.items);
+		// this.getCartItem();
+	}
+
+	deleteItemCartList(i) {
+		console.log(i);
+		this.items.splice(i, 1);
+		console.log(this.items);
 	}
 
 	calculate() {
