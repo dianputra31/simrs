@@ -22,7 +22,8 @@
 				(error)="onImgError($event)"
 				class="item-img">
 			<wsh wide="15px"></wsh>
-			<div id="item-desc-wrapper">
+			<div id="item-desc-wrapper"
+				class="flex-grow-1">
 				<item-desc [item]="item"></item-desc>
 				<wsv wide="6px"></wsv>
 				<qty-ctrl-two [initQty]="item.quantity"
@@ -30,7 +31,7 @@
 			</div>
 			<wsh wide="90px"></wsh>
 
-			<div class="d-flex w-100 align-items-end justify-content-end container-29">
+			<div class="d-flex align-items-end justify-content-end container-29">
 				<img id="trash-can"
 					src="../../../../../assets/image/logo/trash-3.png"
 					(click)="deleteItem(dangerTpl, item)" />
