@@ -2,7 +2,6 @@
 @import '../../../../../styles/variables/fonts';
 
 #top-fixed {
-	width: 1366px;
 	background-color: $main-background;
 	z-index: 1;
 }
@@ -26,8 +25,6 @@
 }
 
 #terpilih {
-	margin-left: 550px;
-	font-family: $primary-font;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 14px;
@@ -35,9 +32,12 @@
 	color: $color-primary;
 }
 
-// #divload{
-// 	display: none;
-// }
+#terpilih-label {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+}
 
 #left-container {
 	height: 100%;
@@ -83,30 +83,4 @@
 
 .tautan {
 	cursor: pointer;
-}
-
-@media (min-width: 1368px) {
-	#horizontal-line {
-		height: 0.5px;
-		width: 100%;
-		background-color: #a9a9a9;
-		opacity: 0.6;
-	}
-
-	.hasembuh {
-		width: 100%;
-	}
-}
-
-@media (max-width: 1366px) {
-	#horizontal-line {
-		height: 0.5px;
-		width: 80%;
-		background-color: #a9a9a9;
-		opacity: 0.6;
-	}
-
-	.hasembuh {
-		width: 80%;
-	}
 }
