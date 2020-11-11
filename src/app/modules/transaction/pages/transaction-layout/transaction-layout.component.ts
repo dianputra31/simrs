@@ -6,7 +6,7 @@ import {
 	GetCompanyUsers,
 	RESPONSE,
 	TransactionListUrl,
-	TransactionStatusOptionUrl
+	TransactionStatusOptionUrl,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -169,22 +169,25 @@ export class TransactionLayoutComponent implements OnInit {
 		};
 
 		this.isSpinner = true;
+		console.log(this.isSpinner);
 		// console.log('param-get trxlist: ', param);
 		const sub = this.http
 			.post(TransactionListUrl, param)
 			.subscribe((resp) => {
+				console.log(this.isSpinner);
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					console.log(resp.data);
 					var newData = resp.data;
 					this.items = this.items.concat(newData);
+					this.isSpinner = false;
+					console.log(this.isSpinner);
 					this.initScrolling();
 				} else {
 					this.service.showAlert(resp.status.msg);
-				} 
+				}
 			});
 
 		this.subsribers.push(sub);
-		this.isSpinner = false;
 	}
 
 	selectStatus(status) {
