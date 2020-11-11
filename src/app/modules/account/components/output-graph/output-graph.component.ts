@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Subscription } from 'rxjs';
 
@@ -19,7 +19,6 @@ noData(Highcharts);
 })
 export class OutputGraphComponent implements OnInit {
 	subscribers: Subscription[];
-	initialized = false;
 	@Input() items_month: any[] = [];
 	@Input() items_purchaser: any[] = [];
 	@Input() items_product: any[] = [];
@@ -93,7 +92,7 @@ export class OutputGraphComponent implements OnInit {
 			min: 0,
 			gridLineWidth: 0,
 			title: {
-				text: 'Population (millions)',
+				text: '',
 				align: 'high',
 			},
 			labels: {
@@ -101,7 +100,7 @@ export class OutputGraphComponent implements OnInit {
 			},
 		},
 		tooltip: {
-			valueSuffix: ' millions',
+			valueSuffix: '',
 		},
 		plotOptions: {
 			bar: {
@@ -145,8 +144,8 @@ export class OutputGraphComponent implements OnInit {
 			text: 'Pembelian<br>per Produk',
 			align: 'center',
 			verticalAlign: 'middle',
-			y: 0,
-			x: -90,
+			y: 15,
+			x: -330,
 		},
 		plotOptions: {
 			pie: {
@@ -191,23 +190,15 @@ export class OutputGraphComponent implements OnInit {
 	};
 	constructor() {}
 
-	ngOnInit() {
-		this.initialized = true;
-		this.graphMonth();
-		this.graphPurchaser();
-		this.graphProduct();
-		Highcharts.chart('container', this.options);
-		Highcharts.chart('container2', this.chart2);
-		Highcharts.chart('container3', this.chart3);
-	}
+	ngOnInit() {}
 	ngOnDestroy() {
 		this.subscribers.forEach((each) => each.unsubscribe());
 	}
 	graphMonth() {
 		console.log('items month', this.items_month);
+		var b = this.total.splice(0, this.total.length);
 		if (this.items_month.length === 0) {
-			console.log('nilainya 0');
-			// this.total = [];
+			Highcharts.chart('container', this.options);
 		} else {
 			this.items_month.forEach((item, index) => {
 				this.month.push(item.m);
@@ -215,8 +206,7 @@ export class OutputGraphComponent implements OnInit {
 				this.total.push(item.total);
 				console.log(index, this.month);
 			});
-			console.log('items month', this.month.length, this.month);
-			console.log('items month', this.total.length, this.total);
+
 			this.month.forEach((item) => {
 				if (item === 1) {
 					item = 'Januari';
@@ -256,27 +246,28 @@ export class OutputGraphComponent implements OnInit {
 					this.month_name.push(item);
 				}
 			});
+			Highcharts.chart('container', this.options);
 		}
 	}
 	graphPurchaser() {
-		console.log('items purchaser', this.items_purchaser);
-		var data;
+		var data2;
+		var b = this.requester_years.splice(0, this.requester_years.length);
 		if (this.items_purchaser.length === 0) {
-			console.log('nilainya 00');
+			Highcharts.chart('container2', this.chart2);
 		} else {
-			console.log('graph purchaser');
 			this.items_purchaser.forEach((item) => {
-				data = { y: item.total, color: this.getRandomColor() };
+				data2 = { y: item.total, color: this.getRandomColor() };
 				this.requester_name.push(item.requester_full_name);
-				this.requester_years.push(data);
+				this.requester_years.push(data2);
 				this.requester_total.push(item.total);
 			});
+			Highcharts.chart('container2', this.chart2);
 		}
 	}
 	graphProduct() {
-		console.log('items product', this.items_product);
+		var b = this.product_name.splice(0, this.product_name.length);
 		if (this.items_product.length === 0) {
-			console.log('nilainya 000');
+			Highcharts.chart('container3', this.chart3);
 		} else {
 			var data;
 			console.log('graph product');
@@ -284,6 +275,7 @@ export class OutputGraphComponent implements OnInit {
 				data = [item.product_name, item.total];
 				this.product_name.push(data);
 			});
+			Highcharts.chart('container3', this.chart3);
 		}
 	}
 	getRandomColor() {
@@ -295,16 +287,27 @@ export class OutputGraphComponent implements OnInit {
 		return color;
 	}
 
-	ngOnChanges() {
-		if (this.initialized) {
+	ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+		if (
+			changes['items_month'] &&
+			changes['items_month'].previousValue !=
+				changes['items_month'].currentValue
+		) {
 			this.graphMonth();
+		}
+		if (
+			changes['items_purchaser'] &&
+			changes['items_purchaser'].previousValue !=
+				changes['items_purchaser'].currentValue
+		) {
 			this.graphPurchaser();
+		}
+		if (
+			changes['items_product'] &&
+			changes['items_product'].previousValue !=
+				changes['items_product'].currentValue
+		) {
 			this.graphProduct();
-			Highcharts.chart('container', this.options);
-			Highcharts.chart('container2', this.chart2);
-			Highcharts.chart('container3', this.chart3);
-			console.log('month', this.month);
-			console.log(this.options);
 		}
 	}
 }
