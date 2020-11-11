@@ -19,4 +19,8 @@ export class FilterInputComponent implements OnInit {
 		this.a = thisval;
 		this.keyword.emit(thisval);
 	}
+
+	resetKeyword() {
+		this.a = '';
+	}
 }

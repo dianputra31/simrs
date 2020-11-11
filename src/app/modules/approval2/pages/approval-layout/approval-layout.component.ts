@@ -49,7 +49,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	items: any[] = [];
 	itemArray: any[] = [];
 	selector: string = '#left-container';
-	page: number = 1;
+	page: number = 0;
 	limit: number = 5;
 	totalPages: number;
 
@@ -92,13 +92,11 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	onScrollDown(e) {
 		console.log('scrolled down!!', e);
-		this.getItems(this.page++);
+		this.page++;
+		this.getItems();
 	}
 
-	getItems(ev) {
-		console.log('page', this.page);
-		// this.totalPages = Math.ceil(this.items.length / this.limit);
-		// console.log('total page', this.totalPages);
+	getItems() {
 		var params: any = {
 			address_id: this.selectedAddress?.address_id,
 			keyword: this.keyword,
@@ -112,50 +110,20 @@ export class ApprovalLayoutComponent implements OnInit {
 			params.user_id = this.selectedPurchaser.id;
 		}
 
-		// console.log(param);
-
-		// this.blockUI.start();
 		this.isSpinner = true;
 		this.http.post(ApprovalListUrl, params).subscribe((resp) => {
-			// this.blockUI.stop();
 			this.isSpinner = false;
 
 			if (resp.status.rc === RESPONSE.SUCCESS) {
-				var newData = resp.data;
+				var newData: any[] = resp.data;
 
 				newData.forEach((each) => {
 					each.selected = this.enableSelect(each.availability);
 					each.enableSelection = this.enableSelect(each.availability);
 				});
-				// console.log(newData);
-				if (
-					this.start_date === undefined ||
-					this.end_date === undefined ||
-					this.start_date === '' ||
-					this.end_date === ''
-				) {
-					if (this.items.length === 0) {
-						this.items = this.items.concat(newData);
-						// console.log('itemsnya sdk', this.items);
-						this.initScrolling();
-					} else {
-						if (this.page > 1 || this.page === 0) {
-							this.items = this.items.concat(newData);
-							// console.log('itemsnya 1', this.items);
-							this.initScrolling();
-						} else {
-							this.items = [];
-							this.items = this.items.concat(newData);
-							// console.log('itemsnya 2', this.items);
-							this.initScrolling();
-						}
-					}
-				} else {
-					this.items = [];
-					this.items = this.items.concat(newData);
-					// console.log('itemsnya 2ss', this.items);
-					this.initScrolling();
-				}
+
+				this.items = this.items.concat(newData);
+				this.initScrolling();
 			} else {
 				this.service.showAlert(resp.status.msg);
 			}
@@ -183,19 +151,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				});
 
 				if (this.listSummaryByAddress.length != 0) {
-					// this.selectedAddress = this.listSummaryByAddress[0];
-					const storedSelectedAddressIndex = localStorage.getItem(
-						'selectedAddress'
-					);
-
-					this.selectedAddress = this.listSummaryByAddress.filter(
-						(x) => x.address_id == storedSelectedAddressIndex
-					)[0];
-
-					if (!this.selectedAddress) {
-						this.selectedAddress = this.listSummaryByAddress[0];
-					}
-
+					this.selectedAddress = this.checkSelectedAddressInStorage();
 					this.getPurchaserList();
 				}
 			} else {
@@ -238,7 +194,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				});
 
 				this.selectedPurchaser = this.purchasers[0];
-				this.getItems(this.page);
+				this.getItems();
 			} else {
 				this.service.showAlert(resp.status.msg);
 			}
@@ -249,41 +205,39 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	selectAddressGroup(i) {
 		this.selectedAddress = i;
-		this.page = 0;
-		this.items = [];
-		this.getItems(this.page);
-		console.log(this.selectedAddress);
+		this.resetItemListandPage();
+		this.getItems();
 		localStorage.setItem('selectedAddress', i.address_id);
 	}
 
 	selectPurchaser(purchaser) {
+		this.resetItemListandPage();
 		this.selectedPurchaser = purchaser;
-		this.getItems(this.page);
+		this.getItems();
 	}
 
 	cariKeyword(keyword) {
 		if (keyword.length >= 3 || keyword.length == 0) {
+			this.resetItemListandPage();
+
 			this.keyword = keyword;
-			this.getItems(this.page);
+			this.getItems();
 		}
 	}
 
 	filterDate(datenya) {
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
-		console.log('mashok');
-		console.log('test', this.start_date, this.end_date);
-		this.items = [];
-		this.page = 0;
-		this.getItems(this.page);
+
+		this.resetItemListandPage();
+
+		this.getItems();
 	}
 
 	filterRemoved(datenya) {
-		console.log('mashok2');
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
-		console.log('test2', this.start_date, this.end_date);
-		this.getItems(this.page);
+		this.getItems();
 	}
 
 	calculate() {
@@ -350,6 +304,7 @@ export class ApprovalLayoutComponent implements OnInit {
 		});
 		return false;
 	}
+
 	public enableSelect(availability) {
 		if (availability == 'AVAILABLE') {
 			return true;
@@ -393,7 +348,6 @@ export class ApprovalLayoutComponent implements OnInit {
 		for (let index = 0; index < selectedItems.length; index++) {
 			const element: Product = selectedItems[index];
 			const cart = new CartListApproveParams();
-			console.log(element);
 			cart.cart_request_id = element.id;
 			cart_list.push(cart);
 		}
@@ -449,21 +403,19 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	reset() {
-		// this.selectedAddress = this.listSummaryByAddress[0];
-		this.selectedAddress = localStorage.getItem('selectedAddress');
+		this.selectedAddress = this.checkSelectedAddressInStorage();
 		this.selectedPurchaser = this.purchasers[0];
 		this.keyword = '';
-		this.inputKeyword.getKeyword('');
+		this.inputKeyword.resetKeyword();
 		this.inputDate.resetDate();
 		this.start_date = '';
 		this.end_date = '';
-		this.items = [];
-		this.page = 0;
-		this.getItems(this.page);
+		this.resetItemListandPage();
+		this.getItems();
 	}
 
 	rejectItem() {
-		this.getItems(this.page);
+		this.getItems();
 	}
 
 	initScrolling() {
@@ -481,5 +433,22 @@ export class ApprovalLayoutComponent implements OnInit {
 
 		this.rightContainerHeight =
 			this.innerHeight - this.topFixed - this.headers;
+	}
+
+	checkSelectedAddressInStorage() {
+		var address = this.listSummaryByAddress.filter(
+			(x) => x.address_id == localStorage.getItem('selectedAddress')
+		)[0];
+
+		if (!address) {
+			address = this.listSummaryByAddress[0];
+		}
+
+		return address;
+	}
+
+	resetItemListandPage() {
+		this.items = [];
+		this.page = 0;
 	}
 }
