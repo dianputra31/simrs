@@ -47,6 +47,10 @@ export class CartLayoutComponent implements OnInit {
 		this.blockUI.start();
 		const sub = this.service.get(CartListUrl).subscribe((resp) => {
 			this.items = resp.data.cart_list;
+			console.log(this.items);
+			this.items.sort(function (a, b) {
+				return b.updated_at - a.updated_at;
+			});
 
 			this.items.forEach((item) => {
 				item.selected = this.select(item);
