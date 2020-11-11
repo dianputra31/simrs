@@ -56,12 +56,19 @@ export class QtyCtrlComponent implements OnInit {
 	}
 
 	formatNumbersss() {
+		console.log(this.qtyObject.qtyDisplay)
+		if(this.qtyObject.qtyDisplay=='0') {
+			this.qtyObject.qtyDisplay = "1";
+			this.qtyObject.qty = 1;
+			console.log(this.qtyObject.qty)
+		}
 		this.qtyObject.qtyDisplay = this.formatRupiah(
 			this.qtyObject.qtyDisplay,
 			''
 		);
 
 		this.qtyObject.qty = this.qtyObject.sanitizedNumber();
+		
 	}
 
 	formatRupiah(angka, prefix) {
