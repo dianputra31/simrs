@@ -23,14 +23,14 @@
 					<pilih-semua (onPilihSemuaCheckboxClick)="pilihSemuaClickEvent($event)"></pilih-semua>
 					<wsh wide="10px"></wsh>
 				</div>
-
 				<div class="d-flex">
 					<div [style.height.px]="leftContainerHeight"
 						id="item-list"
 						class="w-100">
-						<div *ngFor="let item of items">
+						<div *ngFor="let item of items; let i = index">
 							<item-card [item]="item"
-								(onUpdateQty)="updateItemCartList()"></item-card>
+								(onUpdateQty)="updateItemCartList($event,i)"
+								(onDeleteItem)="deleteItemCartList(i)"></item-card>
 							<wsv wide="40px"></wsv>
 						</div>
 					</div>

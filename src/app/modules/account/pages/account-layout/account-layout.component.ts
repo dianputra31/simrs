@@ -31,6 +31,11 @@ export class AccountLayoutComponent implements OnInit {
 		)
 
 	}
+
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-acc.svg';
+	}
  
 
 

@@ -31,21 +31,21 @@
 .divbutton-left {
 	float: center;
 	position: relative;
-	width: 85%;
+	width: 184px;
 	background-color: $abu-abu-sesuatu;
 	border-radius: 20px;
+	color: $putih-tok;
+	text-align: center;
+	padding-top:5px;
+	box-sizing: border-box;
+	border-radius: 57px;
+	height: 32px;
+	font-family: $primary-font;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 14px;
-	line-height: 16px;
-	display: flex;
-	align-items: center;
-	padding-left: 60px;
-	text-align: center;
-	cursor: pointer;
-	color: $putih-tok;
-	height: 32px;
-	font-family: $secondary-font;
+	line-height: 19px;
+
 }
 
 .divbutton-right {
@@ -92,7 +92,13 @@
 	color: $abu-abu-gelap-terang;
 	font-weight: bold;
 	font-size: 14px;
-	line-height: 10px;
+	line-height: 19px;
+	text-align: center;
+
+}
+
+::placeholder{
+	color: $abu-abu-lainnya;
 }
 
 #popup-option-button-all {

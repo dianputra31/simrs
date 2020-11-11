@@ -5,7 +5,8 @@
       <wsv wide="24px"></wsv>
       <div class="d-flex justify-content-center">
         <img id="logo-akun"
-          src="{{datauser?.profile_picture_url}}">
+          src="{{datauser?.profile_picture_url}}"
+          (error)="onImgError($event)">
       </div>
 
       <wsv wide="18px"></wsv>
