@@ -2,7 +2,11 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { CartListUrl, CheckoutCartUrl } from '../../../../app.constant';
+import {
+	CartListUrl,
+	CheckoutCartUrl,
+	RESPONSE,
+} from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { ITEM_AVAILABILITY_DICT } from '../../cart.constant';
@@ -45,26 +49,38 @@ export class CartLayoutComponent implements OnInit {
 
 	getCartItem() {
 		this.blockUI.start();
-		const sub = this.service.get(CartListUrl).subscribe((resp) => {
-			this.items = resp.data.cart_list;
+		const sub = this.service.get(CartListUrl).subscribe(
+			(resp) => {
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.items = resp.data.cart_list;
 
-			this.items.sort(function (a, b) {
-				return b.updated_at - a.updated_at;
-			});
+					this.items.sort(function (a, b) {
+						return b.updated_at - a.updated_at;
+					});
 
-			this.items.forEach((item) => {
-				item.selected = this.select(item);
-				item.enableSelection = this.select(item);
-			});
+					this.items.forEach((item) => {
+						item.selected = this.select(item);
+						item.enableSelection = this.select(item);
+					});
 
-			this.total_item = resp.total_item;
-			this.total_price = resp.total_price;
+					this.total_item = resp.total_item;
+					this.total_price = resp.total_price;
 
-			setTimeout(() => {
-				this.initScrolling();
-				this.blockUI.stop();
-			}, 40);
-		});
+					setTimeout(() => {
+						this.initScrolling();
+						this.blockUI.stop();
+					}, 40);
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				if (error.status == 400) {
+					this.dialogService.showAlert(error.error.msg);
+				} else {
+				}
+			}
+		);
 
 		this.subscribers.push(sub);
 	}
