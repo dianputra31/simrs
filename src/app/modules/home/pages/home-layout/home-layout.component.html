@@ -1,17 +1,15 @@
 <block-ui>
-	<div class="home-container container">
+	<div class="container">
+		<wsv wide="24px"></wsv>
 		<address-section borderRadius='20px'></address-section>
 		<div class="white-space"></div>
 		<banner-section hidden></banner-section>
 
-
 		<div *ngFor="let row of productCatalogRows">
-			<div class="white-space"></div>
+			<wsv wide="24px"></wsv>
 			<catalog-section [products]="row"></catalog-section>
 		</div>
-
-		<br />
-
+		<wsv wide="20px"></wsv>
 	</div>
 
 	<div class="footer">

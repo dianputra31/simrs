@@ -148,4 +148,8 @@ export class ItemTransactionComponent implements OnInit {
 		}
 		return ret;
 	}
+
+	itemClicked(item) {
+		this.router.navigate(['./detail-product/' + item.partner_sku_item]);
+	}
 }
