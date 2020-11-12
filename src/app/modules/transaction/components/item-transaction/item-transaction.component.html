@@ -42,7 +42,8 @@
         <div class="col-1-trx-item">
             <img id="image-item-trx"
                 [src]="item.product_image"
-                (error)="onImgError($event)">
+                (error)="onImgError($event)"
+                (click)="itemClicked(item)">
         </div>
         <wsh wide="30px"></wsh>
         <div class="col-2-trx-item">

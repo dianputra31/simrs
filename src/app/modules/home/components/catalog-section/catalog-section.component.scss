@@ -3,10 +3,10 @@
 
 #catalog-section-label {
 	color: $abu-abu-gelap;
-	font-family: $secondary-font;
+	font-family: 'OpenSans';
 	font-style: normal;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 20px;
 	line-height: 22px;
 	padding-left: 10px;
 }
@@ -19,33 +19,30 @@
 	font-size: 14px;
 	line-height: 19px;
 	padding-right: 0px;
-	text-align: right;	
+	text-align: right;
 	float: right;
 	cursor: pointer;
 }
 
-
-
-
 @media (min-width: 1368px) {
-	.pas{
+	.pas {
 		width: 92%;
-		margin-left:0px;
+		margin-left: 0px;
 	}
-	
-	.pas-catalog{
+
+	.pas-catalog {
 		width: 97%;
 		overflow: hidden;
 	}
 }
 
 @media (max-width: 1366px) {
-	.pas{
+	.pas {
 		width: 95%;
-		margin-left:0px;
+		margin-left: 0px;
 	}
-	
-	.pas-catalog{
+
+	.pas-catalog {
 		width: 97%;
 		overflow: hidden;
 	}

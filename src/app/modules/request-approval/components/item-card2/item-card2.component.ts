@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProfileUrl } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import {
 	REQUEST_APPROVAL_STATUS,
-	REQUEST_APPROVAL_STATUS_DICT
+	REQUEST_APPROVAL_STATUS_DICT,
 } from '../../request-approval.constant';
 
 @Component({
@@ -13,17 +14,14 @@ import {
 })
 export class ItemCard2Component implements OnInit {
 	datauser;
-	
+
 	@Input() item: any;
-	constructor(private http: HttpService, ) {} 
+	constructor(private http: HttpService, private router: Router) {}
 
 	ngOnInit(): void {
-		const sub = this.http.get(ProfileUrl, '').subscribe(
-			resp => {
-				this.datauser = resp.data.profile;
-
-			}
-		)
+		const sub = this.http.get(ProfileUrl, '').subscribe((resp) => {
+			this.datauser = resp.data.profile;
+		});
 	}
 
 	blurItem() {
@@ -39,5 +37,11 @@ export class ItemCard2Component implements OnInit {
 
 	onImgError(event) {
 		event.target.src = '../../../../assets/image/icons/default-item.png';
+	}
+
+	itemClicked() {
+		this.router.navigate([
+			'./detail-product/' + this.item.partner_sku_item,
+		]);
 	}
 }
