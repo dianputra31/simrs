@@ -42,16 +42,8 @@ button:focus {
 	display: none;
 }
 
-@media (min-width: 1368px) {
-	.container {
-		max-width: 1366px;
-	}
-}
-
-@media (max-width: 1366px) {
-	.container {
-		max-width: 1100px;
-	}
+.container {
+	max-width: 1366px;
 }
 
 .pojok-kanan-atas {
