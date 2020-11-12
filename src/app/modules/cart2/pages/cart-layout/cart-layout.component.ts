@@ -75,10 +75,8 @@ export class CartLayoutComponent implements OnInit {
 				}
 			},
 			(error) => {
-				if (error.status == 400) {
-					this.dialogService.showAlert(error.error.msg);
-				} else {
-				}
+				this.blockUI.stop();
+				this.service.handleError(error);
 			}
 		);
 
@@ -102,15 +100,12 @@ export class CartLayoutComponent implements OnInit {
 
 		this.items[i].selected = this.select(this.items[i]);
 		this.items[i].enableSelection = this.select(this.items[i]);
-		console.log(this.items[i]);
-		console.log(this.items);
+
 		// this.getCartItem();
 	}
 
 	deleteItemCartList(i) {
-		console.log(i);
 		this.items.splice(i, 1);
-		console.log(this.items);
 	}
 
 	calculate() {
@@ -179,15 +174,17 @@ export class CartLayoutComponent implements OnInit {
 			(resp) => {
 				this.blockUI.stop();
 
-				const stringnya = JSON.stringify(resp);
-				localStorage.setItem('checkout-cart', stringnya);
-				this.router.navigate(['./request-approval']);
-			},
-			(error: any) => {
-				this.blockUI.stop();
-				if (error.status === 400) {
-					this.dialogService.showAlert(error.error.msg);
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					const stringnya = JSON.stringify(resp);
+					localStorage.setItem('checkout-cart', stringnya);
+					this.router.navigate(['./request-approval']);
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
 				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.service.handleError(error);
 			}
 		);
 
