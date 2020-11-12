@@ -8,18 +8,32 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class QtyCtrlTwoComponent implements OnInit {
 	@Input() initQty: number;
 	@Output() onUpdateQty = new EventEmitter<number>();
-	qty: number;
+	qty: any;
+	cleanQty: number;
+
 	constructor() {}
 
 	max = 1000;
 
 	ngOnInit(): void {
 		this.qty = this.initQty;
+
+		if (this.qty == 1000) {
+			this.qty = '1.000';
+			this.cleanQty = this.qty.replace('.', '');
+		} else {
+			this.cleanQty = this.qty;
+		}
 	}
 
 	removeOneFromCart() {
+		if (typeof this.qty == 'string') {
+			this.qty = this.qty?.replace('.', '');
+		}
+
 		if (this.qty > 1) {
 			this.qty--;
+			this.cleanQty = this.qty;
 			this.updateQtyEvent();
 		}
 	}
@@ -28,6 +42,13 @@ export class QtyCtrlTwoComponent implements OnInit {
 		if (this.qty < this.max) {
 			this.qty++;
 			this.updateQtyEvent();
+		}
+
+		if (this.qty == 1000) {
+			this.qty = '1.000';
+			this.cleanQty = this.qty.replace('.', '');
+		} else {
+			this.cleanQty = this.qty;
 		}
 	}
 
@@ -38,11 +59,22 @@ export class QtyCtrlTwoComponent implements OnInit {
 			} else if (this.qty > this.max) {
 				this.qty = this.max;
 			}
+
+			if (this.qty == 1000) {
+				this.qty = '1.000';
+				this.cleanQty = this.qty.replace('.', '');
+			} else {
+				if (typeof this.qty == 'string' && this.qty != '') {
+					this.qty = this.qty.replace('.', '');
+				}
+				this.cleanQty = this.qty;
+			}
+
 			this.updateQtyEvent();
 		}, 2000);
 	}
 
 	updateQtyEvent() {
-		this.onUpdateQty.emit(this.qty);
+		this.onUpdateQty.emit(this.cleanQty);
 	}
 }

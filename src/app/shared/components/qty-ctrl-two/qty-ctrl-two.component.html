@@ -2,7 +2,7 @@
 	<a id="remove_cart_logo_wrapper"
 		class="d-flex align-items-center"
 		(click)="removeOneFromCart()">
-		<object *ngIf="qty == 1"
+		<object *ngIf="cleanQty == 1"
 			id="remove_cart_logo"
 			type="image/svg+xml"
 			data="../../../../../assets/image/icons/remove-logo-gray.svg"
@@ -16,7 +16,7 @@
 			</style>
 		</object>
 
-		<object *ngIf="qty != 1"
+		<object *ngIf="cleanQty != 1"
 			id="remove_cart_logo"
 			type="image/svg+xml"
 			data="../../../../../assets/image/icons/remove-logo.svg"
@@ -32,7 +32,7 @@
 	</a>
 	<div>
 		<input id="qty_input"
-			type="number"
+			type="text"
 			maxlength="4"
 			[(ngModel)]="qty"
 			(ngModelChange)="onChange()">
