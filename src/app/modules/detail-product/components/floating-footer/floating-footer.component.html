@@ -48,7 +48,8 @@
 					class="d-flex justify-content-between align-items-center">
 					<div class="d-flex align-items-center">
 						<img [src]="productDetail?.product_image"
-							id="notif-img">
+							id="notif-img"
+							(error)="onImgError($event)">
 						<wsh wide="10px"></wsh>
 						<div>
 							<!-- <div id="item-name">{{productDetail?.product_name}}</div> -->
