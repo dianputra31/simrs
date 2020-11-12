@@ -26,7 +26,8 @@
 		<div class="rectangle-86 w-100 d-flex">
 			<img src='{{item.product_image}}'
 				(error)="onImgError($event)"
-				class="item-img">
+				class="item-img"
+				(click)="itemClicked()">
 			<wsh wide="15px"></wsh>
 			<div id="item-desc-wrapper">
 				<item-desc [item]="item"></item-desc>

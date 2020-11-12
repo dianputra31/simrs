@@ -102,12 +102,17 @@ export class ItemCardComponent implements OnInit {
 	}
 
 	carisejenis(item: any) {
-		console.log(item);
 		const a: any = item.product_name;
 		this._redirectparam.namaproduk = a;
 		this.router.navigate([
 			`./pilih-produk/${item.category_id}/${item.subcategory_id}/` +
 				a.replaceAll('/', '-'),
+		]);
+	}
+
+	itemClicked() {
+		this.router.navigate([
+			'./detail-product/' + this.item.partner_sku_item,
 		]);
 	}
 }

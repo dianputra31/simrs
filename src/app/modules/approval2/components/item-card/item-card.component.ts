@@ -8,6 +8,7 @@ import {
 	ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -31,7 +32,8 @@ export class ItemCardComponent implements OnInit {
 		private http: HttpClient,
 		private dialog: MatDialog,
 		public service: BaseService,
-		public toastService: ToastService
+		public toastService: ToastService,
+		public router: Router
 	) {}
 
 	ngOnInit(): void {
@@ -125,5 +127,11 @@ export class ItemCardComponent implements OnInit {
 		} else {
 			return 'OUT OF STOCK';
 		}
+	}
+
+	itemClicked() {
+		this.router.navigate([
+			'./detail-product/' + this.item.partner_sku_item,
+		]);
 	}
 }
