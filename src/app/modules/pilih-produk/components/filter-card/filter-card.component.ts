@@ -21,6 +21,11 @@ export class FilterCardComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
+		
+	}
+
+	qtyChange(a,b){
+		
 	}
 
 	carilagi(a, b) {
@@ -29,20 +34,23 @@ export class FilterCardComponent implements OnInit {
 		this._redirectparam.price_start = a;
 		this._redirectparam.price_end = b;
 
-
-
 		this.route.paramMap.subscribe((params) => {
+			if (this._redirectparam.namaproduk !== '' && this._redirectparam.namaproduk !== '0') this.keyword = '"' + this._redirectparam.namaproduk + '"'; else this.keyword = '';
+			var keywordnya = this.keyword.replace(/['"]+/g, '');
+			var paramet: any = {
+				category_id: params.get('category_id'),
+				sub_category_id: params.get('sub_category_id'),
+				namaproduk: keywordnya,
+				price_start: this._redirectparam.price_start,
+				price_end: this._redirectparam.price_end,
+				page: 1,
+				limit:30,
+		};
 
+		this.PilihProdukLayout.getItems(paramet,2);
+		// alert("here");
+		
+	});
+}
 
-			this.cat_id = params.get('category_id');
-			this.subcat_id = params.get('sub_category_id');
-			this.keyword = this._redirectparam.namaproduk;
-
-
-		});
-
-
-		// this.PilihProdukLayout.getItems(this.cat_id, this.subcat_id, this.keyword, a, b);
-
-	}
 }

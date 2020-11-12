@@ -122,7 +122,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 			
 
-			this.getItems(paramet);
+			this.getItems(paramet,1);
 
 			
 			this.category_id = params.get('category_id');
@@ -157,7 +157,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 
 
-	getItems(paramet) {
+	getItems(paramet,src) {
 		console.log(paramet.category_id + ' | ' + paramet.sub_category_id);
 
 		this.IsWait = true;
@@ -185,8 +185,13 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 						this.qtyproduk = resp.query.found_rows;
 						
-						this.items = this.items.concat(newData);
-						// console.log(this.items);
+						if(src=='1'){
+							this.items = this.items.concat(newData);
+						}else{
+							this.items = newData;
+						}
+						
+						console.log(this.items);
 
 						this.initScrolling();
 				} else {
