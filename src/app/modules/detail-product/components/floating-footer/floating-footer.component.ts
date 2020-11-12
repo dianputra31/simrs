@@ -74,4 +74,8 @@ export class FloatingFooterComponent implements OnInit {
 		}
 		return ret
 	}
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
+	}
 }
