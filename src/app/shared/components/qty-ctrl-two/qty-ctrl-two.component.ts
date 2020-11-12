@@ -73,7 +73,7 @@ export class QtyCtrlTwoComponent implements OnInit {
 			}
 
 			this.updateQtyEvent();
-		}, 1500);
+		}, 1000);
 	}
 
 	updateQtyEvent() {
