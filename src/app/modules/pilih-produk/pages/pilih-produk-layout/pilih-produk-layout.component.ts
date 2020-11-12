@@ -74,8 +74,8 @@ export class PilihProdukLayoutComponent implements OnInit {
 		this.getBase(this.page);
 
 		const body = document.getElementsByTagName('body')[0];
-		console.log(body);
-		body.classList.add('no-scroll');
+		// console.log(body);
+		// body.classList.add('no-scroll');
 	}
 
 
