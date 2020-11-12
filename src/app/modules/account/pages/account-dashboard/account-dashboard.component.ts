@@ -6,7 +6,7 @@ import {
 	DashboardPerMonth,
 	DashboardPerProduct,
 	DashboardPerPurchaser,
-	RESPONSE
+	RESPONSE,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -21,9 +21,11 @@ import { OutputGraphComponent } from '../../components/output-graph/output-graph
 export class AccountDashboardComponent implements OnInit {
 	@BlockUI() blockUI: NgBlockUI;
 	@ViewChild('inputgetData') inputgetData: OutputGraphComponent;
+	purchasers = [];
 	date = null;
+	company_id;
 	tahun: number;
-	years: string = '2021';
+	years: string = '2020';
 
 	items_month: any[] = [];
 	items_purchaser: any[] = [];
@@ -40,10 +42,17 @@ export class AccountDashboardComponent implements OnInit {
 		this.getSummaryMonth();
 		this.getSummaryPurchaser();
 		this.getSummaryProduct();
+		this.purchaser_list();
 		this.onChange;
 	}
 	ngOnDestroy() {
 		this.subscribers.forEach((each) => each.unsubscribe());
+	}
+	purchaser_list() {
+		this.company_id = JSON.parse(
+			localStorage.getItem('profile')
+		).company_id;
+		console.log('c', this.company_id);
 	}
 	onChange(result: Date): void {
 		console.log('onChange: ', result);
@@ -57,7 +66,12 @@ export class AccountDashboardComponent implements OnInit {
 	}
 	getSummaryMonth() {
 		this.blockUI.start();
-		var url = DashboardPerMonth + '?year=' + this.years + '&company_id=1';
+		var url =
+			DashboardPerMonth +
+			'?year=' +
+			this.years +
+			'&company_id=' +
+			this.company_id;
 		var param = {};
 		const sub = this.http.post(url, param).subscribe((resp) => {
 			console.log(resp);
@@ -74,7 +88,11 @@ export class AccountDashboardComponent implements OnInit {
 	getSummaryPurchaser() {
 		this.blockUI.start();
 		var url =
-			DashboardPerPurchaser + '?year=' + this.years + '&company_id=1';
+			DashboardPerPurchaser +
+			'?year=' +
+			this.years +
+			'&company_id=' +
+			this.company_id;
 		var param = {};
 		console.log('idnya', url);
 		const sub = this.http.post(url, param).subscribe((resp) => {
@@ -90,7 +108,12 @@ export class AccountDashboardComponent implements OnInit {
 	}
 	getSummaryProduct() {
 		this.blockUI.start();
-		var url = DashboardPerProduct + '?year=' + this.years + '&company_id=1';
+		var url =
+			DashboardPerProduct +
+			'?year=' +
+			this.years +
+			'&company_id=' +
+			this.company_id;
 		var param = {};
 		const sub = this.http.post(url, param).subscribe((resp) => {
 			console.log(resp);
@@ -103,5 +126,9 @@ export class AccountDashboardComponent implements OnInit {
 			}
 		});
 		this.subscribers.push(sub);
+	}
+	reset() {
+		// this.selectedAddress = this.listSummaryByAddress[0];
+		this.items_month = [];
 	}
 }
