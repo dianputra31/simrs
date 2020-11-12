@@ -3,12 +3,10 @@
 
 #catalog-section-label {
 	color: $abu-abu-gelap;
-	font-family: 'OpenSans';
 	font-style: normal;
 	font-weight: bold;
 	font-size: 20px;
 	line-height: 22px;
-	padding-left: 10px;
 }
 
 #catalog-section-lihat-semua {
@@ -22,36 +20,4 @@
 	text-align: right;
 	float: right;
 	cursor: pointer;
-}
-
-@media (min-width: 1368px) {
-	.pas {
-		width: 92%;
-		margin-left: 0px;
-	}
-
-	.pas-catalog {
-		width: 97%;
-		overflow: hidden;
-	}
-}
-
-@media (max-width: 1366px) {
-	.pas {
-		width: 95%;
-		margin-left: 0px;
-	}
-
-	.pas-catalog {
-		width: 97%;
-		overflow: hidden;
-	}
-}
-
-.white-space-18px-horizontal {
-	width: 18px;
-}
-
-.white-space {
-	height: 13px;
 }

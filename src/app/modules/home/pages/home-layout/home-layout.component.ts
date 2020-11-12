@@ -69,7 +69,7 @@ export class HomeLayoutComponent implements OnInit {
 		const sub = this.http.get(url).subscribe((resp) => {
 			this.blockUI.stop();
 			if (resp.status.rc === RESPONSE.SUCCESS) {
-				this.productCatalogRows.push(resp.data);
+				this.productCatalogRows.push(resp.data.slice(0, 6));
 			} else {
 				alert(resp.status.msg);
 			}
