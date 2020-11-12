@@ -1,4 +1,3 @@
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import {
 	Component,
 	EventEmitter,
@@ -10,9 +9,9 @@ import {
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
-import { Observable, of, Subscription } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { ApprovalRejectUrl } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { ToastService } from '../../../../shared/toast/toast-service';
 import { ApprovalRejectDialogComponent } from '../../../approval2/components/approval-reject-dialog/approval-reject-dialog.component';
@@ -29,7 +28,7 @@ export class ItemCardComponent implements OnInit {
 
 	subscribers: Subscription[];
 	constructor(
-		private http: HttpClient,
+		private http: HttpService,
 		private dialog: MatDialog,
 		public service: BaseService,
 		public toastService: ToastService,
@@ -99,26 +98,11 @@ export class ItemCardComponent implements OnInit {
 			message: message,
 		};
 		this.blockUI.start();
-		this.http
-			.post(ApprovalRejectUrl, param)
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						// this.storageService.clear();
-						// this._document.defaultView.location.reload();
-						return of(err as any);
-					}
-					throw err;
-				})
-			)
-			.subscribe((resp) => {
-				this.showDanger();
-				this.onReject.emit();
-				this.blockUI.stop();
-			});
+		this.http.post(ApprovalRejectUrl, param).subscribe((resp) => {
+			this.showDanger();
+			this.onReject.emit();
+			this.blockUI.stop();
+		});
 	}
 
 	availability(availability) {

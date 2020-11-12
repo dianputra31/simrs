@@ -78,8 +78,8 @@ export class ApprovalLayoutComponent implements OnInit {
 	constructor(
 		private storageService: StorageService,
 		public dialog: MatDialog,
-		public service: BaseService,
-		public http: HttpService
+		public http: HttpService,
+		private dialogService: BaseService
 	) {}
 
 	ngOnInit(): void {
@@ -111,23 +111,30 @@ export class ApprovalLayoutComponent implements OnInit {
 		}
 
 		this.isSpinner = true;
-		this.http.post(ApprovalListUrl, params).subscribe((resp) => {
-			this.isSpinner = false;
+		this.http.post(ApprovalListUrl, params).subscribe(
+			(resp) => {
+				this.isSpinner = false;
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					var newData: any[] = resp.data;
 
-			if (resp.status.rc === RESPONSE.SUCCESS) {
-				var newData: any[] = resp.data;
+					newData.forEach((each) => {
+						each.selected = this.enableSelect(each.availability);
+						each.enableSelection = this.enableSelect(
+							each.availability
+						);
+					});
 
-				newData.forEach((each) => {
-					each.selected = this.enableSelect(each.availability);
-					each.enableSelection = this.enableSelect(each.availability);
-				});
-
-				this.items = this.items.concat(newData);
-				this.initScrolling();
-			} else {
-				this.service.showAlert(resp.status.msg);
+					this.items = this.items.concat(newData);
+					this.initScrolling();
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.isSpinner = false;
+				this.http.handleError(error);
 			}
-		});
+		);
 	}
 
 	ngOnDestroy() {
@@ -140,65 +147,82 @@ export class ApprovalLayoutComponent implements OnInit {
 	getAddress() {
 		this.blockUI.start();
 
-		const sub = this.http.get(AddressListUrl).subscribe((resp) => {
-			this.blockUI.stop();
-			if (resp.status.rc === RESPONSE.SUCCESS) {
-				//push address with request_total is no 0 to new array
-				resp.data.forEach((element) => {
-					if (element.request_total != 0) {
-						this.listSummaryByAddress.push(element);
-					}
-				});
+		const sub = this.http.get(AddressListUrl).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					resp.data.forEach((element) => {
+						if (element.request_total != 0) {
+							this.listSummaryByAddress.push(element);
+						}
+					});
 
-				if (this.listSummaryByAddress.length != 0) {
-					this.selectedAddress = this.checkSelectedAddressInStorage();
-					this.getPurchaserList();
+					if (this.listSummaryByAddress.length != 0) {
+						this.selectedAddress = this.checkSelectedAddressInStorage();
+						this.getPurchaserList();
+					}
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
 				}
-			} else {
-				this.service.showAlert(resp.status.msg);
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
 			}
-		});
+		);
 
 		this.subscribers.push(sub);
 	}
 
 	numberOfApproval() {
 		this.blockUI.start();
-		const sub = this.http.post(ApprovalCount, {}).subscribe((resp) => {
-			this.blockUI.stop();
-			if (resp.status.rc === RESPONSE.SUCCESS) {
-				this.nNotApproved = resp.data.approval_count;
-			} else {
-				this.service.showAlert(resp.status.msg);
+		const sub = this.http.post(ApprovalCount, {}).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this.nNotApproved = resp.data.approval_count;
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
 			}
-		});
+		);
 		this.subscribers.push(sub);
 	}
 
 	getPurchaserList() {
 		this.blockUI.start();
-		const sub = this.http.get(GetCompanyUsers).subscribe((resp) => {
-			if (resp.status.rc === RESPONSE.SUCCESS) {
+		const sub = this.http.get(GetCompanyUsers).subscribe(
+			(resp) => {
 				this.blockUI.stop();
-				this.purchasers = resp.data;
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this.blockUI.stop();
+					this.purchasers = resp.data;
 
-				const x = {
-					fullname: 'Semua',
-					id: '',
-				};
+					const x = {
+						fullname: 'Semua',
+						id: '',
+					};
 
-				this.purchasers.splice(0, 0, x);
+					this.purchasers.splice(0, 0, x);
 
-				this.purchasers.forEach((each) => {
-					each.label = each.fullname;
-				});
+					this.purchasers.forEach((each) => {
+						each.label = each.fullname;
+					});
 
-				this.selectedPurchaser = this.purchasers[0];
-				this.getItems();
-			} else {
-				this.service.showAlert(resp.status.msg);
+					this.selectedPurchaser = this.purchasers[0];
+					this.getItems();
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
 			}
-		});
+		);
 
 		this.subscribers.push(sub);
 	}
@@ -358,26 +382,34 @@ export class ApprovalLayoutComponent implements OnInit {
 
 		var pm: String = ConvertApproveParams.approveCartParamsToJson(params);
 
-		var url = ApproveUrl;
 		if (this.storageService.getRole() != 'Manager') {
 			pm = null;
 		}
 
-		const sub = this.service
-			.postData(url, pm, false, false, true)
-			.subscribe((resp) => {
+		const sub = this.http.post(ApproveUrl, pm).subscribe(
+			(resp) => {
 				this.blockUI.stop();
-				const stringnya = ConvertCheckoutCart.checkoutCartToJson(resp);
-				const cartCheckout: CheckoutCart = ConvertCheckoutCart.toCheckoutCart(
-					stringnya
-				);
-				if (cartCheckout.status.rc == 1) {
-					this.openDialogLocation();
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					const stringnya = ConvertCheckoutCart.checkoutCartToJson(
+						resp.data
+					);
+					const cartCheckout: CheckoutCart = ConvertCheckoutCart.toCheckoutCart(
+						stringnya
+					);
+					if (cartCheckout.status.rc == 1) {
+						this.openDialogLocation();
+					} else {
+						this.dialogService.showAlert(cartCheckout.status.msg);
+					}
 				} else {
-					this.service.showAlert(cartCheckout.status.msg);
-					// alert(cartCheckout.status.msg);
+					this.dialogService.showAlert(resp.status.msg);
 				}
-			});
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
+			}
+		);
 
 		this.subscribers.push(sub);
 	}
