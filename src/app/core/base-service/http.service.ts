@@ -3,7 +3,9 @@ import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { MESSAGE_DICT } from '../../app.constant';
 import { StorageService } from '../storage/service/storage.service';
+import { BaseService } from './service/base.service';
 
 @Injectable({
 	providedIn: 'root',
@@ -12,6 +14,7 @@ export class HttpService {
 	constructor(
 		public http: HttpClient,
 		private storageService: StorageService,
+		private dialogService: BaseService,
 		@Inject(DOCUMENT) private _document: Document
 	) {}
 
@@ -45,5 +48,22 @@ export class HttpService {
 				throw err;
 			})
 		);
+	}
+
+	public handleError(error) {
+		switch (error.status) {
+			case 400: {
+				this.dialogService.showAlert(MESSAGE_DICT.ERROR_MESSAGE);
+				break;
+			}
+			case 404: {
+				this.dialogService.showAlert(MESSAGE_DICT.ERROR_MESSAGE);
+				break;
+			}
+			case 500: {
+				this.dialogService.showAlert(MESSAGE_DICT.ERROR_MESSAGE);
+				break;
+			}
+		}
 	}
 }

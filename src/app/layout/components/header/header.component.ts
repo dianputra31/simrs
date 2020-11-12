@@ -4,7 +4,7 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -18,7 +18,8 @@ import {
 	CartListUrl,
 	OpenTrxCount,
 	ProfileUrl,
-	SearchProduct
+	RESPONSE,
+	SearchProduct,
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
@@ -50,7 +51,7 @@ export class HeaderComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private http: HttpService,
-		private service: BaseService,
+		private dialogService: BaseService,
 		private MatAutocompleteModule: MatAutocompleteModule,
 		private _redirectparam: RedirectParameterService // private ProductCatalogResponseModel: ProductCatalogResponseModel,
 	) {}
@@ -70,12 +71,20 @@ export class HeaderComponent implements OnInit {
 
 		this.subsribers = [];
 
-		const sub = this.service
-			.getData(ProfileUrl, false, null, true)
-			.subscribe((resp) => {
-				this.datacompany = resp.data.company;
-				this.datauser = resp.data.profile;
-			});
+		const sub = this.http.get(ProfileUrl).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this.datacompany = resp.data.company;
+					this.datauser = resp.data.profile;
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
+
 		this.subsribers.push(sub);
 
 		// this.datacompany = JSON.parse(localStorage.getItem('company'));
@@ -136,31 +145,26 @@ export class HeaderComponent implements OnInit {
 
 	private _filter(value: string): string[] {
 		const filterValue = value.toLowerCase();
-
-		var params = {
-			keyword: filterValue,
-		};
-
-		//get catalog list
-
-		const sub = this.service
-			.getData(
-				SearchProduct + '?keyword=' + filterValue + '&limit=20',
-				false,
-				null,
-				true
-			)
-			.subscribe((resp) => {
-				this.dataproduk = resp;
-				this.optionsname = this.dataproduk.data;
-				this.options = [];
-				for (let items of this.optionsname) {
-					// console.log(items.product_name);
-					this.options.push(items.product_name);
+		console.log(filterValue);
+		const sub = this.http
+			.get(SearchProduct + '?keyword=' + filterValue + '&limit=20')
+			.subscribe(
+				(resp) => {
+					if (resp.status.rc === RESPONSE.SUCCESS) {
+						this.dataproduk = resp.data;
+						this.optionsname = this.dataproduk.data;
+						this.options = [];
+						for (let items of this.optionsname) {
+							this.options.push(items.product_name);
+						}
+					} else {
+						this.dialogService.showAlert(resp.status.msg);
+					}
+				},
+				(error) => {
+					this.http.handleError(error);
 				}
-
-				// console.log(this.options);
-			});
+			);
 
 		return this.options.filter(
 			// (option) => option.toLowerCase().includes(filterValue)
@@ -195,7 +199,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	backToHome() {
-		console.log(this.router.url)
+		console.log(this.router.url);
 		if (this.router.url === '/request-approval') {
 			this.openDialogLocation('./');
 		} else {
@@ -240,23 +244,52 @@ export class HeaderComponent implements OnInit {
 	}
 
 	numberitemInCart() {
-		const sub = this.http.get(CartListUrl).subscribe((resp) => {
-			this.nCart = resp.data.cart_list.length;
-		});
+		const sub = this.http.get(CartListUrl).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this.nCart = resp.data.cart_list.length;
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
+
 		this.subsribers.push(sub);
 	}
 
 	numberOfApproval() {
-		const sub = this.http.post(ApprovalCount, {}).subscribe((resp) => {
-			this.nApproval = resp.data.approval_count;
-		});
+		const sub = this.http.post(ApprovalCount, {}).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this.nApproval = resp.data.approval_count;
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
+
 		this.subsribers.push(sub);
 	}
 
 	numberOfOpenTrx() {
-		const sub = this.http.post(OpenTrxCount, {}).subscribe((resp) => {
-			this.nTransaction = resp.data.open_transaction_count;
-		});
+		const sub = this.http.post(OpenTrxCount, {}).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this.nTransaction = resp.data.open_transaction_count;
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
 		this.subsribers.push(sub);
 	}
 }
