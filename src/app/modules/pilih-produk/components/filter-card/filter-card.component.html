@@ -12,6 +12,7 @@
     type="number"
     class="textbox-search"
     placeholder="Minimum"
+    (change)="qtyChange(minimum.value,'minimum')"
     (keyup.enter)="carilagi(minimum.value,maximum.value)"
     autocomplete="off"
     #minimum>
@@ -20,6 +21,7 @@
     type="number"
     class="textbox-search"
     placeholder="Maximum"
+    (change)="qtyChange(maximum.value,'maximum')"
     (keyup.enter)="carilagi(minimum.value,maximum.value)"
     autocomplete="off"
     #maximum>

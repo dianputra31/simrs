@@ -33,7 +33,6 @@ export class QtyCtrlComponent implements OnInit {
 		if (this.qtyObject.qty == null || this.qtyObject.qty < 1 || this.qtyObject.qtyDisplay == "0") {
 			this.qtyObject.qty = 1;
 			this.qtyObject.qtyDisplay = "1";
-			alert("here")
 		}
 	}
 
