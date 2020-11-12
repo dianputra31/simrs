@@ -4,12 +4,12 @@
 #pilih-produk-container-1 {
 	background: $putih-tok;
 	flex: 0 0 315px;
-	padding-bottom:80px;
+	height:100vh;
+	overflow: hidden;
 }
 
 #pilih-produk-container-2 {
 	padding-left: 20px;
-	padding-top: 20px;
 	padding-right: 20px;
 }
 
@@ -35,6 +35,10 @@
 	overflow: scroll;
 }
 
+.productbox{
+	border:solid green 0px;
+	min-height: 750px;
+}
 
 #top-fixed {
 	position: fixed;
