@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddCart } from '../../../../app.constant';
+import { AddCart, RESPONSE } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
-import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
 import { CartItemModel } from '../../../../models/cart-item.model';
 import { QuantityModel } from '../../../../models/quantity.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
@@ -20,9 +20,12 @@ export class FloatingFooterComponent implements OnInit {
 	@Input() qtyObject: QuantityModel;
 
 	subsribers: Subscription[];
-	constructor(public toastService: ToastService, private router: Router, private service: BaseService) {
-
-	}
+	constructor(
+		public toastService: ToastService,
+		private router: Router,
+		private service: BaseService,
+		private http: HttpService
+	) {}
 
 	ngOnInit(): void {
 		this.subsribers = [];
@@ -33,21 +36,31 @@ export class FloatingFooterComponent implements OnInit {
 		this.subsribers.forEach((each) => each.unsubscribe);
 	}
 
-	tambahkanKeKeranjang(dangerTpl) { 
+	tambahkanKeKeranjang(dangerTpl) {
 		this.showDanger(dangerTpl);
-		var test = new CartItemModel()
-		test.product_id = this.productDetail.id
-		test.quantity = this.qtyObject.qty
+		var test = new CartItemModel();
+		test.product_id = this.productDetail.id;
+		test.quantity = this.qtyObject.qty;
 
-		var cartreq = new CartItemRequestModel()
-		cartreq.cart_list = []
-		cartreq.cart_list.push(test)
+		var cartreq = new CartItemRequestModel();
+		cartreq.cart_list = [];
+		cartreq.cart_list.push(test);
 
-		const sub = this.service
-			.postData(AddCart, cartreq, CartItemResponseModel, false)
-			.subscribe((resp) => {
-				console.log("resp: ", resp)
-			})
+		const sub = this.http.post(AddCart, cartreq).subscribe(
+			(resp) => {
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.productDetail = resp.data;
+					// console.log(resp.data);
+
+					console.log('resp: ', resp);
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
 		this.subsribers.push(sub);
 	}
 
@@ -68,11 +81,11 @@ export class FloatingFooterComponent implements OnInit {
 	}
 
 	truncateChar(strtxt) {
-		var ret = strtxt
+		var ret = strtxt;
 		if (strtxt.length > 56) {
-			ret = strtxt.substring(0, 56) + "...";
+			ret = strtxt.substring(0, 56) + '...';
 		}
-		return ret
+		return ret;
 	}
 
 	onImgError(event) {

@@ -26,8 +26,11 @@ export class DetailProductLayoutComponent implements OnInit {
 	subcatid: any;
 	@BlockUI() blockUI: NgBlockUI;
 
-
-	constructor(private route: ActivatedRoute, private http: HttpService, private service: BaseService) {}
+	constructor(
+		private route: ActivatedRoute,
+		private http: HttpService,
+		private service: BaseService
+	) {}
 
 	ngOnInit(): void {
 		this.route.paramMap.subscribe((params) => {
@@ -36,25 +39,30 @@ export class DetailProductLayoutComponent implements OnInit {
 
 		this.qtyObject.qty = 1;
 	}
-	
+
 	getItemDetail(skuItem: String) {
 		this.isSpinner = true;
 		const url = CatalogProductDetailUrl + '/' + skuItem;
-		const sub = this.http.get(url).subscribe((resp) => {
-			if (resp.status.rc === RESPONSE.SUCCESS) {
-				this.productDetail = resp.data;
-				// console.log(resp.data);
-				this.prodcat = this.productDetail.category;
-				this.subcat = this.productDetail.subcategory;
-				this.prodname = this.productDetail.product_name;
-				this.catid = this.productDetail.category_id;
-				this.subcatid = this.productDetail.subcategory_id;
-				
+		const sub = this.http.get(url).subscribe(
+			(resp) => {
 				this.isSpinner = false;
-			}else{
-				this.service.showAlert(resp.status.msg);
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.productDetail = resp.data;
+					// console.log(resp.data);
+					this.prodcat = this.productDetail.category;
+					this.subcat = this.productDetail.subcategory;
+					this.prodname = this.productDetail.product_name;
+					this.catid = this.productDetail.category_id;
+					this.subcatid = this.productDetail.subcategory_id;
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.isSpinner = false;
+				this.http.handleError(error);
 			}
-			}); 
+		);
 
 		this.subscribers.push(sub);
 	}
