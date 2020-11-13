@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import { AddCart, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
-import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
 import { CartItemModel } from '../../../../models/cart-item.model';
 import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
@@ -29,6 +29,8 @@ export class ItemTransactionComponent implements OnInit {
 	sixth;
 	dangerTpl;
 	item;
+	selectedItem;
+	@BlockUI() blockUI: NgBlockUI;
 	// items;
 	// keyword;
 	// filterservicesubscription;
@@ -36,7 +38,7 @@ export class ItemTransactionComponent implements OnInit {
 	filternya;
 
 	// keywordSearch: FilterInputComponent = new FilterInputComponent()
-	subsribers: Subscription[];
+	subsribers: Subscription[] = [];
 	constructor(
 		public dialog: MatDialog,
 		private router: Router,
@@ -113,24 +115,31 @@ export class ItemTransactionComponent implements OnInit {
 	// }
 
 	belilagi(dangerTpl, item: TransactionItemResponseModel) {
-		this.showDanger(dangerTpl);
+		this.selectedItem = item;
+
 		var test = new CartItemModel();
 		test.product_id = item.id;
 		test.quantity = item.quantity;
 
-		var cartreq = new CartItemRequestModel();
+		console.log(test);
+		var cartreq = {
+			cart_list: [],
+		};
 		cartreq.cart_list = [];
 		cartreq.cart_list.push(test);
 
+		this.blockUI.start();
 		const sub = this.http.post(AddCart, cartreq).subscribe(
 			(resp) => {
+				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
-					// console.log('resp: ', resp);
+					this.showDanger(dangerTpl);
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}
 			},
 			(error) => {
+				this.blockUI.stop();
 				this.http.handleError(error);
 			}
 		);
