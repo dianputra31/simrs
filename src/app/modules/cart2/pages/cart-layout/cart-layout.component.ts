@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import {
 	CartListUrl,
 	CheckoutCartUrl,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -53,6 +53,7 @@ export class CartLayoutComponent implements OnInit {
 			(resp) => {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.items = resp.data.cart_list;
+					this.total_item = resp.data.total_item;
 
 					this.items.sort(function (a, b) {
 						return b.updated_at - a.updated_at;
@@ -63,7 +64,6 @@ export class CartLayoutComponent implements OnInit {
 						item.enableSelection = this.select(item);
 					});
 
-					this.total_item = resp.total_item;
 					this.total_price = resp.total_price;
 
 					setTimeout(() => {
