@@ -76,7 +76,6 @@ export class TransactionLayoutComponent implements OnInit {
 		body.classList.remove('no-scroll');
 	}
 	onScroll(e) {
-		console.log('scrolled!!', e);
 		this.page++;
 		this.getTrxList();
 	}
@@ -85,7 +84,6 @@ export class TransactionLayoutComponent implements OnInit {
 		const sub = this.http
 			.post(TransactionStatusOptionUrl, {})
 			.subscribe((resp) => {
-				console.log(resp);
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.statuses = resp.data;
