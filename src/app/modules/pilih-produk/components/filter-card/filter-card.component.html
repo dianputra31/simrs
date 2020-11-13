@@ -8,37 +8,42 @@
 	</div>
 	<div class="filter-card-underline"></div>-->
   <div id="filter-label-2">Harga</div>
-  <input id="minimum-input"
-    type="number"
-    class="textbox-search"
-    placeholder="Minimum"
-    (change)="qtyChange(minimum.value,'minimum')"
-    (keyup.enter)="carilagi(minimum.value,maximum.value)"
-    autocomplete="off"
-    #minimum>
-  <div class="filter-card-underline"></div>
-  <input id="maximum-input"
-    type="number"
-    class="textbox-search"
-    placeholder="Maximum"
-    (change)="qtyChange(maximum.value,'maximum')"
-    (keyup.enter)="carilagi(minimum.value,maximum.value)"
-    autocomplete="off"
-    #maximum>
+  <form>
+    <input id="minimum-input"
+      type="number"
+      class="textbox-search"
+      placeholder="Minimum"
+      (change)="qtyChange('minimum')"
+      (keyup.enter)="carilagi(minimum.value,maximum.value)"
+      autocomplete="off"
+      formControlName="minimum"
+      min="0"
+      #minimum>
+    <div class="filter-card-underline"></div>
+    <input id="maximum-input"
+      type="maximum"
+      class="textbox-search"
+      placeholder="Maximum"
+      (change)="qtyChange('maximum')"
+      (keyup.enter)="carilagi(minimum.value,maximum.value)"
+      autocomplete="off"
+      formControlName="maximum"
+      #maximum>
 
-  <div class="filter-card-underline"></div>
+    <div class="filter-card-underline"></div>
 
-  <div class="white-space"></div>
-  <red-button id="Terapkan button"
-    class="red-button"
-    label="Terapkan"
-    font="14px"
-    paddingtop="10px"
-    paddingbottom="10px"
-    paddingleft="0px"
-    paddingright="0px"
-    float="right"
-    (click)="carilagi(minimum.value,maximum.value)"></red-button>
+    <div class="white-space"></div>
+    <red-button id="Terapkan button"
+      class="red-button"
+      label="Terapkan"
+      font="14px"
+      paddingtop="10px"
+      paddingbottom="10px"
+      paddingleft="0px"
+      paddingright="0px"
+      float="right"
+      (click)="carilagi(minimum.value,maximum.value)"></red-button>
+  </form>
   <!-- <div id="Terapkan button"
 		class="red-button"
 		(click)="carilagi(minimum.value,maximum.value)">Terapkan</div> -->

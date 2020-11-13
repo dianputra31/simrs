@@ -1,6 +1,7 @@
 <block-ui>
-    <div *ngIf="listSummaryByAddress.length == 0 else elseBlock"
-        class="w-100 d-flex justify-content-center">
+    <div *ngIf="listSummaryByAddress.length === 0 else elseBlock"
+        class="w-100">
+        <div id="keranjang-label">APPROVAL</div>
         <div>
             <wsv wide="180px"></wsv>
             <empty-cart></empty-cart>

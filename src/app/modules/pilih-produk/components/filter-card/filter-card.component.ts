@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { PilihProdukLayoutComponent } from '../../pages/pilih-produk-layout/pilih-produk-layout.component';
@@ -12,6 +13,16 @@ export class FilterCardComponent implements OnInit {
 	cat_id;
 	subcat_id;
 	keyword;
+	minimum: string;
+	maximum: string;
+
+	form = new FormGroup({
+		minimum: new FormControl('', [
+			Validators.min(0),
+			Validators.minLength(2),
+		]),
+		maximum: new FormControl('', Validators.min(0)),
+	  });
 
 	constructor(
 		private _redirectparam: RedirectParameterService,
@@ -21,12 +32,33 @@ export class FilterCardComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-		
 	}
 
-	qtyChange(a,b){
-		
+	qtyChange(a){
+		console.log(this.minimum);
+		let numberVal = parseInt(this.minimum).toLocaleString();
+		this.minimum = numberVal;
 	}
+
+
+	formatRupiah(angka, prefix) {
+		var separator;
+		var number_string = angka.replace(/[^,\d]/g, '').toString(),
+			split = number_string.split(','),
+			sisa = split[0].length % 3,
+			rupiah = split[0].substr(0, sisa),
+			ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+		// tambahkan titik jika yang di input sudah menjadi angka ribuan
+		if (ribuan) {
+			separator = sisa ? '.' : '';
+			rupiah += separator + ribuan.join('.');
+		}
+
+		rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+		return prefix == undefined ? rupiah : rupiah ? rupiah : '';
+	}
+
 
 	carilagi(a, b) {
 		if (a === '') a = 0;

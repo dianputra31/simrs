@@ -1,9 +1,10 @@
 <block-ui>
 	<div class="container d-flex">
-		<div *ngIf="total_item == 0 else elseBlock"
-			class="w-100 d-flex justify-content-center">
-
+		<div *ngIf="total_item === 0 else elseBlock"
+			class="w-100">
+			<div id="keranjang-label">KERANJANG</div>
 			<div>
+
 				<wsv wide="150px"></wsv>
 				<empty-cart></empty-cart>
 			</div>
