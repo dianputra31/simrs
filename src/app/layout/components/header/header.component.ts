@@ -4,7 +4,7 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,7 +19,7 @@ import {
 	OpenTrxCount,
 	ProfileUrl,
 	RESPONSE,
-	SearchProduct,
+	SearchProduct
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
@@ -292,4 +292,10 @@ export class HeaderComponent implements OnInit {
 		);
 		this.subsribers.push(sub);
 	}
+
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-acc-white.svg';
+	}
+	
 }
