@@ -45,7 +45,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let items of tagihanHist; let i = index">
+			<tr *ngFor="let items of tagihanHist; let i = index"
+				(click)="lihatTagihanDetail(items)"
+				style="cursor: pointer;">
 				<td class="text-center">{{items?.invoice_no}}</td>
 				<td class="text-center">{{items.released_at | tanggal: 'dmy'}}</td>
 				<!-- <td class="text-right">{{items.mutation | number}}</td> -->

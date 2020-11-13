@@ -41,6 +41,7 @@ import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchase
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
+import { AccountTagihanPrintComponent } from './pages/account-tagihan-print/account-tagihan-print.component';
 registerLocaleData(en);
 
 const antDesignIcons = AllIcons as {
@@ -80,6 +81,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		EditAlamatDialogComponent,
 		OutputGraphComponent,
 		TrashCanDialogComponent,
+		AccountTagihanPrintComponent,
 	],
 	imports: [
 		CommonModule,
