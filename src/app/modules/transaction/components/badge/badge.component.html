@@ -37,9 +37,10 @@
 		<div class="p-2 bd-highlight"
 			id="detail-status">
 			<div class="d-sm-inline-flex"
-				[ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'showred' : 'showgrey'"
+				[ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED'  || label.status =='DELIVER')? 'showred' : 'showgrey'"
 				id="kotak-icon">
-				<span [ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED')? 'delivery' : 'delivery2'"
+				<span
+					[ngClass]="(label.status == 'CLOSED' || label.status =='RECEIVED'  || label.status =='DELIVER')? 'delivery' : 'delivery2'"
 					id="icon-delivery"></span></div>
 		</div>
 		<div class="p-2 bd-highlight"
