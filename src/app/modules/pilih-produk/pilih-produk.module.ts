@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedPipesModule } from './../../pipes/shared-pipes.module';
@@ -23,7 +22,6 @@ import { PilihProdukRoutingModule } from './pilih-produk-routing.module';
 		SharedPipesModule,
 		MatProgressSpinnerModule,
 		InfiniteScrollModule,
-		FormsModule,
 	],
 })
 export class PilihProdukModule { }
