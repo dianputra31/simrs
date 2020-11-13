@@ -6,6 +6,7 @@ import { AccountInfoPerusahaanComponent } from './pages/account-info-perusahaan/
 import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchaser/account-kelola-purchaser.component';
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
+import { AccountTagihanPrintComponent } from './pages/account-tagihan-print/account-tagihan-print.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
 				component: AccountKelolaPurchaserComponent,
 			},
 		],
+	},
+	{
+		path: 'tagihan-print/:invoice_no',
+		component: AccountTagihanPrintComponent,
 	},
 ];
 
