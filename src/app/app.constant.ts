@@ -70,3 +70,7 @@ export const TRANSACTION_STATUS_DICT = {
 	REJECTED: 'REJECTED',
 	OUTOFSTOCK: 'OUTOFSTOCK',
 };
+
+export const MESSAGE_DICT = {
+	ERROR_MESSAGE: 'Maaf, terjadi kesalahan teknis',
+};

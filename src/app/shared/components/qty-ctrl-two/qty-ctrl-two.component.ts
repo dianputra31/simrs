@@ -15,6 +15,7 @@ export class QtyCtrlTwoComponent implements OnInit {
 
 	max = 1000;
 
+	timer;
 	ngOnInit(): void {
 		this.qty = this.initQty;
 
@@ -53,7 +54,8 @@ export class QtyCtrlTwoComponent implements OnInit {
 	}
 
 	onChange() {
-		setTimeout(() => {
+		clearTimeout(this.timer);
+		this.timer = setTimeout(() => {
 			if (this.qty < 1 || this.qty == null) {
 				this.qty = 1;
 			} else if (this.qty > this.max) {
@@ -71,7 +73,7 @@ export class QtyCtrlTwoComponent implements OnInit {
 			}
 
 			this.updateQtyEvent();
-		}, 2000);
+		}, 1000);
 	}
 
 	updateQtyEvent() {

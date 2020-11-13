@@ -2,8 +2,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { AddCart } from '../../../../app.constant';
+import { AddCart, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
+import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
 import { CartItemModel } from '../../../../models/cart-item.model';
@@ -25,6 +26,7 @@ export class ItemCardComponent implements OnInit {
 	subscribers: Subscription[];
 	constructor(
 		public service: HttpService,
+		public dialogService: BaseService,
 		public toastService: ToastService,
 		private _redirectparam: RedirectParameterService,
 		private router: Router
@@ -67,11 +69,21 @@ export class ItemCardComponent implements OnInit {
 		cartreq.cart_list = [];
 		cartreq.cart_list.push(test);
 		this.blockUI.start();
-		const sub = this.service.post(AddCart, cartreq).subscribe((resp) => {
-			this.blockUI.stop();
-			console.log(resp);
-			this.onUpdateQty.emit(resp.data[0]);
-		});
+		const sub = this.service.post(AddCart, cartreq).subscribe(
+			(resp) => {
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.blockUI.stop();
+					console.log(resp);
+					this.onUpdateQty.emit(resp.data[0]);
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.service.handleError(error);
+			}
+		);
 
 		this.subscribers.push(sub);
 	}
@@ -85,11 +97,21 @@ export class ItemCardComponent implements OnInit {
 		cartreq.cart_list = [];
 		cartreq.cart_list.push(test);
 		this.blockUI.start();
-		const sub = this.service.post(AddCart, cartreq).subscribe((resp) => {
-			this.blockUI.stop();
-			this.showDanger(dangerTpl);
-			this.onDeleteItem.emit();
-		});
+		const sub = this.service.post(AddCart, cartreq).subscribe(
+			(resp) => {
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.blockUI.stop();
+					this.showDanger(dangerTpl);
+					this.onDeleteItem.emit();
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.service.handleError(error);
+			}
+		);
 		this.subscribers.push(sub);
 	}
 
