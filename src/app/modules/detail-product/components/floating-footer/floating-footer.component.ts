@@ -1,13 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddCart, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
-import { CartItemModel } from '../../../../models/cart-item.model';
-import { QuantityModel } from '../../../../models/quantity.model';
-import { ToastService } from '../../../../shared/toast/toast-service';
 import { ProductDetailResponseModel } from '../../models/product-detail-response.model';
 
 @Component({
@@ -17,11 +12,11 @@ import { ProductDetailResponseModel } from '../../models/product-detail-response
 })
 export class FloatingFooterComponent implements OnInit {
 	@Input() productDetail: ProductDetailResponseModel;
-	@Input() qtyObject: QuantityModel;
+	@Input() quantity: any;
+	@Output() tambahkanKeKerangjangEvent = new EventEmitter();
 
 	subsribers: Subscription[];
 	constructor(
-		public toastService: ToastService,
 		private router: Router,
 		private service: BaseService,
 		private http: HttpService
@@ -31,61 +26,17 @@ export class FloatingFooterComponent implements OnInit {
 		this.subsribers = [];
 	}
 
-	ngOnDestroy() {
-		this.toastService.removeAll();
-		this.subsribers.forEach((each) => each.unsubscribe);
-	}
+	tambahkanKeKeranjang() {
+		this.tambahkanKeKerangjangEvent.emit();
 
-	tambahkanKeKeranjang(dangerTpl) {
-		this.showDanger(dangerTpl);
-		var test = new CartItemModel();
-		test.product_id = this.productDetail.id;
-		test.quantity = this.qtyObject.qty;
+		var test = {
+			product_id: this.productDetail.id,
+			quantity: this.quantity,
+		};
 
-		var cartreq = new CartItemRequestModel();
-		cartreq.cart_list = [];
-		cartreq.cart_list.push(test);
-
-		const sub = this.http.post(AddCart, cartreq).subscribe(
-			(resp) => {
-				if (resp.status.rc == RESPONSE.SUCCESS) {
-					this.productDetail = resp.data;
-					// console.log(resp.data);
-
-					console.log('resp: ', resp);
-				} else {
-					this.service.showAlert(resp.status.msg);
-				}
-			},
-			(error) => {
-				this.http.handleError(error);
-			}
-		);
-		this.subsribers.push(sub);
-	}
-
-	showDanger(dangerTpl) {
-		this.toastService.removeAll();
-		this.toastService.show(dangerTpl, {
-			delay: 100,
-			classname: 'kanan-atas',
-		});
-	}
-
-	pergiKeKeranjang() {
-		this.router.navigate(['./cart']);
-	}
-
-	countTotal() {
-		return this.productDetail?.sell_price * this.qtyObject?.qty;
-	}
-
-	truncateChar(strtxt) {
-		var ret = strtxt;
-		if (strtxt.length > 56) {
-			ret = strtxt.substring(0, 56) + '...';
-		}
-		return ret;
+		var cartreq = {
+			cart_list: [test],
+		};
 	}
 
 	onImgError(event) {

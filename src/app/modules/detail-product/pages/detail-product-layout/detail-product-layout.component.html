@@ -1,32 +1,84 @@
-<div>
-    <div style="position:absolute;top:50%;left:48%;height:60px;width:60px;z-index: 1000;"
-        id="divload"
-        *ngIf="isSpinner">
-        <img src="../../../../../assets/image/icons/nestloading.gif"
-            style="position: relative;width:50px;">
+<div class="container">
+    <wsv wide="20px"></wsv>
+    <breadcrumb [prodcat]="prodcat"
+        [subcat]="subcat"
+        [prodname]="prodname"
+        [catid]="catid"
+        [subcatid]="subcatid"></breadcrumb>
+    <div class="d-flex rounded-container">
+        <img src="{{productDetail?.product_image}}"
+            class="card-img-top"
+            id="detail-main-image"
+            (error)="onImgError($event)">
+        <wsh wide="20px"></wsh>
+        <div class="w-100">
+            <div id="product-detail-label">{{productDetail?.product_name}}</div>
+            <wsv wide="20px"></wsv>
+            <discount-harga-coret [discount_percent]="productDetail?.discount_percentage"
+                [original_price]="productDetail?.original_price"
+                [sell_price]="productDetail?.sell_price"></discount-harga-coret>
+            <wsv wide="20px"></wsv>
+            <qty-ctrl-two [initQty]="quantity"
+                (onUpdateQty)="handleQtyUpdate($event)"></qty-ctrl-two>
+        </div>
     </div>
-    <div class="container">
-        <wsv wide="20px"></wsv>
-        <breadcrumb [prodcat]="prodcat"
-            [subcat]="subcat"
-            [prodname]="prodname"
-            [catid]="catid"
-            [subcatid]="subcatid"></breadcrumb>
+
+    <wsv wide='23px'></wsv>
+    <deskripsi-spesifikasi-section [productDetail]="productDetail"></deskripsi-spesifikasi-section>
+</div>
+
+<floating-footer [productDetail]="productDetail"
+    [quantity]="quantity"
+    (tambahkanKeKerangjangEvent)="tambahkanKeKeranjang(dangerTpl)"></floating-footer>
 
 
-        <wsv wide='17px'></wsv>
-        <image-price-section [productDetail]="productDetail"
-            [qtyObject]="qtyObject"></image-price-section>
-        <wsv wide='23px'></wsv>
-        <deskripsi-spesifikasi-section [productDetail]="productDetail"></deskripsi-spesifikasi-section>
-        <wsv wide='30px'></wsv>
+<ng-template #dangerTpl>
+    <div id="wrapper-notification"
+        class="d-flex container justify-content-end">
+        <div>
+            <wsv wide="9px"></wsv>
+            <div id="wrapper-inner-notification">
+                <div class="d-flex justify-content-between align-self-center">
+                    <div id="keranjang-label">Keranjang</div>
+                    <div id="lihat-keranjang-label"
+                        class="d-flex justify-content-center align-items-center"
+                        (click)="pergiKeKeranjang()">Lihat Keranjang</div>
+                </div>
+                <wsv wide="13px"></wsv>
+
+                <div id="rounded-inner-notif"
+                    class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img [src]="productDetail?.product_image"
+                            id="notif-img"
+                            (error)="onImgError($event)">
+                        <wsh wide="10px"></wsh>
+                        <div>
+                            <!-- <div id="item-name">{{productDetail?.product_name}}</div> -->
+                            <div id="item-name">{{truncateChar(productDetail?.product_name)}}</div>
+                            <div>{{quantity}} Barang</div>
+                        </div>
+                    </div>
+                    <div id="item-price">{{productDetail?.sell_price * quantity|rupiah}}</div>
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
-    <floating-footer [productDetail]="productDetail"
-        [qtyObject]="qtyObject"></floating-footer>
+</ng-template>
 
-    <div id="divload"
-        *ngIf="isSpinner">
-        <img src="../../../../../assets/image/icons/nestloading.gif"
-            style="position: relative;width:50px;">
-    </div>
+<div style="position:absolute;top:50%;left:48%;height:60px;width:60px;z-index: 1000;"
+    id="divload"
+    *ngIf="isSpinner">
+    <img src="../../../../../assets/image/icons/nestloading.gif"
+        style="position: relative;width:50px;">
+</div>
+
+
+<div id="divload"
+    *ngIf="isSpinner">
+    <img src="../../../../../assets/image/icons/nestloading.gif"
+        style="position: relative;width:50px;">
+</div>
