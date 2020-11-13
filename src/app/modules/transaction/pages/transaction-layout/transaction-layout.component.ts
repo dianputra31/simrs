@@ -81,9 +81,8 @@ export class TransactionLayoutComponent implements OnInit {
 	}
 	getTrxStatus() {
 		this.blockUI.start();
-		const sub = this.http
-			.post(TransactionStatusOptionUrl, {})
-			.subscribe((resp) => {
+		const sub = this.http.post(TransactionStatusOptionUrl, {}).subscribe(
+			(resp) => {
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.statuses = resp.data;
@@ -92,61 +91,78 @@ export class TransactionLayoutComponent implements OnInit {
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}
-			});
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
+			}
+		);
 
 		this.subsribers.push(sub);
 	}
 
 	getAddress() {
 		this.blockUI.start();
-		const sub = this.http.get(AddressList).subscribe((resp) => {
-			this.blockUI.stop();
-			if (resp.status.rc == RESPONSE.SUCCESS) {
-				this.addresses = resp.data;
+		const sub = this.http.get(AddressList).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.addresses = resp.data;
 
-				this.addresses.forEach((each) => {
-					each.label = each.address_name;
-				});
+					this.addresses.forEach((each) => {
+						each.label = each.address_name;
+					});
 
-				const x = {
-					label: 'Semua',
-					id: null,
-				};
+					const x = {
+						label: 'Semua',
+						id: null,
+					};
 
-				this.addresses.splice(0, 0, x);
+					this.addresses.splice(0, 0, x);
 
-				this.selectedAddress = this.addresses[0];
-				this.getPurchaserList();
-			} else {
-				this.service.showAlert(resp.status.msg);
+					this.selectedAddress = this.addresses[0];
+					this.getPurchaserList();
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
 			}
-		});
+		);
 
 		this.subsribers.push(sub);
 	}
 
 	getPurchaserList() {
 		this.blockUI.start();
-		const sub = this.http.get(GetCompanyUsers).subscribe((resp) => {
-			this.blockUI.stop();
-			if (resp.status.rc == RESPONSE.SUCCESS) {
-				this.purchasers = resp.data;
-				this.purchasers.forEach((each) => {
-					each.label = each.fullname;
-				});
-				const x = {
-					label: 'Semua',
-					id: null,
-				};
+		const sub = this.http.get(GetCompanyUsers).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.purchasers = resp.data;
+					this.purchasers.forEach((each) => {
+						each.label = each.fullname;
+					});
+					const x = {
+						label: 'Semua',
+						id: null,
+					};
 
-				this.purchasers.splice(0, 0, x);
+					this.purchasers.splice(0, 0, x);
 
-				this.selectedPurchaser = this.purchasers[0];
-				this.getTrxList();
-			} else {
-				this.service.showAlert(resp.status.msg);
+					this.selectedPurchaser = this.purchasers[0];
+					this.getTrxList();
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
 			}
-		});
+		);
 
 		this.subsribers.push(sub);
 	}
@@ -169,18 +185,22 @@ export class TransactionLayoutComponent implements OnInit {
 
 		this.isSpinner = true;
 
-		const sub = this.http
-			.post(TransactionListUrl, param)
-			.subscribe((resp) => {
+		const sub = this.http.post(TransactionListUrl, param).subscribe(
+			(resp) => {
+				this.isSpinner = false;
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					var newData = resp.data;
 					this.items = this.items.concat(newData);
-					this.isSpinner = false;
 					this.initScrolling();
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}
-			});
+			},
+			(error) => {
+				this.isSpinner = false;
+				this.http.handleError(error);
+			}
+		);
 
 		this.subsribers.push(sub);
 	}
