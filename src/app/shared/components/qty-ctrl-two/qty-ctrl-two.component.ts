@@ -33,7 +33,7 @@ export class QtyCtrlTwoComponent implements OnInit {
 		}
 
 		if (this.qty > 1) {
-			this.qty--;
+			--this.qty;
 			this.cleanQty = this.qty;
 			this.updateQtyEvent();
 		}
@@ -41,8 +41,7 @@ export class QtyCtrlTwoComponent implements OnInit {
 
 	addOneToCart() {
 		if (this.qty < this.max) {
-			this.qty++;
-			this.updateQtyEvent();
+			++this.qty;
 		}
 
 		if (this.qty == 1000) {
@@ -51,6 +50,8 @@ export class QtyCtrlTwoComponent implements OnInit {
 		} else {
 			this.cleanQty = this.qty;
 		}
+
+		this.updateQtyEvent();
 	}
 
 	onChange() {

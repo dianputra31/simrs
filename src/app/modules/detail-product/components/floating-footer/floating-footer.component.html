@@ -13,11 +13,11 @@
 			<div class="d-flex align-items-center">
 				<div>
 					<div id="total-foot-label">Total</div>
-					<div id="total-foot">{{productDetail?.sell_price * qtyObject?.qty | rupiah}}</div>
+					<div id="total-foot">{{productDetail?.sell_price * quantity | rupiah}}</div>
 				</div>
 				<wsh wide="26px"></wsh>
 				<div id="tambahkan-button"
-					(click)="tambahkanKeKeranjang(dangerTpl)"
+					(click)="tambahkanKeKeranjang()"
 					class="d-flex align-items-center justify-content-center">
 					<img id="cart-logo"
 						src="../../../../../assets/image/icons/add_to_cart_red.png">
@@ -28,43 +28,3 @@
 		</div>
 	</div>
 </div>
-
-
-<ng-template #dangerTpl>
-	<div id="wrapper-notification"
-		class="d-flex container justify-content-end">
-		<div>
-			<wsv wide="9px"></wsv>
-			<div id="wrapper-inner-notification">
-				<div class="d-flex justify-content-between align-self-center">
-					<div id="keranjang-label">Keranjang</div>
-					<div id="lihat-keranjang-label"
-						class="d-flex justify-content-center align-items-center"
-						(click)="pergiKeKeranjang()">Lihat Keranjang</div>
-				</div>
-				<wsv wide="13px"></wsv>
-
-				<div id="rounded-inner-notif"
-					class="d-flex justify-content-between align-items-center">
-					<div class="d-flex align-items-center">
-						<img [src]="productDetail?.product_image"
-							id="notif-img"
-							(error)="onImgError($event)">
-						<wsh wide="10px"></wsh>
-						<div>
-							<!-- <div id="item-name">{{productDetail?.product_name}}</div> -->
-							<div id="item-name">{{truncateChar(productDetail?.product_name)}}</div>
-							<div>{{qtyObject?.qty}} Barang</div>
-						</div>
-					</div>
-					<div id="item-price">{{productDetail?.sell_price * qtyObject?.qty|rupiah}}</div>
-				</div>
-
-			</div>
-
-		</div>
-
-	</div>
-
-
-</ng-template>
