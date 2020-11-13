@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddCart } from '../../../../app.constant';
+import { AddCart, RESPONSE } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
-import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
 import { CartItemModel } from '../../../../models/cart-item.model';
 import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
@@ -43,7 +43,8 @@ export class ItemTransactionComponent implements OnInit {
 		private route: ActivatedRoute, // private filterservice: FilterInputComponent,
 		private _redirectparam: RedirectParameterService,
 		private service: BaseService,
-		public toastService: ToastService
+		public toastService: ToastService,
+		public http: HttpService
 	) {}
 
 	ngOnInit(): void {}
@@ -121,11 +122,18 @@ export class ItemTransactionComponent implements OnInit {
 		cartreq.cart_list = [];
 		cartreq.cart_list.push(test);
 
-		const sub = this.service
-			.postData(AddCart, cartreq, CartItemResponseModel, false)
-			.subscribe((resp) => {
-				console.log('resp: ', resp);
-			});
+		const sub = this.http.post(AddCart, cartreq).subscribe(
+			(resp) => {
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					// console.log('resp: ', resp);
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
 		this.subsribers.push(sub);
 	}
 
