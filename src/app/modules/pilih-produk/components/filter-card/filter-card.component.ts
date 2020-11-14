@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { PilihProdukLayoutComponent } from '../../pages/pilih-produk-layout/pilih-produk-layout.component';
@@ -16,30 +16,36 @@ export class FilterCardComponent implements OnInit {
 	minimum: string;
 	maximum: string;
 
-	form = new FormGroup({
-		minimum: new FormControl('', [
-			Validators.min(0),
-			Validators.minLength(2),
-		]),
-		maximum: new FormControl('', Validators.min(0)),
-	  });
+	formGroup: FormGroup;
+
+	minvalue;
+	maxvalue;
+
+	myOptions = {
+		digitGroupSeparator: '.',
+		decimalCharacter: ',',
+		decimalPlaces: 0,
+		decimalCharacterAlternative: '.',
+		currencySymbol: '',
+		currencySymbolPlacement: 's',
+		roundingMethod: 'U',
+		minimumValue: '0',
+	};
 
 	constructor(
 		private _redirectparam: RedirectParameterService,
 		private router: Router,
 		private PilihProdukLayout: PilihProdukLayoutComponent,
-		private route: ActivatedRoute,
-	) { }
+		private route: ActivatedRoute
+	) {}
 
-	ngOnInit(): void {
-	}
+	ngOnInit(): void {}
 
-	qtyChange(a){
+	qtyChange(a) {
 		console.log(this.minimum);
 		let numberVal = parseInt(this.minimum).toLocaleString();
 		this.minimum = numberVal;
 	}
-
 
 	formatRupiah(angka, prefix) {
 		var separator;
@@ -59,7 +65,6 @@ export class FilterCardComponent implements OnInit {
 		return prefix == undefined ? rupiah : rupiah ? rupiah : '';
 	}
 
-
 	carilagi(a, b) {
 		if (a === '') a = 0;
 		if (b === '') b = 0;
@@ -67,7 +72,12 @@ export class FilterCardComponent implements OnInit {
 		this._redirectparam.price_end = b;
 
 		this.route.paramMap.subscribe((params) => {
-			if (this._redirectparam.namaproduk !== '' && this._redirectparam.namaproduk !== '0') this.keyword = '"' + this._redirectparam.namaproduk + '"'; else this.keyword = '';
+			if (
+				this._redirectparam.namaproduk !== '' &&
+				this._redirectparam.namaproduk !== '0'
+			)
+				this.keyword = '"' + this._redirectparam.namaproduk + '"';
+			else this.keyword = '';
 			var keywordnya = this.keyword.replace(/['"]+/g, '');
 			var paramet: any = {
 				category_id: params.get('category_id'),
@@ -76,13 +86,11 @@ export class FilterCardComponent implements OnInit {
 				price_start: this._redirectparam.price_start,
 				price_end: this._redirectparam.price_end,
 				page: 1,
-				limit:30,
-		};
+				limit: 30,
+			};
 
-		this.PilihProdukLayout.getItems(paramet,2);
-		// alert("here");
-		
-	});
-}
-
+			this.PilihProdukLayout.getItems(paramet, 2);
+			// alert("here");
+		});
+	}
 }
