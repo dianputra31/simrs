@@ -1,20 +1,21 @@
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
 	MatDialog,
 	MatDialogRef,
-	MAT_DIALOG_DATA
+	MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { Subscription } from 'rxjs';
 import {
 	AddressEditUrl,
 	AddressMasterDistrictUrl,
 	AddressMasterProvinceUrl,
 	AddressMasterSubDistrictUrl,
-	AddressMasterVillageUrl
+	AddressMasterVillageUrl,
+	RESPONSE,
 } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 
 @Component({
@@ -23,6 +24,7 @@ import { BaseService } from '../../../../core/base-service/service/base.service'
 	styleUrls: ['./edit-alamat-dialog.component.scss'],
 })
 export class EditAlamatDialogComponent implements OnInit {
+	@BlockUI() blockUI: NgBlockUI;
 	subscribers: Subscription[];
 	provinces: any[];
 	districts: any[];
@@ -37,11 +39,11 @@ export class EditAlamatDialogComponent implements OnInit {
 	address;
 
 	states: any[] = [
-		{'jenis':'PT', 'label':'PT'}, 
-		{'jenis':'CV', 'label':'CV'}, 
-		{'jenis':'Firma', 'label':'Firma'}
-	  ];
-	  
+		{ jenis: 'PT', label: 'PT' },
+		{ jenis: 'CV', label: 'CV' },
+		{ jenis: 'Firma', label: 'Firma' },
+	];
+
 	constructor(
 		public dialogRef: MatDialogRef<EditAlamatDialogComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any,
@@ -49,7 +51,7 @@ export class EditAlamatDialogComponent implements OnInit {
 		private router: Router,
 		public dialog: MatDialog,
 		private service: BaseService,
-		private http: HttpClient
+		private http: HttpService
 	) {
 		console.log(data.address);
 		this.address = data.address;
@@ -68,7 +70,7 @@ export class EditAlamatDialogComponent implements OnInit {
 		this.selectedJenis = {
 			jenis: 'PT',
 			label: 'PT',
-		}
+		};
 
 		this.selectedDistrict = {
 			district: this.address.district,
@@ -131,12 +133,24 @@ export class EditAlamatDialogComponent implements OnInit {
 	}
 
 	getProvince() {
-		const sub = this.service
-			.postData(AddressMasterProvinceUrl, false, false, false)
-			.subscribe((resp) => {
-				this.provinces = resp.data;
-				this.provinces.forEach((prov) => (prov.label = prov.province));
-			});
+		this.blockUI.start();
+		const sub = this.http.post(AddressMasterProvinceUrl, {}).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.provinces = resp.data;
+					this.provinces.forEach(
+						(prov) => (prov.label = prov.province)
+					);
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
+			}
+		);
 		this.subscribers.push(sub);
 	}
 
@@ -152,15 +166,25 @@ export class EditAlamatDialogComponent implements OnInit {
 			'?province=' +
 			this.selectedProvince.province;
 
-		const sub = this.service
-			.postData(url, false, false, false)
-			.subscribe((resp) => {
-				this.districts = resp.data;
-				this.districts.forEach((dis) => {
-					dis.label = dis.district;
-					delete dis.district_type;
-				});
-			});
+		this.blockUI.start();
+		const sub = this.http.post(url, {}).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.districts = resp.data;
+					this.districts.forEach((dis) => {
+						dis.label = dis.district;
+						delete dis.district_type;
+					});
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
+			}
+		);
 		this.subscribers.push(sub);
 	}
 
@@ -179,19 +203,28 @@ export class EditAlamatDialogComponent implements OnInit {
 			'&district=' +
 			this.selectedDistrict.district;
 
-		const sub = this.service
-			.postData(url, false, false, false)
-			.subscribe((resp) => {
-				this.subdistricts = resp.data;
-				this.subdistricts.forEach(
-					(subdis) => (subdis.label = subdis.subdistrict)
-				);
-			});
+		this.blockUI.start();
+		const sub = this.http.post(url, {}).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.subdistricts = resp.data;
+					this.subdistricts.forEach(
+						(subdis) => (subdis.label = subdis.subdistrict)
+					);
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
+			}
+		);
 		this.subscribers.push(sub);
 	}
 
 	onSubdistrictSelected(subdistrict) {
-		console.log(subdistrict);
 		this.selectedSubdistrict = subdistrict;
 		this.address.subdistrict = subdistrict.subdistrict;
 		this.getVillage();
@@ -207,14 +240,24 @@ export class EditAlamatDialogComponent implements OnInit {
 			'&subdistrict=' +
 			this.selectedSubdistrict.subdistrict;
 
-		const sub = this.service
-			.postData(url, false, false, false)
-			.subscribe((resp) => {
-				this.villages = resp.data;
-				this.villages.forEach((v) => {
-					v.label = v.village;
-				});
-			});
+		this.blockUI.start();
+		const sub = this.http.post(url, {}).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.villages = resp.data;
+					this.villages.forEach((v) => {
+						v.label = v.village;
+					});
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
+			}
+		);
 		this.subscribers.push(sub);
 	}
 
@@ -226,35 +269,23 @@ export class EditAlamatDialogComponent implements OnInit {
 	}
 
 	submit() {
-		console.log(this.address);
+		this.blockUI.start();
 		const sub = this.http
 			.post(AddressEditUrl + `/${this.address.id}`, this.address)
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						// this.storageService.clear();
-						// this._document.defaultView.location.reload();
-						return of(err as any);
+			.subscribe(
+				(resp) => {
+					this.blockUI.stop();
+					if (resp.status.rc == RESPONSE.SUCCESS) {
+						this.dialogRef.close();
+					} else {
+						this.service.showAlert(resp.status.msg);
 					}
-					throw err;
-				})
-
-				// map((model: HttpBodyRespModel): any => {
-				// 	console.log(responseModel.convert);
-				// 	return responseModel
-				// 		? isArray
-				// 			? this.mapArrayData(model.data, responseModel)
-				// 			: responseModel.convert(model.data)
-				// 		: this.responseData(model.data);
-				// })
+				},
+				(error) => {
+					this.blockUI.stop();
+					this.http.handleError(error);
+				}
 			);
-
-		sub.subscribe((resp) => {
-			this.dialogRef.close();
-		});
 	}
 
 	batal() {

@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { UserCreateUserUrl } from '../../../../app.constant';
+import { RESPONSE, UserCreateUserUrl } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
+import { BaseService } from '../../../../core/base-service/service/base.service';
 
 @Component({
 	selector: 'add-purchaser-editor',
@@ -9,6 +11,7 @@ import { HttpService } from '../../../../core/base-service/http.service';
 	styleUrls: ['./add-purchaser-editor.component.scss'],
 })
 export class AddPurchaserEditorComponent implements OnInit {
+	@BlockUI() blockUI: NgBlockUI;
 	param = {
 		email: '',
 		first_name: '',
@@ -20,7 +23,10 @@ export class AddPurchaserEditorComponent implements OnInit {
 	};
 	@Output() addEvent = new EventEmitter();
 	subscriptions: Subscription[];
-	constructor(private http: HttpService) {}
+	constructor(
+		private http: HttpService,
+		private dialogService: BaseService
+	) {}
 
 	ngOnInit(): void {
 		this.subscriptions = [];
@@ -31,12 +37,21 @@ export class AddPurchaserEditorComponent implements OnInit {
 	}
 
 	submit() {
-		console.log(this.param);
-		const sub = this.http
-			.post(UserCreateUserUrl, this.param)
-			.subscribe((resp) => {
-				this.addEvent.emit();
-			});
+		this.blockUI.start();
+		const sub = this.http.post(UserCreateUserUrl, this.param).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.addEvent.emit();
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
+			}
+		);
 
 		this.subscriptions.push(sub);
 	}

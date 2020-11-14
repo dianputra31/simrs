@@ -1,4 +1,3 @@
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
 	MatDialog,
@@ -6,15 +5,18 @@ import {
 	MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { UserDeleteUrl } from '../../../../app.constant';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { Subscription } from 'rxjs';
+import { RESPONSE, UserDeleteUrl } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
+import { BaseService } from '../../../../core/base-service/service/base.service';
 @Component({
 	selector: 'delete-purchaser-confirmation-dialog',
 	templateUrl: './delete-purchaser-confirmation-dialog.component.html',
 	styleUrls: ['./delete-purchaser-confirmation-dialog.component.scss'],
 })
 export class DeletePurchaserConfirmationDialogComponent implements OnInit {
+	@BlockUI() blockUI: NgBlockUI;
 	user;
 	subscriptions: Subscription[] = [];
 	constructor(
@@ -25,7 +27,8 @@ export class DeletePurchaserConfirmationDialogComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		public dialog: MatDialog,
-		public http: HttpClient
+		public http: HttpService,
+		private dialogService: BaseService
 	) {
 		console.log(modalData.user);
 		this.user = modalData.user;
@@ -38,25 +41,24 @@ export class DeletePurchaserConfirmationDialogComponent implements OnInit {
 	}
 
 	hapus() {
+		this.blockUI.start();
 		const param = {};
 		const sub = this.http
 			.post(UserDeleteUrl + `?delete_email=${this.user.email}`, param)
-			.pipe(
-				map((resp: any): any => {
-					return resp;
-				}),
-				catchError((err, caught: Observable<HttpEvent<any>>) => {
-					if (err instanceof HttpErrorResponse && err.status == 401) {
-						// this.storageService.clear();
-						// this._document.defaultView.location.reload();
-						return of(err as any);
+			.subscribe(
+				(resp) => {
+					this.blockUI.stop();
+					if (resp.status.rc == RESPONSE.SUCCESS) {
+						this.dialogRef.close();
+					} else {
+						this.dialogService.showAlert(resp.status.msg);
 					}
-					throw err;
-				})
-			)
-			.subscribe((resp) => {
-				this.dialogRef.close();
-			});
+				},
+				(error) => {
+					this.blockUI.stop();
+					this.http.handleError(error);
+				}
+			);
 
 		this.subscriptions.push(sub);
 	}
