@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { TagihanCompany } from '../../../../app.constant';
+import { RESPONSE, TagihanCompany } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
+import { BaseService } from '../../../../core/base-service/service/base.service';
 
 @Component({
 	selector: 'tagihan-table',
@@ -10,6 +12,7 @@ import { HttpService } from '../../../../core/base-service/http.service';
 	styleUrls: ['./tagihan-table.component.scss'],
 })
 export class TagihanTableComponent implements OnInit {
+	@BlockUI() blockUI: NgBlockUI;
 	tagihanHist;
 	subsribers: Subscription[] = [];
 
@@ -18,17 +21,32 @@ export class TagihanTableComponent implements OnInit {
 		limit: 30,
 	};
 
-	constructor(private service: HttpService, private router: Router) {}
+	constructor(
+		private service: HttpService,
+		private router: Router,
+		private dialogService: BaseService
+	) {}
 
 	ngOnInit(): void {
-		const sub = this.service
-			.post(TagihanCompany, this.param)
-			.subscribe((resp) => {
-				var tc = resp.data.length;
-				if (parseInt(tc) > 0) {
-					this.tagihanHist = resp.data;
+		this.blockUI.start();
+		const sub = this.service.post(TagihanCompany, this.param).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					var tc = resp.data.length;
+					if (parseInt(tc) > 0) {
+						this.tagihanHist = resp.data;
+					}
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
 				}
-			});
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.service.handleError(error);
+			}
+		);
+
 		this.subsribers.push(sub);
 	}
 

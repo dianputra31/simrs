@@ -1,9 +1,11 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import { InvoicePrint } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
+import { BaseService } from '../../../../core/base-service/service/base.service';
 
 @Component({
 	selector: 'account-tagihan-print',
@@ -11,11 +13,12 @@ import { HttpService } from '../../../../core/base-service/http.service';
 	styleUrls: ['./account-tagihan-print.component.scss'],
 })
 export class AccountTagihanPrintComponent implements OnInit {
-	slideHtml;
+	@BlockUI() blockUI: NgBlockUI;
 	subsribers: Subscription[] = [];
 	constructor(
 		private route: ActivatedRoute,
 		private service: HttpService,
+		private dialogService: BaseService,
 		@Inject(DOCUMENT) private _document: Document
 	) {}
 
@@ -24,6 +27,7 @@ export class AccountTagihanPrintComponent implements OnInit {
 		// 	console.log(params.params.invoice_no);
 		// });
 
+		this.blockUI.start();
 		const sub = this.service
 			.get(
 				InvoicePrint + '/' + this.route.snapshot.params['invoice_no'],
@@ -31,9 +35,16 @@ export class AccountTagihanPrintComponent implements OnInit {
 					responseType: 'text',
 				}
 			)
-			.subscribe((resp) => {
-				this._document.getElementById('scroll').innerHTML = resp;
-			});
+			.subscribe(
+				(resp) => {
+					this.blockUI.stop();
+					this._document.getElementById('scroll').innerHTML = resp;
+				},
+				(error) => {
+					this.blockUI.stop();
+					this.service.handleError(error);
+				}
+			);
 		this.subsribers.push(sub);
 	}
 }
