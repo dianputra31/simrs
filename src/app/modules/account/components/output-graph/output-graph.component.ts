@@ -18,7 +18,7 @@ noData(Highcharts);
 	styleUrls: ['./output-graph.component.scss'],
 })
 export class OutputGraphComponent implements OnInit {
-	subscribers: Subscription[];
+	subscribers: Subscription[] = [];
 	@Input() items_month: any[] = [];
 	@Input() items_purchaser: any[] = [];
 	@Input() items_product: any[] = [];
