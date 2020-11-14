@@ -131,10 +131,4 @@ export class ItemCardComponent implements OnInit {
 				a.replaceAll('/', '-'),
 		]);
 	}
-
-	itemClicked() {
-		this.router.navigate([
-			'./detail-product/' + this.item.partner_sku_item,
-		]);
-	}
 }

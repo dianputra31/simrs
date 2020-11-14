@@ -42,12 +42,13 @@
         <div class="col-1-trx-item">
             <img id="image-item-trx"
                 [src]="item.product_image"
-                (error)="onImgError($event)"
-                (click)="itemClicked(item)">
+                (error)="onImgError($event)">
         </div>
         <wsh wide="30px"></wsh>
         <div class="col-2-trx-item">
-            <div class="title-2">
+            <div class="title-2"
+                (click)="itemClicked(item)"
+                style="cursor: pointer;">
                 {{item.product_name}}
             </div>
             <div *ngIf="item.initial_quantity != item.quantity"
