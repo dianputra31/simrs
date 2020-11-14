@@ -73,16 +73,22 @@ export class AccountDashboardComponent implements OnInit {
 			'&company_id=' +
 			this.company_id;
 		var param = {};
-		const sub = this.http.post(url, param).subscribe((resp) => {
-			console.log(resp);
-			this.blockUI.stop();
-			if (resp.status.rc == RESPONSE.SUCCESS) {
-				this.items_month = resp.data;
-				console.log('month', this.items_month);
-			} else {
-				this.service.showAlert(resp.status.msg);
+		const sub = this.http.post(url, param).subscribe(
+			(resp) => {
+				console.log(resp);
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.items_month = resp.data;
+					console.log('month', this.items_month);
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
 			}
-		});
+		);
 		this.subscribers.push(sub);
 	}
 	getSummaryPurchaser() {
@@ -95,15 +101,21 @@ export class AccountDashboardComponent implements OnInit {
 			this.company_id;
 		var param = {};
 		console.log('idnya', url);
-		const sub = this.http.post(url, param).subscribe((resp) => {
-			this.blockUI.stop();
-			if (resp.status.rc == RESPONSE.SUCCESS) {
-				this.items_purchaser = resp.data;
-				console.log('purchaser', this.items_purchaser);
-			} else {
-				this.service.showAlert(resp.status.msg);
+		const sub = this.http.post(url, param).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.items_purchaser = resp.data;
+					console.log('purchaser', this.items_purchaser);
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
 			}
-		});
+		);
 		this.subscribers.push(sub);
 	}
 	getSummaryProduct() {
@@ -115,16 +127,22 @@ export class AccountDashboardComponent implements OnInit {
 			'&company_id=' +
 			this.company_id;
 		var param = {};
-		const sub = this.http.post(url, param).subscribe((resp) => {
-			console.log(resp);
-			this.blockUI.stop();
-			if (resp.status.rc == RESPONSE.SUCCESS) {
-				this.items_product = resp.data;
-				console.log('product', this.items_product);
-			} else {
-				this.service.showAlert(resp.status.msg);
+		const sub = this.http.post(url, param).subscribe(
+			(resp) => {
+				console.log(resp);
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.items_product = resp.data;
+					console.log('product', this.items_product);
+				} else {
+					this.service.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
 			}
-		});
+		);
 		this.subscribers.push(sub);
 	}
 	reset() {

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { AddressList } from '../../../../app.constant';
+import { AddressList, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
+import { BaseService } from '../../../../core/base-service/service/base.service';
 import { EditAlamatDialogComponent } from '../../components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
 import { TambahAlamatBaruDialogComponent } from '../../components-info-perusahaan/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 import { TrashCanDialogComponent } from '../../components-info-perusahaan/trash-can-dialog/trash-can-dialog.component';
@@ -14,13 +16,15 @@ import { TrashCanDialogComponent } from '../../components-info-perusahaan/trash-
 	styleUrls: ['./account-info-perusahaan.component.scss'],
 })
 export class AccountInfoPerusahaanComponent implements OnInit {
+	@BlockUI() blockUI: NgBlockUI;
 	subscribers: Subscription[];
 	addresses: any[];
 	constructor(
 		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private router: Router,
-		private http: HttpService
+		private http: HttpService,
+		private dialogService: BaseService
 	) {}
 
 	ngOnInit(): void {
@@ -51,10 +55,22 @@ export class AccountInfoPerusahaanComponent implements OnInit {
 	}
 
 	getAddressList() {
+		this.blockUI.start();
 		const url = AddressList;
-		const sub = this.http.get(url).subscribe((resp) => {
-			this.addresses = resp.data;
-		});
+		const sub = this.http.get(url).subscribe(
+			(resp) => {
+				this.blockUI.stop();
+				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.addresses = resp.data;
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.blockUI.stop();
+				this.http.handleError(error);
+			}
+		);
 		this.subscribers.push(sub);
 	}
 
