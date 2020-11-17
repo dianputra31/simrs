@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'status-pembelian',
@@ -7,9 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StatusPembelianComponent implements OnInit {
 	@Input() item: any;
-	constructor() {}
+	constructor(private router: Router) {}
 
 	ngOnInit(): void {
 		console.log(this.item);
+	}
+
+	lihatTagihanDetail() {
+		this.router.navigate([
+			'./account/tagihan-print/' + this.item.invoice_no,
+		]);
+		// console.log(tagihan);
 	}
 }
