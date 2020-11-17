@@ -15,7 +15,7 @@
 			"source.fixAll": true
 		},
 		"editor.tabSize": 4
-  },
+	},
 	"editor.tabCompletion": "on",
 	"prettier.tabWidth": 4,
 	"vetur.format.options.useTabs": true,
