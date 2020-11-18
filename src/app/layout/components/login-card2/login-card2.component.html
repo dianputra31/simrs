@@ -35,6 +35,7 @@
                     <get-otp-button [valid]="firstFormGroup.valid"
                         (getOtpEvent)="sendotp()"></get-otp-button>
 
+                    <wsv wide="15px"></wsv>
                     <div class="warning">
                         {{errlogin}}
                     </div>
@@ -92,7 +93,7 @@
                         [matchParentWidth]="true"
                         (click)="login()"></rounded-red-button>
 
-
+                    <wsv wide="15px"></wsv>
                     <div class="warning">
                         {{errotp}}
                     </div>
