@@ -7,14 +7,18 @@
 
             <mat-step [stepControl]="firstFormGroup">
                 <form [formGroup]="firstFormGroup">
+                    <wsv wide="50px"></wsv>
                     <div class="d-flex justify-content-center">
+
                         <img src="../../../../assets/image/icons/login.svg">
                     </div>
-                    <wsv wide="10px"></wsv>
-                    <div class="d-flex justify-content-center teksbesar">Log Ins</div>
-                    <wsv wide="15px"></wsv>
-                    <div class="d-flex justify-content-center ">Kami akan mengirimkan OTP ke alamat email anda</div>
-                    <wsv wide="20px"></wsv>
+                    <wsv wide="5px"></wsv>
+                    <div class="d-flex justify-content-center teksbesar"
+                        style="margin-top:20px;">Log In</div>
+                    <wsv wide="30px"></wsv>
+                    <div class="d-flex justify-content-center teks">Kami akan mengirimkan OTP ke alamat email anda
+                    </div>
+                    <wsv wide="50px"></wsv>
                     <div class="d-flex justify-content-center teks">Masukkan Alamat Email Anda</div>
 
                     <wsv wide="20px"></wsv>
@@ -41,10 +45,11 @@
 
             <mat-step [stepControl]="secondFormGroup">
                 <form [formGroup]="secondFormGroup">
+                    <wsv wide="50px"></wsv>
                     <div class="d-flex justify-content-center">
                         <img src="../../../../assets/image/icons/login-otp.svg">
                     </div>
-
+                    <wsv wide="20px"></wsv>
                     <div class="d-flex justify-content-center teksbesar">
                         Verifikasi OTP
                     </div>
@@ -52,11 +57,11 @@
                     <div class="d-flex justify-content-center">
                         Masukkan Nomor OTP yang sudah dikirim ke
                     </div>
-                    <wsv wide="20px"></wsv>
                     <div class="d-flex justify-content-center">
                         <b>{{firstFormGroup.value.email}}</b>
                     </div>
 
+                    <wsv wide="30px"></wsv>
                     <div class="d-flex justify-content-center">
                         <ng-otp-input (onInputChange)="onOtpChange($event)"
                             #ngOtpInput
