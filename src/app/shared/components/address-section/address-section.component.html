@@ -2,7 +2,7 @@
 	[ngStyle]="stylesObj"
 	(click)="openDialogLocation()">
 	<div id="location-user-detail">
-		{{location}}
+		{{location|truncate:50}}
 	</div>
 	<div id="location-arrow"></div>
 </div>
