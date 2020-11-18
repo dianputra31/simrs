@@ -27,6 +27,7 @@
                             class="rounded-gray d-flex w-100 justify-content-center email-input"
                             placeholder="Alamat Email"
                             formControlName="email"
+                            (keyup.enter)="sendotp()"
                             required>
                     </div>
 
@@ -68,6 +69,7 @@
                             #ngOtpInput
                             class="d-flex"
                             style="border: 1px;"
+                            (keyup.enter)="login()"
                             [config]="{length:6, inputStyles:{'border-top': '0px', 'border-left':'0px','border-right':'0px', 'border-bottom':'2px solid #a9a9a9', 'border-radius':'0px','width':'56px'}}">
                         </ng-otp-input>
                     </div>
