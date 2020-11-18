@@ -15,9 +15,14 @@ export class StatusPembelianComponent implements OnInit {
 	}
 
 	lihatTagihanDetail() {
-		this.router.navigate([
-			'./account/tagihan-print/' + this.item.invoice_no,
-		]);
+		this.router.navigate([]).then((result) => {
+			window.open(
+				window.location.origin +
+					'/#/account/tagihan-print/' +
+					this.item.invoice_no,
+				'_blank'
+			);
+		});
 		// console.log(tagihan);
 	}
 }

@@ -66,8 +66,8 @@ export class FilterCardComponent implements OnInit {
 	}
 
 	carilagi(a, b) {
-		if (a === '') a = 0;
-		if (b === '') b = 0;
+		if (!a) a = 0;
+		if (!b) b = 0;
 		this._redirectparam.price_start = a;
 		this._redirectparam.price_end = b;
 
@@ -79,6 +79,7 @@ export class FilterCardComponent implements OnInit {
 				this.keyword = '"' + this._redirectparam.namaproduk + '"';
 			else this.keyword = '';
 			var keywordnya = this.keyword.replace(/['"]+/g, '');
+
 			var paramet: any = {
 				category_id: params.get('category_id'),
 				sub_category_id: params.get('sub_category_id'),

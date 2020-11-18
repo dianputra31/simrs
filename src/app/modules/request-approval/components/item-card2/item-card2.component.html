@@ -12,7 +12,7 @@
                 </div>
                 <div>
                     <div class="label-gray">Harga Belanja</div>
-                    <div class="label-gray-2">{{item.grand_total| rupiah : 'bulat'}}
+                    <div class="label-gray-2">{{item.purchase_amount| rupiah}}
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <div id="item-desc-wrapper">
                 <item-desc [item]="item"></item-desc>
                 <wsv wide="6px"></wsv>
-                <div class="label-gray">Jumlah {{item.quantity}} barang</div>
+                <div class="label-gray">Jumlah: {{item.quantity}} barang</div>
             </div>
 
         </div>
