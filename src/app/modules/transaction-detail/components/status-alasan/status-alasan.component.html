@@ -49,7 +49,7 @@
 	</div>
 	<div class="w-50">
 		<div class="label-1"
-			*ngIf="item?.status == 'CANCEL'">Alasan Dibatalkan:</div>
+			*ngIf="item?.status == 'CANCEL' || item?.status == 'WAITING_RETURN'">Alasan Dibatalkan:</div>
 		<div class="label-1"
 			*ngIf="item?.status == 'REJECTED'">Alasan Ditolak:</div>
 		<div class="label-2">{{item?.reason}}</div>
