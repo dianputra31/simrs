@@ -17,7 +17,7 @@ export class AddPurchaserEditorComponent implements OnInit {
 		first_name: '',
 		last_name: '',
 		gender: '',
-		role_id: 1,
+		role_id: 2,
 		company_id: 1,
 		profile_picture_url: '',
 	};
