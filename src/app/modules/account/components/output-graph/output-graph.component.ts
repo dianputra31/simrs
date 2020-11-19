@@ -35,12 +35,17 @@ export class OutputGraphComponent implements OnInit {
 	product_name: any[] = [];
 	product_total: any[] = [];
 
+	totals: number = 0;
+
 	public options: any = {
 		chart: {
 			type: 'line',
 		},
 		title: {
-			text: 'Pembelian Perusahaan',
+			text: '',
+		},
+		credits: {
+			enabled: false,
 		},
 		xAxis: {
 			categories: this.month_name,
@@ -54,17 +59,24 @@ export class OutputGraphComponent implements OnInit {
 		plotOptions: {
 			line: {
 				dataLabels: {
-					enabled: true,
+					enabled: false,
 				},
 				enableMouseTracking: false,
 			},
 		},
 		series: [
 			{
+				name: 'total',
 				showInLegend: false,
 				cursor: 'pointer',
 				data: this.total,
 				color: '#FF0000',
+				dataLabels: {
+					enabled: true,
+					formatter: function () {
+						return Highcharts.numberFormat(this.y, 0, '.', '.');
+					},
+				},
 			},
 		],
 	};
@@ -74,7 +86,7 @@ export class OutputGraphComponent implements OnInit {
 			type: 'bar',
 		},
 		title: {
-			text: 'Pembelian per User',
+			text: '',
 		},
 		xAxis: {
 			categories: this.requester_name,
@@ -107,6 +119,7 @@ export class OutputGraphComponent implements OnInit {
 				dataLabels: {
 					enabled: true,
 				},
+				showInLegend: false,
 			},
 			series: {
 				borderRadius: 5,
@@ -114,16 +127,7 @@ export class OutputGraphComponent implements OnInit {
 			},
 		},
 		legend: {
-			layout: 'vertical',
-			align: 'right',
-			verticalAlign: 'top',
-			x: -40,
-			y: 80,
-			floating: true,
-			borderWidth: 1,
-			backgroundColor:
-				Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-			shadow: true,
+			showInLegend: 'false',
 		},
 		credits: {
 			enabled: false,
@@ -132,6 +136,12 @@ export class OutputGraphComponent implements OnInit {
 			{
 				name: 'total',
 				data: this.requester_years,
+				dataLabels: {
+					enabled: true,
+					formatter: function () {
+						return Highcharts.numberFormat(this.y, 0, '.', '.');
+					},
+				},
 			},
 		],
 	};
@@ -145,7 +155,7 @@ export class OutputGraphComponent implements OnInit {
 			align: 'center',
 			verticalAlign: 'middle',
 			y: 15,
-			x: -330,
+			x: -300,
 		},
 		plotOptions: {
 			pie: {
@@ -166,23 +176,31 @@ export class OutputGraphComponent implements OnInit {
 			labelFormatter: function () {
 				var legendItem = document.createElement('div'),
 					symbol = document.createElement('span'),
+					percentage = document.createElement('span'),
+					newLine = document.createElement('br'),
 					label = document.createElement('span');
+				legendItem.classList.add('test-chart');
 
-				symbol.innerText = this.y.toFixed(2);
+				symbol.innerText = Highcharts.numberFormat(this.y, 0, '.', '.');
 				symbol.style.borderColor = this.color;
+				percentage.innerText = this.percentage.toFixed(2) + '% : ';
 				symbol.classList.add('xLegendSymbol');
 				label.innerText = this.name;
 
-				legendItem.appendChild(symbol);
 				legendItem.appendChild(label);
-
+				legendItem.appendChild(newLine);
+				legendItem.appendChild(percentage);
+				legendItem.appendChild(symbol);
 				return legendItem.outerHTML;
 			},
+		},
+		credits: {
+			enabled: false,
 		},
 		series: [
 			{
 				type: 'pie',
-				name: 'Browser share',
+				name: 'persentase',
 				innerSize: '60%',
 				data: this.product_name,
 			},
@@ -204,45 +222,49 @@ export class OutputGraphComponent implements OnInit {
 				this.month.push(item.m);
 				this.years.push(item.y);
 				this.total.push(item.total);
-				console.log(index, this.month);
 			});
 
-			this.month.forEach((item) => {
+			console.log(this.total);
+			for (let i = 0; i < this.total.length; i++) {
+				this.totals += this.total[i];
+			}
+
+			this.month.forEach((item, i) => {
 				if (item === 1) {
-					item = 'Januari';
+					item = 'Januari ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 2) {
-					item = 'Februari';
+					item = 'Februari ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 3) {
-					item = 'Maret';
+					item = 'Maret ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 4) {
-					item = 'April';
+					item = 'April ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 5) {
-					item = 'Mei';
+					item = 'Mei ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 6) {
-					item = 'Juni';
+					item = 'Juni ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 7) {
-					item = 'Juli';
+					item = 'Juli ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 8) {
-					item = 'Agustus';
+					item = 'Agustus ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 9) {
-					item = 'September';
+					item = 'September ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 10) {
-					item = 'Oktober';
+					item = 'Oktober ' + this.years[i];
 					this.month_name.push(item);
 				} else if (item === 11) {
-					item = 'November';
+					item = 'November ' + this.years[i];
 					this.month_name.push(item);
 				} else {
-					item = 'Desember';
+					item = 'Desember ' + this.years[i];
 					this.month_name.push(item);
 				}
 			});

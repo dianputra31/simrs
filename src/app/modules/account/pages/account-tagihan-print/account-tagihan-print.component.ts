@@ -38,7 +38,9 @@ export class AccountTagihanPrintComponent implements OnInit {
 			.subscribe(
 				(resp) => {
 					this.blockUI.stop();
+					console.log('responsenya', resp);
 					this._document.getElementById('scroll').innerHTML = resp;
+					// this._document.getElementById('scroll').innerHTML =
 				},
 				(error) => {
 					this.blockUI.stop();
@@ -46,5 +48,12 @@ export class AccountTagihanPrintComponent implements OnInit {
 				}
 			);
 		this.subsribers.push(sub);
+	}
+
+	addPdf() {
+		console.log('bisa pdf');
+	}
+	addPrint() {
+		console.log('bisa print');
 	}
 }
