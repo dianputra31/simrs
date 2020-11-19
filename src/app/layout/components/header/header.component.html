@@ -48,8 +48,7 @@
 							matInput
 							[formControl]="myControl"
 							[matAutocomplete]="auto"
-							placeholder="Search"
-							(change)=getKey(pencarian.value)>
+							placeholder="Search">
 						<!-- autoActiveFirstOption -->
 
 						<mat-autocomplete id="mat-autocomplete"
@@ -64,7 +63,8 @@
 						</mat-autocomplete>
 
 						<button type="submit"
-							id="searchbutton">
+							id="searchbutton"
+							(click)="_filter(myControl.value)">
 						</button>
 
 					</form>
