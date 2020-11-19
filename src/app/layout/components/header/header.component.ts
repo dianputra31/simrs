@@ -4,7 +4,7 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,7 +19,7 @@ import {
 	OpenTrxCount,
 	ProfileUrl,
 	RESPONSE,
-	SearchProduct
+	SearchProduct,
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
@@ -128,22 +128,30 @@ export class HeaderComponent implements OnInit {
 	}
 
 	getKey(a) {
+		console.log('test');
 		this.keyword.emit(a);
 		this._redirectparam.price_start = 0;
 		this._redirectparam.price_end = 0;
 		this._redirectparam.namaproduk = a.replaceAll('/', '-');
+
 		if (this.router.url == '/pilih-produk/0/0') {
 			this.router.navigate([
 				'./pilih-produk/0/0' + '/' + this._redirectparam.namaproduk,
 			]);
 		} else {
-			this.router.navigate([
-				'./pilih-produk/0/0' + '/' + this._redirectparam.namaproduk,
-			]);
+			if (this.router.url == '/request-approval') {
+				this.openDialogLocation(
+					'./pilih-produk/0/0' + '/' + this._redirectparam.namaproduk
+				);
+			} else {
+				this.router.navigate([
+					'./pilih-produk/0/0' + '/' + this._redirectparam.namaproduk,
+				]);
+			}
 		}
 	}
 
-	private _filter(value: string): string[] {
+	public _filter(value: string): string[] {
 		const filterValue = value.toLowerCase();
 		console.log(filterValue);
 		const sub = this.http
@@ -151,12 +159,18 @@ export class HeaderComponent implements OnInit {
 			.subscribe(
 				(resp) => {
 					if (resp.status.rc === RESPONSE.SUCCESS) {
+						console.log(resp.data);
 						this.dataproduk = resp.data;
 						this.optionsname = this.dataproduk.data;
+						console.log(this.optionsname);
 						this.options = [];
-						for (let items of this.optionsname) {
-							this.options.push(items.product_name);
+						if (this.optionsname) {
+							for (let items of this.optionsname) {
+								this.options.push(items.product_name);
+							}
 						}
+
+						this.getKey(value);
 					} else {
 						this.dialogService.showAlert(resp.status.msg);
 					}
@@ -212,15 +226,27 @@ export class HeaderComponent implements OnInit {
 	}
 
 	goToAccount() {
-		this.router.navigate(['./account']);
+		if (this.router.url == '/request-approval') {
+			this.openDialogLocation('./account');
+		} else {
+			this.router.navigate(['./account']);
+		}
 	}
 
 	goToTransaction() {
-		this.router.navigate(['./transaction']);
+		if (this.router.url == '/request-approval') {
+			this.openDialogLocation('./transaction');
+		} else {
+			this.router.navigate(['./transaction']);
+		}
 	}
 
 	goToApproval() {
-		this.router.navigate(['./approval']);
+		if (this.router.url == '/request-approval') {
+			this.openDialogLocation('./approval');
+		} else {
+			this.router.navigate(['./approval']);
+		}
 	}
 
 	goToCart() {
@@ -293,9 +319,8 @@ export class HeaderComponent implements OnInit {
 		this.subsribers.push(sub);
 	}
 
-
 	onImgError(event) {
-		event.target.src = '../../../../assets/image/icons/default-acc-white.svg';
+		event.target.src =
+			'../../../../assets/image/icons/default-acc-white.svg';
 	}
-	
 }
