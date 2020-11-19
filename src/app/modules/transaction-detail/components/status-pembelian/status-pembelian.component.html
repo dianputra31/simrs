@@ -6,7 +6,7 @@
 				Status Pembelian
 			</div>
 			<div class="label-2 d-flex">
-				{{item?.statusTranslated}}
+				{{item?.status == 'WAITING_RETURN'? item?.statusTranslated: 'Dibatalkan'}}
 			</div>
 		</div>
 		<wsv wide="14px"></wsv>

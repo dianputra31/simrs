@@ -95,7 +95,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 			case 'REJECTED':
 				return 'Ditolak';
 			case 'WAITING_RETURN':
-				return 'Dibatalkan';
+				return 'Konfirmasi Retur';
 		}
 	}
 
