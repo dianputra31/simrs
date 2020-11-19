@@ -84,7 +84,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 				return 'Dikirim';
 
 			case 'RECEIVED':
-				return 'Diterima';
+				return 'Sampai';
 			case 'CLOSED':
 				return 'Diterima & Selesai';
 
