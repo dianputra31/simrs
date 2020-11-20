@@ -23,7 +23,7 @@
 		"@angular/platform-browser": "~10.0.3",
 		"@angular/platform-browser-dynamic": "~10.0.3",
 		"@angular/router": "~10.0.3",
-		"@angularfy/autonumeric": "^3.0.0",
+		"@angularfy/autonumeric": "^3.0.3",
 		"@ng-bootstrap/ng-bootstrap": "^5.3.0",
 		"@ngu/carousel": "^2.0.3",
 		"@popperjs/core": "^2.0.6",

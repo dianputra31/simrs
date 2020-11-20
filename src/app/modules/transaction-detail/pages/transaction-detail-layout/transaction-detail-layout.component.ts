@@ -75,25 +75,27 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	translateStatus(status): string {
 		switch (status) {
 			case 'ORDERED':
-				return 'DIORDER';
+				return 'Diorder';
 			case 'PENDING':
-				return 'PENDING';
+				return 'Pending';
 			case 'PROCESS':
-				return 'DIPROSES';
+				return 'Diproses';
 			case 'DELIVER':
-				return 'DIKIRIM';
+				return 'Dikirim';
 
 			case 'RECEIVED':
-				return 'DITERIMA';
+				return 'Sampai';
 			case 'CLOSED':
-				return 'SELESAI';
+				return 'Diterima & Selesai';
 
 			case 'CANCEL':
-				return 'DIBATALKAN';
+				return 'Dibatalkan';
 			case 'OUTOFSTOCK':
-				return 'STOK HABIS';
+				return 'Stok Habis';
 			case 'REJECTED':
-				return 'DITOLAK';
+				return 'Ditolak';
+			case 'WAITING_RETURN':
+				return 'Konfirmasi Retur';
 		}
 	}
 

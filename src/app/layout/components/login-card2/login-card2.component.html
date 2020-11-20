@@ -7,14 +7,18 @@
 
             <mat-step [stepControl]="firstFormGroup">
                 <form [formGroup]="firstFormGroup">
+                    <wsv wide="50px"></wsv>
                     <div class="d-flex justify-content-center">
+
                         <img src="../../../../assets/image/icons/login.svg">
                     </div>
-                    <wsv wide="10px"></wsv>
-                    <div class="d-flex justify-content-center teksbesar">Log In</div>
-                    <wsv wide="15px"></wsv>
-                    <div class="d-flex justify-content-center ">Kami akan mengirimkan OTP ke alamat email anda</div>
-                    <wsv wide="20px"></wsv>
+                    <wsv wide="5px"></wsv>
+                    <div class="d-flex justify-content-center teksbesar"
+                        style="margin-top:20px;">Log In</div>
+                    <wsv wide="30px"></wsv>
+                    <div class="d-flex justify-content-center teks">Kami akan mengirimkan OTP ke alamat email anda
+                    </div>
+                    <wsv wide="50px"></wsv>
                     <div class="d-flex justify-content-center teks">Masukkan Alamat Email Anda</div>
 
                     <wsv wide="20px"></wsv>
@@ -23,6 +27,7 @@
                             class="rounded-gray d-flex w-100 justify-content-center email-input"
                             placeholder="Alamat Email"
                             formControlName="email"
+                            (keyup.enter)="sendotp()"
                             required>
                     </div>
 
@@ -31,6 +36,7 @@
                     <get-otp-button [valid]="firstFormGroup.valid"
                         (getOtpEvent)="sendotp()"></get-otp-button>
 
+                    <wsv wide="15px"></wsv>
                     <div class="warning">
                         {{errlogin}}
                     </div>
@@ -41,10 +47,11 @@
 
             <mat-step [stepControl]="secondFormGroup">
                 <form [formGroup]="secondFormGroup">
+                    <wsv wide="50px"></wsv>
                     <div class="d-flex justify-content-center">
                         <img src="../../../../assets/image/icons/login-otp.svg">
                     </div>
-
+                    <wsv wide="20px"></wsv>
                     <div class="d-flex justify-content-center teksbesar">
                         Verifikasi OTP
                     </div>
@@ -52,17 +59,22 @@
                     <div class="d-flex justify-content-center">
                         Masukkan Nomor OTP yang sudah dikirim ke
                     </div>
-                    <wsv wide="20px"></wsv>
                     <div class="d-flex justify-content-center">
                         <b>{{firstFormGroup.value.email}}</b>
                     </div>
 
+                    <wsv wide="30px"></wsv>
                     <div class="d-flex justify-content-center">
                         <ng-otp-input (onInputChange)="onOtpChange($event)"
                             #ngOtpInput
-                            [config]="{length:6}"></ng-otp-input>
+                            class="d-flex"
+                            style="border: 1px;"
+                            (keyup.enter)="login()"
+                            [config]="{length:6, inputStyles:{'border-top': '0px', 'border-left':'0px','border-right':'0px', 'border-bottom':'2px solid #a9a9a9', 'border-radius':'0px','width':'56px'}}">
+                        </ng-otp-input>
                     </div>
 
+                    <wsv wide="13px"></wsv>
 
                     <div class="d-flex justify-content-center">
                         Tidak Terima Nomor OTP?
@@ -87,7 +99,7 @@
                         [matchParentWidth]="true"
                         (click)="login()"></rounded-red-button>
 
-
+                    <wsv wide="15px"></wsv>
                     <div class="warning">
                         {{errotp}}
                     </div>

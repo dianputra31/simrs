@@ -8,7 +8,7 @@ import { RESPONSE } from 'src/app/app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import {
 	AuthServiceLoginPathConst,
-	AuthServiceProfilePathConst
+	AuthServiceProfilePathConst,
 } from '../../../core/const/auth-service-path.const';
 import { StorageService } from '../../../core/storage/service/storage.service';
 
@@ -46,8 +46,7 @@ export class LoginCard2Component implements OnInit {
 		this.firstFormGroup = new FormGroup({
 			email: new FormControl('', [
 				Validators.required,
-				Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
-				Validators.email,
+				Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
 			]),
 		});
 

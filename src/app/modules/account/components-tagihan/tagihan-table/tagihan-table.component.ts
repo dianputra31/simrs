@@ -56,7 +56,13 @@ export class TagihanTableComponent implements OnInit {
 
 	slideHtml;
 	lihatTagihanDetail(tagihan) {
-		this.router.navigate(['./account/tagihan-print/' + tagihan.invoice_no]);
-		console.log(tagihan);
+		this.router.navigate([]).then((result) => {
+			window.open(
+				window.location.origin +
+					'/#/account/tagihan-print/' +
+					tagihan.invoice_no,
+				'_blank'
+			);
+		});
 	}
 }

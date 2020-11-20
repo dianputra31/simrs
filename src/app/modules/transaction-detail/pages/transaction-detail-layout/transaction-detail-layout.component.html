@@ -6,8 +6,9 @@
 		<div class="d-flex">
 			<div class="flex-grow-1 left-wrapper">
 
-				<wsv wide="20px"></wsv>
-				<div class="padding">
+				<div class="padding"
+					style="height: 114px;">
+					<wsv wide="20px"></wsv>
 					<div class="d-flex justify-content-between">
 						<div class="label-1">Request by: <span class="label-2">{{item?.requester_full_name}}</span>
 						</div>
@@ -35,13 +36,13 @@
 							<div class="label-2">{{item?.receipt_number}}</div>
 						</div>
 					</div>
+					<wsv wide="20px"></wsv>
 				</div>
 
 
 
 
 
-				<wsv wide="20px"></wsv>
 				<horizontal-line></horizontal-line>
 
 				<wsv wide="20px"></wsv>
@@ -52,13 +53,13 @@
 					<div>
 						<div class="label-2">{{item?.product_name}}</div>
 						<wsv wide="7px"></wsv>
-						<div class="label-4">{{item?.purchase_amount|rupiah}}</div>
+						<div class="label-4">{{item?.sell_price|rupiah}}</div>
 						<wsv wide="7px"></wsv>
 
-						<div *ngIf="tampilkanHargaCoret()">
-							class="label-1 coret">Jumlah : {{item?.initial_quantity}} Barang
+						<div *ngIf="tampilkanHargaCoret()"
+							class="label-1 coret">Jumlah: {{item?.initial_quantity}} Barang
 						</div>
-						<div class="label-1">Jumlah :{{item?.quantity}} barang</div>
+						<div class="label-1">Jumlah: {{item?.quantity}} barang</div>
 					</div>
 					<wsh wide="150px"></wsh>
 				</div>
@@ -98,7 +99,7 @@
 				<wsv wide="20px"></wsv>
 				<div class="padding">
 					<div class="label-1">Catatan Pengiriman:</div>
-					<div class="label-2">{{item?.message}}</div>
+					<div class="label-2">{{item?.delivery_address_json?.delivery_message}}</div>
 				</div>
 
 				<wsv wide="20px"></wsv>
@@ -107,13 +108,6 @@
 			<wsh wide="30px"></wsh>
 
 			<status-pembelian [item]="item"></status-pembelian>
-		</div>
-		<div id="left-container">
-
-			<div id="top-fixed"
-				class="bg-10">
-				<wsv wide="30px"></wsv>
-			</div>
 		</div>
 
 	</div>
