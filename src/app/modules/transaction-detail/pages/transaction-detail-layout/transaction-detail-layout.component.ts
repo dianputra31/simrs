@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
@@ -17,6 +18,7 @@ import { CartItemResponseModel } from '../../../../models/cart-item-response.mod
 import { CartItemModel } from '../../../../models/cart-item.model';
 import { TanggalPipe } from '../../../../pipes/tanggal.pipe';
 import { ToastService } from '../../../../shared/toast/toast-service';
+import { SelesaiConfirmationDialogComponent } from '../../components/selesai-confirmation-dialog/selesai-confirmation-dialog.component';
 @Component({
 	selector: 'transaction-detail-layout',
 	templateUrl: './transaction-detail-layout.component.html',
@@ -30,6 +32,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	purchased_id: string;
 	item_id: string;
 	constructor(
+		public dialog: MatDialog,
 		private route: ActivatedRoute,
 		private service: BaseService,
 		private http: HttpService,
@@ -121,20 +124,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	}
 
 	confirmSelesaiOrder() {
-		this.blockUI.start();
-
-		const url = `${TransactionConfirmUrl}/${this.purchased_id}/${this.item_id}`;
-		const sub = this.service
-			.postData(url, false, false, false, false)
-			.subscribe((resp) => {
-				this.blockUI.stop();
-				if (resp.data) {
-					this.getTransactionDetail();
-				}
-			});
-		this.subscribers.push(sub);
-
-		this.blockUI.stop();
+		this.konfirmasiDialogLocation();
 	}
 
 	estimateDeliveryTime(item) {
@@ -281,5 +271,43 @@ export class TransactionDetailLayoutComponent implements OnInit {
 				this.item?.status == TRANSACTION_STATUS_DICT.CLOSED) &&
 			this.item?.initial_quantity != this.item?.quantity
 		);
+	}
+
+	konfirmasiDialogLocation() {
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = 'modal-component';
+		dialogConfig.width = '477px';
+		dialogConfig.height = '180px';
+		dialogConfig.panelClass = 'border-radius:50px';
+		dialogConfig.data = {};
+
+		const modalDialog = this.dialog.open(
+			SelesaiConfirmationDialogComponent,
+			dialogConfig
+		);
+
+		modalDialog.afterClosed().subscribe((data) => {
+			if (data == 'ok') {
+				this.blockUI.start();
+
+				const url = `${TransactionConfirmUrl}/${this.purchased_id}/${this.item_id}`;
+				const sub = this.service
+					.postData(url, false, false, false, false)
+					.subscribe((resp) => {
+						this.blockUI.stop();
+						if (resp.data) {
+							this.getTransactionDetail();
+						}
+					});
+				this.subscribers.push(sub);
+
+				this.blockUI.stop();
+			} else if (data == 'cancel') {
+				history.pushState(null, null, window.location.href);
+			}
+		});
+
+		return false;
 	}
 }
