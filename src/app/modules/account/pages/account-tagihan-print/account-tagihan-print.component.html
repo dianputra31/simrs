@@ -1,5 +1,17 @@
-<div style="background-color: white;">
+<div id="container"
+    class="container"
+    style="background-color: white;">
     <wsv wide="50px"></wsv>
+    <div class="d-flex button-print">
+        <div (click)="addPdf()"
+            class="d-flex icon-pdf">
+            <img src="../../../../assets/image/icons/icon-pdf.png">
+        </div>
+        <div (click)="addPrint()"
+            class="d-flex icon-print">
+            <img src="../../../../assets/image/icons/icon-print.png">
+        </div>
+    </div>
     <div id="scroll"></div>
-    <wsv wide="50px"></wsv>
+    <!-- <wsv wide="50px"></wsv> -->
 </div>
