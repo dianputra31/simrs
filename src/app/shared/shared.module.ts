@@ -42,14 +42,15 @@ import { PopUpRequestApprovalComponent } from './components/pop-up-request-appro
 import { QtyCtrlTwoComponent } from './components/qty-ctrl-two/qty-ctrl-two.component';
 import { QtyCtrlComponent } from './components/qty-ctrl/qty-ctrl.component';
 import { RangeDatepickerComponent } from './components/range-datepicker/range-datepicker.component';
+import { RatingDialogComponent } from './components/rating-dialog/rating-dialog.component';
 import { RedBgButtonComponent } from './components/red-bg-button/red-bg-button.component';
 import { RedBorderWhiteBgButtonComponent } from './components/red-border-white-bg-button/red-border-white-bg-button.component';
 import { RedButtonComponent } from './components/red-button/red-button.component';
 import { ResetFilterComponent } from './components/reset-filter/reset-filter.component';
+import { StarComponent } from './components/star/star.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
-
 registerLocaleData(en);
 
 const antDesignIcons = AllIcons as {
@@ -102,6 +103,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		EmptyCartComponent,
 		RangeDatepickerComponent,
 		AnyAlertComponent,
+		RatingDialogComponent,
+		StarComponent,
 	],
 	imports: [
 		CommonModule,
@@ -148,6 +151,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		RedButtonComponent,
 		EmptyCartComponent,
 		RangeDatepickerComponent,
+		RatingDialogComponent,
 	],
 	providers: [
 		{ provide: NZ_I18N, useValue: en_US },
