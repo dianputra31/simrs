@@ -44,7 +44,6 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.konfirmasiDialogLocation();
 		this.subscribers = [];
 		this.route.paramMap.subscribe((params) => {
 			this.blockUI.start();
