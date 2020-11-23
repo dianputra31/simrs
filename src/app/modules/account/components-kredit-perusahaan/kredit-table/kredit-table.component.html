@@ -1,70 +1,20 @@
 <div class="kredit-wrapper">
-	<table class="table table-borderless">
-		<thead>
-			<tr>
-				<th>
-					<div>
-						<div class="d-flex justify-content-center">
-							Tanggal
-						</div>
-						<wsv wide="9px"></wsv>
-						<horizontal-line></horizontal-line>
-					</div>
+	<div id="detail-data"
+		class="d-flex flex-row bd-highlight mb-3">
+		<div class="p-2 bd-highlight short center tebal">Tanggal</div>
+		<div class="p-2 bd-highlight short center tebal">Jenis Transaksi</div>
+		<div class="p-2 bd-highlight medium right tebal">Mutasi</div>
+		<div class="p-2 bd-highlight medium center tebal">Sisa Kredit</div>
+		<div class="p-2 bd-highlight long left tebal">Keterangan</div>
+	</div>
+	<div id="detail-data">
+		<horizontal-line></horizontal-line>
+	</div>
 
 
-				</th>
-				<th>
-					<div>
-						<div class="d-flex justify-content-center">
-							Jenis Transaksi
-						</div>
-						<wsv wide="9px"></wsv>
-						<horizontal-line></horizontal-line>
-					</div>
 
-				</th>
-				<th>
-					<div>
-						<div class="d-flex justify-content-center text-right">
-							Mutasi
-						</div>
-						<wsv wide="9px"></wsv>
-						<horizontal-line></horizontal-line>
-					</div>
-				</th>
-				<th>
-					<div>
-						<div class="d-flex justify-content-center text-right">
-							Sisa Kredit
-						</div>
-						<wsv wide="9px"></wsv>
-						<horizontal-line></horizontal-line>
-					</div>
-				</th>
-				<th>
-					<div>
-						<div class="d-flex justify-content-center text-center">
-							Keterangan
-						</div>
-						<wsv wide="9px"></wsv>
-						<horizontal-line></horizontal-line>
-					</div>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
+	<span *ngFor="let item of items">
+		<kredit-data [item]="item"></kredit-data>
+	</span>
 
-			<tr *ngFor="let items of hist; let i = index">
-				<td class="text-center">{{items.updated_at | tanggal: 'dmy'}}</td>
-				<td class="text-center">
-					<div *ngIf="items.type=='C'; then kredit else debit"></div>
-					<ng-template #kredit>Kredit</ng-template>
-					<ng-template #debit>Debit</ng-template>
-				</td>
-				<td class="text-right">{{items.mutation | number}}</td>
-				<td class="text-right tebal">{{items.balance | number}}</td>
-				<td class="text-left">{{items.description}}</td>
-			</tr>
-		</tbody>
-	</table>
 </div>
