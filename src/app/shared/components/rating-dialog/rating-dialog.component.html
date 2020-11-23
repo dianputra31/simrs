@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-end">
+    <img src="../../../../assets/image/icons/close_button.png"
+        (click)="closeDialog()"
+        style="cursor: pointer;"
+        width="16px">
+</div>
+
+<div class="d-flex justify-content-center label-1">
+    Berikan Penilaian Anda
+</div>
+
+<wsv wide="14px"></wsv>
+
+<div class="d-flex justify-content-around">
+    <div>
+        <div class="d-flex w-100 justify-content-center label-2">
+            Produk
+        </div>
+        <wsv wide='3px'></wsv>
+        <div class="d-flex w-100 justify-content-center">
+            <star (onRatingEvent)="penilaianProduk($event)"></star>
+        </div>
+    </div>
+
+    <div>
+        <div class="d-flex w-100 justify-content-center label-2">
+            Pelayanan
+        </div>
+        <wsv wide='3px'></wsv>
+        <div class="d-flex w-100 justify-content-center">
+            <star (onRatingEvent)="penilaianPelayanan($event)"></star>
+        </div>
+    </div>
+</div>
+
+<wsv wide="30px"></wsv>
+
+<textarea [(ngModel)]='komentar'
+    rows="5"
+    cols="56"
+    placeholder="Berikan komentar anda tentang Produk dan Pelayanan kami">
+</textarea>
+
+<wsv wide="24px"></wsv>
+
+<div class="d-flex justify-content-center">
+    <rounded-red-button label="Submit"
+        paddingtop="8px"
+        paddingbottom="8px"
+        paddingleft="15px"
+        paddingright="15px"
+        font="14px"
+        (click)="submitButtonClick()"></rounded-red-button>
+</div>

@@ -19,7 +19,8 @@ export class StatusAlasanComponent implements OnInit {
 		return (
 			this.item?.status == TRANSACTION_STATUS_DICT.CANCEL ||
 			this.item?.status == TRANSACTION_STATUS_DICT.OUTOFSTOCK ||
-			this.item?.status == TRANSACTION_STATUS_DICT.REJECTED
+			this.item?.status == TRANSACTION_STATUS_DICT.REJECTED ||
+			this.item?.status == TRANSACTION_STATUS_DICT.WAITING_RETURN
 		);
 	}
 

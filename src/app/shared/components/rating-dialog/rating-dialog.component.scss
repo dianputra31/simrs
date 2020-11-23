@@ -1,0 +1,39 @@
+.label-1 {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 25px;
+	/* identical to box height */
+
+	text-align: center;
+
+	color: #606060;
+}
+
+.label-2 {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+
+	text-align: center;
+
+	color: #606060;
+}
+
+textarea {
+	border: 0.5px solid #a9a9a9;
+	box-sizing: border-box;
+	border-radius: 4px;
+	resize: none;
+	padding-top: 7px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 14px;
+	color: #606060;
+}
+
+textarea::placeholder {
+	color: #a9a9a9;
+}
