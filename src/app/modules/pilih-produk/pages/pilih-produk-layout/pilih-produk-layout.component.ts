@@ -191,7 +191,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 							this.items = newData;
 						}
 						
-						console.log(this.items);
+						// console.log(this.items);
 
 						this.initScrolling();
 				} else {

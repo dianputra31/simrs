@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { HistoryMutation } from '../../../../app.constant';
-import { HttpService } from '../../../../core/base-service/http.service';
+// import { DOCUMENT } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+// import { BlockUI, NgBlockUI } from 'ng-block-ui';
+// import { Subscription } from 'rxjs';
+// import { HistoryMutation, ProfileUrl, RESPONSE } from '../../../../app.constant';
+// import { HttpService } from '../../../../core/base-service/http.service';
+// import { BaseService } from '../../../../core/base-service/service/base.service';
 
 @Component({
 	selector: 'kredit-table',
@@ -9,36 +12,50 @@ import { HttpService } from '../../../../core/base-service/http.service';
 	styleUrls: ['./kredit-table.component.scss']
 })
 export class KreditTableComponent implements OnInit {
-	subsribers: Subscription[];
-	hist;
-	param = {
-		page: 1,
-		limit: 30
-	}
+	@Input() items:any;
+	// subsribers: Subscription[];
+	// hist;
+	// param = {
+	// 	page: 1,
+	// 	limit: 30
+	// }
 
-	constructor(private service: HttpService,
+	
+	// innerHeight: any;
+	// leftContainerHeight: any;
+	// rightContainerHeight: any;
+	// topFixed: any;
+	// headers: any;
+	// isSpinner: Boolean = false;
+	// selector: string = '#left-container';
+	// limit: number = 30;
+	// page: number = 1;
+	// totalPages: number;
+	// @BlockUI() blockUI: NgBlockUI;
+	// limitkredit;
+	// sisakreditnya;
+
+
+	// @Inject(DOCUMENT) private _document: Document;
+
+
+	constructor(
+		// private service: HttpService,
+		// private servis: BaseService,
 	) { }
 
 	ngOnInit(): void {
 
+		// console.log("Here we go: " + this.items);
+		// this.getBase(this.page);
+		// this.getSummary();
 
-		const sub = this.service.post(HistoryMutation, this.param)
-			.subscribe((resp) => {
-				var tc = resp.data.length;
-				if (parseInt(tc) > 0) {
-					document.getElementById('item-count').innerText =
-						resp.data.length;
-					this.hist = resp.data;
-				} else {
-					document.getElementById('item-count').innerText = '';
-					document
-						.getElementById('item-count')
-						.classList.remove('show');
-				}
-			});
-		this.subsribers.push(sub);
+		// const body = document.getElementsByTagName('body')[0];
+
+		
 	}
 
+	
 
 
 }

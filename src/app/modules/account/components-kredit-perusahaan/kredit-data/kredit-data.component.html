@@ -1,0 +1,12 @@
+<div id="detail-data"
+    class="d-flex flex-row bd-highlight mb-3">
+    <div class="p-2 bd-highlight short center tebal">{{item.updated_at | tanggal: 'dmy'}}</div>
+    <div class="p-2 bd-highlight short center">
+        <div *ngIf="item.type=='C'; then kredit else debit"></div>
+        <ng-template #kredit>Kredit</ng-template>
+        <ng-template #debit>Debit</ng-template>
+    </div>
+    <div class="p-2 bd-highlight medium right">{{item.mutation | number}}</div>
+    <div class="p-2 bd-highlight medium center tebal">{{item.balance | number}}</div>
+    <div class="p-2 bd-highlight long left">{{item.description}}</div>
+</div>
