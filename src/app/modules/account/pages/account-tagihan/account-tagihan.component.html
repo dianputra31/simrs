@@ -1,8 +1,44 @@
-<wsv wide="28px"></wsv>
-<div class="d-flex justify-content-between">
-	<div class="label-title">
-		Tagihan
+<div id="top-fixed">
+
+	<wsv wide="28px"></wsv>
+	<div class="d-flex justify-content-between">
+		<div class="label-title">
+			Tagihan
+		</div>
+	</div>
+	<wsv wide="24px"></wsv>
+</div>
+
+
+
+<div class="container d-flex datarow">
+	<div id="left-container"
+		[style.height.px]="leftContainerHeight"
+		class="flex-grow-1 productbox">
+
+		<div infiniteScroll
+			[infiniteScrollDistance]="2"
+			[infiniteScrollUpDistance]="1.5"
+			[infiniteScrollThrottle]="50"
+			[infiniteScrollContainer]="selector"
+			[fromRoot]="true"
+			(scrolled)="onScrollDown($event)"
+			*ngIf="hist?.length>=1">
+
+
+
+			<div class="d-flex">
+				<tagihan-table [items]="hist"></tagihan-table>
+			</div>
+
+
+		</div>
 	</div>
 </div>
-<wsv wide="24px"></wsv>
-<tagihan-table></tagihan-table>
+
+<div style="position:absolute;top:90%;left:55%;height:60px;width:60px;z-index: 1000;"
+	id="divload"
+	*ngIf="isSpinner">
+	<img src="../../../../../assets/image/icons/nestloading.gif"
+		style="position: relative;width:50px;">
+</div>
