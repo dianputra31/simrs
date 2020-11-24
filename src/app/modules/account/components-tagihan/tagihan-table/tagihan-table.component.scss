@@ -48,16 +48,22 @@ table {
 
 .short{
     width:150px;
-    // border: solid blue 1px;
+	// border: solid blue 1px;
+	margin-left:10px;
+	margin-right:10px;
 }
 
 .medium{
-    width:220px;
+	width:220px;
+	margin-left:10px;
+	margin-right:10px;
     // border: solid yellow 1px;
 }
 
 .long{
-    width:380px;
+	width:380px;
+	margin-left:10px;
+	margin-right:10px;
     // border: solid greenyellow 1px;
 }
 
@@ -75,4 +81,11 @@ table {
 
 .tebal{
 	font-weight: bold;
+}
+
+
+.garisbawah{
+	border-bottom: solid #cecece 1px;
+	border-width: 60%;
+	border-bottom-width: thin;
 }

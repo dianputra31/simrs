@@ -1,13 +1,13 @@
 <div class="kredit-wrapper">
 	<div id="detail-data"
 		class="d-flex flex-row bd-highlight mb-3">
-		<div class="p-2 bd-highlight long center tebal">No. Tagihan</div>
-		<div class="p-2 bd-highlight long center">Tanggal Pemesanan</div>
-		<div class="p-2 bd-highlight long center tebal">Status Pembayaran</div>
+		<div class="p-2 bd-highlight long center tebal garisbawah">No. Tagihan</div>
+		<div class="p-2 bd-highlight long center garisbawah">Tanggal Pemesanan</div>
+		<div class="p-2 bd-highlight long center tebal garisbawah">Status Pembayaran</div>
 	</div>
-	<div id="detail-data">
+	<!-- <div id="detail-data">
 		<horizontal-line></horizontal-line>
-	</div>
+	</div> -->
 
 	<span *ngFor="let item of items">
 		<tagihan-data [item]="item">
