@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
@@ -56,6 +57,7 @@ export class TransactionLayoutComponent implements OnInit {
 	constructor(
 		private http: HttpService,
 		private service: BaseService,
+		private dialog: MatDialog,
 		private _redirectparam: RedirectParameterService
 	) {}
 

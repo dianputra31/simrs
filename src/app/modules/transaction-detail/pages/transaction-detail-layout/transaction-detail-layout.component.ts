@@ -44,7 +44,6 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.konfirmasiDialogLocation();
 		this.subscribers = [];
 		this.route.paramMap.subscribe((params) => {
 			this.blockUI.start();
@@ -324,7 +323,10 @@ export class TransactionDetailLayoutComponent implements OnInit {
 		dialogConfig.width = '488px';
 		dialogConfig.height = '367px';
 		dialogConfig.panelClass = 'border-radius:50px';
-		dialogConfig.data = {};
+		dialogConfig.data = {
+			order_code: this.purchased_id,
+			item_id: this.item_id,
+		};
 
 		const modalDialog = this.dialog.open(
 			RatingDialogComponent,

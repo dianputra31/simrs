@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { RateUrl } from '../../../app.constant';
+import { HttpService } from '../../../core/base-service/http.service';
 import { ToastService } from '../../toast/toast-service';
 @Component({
 	selector: 'rating-dialog',
@@ -10,10 +12,15 @@ export class RatingDialogComponent implements OnInit {
 	ratingProduk = 0;
 	ratingPelayanan = 0;
 	komentar = '';
+	modalData;
 	constructor(
+		public httpService: HttpService,
 		public dialogRef: MatDialogRef<RatingDialogComponent>,
-		public toastService: ToastService
-	) {}
+		public toastService: ToastService,
+		@Inject(MAT_DIALOG_DATA) public data: any
+	) {
+		this.modalData = data;
+	}
 
 	ngOnInit(): void {}
 
@@ -26,10 +33,14 @@ export class RatingDialogComponent implements OnInit {
 	}
 
 	submitButtonClick() {
-		this.ratingPelayanan;
-		this.ratingProduk;
-		this.komentar;
-
+		var param = {
+			order_code: this.modalData.order_code,
+			item_id: this.modalData.item_id,
+			product_rate: this.ratingProduk,
+			service_rate: this.ratingPelayanan,
+			comment_rate: this.komentar,
+		};
+		this.httpService.post(RateUrl, param);
 		this.dialogRef.close();
 	}
 
