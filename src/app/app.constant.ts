@@ -59,6 +59,7 @@ export const DashboardPerMonth = `${API}/dashboard/per_month/`;
 export const DashboardPerPurchaser = `${API}/dashboard/per_purchaser/`;
 export const DashboardPerProduct = `${API}/dashboard/per_product/`;
 export const EmailCs = 'cs.nest@narindo.com';
+export const RateUrl = `${API}/transaction/rate`;
 
 export const TRANSACTION_STATUS_DICT = {
 	ORDERED: 'ORDERED',
