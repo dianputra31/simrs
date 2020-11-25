@@ -33,14 +33,17 @@ export class RatingDialogComponent implements OnInit {
 	}
 
 	submitButtonClick() {
-		var param = {
-			order_code: this.modalData.order_code,
-			item_id: this.modalData.item_id,
-			product_rate: this.ratingProduk,
-			service_rate: this.ratingPelayanan,
-			comment_rate: this.komentar,
-		};
-		this.httpService.post(RateUrl, param);
+		var x = `${RateUrl}?
+		order_code=${this.modalData.order_code}&
+		item_id=${this.modalData.item_id}&
+		product_rate=${this.ratingProduk}&
+		service_rate=${this.ratingPelayanan}&
+		comment_rate=${this.komentar}`;
+
+		console.log(x);
+		this.httpService.post(x, {}).subscribe((resp) => {
+			console.log(resp);
+		});
 		this.dialogRef.close();
 	}
 
