@@ -319,7 +319,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	ratingDialogLocation() {
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
-		dialogConfig.id = 'modal-component';
+		dialogConfig.id = 'modal-component-123';
 		dialogConfig.width = '488px';
 		dialogConfig.height = '367px';
 		dialogConfig.panelClass = 'border-radius:50px';
