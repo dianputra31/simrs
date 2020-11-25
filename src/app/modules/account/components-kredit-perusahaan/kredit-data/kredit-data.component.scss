@@ -1,44 +1,13 @@
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
 
-.kredit-wrapper {
-	background: #ffffff;
-	box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
-	border-radius: 10px;
-	height: auto;
-}
-
-table {
-	font-family: $primary-font;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 16px;
-}
-
-
-.text-center{
-	text-align:center;
-}
-
-.text-right{
-	text-align:right;
-}
-
-.text-left{
-	text-align:left;
-}
-
-.tebal{
-	font-weight: bold;
-}
-
 
 #detail-data{
     float:left;
     width:880px;
     position: relative;
-    padding:0px;margin:5px;
+    padding:0px;
+    // margin:5px;
     font-family: $primary-font;
 	font-style: normal;
 	font-weight: normal;
@@ -72,6 +41,7 @@ table {
 .right{
     text-align: right;
 }
+
 
 .tebal{
 	font-weight: bold;

@@ -1,0 +1,7 @@
+<div id="detail-data"
+    class="d-flex flex-row bd-highlight mb-3">
+    <div class="p-2 bd-highlight long center tebal jari"
+        (click)="lihatTagihanDetail(item)">{{item?.invoice_no}}</div>
+    <div class="p-2 bd-highlight long center">{{item?.released_at | tanggal: 'dmy'}}</div>
+    <div class="p-2 bd-highlight long center tebal">{{item?.invoice_status}}</div>
+</div>

@@ -8,6 +8,7 @@ import * as AllIcons from '@ant-design/icons-angular/icons';
 import { BlockUIModule } from 'ng-block-ui';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { DemoNgZorroAntdModule } from '../../shared/ng-zorro-antd.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -40,8 +41,11 @@ import { AccountInfoPerusahaanComponent } from './pages/account-info-perusahaan/
 import { AccountKelolaPurchaserComponent } from './pages/account-kelola-purchaser/account-kelola-purchaser.component';
 import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusahaan/account-kredit-perusahaan.component';
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
-import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
 import { AccountTagihanPrintComponent } from './pages/account-tagihan-print/account-tagihan-print.component';
+import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
+import { KreditDataComponent } from './components-kredit-perusahaan/kredit-data/kredit-data.component';
+import { TagihanDataComponent } from './components-tagihan/tagihan-data/tagihan-data.component';
+
 registerLocaleData(en);
 
 const antDesignIcons = AllIcons as {
@@ -82,6 +86,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		OutputGraphComponent,
 		TrashCanDialogComponent,
 		AccountTagihanPrintComponent,
+		KreditDataComponent,
+		TagihanDataComponent,
 	],
 	imports: [
 		CommonModule,
@@ -92,6 +98,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		HttpClientModule,
 		BlockUIModule.forRoot(),
 		DemoNgZorroAntdModule,
+		InfiniteScrollModule,
 	],
 	providers: [
 		{ provide: NZ_I18N, useValue: en_US },

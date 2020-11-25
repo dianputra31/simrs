@@ -3,6 +3,7 @@
 
 #account-layout {
 	height: auto;
+	overflow: hidden;
 }
 
 #left-wrapper {
@@ -55,4 +56,5 @@
 	padding-left: 20px;
 	padding-right: 20px;
 	background: #fdfdfd;
+	height: 100vh;
 }
