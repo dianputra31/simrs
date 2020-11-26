@@ -20,7 +20,8 @@
 				<div *ngFor="let category of categories">
 					<div [ngClass]="(clickedCategory==category)?'label-kategori-name-red':'label-kategori-name'"
 						(mouseover)='clickedCategory = category'
-						(mouseout)='myDrop.close();$event.stopPropagation();'>
+						(mouseout)='myDrop.close();$event.stopPropagation();'
+						(click)="$event.stopPropagation(); myDrop.close();goesToCat(clickedCategory)">
 
 						{{category.category_name}}</div>
 				</div>
