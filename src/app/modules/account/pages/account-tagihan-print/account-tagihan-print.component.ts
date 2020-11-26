@@ -91,7 +91,7 @@ export class AccountTagihanPrintComponent implements OnInit {
 		let originalContents = document.body.innerHTML;
 
 		document.body.innerHTML = printContents;
-
+		window.focus();
 		window.print();
 		window.close();
 

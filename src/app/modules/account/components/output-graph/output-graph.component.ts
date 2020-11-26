@@ -179,7 +179,6 @@ export class OutputGraphComponent implements OnInit {
 					percentage = document.createElement('span'),
 					newLine = document.createElement('br'),
 					label = document.createElement('span');
-				legendItem.classList.add('test-chart');
 
 				symbol.innerText = Highcharts.numberFormat(this.y, 0, '.', '.');
 				symbol.style.borderColor = this.color;
