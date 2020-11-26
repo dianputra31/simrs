@@ -21,7 +21,7 @@
 			</div>
 			<wsh wide="20px"></wsh>
 			<box-cart-price [pertotalan]="pertotalan"
-				[buttonDisable]="false"
+				[buttonDisable]="getOkItems().length == 0"
 				buttonLabel="Selanjutnya"
 				(buttonBoxCartPriceClick)="selanjutnyaClick()"></box-cart-price>
 		</div>

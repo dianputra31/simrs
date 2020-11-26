@@ -74,7 +74,6 @@ export class HeaderComponent implements OnInit {
 		const sub = this.http.get(ProfileUrl).subscribe(
 			(resp) => {
 				if (resp.status.rc === RESPONSE.SUCCESS) {
-					console.log(resp);
 					this.datacompany = resp.data.company;
 					this.datauser = resp.data.profile;
 				} else {
