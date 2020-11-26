@@ -21,6 +21,7 @@
                 {{item.approved_at |tanggal}}
             </div>
         </div>
+        <wsh wide="20px"></wsh>
         <div class="col-3-trx-item flex-grow-1">
             <div class="title-3">
                 Harga Belanja
@@ -49,12 +50,13 @@
             <div class="title-2"
                 (click)="itemClicked(item)"
                 style="cursor: pointer;">
-                {{item.product_name}}
+                {{item.product_name|truncate:76}}
             </div>
             <div *ngIf="item.initial_quantity != item.quantity"
                 class="title-3 coret">{{item.initial_quantity}} Barang</div>
             <div class="title-3">{{item.quantity}} Barang</div>
         </div>
+        <wsh wide="20px"></wsh>
         <div class="col-3-trx-item flex-grow-1">
             <div class="title-4">
                 Status
