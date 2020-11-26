@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StorageService } from '../../../../core/storage/service/storage.service';
 
 @Component({
@@ -41,14 +42,15 @@ export class AccountNavigationBarComponent implements OnInit {
 
 	selected;
 	constructor(
+		private router: Router,
 		public storageService: StorageService,
 		@Inject(DOCUMENT) private _document: Document
 	) {}
 
 	ngOnInit(): void {
-		// if(localStorage.getItem('selectedInfo') === 'Log out' || localStorage.getItem('selectedInfo') === '') this.selected = 'Dashboard'; else this.selected = localStorage.getItem('selectedInfo');
-		this.selected = this.navItems[0];
-		console.log(this.selected);
+		this.selected = this.navItems.filter(
+			(x) => x.endPoint == this.router.url.replace('/account/', '')
+		)[0];
 	}
 
 	selectItem(item) {

@@ -11,7 +11,7 @@
 	</div>
 
 	<div id="wrapper-right">
-		<div class="label-1">{{user.fullname}}</div>
-		<div class="label-2">{{user.email}}</div>
+		<div class="label-1">{{user.fullname|truncate:24}}</div>
+		<div class="label-2">{{user.email|truncate:24}}</div>
 	</div>
 </div>
