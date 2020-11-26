@@ -6,6 +6,7 @@ export class StorageService {
 	constructor(private router: Router) {}
 
 	tokenPrefix = 'token';
+	approvalDialogStatusPrefix = 'approvalDialogStatus';
 	public clear() {
 		localStorage.clear();
 	}
@@ -18,6 +19,18 @@ export class StorageService {
 		return JSON.parse(localStorage.getItem(this.tokenPrefix));
 	}
 
+	public storeApprovalDialogStatus(status: any) {
+		localStorage.setItem(
+			this.approvalDialogStatusPrefix,
+			JSON.stringify(status)
+		);
+	}
+
+	public getApprovalDialogStatus() {
+		return JSON.parse(
+			localStorage.getItem(this.approvalDialogStatusPrefix)
+		);
+	}
 	email: any;
 	role_name: any;
 	fullname: any;
