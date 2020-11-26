@@ -5,6 +5,7 @@
 	background: #ffffff;
 	box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
 	border-radius: 10px;
+	height: auto;
 }
 
 table {
@@ -13,14 +14,6 @@ table {
 	font-weight: normal;
 	font-size: 14px;
 	line-height: 16px;
-}
-
-td {
-	text-align: center;
-}
-
-.underline {
-	text-decoration: underline;
 }
 
 
@@ -38,4 +31,61 @@ td {
 
 .tebal{
 	font-weight: bold;
+}
+
+
+#detail-data{
+    float:left;
+    width:880px;
+    position: relative;
+    padding:0px;margin:5px;
+    font-family: $primary-font;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.short{
+    width:150px;
+	// border: solid blue 1px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+.medium{
+	width:220px;
+	margin-left:10px;
+	margin-right:10px;
+    // border: solid yellow 1px;
+}
+
+.long{
+	width:380px;
+	margin-left:10px;
+	margin-right:10px;
+    // border: solid greenyellow 1px;
+}
+
+.left{
+    text-align:left;
+}
+
+.center{
+    text-align: center;
+}
+
+.right{
+    text-align: right;
+}
+
+.tebal{
+	font-weight: bold;
+}
+
+
+.garisbawah{
+	border-bottom: solid #cecece 1px;
+	border-width: 60%;
+	border-bottom-width: thin;
 }

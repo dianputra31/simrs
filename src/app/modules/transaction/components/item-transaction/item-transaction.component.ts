@@ -60,7 +60,7 @@ export class ItemTransactionComponent implements OnInit {
 		console.log(item);
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
-		dialogConfig.id = 'modal-component';
+		dialogConfig.id = 'modal-component-2';
 		dialogConfig.width = '475px';
 		dialogConfig.height = '180px';
 		dialogConfig.panelClass = 'border-radius:10px';
