@@ -68,3 +68,25 @@ figure.highcharts-figure {
 	font-size: 16px;
 	line-height: 22px;
 }
+
+.highcharts-legend {
+	fill: black;
+	fill-opacity: 0.7;
+	stroke: black;
+	stroke-width: 1px;
+}
+.highcharts-legend-item text {
+	fill: #e0e0e0;
+	transition: fill 250ms;
+}
+.highcharts-legend-item:hover text {
+	fill: white;
+}
+
+// g.highcharts-label.highcharts-data-label.highcharts-data-label-color-undefined {
+// 	color: #db0a2a;
+// 	cursor: pointer;
+// 	font-size: 16px;
+// 	font-weight: bold;
+// 	fill: #db0a2a;
+// }

@@ -35,8 +35,11 @@ export class HomeLayoutComponent implements OnInit {
 		this.subsribers = [];
 		this.getProductTopSubcategory();
 
-		if (this.storageService.getRole() == 'Manager') {
-			this.numberOfApproval();
+		if (this.storageService.getApprovalDialogStatus() != '1') {
+			this.storageService.storeApprovalDialogStatus('1');
+			if (this.storageService.getRole() == 'Manager') {
+				this.numberOfApproval();
+			}
 		}
 	}
 
