@@ -4,7 +4,7 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,7 +19,7 @@ import {
 	OpenTrxCount,
 	ProfileUrl,
 	RESPONSE,
-	SearchProduct,
+	SearchProduct
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
 		this.filteredOptions = this.myControl.valueChanges.pipe(
 			startWith(''),
 			//minimal 3 karakter
-			map((value) => (value.length >= 3 ? this._filter(value) : []))
+			map((value) => (value.length > 2 ? this._filter(value) : []))
 		);
 
 		this.subsribers = [];
@@ -159,10 +159,10 @@ export class HeaderComponent implements OnInit {
 			.subscribe(
 				(resp) => {
 					if (resp.status.rc === RESPONSE.SUCCESS) {
-						console.log(resp.data);
+						// console.log(resp.data);
 						this.dataproduk = resp.data;
-						this.optionsname = this.dataproduk.data;
-						console.log(this.optionsname);
+						this.optionsname = this.dataproduk;
+						console.log("this.optionsname: " + this.dataproduk);
 						this.options = [];
 						if (this.optionsname) {
 							for (let items of this.optionsname) {
@@ -170,7 +170,9 @@ export class HeaderComponent implements OnInit {
 							}
 						}
 
-						this.getKey(value);
+						
+
+						// this.getKey(value);
 					} else {
 						this.dialogService.showAlert(resp.status.msg);
 					}
@@ -180,10 +182,10 @@ export class HeaderComponent implements OnInit {
 				}
 			);
 
-		return this.options.filter(
-			// (option) => option.toLowerCase().includes(filterValue)
-			(option) => option.toLowerCase().indexOf(filterValue) === 0
-		);
+			return this.options.filter(
+				// (option) => option.toLowerCase().includes(filterValue)
+				(option) => option.toLowerCase().indexOf(filterValue) === 0
+			);
 
 		// this.subsribers.push(sub);
 	}

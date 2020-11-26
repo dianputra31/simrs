@@ -82,8 +82,9 @@ export class AccountInfoPersonalComponent implements OnInit {
 			(resp) => {
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
-					this.service.showAlert('SUKSES');
+					// this.service.showAlert('SUKSES');
 				} else {
+					resp.status.msg = "Maaf terjadi kesalahan, silakan masukkan kembali data anda";
 					this.service.showAlert(resp.status.msg);
 				}
 			},
