@@ -6,7 +6,7 @@ import {
 	DashboardPerMonth,
 	DashboardPerProduct,
 	DashboardPerPurchaser,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -79,7 +79,6 @@ export class AccountDashboardComponent implements OnInit {
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.items_month = resp.data;
-					console.log('month', this.items_month);
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}
