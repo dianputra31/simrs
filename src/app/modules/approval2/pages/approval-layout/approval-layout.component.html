@@ -111,9 +111,9 @@
                         [fromRoot]="true"
                         (scrolled)="onScrollDown($event)"
                         *ngIf="items?.length>=1">
-                        <div *ngFor="let item of items">
+                        <div *ngFor="let item of items; let i = index">
                             <item-card [item]="item"
-                                (onReject)="rejectItem()"></item-card>
+                                (onReject)="rejectItem(i)"></item-card>
                             <wsv wide="40px"></wsv>
                         </div>
                     </div>
