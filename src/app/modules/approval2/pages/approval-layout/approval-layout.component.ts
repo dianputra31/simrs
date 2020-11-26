@@ -446,8 +446,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.getItems();
 	}
 
-	rejectItem() {
-		this.getItems();
+	rejectItem(i) {
+		this.items.splice(i, 1);
 	}
 
 	initScrolling() {
