@@ -76,6 +76,17 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		this.subsribers.forEach((each) => each.unsubscribe);
 	}
 
+	goesToCat(clickedCategory: any) {
+		this._redirectparam.namaproduk = '';
+		if (this.router.url == '/request-approval') {
+			this.openDialogLocation('/pilih-produk/0/0');
+		} else {
+			this.router.navigate([
+				'/pilih-produk/' + clickedCategory.id + '/0',
+			]);
+		}
+	}
+
 	goesToSub(clickedCategory: any, sub: any) {
 		this._redirectparam.namaproduk = '';
 		if (this.router.url == '/request-approval') {
