@@ -1,7 +1,9 @@
 #scroll {
 	height: 150vh;
+	padding: 40px;
 }
 .button-print {
+	margin-top: 30px;
 	float: right !important;
 	z-index: 999999;
 }
@@ -14,4 +16,19 @@
 	width: 40px;
 	cursor: pointer;
 	z-index: 999999;
+}
+
+@page {
+	size: 21cm 29.7cm;
+	margin: 30mm 45mm 30mm 45mm;
+	/* change the margins as you want them to be. */
+}
+
+@media print {
+	#scroll {
+		width: 21cm;
+		height: 29.7cm;
+		margin: 30mm 45mm 30mm 45mm;
+		/* change the margins as you want them to be. */
+	}
 }
