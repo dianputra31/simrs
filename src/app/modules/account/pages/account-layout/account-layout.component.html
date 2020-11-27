@@ -1,28 +1,34 @@
 <block-ui>
   <div id="account-layout"
     class="container d-flex">
+
     <div id="left-wrapper">
-      <wsv wide="24px"></wsv>
-      <div class="d-flex justify-content-center">
-        <img id="logo-akun"
-          src="{{datauser?.profile_picture_url}}"
-          (error)="onImgError($event)">
+      <wsv wide="10px"></wsv>
+
+      <div id="sidebarleft">
+        <div class="d-flex justify-content-center">
+          <img id="logo-akun"
+            src="{{datauser?.profile_picture_url}}"
+            (error)="onImgError($event)">
+        </div>
+
+        <wsv wide="18px"></wsv>
+        <div class="d-flex justify-content-center">
+          <div id="position-label">{{datauser?.role_name}}</div>
+        </div>
+        <wsv wide="18px"></wsv>
+        <div class="d-flex justify-content-center">
+          <div id="name-label">{{datauser?.fullname}}</div>
+        </div>
+        <wsv wide="39px"></wsv>
+        <div class="d-flex">
+          <wsh wide="35px"></wsh>
+          <account-navigation-bar></account-navigation-bar>
+          <wsh wide="29px"></wsh>
+        </div>
       </div>
 
-      <wsv wide="18px"></wsv>
-      <div class="d-flex justify-content-center">
-        <div id="position-label">{{datauser?.role_name}}</div>
-      </div>
-      <wsv wide="18px"></wsv>
-      <div class="d-flex justify-content-center">
-        <div id="name-label">{{datauser?.fullname}}</div>
-      </div>
-      <wsv wide="39px"></wsv>
-      <div class="d-flex">
-        <wsh wide="35px"></wsh>
-        <account-navigation-bar></account-navigation-bar>
-        <wsh wide="29px"></wsh>
-      </div>
+
     </div>
 
     <div id="right-wrapper"
