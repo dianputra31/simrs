@@ -29,8 +29,8 @@ export class AccountLayoutComponent implements OnInit {
 
 			}
 		)
-		// const body = document.getElementsByTagName('body')[0];
-		// body.classList.add('no-scroll');
+		const body = document.getElementsByTagName('body')[0];
+		body.classList.remove('no-scroll');
 
 	}
 
