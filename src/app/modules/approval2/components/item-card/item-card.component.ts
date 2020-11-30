@@ -99,7 +99,6 @@ export class ItemCardComponent implements OnInit {
 		};
 		this.blockUI.start();
 		this.http.post(ApprovalRejectUrl, param).subscribe((resp) => {
-			this.showDanger();
 			this.onReject.emit();
 			this.blockUI.stop();
 		});

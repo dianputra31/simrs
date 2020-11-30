@@ -5,11 +5,13 @@
 @mixin backdrop(
 	$background: 'none',
 	$border-radius: 0 0 0 0,
-	$padding: 0 0 0 0
+	$padding: 0 0 0 0,
+	$opacity: 1
 ) {
 	background: $background;
 	border-radius: $border-radius;
 	padding: $padding;
+	opacity: $opacity;
 }
 
 @mixin text($font-size: 14px, $font-weight: 400, $color: $scorpion) {

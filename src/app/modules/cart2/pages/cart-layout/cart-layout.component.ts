@@ -1,14 +1,15 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
 	CartListUrl,
 	CheckoutCartUrl,
-	RESPONSE
+	RESPONSE,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { ItemTelahDihapusComponent } from '../../../../shared2/components/item-telah-dihapus/item-telah-dihapus.component';
 import { ITEM_AVAILABILITY_DICT } from '../../cart.constant';
 @Component({
 	selector: 'cart-layout',
@@ -20,6 +21,9 @@ export class CartLayoutComponent implements OnInit {
 	items: any[];
 	total_item: number = 0;
 	total_price: number;
+
+	@ViewChild(ItemTelahDihapusComponent, { static: false })
+	notif: ItemTelahDihapusComponent;
 
 	leftContainerHeight;
 	windowHeight;
@@ -105,6 +109,7 @@ export class CartLayoutComponent implements OnInit {
 	}
 
 	deleteItemCartList(i) {
+		this.notif.showNotif();
 		this.items.splice(i, 1);
 	}
 

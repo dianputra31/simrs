@@ -21,6 +21,7 @@ export class ItemCardComponent implements OnInit {
 	@Input() item: CartListItemModel;
 	@Output() onUpdateQty = new EventEmitter();
 	@Output() onDeleteItem = new EventEmitter();
+
 	@BlockUI() blockUI: NgBlockUI;
 
 	subscribers: Subscription[];
@@ -77,7 +78,6 @@ export class ItemCardComponent implements OnInit {
 			(resp) => {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.blockUI.stop();
-					console.log(resp);
 					this.onUpdateQty.emit(resp.data[0]);
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
@@ -105,7 +105,6 @@ export class ItemCardComponent implements OnInit {
 			(resp) => {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.blockUI.stop();
-					this.showDanger(dangerTpl);
 					this.onDeleteItem.emit();
 				} else {
 					this.dialogService.showAlert(resp.status.msg);

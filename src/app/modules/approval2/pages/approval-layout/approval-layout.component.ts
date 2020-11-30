@@ -33,6 +33,7 @@ import {
 } from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
+import { ItemTelahDihapusComponent } from '../../../../shared2/components/item-telah-dihapus/item-telah-dihapus.component';
 import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { ApprovalResultConfirmationDialogComponent } from '../../components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
 
@@ -63,6 +64,9 @@ export class ApprovalLayoutComponent implements OnInit {
 	keyword;
 	start_date;
 	end_date;
+
+	@ViewChild(ItemTelahDihapusComponent, { static: false })
+	notif: ItemTelahDihapusComponent;
 
 	rightContainerWidth: any = 0;
 	innerHeight: any;
@@ -448,6 +452,7 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	rejectItem(i) {
 		this.items.splice(i, 1);
+		this.notif.showNotif();
 	}
 
 	initScrolling() {
