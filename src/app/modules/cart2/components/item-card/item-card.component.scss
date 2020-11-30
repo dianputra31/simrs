@@ -86,6 +86,9 @@
 	cursor: pointer;
 }
 
+.product_name {
+	@include text($font-weight: 700, $cursor: pointer);
+}
 // separator
 // separator
 // separator

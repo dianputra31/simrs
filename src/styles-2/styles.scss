@@ -16,12 +16,18 @@
 	cursor: $cursor;
 }
 
-@mixin text($font-size: 14px, $font-weight: 400, $color: $scorpion) {
+@mixin text(
+	$font-size: 14px,
+	$font-weight: 400,
+	$color: $scorpion,
+	$cursor: default
+) {
 	font-size: $font-size;
 	font-weight: $font-weight;
 	color: $color;
 	font-family: 'Open Sans', sans-serif;
 	font-style: normal;
+	cursor: $cursor;
 }
 
 @mixin dimension($width: auto, $height: auto) {

@@ -131,4 +131,10 @@ export class ItemCardComponent implements OnInit {
 			this.item.availability == ITEM_AVAILABILITY_DICT.LIMITED
 		);
 	}
+
+	itemClicked() {
+		this.router.navigate([
+			'./detail-product/' + this.item.partner_sku_item,
+		]);
+	}
 }
