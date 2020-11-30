@@ -16,12 +16,13 @@ import { GetOtpButtonComponent } from './components/get-otp-button/get-otp-butto
 import { HeaderCategoryButtonComponent } from './components/header-category-button/header-category-button.component';
 import { HeaderComponent } from './components/header/header.component';
 import { KirimUlangButtonComponent } from './components/kirim-ulang-button/kirim-ulang-button.component';
+import { LabelWithNotifComponent } from './components/label-with-notif/label-with-notif.component';
 import { LoginCard2Component } from './components/login-card2/login-card2.component';
+import { LogoWithNotifComponent } from './components/logo-with-notif/logo-with-notif.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
+import { LoginLayout3Component } from './pages/login-layout3/login-layout3.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
-import { LabelWithNotifComponent } from './components/label-with-notif/label-with-notif.component';
-import { LogoWithNotifComponent } from './components/logo-with-notif/logo-with-notif.component';
 
 @NgModule({
 	declarations: [
@@ -34,6 +35,7 @@ import { LogoWithNotifComponent } from './components/logo-with-notif/logo-with-n
 		KirimUlangButtonComponent,
 		LabelWithNotifComponent,
 		LogoWithNotifComponent,
+		LoginLayout3Component,
 	],
 	imports: [
 		CommonModule,

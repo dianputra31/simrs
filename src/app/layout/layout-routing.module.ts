@@ -7,6 +7,7 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 const routes: Routes = [
 	{
 		path: '',
+		// component: LoginLayout2Component,
 		component: LoginLayout2Component,
 	},
 	{

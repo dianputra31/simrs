@@ -1,0 +1,6 @@
+@import '../../../../styles-2/styles.scss';
+
+#login-card {
+	@include backdrop(12px 12px 12px 12px);
+	background-color: aqua;
+}
