@@ -1,5 +1,105 @@
+@import '../../../../../styles-2/styles.scss';
+
+#prime-container {
+	position: relative;
+	box-shadow: 0px 10px 19px rgba(0, 0, 0, 0.3);
+	margin-left: 20px;
+	margin-right: 30px;
+	margin-bottom: 24px;
+	border-radius: 10px;
+}
+#container-1 {
+	@include backdrop($background: $gallery, $border-radius: 10px);
+}
+
+#container-2 {
+	@include backdrop($background: $gallery, $border-radius: 10px);
+
+	opacity: 0.5;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+#container-3 {
+	@include backdrop($padding: 0px 20px 15px 0px, $border-radius: 10px);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+#inner-container-2 {
+	@include backdrop($padding: 5px 20px 5px 15px);
+}
+
+#inner-container-1 {
+	@include backdrop(
+		$background: $white,
+		$padding: 15px 15px 10px 15px,
+		$border-radius: 10px
+	);
+}
+
+#inner-container-3 {
+	@include dimension($width: 175px);
+}
+.label-1 {
+	@include text($font-size: 12px, $font-weight: 600, $color: $silver-chalice);
+}
+
+.label-2 {
+	@include text($font-weight: 700);
+}
+
+.label-3 {
+	@include text($font-weight: 700, $color: $red-ribbon);
+}
+
+#status-label {
+	@include text($font-size: 10px, $font-weight: 700, $color: $white);
+	@include backdrop($background: $lightning-yellow, $border-radius: 20px);
+	@include dimension(84px, 20px);
+	white-space: nowrap;
+}
+
+#cari-sejenis-button {
+	@include text($font-weight: 700, $color: $white);
+	@include backdrop($background: $red-ribbon, $border-radius: 20px);
+	@include dimension(129px, 24px);
+	white-space: nowrap;
+}
+
+#item-img {
+	@include imageDimension($width: 160px, $height: 110px);
+}
+
+#trash-can {
+	@include imageDimension($width: 21px, $height: 20.76px);
+	cursor: pointer;
+}
+
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
+// separator
 @import '../../../../../styles/variables/colors';
 @import '../../../../../styles/variables/fonts';
+
 .rectangle-87 {
 	background: #eeeeee;
 	border-radius: 10px;
@@ -94,12 +194,6 @@
 	line-height: 14px;
 
 	color: #ffffff;
-}
-
-#trash-can {
-	width: 21px;
-	height: 20.76px;
-	cursor: pointer;
 }
 
 #tolak-button {

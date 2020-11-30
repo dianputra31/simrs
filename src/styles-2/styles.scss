@@ -2,6 +2,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 @import 'color.scss';
 
-@mixin backdrop($padding: 0 0 0 0) {
+@mixin backdrop(
+	$background: 'none',
+	$border-radius: 0 0 0 0,
+	$padding: 0 0 0 0
+) {
+	background: $background;
+	border-radius: $border-radius;
 	padding: $padding;
+}
+
+@mixin text($font-size: 14px, $font-weight: 400, $color: $scorpion) {
+	font-size: $font-size;
+	font-weight: $font-weight;
+	color: $color;
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+}
+
+@mixin dimension($width: auto, $height: auto) {
+	height: $height;
+	width: $width;
+}
+
+@mixin imageDimension($width: auto, $height: auto) {
+	@include dimension($width, $height);
+	object-fit: scale-down;
 }
