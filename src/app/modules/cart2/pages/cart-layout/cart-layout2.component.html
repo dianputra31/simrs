@@ -13,7 +13,8 @@
 		<ng-template #elseBlock>
 			<div class="w-100">
 
-				<div id="top-fixed">
+				<div id="top-fixed"
+					style="margin-left: 20px;">
 					<div id="keranjang-label">KERANJANG</div>
 					<wsv wide="10px"></wsv>
 					<address-section wide="600px"
@@ -22,7 +23,6 @@
 					</address-section>
 					<wsv wide="20px"></wsv>
 					<pilih-semua (onPilihSemuaCheckboxClick)="pilihSemuaClickEvent($event)"></pilih-semua>
-					<wsh wide="10px"></wsh>
 				</div>
 				<div class="d-flex">
 					<div [style.height.px]="leftContainerHeight"
@@ -32,10 +32,8 @@
 							<item-card [item]="item"
 								(onUpdateQty)="updateItemCartList($event,i)"
 								(onDeleteItem)="deleteItemCartList(i)"></item-card>
-							<wsv wide="40px"></wsv>
 						</div>
 					</div>
-					<wsh wide="30px"></wsh>
 					<box-cart-price class="box-cart-price"
 						[pertotalan]="calculate()"
 						buttonLabel="Selanjutnya"
@@ -48,3 +46,6 @@
 		</ng-template>
 	</div>
 </block-ui>
+
+
+<item-telah-dihapus></item-telah-dihapus>

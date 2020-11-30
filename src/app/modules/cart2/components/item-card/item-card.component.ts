@@ -10,7 +10,7 @@ import { CartItemRequestModel } from '../../../../models/cart-item-request.model
 import { CartItemModel } from '../../../../models/cart-item.model';
 import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
-import { ITEM_AVAILABILITY } from '../../cart.constant';
+import { ITEM_AVAILABILITY, ITEM_AVAILABILITY_DICT } from '../../cart.constant';
 
 @Component({
 	selector: 'item-card',
@@ -21,6 +21,7 @@ export class ItemCardComponent implements OnInit {
 	@Input() item: CartListItemModel;
 	@Output() onUpdateQty = new EventEmitter();
 	@Output() onDeleteItem = new EventEmitter();
+
 	@BlockUI() blockUI: NgBlockUI;
 
 	subscribers: Subscription[];
@@ -34,6 +35,10 @@ export class ItemCardComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.subscribers = [];
+	}
+
+	onCheckboxClicked(selected) {
+		this.item.selected = selected;
 	}
 
 	ngOnDestroy() {
@@ -73,7 +78,6 @@ export class ItemCardComponent implements OnInit {
 			(resp) => {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.blockUI.stop();
-					console.log(resp);
 					this.onUpdateQty.emit(resp.data[0]);
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
@@ -101,7 +105,6 @@ export class ItemCardComponent implements OnInit {
 			(resp) => {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.blockUI.stop();
-					this.showDanger(dangerTpl);
 					this.onDeleteItem.emit();
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
@@ -130,5 +133,12 @@ export class ItemCardComponent implements OnInit {
 			`./pilih-produk/${item.category_id}/${item.subcategory_id}/` +
 				a.replaceAll('/', '-'),
 		]);
+	}
+
+	isItemAvailable() {
+		return (
+			this.item.availability == ITEM_AVAILABILITY_DICT.AVAILABLE ||
+			this.item.availability == ITEM_AVAILABILITY_DICT.LIMITED
+		);
 	}
 }

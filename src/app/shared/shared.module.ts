@@ -50,6 +50,8 @@ import { ResetFilterComponent } from './components/reset-filter/reset-filter.com
 import { StarComponent } from './components/star/star.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
+import { CheckboxComponent } from './general-components/checkbox/checkbox.component';
+import { ImageComponent } from './general-components/image/image.component';
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 registerLocaleData(en);
 
@@ -105,6 +107,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		AnyAlertComponent,
 		RatingDialogComponent,
 		StarComponent,
+		CheckboxComponent,
+		ImageComponent,
 	],
 	imports: [
 		CommonModule,
@@ -152,6 +156,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		EmptyCartComponent,
 		RangeDatepickerComponent,
 		RatingDialogComponent,
+		CheckboxComponent,
+		ImageComponent,
 	],
 	providers: [
 		{ provide: NZ_I18N, useValue: en_US },
