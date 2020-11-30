@@ -9,7 +9,6 @@ import { RedirectParameterService } from '../../../../layout/redirect-parameter.
 import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
 import { CartItemModel } from '../../../../models/cart-item.model';
 import { CartListItemModel } from '../../../../models/cart-list-item.model';
-import { ToastService } from '../../../../shared/toast/toast-service';
 import { ITEM_AVAILABILITY, ITEM_AVAILABILITY_DICT } from '../../cart.constant';
 
 @Component({
@@ -28,7 +27,6 @@ export class ItemCardComponent implements OnInit {
 	constructor(
 		public service: HttpService,
 		public dialogService: BaseService,
-		public toastService: ToastService,
 		private _redirectparam: RedirectParameterService,
 		private router: Router
 	) {}
@@ -92,7 +90,7 @@ export class ItemCardComponent implements OnInit {
 		this.subscribers.push(sub);
 	}
 
-	deleteItem(dangerTpl, item: CartListItemModel) {
+	deleteItem(item: CartListItemModel) {
 		var test = new CartItemModel();
 		test.product_id = item.product_id;
 		test.quantity = 0;
@@ -116,14 +114,6 @@ export class ItemCardComponent implements OnInit {
 			}
 		);
 		this.subscribers.push(sub);
-	}
-
-	showDanger(dangerTpl) {
-		this.toastService.removeAll();
-		this.toastService.show(dangerTpl, {
-			delay: 15000,
-			classname: 'bawah-tengah',
-		});
 	}
 
 	carisejenis(item: any) {

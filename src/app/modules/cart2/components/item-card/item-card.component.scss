@@ -68,7 +68,11 @@
 
 #cari-sejenis-button {
 	@include text($font-weight: 700, $color: $white);
-	@include backdrop($background: $red-ribbon, $border-radius: 20px);
+	@include backdrop(
+		$background: $red-ribbon,
+		$border-radius: 20px,
+		$cursor: pointer
+	);
 	@include dimension(129px, 24px);
 	white-space: nowrap;
 }
