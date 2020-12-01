@@ -59,6 +59,8 @@ export class HeaderComponent implements OnInit {
 	myControl = new FormControl();
 
 	options: string[] = [];
+	// options: string[] = ['One', 'Two', 'Three'];
+
 
 	filteredOptions: Observable<string[]>;
 
@@ -128,7 +130,6 @@ export class HeaderComponent implements OnInit {
 	}
 
 	getKey(a) {
-		console.log('test');
 		this.keyword.emit(a);
 		this._redirectparam.price_start = 0;
 		this._redirectparam.price_end = 0;
@@ -153,18 +154,18 @@ export class HeaderComponent implements OnInit {
 
 	public _filter(value: string): string[] {
 		const filterValue = value.toLowerCase();
-		console.log(filterValue);
+		// console.log(filterValue);
 		const sub = this.http
 			.get(SearchProduct + '?keyword=' + filterValue + '&limit=20')
 			.subscribe(
 				(resp) => {
 					if (resp.status.rc === RESPONSE.SUCCESS) {
 						// console.log(resp.data);
-						this.dataproduk = resp.data;
+						this.dataproduk = resp['data'];
 						this.optionsname = this.dataproduk;
-						console.log("this.optionsname: " + this.dataproduk);
-						this.options = [];
-						if (this.optionsname) {
+						// console.log("this.optionsname: " + this.dataproduk);
+						// this.options = [];
+						if (resp.query.found_rows > 0) {
 							for (let items of this.optionsname) {
 								this.options.push(items.product_name);
 							}
@@ -182,9 +183,11 @@ export class HeaderComponent implements OnInit {
 				}
 			);
 
+			console.log(this.options);
+
 			return this.options.filter(
 				// (option) => option.toLowerCase().includes(filterValue)
-				(option) => option.toLowerCase().indexOf(filterValue) === 0
+				option => option.toLowerCase().includes(filterValue) 
 			);
 
 		// this.subsribers.push(sub);
