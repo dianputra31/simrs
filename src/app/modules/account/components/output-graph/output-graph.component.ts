@@ -293,19 +293,27 @@ export class OutputGraphComponent implements OnInit {
 			var data;
 			console.log('graph product');
 			this.items_product.forEach((item) => {
-				data = [item.product_name, item.total];
+				data = [item.category, item.total];
 				this.product_name.push(data);
 			});
 			Highcharts.chart('container3', this.chart3);
 		}
 	}
 	getRandomColor() {
-		var letters = '0123456789ABCDEF';
-		var color = '#';
+		 // Array containing colors 
+		 var colors = [ 
+			'#7805CC', '#068343', '#F2994A', 
+			'#580098', '#09DE70', '#970AFF', '#CB85FF', '#E5C2FF', '#08B15A', '#C2F7DC', '#09DE70','#84EFB8',
+			'#DB0A2A', '#FBE7EA', '#ED667C', '#C41222', '#AC1A19', '#2F80ED', '#1B4E91', '#EB5757', '#CBE0FB', '#97C0F6', '#2567BF',
+			'#FDD276', '#C88A04', '#E2A117', '#FBB829', '#FEEBC3', '#FCE6D2', ' #A9550C', '#CE772B', '#F9CCA5', '#F2994A'
+		]; 
+		  
+		// selecting random color 
 		for (var i = 0; i <= this.items_purchaser.length; i++) {
-			color += letters[Math.floor(Math.random() * 16)];
+			var random_color = colors[Math.floor( 
+				Math.random() * colors.length)]; 
 		}
-		return color;
+		return random_color;
 	}
 
 	ngOnChanges(changes: { [propName: string]: SimpleChange }) {

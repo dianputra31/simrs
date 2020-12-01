@@ -18,17 +18,15 @@
 	z-index: 999999;
 }
 
-@page {
-	size: 21cm 29.7cm;
-	margin: 30mm 45mm 30mm 45mm;
-	/* change the margins as you want them to be. */
+#headers{
+	display: none;
 }
 
-@media print {
-	#scroll {
-		width: 21cm;
-		height: 29.7cm;
-		margin: 30mm 45mm 30mm 45mm;
-		/* change the margins as you want them to be. */
+@media print {  
+	@page {
+	  size: 297mm 210mm; /* landscape */
+	  /* you can also specify margins here: */
+	  margin: 25mm;
+	  margin-right: 45mm; /* for compatibility with both A4 and Letter */
 	}
-}
+  }
