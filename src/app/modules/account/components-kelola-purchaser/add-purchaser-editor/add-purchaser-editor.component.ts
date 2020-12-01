@@ -55,4 +55,20 @@ export class AddPurchaserEditorComponent implements OnInit {
 
 		this.subscriptions.push(sub);
 	}
+
+	valid() {
+		var valid = true;
+		var p = RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$');
+
+		if (this.param.email == '') {
+			valid = false;
+		} else if (!p.test(this.param.email)) {
+			valid = false;
+		} else if (this.param.first_name == '') {
+			valid = false;
+		} else if (this.param.last_name == '') {
+			valid = false;
+		}
+		return valid;
+	}
 }

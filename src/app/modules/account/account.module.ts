@@ -12,6 +12,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { DemoNgZorroAntdModule } from '../../shared/ng-zorro-antd.module';
 import { SharedModule } from '../../shared/shared.module';
+import { Shared2Module } from '../../shared2/shared2.module';
 import { AccountRoutingModule } from './account-routing.module';
 import { EditAlamatDialogComponent } from './components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
 import { EditComponent } from './components-info-perusahaan/edit/edit.component';
@@ -27,14 +28,17 @@ import { AddPurchaserEditorComponent } from './components-kelola-purchaser/add-p
 import { DeletePurchaserConfirmationDialogComponent } from './components-kelola-purchaser/delete-purchaser-confirmation-dialog/delete-purchaser-confirmation-dialog.component';
 import { PurchaserCardComponent } from './components-kelola-purchaser/purchaser-card/purchaser-card.component';
 import { CentangImageComponent } from './components-kredit-perusahaan/centang-image/centang-image.component';
+import { KreditDataComponent } from './components-kredit-perusahaan/kredit-data/kredit-data.component';
 import { KreditTableComponent } from './components-kredit-perusahaan/kredit-table/kredit-table.component';
 import { SilinderComponent } from './components-kredit-perusahaan/silinder/silinder.component';
+import { TagihanDataComponent } from './components-tagihan/tagihan-data/tagihan-data.component';
 import { TagihanTableComponent } from './components-tagihan/tagihan-table/tagihan-table.component';
 import { AccountNavItemComponent } from './components/account-nav-item/account-nav-item.component';
 import { AccountNavigationBarComponent } from './components/account-navigation-bar/account-navigation-bar.component';
 import { InfoPersonalRowComponent } from './components/info-personal-row/info-personal-row.component';
 import { InfoPerusahaanAddressCardComponent } from './components/info-perusahaan-address-card/info-perusahaan-address-card.component';
 import { OutputGraphComponent } from './components/output-graph/output-graph.component';
+import { SidebarAccountComponent } from './components/sidebar-account/sidebar-account.component';
 import { AccountDashboardComponent } from './pages/account-dashboard/account-dashboard.component';
 import { AccountInfoPersonalComponent } from './pages/account-info-personal/account-info-personal.component';
 import { AccountInfoPerusahaanComponent } from './pages/account-info-perusahaan/account-info-perusahaan.component';
@@ -43,9 +47,6 @@ import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusah
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanPrintComponent } from './pages/account-tagihan-print/account-tagihan-print.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
-import { KreditDataComponent } from './components-kredit-perusahaan/kredit-data/kredit-data.component';
-import { TagihanDataComponent } from './components-tagihan/tagihan-data/tagihan-data.component';
-import { SidebarAccountComponent } from './components/sidebar-account/sidebar-account.component';
 
 registerLocaleData(en);
 
@@ -101,6 +102,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		BlockUIModule.forRoot(),
 		DemoNgZorroAntdModule,
 		InfiniteScrollModule,
+		Shared2Module,
 	],
 	providers: [
 		{ provide: NZ_I18N, useValue: en_US },
