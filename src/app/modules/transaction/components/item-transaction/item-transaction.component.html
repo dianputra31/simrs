@@ -52,7 +52,8 @@
                 style="cursor: pointer;">
                 {{item.product_name|truncate:76}}
             </div>
-            <div *ngIf="!(item.initial_quantity == item.quantity || item.initial_quantity == null)"
+
+            <div *ngIf="showInitialQuantity(item)"
                 class="title-3 coret">{{item.initial_quantity}} Barang</div>
             <div class="title-3">{{item.quantity}} Barang</div>
         </div>

@@ -45,7 +45,8 @@
 					*ngIf="isItemAvailable()">
 					<wsh wide="150px"></wsh>
 					<img id="trash-can"
-						src="../../../../../assets/image/logo/trash-3.png" />
+						src="../../../../../assets/image/logo/trash-3.png"
+						(click)="deleteItem(item)" />
 				</div>
 			</div>
 

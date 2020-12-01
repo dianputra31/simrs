@@ -183,4 +183,13 @@ export class ItemTransactionComponent implements OnInit {
 	itemClicked(item) {
 		this.router.navigate(['./detail-product/' + item.partner_sku_item]);
 	}
+
+	showInitialQuantity(item) {
+		return (
+			!(
+				item.initial_quantity == item.quantity ||
+				item.initial_quantity == null
+			) && !(item.status == 'REJECTED' || item.status == 'CANCEL')
+		);
+	}
 }

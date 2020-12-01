@@ -1,0 +1,21 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+#label-input-address {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+	display: flex;
+	align-items: center;
+	text-align: right;
+
+	/* #606060 */
+
+	color: #606060;
+}
+
+span {
+	color: $color-primary;
+}
