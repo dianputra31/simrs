@@ -96,6 +96,11 @@ const routes: Routes = [
 			},
 		],
 	},
+	{
+		path: 'library',
+		loadChildren: () =>
+			import('../_library/library.module').then((m) => m.LibraryModule),
+	},
 ];
 @NgModule({
 	imports: [RouterModule.forChild(routes)],

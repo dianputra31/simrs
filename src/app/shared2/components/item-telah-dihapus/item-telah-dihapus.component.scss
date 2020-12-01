@@ -1,0 +1,11 @@
+@import '../../../../styles-2/styles.scss';
+
+#notif-dihapus {
+	@include backdrop(
+		$background: $mine-shaft,
+		$border-radius: 30px,
+		$opacity: 0.9
+	);
+	@include text($color: $white);
+	@include dimension(366px, 50px);
+}

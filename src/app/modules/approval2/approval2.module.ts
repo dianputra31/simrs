@@ -6,6 +6,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
+import { Shared2Module } from '../../shared2/shared2.module';
 import { ApprovalRoutingModule } from './approval-routing.module';
 import { AddressWithNotifComponent } from './components/address-with-notif/address-with-notif.component';
 import { ApprovalConfirmationDialogComponent } from './components/approval-confirmation-dialog/approval-confirmation-dialog.component';
@@ -31,6 +32,7 @@ import { ApprovalLayoutComponent } from './pages/approval-layout/approval-layout
 		CommonModule,
 		ApprovalRoutingModule,
 		SharedModule,
+		Shared2Module,
 		NgbDropdownModule,
 		NgbModule,
 		FormsModule,

@@ -11,6 +11,7 @@ import {
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
+import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
 import { OutputGraphComponent } from '../../components/output-graph/output-graph.component';
 
 @Component({
@@ -23,6 +24,8 @@ export class AccountDashboardComponent implements OnInit {
 	@ViewChild('inputgetData') inputgetData: OutputGraphComponent;
 	purchasers = [];
 	date = null;
+	start_date;
+	end_date;
 	company_id;
 	tahun: number;
 	years: string = '2020';
@@ -31,6 +34,8 @@ export class AccountDashboardComponent implements OnInit {
 	items_purchaser: any[] = [];
 	items_product: any[] = [];
 	subscribers: Subscription[] = [];
+
+	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
 
 	constructor(
 		private http: HttpService,
@@ -64,12 +69,27 @@ export class AccountDashboardComponent implements OnInit {
 		this.getSummaryPurchaser();
 		this.getSummaryProduct();
 	}
+
+	filterDate(datenya) {
+		this.start_date = datenya.startdate;
+		this.end_date = datenya.enddate;
+		console.log('start', this.start_date)
+		console.log('end', this.end_date)
+		this.getSummaryMonth();
+		this.getSummaryPurchaser();
+		this.getSummaryProduct();
+	}
+
+	filterRemoved(datenya) {
+		this.start_date = datenya.startdate;
+		this.end_date = datenya.enddate;
+	}
+
 	getSummaryMonth() {
 		this.blockUI.start();
 		var url =
 			DashboardPerMonth +
-			'?year=' +
-			this.years +
+			'?start_date=' + this.start_date + '&end_date=' + this.end_date +
 			'&company_id=' +
 			this.company_id;
 		var param = {};
@@ -94,8 +114,7 @@ export class AccountDashboardComponent implements OnInit {
 		this.blockUI.start();
 		var url =
 			DashboardPerPurchaser +
-			'?year=' +
-			this.years +
+			'?start_date=' + this.start_date + '&end_date=' + this.end_date +
 			'&company_id=' +
 			this.company_id;
 		var param = {};
@@ -121,8 +140,7 @@ export class AccountDashboardComponent implements OnInit {
 		this.blockUI.start();
 		var url =
 			DashboardPerProduct +
-			'?year=' +
-			this.years +
+			'?start_date=' + this.start_date + '&end_date=' + this.end_date +
 			'&company_id=' +
 			this.company_id;
 		var param = {};
