@@ -183,7 +183,7 @@ export class HeaderComponent implements OnInit {
 				}
 			);
 
-			console.log(this.options);
+			// console.log(this.options);
 
 			return this.options.filter(
 				// (option) => option.toLowerCase().includes(filterValue)
