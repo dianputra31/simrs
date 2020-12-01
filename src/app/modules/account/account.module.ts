@@ -16,11 +16,8 @@ import { Shared2Module } from '../../shared2/shared2.module';
 import { AccountRoutingModule } from './account-routing.module';
 import { EditAlamatDialogComponent } from './components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
 import { EditComponent } from './components-info-perusahaan/edit/edit.component';
-import { LabelInputComponent } from './components-info-perusahaan/label-input/label-input.component';
 import { NameAddressComponent } from './components-info-perusahaan/name-address/name-address.component';
-import { RoundedInputComponent } from './components-info-perusahaan/rounded-input/rounded-input.component';
 import { SetUtamaButtonComponent } from './components-info-perusahaan/set-utama-button/set-utama-button.component';
-import { TambahAlamatBaruDialogComponent } from './components-info-perusahaan/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 import { TrashCanDialogComponent } from './components-info-perusahaan/trash-can-dialog/trash-can-dialog.component';
 import { TrashCanComponent } from './components-info-perusahaan/trash-can/trash-can.component';
 import { AddButtonComponent } from './components-kelola-purchaser/add-button/add-button.component';
@@ -81,9 +78,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		TagihanTableComponent,
 		AddPurchaserEditorComponent,
 		DeletePurchaserConfirmationDialogComponent,
-		TambahAlamatBaruDialogComponent,
-		RoundedInputComponent,
-		LabelInputComponent,
+		// TambahAlamatBaruDialogComponent,
+		// RoundedInputComponent,
+		// LabelInputComponent,
 		EditAlamatDialogComponent,
 		OutputGraphComponent,
 		TrashCanDialogComponent,

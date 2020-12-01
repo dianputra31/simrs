@@ -1,0 +1,122 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+#close-dialog-button {
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+
+.container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#header {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 27px;
+	display: flex;
+	align-items: center;
+
+	/* #606060 */
+
+	color: #606060;
+}
+
+#popup-wording {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	padding: 15px 30px 0px 30px;
+	font-family: $secondary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	color: $abu-abu-gelap-muda;
+}
+
+#popup-option {
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+#popup-option-button {
+	position: relative;
+	width: 50%;
+	float: left;
+	height: 40px;
+	margin-top: 10px;
+}
+
+.divbutton-left {
+	float: center;
+	position: relative;
+	width: 85%;
+	background-color: $abu-abu-sesuatu;
+	border-radius: 20px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	padding-left: 60px;
+	text-align: center;
+	cursor: pointer;
+	color: $putih-tok;
+	height: 32px;
+	font-family: $secondary-font;
+}
+
+.divbutton-right {
+	float: center;
+	position: relative;
+	width: 85%;
+	background-color: $color-primary;
+	border-radius: 20px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	padding-left: 80px;
+	text-align: center;
+	cursor: pointer;
+	color: $putih-tok;
+	height: 32px;
+	font-family: $secondary-font;
+}
+
+.divbutton-center {
+	float: center;
+	position: relative;
+	width: 25%;
+	background-color: $color-primary;
+	border-radius: 8px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	padding-left: 40px;
+	text-align: center;
+	cursor: pointer;
+	color: $putih-tok;
+	height: 32px;
+	font-family: $secondary-font;
+}
+
+#popup-option-button-all {
+	position: relative;
+	width: 100%;
+	float: left;
+	height: 40px;
+}
