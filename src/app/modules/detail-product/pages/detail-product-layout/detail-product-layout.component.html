@@ -29,47 +29,7 @@
 
 <floating-footer [productDetail]="productDetail"
     [quantity]="quantity"
-    (tambahkanKeKerangjangEvent)="tambahkanKeKeranjang(dangerTpl)"></floating-footer>
-
-
-<ng-template #dangerTpl>
-    <div id="wrapper-notification"
-        class="d-flex container justify-content-end">
-        <div>
-            <wsv wide="9px"></wsv>
-            <div id="wrapper-inner-notification">
-                <div class="d-flex justify-content-between align-self-center">
-                    <div id="keranjang-label">Keranjang</div>
-                    <div id="lihat-keranjang-label"
-                        class="d-flex justify-content-center align-items-center"
-                        (click)="pergiKeKeranjang()">Lihat Keranjang</div>
-                </div>
-                <wsv wide="13px"></wsv>
-
-                <div id="rounded-inner-notif"
-                    class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img [src]="productDetail?.product_image"
-                            id="notif-img"
-                            (error)="onImgError($event)">
-                        <wsh wide="10px"></wsh>
-                        <div>
-                            <!-- <div id="item-name">{{productDetail?.product_name}}</div> -->
-                            <div id="item-name">{{truncateChar(productDetail?.product_name)}}</div>
-                            <div>{{quantity}} Barang</div>
-                        </div>
-                    </div>
-                    <div class="d-flex"
-                        style="white-space: nowrap;"
-                        id="item-price">{{productDetail?.sell_price * quantity|rupiah}}</div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-</ng-template>
+    (tambahkanKeKerangjangEvent)="tambahkanKeKeranjang()"></floating-footer>
 
 <div style="position:absolute;top:50%;left:48%;height:60px;width:60px;z-index: 1000;"
     id="divload"
@@ -84,3 +44,6 @@
     <img src="../../../../../assets/image/icons/nestloading.gif"
         style="position: relative;width:50px;">
 </div>
+
+<put-in-cart-notification [product]="productDetail"
+    [quantity]="quantity"></put-in-cart-notification>

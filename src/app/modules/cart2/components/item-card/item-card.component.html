@@ -28,7 +28,8 @@
 			<div class="d-flex flex-grow-1 justify-content-between">
 
 				<div>
-					<div class="label-2">
+					<div class="product_name"
+						(click)="itemClicked()">
 						{{item.product_name|truncate:90}}
 					</div>
 					<wsv wide="6px"></wsv>
@@ -44,8 +45,7 @@
 					*ngIf="isItemAvailable()">
 					<wsh wide="150px"></wsh>
 					<img id="trash-can"
-						src="../../../../../assets/image/logo/trash-3.png"
-						(click)="deleteItem(dangerTpl, item)" />
+						src="../../../../../assets/image/logo/trash-3.png" />
 				</div>
 			</div>
 
@@ -69,7 +69,7 @@
 			<div class="d-flex">
 				<img id="trash-can"
 					src="../../../../../assets/image/logo/trash-3.png"
-					(click)="deleteItem(dangerTpl, item)" />
+					(click)="deleteItem(item)" />
 				<wsh wide="10px"></wsh>
 				<div id="cari-sejenis-button"
 					class="d-flex align-items-center justify-content-center"
@@ -81,97 +81,3 @@
 		</div>
 	</div>
 </div>
-
-<div hidden
-	id="main-wrapper">
-	<div class="rectangle-87">
-		<div class="d-flex header-wrapper align-items-center"
-			style="padding-left :15px;">
-			<check-box-two [checked]="item.selected"
-				[allowChanges]="item.enableSelection"
-				(onClickEvent)="handleClickCheckbox($event)"
-				class="check-box-container"></check-box-two>
-			<div class="d-flex flex-grow-1 justify-content-between">
-				<div>
-					<div class="label-gray">Ongkos Kirim</div>
-					<div class="label-gray-2">{{item.shipping_cost|rupiah}}</div>
-				</div>
-				<div>
-					<div class="label-gray">Harga Belanja</div>
-					<div class="label-gray-2">{{item.purchase_amount| rupiah}}</div>
-				</div>
-			</div>
-		</div>
-		<div class="rectangle-86 w-100 d-flex"
-			style="height: 135px;padding-bottom: 10px;padding-left: 15px;">
-			<img src='{{item.product_image}}'
-				(error)="onImgError($event)"
-				class="item-img">
-			<wsh wide="15px"></wsh>
-			<div id="item-desc-wrapper"
-				class="flex-grow-1">
-				<item-desc [item]="item"></item-desc>
-				<wsv wide="6px"></wsv>
-				<qty-ctrl-two [initQty]="item.quantity"
-					(onUpdateQty)="handleQtyUpdate($event)"></qty-ctrl-two>
-			</div>
-			<wsh wide="90px"></wsh>
-
-			<div class="d-flex align-items-end justify-content-end container-29"
-				*ngIf="!(item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK')">
-				<img id="trash-can"
-					src="../../../../../assets/image/logo/trash-3.png"
-					(click)="deleteItem(dangerTpl, item)" />
-			</div>
-
-
-
-		</div>
-	</div>
-	<div id="masking"
-		*ngIf="item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK'"
-		class="rectangle-87">
-	</div>
-
-	<div id="above-masking"
-		*ngIf="item.availability == 'COMING_SOON' || item.availability == 'OUT_OF_STOCK'"
-		class="rectangle-87"
-		style="padding-bottom: 10px;">
-		<div class="d-flex flex-grow-1 flex-row-reverse align-items-end"
-			style="height: 100%;">
-			<div class="container-29">
-				<div class="d-flex flex-row-reverse">
-					<div id="out-of-stock"
-						class="d-flex justify-content-center align-items-center">
-						{{getAvailabilityLabel()}}
-					</div>
-				</div>
-				<wsv wide="9px"></wsv>
-				<div class="d-flex align-items-center">
-
-					<img id="trash-can"
-						src="../../../../../assets/image/logo/trash-3.png"
-						(click)="deleteItem(dangerTpl, item)" />
-					<wsh wide="15px"></wsh>
-					<rounded-red-button label="Cari Sejenis"
-						font="14px"
-						paddingtop="4px"
-						paddingbottom="4px"
-						paddingleft="13px"
-						paddingright="13px"
-						(click)="carisejenis(item)"
-						style="cursor: pointer;"></rounded-red-button>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-</div>
-
-<ng-template #dangerTpl>
-	<div class="d-flex align-self-center justify-content-center">
-		<div id="item-telah-dihapus">Item telah dihapus</div>
-	</div>
-</ng-template>

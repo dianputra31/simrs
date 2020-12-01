@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -19,6 +19,7 @@ import { CartItemModel } from '../../../../models/cart-item.model';
 import { TanggalPipe } from '../../../../pipes/tanggal.pipe';
 import { RatingDialogComponent } from '../../../../shared/components/rating-dialog/rating-dialog.component';
 import { ToastService } from '../../../../shared/toast/toast-service';
+import { PutInCartNotificationComponent } from '../../../../shared2/components/put-in-cart-notification/put-in-cart-notification.component';
 import { SelesaiConfirmationDialogComponent } from '../../components/selesai-confirmation-dialog/selesai-confirmation-dialog.component';
 @Component({
 	selector: 'transaction-detail-layout',
@@ -29,6 +30,9 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	@BlockUI() blockUI: NgBlockUI;
 	subscribers: Subscription[];
 	item: any;
+
+	@ViewChild(PutInCartNotificationComponent, { static: false })
+	notif: PutInCartNotificationComponent;
 
 	purchased_id: string;
 	item_id: string;
@@ -203,9 +207,8 @@ export class TransactionDetailLayoutComponent implements OnInit {
 		return this.item.status != 'OUTOFSTOCK';
 	}
 
-	tambahkanKeKeranjang(dangerTpl) {
+	tambahkanKeKeranjang() {
 		console.log('yest');
-		this.showDanger(dangerTpl);
 		var test = new CartItemModel();
 		test.product_id = this.item.id;
 		test.quantity = 1;
@@ -218,16 +221,9 @@ export class TransactionDetailLayoutComponent implements OnInit {
 			.postData(AddCart, cartreq, CartItemResponseModel, false)
 			.subscribe((resp) => {
 				console.log('resp: ', resp);
+				this.notif.showNotif();
 			});
 		this.subscribers.push(sub);
-	}
-
-	showDanger(dangerTpl) {
-		this.toastService.removeAll();
-		this.toastService.show(dangerTpl, {
-			delay: 100,
-			classname: 'kanan-atas',
-		});
 	}
 
 	pergiKeKeranjang() {
