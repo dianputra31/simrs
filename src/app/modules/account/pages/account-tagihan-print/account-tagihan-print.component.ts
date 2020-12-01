@@ -87,9 +87,10 @@ export class AccountTagihanPrintComponent implements OnInit {
 		// WindowPrt.focus();
 		// WindowPrt.print();
 		// WindowPrt.close();
+		var clientHeight = document.getElementById('scroll').clientHeight;
 		let printContents = document.getElementById('scroll').innerHTML;
 		let originalContents = document.body.innerHTML;
-
+		console.log('test', clientHeight)
 		document.body.innerHTML = printContents;
 		window.focus();
 		window.print();
