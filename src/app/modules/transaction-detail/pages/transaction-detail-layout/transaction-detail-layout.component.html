@@ -15,7 +15,7 @@
 						<status-label [status]="item?.status"
 							[statusTranslated]="item?.statusTranslated"
 							(konfirmasiSelesaiEvent)="confirmSelesaiOrder()"
-							(ajukanLagiEvent)="tambahkanKeKeranjang(dangerTpl)"
+							(ajukanLagiEvent)="tambahkanKeKeranjang()"
 							(cariSejenisEvent)="cariSejenis()"></status-label>
 					</div>
 					<wsv wide="15px"></wsv>
@@ -114,40 +114,5 @@
 
 </block-ui>
 
-
-<ng-template #dangerTpl>
-	<div id="wrapper-notification"
-		class="d-flex container justify-content-end">
-		<div>
-			<wsv wide="9px"></wsv>
-			<div id="wrapper-inner-notification">
-				<div class="d-flex justify-content-between align-self-center">
-					<div id="keranjang-label">Keranjang</div>
-					<div id="lihat-keranjang-label"
-						class="d-flex justify-content-center align-items-center"
-						(click)="pergiKeKeranjang()">Lihat Keranjang</div>
-				</div>
-				<wsv wide="13px"></wsv>
-
-				<div id="rounded-inner-notif"
-					class="d-flex justify-content-between align-items-center">
-					<div class="d-flex align-items-center">
-						<img [src]="item?.product_image"
-							id="notif-img">
-						<wsh wide="10px"></wsh>
-						<div>
-							<div id="item-name">{{truncateChar(item?.product_name)}}</div>
-							<div>1 Barang</div>
-						</div>
-					</div>
-					<div id="item-price">{{item?.sell_price * 1|rupiah}}</div>
-				</div>
-
-			</div>
-
-		</div>
-
-	</div>
-
-
-</ng-template>
+<put-in-cart-notification [product]="item"
+	quantity="1"></put-in-cart-notification>

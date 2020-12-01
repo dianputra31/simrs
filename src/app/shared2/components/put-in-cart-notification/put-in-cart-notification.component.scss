@@ -1,0 +1,53 @@
+@import '../../../../styles-2/styles.scss';
+
+#notif-wrapper {
+	@include backdrop(
+		$background: #fdfdfd,
+		$border-radius: 10px,
+		$padding: 16px
+	);
+	@include dimension(400px);
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+#notif-inner-wrapper {
+	@include backdrop($background: $white, $border-radius: 8px, $padding: 12px);
+	margin-top: 13px;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.notif-label-1 {
+	@include text($font-size: 16px, $font-weight: 700);
+}
+
+.notif-label-2 {
+	@include text($font-size: 12px, $font-weight: 700, $color: $white);
+}
+
+.notif-item-name-label {
+	@include text($font-size: 16px, $font-weight: 700);
+}
+
+.notif-quantity-label {
+	@include text($font-size: 12px, $color: $silver-chalice);
+}
+
+.notif-img {
+	@include imageDimension(56px, 56px);
+	margin-right: 10px;
+}
+
+.notif-total {
+	@include text($color: $red-ribbon);
+	margin-left: 10px;
+}
+
+.lihat-cart-button {
+	@include backdrop(
+		$background: $red-ribbon,
+		$border-radius: 22px,
+		$cursor: pointer
+	);
+	@include dimension(130px, 32px);
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}

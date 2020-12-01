@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
+import { Shared2Module } from '../../shared2/shared2.module';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { DeskripsiSpesifikasiSectionComponent } from './components/deskripsi-spesifikasi-section/deskripsi-spesifikasi-section.component';
 import { FloatingFooterComponent } from './components/floating-footer/floating-footer.component';
@@ -32,6 +33,7 @@ import { DetailProductLayoutComponent } from './pages/detail-product-layout/deta
 		CommonModule,
 		DetailProductRoutingModule,
 		SharedModule,
+		Shared2Module,
 		FormsModule,
 		SharedPipesModule,
 	],

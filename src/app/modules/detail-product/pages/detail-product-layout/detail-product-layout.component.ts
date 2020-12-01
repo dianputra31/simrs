@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
@@ -10,6 +10,7 @@ import {
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { ToastService } from '../../../../shared/toast/toast-service';
+import { PutInCartNotificationComponent } from '../../../../shared2/components/put-in-cart-notification/put-in-cart-notification.component';
 import { ProductDetailResponseModel } from '../../models/product-detail-response.model';
 
 @Component({
@@ -18,6 +19,9 @@ import { ProductDetailResponseModel } from '../../models/product-detail-response
 	styleUrls: ['./detail-product-layout.component.scss'],
 })
 export class DetailProductLayoutComponent implements OnInit {
+	@ViewChild(PutInCartNotificationComponent, { static: false })
+	notif: PutInCartNotificationComponent;
+
 	productDetail: ProductDetailResponseModel;
 
 	quantity = 1;
@@ -86,7 +90,7 @@ export class DetailProductLayoutComponent implements OnInit {
 		this.quantity = qty;
 	}
 
-	tambahkanKeKeranjang(dangerTpl) {
+	tambahkanKeKeranjang() {
 		var cartreq = {
 			cart_list: [
 				{
@@ -103,7 +107,7 @@ export class DetailProductLayoutComponent implements OnInit {
 					// console.log(resp.data);
 
 					console.log('resp: ', resp);
-					this.showDanger(dangerTpl);
+					this.notif.showNotif();
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}

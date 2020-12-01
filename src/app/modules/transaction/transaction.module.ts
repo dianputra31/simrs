@@ -5,6 +5,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { SharedModule } from '../../shared/shared.module';
+import { Shared2Module } from '../../shared2/shared2.module';
 import { BadgeComponent } from './components/badge/badge.component';
 import { FilterDateComponent } from './components/filter-date/filter-date.component';
 import { ItemTransactionComponent } from './components/item-transaction/item-transaction.component';
@@ -31,6 +32,7 @@ import { TransactionRoutingModule } from './transaction-routing.module';
 		NgbDropdownModule,
 		NgbModule,
 		SharedPipesModule,
+		Shared2Module,
 		BlockUIModule.forRoot(),
 		InfiniteScrollModule,
 	],
