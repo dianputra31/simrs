@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlockUIModule } from 'ng-block-ui';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
@@ -32,6 +33,7 @@ import { TagihanDataComponent } from './components-tagihan/tagihan-data/tagihan-
 import { TagihanTableComponent } from './components-tagihan/tagihan-table/tagihan-table.component';
 import { AccountNavItemComponent } from './components/account-nav-item/account-nav-item.component';
 import { AccountNavigationBarComponent } from './components/account-navigation-bar/account-navigation-bar.component';
+import { ChartDropdownComponent } from './components/chart-dropdown/chart-dropdown.component';
 import { InfoPersonalRowComponent } from './components/info-personal-row/info-personal-row.component';
 import { InfoPerusahaanAddressCardComponent } from './components/info-perusahaan-address-card/info-perusahaan-address-card.component';
 import { OutputGraphComponent } from './components/output-graph/output-graph.component';
@@ -88,6 +90,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		KreditDataComponent,
 		TagihanDataComponent,
 		SidebarAccountComponent,
+		ChartDropdownComponent,
 	],
 	imports: [
 		CommonModule,
@@ -99,6 +102,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		BlockUIModule.forRoot(),
 		DemoNgZorroAntdModule,
 		InfiniteScrollModule,
+		NgbDropdownModule,
 		Shared2Module,
 	],
 	providers: [
