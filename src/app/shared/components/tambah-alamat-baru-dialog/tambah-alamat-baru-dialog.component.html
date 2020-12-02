@@ -54,6 +54,8 @@
             <input-dropdown style="width: 298px;"
                 [items]="provinces"
                 placeholderText="Provinsi"
+                [edited]="editProvinsi"
+                (editEvent)="editProvinsi = false"
                 (onSelect)="onProvinceSelected($event)"></input-dropdown>
         </div>
 
@@ -65,7 +67,11 @@
             <input-dropdown style="width: 298px;"
                 [items]="districts"
                 placeholderText="Kota/Kabupaten"
-                (onSelect)="onDistrictSelected($event)"></input-dropdown>
+                [selected]="selectedDistrict"
+                [edited]="editKabupaten"
+                (editEvent)="editKabupaten = false"
+                (onSelect)="onDistrictSelected($event)"
+                [disable]="disableKabupaten"></input-dropdown>
         </div>
     </div>
 </div>
@@ -79,7 +85,11 @@
             <input-dropdown style="width: 298px;"
                 [items]="subdistricts"
                 placeholderText="Kecamatan"
-                (onSelect)="onSubdistrictSelected($event)">
+                [selected]="selectedSubdistrict"
+                (onSelect)="onSubdistrictSelected($event)"
+                [edited]="editKecamatan"
+                (editEvent)="editKecamatan = false"
+                [disable]="disableKecamatan">
             </input-dropdown>
         </div>
 
@@ -91,7 +101,11 @@
             <input-dropdown style="width: 298px;"
                 [items]="villages"
                 placeholderText="Kelurahan"
-                (onSelect)="onVillageSelected($event)">
+                [selected]="selectedVillage"
+                (onSelect)="onVillageSelected($event)"
+                [edited]="editKelurahan"
+                (editEvent)="editKelurahan = false"
+                [disable]="disableKelurahan">
             </input-dropdown>
         </div>
     </div>

@@ -1,10 +1,28 @@
 <div #myDrop="ngbDropdown"
 	ngbDropdown>
-	<div ngbDropdownToggle
+	<div *ngIf="!disable"
+		ngbDropdownToggle
 		id="filter-dropdown-wrapper"
-		class="d-flex">
+		class="d-flex"
+		style="cursor: pointer;">
 		<div class="flex-grow-1 d-flex align-items-center">
-			<div id="filter-dropdown-label">{{selected?.label}}</div>
+			<div id="filter-dropdown-label"
+				style="cursor: pointer;">{{selected?.label}} </div>
+		</div>
+		<div id="arrow-down-gray-wrapper"
+			class="d-flex justify-content-center align-items-center">
+			<img id="arrow-down-gray"
+				src="../../../../../assets/image/icons/arrow_down_gray.png">
+		</div>
+	</div>
+
+	<div *ngIf="disable"
+		id="filter-dropdown-wrapper-disable"
+		class="d-flex"
+		style="cursor: pointer;">
+		<div class="flex-grow-1 d-flex align-items-center">
+			<div id="filter-dropdown-label"
+				style="cursor: pointer;">{{selected?.label}}</div>
 		</div>
 		<div id="arrow-down-gray-wrapper"
 			class="d-flex justify-content-center align-items-center">
@@ -15,7 +33,8 @@
 	<div class="item-placeholder"
 		*ngIf="edited"
 		id="{{idText}}"
-		(click)="hidePlaceholder(idText)">{{placeholderText}}</div>
+		style="cursor: pointer;"
+		ngbDropdownToggle>{{placeholderText}} </div>
 	<div ngbDropdownMenu>
 
 		<div id="padding-right-for-scroll">
