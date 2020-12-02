@@ -269,4 +269,29 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	batal() {
 		this.dialogRef.close();
 	}
+
+	valid() {
+		var valid = true;
+
+		if (!this.param.address_name) {
+			valid = false;
+		} else if (!this.param.address_detail) {
+			valid = false;
+		} else if (!this.param.province) {
+			valid = false;
+		} else if (!this.param.district) {
+			valid = false;
+		} else if (!this.param.subdistrict) {
+			valid = false;
+		} else if (!this.param.village) {
+			valid = false;
+		} else if (!this.param.zipcode) {
+			valid = false;
+		} else if (!this.param.recipient_name) {
+			valid = false;
+		} else if (!this.param.recipient_contact) {
+			valid = false;
+		}
+		return valid;
+	}
 }
