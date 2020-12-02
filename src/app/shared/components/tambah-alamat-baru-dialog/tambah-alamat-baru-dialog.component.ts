@@ -30,11 +30,20 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	subdistricts: any[];
 	villages: any[];
 	zipcodes: any[];
+
 	selectedProvince: any;
 	selectedDistrict: any;
 	selectedSubdistrict: any;
 	selectedVillage: any;
 
+	disableKabupaten = true;
+	disableKecamatan = true;
+	disableKelurahan = true;
+
+	editProvinsi = true;
+	editKabupaten = true;
+	editKecamatan = true;
+	editKelurahan = true;
 	states: any[] = [
 		{ jenis: 'PT', label: 'PT' },
 		{ jenis: 'CV', label: 'CV' },
@@ -122,7 +131,18 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	}
 
 	onProvinceSelected(province) {
+		this.disableKabupaten = false;
+		this.disableKecamatan = true;
+		this.disableKelurahan = true;
+
 		this.selectedProvince = province;
+		this.selectedDistrict = null;
+		this.selectedSubdistrict = null;
+		this.selectedVillage = null;
+
+		this.editKabupaten = true;
+		this.editKecamatan = true;
+		this.editKelurahan = true;
 		this.param.province = this.selectedProvince.province;
 		this.getDistrict();
 	}
@@ -143,7 +163,16 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	}
 
 	onDistrictSelected(district) {
+		this.disableKecamatan = false;
+		this.disableKelurahan = true;
+
 		this.selectedDistrict = district;
+		this.selectedSubdistrict = null;
+		this.selectedVillage = null;
+
+		this.editKecamatan = true;
+		this.editKelurahan = true;
+
 		this.param.district = district.district;
 		this.param.district_type = district.district_type;
 		this.getSubDistrict();
@@ -169,8 +198,13 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	}
 
 	onSubdistrictSelected(subdistrict) {
-		console.log(subdistrict);
+		this.disableKelurahan = false;
+
 		this.selectedSubdistrict = subdistrict;
+		this.selectedVillage = null;
+
+		this.editKelurahan = true;
+
 		this.param.subdistrict = subdistrict.subdistrict;
 		this.getVillage();
 	}
