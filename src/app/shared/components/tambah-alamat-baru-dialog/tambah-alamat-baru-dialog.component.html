@@ -171,13 +171,24 @@
             style="cursor: pointer;"
             (click)="batal()"></button-gray>
         <wsh wide="16px"></wsh>
-        <red-button label="Tambah"
+
+        <rounded-red-button *ngIf="valid()"
+            label="Tambah"
             font="14px"
-            paddingtop="10px"
-            paddingbottom="10px"
-            paddingleft="0px"
-            paddingright="0px"
+            paddingtop="5px"
+            paddingbottom="5px"
+            paddingleft="30px"
+            paddingright="30px"
             (click)="submit()"
-            float="right"></red-button>
+            float="right"></rounded-red-button>
+
+        <rounded-gray-button *ngIf="!valid()"
+            label="Tambah"
+            font="14px"
+            paddingtop="5px"
+            paddingbottom="5px"
+            paddingleft="30px"
+            paddingright="30px"
+            float="right"></rounded-gray-button>
     </div>
 </div>
