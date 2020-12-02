@@ -34,6 +34,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HorizontalLineComponent } from './components/horizontal-line/horizontal-line.component';
 import { InputDropdownComponent } from './components/input-dropdown/input-dropdown.component';
 import { ItemDescComponent } from './components/item-desc/item-desc.component';
+import { LabelInputComponent } from './components/label-input/label-input.component';
 import { NestDatepickerAComponent } from './components/nest-datepicker-a/nest-datepicker-a.component';
 import { NestDatepickerBComponent } from './components/nest-datepicker-b/nest-datepicker-b.component';
 import { NestDatepickerWrapperComponent } from './components/nest-datepicker-wrapper/nest-datepicker-wrapper.component';
@@ -47,7 +48,9 @@ import { RedBgButtonComponent } from './components/red-bg-button/red-bg-button.c
 import { RedBorderWhiteBgButtonComponent } from './components/red-border-white-bg-button/red-border-white-bg-button.component';
 import { RedButtonComponent } from './components/red-button/red-button.component';
 import { ResetFilterComponent } from './components/reset-filter/reset-filter.component';
+import { RoundedInputComponent } from './components/rounded-input/rounded-input.component';
 import { StarComponent } from './components/star/star.component';
+import { TambahAlamatBaruDialogComponent } from './components/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
 import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/white-space-vertical.component';
 import { CheckboxComponent } from './general-components/checkbox/checkbox.component';
@@ -109,6 +112,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		StarComponent,
 		CheckboxComponent,
 		ImageComponent,
+		TambahAlamatBaruDialogComponent,
+		RoundedInputComponent,
+		LabelInputComponent,
 	],
 	imports: [
 		CommonModule,
@@ -158,6 +164,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		RatingDialogComponent,
 		CheckboxComponent,
 		ImageComponent,
+		TambahAlamatBaruDialogComponent,
+		RoundedInputComponent,
+		LabelInputComponent,
 	],
 	providers: [
 		{ provide: NZ_I18N, useValue: en_US },

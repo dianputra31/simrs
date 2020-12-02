@@ -6,8 +6,8 @@ import { Subscription } from 'rxjs';
 import { AddressList, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { TambahAlamatBaruDialogComponent } from '../../../../shared/components/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 import { EditAlamatDialogComponent } from '../../components-info-perusahaan/edit-alamat-dialog/edit-alamat-dialog.component';
-import { TambahAlamatBaruDialogComponent } from '../../components-info-perusahaan/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 import { TrashCanDialogComponent } from '../../components-info-perusahaan/trash-can-dialog/trash-can-dialog.component';
 
 @Component({

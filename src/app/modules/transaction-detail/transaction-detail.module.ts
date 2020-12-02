@@ -4,6 +4,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 import { TanggalPipe } from '../../pipes/tanggal.pipe';
 import { SharedModule } from '../../shared/shared.module';
+import { Shared2Module } from '../../shared2/shared2.module';
 import { ProcessLogoComponent } from './components/process-logo/process-logo.component';
 import { SelesaiConfirmationDialogComponent } from './components/selesai-confirmation-dialog/selesai-confirmation-dialog.component';
 import { StatusAlasanComponent } from './components/status-alasan/status-alasan.component';
@@ -25,6 +26,7 @@ import { TransactionDetailRoutingModule } from './transaction-detail-routing.mod
 		CommonModule,
 		TransactionDetailRoutingModule,
 		SharedModule,
+		Shared2Module,
 		BlockUIModule.forRoot(),
 		SharedPipesModule,
 	],

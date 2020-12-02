@@ -1,11 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {
+	MatDialog,
+	MatDialogConfig,
+	MatDialogRef,
+	MAT_DIALOG_DATA,
+} from '@angular/material';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddressList, SetDefaultAddress } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { SetDefaultAddressReq } from '../../../models/default-address-request.model';
 import { DeliveryAddressObjectModel } from '../address-section/model/delivery-address-object.model';
+import { TambahAlamatBaruDialogComponent } from '../tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 
 @Component({
 	selector: 'dialog-address-section',
@@ -22,7 +28,8 @@ export class DialogAddressSectionComponent implements OnInit {
 		public dialogRef: MatDialogRef<DialogAddressSectionComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any,
 		private router: Router,
-		private service: HttpService
+		private service: HttpService,
+		public dialog: MatDialog
 	) {}
 
 	ngOnInit(): void {
@@ -67,5 +74,27 @@ export class DialogAddressSectionComponent implements OnInit {
 		} else {
 			return '';
 		}
+	}
+
+	tambahAlamat() {
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.id = 'modal-component-2';
+		dialogConfig.height = 'auto';
+		dialogConfig.width = '1034px';
+		dialogConfig.panelClass = 'border-radius:20px';
+		dialogConfig.data = {
+			pageBefore: this.router.url,
+		};
+
+		const modalDialog = this.dialog.open(
+			TambahAlamatBaruDialogComponent,
+			dialogConfig
+		);
+
+		modalDialog.afterClosed().subscribe((result) => {
+			this.getAddressList();
+		});
+		return false;
 	}
 }

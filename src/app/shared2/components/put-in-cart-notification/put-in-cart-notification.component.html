@@ -1,0 +1,27 @@
+<div *ngIf="show"
+    style="position: fixed;top:118px;width: 100%;">
+    <div class="container d-flex justify-content-end">
+        <div id="notif-wrapper">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="notif-label-1">Keranjang</div>
+                <div class="lihat-cart-button notif-label-2 d-flex justify-content-center align-items-center"
+                    (click)="pergiKeKeranjang()">
+                    Lihat Keranjang
+                </div>
+            </div>
+
+            <div id='notif-inner-wrapper'
+                class="d-flex align-items-center">
+                <img class="notif-img"
+                    [src]="product?.product_image">
+                <div class="flex-grow-1">
+                    <div class="notif-item-name-label">{{product?.product_name|truncate:18}}</div>
+                    <div class="notif-quantity-label">{{quantity}} Barang</div>
+                </div>
+                <div class="notif-total">
+                    {{product?.sell_price * quantity|rupiah}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

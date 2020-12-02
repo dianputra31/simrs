@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+	ViewChild,
+} from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -10,6 +17,7 @@ import { RedirectParameterService } from '../../../../layout/redirect-parameter.
 import { CartItemModel } from '../../../../models/cart-item.model';
 import { TransactionItemResponseModel } from '../../../../models/transaction-item-response.model';
 import { ToastService } from '../../../../shared/toast/toast-service';
+import { PutInCartNotificationComponent } from '../../../../shared2/components/put-in-cart-notification/put-in-cart-notification.component';
 import { ReceiptConfirmationComponent } from './../receipt-confirmation/receipt-confirmation.component';
 // import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component'
 
@@ -30,10 +38,14 @@ export class ItemTransactionComponent implements OnInit {
 	dangerTpl;
 	item;
 	selectedItem;
+
+	notifItem;
 	@BlockUI() blockUI: NgBlockUI;
 	// items;
 	// keyword;
 	// filterservicesubscription;
+	@ViewChild(PutInCartNotificationComponent, { static: false })
+	notif: PutInCartNotificationComponent;
 
 	filternya;
 
@@ -114,7 +126,8 @@ export class ItemTransactionComponent implements OnInit {
 	// 	this.router.navigate(['./pilih-produk/0/0']);
 	// }
 
-	belilagi(dangerTpl, item: TransactionItemResponseModel) {
+	belilagi(item: TransactionItemResponseModel) {
+		this.notifItem = item;
 		this.selectedItem = item;
 
 		var test = new CartItemModel();
@@ -133,7 +146,8 @@ export class ItemTransactionComponent implements OnInit {
 			(resp) => {
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
-					this.showDanger(dangerTpl);
+					// this.showDanger(dangerTpl);
+					this.notif.showNotif();
 				} else {
 					this.service.showAlert(resp.status.msg);
 				}
@@ -168,5 +182,14 @@ export class ItemTransactionComponent implements OnInit {
 
 	itemClicked(item) {
 		this.router.navigate(['./detail-product/' + item.partner_sku_item]);
+	}
+
+	showInitialQuantity(item) {
+		return (
+			!(
+				item.initial_quantity == item.quantity ||
+				item.initial_quantity == null
+			) && !(item.status == 'REJECTED' || item.status == 'CANCEL')
+		);
 	}
 }

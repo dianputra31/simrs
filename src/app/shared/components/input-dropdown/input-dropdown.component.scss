@@ -10,6 +10,15 @@
 	padding-left: 12px;
 }
 
+#filter-dropdown-wrapper-disable {
+	height: 32px;
+	background: #e0e0e0;
+	border: 0.5px solid $abu-abu-sesuatu;
+	box-sizing: border-box;
+	border-radius: 45px;
+	padding-left: 12px;
+}
+
 #arrow-down-gray-wrapper {
 	width: 34px;
 	height: 100%;
@@ -103,14 +112,13 @@
 	color: $abu-abu-gelap;
 }
 
-.item-placeholder{
+.item-placeholder {
 	position: absolute;
-	width:auto;
-	top:5px;
-	left:15px;
+	width: auto;
+	top: 5px;
+	left: 15px;
 	font-family: $primary-font;
 	font-style: normal;
 	font-size: 14px;
 	color: $abu-abu-sesuatu;
-	
 }
