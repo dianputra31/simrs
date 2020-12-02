@@ -76,26 +76,19 @@ export class AccountTagihanPrintComponent implements OnInit {
 		});
 	}
 	addPrint() {
-		// const printContent = document.getElementById('scroll');
-		// const WindowPrt = window.open(
-		// 	'',
-		// 	'',
-		// 	'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0'
-		// );
-		// WindowPrt.document.write(printContent.innerHTML);
-		// WindowPrt.document.close();
-		// WindowPrt.focus();
-		// WindowPrt.print();
-		// WindowPrt.close();
 		var clientHeight = document.getElementById('scroll').clientHeight;
 		let printContents = document.getElementById('scroll').innerHTML;
 		let originalContents = document.body.innerHTML;
-		console.log('test', clientHeight)
-		document.body.innerHTML = printContents;
-		window.focus();
-		window.print();
-		window.close();
+		console.log('test', clientHeight);
+		// document.body.innerHTML = printContents;
 
-		window.location.reload();
+		var newWindow = window.open();
+
+		newWindow.document.write(printContents);
+		setTimeout(function () {
+			newWindow.print();
+
+			newWindow.close();
+		}, 90);
 	}
 }

@@ -5,6 +5,12 @@
     </div>
     <div class="d-flex"
         id="filter-wrapper">
+        <chart-dropdown style="width: 200px;"
+            #inputFilter
+            [selected]="selectedPurchaser"
+            (onSelect)="selectPurchaser($event)"
+            class="flex-even"
+            style="cursor: pointer;"></chart-dropdown>
         <range-datepicker class="flex-even"
             #inputDate
             style="cursor: pointer;"
@@ -18,6 +24,7 @@
 </div>
 
 <output-graph #inputGraph
+    [range]="range"
     [items_month]="items_month"
     [items_purchaser]="items_purchaser"
     [items_product]="items_product"></output-graph>

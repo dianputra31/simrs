@@ -13,8 +13,6 @@ import { MaterialModule } from './material.module';
 import { NgbdToastGlobal } from './shared/toast/toast-global.component';
 import { ToastsContainer } from './shared/toast/toasts-container.component';
 
-
-
 @NgModule({
 	declarations: [AppComponent, NgbdToastGlobal, ToastsContainer],
 	imports: [
@@ -25,7 +23,7 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 			scrollPositionRestoration: 'top',
 			useHash: true,
 		}),
-		BrowserAnimationsModule, 
+		BrowserAnimationsModule,
 		MaterialModule,
 		NgbModule,
 		HttpClientModule,
@@ -41,4 +39,4 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

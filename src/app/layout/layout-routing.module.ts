@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/auth/guard/auth.guard';
+import { AccountTagihanPrintComponent } from '../modules/account/pages/account-tagihan-print/account-tagihan-print.component';
 import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
@@ -9,6 +10,10 @@ const routes: Routes = [
 		path: '',
 		// component: LoginLayout2Component,
 		component: LoginLayout2Component,
+	},
+	{
+		path: 'tagihan-print/:invoice_no',
+		component: AccountTagihanPrintComponent,
 	},
 	{
 		path: '',

@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { getYear } from 'date-fns';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
 	DashboardPerMonth,
 	DashboardPerProduct,
 	DashboardPerPurchaser,
-	RESPONSE
+	RESPONSE,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -23,12 +22,16 @@ export class AccountDashboardComponent implements OnInit {
 	@BlockUI() blockUI: NgBlockUI;
 	@ViewChild('inputgetData') inputgetData: OutputGraphComponent;
 	purchasers = [];
+	range: string = 'MONTHLY';
 	date = null;
-	start_date;
-	end_date;
+	start_date: string = '2020-06-04';
+	end_date: string = '2020-12-01';
 	company_id;
 	tahun: number;
 	years: string = '2020';
+
+	purchaserss: any[];
+	selectedPurchaser: any;
 
 	items_month: any[] = [];
 	items_purchaser: any[] = [];
@@ -36,6 +39,7 @@ export class AccountDashboardComponent implements OnInit {
 	subscribers: Subscription[] = [];
 
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
+	@ViewChild('inputFilter') inputFilter: OutputGraphComponent;
 
 	constructor(
 		private http: HttpService,
@@ -53,6 +57,13 @@ export class AccountDashboardComponent implements OnInit {
 	ngOnDestroy() {
 		this.subscribers.forEach((each) => each.unsubscribe());
 	}
+
+	selectPurchaser(purchaser) {
+		this.range = purchaser.range;
+		this.selectedPurchaser = purchaser;
+		console.log('purchaser', this.range);
+		this.getSummaryMonth();
+	}
 	purchaser_list() {
 		this.company_id = JSON.parse(
 			localStorage.getItem('profile')
@@ -60,11 +71,6 @@ export class AccountDashboardComponent implements OnInit {
 		console.log('c', this.company_id);
 	}
 	onChange(result: Date): void {
-		console.log('onChange: ', result);
-		this.tahun = getYear(result);
-		console.log('tahun', typeof this.tahun);
-		this.years = this.tahun.toString();
-		console.log('tahun', typeof this.years);
 		this.getSummaryMonth();
 		this.getSummaryPurchaser();
 		this.getSummaryProduct();
@@ -73,8 +79,8 @@ export class AccountDashboardComponent implements OnInit {
 	filterDate(datenya) {
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
-		console.log('start', this.start_date)
-		console.log('end', this.end_date)
+		console.log('start', this.start_date);
+		console.log('end', this.end_date);
 		this.getSummaryMonth();
 		this.getSummaryPurchaser();
 		this.getSummaryProduct();
@@ -83,19 +89,28 @@ export class AccountDashboardComponent implements OnInit {
 	filterRemoved(datenya) {
 		this.start_date = datenya.startdate;
 		this.end_date = datenya.enddate;
+		this.getSummaryMonth();
+		this.getSummaryPurchaser();
+		this.getSummaryProduct();
 	}
 
 	getSummaryMonth() {
 		this.blockUI.start();
 		var url =
 			DashboardPerMonth +
-			'?start_date=' + this.start_date + '&end_date=' + this.end_date +
+			'?start_date=' +
+			this.start_date +
+			'&end_date=' +
+			this.end_date +
+			'&opt_range=' +
+			this.range +
 			'&company_id=' +
 			this.company_id;
+		console.log('url', url);
 		var param = {};
 		const sub = this.http.post(url, param).subscribe(
 			(resp) => {
-				console.log(resp);
+				console.log('responnya', resp);
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.items_month = resp.data;
@@ -114,7 +129,10 @@ export class AccountDashboardComponent implements OnInit {
 		this.blockUI.start();
 		var url =
 			DashboardPerPurchaser +
-			'?start_date=' + this.start_date + '&end_date=' + this.end_date +
+			'?start_date=' +
+			this.start_date +
+			'&end_date=' +
+			this.end_date +
 			'&company_id=' +
 			this.company_id;
 		var param = {};
@@ -140,7 +158,10 @@ export class AccountDashboardComponent implements OnInit {
 		this.blockUI.start();
 		var url =
 			DashboardPerProduct +
-			'?start_date=' + this.start_date + '&end_date=' + this.end_date +
+			'?start_date=' +
+			this.start_date +
+			'&end_date=' +
+			this.end_date +
 			'&company_id=' +
 			this.company_id;
 		var param = {};
