@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -16,6 +16,7 @@ export class AddressSectionComponent implements OnInit {
 	@Input() margin: number;
 	@Input() pl: number;
 	@Input() borderRadius: number;
+	@Output() addressChangeEvent = new EventEmitter();
 
 	subsribers: Subscription[] = [];
 
@@ -62,6 +63,7 @@ export class AddressSectionComponent implements OnInit {
 
 		modalDialog.afterClosed().subscribe((result) => {
 			this.getAddress();
+			this.addressChangeEvent.emit();
 		});
 	}
 

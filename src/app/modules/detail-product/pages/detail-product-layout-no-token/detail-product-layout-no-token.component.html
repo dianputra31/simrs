@@ -1,0 +1,26 @@
+<div class="container">
+    <wsv wide="20px"></wsv>
+    <breadcrumb [prodcat]="prodcat"
+        [subcat]="subcat"
+        [prodname]="prodname"
+        [catid]="catid"
+        [subcatid]="subcatid"></breadcrumb>
+    <div class="d-flex rounded-container">
+        <img src="{{productDetail?.product_image}}"
+            class="card-img-top"
+            id="detail-main-image"
+            (error)="onImgError($event)">
+        <wsh wide="20px"></wsh>
+        <div class="w-100">
+            <div id="product-detail-label">{{productDetail?.product_name}}</div>
+            <wsv wide="20px"></wsv>
+            <discount-harga-coret [discount_percent]="productDetail?.discount_percentage"
+                [original_price]="productDetail?.original_price"
+                [sell_price]="productDetail?.sell_price"></discount-harga-coret>
+            <wsv wide="20px"></wsv>
+        </div>
+    </div>
+
+    <wsv wide='23px'></wsv>
+    <deskripsi-spesifikasi-section [productDetail]="productDetail"></deskripsi-spesifikasi-section>
+</div>

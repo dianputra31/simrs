@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/auth/guard/auth.guard';
 import { AccountTagihanPrintComponent } from '../modules/account/pages/account-tagihan-print/account-tagihan-print.component';
+import { DetailProductLayoutNoTokenComponent } from '../modules/detail-product/pages/detail-product-layout-no-token/detail-product-layout-no-token.component';
 import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
@@ -14,6 +15,10 @@ const routes: Routes = [
 	{
 		path: 'tagihan-print/:invoice_no',
 		component: AccountTagihanPrintComponent,
+	},
+	{
+		path: 'detail/:sku-item',
+		component: DetailProductLayoutNoTokenComponent,
 	},
 	{
 		path: '',
