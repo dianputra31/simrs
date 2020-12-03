@@ -19,7 +19,8 @@
 					<wsv wide="10px"></wsv>
 					<address-section wide="600px"
 						borderRadius='20px'
-						margin="0px">
+						margin="0px"
+						(addressChangeEvent)="handleAddressChange()">
 					</address-section>
 					<wsv wide="20px"></wsv>
 					<pilih-semua (onPilihSemuaCheckboxClick)="pilihSemuaClickEvent($event)"></pilih-semua>

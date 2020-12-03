@@ -204,6 +204,11 @@ export class CartLayoutComponent implements OnInit {
 		this.onResize();
 	}
 
+	handleAddressChange() {
+		console.log('kajhsdkjhkasd');
+		this.getCartItem();
+	}
+
 	@HostListener('window:resize', ['$event'])
 	onResize() {
 		this.windowHeight = window.innerHeight;
