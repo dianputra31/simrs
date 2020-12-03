@@ -21,6 +21,14 @@ const routes: Routes = [
 		component: DetailProductLayoutNoTokenComponent,
 	},
 	{
+		path: 'detail-transaction/:purchased_id/:item_id',
+
+		loadChildren: () =>
+			import(
+				'../modules/transaction-detail/transaction-detail.module'
+			).then((m) => m.TransactionDetailModule),
+	},
+	{
 		path: '',
 		component: MainLayoutComponent,
 		canActivate: [AuthGuard],
