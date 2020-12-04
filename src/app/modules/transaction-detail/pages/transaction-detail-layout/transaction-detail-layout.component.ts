@@ -83,7 +83,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	translateStatus(status): string {
 		switch (status) {
 			case 'ORDERED':
-				return 'Diorder';
+				return 'Diproses';
 			case 'PENDING':
 				return 'Pending';
 			case 'PROCESS':
