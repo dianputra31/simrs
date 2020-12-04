@@ -46,7 +46,7 @@ export class ReceiptConfirmationComponent implements OnInit {
 			)
 			.subscribe((resp) => {
 				if (resp.status.rc === RESPONSE.SUCCESS) {
-					this.dialogRef.close();
+					this.dialogRef.close('selesai');
 					this.ratingDialogLocation();
 				} else {
 					this.service.showAlert(resp.status.msg);
