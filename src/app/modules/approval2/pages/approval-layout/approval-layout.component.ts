@@ -27,10 +27,6 @@ import {
 	CartListApproveParams,
 	ConvertApproveParams,
 } from '../../../../models/checkout-cart-params.model';
-import {
-	CheckoutCart,
-	ConvertCheckoutCart,
-} from '../../../../models/checkout-cart.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
 import { ItemTelahDihapusComponent } from '../../../../shared2/components/item-telah-dihapus/item-telah-dihapus.component';
@@ -393,20 +389,10 @@ export class ApprovalLayoutComponent implements OnInit {
 		const sub = this.http.post(ApproveUrl, pm).subscribe(
 			(resp) => {
 				this.blockUI.stop();
-				if (resp.status.rc === RESPONSE.SUCCESS) {
-					const stringnya = ConvertCheckoutCart.checkoutCartToJson(
-						resp.data
-					);
-					const cartCheckout: CheckoutCart = ConvertCheckoutCart.toCheckoutCart(
-						stringnya
-					);
-					if (cartCheckout.status.rc == 1) {
-						this.openDialogLocation();
-					} else {
-						this.dialogService.showAlert(cartCheckout.status.msg);
-					}
+				if (resp.data.status == 'OK') {
+					this.openDialogLocation();
 				} else {
-					this.dialogService.showAlert(resp.status.msg);
+					this.dialogService.showAlert(resp.data.message);
 				}
 			},
 			(error) => {
