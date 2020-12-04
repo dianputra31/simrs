@@ -64,7 +64,7 @@ export class AccountDashboardComponent implements OnInit {
 		var result1 = new Date();
 		this.start_date = format(result, 'yyyy-MM-dd');
 		this.end_date = format(result1, 'yyyy-MM-dd');
-		console.log('result', result, result1);
+		console.log('result', this.end_date);
 		this.getSummaryMonth();
 		this.getSummaryPurchaser();
 		this.getSummaryProduct();
