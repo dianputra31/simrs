@@ -88,6 +88,11 @@ export class ItemTransactionComponent implements OnInit {
 			dialogConfig
 		);
 
+		modalDialog.afterClosed().subscribe((stats) => {
+			if (stats == 'selesai') {
+				item.status = 'CLOSED';
+			}
+		});
 		return false;
 	}
 
