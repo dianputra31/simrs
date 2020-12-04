@@ -222,7 +222,6 @@ export class OutputGraphComponent implements OnInit {
 			margin: 100,
 			verticalAlign: 'top',
 			layout: 'horizontal',
-			// itemStyle: '{ "display": "inline"}',
 			y: 100,
 			width: 420,
 			floating: true,
@@ -313,11 +312,9 @@ export class OutputGraphComponent implements OnInit {
 	}
 	graphMonth() {
 		console.log('items month', this.items_month);
-		// var b = this.total.splice(0, this.total.length);
 		if (this.items_month.length === 0) {
 			Highcharts.chart('container', this.options);
 		} else {
-			// this.month_name = [];
 			this.items_month.forEach((item, index) => {
 				this.month.push(item.m);
 				this.week_month.push(item.wm);
@@ -336,84 +333,84 @@ export class OutputGraphComponent implements OnInit {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Jan' +
+							' Jan ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 2) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Feb' +
+							' Feb ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 3) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Mar' +
+							' Mar ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 4) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Apr' +
+							' Apr ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 5) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Mei' +
+							' Mei ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 6) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Jun' +
+							' Jun ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 7) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Jul' +
+							' Jul ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 8) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Agu' +
+							' Agu ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 9) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Sep' +
+							' Sep ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 10) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Okt' +
+							' Okt ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else if (item === 11) {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Nov' +
+							' Nov ' +
 							this.years[i];
 						this.month_name.push(item);
 					} else {
 						item =
 							'Week ' +
 							this.week_month[i] +
-							' Des' +
+							' Des ' +
 							this.years[i];
 						this.month_name.push(item);
 					}
@@ -456,7 +453,6 @@ export class OutputGraphComponent implements OnInit {
 						this.month_name.push(item);
 					}
 				}
-				// this.month_name.push(item);
 			});
 			console.log('nama bulannya', this.month_name);
 			console.log('total', this.total);

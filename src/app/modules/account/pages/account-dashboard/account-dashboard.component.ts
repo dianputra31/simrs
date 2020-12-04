@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { format, subMonths } from 'date-fns';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
@@ -23,9 +24,8 @@ export class AccountDashboardComponent implements OnInit {
 	@ViewChild('inputgetData') inputgetData: OutputGraphComponent;
 	purchasers = [];
 	range: string = 'MONTHLY';
-	date = null;
-	start_date: string = '2020-06-04';
-	end_date: string = '2020-12-01';
+	start_date: string = '';
+	end_date: string = '';
 	company_id;
 	tahun: number;
 	years: string = '2020';
@@ -48,16 +48,29 @@ export class AccountDashboardComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.getDefaultRange();
+		// this.getSummaryMonth();
+		// this.getSummaryPurchaser();
+		// this.getSummaryProduct();
+		// this.purchaser_list();
+		// this.onChange;
+	}
+	ngOnDestroy() {
+		this.subscribers.forEach((each) => each.unsubscribe());
+	}
+
+	getDefaultRange() {
+		var result = subMonths(new Date(), 6);
+		var result1 = new Date();
+		this.start_date = format(result, 'yyyy-MM-dd');
+		this.end_date = format(result1, 'yyyy-MM-dd');
+		console.log('result', result, result1);
 		this.getSummaryMonth();
 		this.getSummaryPurchaser();
 		this.getSummaryProduct();
 		this.purchaser_list();
 		this.onChange;
 	}
-	ngOnDestroy() {
-		this.subscribers.forEach((each) => each.unsubscribe());
-	}
-
 	selectPurchaser(purchaser) {
 		this.range = purchaser.range;
 		this.selectedPurchaser = purchaser;
@@ -110,6 +123,8 @@ export class AccountDashboardComponent implements OnInit {
 		var param = {};
 		const sub = this.http.post(url, param).subscribe(
 			(resp) => {
+				var result = subMonths(new Date(), 6);
+				console.log('result', result);
 				console.log('responnya', resp);
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
