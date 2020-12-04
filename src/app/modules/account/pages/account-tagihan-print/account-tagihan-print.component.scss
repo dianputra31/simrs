@@ -2,6 +2,11 @@
 	height: 150vh;
 	padding: 40px;
 }
+
+#Invoice {
+	font-family: inherit !important;
+	font-size: 48px !important;
+}
 .button-print {
 	margin-top: 30px;
 	float: right !important;
@@ -18,15 +23,15 @@
 	z-index: 999999;
 }
 
-#headers{
+#headers {
 	display: none;
 }
 
-@media print {  
+@media print {
 	@page {
-	  size: 297mm 210mm; /* landscape */
-	  /* you can also specify margins here: */
-	  margin: 25mm;
-	  margin-right: 45mm; /* for compatibility with both A4 and Letter */
+		size: 297mm 210mm; /* landscape */
+		/* you can also specify margins here: */
+		margin: 25mm;
+		margin-right: 45mm; /* for compatibility with both A4 and Letter */
 	}
-  }
+}

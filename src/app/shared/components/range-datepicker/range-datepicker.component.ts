@@ -13,7 +13,7 @@ export class RangeDatepickerComponent {
 	endDate = '';
 	showEndDate;
 	date = null;
-	today = new Date();
+	today = new Date()
 	ranges = {
 		Today: [new Date(), new Date()],
 		'This Month': [new Date(), endOfMonth(new Date())],
