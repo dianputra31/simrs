@@ -18,7 +18,7 @@ export class StatusPembelianComponent implements OnInit {
 		this.router.navigate([]).then((result) => {
 			window.open(
 				window.location.origin +
-					'/#/account/tagihan-print/' +
+					'/#/tagihan-print/' +
 					this.item.invoice_no,
 				'_blank'
 			);
