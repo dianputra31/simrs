@@ -130,7 +130,7 @@ export class CartLayoutComponent implements OnInit {
 		pertotalan.totalPrice = 0;
 		pertotalan.totalItem = 0;
 		selectedItem.forEach((item) => {
-			pertotalan.totalFee += item.admin_fee;
+			pertotalan.totalFee += Math.round(item.admin_fee);
 			pertotalan.ppn += Math.round(item.ppn);
 			pertotalan.ppn3 += Math.round(item.pph);
 			pertotalan.ongkir += item.shipping_cost;
@@ -202,6 +202,11 @@ export class CartLayoutComponent implements OnInit {
 		this.headers = document?.getElementById('headers')?.offsetHeight;
 
 		this.onResize();
+	}
+
+	handleAddressChange() {
+		console.log('kajhsdkjhkasd');
+		this.getCartItem();
 	}
 
 	@HostListener('window:resize', ['$event'])

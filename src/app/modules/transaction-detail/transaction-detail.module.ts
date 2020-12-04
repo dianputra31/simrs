@@ -12,6 +12,7 @@ import { StatusLabelComponent } from './components/status-label/status-label.com
 import { StatusPembelianComponent } from './components/status-pembelian/status-pembelian.component';
 import { TransactionDetailLayoutComponent } from './pages/transaction-detail-layout/transaction-detail-layout.component';
 import { TransactionDetailRoutingModule } from './transaction-detail-routing.module';
+import { TransactionDetailLayoutNoTokenComponent } from './pages/transaction-detail-layout-no-token/transaction-detail-layout-no-token.component';
 
 @NgModule({
 	declarations: [
@@ -21,6 +22,7 @@ import { TransactionDetailRoutingModule } from './transaction-detail-routing.mod
 		StatusAlasanComponent,
 		ProcessLogoComponent,
 		SelesaiConfirmationDialogComponent,
+		TransactionDetailLayoutNoTokenComponent,
 	],
 	imports: [
 		CommonModule,

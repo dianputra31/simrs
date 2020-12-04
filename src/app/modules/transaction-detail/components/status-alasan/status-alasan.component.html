@@ -4,7 +4,7 @@
 		<div class="d-flex">
 			<process-logo image="../../../../../assets/image/icons/diproses-red.svg"
 				[separator]="false"
-				[date]="item?.item_status_history?.PROCESS.updated_at"></process-logo>
+				[date]="item?.item_status_history?.PROCESS?.updated_at"></process-logo>
 
 			<process-logo *ngIf="item?.item_status_history?.DELIVER; else deliverBlock"
 				image="../../../../../assets/image/icons/dikirim-red.svg"

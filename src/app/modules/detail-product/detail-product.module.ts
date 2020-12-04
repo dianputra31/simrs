@@ -15,6 +15,7 @@ import { PriceComponent } from './components/price/price.component';
 import { WarnaComponent } from './components/warna/warna.component';
 import { DetailProductRoutingModule } from './detail-product-routing.module';
 import { DetailProductLayoutComponent } from './pages/detail-product-layout/detail-product-layout.component';
+import { DetailProductLayoutNoTokenComponent } from './pages/detail-product-layout-no-token/detail-product-layout-no-token.component';
 
 @NgModule({
 	declarations: [
@@ -28,6 +29,7 @@ import { DetailProductLayoutComponent } from './pages/detail-product-layout/deta
 		DeskripsiSpesifikasiSectionComponent,
 		FloatingFooterComponent,
 		ImageGridComponent,
+		DetailProductLayoutNoTokenComponent,
 	],
 	imports: [
 		CommonModule,

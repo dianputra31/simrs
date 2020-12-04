@@ -1,0 +1,118 @@
+<block-ui>
+    <div class="container">
+        <div id="keranjang-label">DETAIL PEMESANAN</div>
+
+        <wsv wide="20px"></wsv>
+        <div class="d-flex">
+            <div class="flex-grow-1 left-wrapper">
+
+                <div class="padding"
+                    style="height: 114px;">
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex justify-content-between">
+                        <div class="label-1">Request by: <span class="label-2">{{item?.requester_full_name}}</span>
+                        </div>
+                        <status-label [status]="item?.status"
+                            [statusTranslated]="item?.statusTranslated"
+                            (konfirmasiSelesaiEvent)="confirmSelesaiOrder()"
+                            (ajukanLagiEvent)="tambahkanKeKeranjang()"
+                            (cariSejenisEvent)="cariSejenis()"></status-label>
+                    </div>
+                    <wsv wide="15px"></wsv>
+                    <div class="d-flex justify-content-between pas">
+                        <div>
+                            <div class="label-1">Tgl. Pemesanan</div>
+                            <wsv wide="3px"></wsv>
+                            <div class="label-2">{{item?.requested_at|tanggal : 'tgl'}}</div>
+                        </div>
+                        <div *ngIf="tampilkanNoPemesananPengirimanNoResi()">
+                            <div class="label-1">No. Pemesanan</div>
+                            <wsv wide="3px"></wsv>
+                            <div class="label-2">{{item?.order_code}}</div>
+                        </div>
+                        <div *ngIf="tampilkanNoPemesananPengirimanNoResi()">
+                            <div class="label-1">Pengiriman & No. Resi</div>
+                            <wsv wide="3px"></wsv>
+                            <div class="label-2">{{item?.receipt_number}}</div>
+                        </div>
+                    </div>
+                    <wsv wide="20px"></wsv>
+                </div>
+
+
+
+
+
+                <horizontal-line></horizontal-line>
+
+                <wsv wide="20px"></wsv>
+                <div class="d-flex">
+                    <img src='{{item?.product_image}}'
+                        (error)="onImgError($event)"
+                        class="item-img">
+                    <div>
+                        <div class="label-2">{{item?.product_name}}</div>
+                        <wsv wide="7px"></wsv>
+                        <div class="label-4">{{item?.sell_price|rupiah}}</div>
+                        <wsv wide="7px"></wsv>
+
+                        <div *ngIf="tampilkanHargaCoret()"
+                            class="label-1 coret">Jumlah: {{item?.initial_quantity}} Barang
+                        </div>
+                        <div class="label-1">Jumlah: {{item?.quantity}} barang</div>
+                    </div>
+                    <wsh wide="150px"></wsh>
+                </div>
+
+                <wsv wide="20px"></wsv>
+                <horizontal-line></horizontal-line>
+
+                <wsv wide="20px"></wsv>
+                <div class="padding">
+                    <status-alasan [item]="item"></status-alasan>
+                </div>
+
+                <wsv wide="20px"></wsv>
+                <horizontal-line></horizontal-line>
+
+                <wsv wide="20px"></wsv>
+                <div class="padding d-flex justify-content-between">
+                    <div>
+                        <div class="label-1">Perkiraan Waktu Sampai:</div>
+                        <div class="label-2">{{estimateDeliveryTime(item)}}</div>
+                    </div>
+                    <div *ngIf="tampilkanAlasanPartialFulfilled()">
+                        <div *ngIf="item?.initial_quantity != item?.quantity">
+                            <div class="label-1">Alasan:</div>
+                            <div class="label-4">
+                                <div>{{item?.quantity}} Barang di proses </div>
+                                <div>{{item?.initial_quantity - item?.quantity}} Barang Out of Stock </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <wsv wide="20px"></wsv>
+                <horizontal-line></horizontal-line>
+                <wsv wide="20px"></wsv>
+                <div class="padding">
+                    <div class="label-1">Catatan Pengiriman:</div>
+                    <div class="label-2">{{item?.delivery_address_json?.delivery_message}}</div>
+                </div>
+
+                <wsv wide="20px"></wsv>
+            </div>
+
+            <wsh wide="30px"></wsh>
+
+            <status-pembelian [item]="item"></status-pembelian>
+        </div>
+
+    </div>
+
+</block-ui>
+
+<put-in-cart-notification [product]="item"
+    quantity="1"></put-in-cart-notification>
