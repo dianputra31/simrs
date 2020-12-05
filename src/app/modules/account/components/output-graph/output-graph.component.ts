@@ -326,7 +326,7 @@ export class OutputGraphComponent implements OnInit {
 			for (let i = 0; i < this.total.length; i++) {
 				this.totals += this.total[i];
 			}
-
+			console.log('tahun', this.years);
 			this.month.forEach((item, i) => {
 				if (this.range === 'WEEKLY') {
 					if (item === 1) {
@@ -547,6 +547,7 @@ export class OutputGraphComponent implements OnInit {
 			this.total.length = 0;
 			this.month = [];
 			this.week_month.length = 0;
+			this.years.length = 0;
 			this.month_name.length = 0;
 			this.graphMonth();
 		}
