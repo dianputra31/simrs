@@ -210,7 +210,7 @@ export class TransactionDetailLayoutComponent implements OnInit {
 	tambahkanKeKeranjang() {
 		console.log('yest');
 		var test = new CartItemModel();
-		test.product_id = this.item.id;
+		test.product_id = this.item.product_id;
 		test.quantity = 1;
 
 		var cartreq = new CartItemRequestModel();
