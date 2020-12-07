@@ -136,7 +136,7 @@ export class ItemTransactionComponent implements OnInit {
 		this.selectedItem = item;
 
 		var test = new CartItemModel();
-		test.product_id = item.id;
+		test.product_id = item.product_id;
 		test.quantity = item.quantity;
 
 		console.log(test);
