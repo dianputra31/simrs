@@ -75,10 +75,10 @@ export class OutputGraphComponent implements OnInit {
 					const rightArrowUrl =
 						'../../../../../assets/image/icons/arrow_right_red.png';
 					const leftArrow = chart.renderer
-						.image(leftArrowUrl, 50, 150, 30, 30)
+						.image(leftArrowUrl, 6, 150, 30, 30)
 						.attr({ zIndex: 10 });
 					const rightArrow = chart.renderer
-						.image(rightArrowUrl, 800, 150, 30, 30)
+						.image(rightArrowUrl, 870, 150, 30, 30)
 						.attr({ zIndex: 10 });
 					leftArrow.on('click', moveLeft).add();
 					rightArrow.on('click', moveRight).add();
