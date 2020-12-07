@@ -24,4 +24,12 @@ export class TagihanDataComponent implements OnInit {
 			);
 		});
 	}
+
+	translateStatus() {
+		if (this.item.invoice_status == 'CLOSED') {
+			return 'LUNAS';
+		} else {
+			return this.item.invoice_status;
+		}
+	}
 }
