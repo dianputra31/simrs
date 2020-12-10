@@ -9,7 +9,7 @@ import { StorageService } from '../../../../core/storage/service/storage.service
 	styleUrls: ['./account-navigation-bar.component.scss'],
 })
 export class AccountNavigationBarComponent implements OnInit {
-	navItems = [
+	navItems: any = [
 		{
 			label: 'Dashboard',
 			endPoint: 'dashboard',
@@ -51,6 +51,10 @@ export class AccountNavigationBarComponent implements OnInit {
 		this.selected = this.navItems.filter(
 			(x) => x.endPoint == this.router.url.replace('/account/', '')
 		)[0];
+
+		this.navItems.forEach((navItem) => {
+			navItem.show = this.showNavItem(navItem);
+		});
 	}
 
 	selectItem(item) {
@@ -61,5 +65,18 @@ export class AccountNavigationBarComponent implements OnInit {
 		this.selected = item;
 		// this.selected = item.label;
 		// localStorage.setItem('selectedInfo', item.label);
+	}
+
+	showNavItem(navItem) {
+		var profile = this.storageService.getAccountProfile();
+		if (profile.role_name == 'Manager') {
+			return true;
+		} else {
+			if (navItem.label == 'Mengelola Purchaser') {
+				return false;
+			} else {
+				return true;
+			}
+		}
 	}
 }
