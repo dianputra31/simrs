@@ -24,7 +24,10 @@ export class HttpService {
 				return resp;
 			}),
 			catchError((err, caught: Observable<HttpEvent<any>>) => {
-				if (err instanceof HttpErrorResponse && err.status == 401) {
+				if (
+					err instanceof HttpErrorResponse &&
+					(err.status == 401 || err.status == 403)
+				) {
 					this.storageService.clear();
 					this._document.defaultView.location.reload();
 					return of(err as any);
@@ -40,7 +43,10 @@ export class HttpService {
 				return resp;
 			}),
 			catchError((err, caught: Observable<HttpEvent<any>>) => {
-				if (err instanceof HttpErrorResponse && err.status == 401) {
+				if (
+					err instanceof HttpErrorResponse &&
+					(err.status == 401 || err.status == 403)
+				) {
 					this.storageService.clear();
 					this._document.defaultView.location.reload();
 					return of(err as any);
