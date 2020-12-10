@@ -40,7 +40,8 @@
 			<div id="tolak-button"
 				class="container-29 d-flex flex-grow-1 flex-row-reverse align-items-end">
 				<div (click)="tolakItem(item)"
-					class="tolak">Tolak</div>
+					class="tolak"
+					[className]="buttonAvail ? 'btn-shw':'btn-hide'">Tolak</div>
 			</div>
 
 
