@@ -89,11 +89,13 @@
 
 	<wsv wide="10px"></wsv>
 
-
-	<button type="button"
-		[className]="buttonDisable ?  'btn btn-price-abu2':'btn btn-price-next' "
-		(click)="clickButtonLabel()">{{buttonLabel}}</button>
+	<div [className]="buttonAvail ? 'btn-shw':'btn-hide'">
+		<button type="button"
+			[className]="buttonDisable ?  'btn btn-price-abu2':'btn btn-price-next'"
+			(click)="clickButtonLabel()">{{buttonLabel}}</button>
+	</div>
 </div>
+
 
 <wsv wide="20px"></wsv>
 <div id="label-warning-tidak-diproses">

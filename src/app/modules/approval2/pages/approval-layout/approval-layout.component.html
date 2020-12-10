@@ -81,13 +81,18 @@
                                     <check-box-two [checked]="true"
                                         [allowChanges]="true"
                                         (onClickEvent)="pilihSemuaClickEvent($event)"
+                                        [buttonAvail]="buttonAvail"
                                         class="check-box-container"></check-box-two>
-                                    <div id="pilihsemua">Pilih Semua</div>
+                                    <div id="pilihsemua"
+                                        [className]="buttonAvail ? 'btn-shw':'btn-hide'">Pilih Semua</div>
                                 </div>
 
                                 <div class="d-flex">
-                                    <div id="terpilih">{{numberOfItemsSelected()}}</div>
-                                    <div id="terpilih-label">Barang Dipilih</div>
+                                    <div id="terpilih"
+                                        [className]="buttonAvail ? 'btn-shw':'btn-hide'">{{numberOfItemsSelected()}}
+                                    </div>
+                                    <div id="terpilih-label"
+                                        [className]="buttonAvail ? 'btn-shw':'btn-hide'">Barang Dipilih</div>
                                 </div>
 
                             </div>
@@ -113,7 +118,8 @@
                         *ngIf="items?.length>=1">
                         <div *ngFor="let item of items; let i = index">
                             <item-card [item]="item"
-                                (onReject)="rejectItem(i)"></item-card>
+                                (onReject)="rejectItem(i)"
+                                [buttonAvail]="buttonAvail"></item-card>
                             <wsv wide="40px"></wsv>
                         </div>
                     </div>
@@ -126,9 +132,11 @@
                         <div class="d-flex">
                             <box-cart-price class="box-cart-price"
                                 [pertotalan]="calculate()"
-                                buttonLabel="Selanjutnya"
+                                buttonLabel="Proses"
                                 (buttonBoxCartPriceClick)="selanjutnyaClick()"
-                                [buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+                                [buttonDisable]="numberOfItemsSelected() == 0"
+                                [buttonAvail]="buttonAvail">
+                            </box-cart-price>
                         </div>
                     </div>
 

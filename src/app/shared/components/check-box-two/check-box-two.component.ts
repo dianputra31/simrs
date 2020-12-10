@@ -11,6 +11,7 @@ export class CheckBoxTwoComponent implements OnInit {
 	@Input() detSupplier: string;
 	@Input() detDate: string;
 	@Input() detPurchaser: string;
+	@Input() buttonAvail: boolean;
 	@Output() onClickEvent = new EventEmitter<boolean>();
 
 	constructor() {}
