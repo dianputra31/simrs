@@ -1,6 +1,7 @@
 <div (click)="onClick()">
 	<div *ngIf="checked; else elseBlock">
-		<div id="left-box">
+		<div id="left-box"
+			[className]="buttonAvail ? 'btn-shw':'btn-hide'">
 			<div class="custom-checkbox-checked tautan">
 				<img class="custom-checkbox-mark"
 					src="../../../../assets/image/icons/centang_putih.png">

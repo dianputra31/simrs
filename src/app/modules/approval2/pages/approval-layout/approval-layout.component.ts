@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,7 +25,7 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams,
+	ConvertApproveParams
 } from '../../../../models/checkout-cart-params.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -49,6 +49,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	page: number = 0;
 	limit: number = 5;
 	totalPages: number;
+	buttonAvail : Boolean = true;
 
 	nNotApproved: number;
 	listSummaryByAddress: any[] = [];
@@ -72,6 +73,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	headers: any;
 	isSpinner: Boolean = false;
 
+
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
 
@@ -85,6 +87,14 @@ export class ApprovalLayoutComponent implements OnInit {
 	ngOnInit(): void {
 		this.getAddress();
 		this.numberOfApproval();
+
+		var profile = this.storageService.getAccountProfile();
+		if (profile.role_name != 'Manager') {
+			this.buttonAvail = false;
+		} else {
+			this.buttonAvail = true;
+		}
+
 
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.add('no-scroll');
