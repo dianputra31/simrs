@@ -56,6 +56,10 @@ export class HttpService {
 				this.dialogService.showAlert(MESSAGE_DICT.ERROR_MESSAGE);
 				break;
 			}
+			case 403: {
+				this.dialogService.showAlert(MESSAGE_DICT.ERROR_MESSAGE);
+				break;
+			}
 			case 404: {
 				this.dialogService.showAlert(MESSAGE_DICT.ERROR_MESSAGE);
 				break;
