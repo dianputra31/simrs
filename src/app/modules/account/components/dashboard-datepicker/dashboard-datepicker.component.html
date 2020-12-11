@@ -1,0 +1,6 @@
+<nz-range-picker [nzDisabledDate]="disabledDate"
+    [nzRanges]="ranges"
+    nzFormat="yyyy/MM/dd"
+    [(ngModel)]="dateRange"
+    (ngModelChange)="onChange($event)"
+    [nzPlaceHolder]="['Tanggal', 'Tanggal']"></nz-range-picker>

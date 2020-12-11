@@ -31,6 +31,7 @@ export class ChartDropdownComponent implements OnInit {
 	];
 
 	ngOnInit(): void {
+		this.selected = this.items[1];
 		this.subsribers = [];
 	}
 
