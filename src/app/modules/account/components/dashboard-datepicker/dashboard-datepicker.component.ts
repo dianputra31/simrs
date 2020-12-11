@@ -1,17 +1,16 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
 	differenceInCalendarDays,
 	endOfMonth,
 	format,
 	subMonths,
 } from 'date-fns';
-
 @Component({
-	selector: 'range-datepicker',
-	templateUrl: './range-datepicker.component.html',
-	styleUrls: ['./range-datepicker.component.scss'],
+	selector: 'dashboard-datepicker',
+	templateUrl: './dashboard-datepicker.component.html',
+	styleUrls: ['./dashboard-datepicker.component.scss'],
 })
-export class RangeDatepickerComponent {
+export class DashboardDatepickerComponent implements OnInit {
 	@Output() dateSelectedEvent = new EventEmitter<any>();
 	@Output() dateRemovedEvent = new EventEmitter<any>();
 	startDate = '';

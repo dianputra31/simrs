@@ -46,6 +46,7 @@ import { AccountKreditPerusahaanComponent } from './pages/account-kredit-perusah
 import { AccountLayoutComponent } from './pages/account-layout/account-layout.component';
 import { AccountTagihanPrintComponent } from './pages/account-tagihan-print/account-tagihan-print.component';
 import { AccountTagihanComponent } from './pages/account-tagihan/account-tagihan.component';
+import { DashboardDatepickerComponent } from './components/dashboard-datepicker/dashboard-datepicker.component';
 
 registerLocaleData(en);
 
@@ -91,6 +92,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		TagihanDataComponent,
 		SidebarAccountComponent,
 		ChartDropdownComponent,
+		DashboardDatepickerComponent,
 	],
 	imports: [
 		CommonModule,

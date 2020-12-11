@@ -20,8 +20,8 @@
 }
 
 #arrow-down-gray {
-	width: 12.53px;
-	height: 6px;
+	width: 1em;
+	height: 1em;
 }
 
 #filter-dropdown-label {
@@ -98,7 +98,8 @@
 	font-style: normal;
 	font-weight: 600;
 	font-size: 14px;
-
+	margin-left: auto;
+	margin-right: auto;
 	color: $abu-abu-gelap;
 }
 
