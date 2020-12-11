@@ -4,7 +4,7 @@ import {
 	Input,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Router } from '@angular/router';
@@ -22,6 +22,7 @@ import { ApprovalRejectDialogComponent } from '../../../approval2/components/app
 })
 export class ItemCardComponent implements OnInit {
 	@Input() item: any;
+	@Input() buttonAvail: boolean;
 	@ViewChild('dangerTpl') dangerTpl;
 	@Output() onReject = new EventEmitter();
 	@BlockUI() blockUI: NgBlockUI;

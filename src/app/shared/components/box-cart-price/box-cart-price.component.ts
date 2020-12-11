@@ -9,11 +9,11 @@ import { CartListElement } from '../../../models/cart-list.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams,
+	ConvertApproveParams
 } from '../../../models/checkout-cart-params.model';
 import {
 	CheckoutCart,
-	ConvertCheckoutCart,
+	ConvertCheckoutCart
 } from '../../../models/checkout-cart.model';
 
 @Component({
@@ -24,6 +24,7 @@ import {
 export class BoxCartPriceComponent implements OnInit {
 	@Input() buttonLabel: string;
 	@Input() buttonDisable: boolean = true;
+	@Input() buttonAvail: boolean = true;
 	@Input() pertotalan: any;
 	@Input() selectedItems: CartListElement[];
 	// @Input() product: Product[] = [];

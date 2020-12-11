@@ -1,5 +1,6 @@
 <div *ngFor="let item of navItems">
-	<account-nav-item [item]="item"
+	<account-nav-item *ngIf="item.show"
+		[item]="item"
 		[selected]="selected"
 		(click)="selectItem(item)"></account-nav-item>
 	<wsv wide="6px"></wsv>
