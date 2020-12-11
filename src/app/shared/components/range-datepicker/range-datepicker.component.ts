@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { differenceInCalendarDays, endOfMonth, format } from 'date-fns';
+import {
+	differenceInCalendarDays,
+	endOfMonth,
+	format,
+	subMonths,
+} from 'date-fns';
 
 @Component({
 	selector: 'range-datepicker',
@@ -13,7 +18,8 @@ export class RangeDatepickerComponent {
 	endDate = '';
 	showEndDate;
 	date = null;
-	today = new Date()
+	dateRange: [Date, Date];
+	today = new Date();
 	ranges = {
 		Today: [new Date(), new Date()],
 		'This Month': [new Date(), endOfMonth(new Date())],
@@ -62,6 +68,10 @@ export class RangeDatepickerComponent {
 	}
 
 	ngOnInit() {
+		var result = subMonths(new Date(), 6);
+		var result1 = new Date();
+		this.dateRange = [result, result1];
+		console.log('range', this.dateRange);
 		this.onChange;
 	}
 }

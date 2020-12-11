@@ -17,7 +17,7 @@ nz-date-picker {
 }
 
 #filter-wrapper {
-	width: 500px;
+	width: 550px;
 	height: 100%;
 }
 
@@ -41,4 +41,11 @@ nz-date-picker {
 	margin-right: 10px;
 	margin-bottom: 10px;
 	font-size: 11px;
+}
+
+.flex-even {
+	margin-right: 20px;
+}
+.flex-even-1 {
+	flex: 1;
 }

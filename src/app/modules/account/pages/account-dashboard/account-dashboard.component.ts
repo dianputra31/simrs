@@ -49,11 +49,6 @@ export class AccountDashboardComponent implements OnInit {
 
 	ngOnInit() {
 		this.getDefaultRange();
-		// this.getSummaryMonth();
-		// this.getSummaryPurchaser();
-		// this.getSummaryProduct();
-		// this.purchaser_list();
-		// this.onChange;
 	}
 	ngOnDestroy() {
 		this.subscribers.forEach((each) => each.unsubscribe());
@@ -74,7 +69,7 @@ export class AccountDashboardComponent implements OnInit {
 	selectPurchaser(purchaser) {
 		this.range = purchaser.range;
 		this.selectedPurchaser = purchaser;
-		console.log('purchaser', this.range);
+		console.log('purchaser', this.selectedPurchaser);
 		this.getSummaryMonth();
 	}
 	purchaser_list() {
