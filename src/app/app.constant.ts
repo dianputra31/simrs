@@ -1,4 +1,5 @@
-export const API = 'http://172.16.204.6:8081';
+// export const API = 'http://172.16.204.6:8081';
+export const API = 'http://10.21.253.11:8081';
 
 export const RESPONSE = {
 	SUCCESS: 1,
@@ -18,6 +19,7 @@ export const HTTPSTATUS = {
 	UNAUTHORIZED: 401,
 };
 
+export const OtpService = `${API}/otp`;
 export const CatalogService = `${API}/product/category/list`;
 export const ProductCatalogUrl = `${API}/product/catalog`;
 export const CatalogProductDetailUrl = `${API}/product/detail`;
