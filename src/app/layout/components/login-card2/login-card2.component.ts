@@ -4,7 +4,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { RESPONSE } from 'src/app/app.constant';
+import { OtpService, RESPONSE } from 'src/app/app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import {
 	AuthServiceLoginPathConst,
@@ -84,9 +84,7 @@ export class LoginCard2Component implements OnInit {
 	public sendotp() {
 		this.blockUI.start(); // Start blocking
 
-		const url =
-			'http://172.16.204.6:8081/otp?email=' +
-			this.firstFormGroup.value.email;
+		const url = OtpService + '?email=' + this.firstFormGroup.value.email;
 		this.http.get(url).subscribe(
 			(resp) => {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
