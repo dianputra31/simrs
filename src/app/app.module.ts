@@ -10,6 +10,7 @@ import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
 import { StorageService } from './core/storage/service/storage.service';
 import { LayoutModule } from './layout/layout.module';
 import { MaterialModule } from './material.module';
+import { SharedService } from './shared/services/shared.service';
 import { NgbdToastGlobal } from './shared/toast/toast-global.component';
 import { ToastsContainer } from './shared/toast/toasts-container.component';
 
@@ -36,6 +37,7 @@ import { ToastsContainer } from './shared/toast/toasts-container.component';
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthInterceptor,
 		},
+		SharedService,
 	],
 	bootstrap: [AppComponent],
 })

@@ -4,7 +4,7 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,11 +19,12 @@ import {
 	OpenTrxCount,
 	ProfileUrl,
 	RESPONSE,
-	SearchProduct
+	SearchProduct,
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
+import { SharedService } from '../../../shared/services/shared.service';
 import { RedirectParameterService } from '../../redirect-parameter.service';
 
 @Component({
@@ -42,6 +43,8 @@ export class HeaderComponent implements OnInit {
 	nTransaction = 0;
 	nCart = 0;
 
+	message = 'testing';
+
 	@Output() keyword = new EventEmitter<string>();
 	@ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger: MatMenuTrigger;
 
@@ -52,6 +55,7 @@ export class HeaderComponent implements OnInit {
 		private router: Router,
 		private http: HttpService,
 		private dialogService: BaseService,
+		private service: SharedService,
 		private MatAutocompleteModule: MatAutocompleteModule,
 		private _redirectparam: RedirectParameterService // private ProductCatalogResponseModel: ProductCatalogResponseModel,
 	) {}
@@ -61,10 +65,13 @@ export class HeaderComponent implements OnInit {
 	options: string[] = [];
 	// options: string[] = ['One', 'Two', 'Three'];
 
-
 	filteredOptions: Observable<string[]>;
 
 	ngOnInit() {
+		this.service.currentMessage.subscribe(
+			(message) => (this.message = message)
+		);
+
 		this.filteredOptions = this.myControl.valueChanges.pipe(
 			startWith(''),
 			//minimal 3 karakter
@@ -171,8 +178,6 @@ export class HeaderComponent implements OnInit {
 							}
 						}
 
-						
-
 						// this.getKey(value);
 					} else {
 						this.dialogService.showAlert(resp.status.msg);
@@ -183,12 +188,12 @@ export class HeaderComponent implements OnInit {
 				}
 			);
 
-			// console.log(this.options);
+		// console.log(this.options);
 
-			return this.options.filter(
-				// (option) => option.toLowerCase().includes(filterValue)
-				option => option.toLowerCase().includes(filterValue) 
-			);
+		return this.options.filter(
+			// (option) => option.toLowerCase().includes(filterValue)
+			(option) => option.toLowerCase().includes(filterValue)
+		);
 
 		// this.subsribers.push(sub);
 	}
@@ -327,5 +332,11 @@ export class HeaderComponent implements OnInit {
 	onImgError(event) {
 		event.target.src =
 			'../../../../assets/image/icons/default-acc-white.svg';
+	}
+
+	triggerInit() {
+		if (this.message == 'initiate') {
+			this.ngOnInit();
+		}
 	}
 }
