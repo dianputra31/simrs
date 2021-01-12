@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,7 +25,7 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams,
+	ConvertApproveParams
 } from '../../../../models/checkout-cart-params.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -46,8 +46,8 @@ export class ApprovalLayoutComponent implements OnInit {
 	items: any[] = [];
 	itemArray: any[] = [];
 	selector: string = '#left-container';
-	page: number = 0;
-	limit: number = 5;
+	page: number = 1;
+	limit: number = 8;
 	totalPages: number;
 	buttonAvail: Boolean = true;
 
@@ -85,6 +85,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
+		this.items = [];
 		this.getAddress();
 		this.numberOfApproval();
 
@@ -133,7 +134,12 @@ export class ApprovalLayoutComponent implements OnInit {
 						);
 					});
 
-					this.items = this.items.concat(newData);
+					if(this.page>0){
+						this.items = this.items.concat(newData);
+					}else{
+						this.items = newData;
+					}
+					
 					this.initScrolling();
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
