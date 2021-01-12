@@ -4,7 +4,7 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -15,7 +15,7 @@ import {
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE
+	RESPONSE,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -25,14 +25,14 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams
+	ConvertApproveParams,
 } from '../../../../models/checkout-cart-params.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
+import { SharedService } from '../../../../shared/services/shared.service';
 import { ItemTelahDihapusComponent } from '../../../../shared2/components/item-telah-dihapus/item-telah-dihapus.component';
 import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { ApprovalResultConfirmationDialogComponent } from '../../components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
-
 @Component({
 	selector: 'approval-layout',
 	templateUrl: './approval-layout.component.html',
@@ -49,7 +49,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	page: number = 0;
 	limit: number = 5;
 	totalPages: number;
-	buttonAvail : Boolean = true;
+	buttonAvail: Boolean = true;
 
 	nNotApproved: number;
 	listSummaryByAddress: any[] = [];
@@ -73,7 +73,6 @@ export class ApprovalLayoutComponent implements OnInit {
 	headers: any;
 	isSpinner: Boolean = false;
 
-
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
 
@@ -81,7 +80,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		private storageService: StorageService,
 		public dialog: MatDialog,
 		public http: HttpService,
-		private dialogService: BaseService
+		private dialogService: BaseService,
+		private data: SharedService
 	) {}
 
 	ngOnInit(): void {
@@ -94,7 +94,6 @@ export class ApprovalLayoutComponent implements OnInit {
 		} else {
 			this.buttonAvail = true;
 		}
-
 
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.add('no-scroll');
@@ -401,6 +400,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				this.blockUI.stop();
 				if (resp.data.status == 'OK') {
 					this.openDialogLocation();
+					this.updateHeader();
 				} else {
 					this.dialogService.showAlert(resp.data.message);
 				}
@@ -483,5 +483,10 @@ export class ApprovalLayoutComponent implements OnInit {
 	resetItemListandPage() {
 		this.items = [];
 		this.page = 0;
+	}
+
+	updateHeader() {
+		this.data.changeMessage('initiate');
+		this.data.changeMessage('idle');
 	}
 }

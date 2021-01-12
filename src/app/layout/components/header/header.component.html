@@ -75,8 +75,9 @@
 				<div id="div-saldo"
 					class="d-flex">
 					<img src="../../../../assets/image/icons/wallet.svg">
-					<div class="d-flex credit">
-						{{datacompany?.credit_rp | rupiah}}
+					<div class="d-flex credit"
+						id="credit">
+						{{datacompany?.credit_rp | rupiah}} {{triggerInit()}}
 					</div>
 				</div>
 
