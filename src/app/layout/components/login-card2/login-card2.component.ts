@@ -8,7 +8,7 @@ import { OtpService, RESPONSE } from 'src/app/app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import {
 	AuthServiceLoginPathConst,
-	AuthServiceProfilePathConst,
+	AuthServiceProfilePathConst
 } from '../../../core/const/auth-service-path.const';
 import { StorageService } from '../../../core/storage/service/storage.service';
 
