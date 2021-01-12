@@ -47,7 +47,7 @@ export class ApprovalLayoutComponent implements OnInit {
 	itemArray: any[] = [];
 	selector: string = '#left-container';
 	page: number = 1;
-	limit: number = 8;
+	limit: number = 5;
 	totalPages: number;
 	buttonAvail: Boolean = true;
 
@@ -85,7 +85,6 @@ export class ApprovalLayoutComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.items = [];
 		this.getAddress();
 		this.numberOfApproval();
 
@@ -125,7 +124,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			(resp) => {
 				this.isSpinner = false;
 				if (resp.status.rc === RESPONSE.SUCCESS) {
-					var newData: any[] = resp.data;
+					var newData = resp.data;
 
 					newData.forEach((each) => {
 						each.selected = this.enableSelect(each.availability);
@@ -134,12 +133,7 @@ export class ApprovalLayoutComponent implements OnInit {
 						);
 					});
 
-					if(this.page>0){
-						this.items = this.items.concat(newData);
-					}else{
-						this.items = newData;
-					}
-					
+					this.items = this.items.concat(newData);
 					this.initScrolling();
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
@@ -488,7 +482,7 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	resetItemListandPage() {
 		this.items = [];
-		this.page = 0;
+		this.page = 1;
 	}
 
 	updateHeader() {
