@@ -4,7 +4,7 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,13 +19,14 @@ import {
 	OpenTrxCount,
 	ProfileUrl,
 	RESPONSE,
-	SearchProduct,
+	SearchProduct
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 import { SharedService } from '../../../shared/services/shared.service';
 import { RedirectParameterService } from '../../redirect-parameter.service';
+
 
 @Component({
 	selector: 'header',
@@ -66,8 +67,12 @@ export class HeaderComponent implements OnInit {
 	// options: string[] = ['One', 'Two', 'Three'];
 
 	filteredOptions: Observable<string[]>;
+	private updateSubscription: Subscription;
 
 	ngOnInit() {
+
+		
+
 		this.service.currentMessage.subscribe(
 			(message) => (this.message = message)
 		);
@@ -103,6 +108,17 @@ export class HeaderComponent implements OnInit {
 		this.numberitemInCart();
 		this.numberOfApproval();
 		this.numberOfOpenTrx();
+
+		this.getCurrentTrx();
+	}
+
+
+	getCurrentTrx() {
+		setInterval(() => {
+			this.nApproval = this._redirectparam.nApproval;
+			this.nCart = this._redirectparam.nCart;
+			this.nTransaction = this._redirectparam.nTransaction;
+	   }, 2500);
 	}
 
 	onRightClick(event: MouseEvent, item) {
@@ -227,6 +243,9 @@ export class HeaderComponent implements OnInit {
 		if (this.router.url === '/request-approval') {
 			this.openDialogLocation('./');
 		} else {
+			this._redirectparam.namaproduk = "";
+			this._redirectparam.price_start = 0;
+			this._redirectparam.price_end = 0;
 			this.router.navigate(['./home']);
 		}
 	}
@@ -284,6 +303,7 @@ export class HeaderComponent implements OnInit {
 			(resp) => {
 				if (resp.status.rc === RESPONSE.SUCCESS) {
 					this.nCart = resp.data.cart_list.length;
+					this._redirectparam.nCart = this.nCart;
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
 				}
@@ -301,6 +321,7 @@ export class HeaderComponent implements OnInit {
 			(resp) => {
 				if (resp.status.rc === RESPONSE.SUCCESS) {
 					this.nApproval = resp.data.approval_count;
+					this._redirectparam.nApproval = this.nApproval;
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
 				}
@@ -318,6 +339,7 @@ export class HeaderComponent implements OnInit {
 			(resp) => {
 				if (resp.status.rc === RESPONSE.SUCCESS) {
 					this.nTransaction = resp.data.open_transaction_count;
+					this._redirectparam.nTransaction = this.nTransaction;
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
 				}
