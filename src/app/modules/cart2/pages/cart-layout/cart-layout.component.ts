@@ -5,12 +5,14 @@ import { Subscription } from 'rxjs';
 import {
 	CartListUrl,
 	CheckoutCartUrl,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { ItemTelahDihapusComponent } from '../../../../shared2/components/item-telah-dihapus/item-telah-dihapus.component';
 import { ITEM_AVAILABILITY_DICT } from '../../cart.constant';
+
 @Component({
 	selector: 'cart-layout',
 	templateUrl: './cart-layout2.component.html',
@@ -33,7 +35,8 @@ export class CartLayoutComponent implements OnInit {
 	constructor(
 		private service: HttpService,
 		private router: Router,
-		private dialogService: BaseService
+		private dialogService: BaseService,
+		private _redirectparam: RedirectParameterService
 	) {}
 
 	ngOnInit(): void {
@@ -182,6 +185,7 @@ export class CartLayoutComponent implements OnInit {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					const stringnya = JSON.stringify(resp);
 					localStorage.setItem('checkout-cart', stringnya);
+					this.hitungulang();
 					this.router.navigate(['./request-approval']);
 				} else {
 					this.dialogService.showAlert(resp.status.msg);
@@ -194,6 +198,23 @@ export class CartLayoutComponent implements OnInit {
 		);
 
 		this.subscribers.push(sub);
+	}
+
+
+	hitungulang(){
+		const sub = this.service.get(CartListUrl).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this._redirectparam.nCart = resp.data.cart_list.length;
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.service.handleError(error);
+			}
+		);
+
 	}
 
 	initScrolling() {

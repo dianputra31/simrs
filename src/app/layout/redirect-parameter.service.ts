@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class RedirectParameterService {
 	namaproduk = "";
+	nApproval = 0;
+	nCart = 0;
+	nTransaction = 0;
 	price_start = 0;
 	price_end = 0;
 	limit = 50;
