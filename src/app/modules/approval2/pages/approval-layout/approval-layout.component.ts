@@ -20,6 +20,7 @@ import {
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { StorageService } from '../../../../core/storage/service/storage.service';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { Product } from '../../../../models/Approval.model';
 import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
@@ -81,7 +82,8 @@ export class ApprovalLayoutComponent implements OnInit {
 		public dialog: MatDialog,
 		public http: HttpService,
 		private dialogService: BaseService,
-		private data: SharedService
+		private data: SharedService,
+		private _redirectparam: RedirectParameterService
 	) {}
 
 	ngOnInit(): void {
@@ -486,7 +488,23 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	updateHeader() {
+		this.hitungulang();
 		this.data.changeMessage('initiate');
 		this.data.changeMessage('idle');
+
 	}
+
+	hitungulang(){
+			const sub = this.http.post(ApprovalCount, {}).subscribe(
+				(resp) => {
+					if (resp.status.rc === RESPONSE.SUCCESS) {
+						this._redirectparam.nApproval = resp.data.approval_count;
+					} 
+				},
+				(error) => {
+					this.http.handleError(error);
+				}
+			);
+	}
+	
 }
