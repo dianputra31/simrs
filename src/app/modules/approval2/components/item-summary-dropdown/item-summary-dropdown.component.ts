@@ -5,8 +5,9 @@ import {
 	Input,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 
 @Component({
 	selector: 'item-summary-dropdown',
@@ -23,9 +24,17 @@ export class ItemSummaryDropdownComponent implements OnInit {
 
 	open = false;
 
-	constructor() {}
+	constructor(private _redirectparam: RedirectParameterService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.getCurrentTrx();
+	}
+
+	getCurrentTrx() {
+		setInterval(() => {
+			this.nApproval = this._redirectparam.nApproval;
+	   }, 2000);
+	}
 
 	checkDropDown(open: boolean) {
 		this.open = open;
