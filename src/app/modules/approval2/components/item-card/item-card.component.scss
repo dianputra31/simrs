@@ -117,7 +117,6 @@
 	font-size: 12px;
 	text-align: right;
 	text-decoration-line: underline;
-
 	color: #606060;
 	margin-bottom: 15px;
 }
@@ -166,6 +165,7 @@
 	width: 100%;
 }
 
-.tolak {
+#tolak {
 	cursor: pointer;
+	// font-weight: bold;
 }

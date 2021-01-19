@@ -78,6 +78,8 @@ export class HeaderCategoryButtonComponent implements OnInit {
 
 	goesToCat(clickedCategory: any) {
 		this._redirectparam.namaproduk = '';
+		this._redirectparam.price_start = 0;
+		this._redirectparam.price_end = 0;
 		if (this.router.url == '/request-approval') {
 			this.openDialogLocation('/pilih-produk/0/0');
 		} else {
@@ -89,6 +91,8 @@ export class HeaderCategoryButtonComponent implements OnInit {
 
 	goesToSub(clickedCategory: any, sub: any) {
 		this._redirectparam.namaproduk = '';
+		this._redirectparam.price_start = 0;
+		this._redirectparam.price_end = 0;
 		if (this.router.url == '/request-approval') {
 			this.openDialogLocation('/pilih-produk/0/0');
 		} else {

@@ -20,6 +20,7 @@ import {
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { StorageService } from '../../../../core/storage/service/storage.service';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { Product } from '../../../../models/Approval.model';
 import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
@@ -29,10 +30,10 @@ import {
 } from '../../../../models/checkout-cart-params.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
+import { SharedService } from '../../../../shared/services/shared.service';
 import { ItemTelahDihapusComponent } from '../../../../shared2/components/item-telah-dihapus/item-telah-dihapus.component';
 import { ApprovalConfirmationDialogComponent } from '../../components/approval-confirmation-dialog/approval-confirmation-dialog.component';
 import { ApprovalResultConfirmationDialogComponent } from '../../components/approval-result-confirmation-dialog/approval-result-confirmation-dialog.component';
-
 @Component({
 	selector: 'approval-layout',
 	templateUrl: './approval-layout.component.html',
@@ -46,10 +47,10 @@ export class ApprovalLayoutComponent implements OnInit {
 	items: any[] = [];
 	itemArray: any[] = [];
 	selector: string = '#left-container';
-	page: number = 0;
+	page: number = 1;
 	limit: number = 5;
 	totalPages: number;
-	buttonAvail : Boolean = true;
+	buttonAvail: Boolean = true;
 
 	nNotApproved: number;
 	listSummaryByAddress: any[] = [];
@@ -73,7 +74,6 @@ export class ApprovalLayoutComponent implements OnInit {
 	headers: any;
 	isSpinner: Boolean = false;
 
-
 	@ViewChild('inputKeyword') inputKeyword: FilterInputComponent;
 	@ViewChild('inputDate') inputDate: RangeDatepickerComponent;
 
@@ -81,7 +81,9 @@ export class ApprovalLayoutComponent implements OnInit {
 		private storageService: StorageService,
 		public dialog: MatDialog,
 		public http: HttpService,
-		private dialogService: BaseService
+		private dialogService: BaseService,
+		private data: SharedService,
+		private _redirectparam: RedirectParameterService
 	) {}
 
 	ngOnInit(): void {
@@ -94,7 +96,6 @@ export class ApprovalLayoutComponent implements OnInit {
 		} else {
 			this.buttonAvail = true;
 		}
-
 
 		const body = document.getElementsByTagName('body')[0];
 		body.classList.add('no-scroll');
@@ -125,7 +126,7 @@ export class ApprovalLayoutComponent implements OnInit {
 			(resp) => {
 				this.isSpinner = false;
 				if (resp.status.rc === RESPONSE.SUCCESS) {
-					var newData: any[] = resp.data;
+					var newData = resp.data;
 
 					newData.forEach((each) => {
 						each.selected = this.enableSelect(each.availability);
@@ -401,6 +402,7 @@ export class ApprovalLayoutComponent implements OnInit {
 				this.blockUI.stop();
 				if (resp.data.status == 'OK') {
 					this.openDialogLocation();
+					this.updateHeader();
 				} else {
 					this.dialogService.showAlert(resp.data.message);
 				}
@@ -482,6 +484,27 @@ export class ApprovalLayoutComponent implements OnInit {
 
 	resetItemListandPage() {
 		this.items = [];
-		this.page = 0;
+		this.page = 1;
 	}
+
+	updateHeader() {
+		this.hitungulang();
+		this.data.changeMessage('initiate');
+		this.data.changeMessage('idle');
+
+	}
+
+	hitungulang(){
+			const sub = this.http.post(ApprovalCount, {}).subscribe(
+				(resp) => {
+					if (resp.status.rc === RESPONSE.SUCCESS) {
+						this._redirectparam.nApproval = resp.data.approval_count;
+					} 
+				},
+				(error) => {
+					this.http.handleError(error);
+				}
+			);
+	}
+	
 }

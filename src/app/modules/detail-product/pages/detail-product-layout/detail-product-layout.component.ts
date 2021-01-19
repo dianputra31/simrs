@@ -3,12 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
-	AddCart,
+	AddCart, CartListUrl,
+
 	CatalogProductDetailUrl,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { ToastService } from '../../../../shared/toast/toast-service';
 import { PutInCartNotificationComponent } from '../../../../shared2/components/put-in-cart-notification/put-in-cart-notification.component';
 import { ProductDetailResponseModel } from '../../models/product-detail-response.model';
@@ -40,7 +42,7 @@ export class DetailProductLayoutComponent implements OnInit {
 		private http: HttpService,
 		private service: BaseService,
 		private router: Router,
-
+		private _redirectparam: RedirectParameterService,
 		public toastService: ToastService
 	) {}
 
@@ -106,7 +108,8 @@ export class DetailProductLayoutComponent implements OnInit {
 					// this.productDetail = resp.data;
 					// console.log(resp.data);
 
-					console.log('resp: ', resp);
+					// console.log('resp: ', resp);
+					this.hitungulang();
 					this.notif.showNotif();
 				} else {
 					this.service.showAlert(resp.status.msg);
@@ -117,6 +120,21 @@ export class DetailProductLayoutComponent implements OnInit {
 			}
 		);
 		this.subscribers.push(sub);
+	}
+
+
+	hitungulang(){
+		const sub = this.http.get(CartListUrl).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this._redirectparam.nCart = resp.data.cart_list.length;
+				} 
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
+
 	}
 
 	showDanger(dangerTpl) {

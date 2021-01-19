@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { RESPONSE, UserCreateUserUrl } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { StorageService } from '../../../../core/storage/service/storage.service';
 
 @Component({
 	selector: 'add-purchaser-editor',
@@ -18,17 +19,19 @@ export class AddPurchaserEditorComponent implements OnInit {
 		last_name: '',
 		gender: '',
 		role_id: 2,
-		company_id: 1,
+		company_id: '',
 		profile_picture_url: '',
 	};
 	@Output() addEvent = new EventEmitter();
 	subscriptions: Subscription[];
 	constructor(
 		private http: HttpService,
-		private dialogService: BaseService
+		private dialogService: BaseService,
+		private storageService: StorageService
 	) {}
 
 	ngOnInit(): void {
+		this.param.company_id = this.storageService.getAccountProfile().company_id;
 		this.subscriptions = [];
 	}
 

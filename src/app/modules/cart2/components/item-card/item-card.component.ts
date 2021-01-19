@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { AddCart, RESPONSE } from '../../../../app.constant';
+import { AddCart, CartListUrl, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
@@ -28,7 +28,7 @@ export class ItemCardComponent implements OnInit {
 		public service: HttpService,
 		public dialogService: BaseService,
 		private _redirectparam: RedirectParameterService,
-		private router: Router
+		private router: Router,
 	) {}
 
 	ngOnInit(): void {
@@ -102,6 +102,7 @@ export class ItemCardComponent implements OnInit {
 		const sub = this.service.post(AddCart, cartreq).subscribe(
 			(resp) => {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
+					this.hitungulang();
 					this.blockUI.stop();
 					this.onDeleteItem.emit();
 				} else {
@@ -114,6 +115,22 @@ export class ItemCardComponent implements OnInit {
 			}
 		);
 		this.subscribers.push(sub);
+	}
+
+	hitungulang(){
+		const sub = this.service.get(CartListUrl).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this._redirectparam.nCart = resp.data.cart_list.length;
+				} else {
+					this.dialogService.showAlert(resp.status.msg);
+				}
+			},
+			(error) => {
+				this.service.handleError(error);
+			}
+		);
+
 	}
 
 	carisejenis(item: any) {

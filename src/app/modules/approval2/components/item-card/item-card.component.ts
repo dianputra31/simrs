@@ -10,9 +10,10 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { ApprovalRejectUrl } from '../../../../app.constant';
+import { ApprovalCount, ApprovalRejectUrl, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
+import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
 import { ToastService } from '../../../../shared/toast/toast-service';
 import { ApprovalRejectDialogComponent } from '../../../approval2/components/approval-reject-dialog/approval-reject-dialog.component';
 @Component({
@@ -33,7 +34,8 @@ export class ItemCardComponent implements OnInit {
 		private dialog: MatDialog,
 		public service: BaseService,
 		public toastService: ToastService,
-		public router: Router
+		public router: Router,
+		private _redirectparam: RedirectParameterService
 	) {}
 
 	ngOnInit(): void {
@@ -102,8 +104,23 @@ export class ItemCardComponent implements OnInit {
 		this.http.post(ApprovalRejectUrl, param).subscribe((resp) => {
 			this.onReject.emit();
 			this.blockUI.stop();
+			this.hitungulang();
 		});
 	}
+
+
+	hitungulang(){
+		const sub = this.http.post(ApprovalCount, {}).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this._redirectparam.nApproval = resp.data.approval_count;
+				} 
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
+}
 
 	availability(availability) {
 		if (availability == 'AVAILABLE' || availability == 'LIMITED') {
