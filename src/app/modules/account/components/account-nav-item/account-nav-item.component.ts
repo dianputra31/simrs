@@ -11,9 +11,18 @@ export class AccountNavItemComponent implements OnInit {
 	@Input() selected: String;
 	constructor(private router: Router) {}
 
+	hover;
 	ngOnInit(): void {}
 
 	navigate() {
 		this.router.navigate(['./account/' + this.item.endPoint]);
+	}
+
+	over() {
+		this.hover = true;
+	}
+
+	nothover() {
+		this.hover = false;
 	}
 }
