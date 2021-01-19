@@ -55,9 +55,9 @@ export const EditProfile = `${API}/user/edit/`;
 export const HistoryMutation = `${API}/history/mutation`;
 export const TagihanCompany = `${API}/history/invoice_list`;
 export const InvoicePrint = `${API}/history/invoice_print`;
-export const DashboardPerMonth = `${API}/dashboard/per_range/`;
-export const DashboardPerPurchaser = `${API}/dashboard/per_purchaser/`;
-export const DashboardPerProduct = `${API}/dashboard/per_product/`;
+export const DashboardPerMonth = `${API}/dashboard/per_range`;
+export const DashboardPerPurchaser = `${API}/dashboard/per_purchaser`;
+export const DashboardPerProduct = `${API}/dashboard/per_product`;
 export const EmailCs = 'cs.nest@narindo.com';
 export const RateUrl = `${API}/transaction/rate`;
 
