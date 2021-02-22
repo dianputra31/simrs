@@ -4,7 +4,7 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,14 +19,13 @@ import {
 	OpenTrxCount,
 	ProfileUrl,
 	RESPONSE,
-	SearchProduct
+	SearchProduct,
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
 import { PopUpRequestApprovalComponent } from '../../../shared/components/pop-up-request-approval/pop-up-request-approval.component';
 import { SharedService } from '../../../shared/services/shared.service';
 import { RedirectParameterService } from '../../redirect-parameter.service';
-
 
 @Component({
 	selector: 'header',
@@ -70,9 +69,6 @@ export class HeaderComponent implements OnInit {
 	private updateSubscription: Subscription;
 
 	ngOnInit() {
-
-		
-
 		this.service.currentMessage.subscribe(
 			(message) => (this.message = message)
 		);
@@ -112,13 +108,12 @@ export class HeaderComponent implements OnInit {
 		this.getCurrentTrx();
 	}
 
-
 	getCurrentTrx() {
 		setInterval(() => {
 			this.nApproval = this._redirectparam.nApproval;
 			this.nCart = this._redirectparam.nCart;
 			this.nTransaction = this._redirectparam.nTransaction;
-	   }, 2500);
+		}, 2500);
 	}
 
 	onRightClick(event: MouseEvent, item) {
@@ -179,7 +174,12 @@ export class HeaderComponent implements OnInit {
 		const filterValue = value.toLowerCase();
 		// console.log(filterValue);
 		const sub = this.http
-			.get(SearchProduct + '?keyword=' + filterValue + '&limit=20')
+			.get(
+				SearchProduct +
+					'?keyword=' +
+					encodeURIComponent(filterValue) +
+					'&limit=20'
+			)
 			.subscribe(
 				(resp) => {
 					if (resp.status.rc === RESPONSE.SUCCESS) {
@@ -243,7 +243,7 @@ export class HeaderComponent implements OnInit {
 		if (this.router.url === '/request-approval') {
 			this.openDialogLocation('./');
 		} else {
-			this._redirectparam.namaproduk = "";
+			this._redirectparam.namaproduk = '';
 			this._redirectparam.price_start = 0;
 			this._redirectparam.price_end = 0;
 			this.router.navigate(['./home']);
