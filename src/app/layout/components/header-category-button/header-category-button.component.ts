@@ -38,7 +38,6 @@ export class HeaderCategoryButtonComponent implements OnInit {
 		const sub = this.service.get(url).subscribe(
 			(resp) => {
 				this.categories = resp.data.category;
-				this.categories = this.categories.concat(this.categories);
 				this.clickedCategory = this.categories[0];
 			},
 			(error) => {
