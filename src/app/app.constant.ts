@@ -79,3 +79,7 @@ export const TRANSACTION_STATUS_DICT = {
 export const MESSAGE_DICT = {
 	ERROR_MESSAGE: 'Maaf, terjadi kesalahan teknis',
 };
+
+export function titleCase(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
