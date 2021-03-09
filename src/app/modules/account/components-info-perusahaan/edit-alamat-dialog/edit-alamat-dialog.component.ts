@@ -14,6 +14,7 @@ import {
 	AddressMasterSubDistrictUrl,
 	AddressMasterVillageUrl,
 	RESPONSE,
+	titleCase,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -173,7 +174,8 @@ export class EditAlamatDialogComponent implements OnInit {
 				if (resp.status.rc == RESPONSE.SUCCESS) {
 					this.districts = resp.data;
 					this.districts.forEach((dis) => {
-						dis.label = dis.district;
+						dis.label =
+							titleCase(dis.district_type) + ' ' + dis.district;
 						delete dis.district_type;
 					});
 				} else {

@@ -1,23 +1,23 @@
 import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
-    MatDialog,
-    MatDialogRef,
-    MAT_DIALOG_DATA
+	MatDialog,
+	MatDialogRef,
+	MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
-    AddressCreateUrl,
-    AddressMasterDistrictUrl,
-    AddressMasterProvinceUrl,
-    AddressMasterSubDistrictUrl,
-    AddressMasterVillageUrl
+	AddressCreateUrl,
+	AddressMasterDistrictUrl,
+	AddressMasterProvinceUrl,
+	AddressMasterSubDistrictUrl,
+	AddressMasterVillageUrl,
+	titleCase,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-
 
 @Component({
 	selector: 'tambah-alamat-baru-dialog',
@@ -35,15 +35,12 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	selectedDistrict: any;
 	selectedSubdistrict: any;
 	selectedVillage: any;
-	
-	  states: any[] = [
-		{'jenis':'PT', 'label':'PT'}, 
-		{'jenis':'CV', 'label':'CV'}, 
-		{'jenis':'Firma', 'label':'Firma'}
-	  ];
 
-	 
-	
+	states: any[] = [
+		{ jenis: 'PT', label: 'PT' },
+		{ jenis: 'CV', label: 'CV' },
+		{ jenis: 'Firma', label: 'Firma' },
+	];
 
 	param = {
 		address_name: '',
@@ -77,8 +74,6 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 		this.subscribers = [];
 		this.getProvince();
 	}
-
-
 
 	ngOnDestroy() {
 		this.subscribers.forEach((x) => x.unsubscribe);
@@ -143,8 +138,13 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 			.postData(url, false, false, false)
 			.subscribe((resp) => {
 				this.districts = resp.data;
-				this.districts.forEach((dis) => (dis.label = dis.district));
+				this.districts.forEach(
+					(dis) =>
+						(dis.label =
+							titleCase(dis.district_type) + ' ' + dis.district)
+				);
 			});
+		console.log(this.districts);
 		this.subscribers.push(sub);
 	}
 
