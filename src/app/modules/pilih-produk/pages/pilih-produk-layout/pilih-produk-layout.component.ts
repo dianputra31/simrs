@@ -110,6 +110,7 @@ export class PilihProdukLayoutComponent implements OnInit {
 		this.route.paramMap.subscribe((params) => {
 			if (this._redirectparam.namaproduk !== '' && this._redirectparam.namaproduk !== '0') this.keyword = '"' + this._redirectparam.namaproduk + '"'; else this.keyword = '';
 			var keywordnya = this.keyword.replace(/['"]+/g, '');
+			var keywordnya = keywordnya.replace('@|@','/');
 			var paramet: any = {
 				category_id: params.get('category_id'),
 				sub_category_id: params.get('sub_category_id'),
@@ -200,7 +201,8 @@ export class PilihProdukLayoutComponent implements OnInit {
 
 				
 			});
-
+		
+			this.keyword = paramet.namaproduk.replace('@|@','/');
 		this.subsribers.push(sub);
 	}
 }
