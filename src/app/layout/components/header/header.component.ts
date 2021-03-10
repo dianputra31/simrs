@@ -4,7 +4,7 @@ import {
 	EventEmitter,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,7 +19,7 @@ import {
 	OpenTrxCount,
 	ProfileUrl,
 	RESPONSE,
-	SearchProduct,
+	SearchProduct
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
@@ -141,7 +141,7 @@ export class HeaderComponent implements OnInit {
 		// console.log(event);
 		this._redirectparam.price_start = 0;
 		this._redirectparam.price_end = 0;
-		this._redirectparam.namaproduk = a.replaceAll('/', '-');
+		this._redirectparam.namaproduk = a.replaceAll('/', '@|@');
 		this.router.navigate([
 			'./pilih-produk/0/0' + '/' + this._redirectparam.namaproduk,
 		]);
@@ -151,7 +151,7 @@ export class HeaderComponent implements OnInit {
 		this.keyword.emit(a);
 		this._redirectparam.price_start = 0;
 		this._redirectparam.price_end = 0;
-		this._redirectparam.namaproduk = a.replaceAll('/', '-');
+		this._redirectparam.namaproduk = a.replaceAll('/', '@|@');
 
 		if (this.router.url == '/pilih-produk/0/0') {
 			this.router.navigate([
