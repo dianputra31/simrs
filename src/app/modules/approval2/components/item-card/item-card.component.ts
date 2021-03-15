@@ -4,13 +4,17 @@ import {
 	Input,
 	OnInit,
 	Output,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
-import { ApprovalCount, ApprovalRejectUrl, RESPONSE } from '../../../../app.constant';
+import {
+	ApprovalCount,
+	ApprovalRejectUrl,
+	RESPONSE,
+} from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
 import { RedirectParameterService } from '../../../../layout/redirect-parameter.service';
@@ -108,19 +112,18 @@ export class ItemCardComponent implements OnInit {
 		});
 	}
 
-
-	hitungulang(){
+	hitungulang() {
 		const sub = this.http.post(ApprovalCount, {}).subscribe(
 			(resp) => {
 				if (resp.status.rc === RESPONSE.SUCCESS) {
 					this._redirectparam.nApproval = resp.data.approval_count;
-				} 
+				}
 			},
 			(error) => {
 				this.http.handleError(error);
 			}
 		);
-}
+	}
 
 	availability(availability) {
 		if (availability == 'AVAILABLE' || availability == 'LIMITED') {

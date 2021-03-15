@@ -19,11 +19,11 @@
 	width: 10%;
 }
 
-.btn-hide{
+.btn-hide {
 	display: none;
 }
 
-.btn-shw{
+.btn-shw {
 	display: inline;
 }
 
@@ -75,4 +75,21 @@
 
 .tautan {
 	cursor: pointer;
+}
+
+.tooltiptext {
+	visibility: hidden;
+	background-color: #fff;
+	color: $abu-abu-gelap;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 10000;
+}
+
+.data-box:hover .tooltiptext {
+	visibility: visible;
 }

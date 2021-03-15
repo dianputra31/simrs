@@ -8,14 +8,14 @@
 			</div>
 		</div>
 		<div id="right-box">
-			<div class="data-box">{{detPurchaser}}</div>
+			<div class="data-box">{{detPurchaser|truncate:'19'}}<span class="tooltiptext">{{detPurchaser}}</span></div>
 			<div class="data-box big">{{detDate | tanggal: 'tgl'}}</div>
 		</div>
 	</div>
 	<ng-template #elseBlock>
 		<div class="custom-checkbox"></div>
 		<div id="right-box">
-			<div class="data-box">{{detPurchaser}}</div>
+			<div class="data-box">{{detPurchaser|truncate:'19'}}<span class="tooltiptext">{{detPurchaser}}</span></div>
 			<div class="data-box big">{{detDate | tanggal: 'tgl'}}</div>
 		</div>
 	</ng-template>
