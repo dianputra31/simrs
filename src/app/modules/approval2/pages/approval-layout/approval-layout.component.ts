@@ -4,18 +4,19 @@ import {
 	HostListener,
 	Inject,
 	OnInit,
-	ViewChild
+	ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
 	AddressListUrl,
+	API,
 	ApprovalCount,
 	ApprovalListUrl,
 	ApproveUrl,
 	GetCompanyUsers,
-	RESPONSE
+	RESPONSE,
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -26,7 +27,7 @@ import { CartListItemModel } from '../../../../models/cart-list-item.model';
 import {
 	ApproveCartParams,
 	CartListApproveParams,
-	ConvertApproveParams
+	ConvertApproveParams,
 } from '../../../../models/checkout-cart-params.model';
 import { FilterInputComponent } from '../../../../shared/components/filter-input/filter-input.component';
 import { RangeDatepickerComponent } from '../../../../shared/components/range-datepicker/range-datepicker.component';
@@ -349,8 +350,12 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	numberOfItemsSelected() {
-		if (this.items) {
-			return this.items.filter((x) => x.selected).length;
+		if (API.includes('https')) {
+			if (this.items) {
+				return this.items.filter((x) => x.selected).length;
+			} else {
+				return 0;
+			}
 		} else {
 			return 0;
 		}
@@ -491,20 +496,18 @@ export class ApprovalLayoutComponent implements OnInit {
 		this.hitungulang();
 		this.data.changeMessage('initiate');
 		this.data.changeMessage('idle');
-
 	}
 
-	hitungulang(){
-			const sub = this.http.post(ApprovalCount, {}).subscribe(
-				(resp) => {
-					if (resp.status.rc === RESPONSE.SUCCESS) {
-						this._redirectparam.nApproval = resp.data.approval_count;
-					} 
-				},
-				(error) => {
-					this.http.handleError(error);
+	hitungulang() {
+		const sub = this.http.post(ApprovalCount, {}).subscribe(
+			(resp) => {
+				if (resp.status.rc === RESPONSE.SUCCESS) {
+					this._redirectparam.nApproval = resp.data.approval_count;
 				}
-			);
+			},
+			(error) => {
+				this.http.handleError(error);
+			}
+		);
 	}
-	
 }

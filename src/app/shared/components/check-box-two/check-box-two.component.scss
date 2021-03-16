@@ -85,6 +85,7 @@
 	border-radius: 6px;
 	padding: 5px 0;
 
+	cursor: default;
 	/* Position the tooltip */
 	position: absolute;
 	z-index: 10000;
@@ -92,4 +93,5 @@
 
 .data-box:hover .tooltiptext {
 	visibility: visible;
+	cursor: default;
 }
