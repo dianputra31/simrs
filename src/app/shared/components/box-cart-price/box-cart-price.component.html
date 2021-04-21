@@ -1,9 +1,10 @@
 <div id="div-price-top"
 	class="d-flex align-items-center justify-content-between">
-	<div class="font1">Kredit Tersedia</div>
+	<div class="font2">Kredit Tersedia</div>
 	<div class="d-flex justify-content-between harga-per-item">
 		<div class="font1">Rp</div>
-		<div class="font1">99.999.999</div>
+		<!-- <div class="font1">{{pertotalan.saldo|rupiah}}</div> -->
+		<div class="font1">{{datacompany?.credit_rp | rupiah:'no-rp'}}</div>
 	</div>
 </div>
 <div id="div-price-below">
@@ -11,7 +12,7 @@
 		<div class="font1">Total Belanja</div>
 		<div class="d-flex justify-content-between harga-per-item">
 			<div class="font1">Rp</div>
-			<div class="font1">73.500.000</div>
+			<div class="font1">{{pertotalan.totalPrice| rupiah:'no-rp'}}</div>
 		</div>
 
 	</div>
@@ -19,11 +20,11 @@
 	<wsv wide="10px"></wsv>
 
 	<div class="d-flex justify-content-between">
-		<div class="font1">Fee</div>
+		<div class="font1">Fee {{datacompany?.fee_percentage}}%</div>
 
 		<div class="d-flex justify-content-between harga-per-item">
 			<div class="font1">Rp</div>
-			<div class="font1">500.000</div>
+			<div class="font1">{{pertotalan.totalFee| rupiah:'no-rp'}}</div>
 		</div>
 	</div>
 
@@ -35,7 +36,7 @@
 		<div class="font2">Sub Total</div>
 		<div class="d-flex justify-content-between harga-per-item">
 			<div class="font2">Rp</div>
-			<div class="font2">74.000.000</div>
+			<div class="font2">{{pertotalan.subtotal| rupiah:'no-rp'}}</div>
 		</div>
 	</div>
 
@@ -46,7 +47,7 @@
 
 		<div class="d-flex justify-content-between harga-per-item">
 			<div class="font1">Rp</div>
-			<div class="font1">7.400.000</div>
+			<div class="font1">{{pertotalan.ppn| rupiah:'no-rp'}}</div>
 		</div>
 	</div>
 
@@ -57,7 +58,7 @@
 
 		<div class="d-flex justify-content-between harga-per-item">
 			<div class="font1">Rp</div>
-			<div class="font1">-148.000</div>
+			<div class="font1">{{pertotalan.ppn3| rupiah:'no-rp'}}</div>
 		</div>
 	</div>
 
@@ -68,7 +69,7 @@
 
 		<div class="d-flex justify-content-between harga-per-item">
 			<div class="font1">Rp</div>
-			<div class="font1">1.000.000</div>
+			<div class="font1">{{pertotalan.ongkir| rupiah:'no-rp'}}</div>
 		</div>
 	</div>
 
@@ -82,13 +83,21 @@
 
 		<div class="d-flex justify-content-between harga-per-item">
 			<div id="label-ringkasan">Rp</div>
-			<div id="label-ringkasan">82.252.000</div>
+			<div id="label-ringkasan">{{pertotalan.grandtotal| rupiah:'no-rp'}}</div>
 		</div>
 	</div>
 
 	<wsv wide="10px"></wsv>
 
-	<button type="button"
-		[className]="buttonDisable ? 'btn btn-price-next' : 'btn btn-price-abu2'"
-		(click)="clickButtonLabel()">{{buttonLabel}}</button>
+	<div [className]="buttonAvail ? 'btn-shw':'btn-hide'">
+		<button type="button"
+			[className]="buttonDisable ?  'btn btn-price-abu2':'btn btn-price-next'"
+			(click)="clickButtonLabel()">{{buttonLabel}}</button>
+	</div>
+</div>
+
+
+<wsv wide="20px"></wsv>
+<div id="label-warning-tidak-diproses">
+	*Barang out of stock & area tidak terjangkau tidak akan diproses
 </div>

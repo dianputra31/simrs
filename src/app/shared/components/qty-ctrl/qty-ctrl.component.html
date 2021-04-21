@@ -1,22 +1,23 @@
-<div class="d-flex justify-content-between align-items-center control-wrapper">
-	<a id="remove_cart_logo_wrapper"
-		class="d-flex align-items-center"
-		(click)="removeFromCart()">
-		<object id="remove_cart_logo"
-			type="image/svg+xml"
-			data="../../../../../assets/image/icons/remove-logo.svg"
-			[className]="qtyObject.qty==1?'remove_cart_logo_disable':''"
-			class="pointereventnone">
-			<style>
-				svg {
-					cursor: pointer;
-					pointer-events: none;
-				}
+<div class="d-flex  bd-highlight mb-3 align-items-center">
+	<div>
+		<a id="remove_cart_logo_wrapper"
+			class="d-flex align-items-center"
+			(click)="removeFromCart()">
+			<object id="remove_cart_logo"
+				type="image/svg+xml"
+				data="../../../../../assets/image/icons/qty-ctrl-min.svg"
+				[className]="qtyObject.qty<=1?'remove_cart_logo_disable':''"
+				class="pointereventnone">
+				<style>
+					svg {
+						cursor: pointer;
+						pointer-events: none;
+					}
 
-			</style>
-		</object>
-	</a>
-
+				</style>
+			</object>
+		</a>
+	</div>
 	<div>
 		<input #qty_input
 			id="qty_input"
@@ -27,7 +28,8 @@
 			(input)="formatNumbersss()"
 			[attr.disabled]="allowChanges? null : ''"
 			(keypress)="preventAlphabet($event)"
-			(change)="qtyChange()">
+			(change)="qtyChange()"
+			autocomplete="off">
 		<div id="horizontal-underline">
 		</div>
 	</div>
@@ -36,5 +38,5 @@
 		class="d-flex align-items-center"
 		(click)="addToCart()">
 		<img id="add_to_cart_logo"
-			src="../../../../../assets/image/icons/add_to_cart_ic.png"></div>
+			src="../../../../../assets/image/icons/qty-ctrl-plus.svg"></div>
 </div>

@@ -1,0 +1,33 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+.rounded-input-wrapper {
+	background: #ffffff;
+	border: 0.5px solid #a9a9a9;
+	box-sizing: border-box;
+	border-radius: 28px;
+	height: 32px;
+}
+input {
+	background: transparent;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 24px;
+	padding-left: 18px;
+	padding-right: 18px;
+	width: 100%;
+	/* or 171% */
+}
+
+::placeholder {
+	background: transparent;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 24px;
+
+	color: #abafb3;
+}

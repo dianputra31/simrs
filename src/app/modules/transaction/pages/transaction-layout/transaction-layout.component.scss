@@ -2,23 +2,49 @@
 @import '../../../../../styles/variables/fonts';
 
 #top-fixed {
-	position: fixed;
-	width: 1100px;
 	background-color: $abu-abu-2;
-	z-index: 1;
+}
+
+.status-button {
+	margin-right: 40px;
+}
+
+#item-list {
+	overflow: scroll;
+	height: 100px;
+}
+
+.search-results {
+	overflow: scroll;
+	height: 100px;
+}
+#divload {
+	position: absolute;
+	top: 92%;
+	left: 50%;
+	height: 60px;
+	width: 60px;
 }
 
 #keranjang-label {
 	font-family: $primary-font;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 20px;
 	color: $abu-abu-gelap;
 	margin-top: 25px;
+}
+
+.search-results {
+	height: 100%;
+	overflow-y: scroll;
+	width: 100%;
+	overflow: hidden;
 }
 
 #left-container {
 	position: relative;
 	width: 97%;
+	height: 100%;
 }
 
 #right-fixed {
@@ -159,4 +185,5 @@
 	height: 1px;
 	width: 100%;
 	background-color: #a9a9a9;
+	opacity: 0.6;
 }

@@ -1,13 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/auth/guard/auth.guard';
-import { LoginLayoutComponent } from './pages/login-layout/login-layout.component';
+import { AccountTagihanPrintComponent } from '../modules/account/pages/account-tagihan-print/account-tagihan-print.component';
+import { DetailProductLayoutNoTokenComponent } from '../modules/detail-product/pages/detail-product-layout-no-token/detail-product-layout-no-token.component';
+import { LoginLayout2Component } from './pages/login-layout2/login-layout2.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: LoginLayoutComponent,
+		// component: LoginLayout2Component,
+		component: LoginLayout2Component,
+	},
+	{
+		path: 'tagihan-print/:invoice_no',
+		component: AccountTagihanPrintComponent,
+	},
+	{
+		path: 'detail/:sku-item',
+		component: DetailProductLayoutNoTokenComponent,
+	},
+	{
+		path: 'detail-transaction/:purchased_id/:item_id',
+
+		loadChildren: () =>
+			import(
+				'../modules/transaction-detail/transaction-detail.module'
+			).then((m) => m.TransactionDetailModule),
 	},
 	{
 		path: '',
@@ -16,6 +35,7 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'home',
+				canActivate: [AuthGuard],
 				loadChildren: () =>
 					import('../modules/home/home.module').then(
 						(m) => m.HomeModule
@@ -43,10 +63,17 @@ const routes: Routes = [
 					),
 			},
 			{
+				path: 'pilih-produk/:category_id/:sub_category_id/:keyword',
+				loadChildren: () =>
+					import('../modules/pilih-produk/pilih-produk.module').then(
+						(m) => m.PilihProdukModule
+					),
+			},
+			{
 				path: 'cart',
 				loadChildren: () =>
-					import('../modules/cart/cart.module').then(
-						(m) => m.CartModule
+					import('../modules/cart2/cart2.module').then(
+						(m) => m.Cart2Module
 					),
 			},
 			{
@@ -59,8 +86,8 @@ const routes: Routes = [
 			{
 				path: 'approval',
 				loadChildren: () =>
-					import('../modules/approval/approval.module').then(
-						(m) => m.ApprovalModule
+					import('../modules/approval2/approval2.module').then(
+						(m) => m.Approval2Module
 					),
 			},
 			{
@@ -71,7 +98,8 @@ const routes: Routes = [
 					),
 			},
 			{
-				path: 'transaction-detail',
+				path: 'transaction-detail/:purchased_id/:item_id',
+
 				loadChildren: () =>
 					import(
 						'../modules/transaction-detail/transaction-detail.module'
@@ -85,6 +113,11 @@ const routes: Routes = [
 					),
 			},
 		],
+	},
+	{
+		path: 'library',
+		loadChildren: () =>
+			import('../_library/library.module').then((m) => m.LibraryModule),
 	},
 ];
 @NgModule({

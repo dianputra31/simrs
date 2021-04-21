@@ -1,9 +1,13 @@
 <div>
 	<div id="image-main"
 		[ngStyle]="stylesObj"
-		(click)="openDialogImage(imageMainSelected)">
-		<img id="detail-main-image"
-			src={{productDetail?.product_image}}>
+		(click)="openDialogImage(productDetail?.product_image)">
+
+
+		<img src="{{productDetail?.product_image}}"
+			class="card-img-top"
+			id="detail-main-image"
+			(error)="onImgError($event)">
 	</div>
 	<wsv wide="10px"></wsv>
 	<div id="image-grid">

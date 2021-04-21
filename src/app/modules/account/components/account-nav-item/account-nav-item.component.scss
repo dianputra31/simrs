@@ -5,7 +5,7 @@
 	font-style: normal;
 	font-weight: 600;
 	font-size: 16px;
-
+	cursor: pointer;
 	color: #606060;
 }
 
@@ -18,4 +18,11 @@
 
 	width: 230px;
 	color: $color-primary;
+}
+
+.grey {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 50px;
+	color: #A9A9A9;
 }

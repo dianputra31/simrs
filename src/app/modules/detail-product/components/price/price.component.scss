@@ -2,11 +2,12 @@
 @import '../../../../../styles/variables/fonts';
 
 #product-detail-label {
-	font-style: normal;
-	font-weight: 600;
-	font-size: 18px;
 	color: $abu-abu-gelap;
 	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 25px;
 }
 
 .info-row-content {

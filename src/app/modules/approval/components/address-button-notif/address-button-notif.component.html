@@ -1,9 +1,0 @@
-<div class="d-flex justify-content-around">
-	<div *ngFor="let listApproval of listApprovals">
-		<div class="address-button-label"
-			[ngClass]="selectedopt == listApproval ? 'selected' : ''"><a>{{listApproval.name}}</a>
-			<div class="warn-notif"
-				[ngClass]="{'show':listApproval.qty > 0,'hide':listApproval == 0}"></div>
-		</div>
-	</div>
-</div>

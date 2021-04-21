@@ -1,30 +1,18 @@
-<div id="account-layout"
-	class="container d-flex">
-	<div id="left-wrapper">
-		<wsv wide="24px"></wsv>
-		<div class="d-flex justify-content-center">
-			<img id="logo-akun"
-				src="../../../../../assets/image/icons/logo-manager.png">
-		</div>
+<block-ui>
+  <div id="account-layout"
+    class="container d-flex">
 
-		<wsv wide="18px"></wsv>
-		<div class="d-flex justify-content-center">
-			<div id="position-label">Manager</div>
-		</div>
-		<wsv wide="18px"></wsv>
-		<div class="d-flex justify-content-center">
-			<div id="name-label">Abdurahman Pamungkas</div>
-		</div>
-		<wsv wide="39px"></wsv>
-		<div class="d-flex">
-			<wsh wide="35px"></wsh>
-			<account-navigation-bar></account-navigation-bar>
-			<wsh wide="29px"></wsh>
-		</div>
-	</div>
+    <div id="left-wrapper">
+      <wsv wide="10px"></wsv>
 
-	<div id="right-wrapper"
-		class="flex-grow-1">
-		<router-outlet></router-outlet>
-	</div>
-</div>
+      <sidebar-account [datauser]="datauser"></sidebar-account>
+
+
+    </div>
+
+    <div id="right-wrapper"
+      class="flex-grow-1">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</block-ui>

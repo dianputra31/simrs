@@ -1,0 +1,82 @@
+<div id="main-wrapper">
+	<div class="rectangle-87">
+		<div class="d-flex header-wrapper align-items-center">
+			<div class="d-flex justify-content-start">
+				<check-box-two [checked]="item.selected"
+					[allowChanges]="item.enableSelection"
+					(onClickEvent)="handleClickCheckbox($event)"
+					class="check-box-container"
+					[detSupplier]="item.supplier_name"
+					[detPurchaser]="item.requester_fullname"
+					[detDate]="item.submitted_at"
+					[buttonAvail]="buttonAvail"></check-box-two>
+			</div>
+			<div class="d-flex flex-grow-1 justify-content-between">
+				<div>
+					<div class="label-gray">Ongkos Kirim</div>
+					<div class="label-gray-2">{{item.shipping_cost|rupiah}}</div>
+				</div>
+				<div>
+					<div class="label-gray">Harga Belanja</div>
+					<div class="label-gray-2">{{item.purchase_amount|rupiah}}
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="rectangle-86 w-100 d-flex">
+			<img src='{{item.product_image}}'
+				(error)="onImgError($event)"
+				class="item-img"
+				(click)="itemClicked()">
+			<wsh wide="15px"></wsh>
+			<div id="item-desc-wrapper">
+				<item-desc [item]="item"></item-desc>
+				<wsv wide="6px"></wsv>
+
+				<div class="gray-label-3">Jumlah: {{item.quantity}} Barang</div>
+			</div>
+			<wsh wide="90px"></wsh>
+			<div id="tolak-button"
+				class="container-29 d-flex flex-grow-1 flex-row-reverse align-items-end">
+				<div (click)="tolakItem(item)"
+					id="tolak"
+					[className]="buttonAvail ? 'btn-shw':'btn-hide'">Tolak</div>
+			</div>
+
+
+		</div>
+	</div>
+	<div id="masking"
+		*ngIf="availability(item.availability) != 'AVAILABLE'"
+		class="rectangle-87">
+	</div>
+
+	<div id="above-masking"
+		*ngIf="availability(item.availability) != 'AVAILABLE'"
+		class="rectangle-87">
+		<div class="d-flex flex-grow-1 flex-row-reverse align-items-end"
+			style="height: 100%;">
+			<div class="container-29">
+				<div class="d-flex flex-row-reverse">
+					<div id="out-of-stock"
+						class="d-flex justify-content-center align-items-center">
+						{{availability(item.availability)}}
+					</div>
+				</div>
+				<wsv wide="9px"></wsv>
+				<div id="tolak-button"
+					class="d-flex flex-row-reverse">
+					<div (click)="tolakItem(item)"
+						class="tolak">Tolak</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ng-template #dangerTpl>
+	<div class="d-flex align-self-center justify-content-center">
+		<div id="item-telah-dihapus">Item telah dihapus</div>
+	</div>
+</ng-template>

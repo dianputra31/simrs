@@ -1,21 +1,30 @@
 <wsv wide="28px"></wsv>
 <div class="d-flex justify-content-between">
-	<div class="label-title">
-		Dashboard
-	</div>
-	<div class="d-flex"
-		id="filter-wrapper">
-		<date-dropdown class="flex-even"></date-dropdown>
-		<wsh wide="24px"></wsh>
-		<filter-dropdown-list class="flex-even"></filter-dropdown-list>
-	</div>
+    <div class="label-title">
+        Dashboard
+    </div>
+    <div class="d-flex"
+        id="filter-wrapper">
+        <dashboard-datepicker class="flex-even"
+            #inputDate
+            style="cursor: pointer;"
+            (dateSelectedEvent)="filterDate($event)"
+            (dateRemovedEvent)="filterRemoved($event)">
+        </dashboard-datepicker>
+        <chart-dropdown style="width: 200px;"
+            #inputFilter
+            [selected]="selectedPurchaser"
+            (onSelect)="selectPurchaser($event)"
+            class="flex-even-1"
+            style="cursor: pointer;"></chart-dropdown>
+
+        <!-- <wsh wide="24px"></wsh>
+        <filter-dropdown-list class="flex-even"></filter-dropdown-list> -->
+    </div>
 </div>
 
-<div id="chartContainer"
-	style="height: 370px; width: 100%;"></div>
-
-<div id="chartContainer2"
-	style="height: 370px; width: 100%;"></div>
-
-<div id="chartContainer3"
-	style="height: 370px; width: 100%;"></div>
+<output-graph #inputGraph
+    [range]="range"
+    [items_month]="items_month"
+    [items_purchaser]="items_purchaser"
+    [items_product]="items_product"></output-graph>

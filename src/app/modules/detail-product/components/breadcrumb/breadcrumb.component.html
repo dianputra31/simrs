@@ -1,18 +1,19 @@
 <div id="breadcrumb-nest"
 	class="d-flex">
 	<div class="breadcrumb-link"
-		[routerLink]="['../']">Home</div>
-	<img src="../../../../../assets/image/icons/arrow.svg"
+		[routerLink]="['../../']">Home</div>
+	<img src="../../../../../assets/image/icons/arrow-breadcrumb.svg"
 		class="arrow-breadcrumb">
 	<div class="breadcrumb-link"
-		[routerLink]="['../pilih-produk']">Fashion Pria</div>
-	<img src="../../../../../assets/image/icons/arrow.svg"
+		(click)="carikat(catid,subcatid)">{{prodcat}}</div>
+	<img src="../../../../../assets/image/icons/arrow-breadcrumb.svg"
 		class="arrow-breadcrumb">
 	<div class="breadcrumb-link"
-		[routerLink]="['../pilih-produk']">Outer Pria</div>
-	<img src="../../../../../assets/image/icons/arrow.svg"
+		(click)="carisubkat(catid,subcatid)">{{subcat}}
+	</div>
+	<img src="../../../../../assets/image/icons/arrow-breadcrumb.svg"
 		class="arrow-breadcrumb">
-	<font class="th-produk">
-		<div class="breadcrumb-link">Sweater Pria</div>
-	</font>
+	<span class="th-produk">
+		<div class="breadcrumb-link">{{prodname}}</div>
+	</span>
 </div>

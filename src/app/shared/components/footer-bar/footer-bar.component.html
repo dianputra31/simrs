@@ -2,23 +2,35 @@
 	<app-email-button id="email-button"></app-email-button>
 </div>
 
-<div id="footer-bar-container"
-	class="d-flex justify-content-around align-items-center">
-	<img src="../../../../assets/image/logo/logo-nest-red.png"
-		id="footer-logo">
-	<div class="d-flex justify-content-around align-items-center">
-		<footer-feature image="../../../../assets/image/logo/thumbs_up_red_circle.png"
-			titleOne="Jaminan"
-			titleTwo="Pengiriman"></footer-feature>
-		<div class="white-space-60px"></div>
-		<footer-feature image="../../../../assets/image/logo/money-red_circle.png"
-			titleOne="Kemudahan"
-			titleTwo="Pembayaran"></footer-feature>
-		<div class="white-space-60px"></div>
-		<footer-feature image="../../../../assets/image/logo/time-red-circle.png"
-			titleOne="Respon"
-			titleTwo="Cepat"></footer-feature>
-	</div>
+<div id="footer-bar-container">
 
-	<footer-customer-support></footer-customer-support>
+	<div class="container d-flex justify-content-between align-items-center w-100 h-100"
+		id="footer-inner-wrapper">
+
+		<img src="../../../../assets/image/logo/logo-with-name.png"
+			id="footer-logo">
+
+
+
+
+		<div id="middle"
+			class="d-flex justify-content-center align-items-center w-100">
+
+			<footer-feature image="../../../../assets/image/logo/ft1.png"
+				titleOne="Jaminan"
+				titleTwo="Pengiriman"></footer-feature>
+			<wsh wide="70px"></wsh>
+			<footer-feature image="../../../../assets/image/logo/ft2.png"
+				titleOne="Kemudahan"
+				titleTwo="Pembayaran"></footer-feature>
+			<wsh wide="70px"></wsh>
+			<footer-feature image="../../../../assets/image/logo/ft3.png"
+				titleOne="Respon"
+				titleTwo="Cepat"></footer-feature>
+		</div>
+
+		<footer-customer-support id="cs-logo"
+			titleTwo="0812 2335 5600 "></footer-customer-support>
+
+	</div>
 </div>

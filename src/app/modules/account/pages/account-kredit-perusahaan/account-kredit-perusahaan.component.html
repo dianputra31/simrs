@@ -1,25 +1,59 @@
-<wsv wide="28px"></wsv>
-<div class="d-flex justify-content-between">
-	<div class="label-title">
-		Kredit Perusahaan
+<div id="top-fixed">
+	<div class="d-flex justify-content-between">
+		<div class="label-title">
+			Kredit Perusahaan
+		</div>
+
+	</div>
+	<wsv wide="20px"></wsv>
+	<div class="d-flex">
+		<silinder label="Limit Kredit"
+			content="{{limitkredit|rupiah}}"
+			color="#fbb829"
+			image="../../../../../assets/image/icons/centang-putih-polos.png"></silinder>
+		<wsh wide="48px"></wsh>
+		<silinder label="Sisa Kredit"
+			content="{{sisakreditnya|rupiah}}"
+			color="#DB0A2A"
+			image="../../../../../assets/image/icons/icon-kredit.png"></silinder>
 	</div>
 
-</div>
-<wsv wide="24px"></wsv>
-<div class="d-flex">
-	<silinder label="Limit Kredit"
-		content="Rp 5,000,000,000"
-		color="#fbb829"
-		image="../../../../../assets/image/icons/centang-putih.png"></silinder>
-	<wsh wide="48px"></wsh>
-	<silinder label="Sisa Kredit"
-		content="Rp 5,000,000,000"
-		color="#DB0A2A"
-		image="../../../../../assets/image/icons/icon-kredit.png"></silinder>
+
+	<wsv wide="20px"></wsv>
+	<horizontal-line></horizontal-line>
+
 </div>
 
-<wsv wide="24px"></wsv>
-<horizontal-line></horizontal-line>
 
-<wsv wide="24px"></wsv>
-<kredit-table></kredit-table>
+<div class="container d-flex datarow">
+	<div id="left-container"
+		[style.height.px]="leftContainerHeight"
+		class="flex-grow-1 productbox">
+
+		<div infiniteScroll
+			[infiniteScrollDistance]="2"
+			[infiniteScrollUpDistance]="1.5"
+			[infiniteScrollThrottle]="50"
+			[infiniteScrollContainer]="selector"
+			[fromRoot]="true"
+			(scrolled)="onScrollDown($event)"
+			*ngIf="hist?.length>=1">
+
+
+
+			<div class="d-flex">
+				<kredit-table [items]="hist"></kredit-table>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+<div style="position:absolute;top:90%;left:55%;height:60px;width:60px;z-index: 1000;"
+	id="divload"
+	*ngIf="isSpinner">
+	<img src="../../../../../assets/image/icons/nestloading.gif"
+		style="position: relative;width:50px;">
+</div>

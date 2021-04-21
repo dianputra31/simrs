@@ -18,7 +18,7 @@ export class ImageMainComponent implements OnInit {
 
 	imageMainSelected;
 
-	constructor(public dialog: MatDialog) {}
+	constructor(public dialog: MatDialog) { }
 
 	stylesObj = {};
 
@@ -52,5 +52,10 @@ export class ImageMainComponent implements OnInit {
 	changeImageMain($event) {
 		//console.log($event)
 		this.imageMainSelected = $event;
+	}
+
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
 	}
 }

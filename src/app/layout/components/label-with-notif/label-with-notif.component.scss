@@ -1,0 +1,31 @@
+@import '../../../../styles/variables/colors';
+
+.label-1 {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	color: #ffffff;
+	text-transform: capitalize;
+}
+
+.warn-notif {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	top: 0px;
+	right: 0px;
+	color: $putih-tok;
+	font-size: 8px;
+	line-height: 12px;
+	font-weight: bold;
+	text-align: center;
+	background-color: $kuning-emas;
+}
+
+#label-with-notif-wrapper {
+	position: relative;
+	padding-right: 13px;
+	padding-top: 8px;
+	cursor: pointer;
+}

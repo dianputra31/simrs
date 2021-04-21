@@ -1,0 +1,13 @@
+<rounded-red-button *ngIf="valid"
+    label="Get OTP"
+    paddingtop="8px"
+    paddingbottom="8px"
+    font="17px"
+    [matchParentWidth]="true"
+    (click)="buttonClick()"></rounded-red-button>
+<rounded-gray-button *ngIf="!valid"
+    label="Get OTP"
+    paddingtop="8px"
+    paddingbottom="8px"
+    font="17px"
+    [matchParentWidth]="true"></rounded-gray-button>

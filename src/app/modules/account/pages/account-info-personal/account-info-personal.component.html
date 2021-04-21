@@ -1,5 +1,7 @@
-<wsv wide="28px"></wsv>
+<wsv wide="40px"></wsv>
 <div class="d-flex">
+	<wsh wide="30px"></wsh>
+
 	<div class="flex-grow-1">
 		<div class="label-title">
 			Informasi Personal
@@ -7,26 +9,41 @@
 		<wsv wide="40px"></wsv>
 		<div>
 			<info-personal-row label="Nama Depan"
+				#firstname
+				ids="firstname"
 				[isEditting]="isEditting"
-				content="Erika"></info-personal-row>
+				content="{{firstName}}"
+				(firstnameEdit)='firstnameChange($event)'></info-personal-row>
 
 			<wsv wide="24px"></wsv>
 			<info-personal-row label="Nama Belakang"
+				ids="lastname"
 				[isEditting]="isEditting"
-				content="Goeltom"></info-personal-row>
+				content="{{lastName}}"
+				(lastnameEdit)='lastnameChange($event)'></info-personal-row>
 		</div>
 		<wsv wide="40px"></wsv>
 
-		<red-bg-button *ngIf="isEditting"
+		<red-button *ngIf="isEditting"
 			(click)="save()"
-			label="Simpan"></red-bg-button>
-		<red-bg-button *ngIf="!isEditting"
+			label="Simpan"
+			font="14px"
+			paddingtop="10px"
+			paddingbottom="10px"
+			paddingleft="100px"
+			paddingright="100px"></red-button>
+		<red-button *ngIf="!isEditting"
 			(click)="edit()"
-			label="Edit"></red-bg-button>
+			label="Edit"
+			font="14px"
+			paddingtop="10px"
+			paddingbottom="10px"
+			paddingleft="100px"
+			paddingright="100px"></red-button>
 	</div>
 	<div>
 		<div id="email-label">
-			sukhito.tanawal@gmail.com
+			{{email}}
 		</div>
 	</div>
 </div>

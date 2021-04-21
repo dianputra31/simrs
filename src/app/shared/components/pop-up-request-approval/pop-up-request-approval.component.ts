@@ -18,7 +18,12 @@ export class PopUpRequestApprovalComponent implements OnInit {
 	ngOnInit(): void {}
 
 	goesToPage(a) {
-		this.dialogRef.close();
+		// this.dialogRef.close();
 		this.router.navigate([a]);
+		this.dialogRef.close({ event: 'proses' });
+	}
+
+	closeDialog() {
+		this.dialogRef.close();
 	}
 }

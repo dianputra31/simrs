@@ -3,6 +3,7 @@
 		Tambah Alamat Baru
 	</div>
 	<img id="close-dialog-button"
+		(click)="batal()"
 		src="../../../../../assets/image/icons/ic-x.png">
 </div>
 
@@ -10,18 +11,26 @@
 <div class="d-flex">
 	<div class="flex-even">
 		<div class="d-flex justify-content-end align-items-center">
-			<label-input label="Jenis Perusahaan"></label-input>
+			<label-input label="Nama Alamat"></label-input>
 			<wsh wide="16px"></wsh>
+
+			<!-- <input-dropdown style="width: 298px;"
+				[items]="states"
+				placeholderText="Jenis Perusahaan"
+				idText="jenisperusahaan"
+				(onSelect)="onUserInputJenisPerusahaan($event)"></input-dropdown> -->
+
 			<rounded-input width="298px"
-				placeholderText="PT"></rounded-input>
+				placeholderText="PT ABC"
+				(onUserInput)="onUserInputNamaPerusahaan($event)"></rounded-input>
+
 		</div>
 
 	</div>
 	<div class="flex-even">
 		<div class="d-flex justify-content-end align-items-center">
-			<label-input label="Jenis Perusahaan"></label-input>
-			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"></rounded-input>
+
+
 		</div>
 	</div>
 </div>
@@ -31,7 +40,9 @@
 <div class="d-flex justify-content-end align-items-center">
 	<label-input label="Detail Alamat"></label-input>
 	<wsh wide="16px"></wsh>
-	<rounded-input width="788px"></rounded-input>
+	<rounded-input width="788px"
+		placeholderText="Jl. Boulevard Raya"
+		(onUserInput)="onUserInputDetailPerusahaan($event)"></rounded-input>
 </div>
 
 <wsv wide="24px"></wsv>
@@ -40,7 +51,10 @@
 		<div class="d-flex justify-content-end align-items-center">
 			<label-input label="Provinsi"></label-input>
 			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"></rounded-input>
+			<input-dropdown style="width: 298px;"
+				[items]="provinces"
+				placeholderText="Provinsi"
+				(onSelect)="onProvinceSelected($event)"></input-dropdown>
 		</div>
 
 	</div>
@@ -48,7 +62,10 @@
 		<div class="d-flex justify-content-end align-items-center">
 			<label-input label="Kota/Kabupaten"></label-input>
 			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"></rounded-input>
+			<input-dropdown style="width: 298px;"
+				[items]="districts"
+				placeholderText="Kota/Kabupaten"
+				(onSelect)="onDistrictSelected($event)"></input-dropdown>
 		</div>
 	</div>
 </div>
@@ -59,7 +76,11 @@
 		<div class="d-flex justify-content-end align-items-center">
 			<label-input label="Kecamatan"></label-input>
 			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"></rounded-input>
+			<input-dropdown style="width: 298px;"
+				[items]="subdistricts"
+				placeholderText="Kecamatan"
+				(onSelect)="onSubdistrictSelected($event)">
+			</input-dropdown>
 		</div>
 
 	</div>
@@ -67,7 +88,11 @@
 		<div class="d-flex justify-content-end align-items-center">
 			<label-input label="Kelurahan"></label-input>
 			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"></rounded-input>
+			<input-dropdown style="width: 298px;"
+				[items]="villages"
+				placeholderText="Kelurahan"
+				(onSelect)="onVillageSelected($event)">
+			</input-dropdown>
 		</div>
 	</div>
 </div>
@@ -78,7 +103,10 @@
 		<div class="d-flex justify-content-end align-items-center">
 			<label-input label="Kode Pos"></label-input>
 			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"></rounded-input>
+			<rounded-input width="298px"
+				[disable]="true"
+				placeholderText="Kode Pos"
+				[content]="selectedVillage?.zipcode"></rounded-input>
 		</div>
 
 	</div>
@@ -95,7 +123,9 @@
 		<div class="d-flex justify-content-end align-items-center">
 			<label-input label="Nama Penerima"></label-input>
 			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"></rounded-input>
+			<rounded-input width="298px"
+				placeholderText="Nama Penerima"
+				(onUserInput)="onUserInputNamaPenerima($event)"></rounded-input>
 		</div>
 
 	</div>
@@ -103,23 +133,37 @@
 		<div class="d-flex justify-content-end align-items-center">
 			<label-input label="No Telp"></label-input>
 			<wsh wide="16px"></wsh>
-			<rounded-input width="298px"></rounded-input>
+			<rounded-input width="298px"
+				placeholderText="No Telp"
+				(onUserInput)="onUserInputNoTelp($event)"></rounded-input>
 		</div>
 	</div>
 </div>
 <wsv wide="24px"></wsv>
 <div class="d-flex justify-content-end align-items-center">
-	<label-input label="Catatan Pengiriman"></label-input>
+	<label-input label="Catatan Pengiriman"
+		[harusDiisi]="true"></label-input>
 	<wsh wide="16px"></wsh>
-	<rounded-input width="788px"></rounded-input>
+	<rounded-input width="788px"
+		placeholderText="Catatan Pengiriman"
+		(onUserInput)="onUserInputCatatanPengiriman($event)"></rounded-input>
 </div>
 
 <wsv wide="24px"></wsv>
 <div class="d-flex justify-content-between align-items-center">
 	<div>* Wajib diisi</div>
 	<div class="d-flex">
-		<button-gray label="Batal"></button-gray>
+		<button-gray label="Batal"
+			style="cursor: pointer;"
+			(click)="batal()"></button-gray>
 		<wsh wide="16px"></wsh>
-		<red-bg-button label="Tambah"></red-bg-button>
+		<red-button label="Tambah"
+			font="14px"
+			paddingtop="10px"
+			paddingbottom="10px"
+			paddingleft="0px"
+			paddingright="0px"
+			(click)="submit()"
+			float="right"></red-button>
 	</div>
 </div>

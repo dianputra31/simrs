@@ -1,0 +1,48 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+
+#detail-data{
+    float:left;
+    width:880px;
+    position: relative;
+    padding:0px;
+    // margin:5px;
+    font-family: $primary-font;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.short{
+    width:150px;
+    // border: solid blue 1px;
+}
+
+.medium{
+    width:220px;
+    // border: solid yellow 1px;
+}
+
+.long{
+    width:380px;
+    // border: solid greenyellow 1px;
+}
+
+.left{
+    text-align:left;
+}
+
+.center{
+    text-align: center;
+}
+
+.right{
+    text-align: right;
+}
+
+
+.tebal{
+	font-weight: bold;
+}

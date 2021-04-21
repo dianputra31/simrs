@@ -4,7 +4,9 @@
 	</div>
 	<div>
 		<input type="text"
-			class="textbox-search">
+			class="textbox-search"
+			placeholder="Nama Depan"
+			[(ngModel)]="param.first_name">
 	</div>
 </div>
 
@@ -18,7 +20,9 @@
 	</div>
 	<div>
 		<input type="text"
-			class="textbox-search">
+			class="textbox-search"
+			placeholder="Nama Belakang"
+			[(ngModel)]="param.last_name">
 	</div>
 </div>
 <wsv wide="24px"></wsv>
@@ -31,10 +35,42 @@
 	</div>
 	<div>
 		<input type="text"
-			class="textbox-search">
+			class="textbox-search"
+			placeholder="Email"
+			[(ngModel)]="param.email">
 	</div>
 </div>
+
 <wsv wide="24px"></wsv>
 <horizontal-line></horizontal-line>
 <wsv wide="24px"></wsv>
-<red-bg-button label="Tambah"></red-bg-button>
+
+
+<div class="d-flex align-items-end flex-column bd-highlight mb-3">
+	<div class="p-2 bd-highlight"></div>
+	<div class="p-2 bd-highlight"></div>
+	<div class="mt-auto p-2 bd-highlight">
+
+		<div class="d-flex">
+			<rounded-red-button *ngIf="valid()"
+				label="Tambah"
+				font="14px"
+				paddingtop="5px"
+				paddingbottom="5px"
+				paddingleft="20px"
+				paddingright="20px"
+				float="right"
+				(click)="submit()"></rounded-red-button>
+
+			<rounded-gray-button *ngIf="!valid()"
+				label="Tambah"
+				font="14px"
+				paddingtop="5px"
+				paddingbottom="5px"
+				paddingleft="20px"
+				paddingright="20px"
+				float="right"></rounded-gray-button>
+		</div>
+
+	</div>
+</div>

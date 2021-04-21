@@ -6,11 +6,13 @@
 	background: #eeeeee;
 	border-radius: 10px;
 	padding-top: 10px;
-	margin-top:15px;
+	margin-top: 25px;
+	filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.15));
 }
 
 #item-content {
 	width: 100%;
+	height: 150px;
 	background: #ffffff;
 	border-radius: 10px;
 	padding-top: 15px;
@@ -31,7 +33,8 @@
 
 #image-item-trx {
 	width: 121px;
-	height: 80px;
+	object-fit: scale-down;
+	cursor: pointer;
 }
 
 .title-1 {
@@ -70,10 +73,9 @@
 	color: #bebebe;
 }
 
-
 #button-wrapper {
-	background: #E0E0E0;
-	border: 0.5px solid #E0E0E0;
+	background: #e0e0e0;
+	border: 0.5px solid #e0e0e0;
 	box-sizing: border-box;
 	border-radius: 57px;
 	width: 129px;
@@ -86,5 +88,138 @@
 	display: flex;
 	align-items: center;
 	text-align: center;
-	color: #BDBDBD;
+	color: #bdbdbd;
+}
+
+.coret {
+	text-decoration-line: line-through;
+}
+
+#float-foot {
+	background: $color-primary;
+	box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.1);
+}
+#outer-wrapper {
+	position: fixed;
+	bottom: 0%;
+	width: 100%;
+}
+
+#float-foot-wrapper {
+	height: 71px;
+}
+
+#review-foot {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 18px;
+
+	color: $putih-tok;
+}
+
+#total-foot-label {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: right;
+	color: $putih-tok;
+}
+
+#total-foot {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 20px;
+
+	color: $putih-tok;
+}
+
+#tambahkan-button {
+	background: $putih-tok;
+	border: 0.796127px solid rgba(96, 96, 96, 0.3);
+	box-sizing: border-box;
+	border-radius: 7.96127px;
+	width: 165.33px;
+	height: 32.1px;
+}
+
+#cart-logo {
+	height: 22px;
+	width: 24.8px;
+}
+
+#tambahkan-label {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 12.738px;
+	line-height: 17px;
+	color: $color-primary;
+}
+
+#tambahkan-button {
+	cursor: pointer;
+}
+
+#keranjang-label {
+	font-family: $secondary-font;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+#lihat-keranjang-label {
+	font-family: $secondary-font;
+	font-weight: bold;
+	font-size: 12px;
+	width: 130px;
+	height: 32px;
+	background: $color-primary;
+	color: $putih-tok;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	cursor: pointer;
+	pointer-events: all;
+}
+
+#notif-inner-container {
+	margin-top: 13px;
+	padding-left: 4px;
+	padding-top: 7px;
+	padding-bottom: 10px;
+	padding-right: 12px;
+	width: 350px;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	background-color: #ffffff;
+}
+
+#notif-img {
+	width: 56px;
+	height: 56px;
+	overflow: hidden;
+}
+
+#wrapper-notification {
+	min-height: 100px;
+	pointer-events: none;
+}
+
+#wrapper-inner-notification {
+	width: 400px;
+	max-height: 345px;
+	background: #fdfdfd;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+	border-radius: 0px 0px 8px 8px;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#rounded-inner-notif {
+	background: #ffffff;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	padding-left: 4px;
+	padding-right: 12px;
+	padding-top: 10px;
+	padding-bottom: 5px;
 }

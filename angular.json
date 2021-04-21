@@ -29,11 +29,15 @@
 								"input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
 							},
 							"src/styles/styles.scss",
+							"src/styles-2/styles.scss",
 							{
 								"input": "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css"
 							},
 							{
 								"input": "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
+							},
+							{
+								"input": "node_modules/ng-zorro-antd/date-picker/style/index.min.css"
 							}
 						],
 						"scripts": [
@@ -66,7 +70,7 @@
 								{
 									"type": "anyComponentStyle",
 									"maximumWarning": "6kb",
-									"maximumError": "10kb"
+									"maximumError": "150kb"
 								}
 							]
 						}

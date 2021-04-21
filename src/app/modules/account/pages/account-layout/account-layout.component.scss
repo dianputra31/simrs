@@ -2,17 +2,24 @@
 @import '../../../../../styles/variables/fonts';
 
 #account-layout {
-	height: 100vh;
+	height: auto;
+	overflow: hidden;
 }
 
 #left-wrapper {
-	width: 280px;
+	min-width: 300px;
 	height: 100%;
+}
+
+#sidebarleft{
+	position:fixed;
 }
 
 #logo-akun {
 	width: 100px;
 	height: 100px;
+	border: solid $putih-tok 3px;
+	border-radius: 50%;
 }
 
 #position-label {

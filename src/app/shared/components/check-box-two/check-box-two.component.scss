@@ -1,0 +1,97 @@
+@import '../../../../styles/variables/colors';
+@import '../../../../styles/variables/fonts';
+
+.custom-checkbox {
+	width: 18px;
+	height: 19px;
+
+	background: #ffffff;
+	border: 1px solid $color-primary;
+	border-radius: 50%;
+	box-sizing: border-box;
+	position: relative;
+	float: left;
+}
+
+#left-box {
+	position: relative;
+	float: left;
+	width: 10%;
+}
+
+.btn-hide {
+	display: none;
+}
+
+.btn-shw {
+	display: inline;
+}
+
+#right-box {
+	position: relative;
+	float: left;
+	margin-left: 10px;
+	width: 80%;
+}
+
+.data-box {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 15px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	color: $abu-abu-gelap;
+}
+
+.big {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.custom-checkbox-checked {
+	width: 18px;
+	height: 18px;
+
+	border: 1px solid $merah-root-beat;
+	border-radius: 50%;
+	box-sizing: border-box;
+	background: $merah-root-beat;
+}
+
+.custom-checkbox-mark {
+	width: 17.23px;
+	height: 12.02px;
+	margin-left: 1px;
+	margin-bottom: 13px;
+}
+
+.tautan {
+	cursor: pointer;
+}
+
+.tooltiptext {
+	visibility: hidden;
+	background-color: #fff;
+	color: $abu-abu-gelap;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+
+	cursor: default;
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 10000;
+}
+
+.data-box:hover .tooltiptext {
+	visibility: visible;
+	cursor: default;
+}

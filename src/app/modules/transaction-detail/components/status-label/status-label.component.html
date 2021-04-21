@@ -1,0 +1,39 @@
+<div *ngIf="tampilkanSelesaiAbu2()"
+	class="gray-label">Selesai</div>
+
+<div *ngIf="tampilkanSelesaiMerah()"
+	class="red-label"
+	(click)="confirmOrder()">Selesai</div>
+
+<div *ngIf="tampilkanBeliLagi()"
+	class="red-label"
+	(click)="ajukanLagi()">Beli Lagi</div>
+
+<div *ngIf="tampilkanAjukanLagi()"
+	class="red-label"
+	(click)="ajukanLagi()">Ajukan Lagi</div>
+
+<div *ngIf="tampilkanCariSejenis()"
+	class="red-label"
+	(click)="cariSejenis()">Cari Sejenis</div>
+
+
+<!-- 
+case 'ORDERED':
+case 'PENDING':
+case 'PROCESS':
+case 'DELIVER':
+	//TOMBOL 'SELESAI' ABU2
+
+case 'RECEIVED':
+	//TOMBOL 'SELESAI' MERAH
+	
+case 'CLOSED':
+	//TOMBOL 'BELI LAGI' MERAH
+
+case 'CANCEL':
+case 'REJECTED':
+			//TOMBOL 'AJUKAN LAGI' MERAH
+
+case 'OUTOFSTOCK':
+	//TOMBOL 'CARI SEJENIS' MERAH -->

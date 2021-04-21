@@ -18,4 +18,8 @@ export class CatalogCardComponent implements OnInit {
 			'./detail-product/' + this.item.partner_sku_item,
 		]);
 	}
+
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
+	}
 }

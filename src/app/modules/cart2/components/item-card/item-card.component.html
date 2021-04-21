@@ -1,0 +1,84 @@
+<div id="prime-container">
+	<div id="container-1">
+		<div id="inner-container-2"
+			class="d-flex w-100 align-items-center">
+			<div id="inner-container-3">
+				<checkbox [checked]="item?.selected"
+					(onClicked)="onCheckboxClicked($event)"></checkbox>
+			</div>
+
+			<div class="d-flex flex-grow-1 justify-content-between">
+				<div>
+					<div class="label-1">Ongkos Kirim</div>
+					<div class="label-2">{{item.shipping_cost|rupiah}}</div>
+				</div>
+				<div>
+					<div class="label-1">Harga Belanja</div>
+					<div class="label-2 d-flex justify-content-end">{{item.purchase_amount| rupiah}}</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="inner-container-1"
+			class="d-flex w-100 align-items-center">
+			<img id="item-img"
+				src='{{item.product_image}}'
+				(error)="onImgError($event)">
+			<wsh wide="15px"></wsh>
+			<div class="d-flex flex-grow-1 justify-content-between">
+
+				<div>
+					<div class="product_name"
+						(click)="itemClicked()">
+						{{item.product_name|truncate:90}}
+					</div>
+					<wsv wide="6px"></wsv>
+					<div class="label-3">
+						{{item.sell_price|rupiah}}
+					</div>
+					<wsv wide="15px"></wsv>
+					<qty-ctrl-two [initQty]="item.quantity"
+						(onUpdateQty)="handleQtyUpdate($event)"></qty-ctrl-two>
+					<wsv wide="15px"></wsv>
+				</div>
+				<div class="d-flex align-items-end justify-content-end"
+					*ngIf="isItemAvailable()">
+					<wsh wide="150px"></wsh>
+					<img id="trash-can"
+						src="../../../../../assets/image/logo/trash-3.png"
+						(click)="deleteItem(item)" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="container-2"
+		*ngIf="!isItemAvailable()">
+
+	</div>
+	<div id="container-3"
+		*ngIf="!isItemAvailable()"
+		class="d-flex align-items-end justify-content-end">
+		<div>
+			<div class="d-flex justify-content-end">
+				<div id="status-label"
+					class="d-flex align-items-center justify-content-center">
+					{{getAvailabilityLabel()}}
+				</div>
+			</div>
+			<wsv wide="10px"></wsv>
+			<div class="d-flex">
+				<img id="trash-can"
+					src="../../../../../assets/image/logo/trash-3.png"
+					(click)="deleteItem(item)" />
+				<wsh wide="10px"></wsh>
+				<div id="cari-sejenis-button"
+					class="d-flex align-items-center justify-content-center"
+					(click)="carisejenis(item)">
+					Cari Sejenis
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

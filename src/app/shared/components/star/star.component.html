@@ -1,0 +1,4 @@
+<img *ngFor="let star of stars;let i = index"
+    [src]="getImage(star)"
+    (click)="onStarClicked(star,i)"
+    width="16.94px">

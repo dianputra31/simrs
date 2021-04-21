@@ -1,5 +1,8 @@
 <div class="account-item-label d-flex"
-	[ngClass]="selected == item ? 'selected' : ''">
+	(mouseover)='over()'
+	(mouseleave)='nothover()'
+	[ngClass]="[selected == item ? 'selected' : '', item.label == 'Log out' ? 'grey' : '']"
+	[style.color]="hover ? '#db0a2a' : null">
 	<wsh wide="14px"></wsh>
 	<div (click)="navigate()">
 		<wsv wide="7px"></wsv>

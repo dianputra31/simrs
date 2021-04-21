@@ -1,19 +1,14 @@
 <div>
-	<div class="d-flex justify-content-between">
-		<div id="catalog-section-label">Baju Pria</div>
+	<div class="d-flex justify-content-between pas">
+		<div id="catalog-section-label">{{products[0].category}}</div>
 		<div id="catalog-section-lihat-semua"
-			(click)="lihatSemua()">Lihat Semua</div>
+			(click)="lihatSemua(products[0].category_id,products[0].subcategory_id)">Lihat Semua</div>
 	</div>
-	<div class="white-space"></div>
-	<div class="d-flex">
-
+	<wsv wide="15px"></wsv>
+	<div class="d-flex w-100 justify-content-between">
 		<div *ngFor="let product of products;  let i=index">
-			<div *ngIf="i<6">
-				<div class="d-flex">
-					<div class="white-space-18px-horizontal"></div>
-					<catalog-card [item]="product"></catalog-card>
-				</div>
-			</div>
+			<catalog-card class="d-flex "
+				[item]="product"></catalog-card>
 		</div>
 	</div>
 </div>

@@ -10,7 +10,7 @@ export class ProductCatalogResponseModel {
 	public product_sku: String;
 	public partner_sku: String;
 	public partner_sku_item: String;
-	public original_price: Number;
+	public original_price: number;
 	public sell_price: number;
 	public product_name: String;
 	public product_name_item: String;
@@ -22,6 +22,8 @@ export class ProductCatalogResponseModel {
 	public product_image: String;
 	public merchant_code: String;
 	public merchant_name: String;
+	public discount_percentage: number;
+	public slice_name: String;
 
 	public convert(dto: any) {
 		this.id = dto.id;
@@ -47,6 +49,8 @@ export class ProductCatalogResponseModel {
 		this.product_image = dto.product_image;
 		this.merchant_code = dto.merchant_code;
 		this.merchant_name = dto.merchant_name;
+		this.discount_percentage = dto.discount_percentage;
+		this.slice_name = this.product_name.length > 29 ? this.product_name.slice(0, 29) + ".." : this.product_name;
 		return this;
 	}
 }

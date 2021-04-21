@@ -1,0 +1,25 @@
+<img *ngIf="!development"
+    [hidden]="!imageLoader"
+    src="../../../../assets/nestloading.gif"
+    width="30px">
+
+<img *ngIf="!development"
+    [src]="getSrc()"
+    [style.width]="width"
+    [style.height]="height"
+    [style.cursor]="cursor"
+    (load)="this.imageLoader=false;"
+    (error)="onImgError($event)">
+
+<div *ngIf="development">
+    <h1>Image</h1>
+    <div class="d-flex">
+        <pre *ngIf="development">
+            {{docs}}
+        </pre>
+
+        <pre *ngIf="development">
+            {{themeDocs}}
+        </pre>
+    </div>
+</div>

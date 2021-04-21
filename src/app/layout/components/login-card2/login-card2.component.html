@@ -1,0 +1,112 @@
+<block-ui>
+    <div>
+        <mat-horizontal-stepper [linear]="true"
+            class="rounded-corner"
+            #stepper>
+
+
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <wsv wide="50px"></wsv>
+                    <div class="d-flex justify-content-center">
+
+                        <img src="../../../../assets/image/icons/login.svg">
+                    </div>
+                    <wsv wide="5px"></wsv>
+                    <div class="d-flex justify-content-center teksbesar"
+                        style="margin-top:20px;">Log In</div>
+                    <wsv wide="30px"></wsv>
+                    <div class="d-flex justify-content-center teks">Kami akan mengirimkan OTP ke alamat email anda
+                    </div>
+                    <wsv wide="50px"></wsv>
+                    <div class="d-flex justify-content-center teks">Masukkan Alamat Email Anda</div>
+
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex w-100">
+                        <input type="text"
+                            class="rounded-gray d-flex w-100 justify-content-center email-input"
+                            placeholder="Alamat Email"
+                            formControlName="email"
+                            (keyup.enter)="sendotp()"
+                            required>
+                    </div>
+
+
+                    <wsv wide="20px"></wsv>
+                    <get-otp-button [valid]="firstFormGroup.valid"
+                        (getOtpEvent)="sendotp()"></get-otp-button>
+
+                    <wsv wide="15px"></wsv>
+                    <div class="warning">
+                        {{errlogin}}
+                    </div>
+
+                </form>
+            </mat-step>
+
+
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <wsv wide="50px"></wsv>
+                    <div class="d-flex justify-content-center">
+                        <img src="../../../../assets/image/icons/login-otp.svg">
+                    </div>
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex justify-content-center teksbesar">
+                        Verifikasi OTP
+                    </div>
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex justify-content-center">
+                        Masukkan Nomor OTP yang sudah dikirim ke
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <b>{{firstFormGroup.value.email}}</b>
+                    </div>
+
+                    <wsv wide="30px"></wsv>
+                    <div class="d-flex justify-content-center">
+                        <ng-otp-input (onInputChange)="onOtpChange($event)"
+                            #ngOtpInput
+                            class="d-flex"
+                            style="border: 1px;"
+                            (keyup.enter)="login()"
+                            [config]="{length:6, inputStyles:{'border-top': '0px', 'border-left':'0px','border-right':'0px', 'border-bottom':'2px solid #a9a9a9', 'border-radius':'0px','width':'56px'}}">
+                        </ng-otp-input>
+                    </div>
+
+                    <wsv wide="13px"></wsv>
+
+                    <div class="d-flex justify-content-center">
+                        Tidak Terima Nomor OTP?
+                        <wsh wide="10px"></wsh>
+                        <kirim-ulang-button [isCountingDown]="isCountingDown"
+                            (requestOtpEvent)="sendotp()"></kirim-ulang-button>
+                        <wsh wide="10px"></wsh>
+                        <countdown [config]="naconfig"
+                            (event)="finishCount($event)"
+                            [ngStyle]="{'font-weight': '600','font-size':'22px','line-height': '30px','color':'#DB0A2A'}">
+                        </countdown>
+                    </div>
+
+                    <div class="d-flex justify-content-center kecil">
+                        <span>Harap periksa di inbox / junk email anda</span>
+                    </div>
+                    <wsv wide="15px"></wsv>
+                    <rounded-red-button label="Verifikasi dan Proses"
+                        paddingtop="8px"
+                        paddingbottom="8px"
+                        font="17px"
+                        [matchParentWidth]="true"
+                        (click)="login()"></rounded-red-button>
+
+                    <wsv wide="15px"></wsv>
+                    <div class="warning">
+                        {{errotp}}
+                    </div>
+
+                </form>
+            </mat-step>
+
+        </mat-horizontal-stepper>
+    </div>
+</block-ui>

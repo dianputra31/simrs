@@ -1,0 +1,96 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#top-fixed {
+	background-color: $main-background;
+	z-index: 1;
+}
+
+#keranjang-label {
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 20px;
+	color: $abu-abu-gelap;
+	margin-top: 0px;
+}
+
+#pilihsemua {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	color: $color-primary;
+	padding-left: 15px;
+}
+
+#terpilih {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	color: $color-primary;
+	padding-right: 10px;
+}
+
+.btn-hide{
+	display: none;
+	min-height:25px;
+}
+
+.btn-shw{
+	display: inline;
+}
+
+#terpilih-label {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+}
+
+#left-container {
+	height: 100%;
+	overflow: scroll;
+}
+
+#right-container {
+	overflow: scroll;
+	padding-bottom: 20px;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+#left-container::-webkit-scrollbar {
+	display: none;
+}
+
+#right-container::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#scrollable-div {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+#div-cart-price {
+	position: fixed;
+	border: solid blueviolet 0px;
+	top: 300px;
+	right: 0px;
+	height: 800px;
+	padding-bottom: 300px;
+}
+
+#div-top-address {
+	position: fixed;
+	width: 100%;
+	z-index: 9999;
+	top: 80px;
+	z-index: 1000;
+	background-color: #e5e5e5;
+}
+
+.tautan {
+	cursor: pointer;
+}

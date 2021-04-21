@@ -1,0 +1,22 @@
+<div class="d-flex w-100 justify-content-end align-items-center">
+
+	<img id="close-dialog-button"
+		(click)="close()"
+		src="../../../../../assets/image/icons/ic-x.png">
+</div>
+
+<div id="popup-wording">
+	<p>{{nApproval}} Barang Menunggu Konfirmasi Approval Anda</p>
+</div>
+<wsv wide="25px"></wsv>
+<div id="popup-option"
+	class="d-flex justify-content-center">
+	<red-button label="Approval"
+		font="14px"
+		paddingtop="10px"
+		paddingbottom="13px"
+		paddingleft="0px"
+		paddingright="0px"
+		(click)="ok()"
+		float="right"></red-button>
+</div>

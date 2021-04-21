@@ -1,0 +1,52 @@
+<block-ui>
+	<div class="container d-flex">
+		<div *ngIf="total_item === 0 else elseBlock"
+			class="w-100">
+			<div id="keranjang-label">KERANJANG</div>
+			<div>
+
+				<wsv wide="150px"></wsv>
+				<empty-cart></empty-cart>
+			</div>
+		</div>
+
+		<ng-template #elseBlock>
+			<div class="w-100">
+
+				<div id="top-fixed"
+					style="margin-left: 20px;">
+					<div id="keranjang-label">KERANJANG</div>
+					<wsv wide="10px"></wsv>
+					<address-section wide="600px"
+						borderRadius='20px'
+						margin="0px"
+						(addressChangeEvent)="handleAddressChange()">
+					</address-section>
+					<wsv wide="20px"></wsv>
+					<pilih-semua (onPilihSemuaCheckboxClick)="pilihSemuaClickEvent($event)"></pilih-semua>
+				</div>
+				<div class="d-flex">
+					<div [style.height.px]="leftContainerHeight"
+						id="item-list"
+						class="w-100">
+						<div *ngFor="let item of items; let i = index">
+							<item-card [item]="item"
+								(onUpdateQty)="updateItemCartList($event,i)"
+								(onDeleteItem)="deleteItemCartList(i)"></item-card>
+						</div>
+					</div>
+					<box-cart-price class="box-cart-price"
+						[pertotalan]="calculate()"
+						buttonLabel="Selanjutnya"
+						(buttonBoxCartPriceClick)="selanjutnyaClick()"
+						[buttonDisable]="numberOfItemsSelected() == 0"></box-cart-price>
+
+				</div>
+			</div>
+
+		</ng-template>
+	</div>
+</block-ui>
+
+
+<item-telah-dihapus></item-telah-dihapus>

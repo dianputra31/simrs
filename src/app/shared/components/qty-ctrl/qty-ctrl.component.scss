@@ -2,8 +2,8 @@
 @import '../../../../styles/variables/fonts';
 
 #remove_cart_logo_wrapper {
-	width: 22px;
-	height: 16px;
+	width: 11px;
+	height: 8px;
 	cursor: pointer;
 }
 
@@ -13,7 +13,7 @@
 }
 
 #remove_cart_logo {
-	width: 11px;
+	width: 8px;
 	height: 4px;
 	cursor: pointer;
 	pointer-events: none;
@@ -37,8 +37,9 @@
 }
 
 #qty_input {
+	border:solid red 0px;
 	font-family: $secondary-font;
-	width: 120px;
+	width: 70px;
 	background: transparent;
 	font-style: normal;
 	font-weight: bold;
@@ -52,7 +53,8 @@
 
 #horizontal-underline {
 	height: 1px;
-	width: 70%;
+	width: 80%;
 	margin: auto;
+	opacity:0.8;
 	background-color: $abu-abu-sesuatu;
 }

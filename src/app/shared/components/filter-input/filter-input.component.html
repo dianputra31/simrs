@@ -1,10 +1,13 @@
 <div id="filter-input-wrapper"
 	class="d-flex align-items-center">
-	<input id="input-box"
+	<input #searchbox
+		id="input-box"
 		class="flex-grow-1"
 		type="text"
 		[attr.disabled]="disabled ? '' : null"
-		[placeholder]="hint">
+		[placeholder]="hint"
+		[(ngModel)]="a"
+		(keyup)=getKeyword(a)>
 	<img id="search-logo"
 		[src]="logo">
 

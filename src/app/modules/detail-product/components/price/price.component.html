@@ -1,7 +1,7 @@
 <div>
 	<div id="product-detail-label">{{productDetail?.product_name}}</div>
 	<wsv wide="27px"></wsv>
-	<discount-harga-coret [discount_percent]="null"
+	<discount-harga-coret [discount_percent]="productDetail?.discount_percentage"
 		[original_price]="productDetail?.original_price"
 		[sell_price]="productDetail?.sell_price"></discount-harga-coret>
 
@@ -14,14 +14,14 @@
 	</div>
 	<div *ngIf="productDetail?.product_size">
 		<info-row title="Berat">
-			<span class="info-row-content">2.400gr</span>
+			<span class="info-row-content">{{productDetail?.product_size}}</span>
 		</info-row>
 		<wsv wide="15px"></wsv>
 	</div>
 
 	<info-row title="Stok"
 		*ngIf="productDetail?.stock">&nbsp;&nbsp;
-		<span class="info-row-content">25</span>
+		<span class="info-row-content">{{productDetail?.stock}}</span>
 	</info-row>
 	<wsv wide="27px"></wsv>
 	<qty-ctrl notif="true"

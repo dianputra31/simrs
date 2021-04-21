@@ -6,7 +6,14 @@
 	<add-button (click)="addPurchaser()"></add-button>
 </div>
 <div *ngIf="showAddPurchaserEditor">
-	<add-purchaser-editor></add-purchaser-editor>
+	<add-purchaser-editor (addEvent)="onAddUserEvent()"></add-purchaser-editor>
 </div>
-<wsv wide="24px"></wsv>
-<purchaser-list></purchaser-list>
+<wsv wide="32px"></wsv>
+
+<div class="card-group">
+	<div *ngFor="let user of users">
+		<purchaser-card [user]="user"
+			(deleteEvent)="onDeleteEvent()"></purchaser-card>
+	</div>
+
+</div>

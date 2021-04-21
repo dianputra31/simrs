@@ -1,30 +1,75 @@
-<div class="container d-flex">
-	<div id="left-container">
+<block-ui>
+    <div class="container">
+        <div id="top-fixed">
+            <div id="keranjang-label">TRANSAKSI</div>
+            <wsv wide="16px"></wsv>
+            <div class="d-flex">
+                <status-button *ngFor="let status of statuses"
+                    [label]="status"
+                    [selected]="selectedStatuses"
+                    (click)="selectStatus(status)"
+                    class="status-button">
+                </status-button>
+            </div>
+            <wsv wide="17px"></wsv>
+            <div class="flex-grow-1 d-flex align-items-center">
+                <input-dropdown class="flex-even"
+                    [items]="addresses"
+                    [selected]="selectedAddress"
+                    (onSelect)="selectAddress($event)"
+                    class="flex-even"
+                    style="cursor: pointer;"></input-dropdown>
 
-		<div id="top-fixed"
-			class="bg-10">
-			<div id="keranjang-label">TRANSAKSI</div>
-			<wsv wide="20px"></wsv>
-			<div class="d-flex justify-content-left">
-				<list-status-section></list-status-section>
-			</div>
-			<wsv wide="19px"></wsv>
+                <wsh wide="10px"></wsh>
+                <input-dropdown class="flex-even"
+                    [items]="purchasers"
+                    [selected]="selectedPurchaser"
+                    (onSelect)="selectPurchaser($event)"
+                    class="flex-even"
+                    style="cursor: pointer;"></input-dropdown>
 
-			<filter-buttons-section></filter-buttons-section>
+                <wsh wide="10px"></wsh>
+                <filter-input #inputKeyword
+                    (keyword)="cariKeyword($event)"
+                    class="flex-even"
+                    hint="Cari Pesanan"
+                    logo="../../../../assets/image/icons/searchbutton.png"
+                    [disabled]="false"></filter-input>
+                <wsh wide="10px"></wsh>
+                <range-datepicker class="flex-even"
+                    #inputDate
+                    style="cursor: pointer;"
+                    (dateSelectedEvent)="filterDate($event)"
+                    (dateRemovedEvent)="filterRemoved($event)">
+                </range-datepicker>
+                <wsh wide="10px"></wsh>
+                <reset-filter (click)="reset()"></reset-filter>
+            </div>
+            <wsv wide="20px"></wsv>
+            <div id="horizontal-line"></div>
+            <wsv wide="20px"></wsv>
+        </div>
 
-			<wsv wide="20px"></wsv>
-			<div id="horizontal-line"></div>
-			<wsv wide="10px"></wsv>
-			<wsv wide="20px"></wsv>
-		</div>
-	</div>
-</div>
-<wsv wide="200px"></wsv>
+        <div infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollUpDistance]="1.5"
+            [infiniteScrollThrottle]="50"
+            [infiniteScrollContainer]="selector"
+            [fromRoot]="true"
+            (scrolled)="onScroll($event)">
+            <div id="item-list"
+                [style.height.px]="itemListHeight">
+                <item-transaction [items]="items"></item-transaction>
+                <wsv wide="40px"></wsv>
+            </div>
+        </div>
 
-<div class="container d-flex">
-	<div id="left-container">
-		<item-transaction></item-transaction>
-		<wsv wide="60px"></wsv>
-	</div>
+    </div>
+</block-ui>
 
+<div style="position:absolute;top:92%;left:50%;height:60px;width:60px;"
+    id="divload"
+    *ngIf="isSpinner">
+    <img src="../../../../../assets/image/icons/nestloading.gif"
+        style="position: relative;width:50px;">
 </div>

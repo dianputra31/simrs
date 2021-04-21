@@ -1,0 +1,78 @@
+<div class="wrapper">
+	<div style="height: 114px;">
+		<wsv wide="20px"></wsv>
+		<div class="d-flex justify-content-between align-items-center padding">
+			<div class="label-1 d-flex">
+				Status Pembelian
+			</div>
+			<div class="label-2 d-flex">
+				{{item?.status == 'WAITING_RETURN'? 'Dibatalkan' : item?.statusTranslated}}
+			</div>
+		</div>
+		<wsv wide="14px"></wsv>
+		<div class="padding invoice"
+			*ngIf="item?.status == 'CLOSED'">
+			<div class="label-1">
+				No. Tagihan
+			</div>
+			<wsv wide="2px"></wsv>
+			<div class="label-3"
+				(click)="lihatTagihanDetail()">
+				{{item?.invoice_no}}
+			</div>
+		</div>
+		<wsv wide="10px"></wsv>
+	</div>
+	<horizontal-line></horizontal-line>
+
+	<wsv wide="10px"></wsv>
+	<div class="padding">
+		<div class="label-3">Tagihan</div>
+		<div>
+			<div class="d-flex justify-content-between">
+				<div class="label-5">Harga Belanja</div>
+				<div class="d-flex justify-content-between width-1">
+					<div class="label-5">Rp</div>
+					<div class="label-5">{{item?.purchase_amount|rupiah:'no-rp'}}</div>
+				</div>
+			</div>
+			<div class="d-flex justify-content-between">
+				<div class="label-5">Total Ongkos Kirim</div>
+				<div class="d-flex justify-content-between width-1">
+					<div class="label-5">Rp</div>
+					<div class="label-5">{{item?.shipping_cost|rupiah:'no-rp'}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<wsv wide="48px"></wsv>
+	<div class="padding">
+		<div class="label-6">*Harga belanja belum termasuk pajak</div>
+	</div>
+	<wsv wide="4px"></wsv>
+	<horizontal-line></horizontal-line>
+	<wsv wide="10px"></wsv>
+	<div class="padding">
+		<div class="label-1 ">
+			Alamat Pengiriman:
+		</div>
+		<wsv wide="10px"></wsv>
+		<div class="label-3">{{item?.delivery_address_json?.recipient_name}}</div>
+		<div class="label-3">{{item?.delivery_address_json?.address_name}}</div>
+		<div class="label-5">{{item?.delivery_address_json?.address_detail}},
+			{{item?.delivery_address_json?.village}},
+			{{item?.delivery_address_json?.subdistrict}},
+			{{item?.delivery_address_json?.district}},
+			{{item?.delivery_address_json?.province}},
+			{{item?.delivery_address_json?.zipcode}},
+		</div>
+		<div class="label-5">
+			{{item?.delivery_address_json?.recipient_contact}}
+		</div>
+	</div>
+
+	<wsv wide="120px"></wsv>
+</div>

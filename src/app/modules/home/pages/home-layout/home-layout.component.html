@@ -1,20 +1,20 @@
-<div class="home-container container">
-	<address-section borderRadius='20px'></address-section>
-	<div class="white-space"></div>
-	<banner-section hidden></banner-section>
-
-
-	<div *ngFor="let row of productCatalogRows">
+<block-ui>
+	<div class="container">
+		<wsv wide="24px"></wsv>
+		<address-section borderRadius='20px'></address-section>
 		<div class="white-space"></div>
-		<catalog-section [products]="row"></catalog-section>
+		<banner-section hidden></banner-section>
+
+		<div *ngFor="let row of productCatalogRows">
+			<wsv wide="24px"></wsv>
+			<catalog-section [products]="row"></catalog-section>
+		</div>
+		<wsv wide="20px"></wsv>
 	</div>
 
-	<br />
+	<div class="footer">
+		<footer-bar></footer-bar>
+		<footer></footer>
 
-</div>
-
-<div class="footer">
-	<footer-bar></footer-bar>
-	<footer></footer>
-
-</div>
+	</div>
+</block-ui>

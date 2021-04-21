@@ -9,14 +9,14 @@ import { ToastService } from '../../toast/toast-service';
 export class QtyCtrlComponent implements OnInit {
 	@Input() notif: string;
 	@Input() allowChanges: boolean;
-	@Input() qtyObject: QuantityModel;
+	@Input() qtyObject: QuantityModel = new QuantityModel();
 	@Output() qtyChangeEvent = new EventEmitter<number>();
 
 	qtyToDisplay;
-	constructor(public toastService: ToastService) {}
+	constructor(public toastService: ToastService) { }
 
 	ngOnInit(): void {
-		this.qtyObject.qtyDisplay = this.qtyObject.display();
+		this.qtyObject.qtyDisplay = this.qtyObject.display().length > 0 ? this.qtyObject.display() : "0";
 	}
 
 	removeFromCart() {
@@ -30,8 +30,9 @@ export class QtyCtrlComponent implements OnInit {
 	}
 
 	qtyChange() {
-		if (this.qtyObject.qty == null || this.qtyObject.qty < 1) {
+		if (this.qtyObject.qty == null || this.qtyObject.qty < 1 || this.qtyObject.qtyDisplay == "0") {
 			this.qtyObject.qty = 1;
+			this.qtyObject.qtyDisplay = "1";
 		}
 	}
 
@@ -42,6 +43,7 @@ export class QtyCtrlComponent implements OnInit {
 				this.qtyObject.qty++;
 				this.qtyObject.qtyDisplay = this.qtyObject.display();
 			}
+
 		}
 	}
 
@@ -55,12 +57,19 @@ export class QtyCtrlComponent implements OnInit {
 	}
 
 	formatNumbersss() {
+		console.log(this.qtyObject.qtyDisplay)
+		if(this.qtyObject.qtyDisplay=='0') {
+			this.qtyObject.qtyDisplay = "1";
+			this.qtyObject.qty = 1;
+			console.log(this.qtyObject.qty)
+		}
 		this.qtyObject.qtyDisplay = this.formatRupiah(
 			this.qtyObject.qtyDisplay,
 			''
 		);
 
 		this.qtyObject.qty = this.qtyObject.sanitizedNumber();
+		
 	}
 
 	formatRupiah(angka, prefix) {

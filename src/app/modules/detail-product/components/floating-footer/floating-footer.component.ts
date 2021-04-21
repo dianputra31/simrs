@@ -1,13 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddCart } from '../../../../app.constant';
+import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
-import { CartItemRequestModel } from '../../../../models/cart-item-request.model';
-import { CartItemResponseModel } from '../../../../models/cart-item-response.model';
-import { CartItemModel } from '../../../../models/cart-item.model';
-import { QuantityModel } from '../../../../models/quantity.model';
-import { ToastService } from '../../../../shared/toast/toast-service';
 import { ProductDetailResponseModel } from '../../models/product-detail-response.model';
 
 @Component({
@@ -17,64 +12,34 @@ import { ProductDetailResponseModel } from '../../models/product-detail-response
 })
 export class FloatingFooterComponent implements OnInit {
 	@Input() productDetail: ProductDetailResponseModel;
-	@Input() qtyObject: QuantityModel;
+	@Input() quantity: any;
+	@Output() tambahkanKeKerangjangEvent = new EventEmitter();
 
 	subsribers: Subscription[];
-	constructor(public toastService: ToastService, private router: Router, private service: BaseService) {
-
-	}
+	constructor(
+		private router: Router,
+		private service: BaseService,
+		private http: HttpService
+	) {}
 
 	ngOnInit(): void {
 		this.subsribers = [];
 	}
 
-	ngOnDestroy() {
-		this.toastService.removeAll();
-		this.subsribers.forEach((each) => each.unsubscribe);
+	tambahkanKeKeranjang() {
+		this.tambahkanKeKerangjangEvent.emit();
+
+		var test = {
+			product_id: this.productDetail.id,
+			quantity: this.quantity,
+		};
+
+		var cartreq = {
+			cart_list: [test],
+		};
 	}
 
-	tambahkanKeKeranjang(dangerTpl) {
-		this.showDanger(dangerTpl);
-		console.log("product: ", this.productDetail);
-		console.log("qty: ", this.qtyObject);
-		var test = new CartItemModel()
-		test.product_id = this.productDetail.id
-		test.quantity = this.qtyObject.qty
-
-		var cartreq = new CartItemRequestModel()
-		cartreq.cart_list = []
-		cartreq.cart_list.push(test)
-
-		const sub = this.service
-			.postData(AddCart, cartreq, CartItemResponseModel, false)
-			.subscribe((resp) => {
-				console.log("resp: ", resp)
-			})
-
-
-		//1. Call PostData from base service 
-		//2. create cart model (request & response) in folder "models"
-		//3. create class public convert(dto: any) 
-
-		this.subsribers.push(sub);
-
-		// add URL add-cart in file "app/app.constant.ts"
-
-	}
-
-	showDanger(dangerTpl) {
-		this.toastService.removeAll();
-		this.toastService.show(dangerTpl, {
-			delay: 100,
-			classname: 'kanan-atas',
-		});
-	}
-
-	pergiKeKeranjang() {
-		this.router.navigate(['./cart']);
-	}
-
-	countTotal() {
-		return this.productDetail?.sell_price * this.qtyObject?.qty;
+	onImgError(event) {
+		event.target.src = '../../../../assets/image/icons/default-item.png';
 	}
 }

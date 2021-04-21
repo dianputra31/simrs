@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Router } from '@angular/router';
 import { DeletePurchaserConfirmationDialogComponent } from '../delete-purchaser-confirmation-dialog/delete-purchaser-confirmation-dialog.component';
@@ -9,6 +9,8 @@ import { DeletePurchaserConfirmationDialogComponent } from '../delete-purchaser-
 	styleUrls: ['./purchaser-card.component.scss'],
 })
 export class PurchaserCardComponent implements OnInit {
+	@Input() user: any;
+	@Output() deleteEvent = new EventEmitter();
 	constructor(public dialog: MatDialog, private router: Router) {}
 
 	ngOnInit(): void {}
@@ -26,7 +28,7 @@ export class PurchaserCardComponent implements OnInit {
 		dialogConfig.height = '128px';
 		dialogConfig.panelClass = 'border-radius:20px';
 		dialogConfig.data = {
-			pageBefore: this.router.url,
+			user: this.user,
 		};
 
 		const modalDialog = this.dialog.open(
@@ -34,6 +36,9 @@ export class PurchaserCardComponent implements OnInit {
 			dialogConfig
 		);
 
+		modalDialog.afterClosed().subscribe((resp) => {
+			this.deleteEvent.emit();
+		});
 		return false;
 	}
 }

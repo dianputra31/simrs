@@ -3,10 +3,9 @@
 
 #catalog-section-label {
 	color: $abu-abu-gelap;
-	font-family: $secondary-font;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 20px;
 	line-height: 22px;
 }
 
@@ -17,13 +16,8 @@
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 19px;
+	padding-right: 0px;
+	text-align: right;
+	float: right;
 	cursor: pointer;
-}
-
-.white-space-18px-horizontal {
-	width: 18px;
-}
-
-.white-space {
-	height: 13px;
 }

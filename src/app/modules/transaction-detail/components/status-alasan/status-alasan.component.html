@@ -1,0 +1,57 @@
+<div *ngIf="!showStatusLabel()">
+	<div>
+		<div class="label-1">Status</div>
+		<div class="d-flex">
+			<process-logo image="../../../../../assets/image/icons/diproses-red.svg"
+				[separator]="false"
+				[date]="item?.item_status_history?.PROCESS?.updated_at"></process-logo>
+
+			<process-logo *ngIf="item?.item_status_history?.DELIVER; else deliverBlock"
+				image="../../../../../assets/image/icons/dikirim-red.svg"
+				[separator]="true"
+				[date]="item?.item_status_history?.DELIVER.updated_at"></process-logo>
+			<ng-template #deliverBlock>
+				<process-logo image="../../../../../assets/image/icons/dikirim-grey.svg"
+					[separator]="true"
+					[date]=""></process-logo>
+			</ng-template>
+
+			<process-logo *ngIf="item?.item_status_history?.RECEIVED; else receivedBlock"
+				image="../../../../../assets/image/icons/sampai-red.svg"
+				[separator]="true"
+				[date]="item?.item_status_history?.RECEIVED.updated_at"></process-logo>
+			<ng-template #receivedBlock>
+				<process-logo image="../../../../../assets/image/icons/sampai-grey.svg"
+					[separator]="true"
+					[date]=""></process-logo>
+			</ng-template>
+
+			<process-logo *ngIf="item?.item_status_history?.CLOSED; else selesaiBlock"
+				image="../../../../../assets/image/icons/selesai-red.svg"
+				[separator]="true"
+				[date]="item?.item_status_history?.CLOSED.updated_at"></process-logo>
+			<ng-template #selesaiBlock>
+				<process-logo image="../../../../../assets/image/icons/selesai-grey.svg"
+					[separator]="true"
+					[date]=""></process-logo>
+			</ng-template>
+
+		</div>
+	</div>
+</div>
+
+
+<div *ngIf="showStatusLabel()"
+	class="d-flex justify-content-between">
+	<div>
+		<div class="label-1">Status</div>
+		<div class="label-2">{{item?.statusTranslated}}</div>
+	</div>
+	<div class="w-50">
+		<div class="label-1"
+			*ngIf="item?.status == 'CANCEL' || item?.status == 'WAITING_RETURN'">Alasan Dibatalkan:</div>
+		<div class="label-1"
+			*ngIf="item?.status == 'REJECTED'">Alasan Ditolak:</div>
+		<div class="label-2">{{item?.reason}}</div>
+	</div>
+</div>

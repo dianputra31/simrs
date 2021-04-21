@@ -3,13 +3,23 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import './variables/colors';
 @import './variables/fonts';
+
+* {
+	// font-family: $primary-font;
+	font-style: normal;
+}
+
 html,
 body {
 	height: 100%;
 }
 body {
 	margin: 0;
-	background-color: $main-background;
+	background-color: $main-background !important;
+}
+
+body.no-scroll {
+	overflow: hidden !important;
 }
 
 input {
@@ -33,18 +43,8 @@ button:focus {
 	display: none;
 }
 
-@media (min-width: 1366px) {
-	.container {
-		max-width: 1366px;
-		padding-left: 78px;
-		padding-right: 78px;
-	}
-}
-
-@media (min-width: 600px) {
-	.container {
-		max-width: 1366px;
-	}
+.container {
+	max-width: 1280px !important;
 }
 
 .pojok-kanan-atas {
@@ -79,7 +79,7 @@ button:focus {
 }
 
 .kanan-atas {
-	top: 72px !important;
+	top: 88px !important;
 	width: 100%;
 	max-width: 2000px;
 	height: 180px;
@@ -137,4 +137,15 @@ textarea:focus,
 select:focus,
 :focus {
 	outline: none;
+}
+
+//reset ngbdropdown
+.dropdown-menu {
+	background: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+.dropdown-toggle::after {
+	display: none !important;
 }

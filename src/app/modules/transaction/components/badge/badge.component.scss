@@ -3,9 +3,11 @@
 #badge-wrapper {
 	background: #fbb829;
 	border-radius: 21px;
-	width: 105px;
 	height: 22px;
-
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: bold;
@@ -13,18 +15,21 @@
 	color: #ffffff;
 }
 
-#icon-status{
-	width:140px;position: relative;float: left;height:50px;
+#icon-status {
+	width: 140px;
+	position: relative;
+	float: left;
+	height: 50px;
 }
 
-.noshowing{
-	display:none;
+.noshowing {
+	display: none;
 }
-.noshowicon{
-	display:none;
+.noshowicon {
+	display: none;
 }
-.label-icon{
-	width:100%;
+.label-icon {
+	width: 100%;
 	position: relative;
 	float: left;
 	font-family: $primary-font;
@@ -34,131 +39,131 @@
 	line-height: 19px;
 	font-feature-settings: 'kern' off;
 	color: $color-primary;
-	padding-left:10px;
+	padding-left: 10px;
 }
 
-.showing{
+.showing {
 	text-decoration: none;
 }
-.showicon{
+.showicon {
 	text-decoration: none;
 }
 
-#detail-status{
-	min-width:25%;
+#detail-status {
+	min-width: 25%;
 }
 
-#kotak-icon{
-	height:30px;width:30px;float:left;border-radius:50%;
-	padding:2px 0px 0px 4px;
+#kotak-icon {
+	height: 30px;
+	width: 30px;
+	float: left;
+	border-radius: 50%;
+	padding: 2px 0px 0px 4px;
 }
 
-.showred{
-	background-color: #DB0A2A;
+.showred {
+	background-color: #db0a2a;
 }
 
-.showgrey{
-	border: 0.5px solid #A9A9A9;
+.showgrey {
+	border: 0.5px solid #a9a9a9;
 }
 
-#icon-confirmed{
-	width:24px;margin-top:-8px;
+#icon-confirmed {
+	width: 24px;
+	margin-top: -8px;
 }
 
-#icon-delivery{
-	margin-left:-3px;
+#icon-delivery {
+	margin-left: -3px;
 }
 
-.delivery{
-	background-image: url("../../../../../assets/image/icons/icon-delivery.svg");
+.delivery {
+	background-image: url('../../../../../assets/image/icons/icon-delivery.svg');
 	background-repeat: no-repeat;
 	background-size: 25px;
-	width:25px;
+	width: 25px;
 	background-position: center;
-	margin-top:10px;
-	margin-left: 2px;;
+	margin-top: 10px;
+	margin-left: 2px;
 }
-.delivery2{
-	background-image: url("../../../../../assets/image/icons/icon-delivery2.svg");
-	width:22px;
+.delivery2 {
+	background-image: url('../../../../../assets/image/icons/icon-delivery2.svg');
+	width: 22px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 22px;
 	margin-left: 8px;
 }
 
-
-#icon-delivered{
+#icon-delivered {
 	// -webkit-filter: drop-shadow(1px 1px 0 #EFEFEF) drop-shadow(-1px -1px 0 #EFEFEF);
-	margin-top:0px;
+	margin-top: 0px;
 }
 
-#icon-processed{
+#icon-processed {
 	// -webkit-filter: drop-shadow(1px 1px 0 #EFEFEF) drop-shadow(-1px -1px 0 #EFEFEF);
-	margin-top:0px;
+	margin-top: 0px;
 }
 
-#icon-delivery{
+#icon-delivery {
 	// -webkit-filter: drop-shadow(1px 1px 0 #EFEFEF) drop-shadow(-1px -1px 0 #EFEFEF);
-	margin-top:0px;
+	margin-top: 0px;
 }
 
-#icon-confirmed{
-	margin-top:0px;
+#icon-confirmed {
+	margin-top: 0px;
 	// -webkit-filter: drop-shadow(1px 1px 0 #EFEFEF) drop-shadow(-1px -1px 0 #EFEFEF);
 }
 
-.sampai{
-	background-image: url("../../../../../assets/image/icons/icon-delivered.svg");
+.sampai {
+	background-image: url('../../../../../assets/image/icons/icon-delivered.svg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 22px;
-	width:22px;
-	margin-top:10px;
+	width: 22px;
+	margin-top: 10px;
 }
 
-.sampai2{
+.sampai2 {
 	position: relative;
-	background-image: url("../../../../../assets/image/icons/icon-delivered2.svg");
+	background-image: url('../../../../../assets/image/icons/icon-delivered2.svg');
 	background-repeat: no-repeat;
 	background-size: 16px;
-	width:16px;
+	width: 16px;
 	background-position: center;
 	margin-left: 2px;
 }
 
-
-.confirmed{
-	background-image: url("../../../../../assets/image/icons/icon-confirmed.svg");
+.confirmed {
+	background-image: url('../../../../../assets/image/icons/icon-confirmed.svg');
 	background-repeat: no-repeat;
 	background-size: 28px;
 	width: 28px;
-	margin-top:10px;
+	margin-top: 10px;
 }
 
-.confirmed2{
-	margin-top:-4px;
-	background-image: url("../../../../../assets/image/icons/icon-confirmed.svg");
+.confirmed2 {
+	margin-top: -4px;
+	background-image: url('../../../../../assets/image/icons/icon-confirmed.svg');
 	background-repeat: no-repeat;
 	background-size: 25px;
 }
 
-
-
-.processed{
-	background-image: url("../../../../../assets/image/icons/icon-processed.svg");
+.processed {
+	background-image: url('../../../../../assets/image/icons/icon-processed.svg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 22px;
 	width: 22px;
-	margin-top:10px;
+	margin-top: 10px;
 }
 
-.processed2{
-	background-image: url("../../../../../assets/image/icons/icon-processed.svg");
+.processed2 {
+	background-image: url('../../../../../assets/image/icons/icon-processed.svg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 22px;
 	width: 22px;
-	margin-top:10px;
+	margin-top: 10px;
 }

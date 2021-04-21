@@ -1,0 +1,61 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+#popup-wording {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-family: $secondary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	color: $abu-abu-gelap-muda;
+}
+
+#ok-button {
+	background: $abu-abu-sesuatu;
+	border-radius: 8px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	cursor: pointer;
+	color: #ffffff;
+
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	padding-left: 28px;
+	padding-right: 28px;
+}
+
+#cancel-button {
+	background: $color-primary;
+	border-radius: 8px;
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	cursor: pointer;
+	color: #ffffff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#popup-option {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#close-dialog-button {
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}

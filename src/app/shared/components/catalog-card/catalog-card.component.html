@@ -2,9 +2,26 @@
 	(click)="backToHome()">
 	<div class="inner-padding">
 		<img [src]="item.thumbnail"
-			class="card-img-top">
-		<div class="catalog-card-label">{{item.product_name}}</div>
+			class="card-img-top"
+			(error)="onImgError($event)">
+		<div class="catalog-card-label">
+			<div *ngIf="item.product_name.length>29; then namalengkap else namasingkat"></div>
+			<ng-template #namalengkap>{{item.product_name.slice(0, 29) + ".."}}</ng-template>
+			<ng-template #namasingkat>{{item.product_name}}</ng-template>
+		</div>
+		<div class="catalog-card-disc">
+			<ng-template *ngIf="item.discount_percentage>0;then showdiscount"></ng-template>
+			<ng-template #showdiscount>
+				<div class="font-numdisc">
+					{{item.discount_percentage | number}}%
+				</div>
+				<div class="font-disc">
+					{{item.original_price | rupiah}}
+				</div>
+			</ng-template>
 
+
+		</div>
 		<div class="catalog-card-price">{{item.sell_price|rupiah}}</div>
 	</div>
 	<catalog-card-button *ngIf="false"

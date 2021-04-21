@@ -1,0 +1,9 @@
+<div class="address-button-label"
+	[ngClass]="selected?.address_id == item?.address_id ? 'selected' : ''"
+	(click)="klik()">
+	<span class="asoy">{{item.address_name}}
+	</span>
+	<div class="warn-notif"
+		[ngClass]="{'show':item?.request_total > 0,'hide':item?.request_total == 0}">
+	</div>
+</div>

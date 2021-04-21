@@ -1,41 +1,61 @@
 import { Injectable } from '@angular/core';
-import { UserModel } from '../../auth/model/response/user.model';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class StorageService {
-	constructor() { }
+	constructor(private router: Router) {}
 
+	tokenPrefix = 'token';
+	approvalDialogStatusPrefix = 'approvalDialogStatus';
 	public clear() {
 		localStorage.clear();
 	}
 
+	public storeToken(token: any) {
+		localStorage.setItem(this.tokenPrefix, JSON.stringify(token));
+	}
+
+	public getToken() {
+		return JSON.parse(localStorage.getItem(this.tokenPrefix));
+	}
+
+	public storeApprovalDialogStatus(status: any) {
+		localStorage.setItem(
+			this.approvalDialogStatusPrefix,
+			JSON.stringify(status)
+		);
+	}
+
+	public getApprovalDialogStatus() {
+		return JSON.parse(
+			localStorage.getItem(this.approvalDialogStatusPrefix)
+		);
+	}
 	email: any;
 	role_name: any;
 	fullname: any;
 
 	/* Account Storage */
-	public storeAccount(account: UserModel, info: any) {
+	public storeAccount(account: any, info: any) {
 		if (info === 'token') {
 			localStorage.setItem('account', JSON.stringify(account));
 		} else {
 			localStorage.setItem('profile', JSON.stringify(account));
 		}
-
-
 	}
 
-	public getAccount(): UserModel {
+	public getAccount(): any {
 		return JSON.parse(localStorage.getItem('account'));
 	}
 
-	public getAccountProfile(): UserModel {
-		return JSON.parse(localStorage.getItem('profile'))
+	public getCompany() {
+		console.log('test');
+		console.log(JSON.parse(localStorage.getItem('company')));
+		return JSON.parse(localStorage.getItem('company'));
 	}
 
-	public getToken() {
-		const account = this.getAccount();
-
-		return account ? account.accessToken : null;
+	public getAccountProfile(): any {
+		return JSON.parse(localStorage.getItem('profile'));
 	}
 
 	public getName() {

@@ -1,0 +1,33 @@
+<div id="popup-wording">
+	<p class="tebal">Anda yakin ingin melakukan penolakan barang?</p>
+</div>
+<div id="popup-wording">
+	<textarea [(ngModel)]="reason"
+		id="myTextarea"
+		placeholder="Berikan alasan penolakan barang.."></textarea>
+	<p class="remark">Maksimum 160 karakter</p>
+</div>
+
+<div id="popup-option">
+	<div id="popup-option-button">
+		<div align="center">
+
+			<div class="divbutton-left"
+				(click)="tutupModal()">Tidak</div>
+		</div>
+	</div>
+	<div id="popup-option-button">
+		<div align="center">
+			<red-button label="Ya"
+				font="14px"
+				paddingtop="10px"
+				paddingbottom="10px"
+				paddingleft="0px"
+				paddingright="0px"
+				(click)="actionTolak()"
+				width="184px"
+				float="right"></red-button>
+
+		</div>
+	</div>
+</div>

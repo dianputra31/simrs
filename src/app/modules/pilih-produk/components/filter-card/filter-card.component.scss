@@ -1,10 +1,15 @@
 @import '../../../../../styles/variables/colors';
 
+#Terapkan {
+	float: right;
+}
 #filter-card-container {
-	padding-top: 100px;
+	padding-top: 60px;
 	padding-left: 34px;
 	padding-right: 46px;
-	padding-bottom: 40px;
+	// padding-bottom: 40px;
+	height: 90vh;
+	position: fixed;
 }
 
 #filter-label {
@@ -21,7 +26,6 @@
 
 .textbox-search-with-logo {
 	height: 40px;
-	width: 100%;
 	border: solid $putih-tok 1px;
 	border-radius: 5px;
 	color: $abu-abu-sesuatu;
@@ -51,7 +55,7 @@
 }
 .textbox-search {
 	height: 40px;
-	width: 100%;
+	width: 250px;
 	border: solid $putih-tok 1px;
 	border-radius: 5px;
 	color: $abu-abu-aspal;
@@ -83,8 +87,9 @@
 	height: 32px;
 	border-radius: 7.96127px;
 	text-align: center;
+	cursor: pointer;
 }
 
 .white-space {
-	height: 70px;
+	height: 20px;
 }
