@@ -130,7 +130,9 @@ export class ApprovalLayoutComponent implements OnInit {
 					var newData = resp.data;
 
 					newData.forEach((each) => {
-						each.selected = this.enableSelect(each.availability);
+						// each.selected = this.enableSelect(each.availability);
+						// selected defaulted to false, permintaan dari product
+						each.selected = false;
 						each.enableSelection = this.enableSelect(
 							each.availability
 						);
