@@ -1,5 +1,5 @@
-// export const API = 'http://172.16.204.6:8081';
-export const API = 'https://nest.app.narindo.com';
+export const API = 'http://172.16.204.6:8081';
+// export const API = 'https://nest.app.narindo.com';
 
 export const RESPONSE = {
 	SUCCESS: 1,
