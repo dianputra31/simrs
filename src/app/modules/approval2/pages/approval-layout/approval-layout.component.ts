@@ -11,7 +11,6 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Subscription } from 'rxjs';
 import {
 	AddressListUrl,
-	API,
 	ApprovalCount,
 	ApprovalListUrl,
 	ApproveUrl,
@@ -130,9 +129,9 @@ export class ApprovalLayoutComponent implements OnInit {
 					var newData = resp.data;
 
 					newData.forEach((each) => {
-						// each.selected = this.enableSelect(each.availability);
+						each.selected = this.enableSelect(each.availability);
 						// selected defaulted to false, permintaan dari product
-						each.selected = false;
+						// each.selected = false;
 						each.enableSelection = this.enableSelect(
 							each.availability
 						);
@@ -352,15 +351,15 @@ export class ApprovalLayoutComponent implements OnInit {
 	}
 
 	numberOfItemsSelected() {
-		if (API.includes('https')) {
-			if (this.items) {
-				return this.items.filter((x) => x.selected).length;
-			} else {
-				return 0;
-			}
+		// if (API.includes('https')) {
+		if (this.items) {
+			return this.items.filter((x) => x.selected).length;
 		} else {
 			return 0;
 		}
+		// } else {
+		// 	return 0;
+		// }
 	}
 
 	pilihSemuaClickEvent(pilihSemuaValue) {
