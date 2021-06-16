@@ -10,22 +10,33 @@
                     <wsv wide="50px"></wsv>
                     <div class="d-flex justify-content-center">
 
-                        <img src="../../../../assets/image/icons/login.svg">
+                        <img src="../../../../assets/image/icons/rs.png"
+                            style="width:140px;">
                     </div>
                     <wsv wide="5px"></wsv>
                     <div class="d-flex justify-content-center teksbesar"
                         style="margin-top:20px;">Log In</div>
                     <wsv wide="30px"></wsv>
-                    <div class="d-flex justify-content-center teks">Kami akan mengirimkan OTP ke alamat email anda
+                    <div class="d-flex justify-content-center teks">
                     </div>
                     <wsv wide="50px"></wsv>
-                    <div class="d-flex justify-content-center teks">Masukkan Alamat Email Anda</div>
+                    <div class="d-flex justify-content-center teks">Masukkan Username dan Password Anda</div>
 
                     <wsv wide="20px"></wsv>
                     <div class="d-flex w-100">
                         <input type="text"
                             class="rounded-gray d-flex w-100 justify-content-center email-input"
-                            placeholder="Alamat Email"
+                            placeholder="Username"
+                            formControlName="email"
+                            (keyup.enter)="sendotp()"
+                            required>
+                    </div>
+
+                    <wsv wide="20px"></wsv>
+                    <div class="d-flex w-100">
+                        <input type="password"
+                            class="rounded-gray d-flex w-100 justify-content-center email-input"
+                            placeholder="Password"
                             formControlName="email"
                             (keyup.enter)="sendotp()"
                             required>
