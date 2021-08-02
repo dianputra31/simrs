@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-between align-items-center judulkonten">
+    <div class="label-title">
+        Data Dokter
+    </div>
+    <red-button label="+ Tambah Dokter"
+        font="14px"
+        paddingtop="10px"
+        width="140px"
+        paddingbottom="10px"
+        paddingleft="0px"
+        paddingright="0px"
+        float="right"
+        (click)="tambahDokter()"></red-button>
+</div>
+<wsv wide="80px"></wsv>
+<div *ngFor="let dokter of dokters; index as i"
+    style="overflow: auto;">
+    <info-dokter-card [index]="i"
+        [dokter]="dokter"
+        (editEvent)="editDokter(dokter)"
+        (deleteEvent)="hapusDokter(dokter)">
+    </info-dokter-card>
+</div>

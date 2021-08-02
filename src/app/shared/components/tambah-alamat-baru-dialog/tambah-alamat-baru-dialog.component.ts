@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {
 	MatDialog,
 	MatDialogRef,
-	MAT_DIALOG_DATA,
+	MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import {
 	AddressMasterProvinceUrl,
 	AddressMasterSubDistrictUrl,
 	AddressMasterVillageUrl,
-	titleCase,
+	titleCase
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
 import { BaseService } from '../../../core/base-service/service/base.service';
@@ -274,7 +274,7 @@ export class TambahAlamatBaruDialogComponent implements OnInit {
 	batal() {
 		this.dialogRef.close();
 	}
-
+ 
 	valid() {
 		var valid = true;
 

@@ -1,4 +1,4 @@
-export const API = 'http://172.16.204.6:8081';
+export const API = 'https://f325879d-4252-4625-91d4-04031879b817.mock.pstmn.io';
 // export const API = 'https://nest.app.narindo.com';
 
 export const RESPONSE = {
@@ -19,6 +19,18 @@ export const HTTPSTATUS = {
 	UNAUTHORIZED: 401,
 };
 
+
+
+
+export const Login = `${API}/login`;
+
+
+
+
+
+
+
+
 export const OtpService = `${API}/otp`;
 export const CatalogService = `${API}/product/category/list`;
 export const ProductCatalogUrl = `${API}/product/catalog`;
@@ -26,6 +38,14 @@ export const CatalogProductDetailUrl = `${API}/product/detail`;
 export const ProductTopSubcategoryUrl = `${API}/product/top_subcategory`;
 export const ProfileUrl = `${API}/profile`;
 export const AddressList = `${API}/profile/address_list`;
+
+export const DokterList = `${API}/dokter/dokter_list`;
+export const SpesialisasiList = `${API}/spesialisasi/spesialisasi_list`;
+export const NewDokterSave = `${API}/dokter/create`;
+export const ViewDokter = `${API}/dokter/dokter_view`;
+
+export const BankList = `${API}/bank/bank_list`;
+
 export const SaveDefaultAddressUrl = `${API}/profile/save_default_address/`;
 export const SetDefaultAddress = `${API}/profile/save_default_address/`;
 export const CartListUrl = `${API}/cart/list`;

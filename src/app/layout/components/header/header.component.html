@@ -3,14 +3,48 @@
 		<div id="div-logo">
 			<img id="headers-logo"
 				(click)="backToHome()"
-				src="../../../../assets/image/logo/nest-logo.svg"
+				src="../../../../assets/image/logo/rs.png"
 				height="74"
 				width="81">
 		</div>
 
 		<wsh wide="30px"></wsh>
 		<div class="flex-grow-1">
-			<div class="d-flex flex-grow-1 align-items-center">
+
+			<div id="headers-search"
+				class="d-flex flex-grow-1 justify-content-center">
+				<form [formGroup]="myControl">
+					<input #pencarian
+						type="text"
+						class="textbox-header-search"
+						aria-label="Number"
+						matInput
+						[formControl]="myControl"
+						[matAutocomplete]="auto"
+						placeholder="Search"
+						(change)=getKey(pencarian.value)>
+					<!-- autoActiveFirstOption -->
+
+					<mat-autocomplete id="mat-autocomplete"
+						#auto="matAutocomplete"
+						style="z-index: 9999;"
+						(optionSelected)='goesToDetailProduct($event.option.value)'>
+						<mat-option *ngFor="let option of filteredOptions | async"
+							[value]="option"
+							(selectionChange)="goesToDetailProduct($event.option.value)">
+							{{option}}
+						</mat-option>
+					</mat-autocomplete>
+
+					<button type="submit"
+						id="searchbutton">
+					</button>
+
+				</form>
+
+			</div>
+
+			<!-- <div class="d-flex flex-grow-1 align-items-center">
 				<div class="d-flex w-100 align-items-center">
 					<div id="company-name">{{datacompany?.trade_name}}</div>
 					<div id="separator"></div>
@@ -32,54 +66,95 @@
 						(contextmenu)="onRightClick($event, {content: 'Cart', redir: 'cart'})"
 						(click)="goToCart()"></logo-with-notif>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="separator-2"></div>
 			<div class="d-flex w-100 align-items-center">
-				<header-category-button></header-category-button>
 
-				<div id="headers-search"
-					class="d-flex flex-grow-1 justify-content-center">
-					<form [formGroup]="myControl">
-						<input #pencarian
-							type="text"
-							class="textbox-header-search"
-							aria-label="Number"
-							matInput
-							[formControl]="myControl"
-							[matAutocomplete]="auto"
-							placeholder="Search"
-							(change)=getKey(pencarian.value)>
-						<!-- autoActiveFirstOption -->
-
-						<mat-autocomplete id="mat-autocomplete"
-							#auto="matAutocomplete"
-							style="z-index: 9999;"
-							(optionSelected)='goesToDetailProduct($event.option.value)'>
-							<mat-option *ngFor="let option of filteredOptions | async"
-								[value]="option"
-								(selectionChange)="goesToDetailProduct($event.option.value)">
-								{{option}}
-							</mat-option>
-						</mat-autocomplete>
-
-						<button type="submit"
-							id="searchbutton">
-						</button>
-
-					</form>
-
-				</div>
+				<!--<header-category-button></header-category-button>-->
 
 
-				<div id="div-saldo"
+				<button mat-button
+					[matMenuTriggerFor]="belowMenu">Registrasi</button>
+				<mat-menu #belowMenu="matMenu"
+					yPosition="below">
+					<button mat-menu-item>Item 1</button>
+					<button mat-menu-item>Item 2</button>
+				</mat-menu>
+				<button mat-button
+					[matMenuTriggerFor]="Data">Data</button>
+				<mat-menu #Data="matMenu"
+					yPosition="below">
+					<button mat-menu-item
+						(click)="goesToPage('dokter')">Dokter</button>
+					<button mat-menu-item
+						(click)="goesToPage('pasien')">Pasien</button>
+					<button mat-menu-item
+						(click)="goesToPage('karyawan')">Karyawan</button>
+					<button mat-menu-item
+						(click)="goesToPage('kamar')">Kamar</button>
+					<button mat-menu-item
+						(click)="goesToPage('bank')">Bank</button>
+					<button mat-menu-item
+						(click)="goesToPage('dokter-luar')">Dokter Luar</button>
+					<button mat-menu-item
+						(click)="goesToPage('supplier')">Supplier</button>
+					<button mat-menu-item
+						(click)="goesToPage('vendor')">Vendor</button>
+					<button mat-menu-item
+						(click)="goesToPage('rs-rujukan')">RS Rujukan</button>
+				</mat-menu>
+				<button mat-button
+					[matMenuTriggerFor]="belowMenu">Peralatan</button>
+				<mat-menu #belowMenu="matMenu"
+					yPosition="below">
+					<button mat-menu-item>Item 1</button>
+					<button mat-menu-item>Item 2</button>
+				</mat-menu>
+				<button mat-button
+					[matMenuTriggerFor]="belowMenu">Below</button>
+				<mat-menu #belowMenu="matMenu"
+					yPosition="below">
+					<button mat-menu-item>Item 1</button>
+					<button mat-menu-item>Item 2</button>
+				</mat-menu>
+				<button mat-button
+					[matMenuTriggerFor]="belowMenu">Below</button>
+				<mat-menu #belowMenu="matMenu"
+					yPosition="below">
+					<button mat-menu-item>Item 1</button>
+					<button mat-menu-item>Item 2</button>
+				</mat-menu>
+				<button mat-button
+					[matMenuTriggerFor]="belowMenu">Below</button>
+				<mat-menu #belowMenu="matMenu"
+					yPosition="below">
+					<button mat-menu-item>Item 1</button>
+					<button mat-menu-item>Item 2</button>
+				</mat-menu>
+				<button mat-button
+					[matMenuTriggerFor]="belowMenu">Below</button>
+				<mat-menu #belowMenu="matMenu"
+					yPosition="below">
+					<button mat-menu-item>Item 1</button>
+					<button mat-menu-item>Item 2</button>
+				</mat-menu>
+				<button mat-button
+					[matMenuTriggerFor]="belowMenu">Below</button>
+				<mat-menu #belowMenu="matMenu"
+					yPosition="below">
+					<button mat-menu-item>Item 1</button>
+					<button mat-menu-item>Item 2</button>
+				</mat-menu>
+
+				<!-- <div id="div-saldo"
 					class="d-flex">
 					<img src="../../../../assets/image/icons/wallet.svg">
 					<div class="d-flex credit"
 						id="credit">
 						{{datacompany?.credit_rp | rupiah}} {{triggerInit()}}
 					</div>
-				</div>
+				</div> -->
 
 			</div>
 		</div>

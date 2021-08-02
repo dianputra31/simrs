@@ -49,6 +49,7 @@ import { RedBorderWhiteBgButtonComponent } from './components/red-border-white-b
 import { RedButtonComponent } from './components/red-button/red-button.component';
 import { ResetFilterComponent } from './components/reset-filter/reset-filter.component';
 import { RoundedInputComponent } from './components/rounded-input/rounded-input.component';
+import { SecondLineComponent } from './components/second-line/second-line.component';
 import { StarComponent } from './components/star/star.component';
 import { TambahAlamatBaruDialogComponent } from './components/tambah-alamat-baru-dialog/tambah-alamat-baru-dialog.component';
 import { WhiteSpaceHorizontalComponent } from './components/white-space-horizontal/white-space-horizontal.component';
@@ -56,6 +57,7 @@ import { WhiteSpaceVerticalComponent } from './components/white-space-vertical/w
 import { CheckboxComponent } from './general-components/checkbox/checkbox.component';
 import { ImageComponent } from './general-components/image/image.component';
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
+
 registerLocaleData(en);
 
 const antDesignIcons = AllIcons as {
@@ -115,6 +117,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		TambahAlamatBaruDialogComponent,
 		RoundedInputComponent,
 		LabelInputComponent,
+		SecondLineComponent
+		
 	],
 	imports: [
 		CommonModule,
@@ -167,6 +171,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		TambahAlamatBaruDialogComponent,
 		RoundedInputComponent,
 		LabelInputComponent,
+		SecondLineComponent
 	],
 	providers: [
 		{ provide: NZ_I18N, useValue: en_US },

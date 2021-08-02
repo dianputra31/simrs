@@ -1,0 +1,14 @@
+{
+			"status": {
+				"msg": "success",
+				"rc": 1
+			},
+			"data":{
+				"profile": "Administrator",
+				"email": "pelampungsekoci@gmail.com",
+				"address": "Kurusetra",
+				"company": "Sentotech",
+				"access_token":"dfsfsdf238509284932809d23423ccdsfs38rcnq2eq93rnwn932"
+			}
+		
+}

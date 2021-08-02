@@ -16,9 +16,7 @@ import { map, startWith } from 'rxjs/operators';
 import {
 	ApprovalCount,
 	CartListUrl,
-	OpenTrxCount,
-	ProfileUrl,
-	RESPONSE,
+	OpenTrxCount, RESPONSE,
 	SearchProduct
 } from '../../../app.constant';
 import { HttpService } from '../../../core/base-service/http.service';
@@ -81,31 +79,31 @@ export class HeaderComponent implements OnInit {
 
 		this.subsribers = [];
 
-		const sub = this.http.get(ProfileUrl).subscribe(
-			(resp) => {
-				if (resp.status.rc === RESPONSE.SUCCESS) {
-					this.datacompany = resp.data.company;
-					this.datauser = resp.data.profile;
-				} else {
-					this.dialogService.showAlert(resp.status.msg);
-				}
-			},
-			(error) => {
-				this.http.handleError(error);
-			}
-		);
+		// const sub = this.http.get(ProfileUrl).subscribe(
+		// 	(resp) => {
+		// 		if (resp.status.rc === RESPONSE.SUCCESS) {
+		// 			this.datacompany = resp.data.company;
+		// 			this.datauser = resp.data.profile;
+		// 		} else {
+		// 			this.dialogService.showAlert(resp.status.msg);
+		// 		}
+		// 	},
+		// 	(error) => {
+		// 		this.http.handleError(error);
+		// 	}
+		// );
 
-		this.subsribers.push(sub);
+		// this.subsribers.push(sub);
 
 		// this.datacompany = JSON.parse(localStorage.getItem('company'));
 		// this.datauser = JSON.parse(localStorage.getItem('profile'));
 		this.account = JSON.parse(localStorage.getItem('account'));
 
-		this.numberitemInCart();
-		this.numberOfApproval();
-		this.numberOfOpenTrx();
+		// this.numberitemInCart();
+		// this.numberOfApproval();
+		// this.numberOfOpenTrx();
 
-		this.getCurrentTrx();
+		// this.getCurrentTrx();
 	}
 
 	getCurrentTrx() {
@@ -145,6 +143,13 @@ export class HeaderComponent implements OnInit {
 		this.router.navigate([
 			'./pilih-produk/0/0' + '/' + this._redirectparam.namaproduk,
 		]);
+	}
+
+	goesToPage(a){
+		console.log(a);
+		this.router.navigate(
+			['./' + a ]
+		);
 	}
 
 	getKey(a) {

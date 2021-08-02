@@ -6,7 +6,7 @@ import {
 	ApprovalCount,
 	ProductCatalogUrl,
 	ProductTopSubcategoryUrl,
-	RESPONSE,
+	RESPONSE
 } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -33,14 +33,14 @@ export class HomeLayoutComponent implements OnInit {
 
 	ngOnInit() {
 		this.subsribers = [];
-		this.getProductTopSubcategory();
+		// this.getProductTopSubcategory();
 
-		if (this.storageService.getApprovalDialogStatus() != '1') {
-			this.storageService.storeApprovalDialogStatus('1');
-			if (this.storageService.getRole() == 'Manager') {
-				this.numberOfApproval();
-			}
-		}
+		// if (this.storageService.getApprovalDialogStatus() != '1') {
+		// 	this.storageService.storeApprovalDialogStatus('1');
+		// 	if (this.storageService.getRole() == 'Manager') {
+		// 		this.numberOfApproval();
+		// 	}
+		// }
 	}
 
 	ngOnDestroy() {

@@ -35,10 +35,66 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'home',
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 				loadChildren: () =>
 					import('../modules/home/home.module').then(
 						(m) => m.HomeModule
+					),
+			},
+			{
+				path: 'dokter',
+				loadChildren: () =>
+					import('../modules/dokter/dokter.module').then(
+						(m) => m.DokterModule
+					),
+			},
+			{
+				path: 'dokter-luar',
+				loadChildren: () =>
+					import('../modules/dokter-luar/dokter-luar.module').then(
+						(m) => m.DokterLuarModule
+					),
+			},
+			{
+				path: 'pasien',
+				loadChildren: () =>
+					import('../modules/pasien/pasien.module').then(
+						(m) => m.PasienModule
+					),
+			},
+			{
+				path: 'karyawan',
+				loadChildren: () =>
+					import('../modules/karyawan/karyawan.module').then(
+						(m) => m.KaryawanModule
+					),
+			},
+			{
+				path: 'kamar',
+				loadChildren: () =>
+					import('../modules/kamar/kamar.module').then(
+						(m) => m.KamarModule
+					),
+			},
+			{
+				path: 'bank',
+				loadChildren: () =>
+					import('../modules/bank/bank.module').then(
+						(m) => m.BankModule
+					),
+			},
+			{
+				path: 'supplier',
+				loadChildren: () =>
+					import('../modules/supplier/supplier.module').then(
+						(m) => m.SupplierModule
+					),
+			},
+			{
+				path: 'vendor',
+				loadChildren: () =>
+					import('../modules/vendor/vendor.module').then(
+						(m) => m.VendorModule
 					),
 			},
 			{
