@@ -6,7 +6,6 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { NewKaryawanSave } from '../../../../../app/app.constant';
@@ -14,23 +13,18 @@ import { HttpService } from '../../../../../app/core/base-service/http.service';
 import { BaseService } from '../../../../../app/core/base-service/service/base.service';
 
 
-@Component({
-  selector: 'edit-supplier-dialog',
-  templateUrl: './edit-supplier-dialog.component.html',
-  styleUrls: ['./edit-supplier-dialog.component.scss']
-})
-export class EditSupplierDialogComponent implements OnInit {
-  @BlockUI() blockUI: NgBlockUI;
-  subscribers: Subscription[];
-  supplier;
 
-  private _jsonURL = 'assets/json/supplier_view.json';
+
+@Component({
+  selector: 'tambah-supplier-baru-dialog',
+  templateUrl: './tambah-supplier-baru-dialog.component.html',
+  styleUrls: ['./tambah-supplier-baru-dialog.component.scss']
+})
+export class TambahSupplierBaruDialogComponent implements OnInit {
+  subscribers: Subscription[];
  
   selectedJenisKelamin: any;
 
-  public getJSON(): Observable<any> {
-		return this.http.get(this._jsonURL);
-	  }
  
 	states: any[] = [
 		{ jenis: 'L', label: 'Laki-Laki' },
@@ -44,7 +38,7 @@ export class EditSupplierDialogComponent implements OnInit {
 	};
 
   constructor(
-    public dialogRef: MatDialogRef<EditSupplierDialogComponent>,
+    public dialogRef: MatDialogRef<TambahSupplierBaruDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public modalData: any,
 		private route: ActivatedRoute,
 		private router: Router,
@@ -56,38 +50,13 @@ export class EditSupplierDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribers = [];
-		this.getSupplier();
+		// this.getProvince();
   }
 
   batal() {
 		this.dialogRef.close();
 	}
 
-
-  getSupplier() {
-		this.blockUI.start();
-		// const url = SupplierList;
-		const sub = 
-    // this.http.get(url).subscribe(
-      this.getJSON().subscribe(
-			(resp) => {
-        // console.log(resp.data);
-				this.blockUI.stop();
-        this.supplier = resp.data;
-
-        this.param.KODESUPP = this.supplier.KODESUPP;
-        this.param.NAMASUPP = this.supplier.NAMASUPP;
-        this.param.ALAMAT1 = this.supplier.ALAMAT1;
-        this.param.ALAMAT2 = this.supplier.ALAMAT2;
-        this.param.NOTELP = this.supplier.NOTELP;
-        this.param.NOFAX = this.supplier.NOFAX;
-        this.param.STSSUPP = this.supplier.STSSUPP;
-        this.param.APGRPID = this.supplier.APGRPID;
-        this.param.TYPESUPP = this.supplier.TYPESUPP;
-			}
-		);
-		this.subscribers.push(sub);
-	}
 
   
 
@@ -174,4 +143,6 @@ export class EditSupplierDialogComponent implements OnInit {
 			this.dialogRef.close();
 		});
 	}
+
+
 }

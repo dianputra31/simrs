@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { HttpService } from '../../../../core/base-service/http.service';
 
 @Component({
   selector: 'info-supplier-card',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoSupplierCardComponent implements OnInit {
 
-  constructor() { }
+
+  @Input() index: number;
+	@Input() supplier: any;
+  @Output() deleteEvent = new EventEmitter();
+	@Output() editEvent = new EventEmitter();
+	@BlockUI() blockUI: NgBlockUI;
+
+  constructor(private http: HttpService) { }
 
   ngOnInit(): void {
   }
 
+  editData() {
+		this.editEvent.emit();
+	}
+
+	deleteData() {
+		this.deleteEvent.emit();
+	}
 }

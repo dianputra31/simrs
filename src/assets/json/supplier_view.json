@@ -1,0 +1,20 @@
+{
+    "status":
+    {
+        "rc":1,
+        "msg":"success"
+    },
+    "data":
+        {
+        "KODESUPP": "A001",
+        "NAMASUPP": "ACE HARDWARE",
+        "ALAMAT1": "JLN JENDERAL AHMADYANI NO 9",
+        "ALAMAT2": "",
+        "NOTELP": "02188959922",
+        "NOFAX": "2188958868",
+        "STSSUPP": "A",
+        "APGRPID": "D",
+        "TYPESUPP": "U",
+        "ASAL": 3
+        }
+}

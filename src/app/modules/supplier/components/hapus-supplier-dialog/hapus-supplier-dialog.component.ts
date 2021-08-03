@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'hapus-supplier-dialog',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HapusSupplierDialogComponent implements OnInit {
 
-  constructor() { }
+  supplier;
+	constructor(
+		public dialogRef: MatDialogRef<HapusSupplierDialogComponent>,
+		@Inject(MAT_DIALOG_DATA) public data: any
+	) {
+		this.supplier = data.supplier;
+	}
 
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {
+		this.getData();
+	}
+	getData() {
+		console.log(this.data);
+	}
+	hapusDokter(e) {
+		console.log(e);
+		this.dialogRef.close('hapus');
+	}
+	batal() {
+		this.dialogRef.close(); 
+	}
 }

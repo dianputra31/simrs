@@ -1,1 +1,61 @@
-<p>info-supplier-card works!</p>
+<div class="info-perusahaan-card-wrapper d-flex"
+    style="padding-left:60px;padding-right:60px;">
+    <div class="flex-grow-1">
+        <div class="flex perusahaan-label"
+            style="width:5%;float:left;text-align:right;">
+            {{index+1}}.
+        </div>
+        <div style="width:3%;float:left;text-align:right;">&nbsp;</div>
+
+        <div class="flex perusahaan-label"
+            style="width:20%;float:left;">
+            {{supplier?.NAMASUPP}}
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:7%;float:left;">
+            {{supplier?.KODESUPP}}
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:35%;float:left;">
+            {{supplier?.ALAMAT1}}
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:10%;float:left;">
+            {{supplier?.NOTELP}}
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:10%;float:left;">
+            {{supplier?.NOFAX}}
+        </div>
+        <!--
+             <div class="flex perusahaan-label"
+            style="width:7%;float:left;">
+            {{supplier?.STSSUPP}}
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:5%;float:left;">
+            {{supplier?.TYPESUPP}}
+        </div>
+        -->
+
+        <div class="flex perusahaan-label"
+            style="width:10%;float:left;">
+            {{supplier?.ASAL}}
+        </div>
+
+
+        <wsv wide="20px"></wsv>
+        <horizontal-line></horizontal-line>
+        <wsv wide="12px"></wsv>
+        <div class="d-flex">
+
+        </div>
+    </div>
+    <div class="d-flex">
+        <icon-edit (click)="editData()"></icon-edit>
+        <wsh wide="16px"></wsh>
+        <icon-hapus (click)="deleteData()"></icon-hapus>
+        <wsh wide="16px"></wsh>
+
+    </div>
+</div>

@@ -1,1 +1,86 @@
-<p>supplier-layout works!</p>
+<div class="d-flex justify-content-between align-items-center judulkonten">
+    <div class="label-title">
+        Data Supplier
+    </div>
+    <red-button label="+ Tambah Supplier"
+        font="14px"
+        paddingtop="10px"
+        width="140px"
+        paddingbottom="10px"
+        paddingleft="0px"
+        paddingright="0px"
+        float="right"
+        (click)="tambahSupplier()"></red-button>
+</div>
+<wsv wide="80px"></wsv>
+
+<div class="info-perusahaan-card-wrapper d-flex"
+    style="padding-left:60px;padding-right:60px;">
+    <div class="flex-grow-1">
+        <div class="flex perusahaan-label"
+            style="width:5%;float:left;text-align:right;">
+            NO
+        </div>
+        <div style="width:3%;float:left;text-align:right;">&nbsp;</div>
+        <div class="flex perusahaan-label"
+            style="width:20%;float:left;">
+            NAMA
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:7%;float:left;">
+            KODE
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:35%;float:left;">
+            ALAMAT
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:10%;float:left;">
+            TELP
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:10%;float:left;">
+            FAX
+        </div>
+        <!--
+          <div class="flex perusahaan-label"
+            style="width:5%;float:left;">
+            STSSUPP
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:5%;float:left;">
+            TYPESUPP
+        </div>  
+        -->
+
+        <div class="flex perusahaan-label"
+            style="width:10%;float:left;">
+            ASAL
+        </div>
+
+
+
+        <wsv wide="20px"></wsv>
+        <horizontal-line></horizontal-line>
+        <wsv wide="12px"></wsv>
+        <div class="d-flex">
+
+        </div>
+    </div>
+    <div class="d-flex">
+        <icon-edit></icon-edit>
+        <wsh wide="16px"></wsh>
+        <icon-hapus></icon-hapus>
+        <wsh wide="16px"></wsh>
+    </div>
+
+</div>
+
+<div *ngFor="let supplier of suppliers; index as i"
+    style="overflow: auto;">
+    <info-supplier-card [index]="i"
+        [supplier]="supplier"
+        (editEvent)="editSupplier(supplier)"
+        (deleteEvent)="hapusSupplier(supplier)">
+    </info-supplier-card>
+</div>

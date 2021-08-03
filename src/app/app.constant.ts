@@ -58,8 +58,15 @@ export const EditKaryawanSave = `${API}/karyawan/karyawan_update`;
 export const DokterLuarList = `${API}/dokter-luar/dokter_luar_list`;
 export const NewDokterLuarSave = `${API}/dokter-luar/create`;
 export const ViewDokterLuar = `${API}/dokter-luar/dokter_luar_view`;
-
 /* PATH DOKTER LUAR END */
+
+/* PATH SUPPLIER START */
+export const SupplierList = `${API}/supplier/supplier_list`;
+export const NewSupplierSave = `${API}/supplier/create`;
+export const ViewSupplierLuar = `${API}/supplier/supplier_view`;
+/* PATH SUPPLIER END */
+
+
 
 export const BankList = `${API}/bank/bank_list`;
 
