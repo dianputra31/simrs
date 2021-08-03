@@ -48,6 +48,7 @@ export const ViewDokter = `${API}/dokter/dokter_view`;
 
 /* PATH KARYAWAN START */
 export const KaryawanList = `${API}/karyawan/karyawan_list`;
+export const NewKaryawanSave = `${API}/karyawan/create`;
 /* PATH KARYAWAN END */
 
 

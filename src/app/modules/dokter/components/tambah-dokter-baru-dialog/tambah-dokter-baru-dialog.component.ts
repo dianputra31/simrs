@@ -139,45 +139,36 @@ export class TambahDokterBaruDialogComponent implements OnInit {
 		this.subscribers.push(sub);
 	}
 
-  onUserInputNamaDokter(input) {
-		this.param.namadokter = input;
-	}
 
-  onUserInputRekeningDokter(input){
-    this.param.norekdr = input;
+  onUserInput(input,namaparam){
+    if(namaparam=='namadokter'){
+      this.param.namadokter = input;
+    }else if(namaparam=='norekdr'){
+      this.param.norekdr = input;
+    }else if(namaparam=='alm1dokter'){
+      this.param.alm1dokter = input;
+    }else if(namaparam=='alm2dokter'){
+      this.param.alm2dokter = input;
+    }else if(namaparam=='telpdokter'){
+      this.param.telpdokter = input;
+    }else if(namaparam=='telppraktek'){
+      this.param.telppraktek = input;
+    }else if(namaparam=='norekdr'){
+      this.param.norekdr = input;
+    }
   }
 
-  onUserInputDetailDokter1(input) {
-		this.param.alm1dokter = input;
-	}
-
-  onUserInputDetailDokter2(input) {
-		this.param.alm2dokter = input;
-	}
-
-  onUserInputTelpRumah(input) {
-		this.param.telpdokter = input;
-	}
-
-  
-  onUserInputTelpPraktek(input) {
-		this.param.telppraktek = input;
-	}
-
-  onSpesialisasiSelected(spesialisasi){
-    this.selectedSpesialisasi = spesialisasi;
-    this.param.kodepmr = spesialisasi;
+  onUserInputSelected(input,namaparam){
+    if(namaparam=='kodebank'){
+      this.param.kodebank = input;
+    }else if(namaparam=='jnskelamin'){
+      this.param.jnskelamin = input;
+    }else if(namaparam=='kodepmr'){
+      this.param.kodepmr = input;
+    }
   }
 
-  onUserInputJenisKelamin(jeniskelamin){
-    this.selectedJenisKelamin = jeniskelamin;
-    this.param.jnskelamin = jeniskelamin;
-  }
-
-  onBankSelected(bank){
-    this.selectedBank = bank;
-    this.param.kodebank = bank;
-  }
+ 
 
   valid() {
 		var valid = true;

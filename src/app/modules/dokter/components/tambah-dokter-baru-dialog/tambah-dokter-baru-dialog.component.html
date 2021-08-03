@@ -17,7 +17,7 @@
 
         <rounded-input width="298px"
             placeholderText="dr. Sara Tancredi"
-            (onUserInput)="onUserInputNamaDokter($event)"></rounded-input>
+            (onUserInput)="onUserInput($event, 'namadokter')"></rounded-input>
 
     </div>
     <wsh wide="16px"></wsh>
@@ -37,7 +37,7 @@
         <wsh wide="16px"></wsh>
         <rounded-input width="788px"
             placeholderText="Jl. Raya "
-            (onUserInput)="onUserInputDetailDokter1($event)"></rounded-input>
+            (onUserInput)="onUserInput($event,'alm1dokter')"></rounded-input>
     </div>
 </div>
 
@@ -49,7 +49,7 @@
         <wsh wide="16px"></wsh>
         <rounded-input width="788px"
             placeholderText="Jl. Raya "
-            (onUserInput)="onUserInputDetailDokter2($event)"></rounded-input>
+            (onUserInput)="onUserInput($event,'alm2dokter')"></rounded-input>
     </div>
 </div>
 
@@ -63,7 +63,7 @@
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
             placeholderText="00000000"
-            (onUserInput)="onUserInputRekeningDokter($event)"></rounded-input>
+            (onUserInput)="onUserInput($event,'norekdr')"></rounded-input>
 
     </div>
     <wsh wide="24px"></wsh>
@@ -75,7 +75,7 @@
             [items]="banks"
             [edited]="editBank"
             (editEvent)="editBank = false"
-            (onSelect)="onBankSelected($event)"></input-dropdown>
+            (onSelect)="onUserInputSelected($event,'kodebank')"></input-dropdown>
     </div>
 
 </div>
@@ -89,7 +89,7 @@
         <input-dropdown style="width: 298px;"
             [items]="states"
             idText="jeniskelamin"
-            (onSelect)="onUserInputJenisKelamin($event)"></input-dropdown>
+            (onSelect)="onUserInputSelected($event,'jnskelamin')"></input-dropdown>
     </div>
     <wsh wide="24px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
@@ -101,7 +101,7 @@
             placeholderText="Spesialisasi"
             [edited]="editSpesialisasi"
             (editEvent)="editSpesialisasi = false"
-            (onSelect)="onSpesialisasiSelected($event)"></input-dropdown>
+            (onSelect)="onUserInputSelected($event,'kodepmr')"></input-dropdown>
     </div>
 
 </div>
@@ -115,7 +115,7 @@
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
             placeholderText="000-0000"
-            (onUserInput)="onUserInputTelpRumah($event)"></rounded-input>
+            (onUserInput)="onUserInput($event,'telpdokter')"></rounded-input>
     </div>
     <wsh wide="24px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
@@ -124,10 +124,11 @@
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
             placeholderText="0000-0000-0000"
-            (onUserInput)="onUserInputTelpPraktek($event)"></rounded-input>
+            (onUserInput)="onUserInput($event,'telppraktek')"></rounded-input>
     </div>
 
 </div>
+
 
 
 <wsv wide="12px"></wsv>

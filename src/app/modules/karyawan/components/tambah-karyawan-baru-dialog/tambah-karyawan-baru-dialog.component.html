@@ -11,19 +11,23 @@
 <wsv wide="12px"></wsv>
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Nama Dokter"
+        <label-input label="NIKPGJWB"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
 
 
         <rounded-input width="298px"
-            placeholderText="dr. Sara Tancredi"
-            (onUserInput)="onUserInputNamaDokter($event)"></rounded-input>
+            placeholderText="NIKPGJWB"
+            (onUserInput)="onUserInput($event,'NIKPGJWB')"></rounded-input>
 
     </div>
     <wsh wide="16px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
-
+        <label-input label="KDGRPTRF"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            (onUserInput)="onUserInput($event,'KDGRPTRF')"></rounded-input>
     </div>
 
 </div>
@@ -31,55 +35,29 @@
 <horizontal-line></horizontal-line>
 <wsv wide="12px"></wsv>
 
-<div class="d-flex">
-    <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Detail Alamat 1"
-            style="width:130px;"></label-input>
-        <wsh wide="16px"></wsh>
-        <rounded-input width="788px"
-            placeholderText="Jl. Raya "
-            (onUserInput)="onUserInputDetailDokter1($event)"></rounded-input>
-    </div>
-</div>
-
 <wsv wide="12px"></wsv>
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Detail Alamat 2"
-            style="width:130px;"></label-input>
-        <wsh wide="16px"></wsh>
-        <rounded-input width="788px"
-            placeholderText="Jl. Raya "
-            (onUserInput)="onUserInputDetailDokter2($event)"></rounded-input>
-    </div>
-</div>
-
-
-
-<wsv wide="12px"></wsv>
-<div class="d-flex">
-    <div class="d-flex justify-content-end align-items-center">
-        <label-input label="No Rek Dokter"
+        <label-input label="NAMAKARY"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
-            placeholderText="00000000"
-            (onUserInput)="onUserInputRekeningDokter($event)"></rounded-input>
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'NAMAKARY')"></rounded-input>
 
     </div>
     <wsh wide="24px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Bank"
+        <label-input label="DATAKELRG"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
-        <input-dropdown style="width: 298px;"
-            [items]="banks"
-            [edited]="editBank"
-            (editEvent)="editBank = false"
-            (onSelect)="onBankSelected($event)"></input-dropdown>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'DATAKELRG')"></rounded-input>
     </div>
 
 </div>
+
 
 <wsv wide="12px"></wsv>
 <div class="d-flex">
@@ -89,20 +67,42 @@
         <wsh wide="16px"></wsh>
         <input-dropdown style="width: 298px;"
             [items]="states"
-            idText="jeniskelamin"
-            (onSelect)="onUserInputJenisKelamin($event)"></input-dropdown>
+            idText="JK"
+            (onSelect)="onUserInputSelected($event,'JK')"></input-dropdown>
     </div>
     <wsh wide="24px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Spesialisasi"
+        <label-input label="NOPASIEN"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
-        <input-dropdown style="width: 298px;"
-            [items]="spesialisasis"
-            placeholderText="Spesialisasi"
-            [edited]="editSpesialisasi"
-            (editEvent)="editSpesialisasi = false"
-            (onSelect)="onSpesialisasiSelected($event)"></input-dropdown>
+        <rounded-input width="298px"
+            placeholderText="00000000"
+            (onUserInput)="onUserInput($event,'NOPASIEN')"></rounded-input>
+    </div>
+
+</div>
+
+
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STATUSKKRY"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText="000-0000"
+            (onUserInput)="onUserInput($event,'STATUSKKRY')"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KDDEPT"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText="0000-0000-0000"
+            (onUserInput)="onUserInput($event,'KDDEPT')"></rounded-input>
     </div>
 
 </div>
@@ -111,21 +111,45 @@
 <wsv wide="12px"></wsv>
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Telp Rumah"
+        <label-input label="KODEASS"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
             placeholderText="000-0000"
-            (onUserInput)="onUserInputTelpRumah($event)"></rounded-input>
+            (onUserInput)="onUserInput($event,'KODEASS')"></rounded-input>
     </div>
     <wsh wide="24px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Telp Praktek"
+        <label-input label="JABATAN"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
             placeholderText="0000-0000-0000"
-            (onUserInput)="onUserInputTelpPraktek($event)"></rounded-input>
+            (onUserInput)="onUserInput($event,'JABATAN')"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="UNITKERJA"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText="000-0000"
+            (onUserInput)="onUserInput($event,'UNITKERJA')"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODEPT"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <input-dropdown style="width: 298px;"
+            [items]="states"
+            idText="KODEPT"
+            (onSelect)="onUserInputSelected($event,'KODEPT')"></input-dropdown>
     </div>
 
 </div>

@@ -8,11 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {
-  // AddressCreateUrl,
-  // AddressMasterDistrictUrl,
-  AddressMasterProvinceUrl, BankList, NewDokterSave, SpesialisasiList
-} from '../../../../../app/app.constant';
+import { BankList, NewKaryawanSave } from '../../../../../app/app.constant';
 import { HttpService } from '../../../../../app/core/base-service/http.service';
 import { BaseService } from '../../../../../app/core/base-service/service/base.service';
 
@@ -63,23 +59,18 @@ export class TambahKaryawanBaruDialogComponent implements OnInit {
 	];
 
 	param = {
-		namadokter: '',
-    alm1dokter: '',
-    alm2dokter: '',
-		kdspecial: '',
-		telpdokter: '',
-    norekdr: '',
-		village: '',
-		province: '',
-		district: '',
-		district_type: '',
-		subdistrict: '',
-		zipcode: '',
-    kodebagian: '',
-    jnskelamin: '',
-    kodepmr: '',
-    kodebank: '',
-    telppraktek:'',
+		NIKPGJWB:'',
+    KODEPT:'',
+    KDGRPTRF:'',
+    NAMAKARY:'',
+    DATAKELRG:'',
+    STATUSKKRY:'',
+    KDDEPT:'',
+    KODEASS:'',
+    JABATAN:'',
+    JK:'',
+    UNITKERJA:'',
+    NOPASIEN:''
 	};
 
   constructor(
@@ -95,7 +86,6 @@ export class TambahKaryawanBaruDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribers = [];
-    this.getSpesialisasi();
     this.getBank();
 		// this.getProvince();
   }
@@ -104,29 +94,6 @@ export class TambahKaryawanBaruDialogComponent implements OnInit {
 		this.dialogRef.close();
 	}
 
-
-  getProvince() {
-		const sub = this.service
-			.postData(AddressMasterProvinceUrl, false, false, false)
-			.subscribe((resp) => {
-				this.provinces = resp.data;
-				this.provinces.forEach((prov) => (prov.label = prov.province));
-			});
-		this.subscribers.push(sub);
-	}
-
-
-  
-
-  getSpesialisasi() {
-		const sub = this.service
-			.getData(SpesialisasiList, false, false, false)
-			.subscribe((resp) => {
-				this.spesialisasis = resp.data;
-				this.spesialisasis.forEach((sps) => (sps.label = sps.NMSPESIAL));
-			});
-		this.subscribers.push(sub);
-	}
 
   
   getBank() {
@@ -139,81 +106,78 @@ export class TambahKaryawanBaruDialogComponent implements OnInit {
 		this.subscribers.push(sub);
 	}
 
-  onUserInputNamaDokter(input) {
-		this.param.namadokter = input;
-	}
-
-  onUserInputRekeningDokter(input){
-    this.param.norekdr = input;
+  onUserInput(input,namaparam){
+    if(namaparam=='NIKPGJWB'){
+      this.param.NIKPGJWB = input;
+    }else if(namaparam=='KDGRPTRF'){
+      this.param.KDGRPTRF = input;
+    }else if(namaparam=='NAMAKARY'){
+      this.param.NAMAKARY = input;
+    }else if(namaparam=='DATAKELRG'){
+      this.param.DATAKELRG = input;
+    }else if(namaparam=='STATUSKKRY'){
+      this.param.STATUSKKRY = input;
+    }else if(namaparam=='KDDEPT'){
+      this.param.KDDEPT = input;
+    }else if(namaparam=='KODEASS'){
+      this.param.KODEASS = input;
+    }else if(namaparam=='JABATAN'){
+      this.param.JABATAN = input;
+    }else if(namaparam=='UNITKERJA'){
+      this.param.UNITKERJA = input;
+    }else if(namaparam=='NOPASIEN'){
+      this.param.NOPASIEN = input;
+    }
+    
   }
 
-  onUserInputDetailDokter1(input) {
-		this.param.alm1dokter = input;
-	}
-
-  onUserInputDetailDokter2(input) {
-		this.param.alm2dokter = input;
-	}
-
-  onUserInputTelpRumah(input) {
-		this.param.telpdokter = input;
-	}
+  onUserInputSelected(input, namaparam){
+    if(namaparam=='KODEPT'){
+      this.param.KODEPT = input;
+    }else if(namaparam=='JK'){
+      this.param.JK = input;
+    }
+    // this.selectedSpesialisasi = spesialisasi;
+    // this.param.kodepmr = spesialisasi;
+  }
 
   
-  onUserInputTelpPraktek(input) {
-		this.param.telppraktek = input;
-	}
-
-  onSpesialisasiSelected(spesialisasi){
-    this.selectedSpesialisasi = spesialisasi;
-    this.param.kodepmr = spesialisasi;
-  }
-
-  onUserInputJenisKelamin(jeniskelamin){
-    this.selectedJenisKelamin = jeniskelamin;
-    this.param.jnskelamin = jeniskelamin;
-  }
-
-  onBankSelected(bank){
-    this.selectedBank = bank;
-    this.param.kodebank = bank;
-  }
-
   valid() {
 		var valid = true;
-    /*
-    // else if (!this.param.province) {
-		// 	valid = false;
-		// } else if (!this.param.district) {
-		// 	valid = false;
-		// } else if (!this.param.subdistrict) {
-		// 	valid = false;
-		// } else if (!this.param.village) {
-		// 	valid = false;
-		// } else if (!this.param.zipcode) {
-		// 	valid = false;
-		// } 
-     */
+    
 
-		if (!this.param.namadokter) {
+		if (!this.param.NIKPGJWB) {
 			valid = false;
-		} else if (!this.param.alm1dokter) {
+		} else if (!this.param.KDGRPTRF) {
 			valid = false;
-		} else if (!this.param.norekdr) {
+		} else if (!this.param.NAMAKARY) {
 			valid = false;
-		} else if (!this.param.kodebank) {
+		} else if (!this.param.DATAKELRG) {
 			valid = false;
-		}  else if (!this.param.telpdokter) {
+		}  else if (!this.param.STATUSKKRY) {
 			valid = false;
-		}else if (!this.param.kodepmr) {
+		}else if (!this.param.KDDEPT) {
+			valid = false;
+		}else if (!this.param.KODEASS) {
+			valid = false;
+		}else if (!this.param.JABATAN) {
+			valid = false;
+		}else if (!this.param.UNITKERJA) {
+			valid = false;
+		}else if (!this.param.NOPASIEN) {
+			valid = false;
+		}else if (!this.param.KODEPT) {
+			valid = false;
+		}else if (!this.param.JK) {
 			valid = false;
 		}
+    console.log(this.param);
 		return valid;
 	}
 
 
   submit() {
-		const sub = this.http.post(NewDokterSave, this.param).pipe(
+		const sub = this.http.post(NewKaryawanSave, this.param).pipe(
 			map((resp: any): any => {
 				return resp;
 			}),
