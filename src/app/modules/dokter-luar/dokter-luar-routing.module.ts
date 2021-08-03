@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { DokterLuarLayoutComponent } from './pages/dokter-luar-layout/dokter-luar-layout.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+		component: DokterLuarLayoutComponent,
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

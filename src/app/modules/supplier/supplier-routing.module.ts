@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { SupplierLayoutComponent } from './pages/supplier-layout/supplier-layout.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+		component: SupplierLayoutComponent,
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
