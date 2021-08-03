@@ -98,6 +98,13 @@ const routes: Routes = [
 					),
 			},
 			{
+				path: 'bagian',
+				loadChildren: () =>
+					import('../modules/bagian/bagian.module').then(
+						(m) => m.BagianModule
+					),
+			},
+			{
 				path: 'profile',
 				loadChildren: () =>
 					import('../modules/profile/profile.module').then(

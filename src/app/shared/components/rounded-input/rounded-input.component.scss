@@ -5,18 +5,18 @@
 	background: #ffffff;
 	border: 0.5px solid #a9a9a9;
 	box-sizing: border-box;
-	border-radius: 28px;
-	height: 32px;
+	border-radius: 6px;
+	height: 30px;
 }
 input {
 	background: transparent;
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 14px;
-	line-height: 24px;
-	padding-left: 18px;
-	padding-right: 18px;
+	font-size: 12px;
+	line-height: 14px;
+	padding-left: 12px;
+	padding-right: 12px;
 	width: 100%;
 	/* or 171% */
 }
@@ -26,8 +26,8 @@ input {
 	font-family: $primary-font;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 14px;
-	line-height: 24px;
+	font-size: 12px;
+	line-height: 14px;
 
 	color: #abafb3;
 }

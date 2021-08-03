@@ -1,0 +1,159 @@
+import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
+import { Component, Inject, OnInit } from '@angular/core';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, of, Subscription } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { NewKaryawanSave } from '../../../../../app/app.constant';
+import { HttpService } from '../../../../../app/core/base-service/http.service';
+import { BaseService } from '../../../../../app/core/base-service/service/base.service';
+
+
+
+@Component({
+  selector: 'tambah-bagian-baru-dialog',
+  templateUrl: './tambah-bagian-baru-dialog.component.html',
+  styleUrls: ['./tambah-bagian-baru-dialog.component.scss']
+})
+export class TambahBagianBaruDialogComponent implements OnInit {
+  subscribers: Subscription[];
+ 
+  selectedJenisKelamin: any;
+
+ 
+	states: any[] = [
+		{ jenis: 'L', label: 'Laki-Laki' },
+		{ jenis: 'P', label: 'Perempuan' },
+	];
+
+	param = {
+		NIKPGJWB:'',
+    KODEPT:'',
+    KDGRPTRF:'',
+    NAMAKARY:'',
+    DATAKELRG:'',
+    STATUSKKRY:'',
+    KDDEPT:'',
+    KODEASS:'',
+    JABATAN:'',
+    JK:'',
+    UNITKERJA:'',
+    NOPASIEN:''
+	};
+
+  constructor(
+    public dialogRef: MatDialogRef<TambahBagianBaruDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public modalData: any,
+		private route: ActivatedRoute,
+		private router: Router,
+		public dialog: MatDialog,
+		private service: BaseService,
+		private http: HttpClient,
+		private http2: HttpService
+  ) { }
+
+  ngOnInit(): void {
+    this.subscribers = [];
+		// this.getProvince();
+  }
+
+  batal() {
+		this.dialogRef.close();
+	}
+
+
+
+  onUserInput(input,namaparam){
+    if(namaparam=='NIKPGJWB'){
+      this.param.NIKPGJWB = input;
+    }else if(namaparam=='KDGRPTRF'){
+      this.param.KDGRPTRF = input;
+    }else if(namaparam=='NAMAKARY'){
+      this.param.NAMAKARY = input;
+    }else if(namaparam=='DATAKELRG'){
+      this.param.DATAKELRG = input;
+    }else if(namaparam=='STATUSKKRY'){
+      this.param.STATUSKKRY = input;
+    }else if(namaparam=='KDDEPT'){
+      this.param.KDDEPT = input;
+    }else if(namaparam=='KODEASS'){
+      this.param.KODEASS = input;
+    }else if(namaparam=='JABATAN'){
+      this.param.JABATAN = input;
+    }else if(namaparam=='UNITKERJA'){
+      this.param.UNITKERJA = input;
+    }else if(namaparam=='NOPASIEN'){
+      this.param.NOPASIEN = input;
+    }
+    
+  }
+
+  onUserInputSelected(input, namaparam){
+    if(namaparam=='KODEPT'){
+      this.param.KODEPT = input;
+    }else if(namaparam=='JK'){
+      this.param.JK = input;
+    }
+    // this.selectedSpesialisasi = spesialisasi;
+    // this.param.kodepmr = spesialisasi;
+  }
+
+  
+  valid() {
+		var valid = true;
+    
+
+		if (!this.param.NIKPGJWB) {
+			valid = false;
+		} else if (!this.param.KDGRPTRF) {
+			valid = false;
+		} else if (!this.param.NAMAKARY) {
+			valid = false;
+		} else if (!this.param.DATAKELRG) {
+			valid = false;
+		}  else if (!this.param.STATUSKKRY) {
+			valid = false;
+		}else if (!this.param.KDDEPT) {
+			valid = false;
+		}else if (!this.param.KODEASS) {
+			valid = false;
+		}else if (!this.param.JABATAN) {
+			valid = false;
+		}else if (!this.param.UNITKERJA) {
+			valid = false;
+		}else if (!this.param.NOPASIEN) {
+			valid = false;
+		}else if (!this.param.KODEPT) {
+			valid = false;
+		}else if (!this.param.JK) {
+			valid = false;
+		}
+		return valid;
+	}
+
+
+  submit() {
+		const sub = this.http.post(NewKaryawanSave, this.param).pipe(
+			map((resp: any): any => {
+				return resp;
+			}),
+			catchError((err, caught: Observable<HttpEvent<any>>) => {
+				if (err instanceof HttpErrorResponse && err.status == 401) {
+					return of(err as any);
+				}
+				throw err;
+			})
+
+		);
+
+		sub.subscribe((resp) => {
+			this.dialogRef.close();
+		});
+	}
+
+
+}
