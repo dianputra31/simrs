@@ -1,1 +1,211 @@
-<p>edit-karyawan-dialog works!</p>
+<div class="d-flex justify-content-between align-items-center">
+    <div id="header">
+        Edit Karyawan Baru
+    </div>
+    <img id="close-dialog-button"
+        (click)="batal()"
+        src="../../../../../assets/image/icons/ic-x.png"
+        style="width:16px">
+</div>
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NIKPGJWB"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+
+
+        <rounded-input width="298px"
+            placeholderText="NIKPGJWB"
+            (onUserInput)="onUserInput($event,'NIKPGJWB')"
+            [content]="karyawan?.NIKPGJWB"></rounded-input>
+
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KDGRPTRF"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText="KDGRPTRF"
+            (onUserInput)="onUserInput($event,'KDGRPTRF')"
+            [content]="karyawan?.KDGRPTRF"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="12px"></wsv>
+<horizontal-line></horizontal-line>
+<wsv wide="12px"></wsv>
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NAMAKARY"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'NAMAKARY')"
+            [content]="karyawan?.NAMAKARY"></rounded-input>
+
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="DATAKELRG"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'DATAKELRG')"
+            [content]="karyawan?.DATAKELRG"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="Jenis Kelamin"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <input-dropdown style="width: 298px;"
+            [items]="states"
+            idText="JK"
+            (onSelect)="onUserInputSelected($event,'JK')"></input-dropdown>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NOPASIEN"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText="00000000"
+            (onUserInput)="onUserInput($event,'NOPASIEN')"
+            [content]="karyawan?.NOPASIEN"></rounded-input>
+    </div>
+
+</div>
+
+
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STATUSKKRY"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'STATUSKKRY')"
+            [content]="karyawan?.STATUSKKRY"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KDDEPT"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'KDDEPT')"
+            [content]="karyawan?.KDDEPT"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODEASS"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'KODEASS')"
+            [content]="karyawan?.KODEASS"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="JABATAN"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'JABATAN')"
+            [content]="karyawan?.JABATAN"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="UNITKERJA"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'UNITKERJA')"
+            [content]="karyawan?.UNITKERJA"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODEPT"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <input-dropdown style="width: 298px;"
+            [items]="states"
+            idText="KODEPT"
+            (onSelect)="onUserInputSelected($event,'KODEPT')"></input-dropdown>
+    </div>
+
+</div>
+
+
+<wsv wide="12px"></wsv>
+<horizontal-line></horizontal-line>
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+
+
+    <div class="flex-even">
+        <div class="d-flex justify-content-end align-items-center">
+
+        </div>
+    </div>
+</div>
+<wsv wide="12px"></wsv>
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex justify-content-between align-items-center">
+    <div>* Wajib diisi</div>
+    <div class="d-flex">
+        <button-gray label="Batal"
+            style="cursor: pointer;"
+            (click)="batal()"></button-gray>
+        <wsh wide="16px"></wsh>
+
+        <rounded-red-button *ngIf="valid()"
+            label="Tambah"
+            font="14px"
+            paddingtop="5px"
+            paddingbottom="5px"
+            paddingleft="30px"
+            paddingright="30px"
+            (click)="submit()"
+            float="right"></rounded-red-button>
+
+        <rounded-gray-button *ngIf="!valid()"
+            label="Tambah"
+            font="14px"
+            paddingtop="5px"
+            paddingbottom="5px"
+            paddingleft="30px"
+            paddingright="30px"
+            float="right"></rounded-gray-button>
+    </div>
+</div>

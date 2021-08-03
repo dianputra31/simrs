@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { BankList, NewKaryawanSave } from '../../../../../app/app.constant';
+import { NewKaryawanSave } from '../../../../../app/app.constant';
 import { HttpService } from '../../../../../app/core/base-service/http.service';
 import { BaseService } from '../../../../../app/core/base-service/service/base.service';
 
@@ -22,37 +22,9 @@ import { BaseService } from '../../../../../app/core/base-service/service/base.s
 export class TambahKaryawanBaruDialogComponent implements OnInit {
   subscribers: Subscription[];
  
-	provinces: any[];
-	districts: any[];
-	subdistricts: any[];
-	villages: any[];
-	zipcodes: any[];
-
-	selectedProvince: any;
-	selectedDistrict: any;
-	selectedSubdistrict: any;
-	selectedVillage: any;
-
-	disableKabupaten = true;
-	disableKecamatan = true;
-	disableKelurahan = true;
-
-	editProvinsi = true;
-	editKabupaten = true;
-	editKecamatan = true;
-	editKelurahan = true;
-
-  spesialisasis: any[];
-  editSpesialisasi = true;
-  selectedSpesialisasi: any;
-
   selectedJenisKelamin: any;
 
-  
-  banks: any[];
-  editBank = true;
-  selectedBank: any;
-
+ 
 	states: any[] = [
 		{ jenis: 'L', label: 'Laki-Laki' },
 		{ jenis: 'P', label: 'Perempuan' },
@@ -86,7 +58,6 @@ export class TambahKaryawanBaruDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribers = [];
-    this.getBank();
 		// this.getProvince();
   }
 
@@ -95,16 +66,6 @@ export class TambahKaryawanBaruDialogComponent implements OnInit {
 	}
 
 
-  
-  getBank() {
-		const sub = this.service
-			.getData(BankList, false, false, false)
-			.subscribe((resp) => {
-				this.banks = resp.data;
-				this.banks.forEach((sps) => (sps.label = sps.NMBANK));
-			});
-		this.subscribers.push(sub);
-	}
 
   onUserInput(input,namaparam){
     if(namaparam=='NIKPGJWB'){
@@ -171,7 +132,6 @@ export class TambahKaryawanBaruDialogComponent implements OnInit {
 		}else if (!this.param.JK) {
 			valid = false;
 		}
-    console.log(this.param);
 		return valid;
 	}
 

@@ -1,1 +1,23 @@
-<p>hapus-karyawan-dialog works!</p>
+<div class="justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+        <div id="header">
+            Anda yakin ingin menghapus {{karyawan.NAMAKARY}} ?
+        </div>
+    </div>
+    <div class="d-flex container-button">
+        <div class="col-lg-6 justify-content-between align-items-center">
+            <button class="grey-button"
+                (click)="batal()"><span class="text-button">Tidak</span></button>
+        </div>
+        <div class="col-lg-6 justify-content-between align-items-center">
+            <red-button label="Ya"
+                font="14px"
+                width="184px"
+                paddingtop="10px"
+                paddingbottom="10px"
+                paddingleft="10px"
+                paddingright="10px"
+                (click)="hapusDokter(karyawan.NIKPGJWB)"></red-button>
+        </div>
+    </div>
+</div>
