@@ -12,7 +12,55 @@
         float="right"
         (click)="tambahDokter()"></red-button>
 </div>
+
+
 <wsv wide="80px"></wsv>
+<div class="info-perusahaan-card-wrapper d-flex"
+    style="padding-left:60px;padding-right:60px;">
+    <div class="flex-grow-1">
+        <div class="flex perusahaan-label"
+            style="width:5%;float:left;text-align:right;">
+            NO
+        </div>
+        <div style="width:5%;float:left;text-align:right;">&nbsp;</div>
+
+        <div class="flex perusahaan-label"
+            style="width:25%;float:left;">
+            NAMA DOKTER
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:15%;float:left;">
+            KODE DOKTER
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:15%;float:left;">
+            KODE BAGIAN
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:15%;float:left;">
+            TELP DOKTER
+        </div>
+        <div class="flex perusahaan-label"
+            style="width:15%;float:left;">
+            ALAMAT
+        </div>
+
+
+        <wsv wide="20px"></wsv>
+        <horizontal-line></horizontal-line>
+        <wsv wide="12px"></wsv>
+        <div class="d-flex">
+
+        </div>
+    </div>
+    <div class="d-flex">
+        <icon-edit></icon-edit>
+        <wsh wide="16px"></wsh>
+        <icon-hapus></icon-hapus>
+        <wsh wide="16px"></wsh>
+    </div>
+</div>
+
 <div *ngFor="let dokter of dokters; index as i"
     style="overflow: auto;">
     <info-dokter-card [index]="i"

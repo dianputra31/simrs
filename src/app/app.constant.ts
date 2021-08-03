@@ -39,10 +39,18 @@ export const ProductTopSubcategoryUrl = `${API}/product/top_subcategory`;
 export const ProfileUrl = `${API}/profile`;
 export const AddressList = `${API}/profile/address_list`;
 
+/* PATH DOKTER START */
 export const DokterList = `${API}/dokter/dokter_list`;
 export const SpesialisasiList = `${API}/spesialisasi/spesialisasi_list`;
 export const NewDokterSave = `${API}/dokter/create`;
 export const ViewDokter = `${API}/dokter/dokter_view`;
+/* PATH DOKTER END */
+
+/* PATH KARYAWAN START */
+export const KaryawanList = `${API}/karyawan/karyawan_list`;
+/* PATH KARYAWAN END */
+
+
 
 export const BankList = `${API}/bank/bank_list`;
 

@@ -1,0 +1,24 @@
+@import '../../../../../styles/variables/colors';
+@import '../../../../../styles/variables/fonts';
+
+.info-perusahaan-card-wrapper {
+	background: #ffffff;
+	box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+	border-radius: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 22px;
+	padding-right: 22px;
+    
+}
+
+.perusahaan-label {
+	font-family: $primary-font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 15px;
+	/* identical to box height */
+
+	color: #606060;
+}

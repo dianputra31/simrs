@@ -32,6 +32,8 @@ import { FooterCustomerSupportComponent } from './components/footer-customer-sup
 import { FooterFeatureComponent } from './components/footer-feature/footer-feature.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HorizontalLineComponent } from './components/horizontal-line/horizontal-line.component';
+import { IconEditComponent } from './components/icon-edit/icon-edit.component';
+import { IconHapusComponent } from './components/icon-hapus/icon-hapus.component';
 import { InputDropdownComponent } from './components/input-dropdown/input-dropdown.component';
 import { ItemDescComponent } from './components/item-desc/item-desc.component';
 import { LabelInputComponent } from './components/label-input/label-input.component';
@@ -117,7 +119,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		TambahAlamatBaruDialogComponent,
 		RoundedInputComponent,
 		LabelInputComponent,
-		SecondLineComponent
+		SecondLineComponent,
+		IconEditComponent,
+		IconHapusComponent
 		
 	],
 	imports: [
@@ -171,7 +175,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 		TambahAlamatBaruDialogComponent,
 		RoundedInputComponent,
 		LabelInputComponent,
-		SecondLineComponent
+		SecondLineComponent,
+		IconEditComponent,
+		IconHapusComponent
 	],
 	providers: [
 		{ provide: NZ_I18N, useValue: en_US },
