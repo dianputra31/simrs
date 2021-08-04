@@ -1,0 +1,29 @@
+{
+    "status":{
+            "rc": 1,
+            "msg":"success"
+        },
+    "data":
+        [
+            {
+            "KODE": 1,
+            "KDBANK": "BJB",
+            "NMBANK": "Bank Jabar & Banten",
+            "NMACCTNO": "Karya Medika Bantar Gebang",
+            "BKACCTNO": "420010001377",
+            "CABANG": "Bantar Gebang",
+            "KOTA": "Bekasi",
+            "STATUS": "A"
+            },
+            {
+            "KODE": 2,
+            "KDBANK": "BM",
+            "NMBANK": "Bank Mandiri",
+            "NMACCTNO": "RS Karya Medika II",
+            "BKACCTNO": "156-00-333.3331.3",
+            "CABANG": "Grand Wisata",
+            "KOTA": "Bekasi",
+            "STATUS": "A"
+            }
+        ]
+}

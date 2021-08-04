@@ -10,18 +10,25 @@
 <wsv wide="12px"></wsv>
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Nama Dokter"
+        <label-input label="NAMA DOKTER"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
 
 
         <rounded-input width="298px"
             placeholderText="dr. Sara Tancredi"
-            (onUserInput)="onUserInput($event, 'namadokter')"></rounded-input>
+            (onUserInput)="onUserInput($event, 'NAMADOKTER')"></rounded-input>
 
     </div>
     <wsh wide="16px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODE DOKTER"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+
+        <rounded-input width="160px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event, 'KODEDOKTER')"></rounded-input>
 
     </div>
 
@@ -32,24 +39,24 @@
 
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Detail Alamat 1"
+        <label-input label="ALAMAT 1"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <rounded-input width="788px"
             placeholderText="Jl. Raya "
-            (onUserInput)="onUserInput($event,'alm1dokter')"></rounded-input>
+            (onUserInput)="onUserInput($event,'ALM1DOKTER')"></rounded-input>
     </div>
 </div>
 
 <wsv wide="12px"></wsv>
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Detail Alamat 2"
+        <label-input label="ALAMAT 2"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <rounded-input width="788px"
             placeholderText="Jl. Raya "
-            (onUserInput)="onUserInput($event,'alm2dokter')"></rounded-input>
+            (onUserInput)="onUserInput($event,'ALM2DOKTER')"></rounded-input>
     </div>
 </div>
 
@@ -58,17 +65,17 @@
 <wsv wide="12px"></wsv>
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="No Rek Dokter"
+        <label-input label="REK DOKTER"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
             placeholderText="00000000"
-            (onUserInput)="onUserInput($event,'norekdr')"></rounded-input>
+            (onUserInput)="onUserInput($event,'NOREKDR')"></rounded-input>
 
     </div>
     <wsh wide="24px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Bank"
+        <label-input label="BANK"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <input-dropdown style="width: 298px;"
@@ -83,17 +90,16 @@
 <wsv wide="12px"></wsv>
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Jenis Kelamin"
+        <label-input label="JENIS KELAMIN"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <input-dropdown style="width: 298px;"
             [items]="states"
-            idText="jeniskelamin"
-            (onSelect)="onUserInputSelected($event,'jnskelamin')"></input-dropdown>
+            (onSelect)="onUserInputSelected($event,'JNSKELAMIN')"></input-dropdown>
     </div>
     <wsh wide="24px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Spesialisasi"
+        <label-input label="SPESIALISASI"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <input-dropdown style="width: 298px;"
@@ -101,7 +107,7 @@
             placeholderText="Spesialisasi"
             [edited]="editSpesialisasi"
             (editEvent)="editSpesialisasi = false"
-            (onSelect)="onUserInputSelected($event,'kodepmr')"></input-dropdown>
+            (onSelect)="onUserInputSelected($event,'KODEPMR')"></input-dropdown>
     </div>
 
 </div>
@@ -110,21 +116,134 @@
 <wsv wide="12px"></wsv>
 <div class="d-flex">
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Telp Rumah"
+        <label-input label="NO TELP"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
             placeholderText="000-0000"
-            (onUserInput)="onUserInput($event,'telpdokter')"></rounded-input>
+            (onUserInput)="onUserInput($event,'TELPDOKTER')"></rounded-input>
     </div>
     <wsh wide="24px"></wsh>
     <div class="d-flex justify-content-end align-items-center">
-        <label-input label="Telp Praktek"
+        <label-input label="TELP PRAKTEK"
             style="width:130px;"></label-input>
         <wsh wide="16px"></wsh>
         <rounded-input width="298px"
             placeholderText="0000-0000-0000"
-            (onUserInput)="onUserInput($event,'telppraktek')"></rounded-input>
+            (onUserInput)="onUserInput($event,'TELPRAKTEK')"></rounded-input>
+    </div>
+
+</div>
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="POTPAJAK"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'POTPAJAK')"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STSKERJADR"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'STSKERJADR')"></rounded-input>
+    </div>
+
+</div>
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="MAXPASIEN"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'MAXPASIEN')"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="JENISDR"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'JENISDR')"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NMGELARDPN"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'NMGELARDPN')"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NMGELARBLK"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'NMGELARBLK')"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="JSDRPASPT"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'JSDRPASPT')"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="JSDRPASUMUM"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'JSDRPASUMUM')"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="12px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="PASPTHJ"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'PASPTHJ')"></rounded-input>
+    </div>
+    <wsh wide="24px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="PASUMHJ"
+            style="width:130px;"></label-input>
+        <wsh wide="16px"></wsh>
+        <rounded-input width="298px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'PASUMHJ')"></rounded-input>
     </div>
 
 </div>

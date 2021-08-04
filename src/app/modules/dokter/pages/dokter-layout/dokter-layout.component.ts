@@ -67,7 +67,7 @@ export class DokterLayoutComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
 		dialogConfig.id = 'modal-component';
-		dialogConfig.height = '600px';
+		dialogConfig.height = '670px';
 		dialogConfig.width = '1034px';
 		dialogConfig.panelClass = 'border-radius:20px';
 		dialogConfig.data = {
@@ -89,7 +89,7 @@ export class DokterLayoutComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
 		dialogConfig.id = 'modal-component';
-		dialogConfig.height = '600px';
+		dialogConfig.height = '670px';
 		dialogConfig.width = '1034px'; 
 		dialogConfig.panelClass = 'border-radius:20px';
 		dialogConfig.data = {

@@ -1,0 +1,43 @@
+{
+    "status":{
+        "rc": 1,
+        "msg":"success"
+    },
+    "data":
+        {
+        "KODEDOKTER": "AN01",
+        "KDSPESIAL": 24,
+        "KODEBAGIAN": 9117,
+        "NAMADOKTER": "Fadli, dr. SpAn",
+        "JNSKELAMIN": "L",
+        "ALM1DOKTER": "Bekasi",
+        "ALM2DOKTER": "Jl. Raya Bekasi Timur No 34",
+        "TELPDOKTER": "021 876 0023",
+        "TELPRAKTEK": "0888 0000 1111",
+        "NOPAGERDR": "",
+        "JSDRPASDR": null,
+        "JSDRPASRS": null,
+        "JSDRPASVT": "",
+        "POTPAJAK": null,
+        "STSKERJADR": "F",
+        "PASDRHJ": "",
+        "PASRSHJ": "",
+        "NOREKDR": "",
+        "KETDOKTER": "",
+        "FLAGHADIR": "Y",
+        "MAXPASIEN": 500,
+        "MAXKONTRAK": null,
+        "KODEPMR": "VS0001",
+        "USLOGNM": "",
+        "LAMAPLY": 0,
+        "JENISDR": "D",
+        "HADIR": "Y",
+        "NMGELARDPN": "",
+        "NMGELARBLK": "",
+        "JSDRPASPT": 0,
+        "JSDRPASUMUM": 0,
+        "PASPTHJ": "H",
+        "PASUMHJ": "H",
+        "TTDIMG": ""
+        }
+}
