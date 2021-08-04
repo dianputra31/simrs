@@ -74,10 +74,9 @@
     <div class="d-flex justify-content-end align-items-center">
         <label-input label="NAMABAGIAN"></label-input>
         <wsh wide="8px"></wsh>
-        <input-dropdown style="width: 170px;"
-            [items]="states"
-            idText="NAMABAGIAN"
-            (onSelect)="onUserInputSelected($event,'NAMABAGIAN')"></input-dropdown>
+        <rounded-input width="170px"
+            placeholderText="NAMABAGIAN"
+            (onUserInput)="onUserInput($event,'NAMABAGIAN')"></rounded-input>
     </div>
     <wsh wide="16px"></wsh>
     <div class="d-flex justify-content-end align-items-center">

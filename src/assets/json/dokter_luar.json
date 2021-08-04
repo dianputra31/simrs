@@ -1,0 +1,410 @@
+{
+    "status":
+    {
+        "rc": 1,
+        "msg": "success"
+    },
+    "data":
+    [
+ {
+   "KODEDOKTER": 0,
+   "NAMADOKTER": "Ardi, dr. Sp.OT",
+   "ALAMAT": "RSKM",
+   "KDSPESIAL": null,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 0,
+   "NAMADOKTER": "LUAR",
+   "ALAMAT": "KLINIK BANTAR MEDIKA",
+   "KDSPESIAL": null,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 1,
+   "NAMADOKTER": "KLINIK AMUNAH",
+   "ALAMAT": "Jl. Siliwangi km. 12 ds cikiwul",
+   "KDSPESIAL": null,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 9,
+   "NAMADOKTER": "SELO",
+   "ALAMAT": "RSKM",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 1,
+   "NAMADOKTER": "dr. Pri",
+   "ALAMAT": "RSKM Bantargebang",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 10,
+   "NAMADOKTER": "Anasri, DR",
+   "ALAMAT": "RSKM BTGB",
+   "KDSPESIAL": 2,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 11,
+   "NAMADOKTER": "DR. H. M. Ali Syarif. MS",
+   "ALAMAT": "ASMI SAHAD MEDICAL CENTRE",
+   "KDSPESIAL": null,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 2,
+   "NAMADOKTER": "LUAR",
+   "ALAMAT": "RS MITRA KELUARGA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 3,
+   "NAMADOKTER": "DR.SULAIMAN SPPD",
+   "ALAMAT": "Bekasi",
+   "KDSPESIAL": 7,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 4,
+   "NAMADOKTER": "Army Noor, Dr",
+   "ALAMAT": "klinik Limus Pratama Medika",
+   "KDSPESIAL": null,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 5,
+   "NAMADOKTER": "DR. AJIE",
+   "ALAMAT": "",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 50,
+   "NAMADOKTER": "DR. WIRNAYANTI",
+   "ALAMAT": "YPPK WAHYU RUMAH BERSALIN & POLIKLINIK 24 JAM",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 52,
+   "NAMADOKTER": "LUAR",
+   "ALAMAT": "KLINIK KELUARGA SEHAT",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 6,
+   "NAMADOKTER": "DR.ADRIE SPA",
+   "ALAMAT": "RSKM BT GEBANG",
+   "KDSPESIAL": 2,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 7,
+   "NAMADOKTER": "DR.FITRI SPOG",
+   "ALAMAT": "RSKM BT GEBANG",
+   "KDSPESIAL": 12,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 8,
+   "NAMADOKTER": "TRI SULISTYOWATI",
+   "ALAMAT": "KILINIK AMUNA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 9,
+   "NAMADOKTER": "H.NURHADAYAT SpA",
+   "ALAMAT": "JLN JAMRUD RAYA K 1/3 KOTA LEGENDA",
+   "KDSPESIAL": 2,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 10,
+   "NAMADOKTER": "BIDAN JULINDA",
+   "ALAMAT": "BANTAR GEBANG",
+   "KDSPESIAL": null,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 11,
+   "NAMADOKTER": "dr.adhi",
+   "ALAMAT": "",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 12,
+   "NAMADOKTER": "DR.WELLY SP.S",
+   "ALAMAT": "RSKM BANTAR GEBANG",
+   "KDSPESIAL": 11,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 13,
+   "NAMADOKTER": "DR.DIAN SPOG",
+   "ALAMAT": "RSKM BG",
+   "KDSPESIAL": 12,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 14,
+   "NAMADOKTER": "Adhi, Dr",
+   "ALAMAT": "RSKM",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 15,
+   "NAMADOKTER": "DR. YASIN SULISTIYANI",
+   "ALAMAT": "RSKM BANTAR GEBANG",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 16,
+   "NAMADOKTER": "DR.SULIS",
+   "ALAMAT": "RSKM BT.GEBANG",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 17,
+   "NAMADOKTER": "TEJO, DR",
+   "ALAMAT": "RSKM BANTAR GEBANG",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 18,
+   "NAMADOKTER": "ANNIS, DR",
+   "ALAMAT": "KLINIK MAHARANI MEDIKA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 19,
+   "NAMADOKTER": "ZULBAKRI, DR, SP.A",
+   "ALAMAT": "Limus pratama regency blok B9 no. 18",
+   "KDSPESIAL": 2,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 20,
+   "NAMADOKTER": "Desiana, dr, Sp.P",
+   "ALAMAT": "RSKM Bantar Gebang",
+   "KDSPESIAL": 10,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 21,
+   "NAMADOKTER": "ALI SYARIEF, DR",
+   "ALAMAT": "JL. RAYA NAROGONG PANK. 1B",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 22,
+   "NAMADOKTER": "dr. Whisnu Santoso",
+   "ALAMAT": "Vila Nusa Indah z3/7 bogor 16969",
+   "KDSPESIAL": null,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 23,
+   "NAMADOKTER": "Deny, dr. SpS",
+   "ALAMAT": "Bekasi",
+   "KDSPESIAL": 11,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 24,
+   "NAMADOKTER": "APS",
+   "ALAMAT": "RSKM BANTARGEBANG",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 25,
+   "NAMADOKTER": "TJUK DWI SARDADI, DR",
+   "ALAMAT": "MEYTA MEDIKA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 26,
+   "NAMADOKTER": "Dr. Rusli Zainudin, SpPD",
+   "ALAMAT": "Luar",
+   "KDSPESIAL": null,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 27,
+   "NAMADOKTER": "LUAR",
+   "ALAMAT": "DR. BAMBANG HARYANTO SIGIT / APOTIK BS. MEDIKA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 28,
+   "NAMADOKTER": "LUAR",
+   "ALAMAT": "DR. H. YULINO AMRIE,SpP,DTCE,MKes,FCCP",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 29,
+   "NAMADOKTER": "LUAR (Dr. Siti Lia Nurhasanah)",
+   "ALAMAT": "KLINIK AL MUSLIMUN",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 30,
+   "NAMADOKTER": "DR. CIPTO MANGUNKUSUMO",
+   "ALAMAT": "RSCM",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 31,
+   "NAMADOKTER": "DR. RATNA",
+   "ALAMAT": "RSKM BANTARGEBANG",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 32,
+   "NAMADOKTER": "LUAR (DR. MARIATUL KIBTIAH)",
+   "ALAMAT": "SIRANDI MEDIKA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 35,
+   "NAMADOKTER": "DR. FARRAH",
+   "ALAMAT": "RSIA PUSPA HUSADA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 36,
+   "NAMADOKTER": "Dr. Arif Mustofa",
+   "ALAMAT": "Taman Bumyagara Bumi Kerinci Blok F1 No 2 Bekasi",
+   "KDSPESIAL": 15,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 500,
+   "NAMADOKTER": "Bidan Lina",
+   "ALAMAT": "Ciketing udik rt. 01 /03",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 501,
+   "NAMADOKTER": "BIDAN NINING SARTIKA Am.Keb",
+   "ALAMAT": "KP CIBITUNG RT 03/05, PADURENAN",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 672,
+   "NAMADOKTER": "IMELDA, DR",
+   "ALAMAT": "UPTD PUSKESMAS BOJONG MENTENG",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 1000,
+   "NAMADOKTER": "DR. HENDRO, Sp.OT",
+   "ALAMAT": "RSKM BANTAR GEBANG",
+   "KDSPESIAL": 22,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 1001,
+   "NAMADOKTER": "DR. GABRIEL SOMRON",
+   "ALAMAT": "BPU MEYTA MEDIKA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 1002,
+   "NAMADOKTER": "SAHIYATUN NAWIYAH, DR",
+   "ALAMAT": "BP. RESTU ARUM MEDIKA, PEDURENAN, MUSTIKA JAYA",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 1003,
+   "NAMADOKTER": "DR. LUCKY",
+   "ALAMAT": "KLINIK PRATAMA WAHYU",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ },
+ {
+   "KODEDOKTER": 1006,
+   "NAMADOKTER": "SUPRIYONO, DR",
+   "ALAMAT": "RS KARYA MEDIKA BANTAR GEBANG",
+   "KDSPESIAL": 1,
+   "TELP": "",
+   "FIELD6": ""
+ }
+]
+}

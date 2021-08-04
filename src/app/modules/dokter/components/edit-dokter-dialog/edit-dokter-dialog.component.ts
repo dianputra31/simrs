@@ -8,11 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {
-  // AddressCreateUrl,
-  // AddressMasterDistrictUrl,
-  AddressMasterProvinceUrl, BankList, NewDokterSave, SpesialisasiList, ViewDokter
-} from '../../../../../app/app.constant';
+import { AddressMasterProvinceUrl, BankList, NewDokterSave, SpesialisasiList, ViewDokter } from '../../../../../app/app.constant';
 import { HttpService } from '../../../../../app/core/base-service/http.service';
 import { BaseService } from '../../../../../app/core/base-service/service/base.service';
 

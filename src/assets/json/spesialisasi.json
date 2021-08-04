@@ -1,0 +1,310 @@
+{
+    "status":{
+        "rc": 1,
+        "msg":"success"
+    },
+    "data":
+        [
+        {
+        "KDSPECIAL": 1,
+        "NMSPESIAL": "Umum",
+        "KODEPMR": "JA0001",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0001",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 2,
+        "NMSPESIAL": "Anak",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 3,
+        "NMSPESIAL": "THT",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 4,
+        "NMSPESIAL": "Mata",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 5,
+        "NMSPESIAL": "Kulit Dan Kelamin",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 6,
+        "NMSPESIAL": "Gigi & Mulut",
+        "KODEPMR": "JD0001",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JD0001",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 7,
+        "NMSPESIAL": "Penyakit Dalam",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 8,
+        "NMSPESIAL": "Jantung",
+        "KODEPMR": "J10002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "J10002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 9,
+        "NMSPESIAL": "Jiwa",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 10,
+        "NMSPESIAL": "Paru - Paru",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 11,
+        "NMSPESIAL": "Syaraf",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 12,
+        "NMSPESIAL": "Kebidanan Dan kandungan",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 13,
+        "NMSPESIAL": "Bedah",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 14,
+        "NMSPESIAL": "Penunjang Medis",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 15,
+        "NMSPESIAL": "Radiologi",
+        "KODEPMR": "J10002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "J10002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 16,
+        "NMSPESIAL": "Laboratorium",
+        "KODEPMR": "J10002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "J10002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 17,
+        "NMSPESIAL": "Rehabilitasi Medis",
+        "KODEPMR": "J10002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "J10002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 18,
+        "NMSPESIAL": "Psikiater",
+        "KODEPMR": "J10002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "J10002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 19,
+        "NMSPESIAL": "Usg",
+        "KODEPMR": "J10002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "J10002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 21,
+        "NMSPESIAL": "Bedah syaraf",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 22,
+        "NMSPESIAL": "Bedah tulang",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 23,
+        "NMSPESIAL": "Gizi",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 24,
+        "NMSPESIAL": "Anestesi",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 25,
+        "NMSPESIAL": "Bedah Plastik",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 26,
+        "NMSPESIAL": "UROLOGI",
+        "KODEPMR": "JA0002",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JA0002",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 27,
+        "NMSPESIAL": "Andrologi",
+        "KODEPMR": "J10008",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "J10008",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 28,
+        "NMSPESIAL": "RSKM",
+        "KODEPMR": "",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 29,
+        "NMSPESIAL": "-",
+        "KODEPMR": "",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 30,
+        "NMSPESIAL": "IGD",
+        "KODEPMR": "JM0001",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "JM0001",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        },
+        {
+        "KDSPECIAL": 31,
+        "NMSPESIAL": "Perawatan Kecantikan",
+        "KODEPMR": "",
+        "KODEPMR2": "",
+        "KODEPMRSORE": "",
+        "KODEPMRSORE2": "",
+        "KODEPMR3": "",
+        "KODEPMRSORE3": ""
+        }
+        ]
+    
+}

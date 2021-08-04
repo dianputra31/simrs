@@ -71,6 +71,7 @@ export const ViewSupplierLuar = `${API}/supplier/supplier_view`;
 export const BagianList = `${API}/bagian/bagian_list`;
 export const NewBagianSave = `${API}/bagian/create`;
 export const ViewBagian = `${API}/bagian/bagian_view`;
+export const BagianSave = `${API}/bagian/update`;
 /* PATH SUPPLIER END */
 
 export const BankList = `${API}/bank/bank_list`;

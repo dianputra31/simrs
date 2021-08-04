@@ -1,1 +1,550 @@
-<p>edit-bagian-dialog works!</p>
+<div class="d-flex justify-content-between align-items-center">
+    <div id="header">
+        Edit Bagian
+    </div>
+    <img id="close-dialog-button"
+        (click)="batal()"
+        src="../../../../../assets/image/icons/ic-x.png"
+        style="width:16px">
+</div>
+
+<wsv wide="16px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODEBAGIAN"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="KODEBAGIAN"
+            (onUserInput)="onUserInput($event,'KODEBAGIAN')"
+            [content]="bagian?.KODEBAGIAN"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="GRPUNIT"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="GRPUNIT"
+            (onUserInput)="onUserInput($event,'GRPUNIT')"
+            [content]="bagian?.GRPUNIT"></rounded-input>
+    </div>
+
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KMRBPJS"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="KMRBPJS"
+            (onUserInput)="onUserInput($event,'KMRBPJS')"
+            [content]="bagian?.KMRBPJS"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<horizontal-line></horizontal-line>
+
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODEPMR"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'KODEPMR')"
+            [content]="bagian?.KODEPMR"></rounded-input>
+
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="CCCODE"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'CCCODE')"
+            [content]="bagian?.CCCODE"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="DEPT"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="DEPT"
+            (onUserInput)="onUserInput($event,'DEPT')"
+            [content]="bagian?.DEPT"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NAMABAGIAN"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="NAMABAGIAN"
+            (onUserInput)="onUserInput($event,'NAMABAGIAN')"
+            [content]="bagian?.NAMABAGIAN"></rounded-input>
+
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STSINVENT"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="STSINVENT"
+            (onUserInput)="onUserInput($event,'STSINVENT')"
+            [content]="bagian?.STSINVENT"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="PJAWAB"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="PJAWAB"
+            (onUserInput)="onUserInput($event,'PJAWAB')"
+            [content]="bagian?.PJAWAB"></rounded-input>
+    </div>
+
+</div>
+
+
+
+
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="FIXCOST"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'FIXCOST')"
+            [content]="bagian?.FIXCOST"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="VARCOST"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'VARCOST')"
+            [content]="bagian?.VARCOST"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="TGLAKHIR"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="TGLAKHIR"
+            (onUserInput)="onUserInput($event,'TGLAKHIR')"
+            [content]="bagian?.TGLAKHIR"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NOAKHIR"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'NOAKHIR')"
+            [content]="bagian?.NOAKHIR"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="FLAGBIAYAREGBAG"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'FLAGBIAYAREGBAG')"
+            [content]="bagian?.FLAGBIAYAREGBAG"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="JMLDOKTER"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="JMLDOKTER"
+            (onUserInput)="onUserInput($event,'JMLDOKTER')"
+            [content]="bagian?.JMLDOKTER"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NOSTOKOP"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'NOSTOKOP')"
+            [content]="bagian?.NOSTOKOP"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="BULANSTOKOP"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="BULANSTOKOP"
+            (onSelect)="onUserInputSelected($event,'BULANSTOKOP')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="BULANSTOKOPUM"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="BULANSTOKOPUM"
+            (onUserInput)="onUserInput($event,'BULANSTOKOPUM')"
+            [content]="bagian?.BULANSTOKOPUM"></rounded-input>
+    </div>
+
+</div>
+
+
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STATUSSTOKOP"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'STATUSSTOKOP')"
+            [content]="bagian?.STATUSSTOKOP"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODEGUDANG"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="KODEGUDANG"
+            (onSelect)="onUserInputSelected($event,'KODEGUDANG')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="ANTRI"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="ANTRI"
+            (onUserInput)="onUserInput($event,'ANTRI')"
+            [content]="bagian?.ANTRI"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="FLAGNOMR"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'FLAGNOMR')"
+            [content]="bagian?.FLAGNOMR"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NOSTOKOPUM"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="NOSTOKOPUM"
+            (onSelect)="onUserInputSelected($event,'NOSTOKOPUM')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STATUSSTOKOPUMUM"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="STATUSSTOKOPUMUM"
+            (onUserInput)="onUserInput($event,'STATUSSTOKOPUMUM')"
+            [content]="bagian?.STATUSSTOKOPUMUM"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NOSTOKOPM"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'NOSTOKOPM')"
+            [content]="bagian?.NOSTOKOPM"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="BULANSTOKOPM"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="BULANSTOKOPM"
+            (onSelect)="onUserInputSelected($event,'BULANSTOKOPM')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STATUSSTOKOPUMM"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="STATUSSTOKOPUMM"
+            (onUserInput)="onUserInput($event,'STATUSSTOKOPUMM')"
+            [content]="bagian?.STATUSSTOKOPUMM"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STATUSSTOR"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'STATUSSTOR')"
+            [content]="bagian?.STATUSSTOR"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="GUDANG"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="GUDANG"
+            (onSelect)="onUserInputSelected($event,'GUDANG')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="INITCODE"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="INITCODE"
+            (onUserInput)="onUserInput($event,'INITCODE')"
+            [content]="bagian?.INITCODE"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="NOLABEL"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'NOLABEL')"
+            [content]="bagian?.NOLABEL"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="REFUNIT"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="REFUNIT"
+            (onSelect)="onUserInputSelected($event,'REFUNIT')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODELOKASI"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="KODELOKASI"
+            (onUserInput)="onUserInput($event,'KODELOKASI')"
+            [content]="bagian?.KODELOKASI"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="JNSLYN"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'JNSLYN')"
+            [content]="bagian?.JNSLYN"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="WKTTRF"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="WKTTRF"
+            (onSelect)="onUserInputSelected($event,'WKTTRF')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="CCCODE2"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="CCCODE2"
+            (onUserInput)="onUserInput($event,'CCCODE2')"
+            [content]="bagian?.CCCODE2"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="CUTOFF"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'CUTOFF')"
+            [content]="bagian?.CUTOFF"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="TYPEBRG"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="TYPEBRG"
+            (onSelect)="onUserInputSelected($event,'TYPEBRG')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="STSORDERLAB"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="STSORDERLAB"
+            (onUserInput)="onUserInput($event,'STSORDERLAB')"
+            [content]="bagian?.STSORDERLAB"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="PLYNPAS"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'PLYNPAS')"
+            [content]="bagian?.PLYNPAS"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="CUTOFF2"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="CUTOFF2"
+            (onSelect)="onUserInputSelected($event,'CUTOFF2')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="AUTOADM"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="AUTOADM"
+            (onUserInput)="onUserInput($event,'AUTOADM')"
+            [content]="bagian?.AUTOADM"></rounded-input>
+    </div>
+
+</div>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KDPOLIBPJS"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'KDPOLIBPJS')"
+            [content]="bagian?.KDPOLIBPJS"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="JNSBAGIAN"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="JNSBAGIAN"
+            (onSelect)="onUserInputSelected($event,'JNSBAGIAN')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KDBAGINDUK"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText="KDBAGINDUK"
+            (onUserInput)="onUserInput($event,'KDBAGINDUK')"
+            [content]="bagian?.KDBAGINDUK"></rounded-input>
+    </div>
+
+</div>
+
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KDINSTALASI"></label-input>
+        <wsh wide="8px"></wsh>
+        <rounded-input width="170px"
+            placeholderText=""
+            (onUserInput)="onUserInput($event,'KDINSTALASI')"
+            [content]="bagian?.KDINSTALASI"></rounded-input>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+        <label-input label="KODESMF"></label-input>
+        <wsh wide="8px"></wsh>
+        <input-dropdown style="width: 170px;"
+            [items]="states"
+            idText="KODESMF"
+            (onSelect)="onUserInputSelected($event,'KODESMF')"></input-dropdown>
+    </div>
+    <wsh wide="16px"></wsh>
+    <div class="d-flex justify-content-end align-items-center">
+
+    </div>
+
+</div>
+
+
+<wsv wide="8px"></wsv>
+<horizontal-line></horizontal-line>
+<wsv wide="8px"></wsv>
+<div class="d-flex">
+
+
+    <div class="flex-even">
+        <div class="d-flex justify-content-end align-items-center">
+
+        </div>
+    </div>
+</div>
+<wsv wide="8px"></wsv>
+
+
+<wsv wide="8px"></wsv>
+<div class="d-flex justify-content-between align-items-center">
+    <div>* Wajib diisi</div>
+    <div class="d-flex">
+        <button-gray label="Batal"
+            style="cursor: pointer;"
+            (click)="batal()"></button-gray>
+        <wsh wide="8px"></wsh>
+
+        <rounded-red-button *ngIf="valid()"
+            label="Tambah"
+            font="14px"
+            paddingtop="5px"
+            paddingbottom="5px"
+            paddingleft="30px"
+            paddingright="30px"
+            (click)="submit()"
+            float="right"></rounded-red-button>
+
+        <rounded-gray-button *ngIf="!valid()"
+            label="Tambah"
+            font="14px"
+            paddingtop="5px"
+            paddingbottom="5px"
+            paddingleft="30px"
+            paddingright="30px"
+            float="right"></rounded-gray-button>
+    </div>
+</div>

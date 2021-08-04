@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DokterLuarList, RESPONSE } from '../../../../app.constant';
 import { HttpService } from '../../../../core/base-service/http.service';
 import { BaseService } from '../../../../core/base-service/service/base.service';
@@ -20,6 +20,8 @@ export class DokterLuarLayoutComponent implements OnInit {
 	subscribers: Subscription[];
   dokters: any[];
 
+  private _jsonURL = 'assets/json/dokter_luar.json';
+
   constructor(
     public dialog: MatDialog,
 		private route: ActivatedRoute,
@@ -27,6 +29,10 @@ export class DokterLuarLayoutComponent implements OnInit {
 		private http: HttpService,
 		private dialogService: BaseService
   ) { }
+
+  public getJSON(): Observable<any> {
+		return this.http.get(this._jsonURL);
+	  }
 
   ngOnInit(): void {
     this.subscribers = [];
@@ -37,7 +43,9 @@ export class DokterLuarLayoutComponent implements OnInit {
   getDokterList() {
 		this.blockUI.start();
 		const url = DokterLuarList;
-		const sub = this.http.get(url).subscribe(
+		const sub = 
+    //this.http.get(url).subscribe(
+      this.getJSON().subscribe(
 			(resp) => {
 				this.blockUI.stop();
 				if (resp.status.rc == RESPONSE.SUCCESS) {
